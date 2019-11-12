@@ -1,0 +1,191 @@
+<h1 id='contributions-welcome'>Contributions Welcome!</h1>
+<p>Contributions are welcome! There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.</p>
+
+<p><strong>1. Creating High-level API/Automation Docs</strong></p>
+
+<p>Create high level docs or example guides on how to use the APIs to perform any action/view with ZAP.
+    The source files for the ZAP API documentation is hosted on GitHub. The repository is available at <a href="https://github.com/zaproxy/zap-api-docs">Github</a>.
+    The source files are in <code>Markdown</code> (md) format.</p>
+
+<p><strong>2. REST API Documentation</strong></p>
+
+<p>ZAP&#39;s rest API is documented using the OpenAPI specification. The specification could be improved by enhancing the description of 
+    parameters/ results/ data types etc. The open API specification is available via <a href="https://github.com/zaproxy/zap-api-docs/blob/master/openapi.yaml">GitHub</a>.</p>
+
+<p><strong>3. Feature Documentation</strong></p>
+
+<p>Feature documentation related to ZAP is available on <a href="https://github.com/zaproxy/zaproxy/wiki">ZAP wiki</a>, 
+    <a href="https://github.com/zaproxy/zap-core-help/wiki">ZAP user guide</a>, and <a href="https://github.com/zaproxy/zap-extensions/wiki">ZAP extensions</a> repositories.</p>
+<h2 id='how-to-contribute'>How to Contribute</h2>
+<p>The ZAP API documentation is developed according to the <a href="https://www.writethedocs.org/guide/docs-as-code/">docs as code</a> philosophy.
+The most direct and effective way to contribute to the docs is to submit a pull request(PR) or raise an 
+issue in the GitHub repository containing the docs content that you want to change.</p>
+
+<p>There are 2 different workflows which you can use to make changes or PRs. Use what you are most comfortable with!</p>
+
+<p><strong>1. &quot;Edit this File on GitHub&quot;</strong></p>
+
+<p>You can edit the documentation in the browser via navigating to the relevant source file and clicking the edit this file button.
+This workflow is recommended for minor changes. For example correcting typos/spellings/grammar etc.
+For extensive changes, please use the local setup and editing option.</p>
+
+<p><strong>2. Local Setup and Editing</strong></p>
+
+<p>You can fork the repository on GitHub and submit the changes via <a href="https://help.github.com/en/articles/creating-a-pull-request-from-a-fork">pull requests</a>. 
+Please see the local setup for API docs section to setup and render the docs locally.</p>
+
+<aside class="notice">
+The API documentation (this document) is built from the master branch of zap-api-docs using Slate.
+</aside>
+<h2 id='local-setup-for-api-docs'>Local Setup for API Docs</h2>
+<p>ZAP uses git for its code repository. 
+To submit a documentation update, use the following steps:</p>
+
+<p><strong>1. Clone the ZAP Docs repository:</strong> 
+    <code>git clone https://github.com/zaproxy/zap-api-docs</code></p>
+
+<p><strong>2. Navigate to the cloned repository:</strong> 
+    <code>cd zap-api-docs</code></p>
+
+<p><strong>3. Use the following guide to install <a href="https://www.ruby-lang.org/en/documentation/installation/">Ruby</a></strong></p>
+
+<p><strong>4. To install the dependencies:</strong> <code>$ bundle install</code></p>
+
+<p><strong>5. To start the server:</strong> <code>$ bundle exec middleman server</code></p>
+<h2 id='documentation-style'>Documentation Style</h2>
+<p>This style guide provides a set of editorial guidelines for anyone writing documentation for OWASP ZAP.</p>
+<h3 id='general-guidelines'>General Guidelines</h3>
+<ul>
+<li><p>Check for the grammar and spellings before sending the pull request. Most of the modern editors comes with a spell 
+check option or plugin.</p></li>
+<li><p>Use a friendly and conversational tone. Always use simple sentences. If the sentence is lengthy try to break it in to smaller sentences. 
+Also avoid sentences with complicated words or jargon.</p></li>
+<li><p>Write positively and avoid using negative sentences.</p>
+
+<ul>
+<li>Recommended: If you are not familiar with the Spider, then read this documentation.</li>
+<li>Not Recommended: Read this documentation to get familiarized with the Spider.</li>
+</ul></li>
+<li><p>The documentation should be neutral, without judgments, opinions. For example, words like &quot;easily&quot; or &quot;simple&quot; come with 
+a lot of assumptions. Things that are easier for you might be difficult for another person. Avoid this type of wordings 
+when contributing to the document.</p></li>
+</ul>
+<h3 id='language-and-grammar'>Language and Grammar</h3>
+<ul>
+<li><p>Abbreviation</p>
+
+<p>Spell out the abbreviation or acronym before introducing them in the sentence. If the abbreviation is well known such as
+API or ZAP or HTML, you can use it without spelling it first.</p></li>
+<li><p>Active Voice</p>
+
+<p>In general use active voice when formulating the sentence instead of passive voice. A sentence written in the active voice will emphasize 
+the person or thing who is performing an action (eg.The dog chased the ball).  In contrast, the passive voice will highlight 
+the recipient of the action (The ball was chased by the dog). Therefor use the passive voice, only when it&#39;s less important 
+who or what completed the action and more important that the action was completed. For example:</p>
+
+<ul>
+<li>Recommended: The Spider crawls the URLs.</li>
+<li>Not recommended: The URLs are crawled by the Spider.<br></li>
+</ul></li>
+<li><p>Gender References</p>
+
+<p>Use gender neutral pronouns (they/their/them) when referring to a hypothetical person such as &quot;a user with a logged in session&quot;. 
+For example, instead of:
+    - he or she, use they;
+    - him or her, use them;
+    - his or her, use their;
+    - his or hers, use theirs;
+    - himself or herself, use themselves;</p></li>
+<li><p>Method Description</p>
+
+<p>When you&#39;re writing reference documentation for a method, phrase the main method description in terms of what it does 
+(&quot;Gets,&quot; &quot;Starts,&quot; &quot;Creates,&quot; &quot;Lists&quot;), rather than what the developer would use it to do (&quot;Get,&quot; &quot;Start,&quot; &quot;Create,&quot; &quot;List&quot;).</p>
+
+<ul>
+<li>Recommended: action.scan: Starts the Spider on the specified URL. </li>
+<li>Not recommended: action.scan: Start the Spider on the specified URL.<br></li>
+</ul></li>
+<li><p>Second Person</p>
+
+<p>In general, use second person in your docs rather than first person. For example:</p>
+
+<ul>
+<li>Recommended: You are recommended to use the Spider.</li>
+<li>Not Recommended: We recommend to use the Spider. <br></li>
+</ul></li>
+<li><p>Spellings</p>
+
+<p>Use <a href="https://www.oxfordinternationalenglish.com/differences-in-british-and-american-spelling/">American spellings</a> when
+contributing to the documentation. </p></li>
+</ul>
+<h3 id='formatting'>Formatting</h3>
+<ul>
+<li><p>Capitalization:</p>
+
+<ul>
+<li>Use the Chicago manual for capitalization rules for the documentation.</li>
+<li>For titles of a section, Capitalize of the first letter of each word except for the <a href="http://babelnet.sbg.ac.at/themepark/grammar/classes.htm">closed-class words</a> 
+such as determiners, pronouns, conjunctions, and prepositions. Use the following <a href="https://capitalizemytitle.com/#Chicago">link</a> for guidance.
+
+<ul>
+<li>Recommended: The Spider Tutorial <strong>with</strong> APIs</li>
+</ul></li>
+<li>For normal sentences don&#39;t <a href="https://www.grammarly.com/blog/capitalization-rules/">capitalize</a> random words in the middle of the sentences.</li>
+</ul></li>
+<li><p>Number formatting   </p>
+
+<ul>
+<li>In general spell out the number if it starts a sentence or is less than ten or an ordinal number. 
+
+<ul>
+<li>Recommended: Seventeen requests has been intercepted by the passive scanner. </li>
+<li>Recommended: The passive scan showed nine warnings.<br></li>
+<li>Recommended: The fifth alert was a high priority alert.<br></li>
+</ul></li>
+<li>Use numerals for numbers higher than ten or fractions or unit prices.
+
+<ul>
+<li>Recommended: The active scanner detected 24 issues.</li>
+<li>Recommended: The scanner took 23.4 seconds to complete the crawling.</li>
+</ul></li>
+</ul></li>
+</ul>
+<h3 id='punctuation'>Punctuation</h3>
+<ul>
+<li><p>Commas</p>
+
+<ul>
+<li>Use oxford commas when writing a list of three or more items
+
+<ul>
+<li>Recommended: The API can return the results in XML, JSON, and HTML.</li>
+<li>Not Recommended: The API can return the results in XML, JSON and HTML. <br></li>
+</ul></li>
+</ul></li>
+<li><p>Periods</p>
+
+<ul>
+<li>Do not add period to headings or titles.<br></li>
+<li>Avoid using periods at the end of URLs. Try to modify the sentence so the URL can be in the middle of the sentence.</li>
+</ul></li>
+</ul>
+<h2 id='markdown-syntax'>Markdown Syntax</h2>
+<p>The API docs are created using standard markdown files. This section contains information regarding the syntax and linting of the Markdown files.
+Refer to the <a href="https://github.com/slatedocs/slate/wiki/Markdown-Syntax">Slate documentation</a>. Also refer to this 
+<a href="https://github.com/markdownlint/markdownlint/edit/master/docs/RULES.md">document</a> to properly lint the Markdown files.</p>
+<h3 id='writing-code'>Writing Code</h3>
+<p><strong>Inline Code</strong></p>
+
+<p>Put `<code>backticks</code>` around the following symbols when used in text:</p>
+
+<ul>
+<li>Data types: <code>json</code>, <code>xml</code>, <code>html</code></li>
+<li>File name: <code>test.py</code>, <code>/path-to-your-data/xml/example-name</code></li>
+</ul>
+
+<p><strong>Code Block</strong>                                              </p>
+
+<p>Use three back ticks to open and close a code block. Specify the programming language after the first backtick group. 
+The documentation currently supports <code>python</code>, <code>java</code>, and <code>shell</code> languages.</p>
+
+<p><img src="/images/code_example.png" alt="code_example" /></p>

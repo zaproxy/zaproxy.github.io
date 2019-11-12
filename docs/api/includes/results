@@ -1,0 +1,113 @@
+<h1 id='getting-the-results'>Getting the Results</h1><pre class="highlight python tab-python"><code><span class="c">#!/usr/bin/env python</span>
+<span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
+
+<span class="c"># The URL of the application to be tested</span>
+<span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
+<span class="c"># Change to match the API key set in ZAP, or use None if the API key is disabled</span>
+<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeMe'</span>
+
+<span class="c"># By default ZAP API client will connect to port 8080</span>
+<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">)</span>
+<span class="c"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090</span>
+<span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})</span>
+
+<span class="c"># TODO: Check if the scanning has completed</span>
+
+<span class="c"># Retrieve the alerts using paging in case there are lots of them</span>
+<span class="n">st</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pg</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">alert_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">alert_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">alerts</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">alert</span><span class="o">.</span><span class="n">alerts</span><span class="p">(</span><span class="n">baseurl</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">st</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">pg</span><span class="p">)</span>
+<span class="n">blacklist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">alerts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Reading '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">pg</span><span class="p">)</span> <span class="o">+</span> <span class="s">' alerts from '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">st</span><span class="p">))</span>
+    <span class="n">alert_count</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">alerts</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">alert</span> <span class="ow">in</span> <span class="n">alerts</span><span class="p">:</span>
+        <span class="n">plugin_id</span> <span class="o">=</span> <span class="n">alert</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'pluginId'</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">plugin_id</span> <span class="ow">in</span> <span class="n">blacklist</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">alert</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'risk'</span><span class="p">)</span> <span class="o">==</span> <span class="s">'High'</span><span class="p">:</span>
+            <span class="c"># Trigger any relevant postprocessing</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">alert</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'risk'</span><span class="p">)</span> <span class="o">==</span> <span class="s">'Informational'</span><span class="p">:</span>
+            <span class="c"># Ignore all info alerts - some of them may have been downgraded by security annotations</span>
+            <span class="k">continue</span>
+    <span class="n">st</span> <span class="o">+=</span> <span class="n">pg</span>
+    <span class="n">alerts</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">alert</span><span class="o">.</span><span class="n">alerts</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">st</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="n">pg</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Total number of alerts: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">alert_count</span><span class="p">))</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Alerts</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
+    <span class="c1">// Change to match the API key set in ZAP, or use NULL if the API key is disabled</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="s">"change me"</span><span class="o">;</span>
+    <span class="c1">// The URL of the application to be tested</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">blackListPlugins</span> <span class="o">=</span> <span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="s">"1000"</span><span class="o">,</span> <span class="s">"1025"</span><span class="o">);</span>
+
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientApi</span><span class="o">(</span><span class="n">ZAP_ADDRESS</span><span class="o">,</span> <span class="n">ZAP_PORT</span><span class="o">,</span> <span class="n">ZAP_API_KEY</span><span class="o">);</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="c1">// TODO: Check if the scanning has completed</span>
+
+            <span class="c1">// Retrieve the alerts using paging in case there are lots of them</span>
+            <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">5000</span><span class="o">;</span>
+            <span class="kt">int</span> <span class="n">alertCount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+            <span class="n">ApiResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">alert</span><span class="o">.</span><span class="na">alerts</span><span class="o">(</span><span class="n">TARGET</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">start</span><span class="o">),</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">count</span><span class="o">),</span> <span class="kc">null</span><span class="o">);</span>
+
+            <span class="k">while</span> <span class="o">(((</span><span class="n">ApiResponseList</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getItems</span><span class="o">().</span><span class="na">size</span><span class="o">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Reading "</span> <span class="o">+</span> <span class="n">count</span> <span class="o">+</span> <span class="s">" alerts from "</span> <span class="o">+</span> <span class="n">start</span><span class="o">);</span>
+                <span class="n">alertCount</span> <span class="o">+=</span> <span class="o">((</span><span class="n">ApiResponseList</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getItems</span><span class="o">().</span><span class="na">size</span><span class="o">();</span>
+
+                <span class="k">for</span> <span class="o">(</span><span class="n">ApiResponse</span> <span class="n">l</span> <span class="o">:</span> <span class="o">(((</span><span class="n">ApiResponseList</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getItems</span><span class="o">()))</span> <span class="o">{</span>
+
+                    <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">ApiResponse</span><span class="o">&gt;</span> <span class="n">element</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseSet</span><span class="o">)</span> <span class="n">l</span><span class="o">).</span><span class="na">getValuesMap</span><span class="o">();</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">blackListPlugins</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"pluginId"</span><span class="o">).</span><span class="na">toString</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="c1">// TODO: Trigger any relevant postprocessing</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">"High"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"risk"</span><span class="o">).</span><span class="na">toString</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="c1">// TODO: Trigger any relevant postprocessing</span>
+                    <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="s">"Informational"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">element</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"risk"</span><span class="o">).</span><span class="na">toString</span><span class="o">()))</span> <span class="o">{</span>
+                        <span class="c1">// TODO: Ignore all info alerts - some of them may have been downgraded by security annotations</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="n">start</span> <span class="o">+=</span> <span class="n">count</span><span class="o">;</span>
+                <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">alert</span><span class="o">.</span><span class="na">alerts</span><span class="o">(</span><span class="n">TARGET</span><span class="o">,</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">start</span><span class="o">),</span> <span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">count</span><span class="o">),</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Total number of Alerts: "</span> <span class="o">+</span> <span class="n">alertCount</span><span class="o">);</span>
+
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># To view the alerts</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/alert/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=&lt;BASE_URL&gt;&amp;start=0&amp;count=5000&amp;riskId="</span>
+
+<span class="c"># To view the summary of the alerts</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/alert/view/alertsSummary/?apikey=&lt;ZAP_API_KEY&gt;baseurl=&lt;BASE_URL&gt;"</span>
+
+<span class="c"># To view alerts by risk category</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/alert/view/alertsByRisk/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=&lt;BASE_URL&gt;&amp;recurse="</span>
+</code></pre>
+<p>After the scanning (Active/Passive) completes, ZAP provides the security vulnerabilities in the form of alerts. The alerts
+are categorized into high-priority, medium-priority, low-priority and informational priority risks. The priority indicates the degree of risk associated with each alert. 
+For example, a high priority risk means that the issues listed in that category has more threat or risk potential than a medium-priority alert.</p>
+
+<p>The <a href="#alertviewalerts">alerts</a> endpoint provides all the alerts which are identified by ZAP. View the sample code on the right to retrieve the 
+alerts from the alerts endpoint. The results can be used to raise security alerts in the CI/CD pipeline or to trigger any custom workflows. </p>
+
+<p><img src="/images/alerts_results.png" alt="alert_sample" /></p>
+
+<p>The <a href="#alertviewalertssummary">alerts summary</a> gets the number of alerts grouped by each risk level and optionally filtering by URL.
+A Summary report can be also generated using the core module. Use the <a href="#coreotherhtmlreport">htmlreport</a> 
+or <a href="#coreotherjsonreport">jsonreport</a> or <a href="#coreotherxmlreport">xmlreport</a> endpoint to generate this summary report. 
+The following image shows the report generated via the HTML report API. The report categories the alerts to risk level 
+and provides a brief description about each alert. </p>
+
+<p><img src="/images/report_html.png" alt="html report" /></p>
