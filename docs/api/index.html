@@ -267,6 +267,14 @@
           </li>
           <li>
             <a href="#getting-authenticated" class="toc-h1 toc-link" data-title="Getting Authenticated">Getting Authenticated</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#general-steps" class="toc-h2 toc-link" data-title="General Steps">General Steps</a>
+                  </li>
+                  <li>
+                    <a href="#form-based-authentication" class="toc-h2 toc-link" data-title="Form Based Authentication">Form Based Authentication</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#advanced-settings" class="toc-h1 toc-link" data-title="Advanced Settings">Advanced Settings</a>
@@ -2434,7 +2442,326 @@ and provides a brief description about each alert. </p>
 
 <p><img src="images/report_html.png" alt="html report" /></p>
 <h1 id='getting-authenticated'>Getting Authenticated</h1>
-<p>Content In progress!</p>
+<p>The target application for testing might have a portion of the functionality that is only available for a logged-in user. 
+In order to get full test coverage of the application you need to test the application with a logged-in user as well. Therefore 
+it&#39;s very important to understand how to perform authenticated scans with ZAP. ZAP has several means to authenticate your 
+application and keep track of the authentication state. The following are some of the options available for authentication with ZAP.</p>
+
+<ul>
+<li>Form-based authentication</li>
+<li>Script-based authentication</li>
+<li>JSON-based authentication</li>
+<li>HTTP/NTLM based authentication</li>
+</ul>
+
+<p>The examples below show three authentication workflows. A simple form-based authentication is showcased with the use of the 
+Bodgeit application. The second example shows the script-based authentication using the Damn Vulnerable Web Application(DVWA). 
+The third example shows a more complicated authentication workflow using the JSON and script-based authentication using the OWASP Juice Shop.</p>
+
+<aside class="info">
+It's recommended to configure the authentication using the desktop UI before automating it using the ZAP APIs. The examples
+below show how to configure authentication with ZAP desktop and provides automation scripts on how to perform the similar using 
+ZAP APIs.
+</aside>
+<h2 id='general-steps'>General Steps</h2>
+<p>The following are the general steps when configuring the application authentication with ZAP.</p>
+
+<p><strong>Step 1. Define a context</strong></p>
+
+<p>Contexts are a way of relating a set of URLs together. The URLs are defined as a set of regular expressions (regex). 
+You should include the target application inside the context. The unwanted URLs such as the logout page, password change functionality
+should be added to the exclude in context section.</p>
+
+<p><strong>Step 2. Set the authentication mechanism</strong></p>
+
+<p>Choose the appropriate login mechanism for your application. If your application supports a simple form-based login, then 
+choose the form-based authentication method. For complex login workflows, you can use the script-based login to define custom 
+authentication workflows.</p>
+
+<p><strong>Step 3. Define your auth parameters</strong></p>
+
+<p>In general, you need to provide the settings on how to communicate to the authentication service of your application. In general, 
+the settings would include the login URL and payload format (username &amp; password). The required parameters will be different 
+for different authentication methods.</p>
+
+<p><strong>Step 4. Set relevant logged in/out indicators</strong></p>
+
+<p>ZAP additionally needs hints to identify whether the application is authenticated or not. To verify the authentication status, 
+ZAP supports logged in/out regexes. These are regex patterns that you should configure to match strings in the responses which 
+indicate if the user is logged in or logged out.</p>
+
+<p><strong>Step 5. Add a valid user and password</strong></p>
+
+<p>Add a user account (an existing user in your application) with valid credentials in ZAP. You can create multiple users 
+if your application exposes different functionality based on user roles. Additionally, you should also set valid session 
+management when configuring the authentication for your application. Currently, ZAP supports cookie-based session management 
+and HTTP authentication based session management.</p>
+
+<p><strong>Step 6. Enable forced user mode (Optional)</strong></p>
+
+<p>Now enable the <img src="https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png" alt="Forceduseroff" /> &quot;<a href="https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off">Forced User Mode disabled - click to enable</a>&quot; 
+button. Pressing this button will cause ZAP to resend the authentication request whenever it detects that the user is no 
+longer logged in, ie by using the &#39;logged in&#39; or &#39;logged out&#39; indicator. But the forced used mode is ignored for scans that already have a user set. </p>
+
+<aside class="info">
+In order for auth to work one of the indicators(logged in/out) needs to be set, however, ZAP will allow users to proceed without having to set 
+them because there are other methods of setting them. However, if one isn't set, then the auth won't work.
+</aside>
+<h2 id='form-based-authentication'>Form Based Authentication</h2><pre class="highlight python tab-python"><code><span class="c">#!/usr/bin/env python</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
+
+<span class="n">context_id</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeMe'</span>
+<span class="n">context_name</span> <span class="o">=</span> <span class="s">'Default Context'</span>
+<span class="n">target_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit'</span>
+
+<span class="c"># By default ZAP API client will connect to port 8080</span>
+<span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">)</span>
+
+
+<span class="c"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090</span>
+<span class="c"># zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})</span>
+
+<span class="k">def</span> <span class="nf">set_include_in_context</span><span class="p">():</span>
+    <span class="n">exclude_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit/logout.jsp'</span>
+    <span class="n">include_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit.*'</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">include_in_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="n">include_url</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">exclude_from_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="n">exclude_url</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Configured include and exclude regex(s) in context'</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">set_logged_in_indicator</span><span class="p">():</span>
+    <span class="n">logged_in_regex</span> <span class="o">=</span> <span class="s">'</span><span class="err">\</span><span class="s">Q&lt;a href="logout.jsp"&gt;Logout&lt;/a&gt;</span><span class="err">\</span><span class="s">E'</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_logged_in_indicator</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">logged_in_regex</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Configured logged in indicator regex: '</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">set_form_based_auth</span><span class="p">():</span>
+    <span class="n">login_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit/login.jsp'</span>
+    <span class="n">login_request_data</span> <span class="o">=</span> <span class="s">'username={</span><span class="si">%</span><span class="s">username</span><span class="si">%</span><span class="s">}&amp;password={</span><span class="si">%</span><span class="s">password</span><span class="si">%</span><span class="s">}'</span>
+    <span class="n">form_based_config</span> <span class="o">=</span> <span class="s">'loginUrl='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login_url</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;loginRequestData='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login_request_data</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_authentication_method</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="s">'formBasedAuthentication'</span><span class="p">,</span> <span class="n">form_based_config</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Configured form based authentication'</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">set_user_auth_config</span><span class="p">():</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="s">'Test User'</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="s">'test@example.com'</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="s">'weakPassword'</span>
+
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">new_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">user_auth_config</span> <span class="o">=</span> <span class="s">'username='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;password='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_authentication_credentials</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">user_auth_config</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_user_enabled</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="s">'true'</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user_mode_enabled</span><span class="p">(</span><span class="s">'true'</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'User Auth Configured'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">user_id</span>
+
+
+<span class="k">def</span> <span class="nf">start_spider</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">scan_as_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">target_url</span><span class="p">,</span> <span class="n">recurse</span><span class="o">=</span><span class="s">'true'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Started Scanning with Authentication'</span><span class="p">)</span>
+
+
+<span class="n">set_include_in_context</span><span class="p">()</span>
+<span class="n">set_form_based_auth</span><span class="p">()</span>
+<span class="n">set_logged_in_indicator</span><span class="p">()</span>
+<span class="n">user_id_response</span> <span class="o">=</span> <span class="n">set_user_auth_config</span><span class="p">()</span>
+<span class="n">start_spider</span><span class="p">(</span><span class="n">user_id_response</span><span class="p">)</span>
+
+</code></pre><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FormAuth</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">contextId</span> <span class="o">=</span> <span class="s">"1"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">contextName</span> <span class="o">=</span> <span class="s">"Default Context"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">target</span> <span class="o">=</span> <span class="s">"http://localhost:8090/bodgeit"</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setIncludeAndExcludeInContext</span><span class="o">(</span><span class="n">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">UnsupportedEncodingException</span><span class="o">,</span> <span class="n">ClientApiException</span> <span class="o">{</span>
+        <span class="n">String</span> <span class="n">includeInContext</span> <span class="o">=</span> <span class="s">"http://localhost:8090/bodgeit.*"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">excludeInContext</span> <span class="o">=</span> <span class="s">"http://localhost:8090/bodgeit/logout.jsp"</span><span class="o">;</span>
+
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">context</span><span class="o">.</span><span class="na">includeInContext</span><span class="o">(</span><span class="n">contextName</span><span class="o">,</span> <span class="n">includeInContext</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">context</span><span class="o">.</span><span class="na">excludeFromContext</span><span class="o">(</span><span class="n">contextName</span><span class="o">,</span> <span class="n">excludeInContext</span><span class="o">);</span>
+    <span class="o">}</span>
+
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setLoggedInIndicator</span><span class="o">(</span><span class="n">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">UnsupportedEncodingException</span><span class="o">,</span> <span class="n">ClientApiException</span> <span class="o">{</span>
+        <span class="c1">// Prepare values to set, with the logged in indicator as a regex matching the logout link</span>
+        <span class="n">String</span> <span class="n">loggedInIndicator</span> <span class="o">=</span> <span class="s">"&lt;a href=\"logout.jsp\"&gt;Logout&lt;/a&gt;"</span><span class="o">;</span>
+
+        <span class="c1">// Actually set the logged in indicator</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setLoggedInIndicator</span><span class="o">(</span><span class="n">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">regex</span><span class="o">.</span><span class="na">Pattern</span><span class="o">.</span><span class="na">quote</span><span class="o">(</span><span class="n">loggedInIndicator</span><span class="o">));</span>
+
+        <span class="c1">// Check out the logged in indicator that is set</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Configured logged in indicator regex: "</span>
+                <span class="o">+</span> <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">getLoggedInIndicator</span><span class="o">(</span><span class="n">contextId</span><span class="o">)).</span><span class="na">getValue</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setFormBasedAuthenticationForBodgeit</span><span class="o">(</span><span class="n">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClientApiException</span><span class="o">,</span>
+            <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
+        <span class="c1">// Setup the authentication method</span>
+
+        <span class="n">String</span> <span class="n">loginUrl</span> <span class="o">=</span> <span class="s">"http://localhost:8090/bodgeit/login.jsp"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">loginRequestData</span> <span class="o">=</span> <span class="s">"username={%username%}&amp;password={%password%}"</span><span class="o">;</span>
+
+        <span class="c1">// Prepare the configuration in a format similar to how URL parameters are formed. This</span>
+        <span class="c1">// means that any value we add for the configuration values has to be URL encoded.</span>
+        <span class="n">StringBuilder</span> <span class="n">formBasedConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+        <span class="n">formBasedConfig</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"loginUrl="</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">loginUrl</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+        <span class="n">formBasedConfig</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"&amp;loginRequestData="</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">loginRequestData</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Setting form based authentication configuration as: "</span>
+                <span class="o">+</span> <span class="n">formBasedConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setAuthenticationMethod</span><span class="o">(</span><span class="n">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="s">"formBasedAuthentication"</span><span class="o">,</span>
+                <span class="n">formBasedConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+
+        <span class="c1">// Check if everything is set up ok</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span>
+                <span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Authentication config: "</span> <span class="o">+</span> <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">getAuthenticationMethod</span><span class="o">(</span><span class="n">contextId</span><span class="o">).</span><span class="na">toString</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">setUserAuthConfigForBodgeit</span><span class="o">(</span><span class="n">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClientApiException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
+        <span class="c1">// Prepare info</span>
+        <span class="n">String</span> <span class="n">user</span> <span class="o">=</span> <span class="s">"Test User"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s">"test@example.com"</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"weakPassword"</span><span class="o">;</span>
+
+        <span class="c1">// Make sure we have at least one user</span>
+        <span class="n">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">extractUserId</span><span class="o">(</span><span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">newUser</span><span class="o">(</span><span class="n">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">user</span><span class="o">));</span>
+
+        <span class="c1">// Prepare the configuration in a format similar to how URL parameters are formed. This</span>
+        <span class="c1">// means that any value we add for the configuration values has to be URL encoded.</span>
+        <span class="n">StringBuilder</span> <span class="n">userAuthConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+        <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"username="</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+        <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"&amp;password="</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">password</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Setting user authentication configuration as: "</span> <span class="o">+</span> <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">setAuthenticationCredentials</span><span class="o">(</span><span class="n">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">setUserEnabled</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">forcedUser</span><span class="o">.</span><span class="na">setForcedUser</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">forcedUser</span><span class="o">.</span><span class="na">setForcedUserModeEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Check if everything is set up ok</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Authentication config: "</span> <span class="o">+</span> <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">getUserById</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">).</span><span class="na">toString</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+        <span class="k">return</span> <span class="n">userId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">extractUserId</span><span class="o">(</span><span class="n">ApiResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">response</span><span class="o">).</span><span class="na">getValue</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">scanAsUser</span><span class="o">(</span><span class="n">ClientApi</span> <span class="n">clientApi</span><span class="o">,</span> <span class="n">String</span> <span class="n">userId</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClientApiException</span> <span class="o">{</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">scanAsUser</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="s">"true"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * The main method.
+     *
+     * @param args the arguments
+     * @throws ClientApiException
+     * @throws UnsupportedEncodingException
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">ClientApiException</span><span class="o">,</span> <span class="n">UnsupportedEncodingException</span> <span class="o">{</span>
+        <span class="n">ClientApi</span> <span class="n">clientApi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientApi</span><span class="o">(</span><span class="n">ZAP_ADDRESS</span><span class="o">,</span> <span class="n">ZAP_PORT</span><span class="o">);</span>
+
+        <span class="n">setIncludeAndExcludeInContext</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">setFormBasedAuthenticationForBodgeit</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">setLoggedInIndicator</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">setUserAuthConfigForBodgeit</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">scanAsUser</span><span class="o">(</span><span class="n">clientApi</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># To include in default context</span>
+curl <span class="s1">'http://localhost:8080/JSON/context/action/includeInContext/?contextName=Default+Context&amp;regex=http%3A%2F%2Flocalhost%3A8090%2Fbodgeit.*'</span>
+
+<span class="c"># Set login details (URL Endoded)</span>
+curl <span class="s1">'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&amp;authMethodName=formBasedAuthentication&amp;authMethodConfigParams=loginUrl%3Dhttp%3A%2F%2Flocalhost%3A8090%2Fbodgeit%2Flogin.jsp%26loginRequestData%3Dusername%253D%257B%2525username%2525%257D%2526password%253D%257B%2525password%2525%257D'</span>
+
+<span class="c"># To set the login indicator</span>
+curl <span class="s1">'http://localhost:8080/JSON/authentication/action/setLoggedInIndicator/?contextId=1&amp;loggedInIndicatorRegex=%5CQ%3Ca+href%3D%22logout.jsp%22%3ELogout%3C%2Fa%3E%5CE'</span>
+
+<span class="c"># To create a user (The first user id is: 0)</span>
+curl <span class="s1">'http://localhost:8080/JSON/users/action/newUser/?contextId=1&amp;name=Test+User'</span>
+
+<span class="c"># To add the credentials for the user</span>
+curl <span class="s1">'http://localhost:8080/JSON/users/action/setAuthenticationCredentials/?contextId=1&amp;userId=0&amp;authCredentialsConfigParams=username%3Dtest%40example.com%26password%3DweakPassword'</span>
+
+<span class="c"># To enable the user</span>
+curl <span class="s1">'http://localhost:8080/JSON/users/action/setUserEnabled/?contextId=1&amp;userId=0&amp;enabled=true'</span>
+
+<span class="c"># To set forced user</span>
+curl <span class="s1">'http://localhost:8080/JSON/forcedUser/action/setForcedUser/?contextId=1&amp;userId=0'</span>
+
+<span class="c"># To enable forced user mode</span>
+curl <span class="s1">'http://localhost:8080/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true'</span>
+</code></pre>
+<p>The following example performs a simple <a href="(https://github.com/zaproxy/zaproxy/wiki/FAQformauth)">form-based authentication</a> using 
+the Bodgeit vulnerable application. It&#39;s recommended that you configure the authentication via the desktop UI before attempting the APIs.</p>
+<h3 id='setup-target-application'>Setup Target Application</h3>
+<p>Bodgeit uses a simple form-based authentication to authenticate the users to the application. Use the following command 
+to start a docker instance of the Bodgeit application: <code>docker run --rm -p 8090:8080 -i -t psiinon/bodgeit</code> </p>
+<h3 id='register-a-user'>Register a User</h3>
+<p>Register a user in the application by navigating to the following URL: <a href="http://localhost:8090/bodgeit/register.jsp">http://localhost:8090/bodgeit/register.jsp</a>.
+For the purpose of this example, use the following credentials.</p>
+
+<ul>
+<li>username: test@gmail.com</li>
+<li>password: weakPass</li>
+</ul>
+<h3 id='login'>Login</h3>
+<p>After registering the user, browse (proxied via ZAP) to the following URL (<a href="http://localhost:8090/bodgeit/login.jsp">http://localhost:8090/bodgeit/login.jsp</a>), 
+and log in to the application. When you log in to the application, the request will be added to the <code>History</code> tab in ZAP. 
+Search for the POST request to the following URL: <a href="http://localhost:8090/bodgeit/login.jsp">http://localhost:8090/bodgeit/login.jsp</a>.
+Right-click on the post request, and select <code>Flag as Context -&gt; Default Context : Form based Login Request</code> option. This will 
+open the context authentication editor. You can notice it has auto-selected the form-based authentication, auto-filled the login URL, and the post data.
+Select the correct form parameter as the username and password in the dropdown and click Ok.</p>
+
+<p>Now you need to inform ZAP whether the application is logged in or out. The Bodgeit application includes the logout URL 
+<code>&lt;a href=&quot;logout.jsp&quot;&gt;Logout&lt;/a&gt;</code> as the successful response. You can view this by navigating to the response tab of the login request.
+Highlight the text and right click and select the <code>Flag as Context -&gt; Default Context, Loggedin Indicator</code> option. This will autofill
+the regex needed for the login indicator. The following image shows the completed set up for the authentication tab of the context menu.</p>
+
+<p><img src="images/auth_bodgeit_form_settings.png" alt="auth" /></p>
+
+<p>Now let&#39;s add the user credentials by going to the <code>context -&gt; users -&gt; Add</code> section. After adding the credentials, enable 
+the <img src="https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png" alt="Forceduseroff" /> &quot;<a href="https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off">Forced User</a>&quot;
+mode in the desktop UI to forcefully authenticate the user prior to the testing of the application. </p>
+
+<p>Now let&#39;s test the authentication by performing an authenticated Spidering with ZAP. To accomplish this, go to the Spider and select the <code>default</code> 
+context and the <code>test user</code> to perform the authentication. After this, you should see the Spider crawling all the protected resources.</p>
+
+<aside class="info">
+It's not madatory to set the forced used mode, if you manually set a user for ZAP activities such as scanning.
+</aside>
+<h3 id='steps-to-reproduce-via-api'>Steps to Reproduce via API</h3>
+<p>If you have configured the authentication via the desktop UI, then export the context and import it using the 
+<a href="#contextactionimportcontext">importContext</a> API. Otherwise follow the steps below to configure the authentication setting for the context. </p>
+<h4 id='include-in-context'>Include in Context</h4>
+<p>Inorder to proceed with authentication, the URL of the application should be added to the context. As the Bodgit is available
+via <a href="http://localhost:8090/bodgeit">http://localhost:8090/bodgeit</a> use the <a href="#contextactionincludeincontext">includeInContext</a> API to add the
+URL to a context.</p>
+<h4 id='set-authentication-method'>Set Authentication Method</h4>
+<p>Use the <a href="#authenticationactionsetauthenticationmethod">setAuthenticationMethod</a> to set up the authentication method and 
+the configuration parameters. The <code>setAuthenticationMethod</code> takes <code>contextId</code>, <code>authMethodName</code>, and <code>authMethodConfigParams</code> as
+parameters. As Bodgeit uses the form-based authentication, use <code>formBasedAuthentication</code> for the authMethodName and use the contextID
+from Step 1 as the <code>contextId</code> parameter. </p>
+
+<p>The authMethodConfigParams requires the loginUrl and loginRequestData. Therefore you should set the values to authMethodConfigParams in the following format:</p>
+
+<p><code>authMethodConfigParams : loginUrl=http://localhost:8090/bodgeit/login.jsp&amp;loginRequestData=username%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D</code></p>
+
+<p>The values for authMethodConfigParams parameters must be URL encoded, in this case loginRequestData is <code>username={%username%}&amp;password={%password%}</code>.</p>
+<h4 id='set-login-and-logout-indicators'>Set Login and Logout Indicators</h4>
+<p>Use the <a href="#authenticationactionsetloggedoutindicator">setLoggedOutIndicator</a> to set the logout indicators of the application.
+The Following is the regex command to match the successful response with the Bodgeit application.
+<code>\Q&lt;a href=\&quot;logout.jsp\&quot;&gt;&lt;/a&gt;\E</code></p>
+<h4 id='create-user-and-enable-forced-user-mode'>Create User and Enable Forced User Mode</h4>
+<p>Now add the user credentials via the <a href="#usersactionsetauthenticationcredentials">setAuthenticationCredentials</a> API and use
+the <a href="#forceduseractionsetforcedusermodeenabled">SetForcedUserModeEnabled</a> to enable the forced user mode in ZAP.</p>
 <h1 id='advanced-settings'>Advanced Settings</h1>
 <p>The following section shows advanced configurations of the APIs.</p>
 <h2 id='spider-settings'>Spider Settings</h2>
