@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="/">
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.aa8e7.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <div>
+            <h1>&nbsp;ZAP</h1>
+        </div>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/zap-in-ten/" title="ZAP in Ten page">
+                  ZAP in Ten
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/get-involved/" title="Get Involved page">
+                  Get Involved
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+      <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <h1 class="post-title">ZAP Newsletter  2016 March</h1>
+          <main class="post-content">
+            <h2 id="introduction">Introduction</h2>
+<p>Welcome to the March newsletter, read on for some really good news, details of the new site level stats ZAP now supports and an introduction to
+scripting.</p>
+<p><strong>Table of Contents:</strong></p>
+<ul>
+<li>News</li>
+<li>New / Improved Add-ons</li>
+<li>New Features</li>
+<li>Tutorial: Introduction to Scripting</li>
+<li>Upcoming Talks and Training</li>
+<li>Feedback</li>
+<li>Next Month&hellip;</li>
+</ul>
+<h2 id="news">News</h2>
+<p>The big new this month is that ZAP was voted the <strong>TOP</strong> free/open source security tool for 2015 by Toolswatch readers:
+<a href="http://www.toolswatch.org/2016/02/2015-top-security-tools-as-voted-by-toolswatch-org-readers/">http://www.toolswatch.org/2016/02/2015-top-security-tools-as-voted-by-toolswatch-org-readers/</a><br>
+This is the second time we've come top and is a great validation of what we are doing. Thank you to all of you who voted for us!</p>
+<p>Other important news is that ZAP is taking part in the Google Summer of Code (GSoC) 2016. For those of you who don't know, GSoC pays students to
+work on open source projects over the summer, and we've had key ZAP features like WebSockets, the Ajax Spider and Access Control testing
+implement by GSoC students.<br>
+The deadline for submissions has just passed and we've had 9 ZAP proposals. We'll evaluate those asap, but we dont currently know how many slots
+OWASP (and ZAP) will actually get so fingers crossed!</p>
+<p>And in other breaking news, CommonSense Media have just published a Information Security Primer for Evaluating Educational Software which makes
+heavy use of ZAP - you can read all about it here: <a href="https://www.graphite.org/privacy/blog/information-security-primer-initial-release">https://www.graphite.org/privacy/blog/information-security-primer-initial-release</a></p>
+<h2 id="new--improved-add-ons">New / Improved Add-ons</h2>
+<p><em>This section details add-ons that have been added or significantly updated since the last newsletter.</em><br>
+A new version of the Zest add-on has been published which included a significant number of bug fixes. There is also an update to the Selenium
+add-on which includes the latest Selenium release that ensures Firefox doesn't visit the &lsquo;first run&rsquo; page every time it is started.</p>
+<p>The Alert Filters add-on has also been updated with various bug fixes and has been promoted to beta status. This add-on allows you to configure
+rules which automatically change the level at which alerts are raised for specific contexts. For more details see the <a href="http://localhost:3000/docs/desktop/addons/alert-filters/">help pages</a>. This add-on is included with the weekly releases and
+may well be included by default in future full releases.</p>
+<h2 id="new-features">New Features</h2>
+<p><em>This section details enhancements that have been made to the core and are available in the latest weekly release.</em><br>
+The traditional spider has been updated so that you can constrain it to a subtree when using it via the UI or API. For example this means that
+with this option if you start spidering from <a href="https://www.example.com/app1">https://www.example.com/app1</a> you can be sure that it wont explore any other apps under
+<a href="https://www.example.com/">https://www.example.com/</a> - without this option it will explore anything in that domain it finds links to.</p>
+<p>ZAP now records a range of site based statistics, including:</p>
+<ul>
+<li>Response codes, eg
+<ul>
+<li>stats.code.200</li>
+<li>stats.code.302</li>
+</ul>
+</li>
+<li>Content types, eg
+<ul>
+<li>stats.contentType.text/css</li>
+<li>stats.contentType.text/html;charset=utf-8</li>
+</ul>
+</li>
+<li>Tags (some of which are built in but can also be user defined), eg
+<ul>
+<li>stats.tag.Password</li>
+<li>stats.tag.Hidden</li>
+<li>Anticsrf tokens generated</li>
+<li>stats.acsrf.anticsrf</li>
+</ul>
+</li>
+<li>Response times (using a logarithmic scale) eg
+<ul>
+<li>stats.responseTime.1</li>
+<li>stats.responseTime.2</li>
+<li>stats.responseTime.4</li>
+<li>stats.responseTime.8</li>
+<li>stats.responseTime.16</li>
+</ul>
+</li>
+<li>Authentication information, eg
+<ul>
+<li>stats.auth.success</li>
+<li>stats.auth.failure</li>
+<li>stats.auth.state.loggedin</li>
+<li>stats.auth.state.loggedout</li>
+<li>stats.auth.state.noindicator</li>
+<li>stats.auth.state.unknown</li>
+</ul>
+</li>
+</ul>
+<p>The stats are currently only available via the API, but they can be really helpful, for example if you are trying to work out how effectively
+ZAP has scanned a large site.</p>
+<h2 id="tutorial-introduction-to-scripting">Tutorial: Introduction to Scripting</h2>
+<p><em>This section teaches you more about a different ZAP feature every month.</em><br>
+There is an almost infinite range of web applications and so its not possible for any tool to build in support for all of the strange things you
+will encounter. As ZAP is an open source project you can change the source code to handle anything you like. However this isnt always practical</p>
+<ul>
+<li>ZAP is a large and complex project and even if you understand the code base very well, firing up an IDE to rewrite ZAP every time you
+encounter something strange is definitely not ideal.<br>
+Fortunately ZAP has powerful scripting capabilities, and ZAP scripts can access all of the code and data structures.<br>
+There are so many aspect to ZAP scripting that one tutorial wont be enough, so we're going to start with an overview.</li>
+</ul>
+<p>Scripting support is included in all ZAP releases, but if you want to use scripting in the &lsquo;core&rsquo; version then you will really need to download
+the Script Console and Zest add-ons from the marketplace.<br>
+By default ZAP supports ECMAScript (JavaScipt) and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Zest">Zest</a>, a graphical security
+scripting language from the Mozilla Security team.<br>
+You can also download add-ons which extend support to Jython and JRuby. ZAP will be able to support any language that supports <a href="https://www.jcp.org/en/jsr/detail?id=223">JSR
+223</a> so if there's another scripting language you would like us to support then please raise an
+<a href="https://github.com/zaproxy/zaproxy/issues/new">enhancement request issue</a>.<br>
+To use ZAP scripts from the UI you need to use the Scripts and Script Console tabs, which are hidden by default and can be accessed via the
+relevant tabs with the green plus sign.</p>
+<h3 id="scripts-tab">Scripts tab</h3>
+<p>
+<figure>
+	<img src="/blog/2016-03-29-zap-newsletter-2016-march/images/Scripts-script-tab.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure><br>
+The Scripts tab shows all of the scripts available in a tree view.<br>
+There are 2 nodes under the top &lsquo;Scripting&rsquo; node:</p>
+<ul>
+<li>Scripts: the scripts that you have available</li>
+<li>Templates: the templates from which you can create scripts</li>
+</ul>
+<p>Underneath both of these nodes are the full list of script types that are supported. Script types are pluggable, which means that any ZAP add-on
+can register its own script types. The following script types are included with ZAP by default:</p>
+<ul>
+<li>Active Rules - these run as part of the Active Scanner and can be individually enabled.</li>
+<li>Authentication - scripts that are invoked when authentication is performed for a Context. To be used, they need to be selected when configuring the Script-Based Authentication Method for a Context.</li>
+<li>Fuzzer HTTP Processor - these can access and change the fuzzing HTTP requests and responses, control the fuzzing process and interact with the ZAP UI.</li>
+<li>Fuzzer WebSocket Processor - these can access and change the fuzzing WebSocket messages, control the fuzzing process and interact with the ZAP UI.</li>
+<li>Http Sender - these run &lsquo;inline&rsquo; and are similar to Proxy scripts except that they also apply to all requests that originate from ZAP.</li>
+<li>Passive Rules - these run as part of the Passive Scanner and can be individually enabled</li>
+<li>Payload Generator - these generate the raw attacks that the fuzzer submits to the target application.</li>
+<li>Payload Processor - these can be used to change specific fuzzer payloads before they are submitted.</li>
+<li>Proxy - these run &lsquo;inline&rsquo;, can change every request and response proxied through ZAP and can be individually enabled. They can also trigger break points.</li>
+<li>Script Input Vectors - scripts for defining exactly what ZAP should attack</li>
+<li>Stand Alone - scripts that are self contained and are only run when your start them manually</li>
+<li>Targeted Rules - scripts that are invoked with a target URL and are only run when your start them manually</li>
+</ul>
+<p>At the top of the Scripts tab is a toolbar with buttons that allow you to Load, Save and create New scripts. When you use the &lsquo;New Script…&rsquo;
+button you will be prompted to select one of the available templates. You can also create scripts by right clicking on the template you want to
+use. Some templates are blank but many of them perform useful functions, and all of them include lots of documentation to help you customize
+them.</p>
+<h3 id="script-console-tab">Script Console tab</h3>
+<p>
+<figure>
+	<img src="/blog/2016-03-29-zap-newsletter-2016-march/images/Scripts-console-tab.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure><br>
+When you select a script in the Scripts tree then it is displayed in the Script Console.<br>
+For most scripting languages this is where you will edit it, the only exception to this is Zest which is displayed graphically in the Scripts
+tab. At the top of this tab is a toolbar that allows you to Run the script displayed and Stop it if it is running. Note that not all scripts can
+be run in this way - some types can only be run via other ZAP components. For example Active Rules can typically only be run when you start an
+Active Scan. Underneath the panel displaying the script is another panel which shows the script output.<br>
+This panel has its own toolbar with buttons for:</p>
+<ul>
+<li>Clearing the script output panel</li>
+<li>A toggle for clearing the script output panel every time a script is run</li>
+<li>A toggle for locking the automatic scrolling of the output panel</li>
+<li>A toggle for switching between showing the output of all scripts and just showing the output of the selected script</li>
+</ul>
+<h3 id="script-options">Script Options</h3>
+<p>The Scripts Options panel allows you to add any number of directories that contain scripts. The scripts must be in subdirectories named after
+the relevant script type and must have an appropriate extension for the script language used.<br>
+Scripts that can be written to will be added to the Scripts tree and those that are read only will be added to the Templates. This means you can
+build up your own libraries of scripts and even manage them in a central place using a shared drive.</p>
+<h3 id="community-scripts-repo">Community Scripts repo</h3>
+<p>The Community Scripts repo is a collection of ZAP scripts written by the community, ie people like you :)<br>
+It lives on github: <a href="https://github.com/zaproxy/community-scripts">https://github.com/zaproxy/community-scripts</a> and, not surprisingly, is structured so that it can be added as a script
+directory via the Script Options. It is also available as <a href="/docs/desktop/addons/community-scripts/">an add-on</a> on the ZAP Marketplace.</p>
+<p>Hopefully that gives you an overview of the scripting support in ZAP. Future tutorials will go into scripting in more detail. In the meantime if
+you have any questions about ZAP scripting then we have a dedicated group where you can ask them: &lt;https://groups.google.com/group/zaproxy-
+scripts&gt;</p>
+<h2 id="upcoming-talks-and-training">Upcoming Talks and Training</h2>
+<p>ZAP will be featured in the OWASP Pune Chapter Meeting on March 31st in Pune (not surprisingly): [https://docs.google.com/forms/d
+/1uIbCJ8kF5xMeIB-C9_jvwvfEdex_Vly8CRU87Bupsws/viewform?c=0&amp;w=1](<a href="https://docs.google.com/forms/d/1uIbCJ8kF5xMeIB-">https://docs.google.com/forms/d/1uIbCJ8kF5xMeIB-</a>
+C9_jvwvfEdex_Vly8CRU87Bupsws/viewform?c=0&amp;w=1)</p>
+<p><strong>Adrian Winckles</strong> will be demoing ZAP at the SecureCambridge Cyber Security Technology Showcase on April 5th in Cambridge: &lt;http
+://isc2chapter-eastofengland.co.uk/&gt;</p>
+<p><strong>Azzedine RAMRAMI and Sebastien Gioria</strong> will be demoing ZAP in their &lsquo;Securing your application with OpenSource tools&rsquo; at Devoxx France on
+April 22nd in Paris: <a href="http://cfp.devoxx.fr/2016/talk/HNE-6288/Securiser_son_developpement_avec_10_outils_open-source">http://cfp.devoxx.fr/2016/talk/HNE-6288/Securiser_son_developpement_avec_10_outils_open-source</a></p>
+<p><strong>Sumanth Damarla</strong> (<a href="http://www.twitter.com/Sumanth_Damarla">@Sumanth_Damarla</a>) will be giving a talk: &ldquo;Securing Web @ZAP&rdquo; at the I T.A.K.E
+Unconference on May 19th in Bucharest: <a href="http://itakeunconf.com/sessions/securing-web-zap/">http://itakeunconf.com/sessions/securing-web-zap/</a></p>
+<h2 id="feedback">Feedback</h2>
+<p>Please fill in this quick <a href="https://docs.google.com/forms/d/1_XaettHPjLOD56AbSlui67gk-771yJ_xfd7w2lSEdXw/viewform?usp=send_form">Feedback Form</a>
+so that we can make sure this newsletter is as useful to you as possible.</p>
+<h2 id="coming-next-month">Coming next month&hellip;</h2>
+<p>That depends on you!<br>
+Let us know what you would like to see using the above feedback form.<br>
+If you would like to write content for the newsletter then please get in touch - anything ZAP related, such as talks / training you are giving,
+a 3rd party tool you develop or maybe an add-on you'd like to explain in more detail.<br>
+And we're also looking for one or more editors for the ZAP newsletter - you don't need any detailed ZAP knowledge, just a bit of time each month
+you can dedicate to chasing up people for content and bashing it into something that reads better than this one :P Think thats you? Get in
+touch!</p>
+<p>Simon Bennetts (ZAP Project Lead)</p>
+
+          </main>
+          <div class="next-content">
+              
+              
+                <a class="next" href="/blog/2016-06-03-zap-2-5-0/"> ZAP 2.5.0</a>
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          <h4 id="date"> Tue Mar 29, 2016 </h4>
+          <h5 id="wordcount"> 1820 Words </h5>
+          
+
+          <div class="post-authors">
+            <h4>Authors</h4>
+            
+            
+              <section class="post-author-single flex p-10">
+              
+                <div class="col-1-5">
+                  <img class="author-picture" src="https://pbs.twimg.com/profile_images/2186782633/simonbennetts2_400x400.jpg" />
+                </div>
+                <div class="author-name col-4-5">
+                  Simon Bennets
+                  <a class="author-twitter" href="https://twitter.com/@psiinon">@psiinon</a>
+                </div>
+              
+              </section>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <nav class="footer-nav">
+      <ul class="flex">        
+      
+      
+        
+          <li class="ml-10">
+            <a href="/" title="Home page">
+              Home
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/zap-in-ten/" title="ZAP in Ten page">
+              ZAP in Ten
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/get-involved/" title="Get Involved page">
+              Get Involved
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/support/" title="Support page">
+              Support
+            </a>
+          </li>
+        
+      
+      </ul>
+    </nav>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Flagship project</a><br>
+      © Copyright 2020 the ZAP Dev Team
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.aa8e7.js"></script>
+  
+</div>
+</body>
+</html>

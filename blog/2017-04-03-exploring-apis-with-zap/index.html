@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="/">
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.aa8e7.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <div>
+            <h1>&nbsp;ZAP</h1>
+        </div>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/zap-in-ten/" title="ZAP in Ten page">
+                  ZAP in Ten
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/get-involved/" title="Get Involved page">
+                  Get Involved
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+      <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <h1 class="post-title">Exploring APIs with ZAP</h1>
+          <main class="post-content">
+            <p>APIs can be challenging for security testing for a variety of reasons.<br>
+The first problem you will encounter is how to effectively explore an API - most APIs cannot be explored using browsing or standard spidering
+techniques.<br>
+However many APIs are described using technologies such as:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/SOAP">SOAP</a></li>
+<li><a href="https://www.openapis.org/">OpenAPI / Swagger</a></li>
+</ul>
+<p>These standards define the API endpoints and can be imported into ZAP using 2 optional add-ons.</p>
+<h2 id="installing-the-add-ons">Installing the add-ons</h2>
+<p>In order to import the API definitions you will need to add the relevant add-ons from the ZAP Marketplace.</p>
+<p>To do this via the UI:</p>
+
+<figure>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Manage-addons.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure>
+<ol>
+<li>Click on the ‘Manage Add-ons’ button</li>
+<li>Select the ‘Marketplace’ tab</li>
+<li>Click on the ‘Check for Updates’ button if no add-ons are shown</li>
+<li>Select and install the add-ons:
+* OpenAPI Support
+* SOAP Scanner</li>
+</ol>
+
+<figure>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Marketplace.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure>
+<p>To install them via the command line is even easier - just start ZAP with the command line flags: “-addoninstall soap -addoninstall openapi”<br>
+Eg:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">./zap.sh -addoninstall soap -addoninstall openapi
+</code></pre></div><h2 id="importing-via-the-ui">Importing via the UI</h2>
+<p>These add-ons add the following items under the ‘Tools’ menu:</p>
+<ul>
+<li>Import a WSDL file from local file system</li>
+<li>Import a WSDL file from a URL</li>
+<li>Import an OpenAPI definition from the local file system</li>
+<li>Import an OpenAPI definition from a URL</li>
+</ul>
+<p>
+<figure>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Tools-menu.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure><br>
+These menu items will open new dialogs which will allow you to specify the relevant file or URL to import.</p>
+<p>When the definitions have been imported they will be shown in the Sites tree:</p>
+
+<figure>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Openapi-import.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure>
+<h2 id="importing-via-the-api">Importing via the API</h2>
+<p>Both add-ons support importing API definitions from URLs and local files.<br>
+You can try these out via the API Web UI:</p>
+<p>
+<figure>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/web-api-openapi.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure><br>
+
+<figure>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/web-api-soap.png" alt="Alt title" />
+	<figcaption>Alt title</figcaption>
+</figure> Using the <a href="https://github.com/zaproxy/zap-api-java">Java API</a> client this can be done with
+calls like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> map1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+map1<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;file&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;/home/user/openapi.json&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+ApiResponse resp <span style="color:#f92672">=</span>  
+   api<span style="color:#f92672">.</span><span style="color:#a6e22e">callApi</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;openapi&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;importFile&#34;</span><span style="color:#f92672">,</span> p1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+ 
+Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> map2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+ map2<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;https://localhost/openapi.json&#34;</span><span style="color:#f92672">)</span> 
+ApiResponse resp <span style="color:#f92672">=</span>  
+   api<span style="color:#f92672">.</span><span style="color:#a6e22e">callApi</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;openapi&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;importUrl&#34;</span><span style="color:#f92672">,</span> p2<span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+ 
+Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> map3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+map3<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;file&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;/home/user/soap.xml&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+ApiResponse resp <span style="color:#f92672">=</span>  
+   api<span style="color:#f92672">.</span><span style="color:#a6e22e">callApi</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;soap&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;importFile&#34;</span><span style="color:#f92672">,</span> p3<span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+ 
+Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> map4 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+map4<span style="color:#f92672">.</span><span style="color:#a6e22e">put</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;url&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;https://localhost/soap.xml&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
+ApiResponse resp <span style="color:#f92672">=</span>  
+   api<span style="color:#f92672">.</span><span style="color:#a6e22e">callApi</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;soap&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;action&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;importUrl&#34;</span><span style="color:#f92672">,</span> p4<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p>Using the <a href="https://github.com/zaproxy/zap-api-python">Python API</a> client this can be done with calls like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">print</span> zap<span style="color:#f92672">.</span>_request(  
+  zap<span style="color:#f92672">.</span>base <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">openapi/action/importFile/</span><span style="color:#e6db74">&#39;</span>,  
+  {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">file</span><span style="color:#e6db74">&#39;</span>:<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/home/user/openapi.json</span><span style="color:#e6db74">&#39;</span>})  
+ 
+<span style="color:#66d9ef">print</span> zap<span style="color:#f92672">.</span>_request(  
+  zap<span style="color:#f92672">.</span>base <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">openapi/action/importUrl/</span><span style="color:#e6db74">&#39;</span>,  
+  {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">url</span><span style="color:#e6db74">&#39;</span>:<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://localhost/openapi.json</span><span style="color:#e6db74">&#39;</span>})  
+ 
+<span style="color:#66d9ef">print</span> zap<span style="color:#f92672">.</span>_request(  
+  zap<span style="color:#f92672">.</span>base <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">soap/action/importFile/</span><span style="color:#e6db74">&#39;</span>,  
+  {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">file</span><span style="color:#e6db74">&#39;</span>:<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">/home/user/soap.xml</span><span style="color:#e6db74">&#39;</span>})  
+ 
+<span style="color:#66d9ef">print</span> zap<span style="color:#f92672">.</span>_request(  
+  zap<span style="color:#f92672">.</span>base <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">soap/action/importUrl/</span><span style="color:#e6db74">&#39;</span>,  
+  {<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">url</span><span style="color:#e6db74">&#39;</span>:<span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">https://localhost/soap.xml</span><span style="color:#e6db74">&#39;</span>})
+</code></pre></div><h2 id="spidering">Spidering</h2>
+<p>Both of the add-ons automatically detect the relevant API definition file while spidering and will explore the definitions as long as they are
+in scope.<br>
+This means that you can explore an API by spidering from the URL of the definition as long as it is on the same domain as the API.</p>
+<h2 id="next-steps">Next steps</h2>
+<p>Once you have added your API to the Sites tree using any of the above options you can then use any of the other ZAP components on the API,
+including the active scanner and fuzzer.</p>
+<p>Note that the SOAP Scanner add-on also adds 2 additional scan rules that specifically target SOAP and XML URLs:</p>
+<ul>
+<li>Action Spoofing : <a href="http://www.ws-attacks.org/index.php/SOAPAction_Spoofing">http://www.ws-attacks.org/index.php/SOAPAction_Spoofing</a></li>
+<li>XML Injection : <a href="http://www.ws-attacks.org/index.php/XML_Injection">http://www.ws-attacks.org/index.php/XML_Injection</a></li>
+</ul>
+
+          </main>
+          <div class="next-content">
+              
+                <a class="previous" href="/blog/2017-02-06-introducing-the-jxbrowser-add-on-for-zap/"> Introducing the JxBrowser add-on for ZAP</a>
+              
+              
+                <a class="next" href="/blog/2017-06-19-scanning-apis-with-zap/"> Scanning APIs with ZAP</a>
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          <h4 id="date"> Mon Apr 3, 2017 </h4>
+          <h5 id="wordcount"> 498 Words </h5>
+          
+
+          <div class="post-authors">
+            <h4>Authors</h4>
+            
+            
+              <section class="post-author-single flex p-10">
+              
+                <div class="col-1-5">
+                  <img class="author-picture" src="https://pbs.twimg.com/profile_images/2186782633/simonbennetts2_400x400.jpg" />
+                </div>
+                <div class="author-name col-4-5">
+                  Simon Bennets
+                  <a class="author-twitter" href="https://twitter.com/@psiinon">@psiinon</a>
+                </div>
+              
+              </section>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <nav class="footer-nav">
+      <ul class="flex">        
+      
+      
+        
+          <li class="ml-10">
+            <a href="/" title="Home page">
+              Home
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/zap-in-ten/" title="ZAP in Ten page">
+              ZAP in Ten
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/get-involved/" title="Get Involved page">
+              Get Involved
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/support/" title="Support page">
+              Support
+            </a>
+          </li>
+        
+      
+      </ul>
+    </nav>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Flagship project</a><br>
+      © Copyright 2020 the ZAP Dev Team
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.aa8e7.js"></script>
+  
+</div>
+</body>
+</html>
