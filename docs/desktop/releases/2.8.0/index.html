@@ -1,0 +1,1731 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="/">
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.aa8e7.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <div>
+            <h1>&nbsp;ZAP</h1>
+        </div>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/zap-in-ten/" title="ZAP in Ten page">
+                  ZAP in Ten
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/get-involved/" title="Get Involved page">
+                  Get Involved
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+      <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+  <div class="wrapper py-30">
+      <div class="flex latest-versions">
+          <div class="col-1-4">
+              
+                <section class="tree-menu">
+<input type="text" name="filter" data-tree-filter placeholder="Filter links" />
+<ul class="tree-root">
+    
+        
+    
+    
+        
+    <li data-depth="1" class="">
+            <a href="/docs/desktop/addons/">Add-ons</a>
+        <ul class="tree-branch">
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/access-control-testing/">Access Control Testing</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/access-control-testing/contextoptions/">Access Control Context Options</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/access-control-testing/tab/">Access Control Status Tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/active-scan-rules/">Active Scan Rules</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/active-scan-rules-alpha/">Active Scan Rules - Alpha</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/active-scan-rules-beta/">Active Scan Rules - Beta</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/advanced-sqlinjection-scanner/">Advanced SQLInjection Scanner</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/ajax-spider/options/">Options AJAX Spider screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/ajax-spider/scandialog/">AJAX Spider dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/ajax-spider/tab/">AJAX Spider tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/alert-filters/">Alert Filters</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/alert-filters/alertfilterdialog/">Alert Filter Dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/alert-filters/contextalertfilter/">Context Alert Filters</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/alert-filters/globalalertfilter/">Options Global Alert Filters</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/all-in-one-notes/">All In One Notes</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/all-in-one-notes/about/">All In One Notes - About</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/amf-support/">AMF Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/authentication-statistics/">Authentication Statistics</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/bean-shell/">Bean Shell Console</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/birt-reports/">BIRT Reports</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/browser-view/">Browser View</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/bug-tracker/">Bug Tracker</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/call-graph/">Call Graph</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/code-dx/">Code Dx</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/community-scripts/">Community Scripts</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/custom-payloads/">Custom Payloads</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/custom-report/">Custom Report</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/diff/">Diff</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/directory-list-v1.0/">Directory List v1.0</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/directory-list-v2.3/">Directory List v2.3</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/directory-list-v2.3-lc/">Directory List v2.3 LC</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS Active Scan Rule</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/dom-xss-active-scan-rule/about/">DOM XSS Active Scan Rule - About</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/export-report/">Export Report</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/forced-browse/">Forced Browse</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/forced-browse/options/">Options Forced Browse screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/forced-browse/tab/">Forced Browse tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/form-handler/">Form Handler</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/fuzzdb-files/">FuzzDB Files</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/fuzzdb-web-backdoors/">FuzzDB Web Backdoors</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/fuzzer/">Fuzzing</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/fuzzer/dialogue/">Fuzzer dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/fuzzer/httpmessageprocessors/">HTTP Message Processors</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/fuzzer/locations/">Fuzz Location Processors dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/fuzzer/options/">Options Fuzz screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/fuzzer/payloads/">Payloads dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/fuzzer/processors/">Payload Processors dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/fuzzer/tab/">Fuzzer tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/getting-started-guide/">Getting Started Guide</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/groovy-support/">Groovy Support</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/groovy-support/about/">Groovy Support - About</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/highlighter/">Highlighter</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/https-info/">HTTPS Info</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/hud/">The HUD</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/hud/options/">Options HUD screen</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/import-urls/">Import URLs</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/invoke-applications/">Invoke Applications</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/invoke-applications/options/">Options Applications screen</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/json-view/">JSON View</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/linux-webdrivers/">Linux WebDrivers</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/log-file-importer/">Log File Importer</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/macos-webdrivers/">MacOS WebDrivers</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/online-menu/">Online Menu</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/openapi-support/">OpenAPI Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/passive-scan-rules/">Passive Scan Rules</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/passive-scan-rules-alpha/">Passive Scan Rules - Alpha</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/passive-scan-rules-beta/">Passive Scan Rules - Beta</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/plug-n-hack/">Plug-n-Hack</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/plug-n-hack/clientstab/">Plug-n-Hack Clients tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/port-scan/">Port Scan</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/port-scan/options/">Options Port Scan screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/port-scan/tab/">Port Scan tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/python-scripting/">Python Scripting</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/python-scripting/options/">Options Jython screen</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/quick-start/">Quick Start</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/quick-start/cmdline/">Command Line</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/quick-start/launchoptions/">Options Quick Start Launch screen</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/regular-expression-tester/">Regular Expression Tester</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/replacer/">Replacer</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/report-alert-generator/">Report Alert Generator</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/requester/">Requester</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/reveal/">Reveal</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/revisit/">Revisit</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/ruby-scripting/">Ruby Scripting</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/saml-support/">SAML Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/save-raw-message/">Save Raw Message</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/save-xml-message/">Save XML Message</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/script-console/">Script Console</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/script-console/console/">Script Console Tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/script-console/tree/">Scripts tree tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/selenium/">Selenium</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/selenium/api/">Selenium API</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/selenium/options/">Options Selenium screen</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/sequence-scanner/">Sequence Scanner</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/server-sent-events/">Server-Sent Events</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/server-sent-events/tab/">Server-Sent Events tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger Files</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/technology-detection/">Technology Detection</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/tips-and-tricks/">Tips and Tricks</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/tls-debug/">TLS Debug</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/token-generator/">Token Generation and Analysis</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/token-generator/options/">Options Token Generator Screen</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/treetools/">TreeTools</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/viewstate/">ViewState</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/vulncheck/">VulnCheck</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/wafp-extension/">WAFP Extension</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/websockets/">WebSockets</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/websockets/about/">Web Sockets - About</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/websockets/api/">WebSocket API</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/websockets/options/">WebSocket specific options</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/websockets/pscanrules/">WebSocket Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/websockets/script/">WebSocket Scripts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/websockets/sessionproperties/">WebSocket specific session properties</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/websockets/tab/">WebSocket tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/windows-webdrivers/">Windows WebDrivers</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/zest/">Zest</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+        </ul>
+    </li>
+
+        
+    
+    
+        
+    
+    
+        
+    
+    
+    
+    
+        
+    
+    
+        
+    <li data-depth="1" class="tree-branch-active">
+            <a href="/docs/desktop/releases/">Releases</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.0.0/">Release 1.0.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.1.0/">Release 1.1.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.2.0/">Release 1.2.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.3.0/">Release 1.3.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.3.1/">Release 1.3.1</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.3.2/">Release 1.3.2</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.3.3/">Release 1.3.3</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.3.4/">Release 1.3.4</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.4.0/">Release 1.4.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/1.4.1/">Release 1.4.1</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.0.0/">Release 2.0.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.2.1/">Release 2.2.1</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.2.2/">Release 2.2.2</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.3.0/">Release 2.3.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.3.1/">Release 2.3.1</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.4.0/">Release 2.4.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.4.1/">Release 2.4.1</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.4.2/">Release 2.4.2</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.4.3/">Release 2.4.3</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.5.0/">Release 2.5.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.6.0/">Release 2.6.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.7.0/">Release 2.7.0</a>
+                        </li>  
+                        <li class="tree-active"> 
+                            <a href="/docs/desktop/releases/2.8.0/">Release 2.8.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.9.0/">Release 2.9.0</a>
+                        </li>
+        </ul>
+    </li>
+
+        
+    
+    
+        
+    <li data-depth="1" class="">
+            <a href="/docs/desktop/start/">Getting Started</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/start/checks/">Scanner Rules</a>
+                        </li>
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/start/features/">Features</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/start/features/addons/">Add-ons</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/alerts/">Alerts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/anticsrf/">Anti CSRF Handling</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/api/">API</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/ascan/">Active Scan</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/authentication/">Authentication</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/breakpoints/">Breakpoints</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/callbacks/">Callbacks</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/contexts/">Contexts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/globalexcludeurl/">Globally Excluded URLs</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/intercept/">Man-in-the-middle Proxy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/modes/">Modes</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/notes/">Notes</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/pscan/">Passive Scan</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/scanpolicy/">Scan Policy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/scope/">Scope</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/sessionmanagement/">Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/spider/">Spider</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/stats/">Statistics</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/structmods/">Structural Modifiers</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/structparams/">Structural Parameters</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/tags/">Tags</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/users/">Users</a>
+                        </li>
+        </ul>
+    </li>
+  
+                        <li> 
+                            <a href="/docs/desktop/start/pentest/">A basic penetration test</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/proxies/">Configuring Proxies</a>
+                        </li>
+        </ul>
+    </li>
+
+        
+    
+    
+        
+    <li data-depth="1" class="">
+            <a href="/docs/desktop/ui/">Desktop UI Overview</a>
+        <ul class="tree-branch">
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/ui/dialogs/">Dialogs</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/addalert/">Add Alert dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/addbreak/">Add/Edit Breakpoint dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/addnote/">Add Note dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/advascan/">Active Scan dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/enc_dec/">Encode / Decode / Hash dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/find/">Find dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/hist_filter/">History Filter dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/man_req/">Manual Request Editor dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/manageaddons/">Manage Add-ons</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage Tags dialog</a>
+                        </li>
+    <li data-depth="3" class="">
+            <a href="/docs/desktop/ui/dialogs/options/">Options dialog</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/alert/">Options Alerts screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/anticsrf/">Options Anti CRSF screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/api/">Options API screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/ascan/">Options Active Scan screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/ascaninput/">Options Active Scan Input Vectors screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/breakpoints/">Options Breakpoints screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/callback/">Options Callback Address screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/certificate/">Options Client Certificate screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/checkforupdates/">Options Check for Updates screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/connection/">Options Connection screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/database/">Options Database screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/dynsslcert/">Dynamic SSL Certificates</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/ext/">Options Extensions screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/globalexcludeurl/">Options Global Exclude URL screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/httpsessions/">Options HTTP Sessions screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/jvm/">Options JVM screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/keyboard/">Options Keyboard screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/language/">Options language screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/localproxy/">Options Local Proxies screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/pscan/">Options Passive Scan Tags screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/pscanner/">Options Passive Scanner Screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/pscanrules/">Options Passive Scan Rules Screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/ruleconfig/">Options Rule Configuration screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/script/">Options Scripts screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/search/">Options Search screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/spider/">Options Spider screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/stats/">Options Statistics screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/options/view/">Options Display screen</a>
+                        </li>
+        </ul>
+    </li>
+  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/persistsession/">Persist Session dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/scanpolicy/">Scan Policy Dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/scanpolicymgr/">Scan Policy Manager dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/scanprogress/">Scan Progress Dialog</a>
+                        </li>
+    <li data-depth="3" class="">
+            <a href="/docs/desktop/ui/dialogs/session/">Session Properties dialog</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/session/context-auth/">Session Context Authentication screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/session/context-struct/">Session Context Structure screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/session/contexts/">Session Context screens</a>
+                        </li>
+        </ul>
+    </li>
+  
+                        <li> 
+                            <a href="/docs/desktop/ui/dialogs/spider/">Spider dialog</a>
+                        </li>
+        </ul>
+    </li>
+  
+                        <li> 
+                            <a href="/docs/desktop/ui/footer/">Footer</a>
+                        </li>
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/ui/tabs/">The Tabs</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/alerts/">Alerts tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/ascan/">Active Scan tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/break/">Break tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/breakpoints/">Breakpoints tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/callbacks/">Callbacks tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/history/">History tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/httpsessions/">HTTP Sessions tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/output/">Output tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/params/">Params tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/request/">Request tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/response/">Response tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/search/">Search tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/sites/">Sites tab</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tabs/spider/">Spider tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+            <a href="/docs/desktop/ui/tlmenu/">Top Level Menu</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/analysis/">The Analyse menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/edit/">The Edit menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/file/">The File menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/help/">The Help menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/import/">The Import menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/online/">The Online menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/report/">The Report menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/tools/">The Tools menu</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/tlmenu/view/">The View menu</a>
+                        </li>
+        </ul>
+    </li>
+  
+                        <li> 
+                            <a href="/docs/desktop/ui/tltoolbar/">Top Level Toolbar</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/ui/views/">Views</a>
+                        </li>
+        </ul>
+    </li>
+
+        
+    </ul>
+</section>
+
+              
+            </div>
+        <div class="col-3-4 pl-30 pb-30 guide-content">
+          <ol class="breadcrumbs">
+
+
+    <li>
+        <a href='/docs/'>Documentation</a>
+    </li>
+
+    <li>
+        <a href='/docs/desktop/'>The OWASP ZAP Desktop User Guide</a>
+    </li>
+
+    <li>
+        <a href='/docs/desktop/releases/'>Releases</a>
+    </li>
+
+    <li>
+        <a href='/docs/desktop/releases/2.8.0/'>Release 2.8.0</a>
+    </li>
+
+
+</ol>
+          <h1 id="release-280">Release 2.8.0</h1>
+<p>This is a bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.</p>
+<p>These release notes do not include all of the changes included in add-ons updated since 2.7.0.</p>
+<p>Some of the more significant enhancements include:</p>
+<h2 id="heads-up-display">Heads Up Display</h2>
+<p>The ZAP Heads Up Display (HUD) brings all of the essential ZAP functionality into your browser. It is ideal for people new to web security and also allows experienced penetration testers to focus on an application's features while providing key security information and functionality.<br>
+The HUD can be enabled when proxying a browser through ZAP via the new &lsquo;Manual Explore&rsquo; screen and a top level toolbar button.</p>
+<h2 id="quick-start-screens">Quick Start Screens</h2>
+<p>The Quick Start tab has been reworked to provide 3 screens:</p>
+<ul>
+<li>Automated Scan: allows you to launch an automated scan against an application and the choice of traditional and/or ajax spider</li>
+<li>Manual Explore: allows you to launch browsers configured to proxy via ZAP with the option to enable the HUD</li>
+<li>Learn More: provides links to local and remote resources which you can use to learn more about ZAP</li>
+</ul>
+<p>The tab also provides a news panel that provides a summary of ZAP news along with a link for more details. News items can be hidden when no longer needed.</p>
+<h2 id="scan-rule-promotions">Scan Rule Promotions</h2>
+<p>The following scan rules have been promoted:</p>
+<h3 id="active-scan-rules---release">Active Scan Rules - Release</h3>
+<ul>
+<li>Promote Source Code Disclosure WEB-INF (Issue 4448).</li>
+</ul>
+<h3 id="passive-scan-rules---release">Passive Scan Rules - Release</h3>
+<ul>
+<li>Promote Charset Mismatch Scanner to release (Issue 4460).</li>
+<li>Promote ViewState Scanner to release (Issue 4453).</li>
+<li>Promote Insecure JSF ViewState Scanner to release (Issue 4455).</li>
+<li>Promote Insecure Authentication Scanner to release (Issue 4456).</li>
+<li>Promote Information Disclosure Debug Errors Scanner to release (Issue 4457).</li>
+<li>Promote CSRF Countermeasures Scanner to release (Issue 4458).</li>
+<li>Promote Cookie Loosely Scoped Scanner to release (Issue 4459).</li>
+</ul>
+<h2 id="headless-browser-support">Headless Browser Support</h2>
+<p>Headless browsers are now supported by the Selenium add-on and the add-ons that use it. Both the Ajax Spider and the DOM XSS scan rule now default to headless Firefox.</p>
+<h2 id="command-line-changes">Command Line Changes</h2>
+<h3 id="-dir-dir">-dir &lt;dir&gt;</h3>
+<p>To prevent add-ons (inadvertently) use/override core files ZAP will no longer start (and show an error) if the home and the installation directories are the same.</p>
+<h3 id="ca-certificate-handling">CA Certificate Handling</h3>
+<p>The following options allow the root CA certificate to be set and read:</p>
+<pre><code>-certload &lt;path&gt;      Loads the Root CA certificate from the specified file name
+-certpubdump &lt;path&gt;   Dumps the Root CA public certificate into the specified file name, this is suitable for importing into browsers
+-certfulldump &lt;path&gt;  Dumps the Root CA full certificate (including the private key) into the specified file name, this is suitable for importing into ZAP
+</code></pre><p>These options are particularly useful when running ZAP headless in Docker, as they allow you to either specify the CA certificate to use or to access the one that ZAP creates automatically for you.</p>
+<h3 id="client-certificate-handling">Client Certificate Handling</h3>
+<p>It is now possible to set the Client Certificate from the command line with the following switches:</p>
+<pre><code>-config certificate.use=true
+-config certificate.pkcs12.path=/path/to/file.p12
+-config certificate.pkcs12.password=WhateverThePasswordIs
+-config certificate.pkcs12.index=1
+-config certificate.persist=true
+</code></pre><p><code>-config certificate.pkcs12.index</code> is only necessary if the file contains multiple certificates
+and you wish to use one other than the first. Index values start at zero (0) which is the first certificate
+in the file.</p>
+<p><code>-config certificate.persist=true</code> is only necessary if you would like the settings persisted in ZAP's regular
+configuration file (so that they apply for subsequent ZAP use).</p>
+<h2 id="source-code-restructuring">Source Code Restructuring</h2>
+<p>The ZAP repositories have all been migrated to use Gradle from Ant. Standard source code formatting is also now enforced for consistency.</p>
+<h2 id="filters-removal">Filters Removal</h2>
+<p>Deprecated since ZAP 2.4.0 the Filters functionality, that allowed to change/access some HTTP messages sent/received through ZAP, has now been removed, the same and much more can be achieved with scripts and Replacer add-on.</p>
+<h2 id="changes-in-bundled-libraries">Changes in Bundled Libraries</h2>
+<p>The following libraries are no longer being bundled with ZAP (core):</p>
+<ul>
+<li>BrowserLauncher2, it was replaced with the usage of JRE class <code>java.awt.Desktop</code>. Add-ons should use that class or bundle the library.</li>
+<li>HttpComponents Client/Core, no longer in use by core, any add-ons that require them should bundle them.</li>
+<li>JavaFX runtime, now relying on JRE (for example, OracleJDK, OpenJDK+OpenJFX).</li>
+</ul>
+<p>The following libraries will be removed in a future release:</p>
+<ul>
+<li>JDOM</li>
+<li>Diff Utils</li>
+</ul>
+<p>no longer in use by core, add-ons should bundle the library, if needed. The following libraries were updated:</p>
+<ul>
+<li>Bouncy Castle, 1.52 → 1.61</li>
+<li>Commons BeanUtils, 1.8.3 → 1.9.3</li>
+<li>Commons Codec, 1.9 → 1.12</li>
+<li>Commons Configuration, 1.9 → 1.10</li>
+<li>Commons CSV, 1.1 → 1.6</li>
+<li>Commons IO, 2.4 → 2.6</li>
+<li>Commons Lang, 3.7 → 3.9</li>
+<li>Commons Text, 1.3 → 1.6</li>
+<li>HSQLDB, 2.3.4 → 2.4.1</li>
+<li>Java SemVer, 0.8.0 → 0.9.0</li>
+<li>Jericho HTML Parser, 3.1 → 3.4</li>
+<li>RSyntaxTextArea, 2.5.8 → 3.0.3</li>
+<li>SQLite JDBC, 3.8.11.1 → 3.27.2.1</li>
+<li>SwingX, 1.6.4 → 1.6.5-1</li>
+</ul>
+<h2 id="active-scan-input-vectors-change">Active Scan Input Vectors Change</h2>
+<p>Users now have the option of whether or not to add a query parameter to GET requests that did not have them to start with. In previous versions this behavior was not user controllable and was on by default. With the new user option the default has been changed to off.</p>
+<h2 id="json-authentication-method">JSON Authentication Method</h2>
+<p>An authentication method has been added which allows a JSON object to be sent in the request body.</p>
+<h2 id="json-report-change">JSON Report Change</h2>
+<p>For consistency the <code>site</code> property will be always an array regardless of the number of sites that the report contains, previously it would be an object if only one site and an array if more than one.</p>
+<h2 id="display-options---font-controls">Display Options - Font Controls</h2>
+<p>In the Options dialog Display panel it is now possible for the user to select a General font and size for ZAPs GUI, as well as a Work Panel font and size used for the top right section of ZAP's main window (Ex: Request/Response, the Edit and Resend tool, etc.).</p>
+<h2 id="enhancements">Enhancements</h2>
+<ul>
+<li>Issue 1067 : User conversion between changes of AuthenticationMethods</li>
+<li>Issue 1370 : Login HTTP requests without cookies with Form-based Authentication</li>
+<li>Issue 1429 : Option to add custom ZAP header</li>
+<li>Issue 2023 : Allow to set client certificate (PKCS#12) through the ZAP API</li>
+<li>Issue 2182 : Add support for dynamic fields in Form-based authentication method</li>
+<li>Issue 2439 : Configure Authentication with Json object</li>
+<li>Issue 2528 : Feature request: Passive scanning during fuzzing</li>
+<li>Issue 2950 : Script change monitor</li>
+<li>Issue 2964 : Allow to select the look and feel</li>
+<li>Issue 2965 : Support scanning multipart filename and content parameter</li>
+<li>Issue 3447 : Param Tab Truncation</li>
+<li>Issue 3485 : Minor Enhancement: Indicate amount of Java memory actually used in JVM Options Panel</li>
+<li>Issue 3528 : Minor Enhancement: Add Date Format Preference</li>
+<li>Issue 3734 : Allow add-ons without extensions to have help pages</li>
+<li>Issue 3841 : Allow add-ons without extensions to have resource messages</li>
+<li>Issue 3879 : Auto Set Active Imported Certificate</li>
+<li>Issue 3930 : Add a status panel for the scanner callbacks</li>
+<li>Issue 3952 : Show number of new alerts in Active Scan tab</li>
+<li>Issue 4100 : Skip plugins if there's nothing to scan</li>
+<li>Issue 4102 : Allow to delete site nodes with keyboard shortcut</li>
+<li>Issue 4122 : Add unicode functions.</li>
+<li>Issue 4123 : Passive Scan Tags interpolation</li>
+<li>Issue 4135 : REST API to manage script variables</li>
+<li>Issue 4153 : ZAP doesn't ask for confirmation before overwriting an existing session</li>
+<li>Issue 4201 : Alert Tab UI Tweaks</li>
+<li>Issue 4236 : Expand node of first context added</li>
+<li>Issue 4244 : Change variant cookie to behave like browsers do</li>
+<li>Issue 4245 : Add shortcut key to Sites&rsquo; Delete pop menu item</li>
+<li>Issue 4253 : Allow to remove API callbacks</li>
+<li>Issue 4277 : Warn if a # is specified in a breakpoint URL</li>
+<li>Issue 4283 : Update ZAP logo in HTML report</li>
+<li>Issue 4307 : Allow to delete all alerts through the GUI</li>
+<li>Issue 4318 : Enhancement - Allow addons to &ldquo;opt-in&rdquo; for passive scanning</li>
+<li>Issue 4319 : Expose UI component (table) of History tab</li>
+<li>Issue 4325 : Improve form submission in API Web UI</li>
+<li>Issue 4331 : Allow to show Request and Response in the same tab</li>
+<li>Issue 4333 : Include ID of the HTTP message in returned HAR</li>
+<li>Issue 4352 : Allow to send a message body with all methods</li>
+<li>Issue 4364 : Allow to obtain context's URLs through the API</li>
+<li>Issue 4365 : Allow to specify a name for session snapshot through the API</li>
+<li>Issue 4391 : Enhancement: Params Tab - Multipart Form Params</li>
+<li>Issue 4400 : Allow to scan from Contexts tree</li>
+<li>Issue 4422 : Spider Scan does not understand HTML 5 form syntax</li>
+<li>Issue 4474 : pscan - Expose getPluginPassiveScanners()</li>
+<li>Issue 4477 : Enable help in Add/Edit Breakpoint dialogue</li>
+<li>Issue 4484 : Added Django csrf_token</li>
+<li>Issue 4498 : Added support for launching JVM enabled for remote debugging</li>
+<li>Issue 4541 : Expand node of selected context</li>
+<li>Issue 4542 : Ensure node selected param panel is visible</li>
+<li>Issue 4548 : ATTACK Mode Enablement Suggestion</li>
+<li>Issue 4557 : Tweak JVM panel to resize properly</li>
+<li>Issue 4592 : Keep panel of selected context selected</li>
+<li>Issue 4599 : Keep backup of malformed config.xml file</li>
+<li>Issue 4604 : Do not automatically add an empty user</li>
+<li>Issue 4612 : HTTP Sessions Tab Messages Matched - drill down to matched messages</li>
+<li>Issue 4616 : Add option for custom font in work panels</li>
+<li>Issue 4638 : Allow to reinstall (local) add-on</li>
+<li>Issue 4647 : Skip plugins if no input vectors enabled</li>
+<li>Issue 4668 : Make Passive Scan Tags management cleaner</li>
+<li>Issue 4679 : Inform when the add-on has finished installing</li>
+<li>Issue 4688 : Allow to view script types through the API</li>
+<li>Issue 4694 : Provide details of why the add-on is not valid</li>
+<li>Issue 4698 : TLS 1.3 UI Components</li>
+<li>Issue 4707 : Allow to use add-on icons in Sites tree</li>
+<li>Issue 4709 : Allow to change proxy's hostname already bound</li>
+<li>Issue 4712 : Add Passive Scan Footer Icon/Status</li>
+<li>Issue 4714 : Inform if passive scanner is still running</li>
+<li>Issue 4726 : Added contexts setContextRegexs API endpoint</li>
+<li>Issue 4729 : Allow to add/remove an anti-CSRF token from all parameters in Params tab</li>
+<li>Issue 4743 : Dynamically add/remove extensions&rsquo; help</li>
+<li>Issue 4753 : Exporting response bodies of many messages at the same time from History tab</li>
+<li>Issue 4762 : Added pscan stats and API call for getting current rule</li>
+<li>Issue 4767 : Be more lenient when parsing techs through the API</li>
+<li>Issue 4771 : Bundle required files in the zap.jar</li>
+<li>Issue 4780 : Tidy up dependencies</li>
+<li>Issue 4810 : Exit on exception during GUI start</li>
+<li>Issue 4819 : Added childNodes view</li>
+<li>Issue 4833 : Added alert api endpoints</li>
+<li>Issue 4835 : Improve &lsquo;port in use&rsquo; error message</li>
+<li>Issue 4836 : Add option to prevent windows from grabbing focus from other apps</li>
+<li>Issue 4892 : Allow to set client certificate (PKCS#12) from CLI</li>
+<li>Issue 4933 : New/Updated Global Excludes</li>
+<li>Issue 4935 : Minor &lsquo;find&rsquo; enhancement - when searching in request/response</li>
+<li>Issue 4943 : Global Excludes No Longer Beta</li>
+<li>Issue 4946 : added _csrf to default ACSRF token names</li>
+<li>Issue 4976 : ascan: Make addition of query param optional</li>
+<li>Issue 4988 : Spider: Parse robots.txt even if no content-type</li>
+<li>Issue 4997 : Allow to manage default session tokens (API)</li>
+<li>Issue 5010 : Show Version in Marketplace Installed Addons Tab</li>
+<li>Issue 5023 : Let fields in StandardFieldsDialog get all space</li>
+<li>Issue 5029 : Discard edits of new field in StandardFieldsDialog</li>
+<li>Issue 5064 : Extend TableHistory with filter for &ldquo;historyid &gt; x&rdquo;</li>
+<li>Issue 5065 : Listening for changes of the message in the Request/Response panels</li>
+<li>Issue 5076 : Global Excludes - Consolidate Mozilla/Firefox Entries?</li>
+<li>Issue 5091 : Add _csrfSecret to list of default CSRF tokens</li>
+<li>Issue 5116 : Passive scan max alerts option</li>
+<li>Issue 5148 : Show add-on details in a panel instead of tool tip</li>
+<li>Issue 5161 : Allow to listen for script output</li>
+<li>Issue 5192 : Break/wrap long URLs and base64 data in HTML report</li>
+<li>Issue 5219 : Ensure The Scan Policy Sticks Between Active Scan Runs</li>
+<li>Issue 5226 : schedule or queue active scan</li>
+<li>Issue 5236 : Expose the local add-ons through the ZAP API</li>
+<li>Issue 5239 : Provide add-on file path in API/GUI</li>
+<li>Issue 5256 : Added Import top-level Menu</li>
+<li>Issue 5277 : Active Scan Scripts - References Functionality</li>
+<li>Issue 5300 : Ignore &ldquo;javax.faces.ViewState&rdquo; parameter in active scans</li>
+<li>Issue 5304 : Improve error message when failed to connect to outgoing proxy</li>
+<li>Issue 5324 : Enhancement: Spider handle Hyperlink Auditing Functionality</li>
+<li>Issue 5335 : Add feedback on search progress</li>
+<li>Issue 5343 : Show UI name of dependent extensions</li>
+<li>Issue 5345 : Add cmdline options for loading and dumping root cert</li>
+<li>Issue 5350 : Enable custom (script) input vectors by default.</li>
+<li>Issue 5351 : Apply installer CFU options on update</li>
+<li>Issue 5354 : New silent option to disable all calls home</li>
+<li>Issue 5366 : Fallback to bundled Messages file</li>
+</ul>
+<h2 id="bug-fixes">Bug fixes</h2>
+<ul>
+<li>Issue 1142 : Session Fixation False positive</li>
+<li>Issue 1161 : [Enable Session Tracking (Cookie)] and [Use current tracking session] toggle button</li>
+<li>Issue 1287 : PKCS11: Error, maybe your password or driver is wrong.</li>
+<li>Issue 1470 : spider scan() API errors with &lsquo;No seeds available for the Spider. Cancelling scan&hellip;&rsquo;</li>
+<li>Issue 1642 : Change of view type in Break tab not saved when ZAP closed/reopened.</li>
+<li>Issue 2531 : Cookie is not set during script authentication when following redirect</li>
+<li>Issue 2626 : Error on Debian with Java 8: &ldquo;Could not generate DH keypair&rdquo;</li>
+<li>Issue 2998 : Zap Report Generation Bug</li>
+<li>Issue 3075 : ZAP not relinquishing top window position sometimes after intercept being on</li>
+<li>Issue 3399 : Do not uninstall files that are declared by other add-ons</li>
+<li>Issue 3959 : Properly generate cert for ZAP API and Callback when accessed with IP address</li>
+<li>Issue 4016 : Proxying https://ipaddress raise a CERT_COMMON_NAME_INVALID Error in Browser</li>
+<li>Issue 4097 : python api returns the wrong content for authentication.get_authentication_method()</li>
+<li>Issue 4111 : ZAP Python API: zap.context.alerts_summary() returns 0</li>
+<li>Issue 4119 : Ajax Spider deadlock</li>
+<li>Issue 4130 : Do not return duplicate URLs in urls core view</li>
+<li>Issue 4147 : Unable to add PKCS#11 certs with Java 9+</li>
+<li>Issue 4166 : Unable to import Root CA Cert from PEM file with Java 9+</li>
+<li>Issue 4194 : Size of the configuration file keeps increasing each time ZAP is started with Java 9+</li>
+<li>Issue 4196 : Supported core extensions not available when using experimental DB option</li>
+<li>Issue 4197 : Warn and prevent snapshot to current session file</li>
+<li>Issue 4202 : API Spider call not taking existing URLs as input</li>
+<li>Issue 4226 : Prevent use of install dir as home dir</li>
+<li>Issue 4247 : ZAP should accept/parse cookies without name</li>
+<li>Issue 4252 : Dont restrict callback urls to the specified addresses</li>
+<li>Issue 4265 : Unable to spider with unlimited depth</li>
+<li>Issue 4279 : Python Passive Rules scan all message types by default</li>
+<li>Issue 4291 : Manual Request Editor keeps using Forced User even if disabled</li>
+<li>Issue 4306 : Clear Sites nodes&rsquo; alert state on alerts deletion</li>
+<li>Issue 4356 : Internal Error while obtaining URLs through the API</li>
+<li>Issue 4357 : Do not submit unused parameters in API Web UI</li>
+<li>Issue 4368 : Exclude from Context not used by active scan</li>
+<li>Issue 4379 : Remove custom vectors&rsquo; highlights when cleared</li>
+<li>Issue 4387 : Internal Error while saving the session (again) through the API</li>
+<li>Issue 4408 : Reinstate locale mapping</li>
+<li>Issue 4428 : Zap waiting for Spider endlessly when it crashed.</li>
+<li>Issue 4515 : AuthenticationScript (Python, Ruby, Groovy) does not work without logged in/out indicators</li>
+<li>Issue 4538 : Local ZapVersions.xml is saved with default character encoding</li>
+<li>Issue 4575 : Stop spider scans when mode changed to Safe</li>
+<li>Issue 4576 : Skip Token Generator responses for HTTP Sessions</li>
+<li>Issue 4581 : Skip Access Control responses for HTTP Sessions</li>
+<li>Issue 4590 : ZAP API converts data to wrong format</li>
+<li>Issue 4623 : Message caught in Break tab but break buttons remain disabled</li>
+<li>Issue 4627 : Add proxy related listeners to alternative proxies</li>
+<li>Issue 4646 : Allow to specify higher values for delay while scanning through the UI</li>
+<li>Issue 4655 : Track the directories with scripts</li>
+<li>Issue 4691 : Correctly JSON encode context regexs</li>
+<li>Issue 4711 : sites tree no longer accessible</li>
+<li>Issue 4749 : Handling of empty client certificates</li>
+<li>Issue 4756 : Correct install dir detection from ZAP JAR</li>
+<li>Issue 4772 : Correct generated certificates&rsquo; validity period</li>
+<li>Issue 4789 : Break tab is not automatically shown in full layout when breakpoint is hit</li>
+<li>Issue 4807 : Add all dangling event consumers</li>
+<li>Issue 4814 : Don't open the report if it does not exist</li>
+<li>Issue 4817 : Skip dependent extensions of failed uninstallation</li>
+<li>Issue 4818 : Correct API response on failed installations</li>
+<li>Issue 4827 : Allow consumers to remove themselves during events</li>
+<li>Issue 4846 : User-Agent changes from configured value</li>
+<li>Issue 4869 : Delay initialisation of keyboard mappings</li>
+<li>Issue 4911 : ConcurrentModificationException thrown in PassiveScanThread</li>
+<li>Issue 4945 : Don't use HTTP session for manual auth if not set</li>
+<li>Issue 4970 : Don't parse (plain) API parameters as JSON</li>
+<li>Issue 4971 : Made active scan progress consistent with spider, show progress of 100 if scan is stopped</li>
+<li>Issue 4993 : Change API view optionTokensNames to return a list</li>
+<li>Issue 5003 : SSE are not supported in some cases</li>
+<li>Issue 5021 : Active Scan API - Scan whole context as user incorrectly requires a URL</li>
+<li>Issue 5027 : Restore info message in Input Vectors tab</li>
+<li>Issue 5033 : Do not add auth context menus in daemon mode</li>
+<li>Issue 5060 : Custom Vectors don't work properly if plugin ID is injected in the message</li>
+<li>Issue 5066 : Correct request rewrite when following redirection</li>
+<li>Issue 5068 : Fix typo in sql script adding the tag column</li>
+<li>Issue 5118 : Global Excludes Modify Description Doesn't Work</li>
+<li>Issue 5156 : Return proper errors in break API</li>
+<li>Issue 5160 : Show/edit expected breakpoint with sorting</li>
+<li>Issue 5162 : Inconsistent JSON report format</li>
+<li>Issue 5207 : Hook OverrideMessageProxyListener also on install</li>
+<li>Issue 5221 : ZAP failing Nexus scan</li>
+<li>Issue 5252 : Unable to CONNECT to authority with underscore</li>
+<li>Issue 5257 : Improve error handling on shutdown</li>
+<li>Issue 5259 : GUI hang (and NPE exceptions) when using Context Alert Filters</li>
+<li>Issue 5352 : Fix exceptions during config update</li>
+</ul>
+<h2 id="zap-api-breaking-changes">ZAP API Breaking Changes:</h2>
+<h3 id="view-acsrf--optiontokensnames">VIEW acsrf / optionTokensNames</h3>
+<p>This change will break the consumers that were manually parsing/extracting the names from the string. The structure of the data returned was changed to properly separate each name:</p>
+<blockquote>
+<pre><code>{&quot;optionTokensNames&quot;:[&quot;anticsrf&quot;,&quot;CSRFToken&quot;]}
+</code></pre>
+</blockquote>
+<p>and:</p>
+<blockquote>
+<pre><code>&lt;optionTokensNames type=&quot;list&quot;&gt;
+    &lt;tokenName&gt;anticsrf&lt;/tokenName&gt;
+    &lt;tokenName&gt;CSRFToken&lt;/tokenName&gt;
+&lt;/optionTokensNames&gt;
+</code></pre>
+</blockquote>
+<p>instead of:</p>
+<blockquote>
+<pre><code>{&quot;TokensNames&quot;:&quot;[anticsrf, CSRFToken]&quot;}
+</code></pre>
+</blockquote>
+<p>and:</p>
+<blockquote>
+<pre><code>&lt;optionTokensNames&gt;[anticsrf, CSRFToken]&lt;/optionTokensNames&gt;
+</code></pre>
+</blockquote>
+<h3 id="view-authentication--getauthenticationmethod">VIEW authentication / getAuthenticationMethod</h3>
+<p>This change will break the consumers that were manually parsing/extracting the JSON response (and XML response, for manual authentication method). The structure of the data was changed to have an object wrap the authentication method data, to be consistent with all other views. The returned data would be, for example:</p>
+<blockquote>
+<pre><code>{
+  &quot;method&quot;: {
+    &quot;port&quot;: &quot;443&quot;,
+    &quot;host&quot;: &quot;example.com&quot;,
+    &quot;methodName&quot;: &quot;httpAuthentication&quot;,
+    &quot;realm&quot;: &quot;example&quot;
+  }
+}
+</code></pre>
+</blockquote>
+<p>instead of:</p>
+<blockquote>
+<pre><code>{
+  &quot;port&quot;: &quot;443&quot;,
+  &quot;host&quot;: &quot;example.com&quot;,
+  &quot;methodName&quot;: &quot;httpAuthentication&quot;,
+  &quot;realm&quot;: &quot;example&quot;
+}
+</code></pre>
+</blockquote>
+<h3 id="view-core--alertssummary">VIEW core / alertsSummary</h3>
+<p>This change will break the consumers that were manually parsing/extracting the JSON response. The structure of the data was changed to have an object wrap the alerts summary, to be consistent with all other views. The returned data would be, for example:</p>
+<blockquote>
+<pre><code>{
+  &quot;alertsSummary&quot;: {
+    &quot;High&quot;: 0,
+    &quot;Low&quot;: 3,
+    &quot;Medium&quot;: 1,
+    &quot;Informational&quot;: 1
+  }
+}
+</code></pre>
+</blockquote>
+<p>instead of:</p>
+<blockquote>
+<pre><code>{
+  &quot;High&quot;: 0,
+  &quot;Low&quot;: 3,
+  &quot;Medium&quot;: 1,
+  &quot;Informational&quot;: 1
+}
+</code></pre>
+</blockquote>
+<h3 id="view-core--alerts">VIEW core / alerts</h3>
+<p>The view will now validate the risk ID, returning an error (ILLEGAL_PARAMETER) if not valid.</p>
+<h3 id="view-core--numberofalerts">VIEW core / numberOfAlerts</h3>
+<p>The view will now validate the risk ID, returning an error (ILLEGAL_PARAMETER) if not valid.</p>
+<h2 id="zap-api-deprecated-endpoints">ZAP API Deprecated Endpoints:</h2>
+<p>All alert related core endpoints were deprecated, they are now accessible through a new component <code>alert</code>.</p>
+<h2 id="zap-api-changed-endpoints">ZAP API Changed Endpoints:</h2>
+<h3 id="action-authentication--setauthenticationmethod">ACTION authentication / setAuthenticationMethod</h3>
+<p>The action will no longer remove existing users, instead the user is disabled and its credentials reset if the type of credentials of the authentication method being set is different.</p>
+<h3 id="action-context--excludecontexttechnologies">ACTION context / excludeContextTechnologies</h3>
+<p>The action will now accept the string with technologies even if there are spaces before or after the names, for example:</p>
+<blockquote>
+<pre><code>os.linux, db.mysql
+</code></pre>
+</blockquote>
+<p>will now be valid.</p>
+<h3 id="action-context--includecontexttechnologies">ACTION context / includeContextTechnologies</h3>
+<p>The action will now accept the string with technologies even if there are spaces before or after the names, for example:</p>
+<blockquote>
+<pre><code>os.linux, db.mysql
+</code></pre>
+</blockquote>
+<p>will now be valid.</p>
+<h3 id="action-core--snapshotsession">ACTION core / snapshotSession</h3>
+<p>Added optional parameters <code>name</code> and <code>overwrite</code>, to allow to specify a name and overwrite existing files.</p>
+<h2 id="zap-api-new-endpoints">ZAP API New Endpoints:</h2>
+<h3 id="view-ascan--optionaddqueryparam">View ascan / optionAddQueryParam</h3>
+<p>Tells whether or not the active scanner should add a query parameter to GET request that don't have parameters to start with.</p>
+<h3 id="view-autoupdate--localaddons">VIEW autoupdate / localAddons</h3>
+<p>Returns a list with all local add-ons, installed or not.</p>
+<h3 id="view-context--urls">VIEW context / urls</h3>
+<p>Lists the URLs accessed through/by ZAP, that belong to the context with the given name.</p>
+<h3 id="view-httpsessions--defaultsessiontokens">VIEW httpSessions / defaultSessionTokens</h3>
+<p>Gets the default session tokens.</p>
+<h3 id="view-pscan--maxalertsperrule">VIEW pscan / maxAlertsPerRule</h3>
+<p>Gets the maximum number of alerts a passive scan rule should raise.</p>
+<h3 id="view-script--globalvar">VIEW script / globalVar</h3>
+<p>Gets the value of the global variable with the given key. Returns an API error (DOES_NOT_EXIST) if no value was previously set.</p>
+<h3 id="view-script--globalvars">VIEW script / globalVars</h3>
+<p>Gets all the global variables (key/value pairs).</p>
+<h3 id="view-script--listtypes">VIEW script / listTypes</h3>
+<p>Lists the script types available.</p>
+<h3 id="view-script--scriptvar">VIEW script / scriptVar</h3>
+<p>Gets the value of the variable with the given key for the given script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists or if no value was previously set.</p>
+<h3 id="view-script--scriptvars">VIEW script / scriptVars</h3>
+<p>Gets all the variables (key/value pairs) of the given script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists.</p>
+<h3 id="action-ascan--setoptionaddqueryparam">ACTION ascan / setOptionAddQueryParam</h3>
+<p>Sets whether or not the active scanner should add a query param to GET requests which do not have parameters to start with.</p>
+<h3 id="action-core--enablepkcs12clientcertificate">ACTION core / enablePKCS12ClientCertificate</h3>
+<p>Enables use of a PKCS12 client certificate for the certificate with the given file system path, password, and optional index.</p>
+<h3 id="action-core--disableclientcertificate">ACTION core / disableClientCertificate</h3>
+<p>Disables the option for use of client certificates.</p>
+<h3 id="action-httpsessions--adddefaultsessiontoken">ACTION httpSessions / addDefaultSessionToken</h3>
+<p>Adds a default session token with the given name and enabled state.</p>
+<h3 id="action-httpsessions--removedefaultsessiontoken">ACTION httpSessions / removeDefaultSessionToken</h3>
+<p>Removes the default session token with the given name.</p>
+<h3 id="action-httpsessions--setdefaultsessiontokenenabled">ACTION httpSessions / setDefaultSessionTokenEnabled</h3>
+<p>Sets whether or not the default session token with the given name is enabled.</p>
+<h3 id="action-pscan--setmaxalertsperrule">ACTION pscan / setMaxAlertsPerRule</h3>
+<p>Sets the maximum number of alerts a passive scan rule should raise.</p>
+<h3 id="action-script--clearglobalvar">ACTION script / clearGlobalVar</h3>
+<p>Clears the global variable with the given key.</p>
+<h3 id="action-script--clearglobalvars">ACTION script / clearGlobalVars</h3>
+<p>Clears the global variables.</p>
+<h3 id="action-script--clearscriptvar">ACTION script / clearScriptVar</h3>
+<p>Clears the variable with the given key of the given script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists.</p>
+<h3 id="action-script--clearscriptvars">ACTION script / clearScriptVars</h3>
+<p>Clears the variables of the given script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists.</p>
+<h3 id="action-script--setglobalvar">ACTION script / setGlobalVar</h3>
+<p>Sets the value of the global variable with the given key.</p>
+<h3 id="action-script--setscriptvar">ACTION script / setScriptVar</h3>
+<p>Sets the value of the variable with the given key of the given script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists.</p>
+<h2 id="see-also">See also</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><a href="/docs/desktop/">Introduction</a></td>
+<td>the introduction to ZAP</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="/docs/desktop/releases/">Releases</a></td>
+<td>the full set of releases</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="/docs/desktop/credits/">Credits</a></td>
+<td>the people and groups who have made this release possible</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+        
+      </div>
+  </div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <nav class="footer-nav">
+      <ul class="flex">        
+      
+      
+        
+          <li class="ml-10">
+            <a href="/" title="Home page">
+              Home
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/zap-in-ten/" title="ZAP in Ten page">
+              ZAP in Ten
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/get-involved/" title="Get Involved page">
+              Get Involved
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/support/" title="Support page">
+              Support
+            </a>
+          </li>
+        
+      
+      </ul>
+    </nav>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Flagship project</a><br>
+      © Copyright 2020 the ZAP Dev Team
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.aa8e7.js"></script>
+  
+</div>
+</body>
+</html>

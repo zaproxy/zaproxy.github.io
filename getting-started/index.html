@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <base href="/">
+  <title>OWASP ZAP &ndash; Getting Started</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.aa8e7.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <div>
+            <h1>&nbsp;ZAP</h1>
+        </div>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/zap-in-ten/" title="ZAP in Ten page">
+                  ZAP in Ten
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/get-involved/" title="Get Involved page">
+                  Get Involved
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+      <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+    <div class="wrapper py-20">
+      <h1 class="text--white">Getting Started</h1>
+  </div>
+</section>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+    <main><h3 id="overview">Overview</h3>
+<p>This guide is intended to serve as a basic introduction for using ZAP to perform security testing, even if you don’t have a background in security testing. To that end, some security testing concepts and terminology is included but this document is not intended to be a comprehensive guide to either ZAP or security testing.</p>
+<p>It is also available as a <a href="/pdf/ZAPGettingStartedGuide-2.8.pdf">pdf</a> to make it easier to print.</p>
+<h3 id="security-testing-basics">Security Testing Basics</h3>
+<p>Software security testing is the process of assessing and testing a system to discover security risks and vulnerabilities of the system and its data. There is no universal terminology but for our purposes, we define assessments as the analysis and discovery of vulnerabilities without attempting to actually exploit those vulnerabilities. We define testing as the discovery and attempted exploitation of vulnerabilities.</p>
+<p>Security testing is often broken out, somewhat arbitrarily, according to either the type of vulnerability being tested or the type of testing being done. A common breakout is:</p>
+<ul>
+<li><strong>Vulnerability Assessment</strong> – The system is scanned and analyzed for security issues.</li>
+<li><strong>Penetration Testing</strong> – The system undergoes analysis and attack from simulated malicious attackers.</li>
+<li><strong>Runtime Testing</strong> – The system undergoes analysis and security testing from an end-user.</li>
+<li><strong>Code Review</strong> – The system code undergoes a detailed review and analysis looking specifically for security vulnerabilities.</li>
+</ul>
+<p>Note that risk assessment, which is commonly listed as part of security testing, is not included in this list. That is because a risk assessment is not actually a test but rather the analysis of the perceived severity of different risks (software security, personnel security, hardware security, etc.) and any mitigation steps for those risks.</p>
+<h4 id="more-about-penetration-testing">More About Penetration Testing</h4>
+<p>Penetration Testing (pentesting) is carried out as if the tester was a malicious external attacker with a goal of breaking into the system and either stealing data or carrying out some sort of denial-of-service attack.</p>
+<p>Pentesting has the advantage of being more accurate because it has fewer false positives (results that report a vulnerability that isn’t actually present), but can be time-consuming to run.</p>
+<p>Pentesting is also used to test defence mechanisms, verify response plans, and confirm security policy adherence.</p>
+<p>Automated pentesting is an important part of continuous integration validation. It helps to uncover new vulnerabilities as well as regressions for previous vulnerabilities in an environment which quickly changes, and for which the development may be highly collaborative and distributed.</p>
+<h4 id="the-pentesting-process">The Pentesting Process</h4>
+<p>Both manual and automated pentesting are used, often in conjunction, to test everything from servers, to networks, to devices, to endpoints. This document focuses on web application or web site pentesting.</p>
+<p>Pentesting usually follows these stages:</p>
+<ul>
+<li><strong>Explore</strong> – The tester attempts to learn about the system being tested. This includes trying to determine what software is in use, what endpoints exist, what patches are installed, etc. It also includes searching the site for hidden content, known vulnerabilities, and other indications of weakness.</li>
+<li><strong>Attack</strong> – The tester attempts to exploit the known or suspected vulnerabilities to prove they exist.</li>
+<li><strong>Report</strong> – The tester reports back the results of their testing, including the vulnerabilities, how they exploited them and how difficult the exploits were, and the severity of the exploitation.</li>
+</ul>
+<h5 id="pentesting-goals">Pentesting Goals</h5>
+<p>The ultimate goal of pentesting is to search for vulnerabilities so that these vulnerabilities can be addressed. It can also verify that a system is not vulnerable to a known class or specific defect; or, in the case of vulnerabilities that have been reported as fixed, verify that the system is no longer vulnerable to that defect.</p>
+<h3 id="introducing-zap">Introducing ZAP</h3>
+<p>Zed Attack Proxy (ZAP) is a free, open-source penetration testing tool being maintained under the umbrella of the Open Web Application Security Project (OWASP). ZAP is designed specifically for testing web applications and is both flexible and extensible.</p>
+<p>At its core, ZAP is what is known as a “man-in-the-middle proxy.” It stands between the tester’s browser and the web application so that it can intercept and inspect messages sent between browser and web application, modify the contents if needed, and then forward those packets on to the destination. It can be used as a stand-alone application, and as a daemon process.</p>
+
+<figure>
+	<img src="/getting-started/images/browser-no-proxy.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>If there is another network proxy already in use, as in many corporate environments, ZAP can be configured to connect to that proxy.</p>
+
+<figure>
+	<img src="/getting-started/images/browser-network-proxy.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>ZAP provides functionality for a range of skill levels – from developers, to testers new to security testing, to security testing specialists. ZAP has versions for each major OS and Docker, so you are not tied to a single OS. Additional functionality is freely available from a variety of add-ons in the ZAP Marketplace, accessible from within the ZAP client.</p>
+<p>Because ZAP is open-source, the source code can be examined to see exactly how the functionality is implemented. Anyone can volunteer to work on ZAP, fix bugs, add features, create pull requests to pull fixes into the project, and author add-ons to support specialized situations.</p>
+<p>As with most open source projects, donations are welcome to help with costs for the projects. You can find a donate button on the owasp.org page for ZAP at <a href="https://www.owasp.org/index.php/ZAP">https://www.owasp.org/index.php/ZAP</a>.</p>
+<h3 id="install-and-configure-zap">Install and Configure ZAP</h3>
+<p>ZAP has installers for Windows, Linux, and Mac OS/X. There are also Docker images available on the download site listed below.</p>
+<h5 id="install-zap">Install ZAP</h5>
+<p>The first thing to do is install ZAP on the system you intend to perform pentesting on. Download the appropriate installer from the <a href="/download/">Download</a> page.</p>
+<p>Note that ZAP requires Java 8+ in order to run. The Mac OS/X installer includes an appropriate version of Java but you must install Java 8+ separately for Windows, Linux, and Cross-Platform versions. The Docker versions do not require you to install Java.</p>
+<p>Once the installation is complete, launch ZAP and read the license terms. Click <strong>Agree</strong> if you accept the terms, and ZAP will finish installing, then ZAP will automatically start.</p>
+<h5 id="persisting-a-session">Persisting a Session</h5>
+<p>When you first start ZAP, you will be asked if you want to persist the ZAP session. By default, ZAP sessions are always recorded to disk in a HSQLDB database with a default name and location. If you do not persist the session, those files are deleted when you exit ZAP.</p>
+<p>If you choose to persist a session, the session information will be saved in the local database so you can access it later, and you will be able to provide custom names and locations for saving the files.</p>
+
+<figure>
+	<img src="/getting-started/images/zap-persist-session.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>For now, select <strong>No, I do not want to persist this session at this moment in time</strong>, then click <strong>Start</strong>. The ZAP sessions will not be persisted for now.</p>
+<h3 id="zap-desktop-ui">ZAP Desktop UI</h3>
+<p>The ZAP Desktop UI is composed of the following elements:</p>
+<ol>
+<li><strong>Menu Bar</strong> – Provides access to many of the automated and manual tools.</li>
+<li><strong>Toolbar</strong> – Includes buttons which provide easy access to most commonly used features.</li>
+<li><strong>Tree Window</strong> – Displays the Sites tree and the Scripts tree.</li>
+<li><strong>Workspace Window</strong> – Displays requests, responses, and scripts and allows you to edit them.</li>
+<li><strong>Information Window</strong> – Displays details of the automated and manual tools.</li>
+<li><strong>Footer</strong> – Displays a summary of the alerts found and the status of the main automated tools.</li>
+</ol>
+
+<figure>
+	<img src="/getting-started/images/zap-full-screen.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>While using ZAP, you can click <strong>Help</strong> on the Menu Bar or press F1 to access context-sensitive help from the ZAP Desktop User Guide. It is also available <a href="/docs/desktop/">online</a>.</p>
+<p>For more information about the UI, see <a href="/docs/desktop/ui/">ZAP UI Overview</a> in the ZAP online documentation.</p>
+<p>ZAP also supports a powerful API and command line functionality, both of which are beyond the scope of this guide.</p>
+<p><strong>IMPORTANT</strong>: You should only use ZAP to attack an application you have permission to test with an active attack. Because this is a simulation that acts like a real attack, actual damage can be done to a site’s functionality, data, etc. If you are worried about using ZAP, you can prevent it from causing harm (though ZAP’s functionality will be significantly reduced) by switching to safe mode.</p>
+<p>To switch ZAP to safe mode, click the arrow on the mode dropdown on the main toolbar to expand the dropdown list and select <strong>Safe Mode</strong>.</p>
+<h5 id="running-an-automated-scan">Running an Automated Scan</h5>
+<p>The easiest way to start using ZAP is via the Quick Start tab. Quick Start is a ZAP add-on that is included automatically when you installed ZAP.</p>
+<p>To run a Quick Start Automated Scan :</p>
+<ol>
+<li>Start ZAP and click the <strong>Quick Start</strong> tab of the Workspace Window.</li>
+<li>Click the large Automated Scan button.</li>
+<li>In the <strong>URL to attack</strong> text box, enter the full URL of the web application you want to attack.</li>
+<li>Click the <strong>Attack</strong></li>
+</ol>
+
+<figure>
+	<img src="/getting-started/images/zap-qstart-autoscan.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>ZAP will proceed to crawl the web application with its spider and passively scan each page it finds. Then ZAP will use the active scanner to attack all of the discovered pages, functionality, and parameters.</p>
+<p>ZAP provides 2 spiders for crawling web applications, you can use either or both of them from this screen.</p>
+<p>The traditional ZAP spider which discovers links by examining the HTML in responses from the web application. This spider is fast, but it is not always effective when exploring an AJAX web application that generates links using JavaScript.</p>
+<p>For AJAX applications, ZAP’s AJAX spider is likely to be more effective. This spider explores the web application by invoking browsers which then follow the links that have been generated. The AJAX spider is slower than the traditional spider and requires additional configuration for use in a “headless” environment.</p>
+<p>ZAP will passively scan all of the requests and responses proxied through it. So far ZAP has only carried out passive scans of your web application. Passive scanning does not change responses in any way and is considered safe. Scanning is also performed in a background thread to not slow down exploration. Passive scanning is good at finding some vulnerabilities and as a way to get a feel for the basic security state of a web application and locate where more investigation may be warranted.</p>
+<p>Active scanning, however, attempts to find other vulnerabilities by using known attacks against the selected targets. Active scanning is a real attack on those targets and can put the targets at risk, so do not use active scanning against targets you do not have permission to test.</p>
+<h5 id="interpret-your-test-results">Interpret Your Test Results</h5>
+<p>As ZAP spiders your web application, it constructs a map of your web applications’ pages and the resources used to render those pages. Then it records the requests and responses sent to each page and creates alerts if there is something potentially wrong with a request or response.</p>
+<h5 id="see-explored-pages">See Explored Pages</h5>
+<p>To examine a tree view of the explored pages, click the <strong>Sites</strong> tab in the Tree Window. You can expand the nodes to see the individual URLs accessed.</p>
+<h5 id="view-alerts-and-alert-details">View Alerts and Alert Details</h5>
+<p>The left-hand side of the Footer contains a count of the Alerts found during your test, broken out into risk categories. These risk categories are:</p>
+
+<figure>
+	<img src="/getting-started/images/alert-icons.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>To view the alerts created during your test:</p>
+<ol>
+<li>Click the <strong>Alerts</strong> tab in the Information Window.</li>
+<li>Click each alert displayed in that window to display the URL and the vulnerability detected in the right side of the Information Window.</li>
+<li>In the Workspace Windows, click the <strong>Response</strong> tab to see the contents of the header and body of the response. The part of the response that generated the alert will be highlighted.</li>
+</ol>
+<h3 id="exploring-an-application-manually">Exploring an Application Manually</h3>
+<p>The passive scanning and automated attack functionality is a great way to begin a vulnerability assessment of your web application but it has some limitations. Among these are:</p>
+<ul>
+<li>Any pages protected by a login page are not discoverable during a passive scan because, unless you’ve configured ZAP’s authentication functionality, ZAP will not handle the required authentication.</li>
+<li>You don’t have a lot of control over the sequence of exploration in a passive scan or the types of attacks carried out in an automated attack. ZAP does provide many additional options for exploration and attacks outside of passive scanning.</li>
+</ul>
+<p>Spiders are a great way to explore your basic site, but they should be combined with manual exploration to be more effective. Spiders, for example, will only enter basic default data into forms in your web application but a user can enter more relevant information which can, in turn, expose more of the web application to ZAP. This is especially true with things like registration forms where a valid email address is required. The spider may enter a random string, which will cause an error. A user will be able to react to that error and supply a correctly formatted string, which may cause more of the application to be exposed when the form is submitted and accepted.</p>
+<p>You should explore all of your web application with a browser proxying through ZAP. As you do this, ZAP passively scans all the requests and responses made during your exploration for vulnerabilities, continues to build the site tree, and records alerts for potential vulnerabilities found during the exploration.</p>
+<p>It is important to have ZAP explore each page of your web application, whether linked to another page or not, for vulnerabilities. Obscurity is not security, and hidden pages sometimes go live without warning or notice. So be as thorough as you can when exploring your site.</p>
+<p>You can quickly and easily launch browsers that are pre-configured to proxy through ZAP via the Quick Start tab. Browsers launched in this way will also ignore any certificate validation warnings that would otherwise be reported.</p>
+
+<figure>
+	<img src="/getting-started/images/zap-qstart-manualexplore.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>To Manually Explore your application:</p>
+<ol>
+<li>Start ZAP and click the <strong>Quick Start</strong> tab of the Workspace Window.</li>
+<li>Click the large Manual Explore button.</li>
+<li>In the <strong>URL to explore</strong> text box, enter the full URL of the web application you want to explore.</li>
+<li>Select the browser you would like to use</li>
+<li>Click the <strong>Launch Browser</strong></li>
+</ol>
+<p>This option will launch any of the most common browsers that you have installed with new profiles.</p>
+<p>If you would like to use any of your browsers with an existing profile, for example with other browser add-ons installed, then you will need to manually configure your browser to proxy via ZAP and import and trust the ZAP Root CA Certificate. See the ZAP Desktop User Guide for more details.</p>
+<p>By default the ZAP Heads Up Display (HUD) will be enabled. Unchecking the relevant option on this screen before launching a browser will disable the HUD.</p>
+<h2 id="the-heads-up-display">The Heads Up Display</h2>
+<p>The Heads Up Display (HUD) is a new an innovative interface that provides access to ZAP functionality directly in the browser. It is ideal for people new to web security and also allows experienced penetration testers to focus on an applications functionality while providing key security information and functionality.</p>
+
+<figure>
+	<img src="/getting-started/images/hud-welcome.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>The HUD is overlayed on top of the target application in your browser when enabled via the ‘Manual Explore’ screen or toolbar option. Only modern browsers such as Firefox and Chrome are supported.</p>
+<p>By default a splash screen is shown for the HUD which includes a link to a tutorial which will take you through the HUD features and explain how you can use them.</p>
+<h2 id="zap-advanced-features">ZAP Advanced Features</h2>
+<h3 id="advanced-desktop-features">Advanced Desktop Features</h3>
+<p>The desktop has a large number of features that are not immediately apparent so that new users are not overwhelmed.</p>
+<p>There are many tabs that are not shown by default. They can be accessed via the right hand tabs with green ‘+’ icons. You can pin any tabs you would like to always appear by right clicking on them. Many of the tabs hidden by default will appear when relevant. For example the Websockets tab will appear if an application you are proxying through ZAP starts to use Websockets.</p>
+<p>The desktop also makes heavy use of context sensitive right click options, so right click everywhere while you are getting used to the user interface.</p>
+<h3 id="the-zap-marketplace">The ZAP Marketplace</h3>
+<p>The ZAP desktop has a plugin architecture which means that new functionality can be added dynamically.</p>
+<p>An <a href="/addons/">online marketplace</a> provides a wide range of ZAP add-ons which add many additional features to ZAP.</p>
+<p>The marketplace can be accessed from within ZAP via the ‘Manage Add-ons’ button on the toolbar:</p>
+
+<figure>
+	<img src="/getting-started/images/zap-screenshot-browse-addons.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>All of the add-ons on the marketplace are completely free.</p>
+<h3 id="automation">Automation</h3>
+<p>ZAP is an ideal tool to use in automation with libraries for Java, Python, Node.js PHP, Ruby &amp; more!</p>
+<p>It can be run in headless mode and has a powerful API which allows you to control nearly all of the features available via the ZAP desktop.</p>
+<p>For more details see the <a href="/docs/api">API Documentation</a>.</p>
+<h3 id="learn-more-about-zap">Learn More About ZAP</h3>
+<p>Now that you are familiar with a few basic capabilities of ZAP, you can learn more about ZAP’s capabilities and how to use them from ZAP’s <a href="/docs/desktop/">Desktop User Guide</a>. The User Guide provides step-by-step instructions, references for the API and command-line programming, instructional videos, and tips and tricks for using ZAP.</p>
+<p>Additional links are also available via the ‘Learn More’ button on the Quick Start top screen:</p>
+
+<figure>
+	<img src="/getting-started/images/zap-qstart-learnmore.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>The screen links to both local resources (if available) and online content.</p>
+</main>
+  </article>
+</section>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <nav class="footer-nav">
+      <ul class="flex">        
+      
+      
+        
+          <li class="ml-10">
+            <a href="/" title="Home page">
+              Home
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/zap-in-ten/" title="ZAP in Ten page">
+              ZAP in Ten
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/get-involved/" title="Get Involved page">
+              Get Involved
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/support/" title="Support page">
+              Support
+            </a>
+          </li>
+        
+      
+      </ul>
+    </nav>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Flagship project</a><br>
+      © Copyright 2020 the ZAP Dev Team
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.aa8e7.js"></script>
+  
+</div>
+</body>
+</html>
