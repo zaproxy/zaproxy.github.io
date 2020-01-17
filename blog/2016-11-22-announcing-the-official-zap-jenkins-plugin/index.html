@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <base href="/">
   <title>OWASP ZAP</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -111,15 +110,20 @@
 <div class="wrapper py-70" data-kind="page">
     <div class="flex latest-versions">
       <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog">The ZAP Blog</a>
+          </div>
+
           <h1 class="post-title">Announcing the Official ZAP Jenkins Plugin</h1>
           <main class="post-content">
             <p>Using ZAP during the development process is now easier than ever. We are proud to present the Jenkins plugin, it extends the functionality of
 the ZAP security tool into a CI Environment.</p>
-<p>
+
 <figure>
-	<img src="/blog/2016-11-22-announcing-the-official-zap-jenkins-plugin/images/ZAP_CI%2B_SMALLER.png" alt="Alt title" />
-	<figcaption>Alt title</figcaption>
-</figure> The process explained</p>
+	<img src="/blog/2016-11-22-announcing-the-official-zap-jenkins-plugin/images/ZAP_CI_SMALLER.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<h5 id="the-process-explained">The process explained</h5>
 <ol>
 <li>A Jenkins CI Build step initializes ZAP</li>
 <li>Traffic flows (Regression Pack) through ZAP (Web Proxy)</li>
@@ -130,8 +134,9 @@ the ZAP security tool into a CI Environment.</p>
 <li>Jenkins creates JIRA tickets for the alerts</li>
 </ol>
 <p>The ZAP Jenkins plugin makes use of the readily available and diverse ZAP API, allowing you to use the same session files and scan policy
-profiles between ZAP and the Jenkins plugin, so they can be interchangeably loaded.<br>
-So what can you do? Automate the site mapping process with a selenium script, have ZAP act as an intercepting proxy to map the structure of your
+profiles between ZAP and the Jenkins plugin, so they can be interchangeably loaded.</p>
+<h5 id="so-what-can-you-do">So what can you do?</h5>
+<p>Automate the site mapping process with a selenium script, have ZAP act as an intercepting proxy to map the structure of your
 site and record passive alerts. Fire off an active scan and finish it off by generating a report in one of three available formats (xhtml, xml
 or json). These can be sent off to management or you can load the session later and inspect each raised alert at your convenience.<br>
 Providing a seamless workflow and the same functionality as the GUI. You can</p>
@@ -147,9 +152,14 @@ Providing a seamless workflow and the same functionality as the GUI. You can</p>
 <li>Generate Reports (.xhtml, .xml, .json)</li>
 </ul>
 <p>All while giving you all the benefits of Jenkins to automate the process. Scan between build and deployment all from taking advantage of the
-automation server.<br>
-{{ youtube &ldquo;<a href="https://www.youtube.com/embed/mmHZLSffCUg?feature=player_embedded%22">https://www.youtube.com/embed/mmHZLSffCUg?feature=player_embedded&quot;</a> }} [<br>
-](<a href="https://www.youtube.com/watch?v=mmHZLSffCUg">https://www.youtube.com/watch?v=mmHZLSffCUg</a>) Where we go from here&hellip; We plan to extend the authentication method to allow authenticated AJAX
+automation server.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/mmHZLSffCUg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h5 id="where-we-go-from-here">Where we go from here&hellip;</h5>
+<p>We plan to extend the authentication method to allow authenticated AJAX
 Spider Scans and support HTTP/NTLM Authentication. To further the continuous integration process, we will be adding Build Management tools in
 the near future which will allow you to set the thresholds that will determine a builds pass or failure. But we’re not stopping here, we will be
 continuously advancing our API to meet the needs of community requests for the Jenkins Plugin.<br>
@@ -160,25 +170,34 @@ We hope to expand this project and open it to community involvement, we welcome 
 plugin and we thank you for your continued support.<br>
 Documentation: See the <a href="https://wiki.jenkins-ci.org/display/JENKINS/zap+plugin">Wiki</a> for more details.<br>
 Questions: Ask on our <a href="https://groups.google.com/forum/#!forum/zaproxy-jenkins">Google Group</a>.<br>
-Issue Tracking: Report on the [Jenkins JIRA](<a href="https://issues.jenkins-ci.org/issues/?jql=project%20%3D%20JENKINS%20AND%20component%20%3D%20zap-">https://issues.jenkins-ci.org/issues/?jql=project%20%3D%20JENKINS%20AND%20component%20%3D%20zap-</a>
-plugin) for the project, please read the <a href="https://wiki.jenkins-ci.org/display/JENKINS/How+to+report+an+issue">JIRA guidelines</a> before reporting
+Issue Tracking: Report on the <a href="https://issues.jenkins-ci.org/issues/?jql=project%20%3D%20JENKINS%20AND%20component%20%3D%20zap-plugin">Jenkins JIRA</a> for the project, please read the <a href="https://wiki.jenkins-ci.org/display/JENKINS/How+to+report+an+issue">JIRA guidelines</a> before reporting
 an issue.</p>
 
           </main>
           <div class="next-content">
               
-                <a class="previous" href="/blog/2016-08-22-announcing-zap-unit-test-bounties/"> Announcing ZAP Unit Test Bounties</a>
+                Prev: <a class="previous" href="/blog/2016-08-22-announcing-zap-unit-test-bounties/"> Announcing ZAP Unit Test Bounties</a>
               
               
-                <a class="next" href="/blog/2017-02-06-introducing-the-jxbrowser-add-on-for-zap/"> Introducing the JxBrowser add-on for ZAP</a>
+                Next: <a class="next" href="/blog/2017-02-06-introducing-the-jxbrowser-add-on-for-zap/"> Introducing the JxBrowser add-on for ZAP</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
           <h4 id="date"> Tue Nov 22, 2016 </h4>
-          <h5 id="wordcount"> 495 Words </h5>
           
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
           <div class="post-authors">
             <h4>Authors</h4>
@@ -187,16 +206,17 @@ an issue.</p>
               <section class="post-author-single flex p-10">
               
                 <div class="col-1-5">
-                  <img class="author-picture" src="https://pbs.twimg.com/profile_images/2186782633/simonbennetts2_400x400.jpg" />
+                  <img class="author-picture" src="" />
                 </div>
                 <div class="author-name col-4-5">
-                  Simon Bennets
-                  <a class="author-twitter" href="https://twitter.com/@psiinon">@psiinon</a>
+                  Jordan GS
+                  <a class="author-twitter" href="https://twitter.com/"></a>
                 </div>
               
               </section>
           
           </div>
+          <h5 id="wordcount"> 486 Words </h5>
                     
         </section>
       </aside>

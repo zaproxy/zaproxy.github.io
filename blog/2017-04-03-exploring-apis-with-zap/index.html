@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <base href="/">
   <title>OWASP ZAP</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -111,6 +110,10 @@
 <div class="wrapper py-70" data-kind="page">
     <div class="flex latest-versions">
       <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog">The ZAP Blog</a>
+          </div>
+
           <h1 class="post-title">Exploring APIs with ZAP</h1>
           <main class="post-content">
             <p>APIs can be challenging for security testing for a variety of reasons.<br>
@@ -127,8 +130,8 @@ However many APIs are described using technologies such as:</p>
 <p>To do this via the UI:</p>
 
 <figure>
-	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Manage-addons.png" alt="Alt title" />
-	<figcaption>Alt title</figcaption>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Manage-addons.png" alt="" />
+	<figcaption></figcaption>
 </figure>
 <ol>
 <li>Click on the ‘Manage Add-ons’ button</li>
@@ -140,8 +143,8 @@ However many APIs are described using technologies such as:</p>
 </ol>
 
 <figure>
-	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Marketplace.png" alt="Alt title" />
-	<figcaption>Alt title</figcaption>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Marketplace.png" alt="" />
+	<figcaption></figcaption>
 </figure>
 <p>To install them via the command line is even easier - just start ZAP with the command line flags: “-addoninstall soap -addoninstall openapi”<br>
 Eg:</p>
@@ -156,28 +159,28 @@ Eg:</p>
 </ul>
 <p>
 <figure>
-	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Tools-menu.png" alt="Alt title" />
-	<figcaption>Alt title</figcaption>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Tools-menu.png" alt="" />
+	<figcaption></figcaption>
 </figure><br>
 These menu items will open new dialogs which will allow you to specify the relevant file or URL to import.</p>
 <p>When the definitions have been imported they will be shown in the Sites tree:</p>
 
 <figure>
-	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Openapi-import.png" alt="Alt title" />
-	<figcaption>Alt title</figcaption>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Openapi-import.png" alt="" />
+	<figcaption></figcaption>
 </figure>
 <h2 id="importing-via-the-api">Importing via the API</h2>
 <p>Both add-ons support importing API definitions from URLs and local files.<br>
 You can try these out via the API Web UI:</p>
 <p>
 <figure>
-	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/web-api-openapi.png" alt="Alt title" />
-	<figcaption>Alt title</figcaption>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/web-api-openapi.png" alt="" />
+	<figcaption></figcaption>
 </figure><br>
 
 <figure>
-	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/web-api-soap.png" alt="Alt title" />
-	<figcaption>Alt title</figcaption>
+	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/web-api-soap.png" alt="" />
+	<figcaption></figcaption>
 </figure> Using the <a href="https://github.com/zaproxy/zap-api-java">Java API</a> client this can be done with
 calls like:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> String<span style="color:#f92672">&gt;</span> map1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  
@@ -231,18 +234,28 @@ including the active scanner and fuzzer.</p>
           </main>
           <div class="next-content">
               
-                <a class="previous" href="/blog/2017-02-06-introducing-the-jxbrowser-add-on-for-zap/"> Introducing the JxBrowser add-on for ZAP</a>
+                Prev: <a class="previous" href="/blog/2017-02-06-introducing-the-jxbrowser-add-on-for-zap/"> Introducing the JxBrowser add-on for ZAP</a>
               
               
-                <a class="next" href="/blog/2017-06-19-scanning-apis-with-zap/"> Scanning APIs with ZAP</a>
+                Next: <a class="next" href="/blog/2017-06-19-scanning-apis-with-zap/"> Scanning APIs with ZAP</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
           <h4 id="date"> Mon Apr 3, 2017 </h4>
-          <h5 id="wordcount"> 498 Words </h5>
           
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-the-add-ons">Installing the add-ons</a></li>
+    <li><a href="#importing-via-the-ui">Importing via the UI</a></li>
+    <li><a href="#importing-via-the-api">Importing via the API</a></li>
+    <li><a href="#spidering">Spidering</a></li>
+    <li><a href="#next-steps">Next steps</a></li>
+  </ul>
+</nav>
 
           <div class="post-authors">
             <h4>Authors</h4>
@@ -251,16 +264,17 @@ including the active scanner and fuzzer.</p>
               <section class="post-author-single flex p-10">
               
                 <div class="col-1-5">
-                  <img class="author-picture" src="https://pbs.twimg.com/profile_images/2186782633/simonbennetts2_400x400.jpg" />
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
                 </div>
                 <div class="author-name col-4-5">
-                  Simon Bennets
+                  Simon Bennetts
                   <a class="author-twitter" href="https://twitter.com/@psiinon">@psiinon</a>
                 </div>
               
               </section>
           
           </div>
+          <h5 id="wordcount"> 486 Words </h5>
                     
         </section>
       </aside>
