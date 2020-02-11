@@ -133,7 +133,7 @@ either the UI or the API.</p>
 <ol>
 <li>Explore your app while proxying through ZAP</li>
 <li>Login using a valid username and password</li>
-<li>Define a <a href="/docs/desktop/start/features/contexts/">Context</a>, eg by right clicking the top node of your app in the Sites tab and selecting <a href="/docs/desktop/ui/tabs/sites/#include-in-context">&ldquo;Include in Context&rdquo;</a></li>
+<li>Define a <a href="/docs/desktop/start/features/contexts/">Context</a>, e.g. by right clicking the top node of your app in the Sites tab and selecting <a href="/docs/desktop/ui/tabs/sites/#include-in-context">&ldquo;Include in Context&rdquo;</a></li>
 <li>Find the &lsquo;Login request&rsquo; in the Sites or History tab</li>
 <li>Right click it and select <a href="/docs/desktop/ui/tabs/sites/#flag-as-context">&ldquo;Flag as Context&rdquo;</a> / &quot; Form-based Auth Login request&rdquo;</li>
 <li>Check that the Username and Password parameters are set correctly - they almost certainly wont be!</li>
@@ -142,24 +142,9 @@ either the UI or the API.</p>
 <li>Double click on the relevant Context node and navigate to the &ldquo;Users&rdquo; page - check the user details are correct, add any other users you want to use and enable them all</li>
 <li>Navigate to the Context &ldquo;Forced User&rdquo; page and make sure the user you want to test is selected</li>
 <li>The <img src="/docs/desktop/images/fugue/forcedUserOff.png" alt=""> &ldquo;<a href="/docs/desktop/ui/tltoolbar/#--forced-user-mode-on--off">Forced User Mode disabled - click to enable</a>&rdquo; button should now be enabled</li>
-<li>Pressing this button in will cause ZAP to resend the authentication request whenever it detects that the user is no longer logged in, ie by using the &lsquo;logged in&rsquo; or &lsquo;logged out&rsquo; indicator.</li>
+<li>Pressing this button in will cause ZAP to resend the authentication request whenever it detects that the user is no longer logged in, i.e. by using the &lsquo;logged in&rsquo; or &lsquo;logged out&rsquo; indicator.</li>
 </ol>
-<p>Via the API the process is the same but using the API calls:</p>
-<ol>
-<li><a href="https://github.com/zaproxy/zaproxy/wiki/ApiGen_context">context/includeInContext</a></li>
-<li><a href="https://github.com/zaproxy/zaproxy/wiki/ApiGen_authentication">authentication/setAuthenticationMethod</a></li>
-</ol>
-<ul>
-<li><code>authMethodName : formBasedAuthentication</code></li>
-<li><code>authMethodConfigParams : loginUrl=http://example.com/login.html&amp;loginRequestData=username%3D%7B%25username%25%7D%26password%3D%7B%25password%25%7D</code>
-<ol>
-<li><a href="https://github.com/zaproxy/zaproxy/wiki/ApiGen_authentication">authentication/setLoginIndicator</a> or <code>setLogoutIndicator</code></li>
-<li><a href="https://github.com/zaproxy/zaproxy/wiki/ApiGen_forcedUser">forcedUser/setForcedUserModeEnabled</a></li>
-</ol>
-</li>
-</ul>
-<p>The values for authMethodConfigParams parameters must be URL encoded, in this
-case loginRequestData is <code>username={%username%}&amp;password={%password%}</code></p>
+<p>The <a href="/docs/api/#form-based-authentication">API documentation</a> explains the above process using the ZAP API.</p>
 <h2 id="diagnosing-problems">Diagnosing problems</h2>
 <p>If the &ldquo;Forced User Mode disabled - click to enable&rdquo; button is not enabled
 then you have not configured enough information for ZAP to authenticate -

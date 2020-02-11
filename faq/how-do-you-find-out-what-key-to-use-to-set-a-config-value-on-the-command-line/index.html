@@ -125,26 +125,25 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <p>The ZAP command line allows you to set individual values as follows:</p>
+            <p>The <a href="/docs/desktop/cmdline/">ZAP command line</a> allows you to set individual values as follows:</p>
 <pre><code>-config api.key=12345 -config connection.timeoutInSecs=60
 </code></pre>
 <p>How can you find out what keys to use to set the values you want?</p>
 <p>The keys are a dot notation of the XML used in the config.xml file.</p>
 <p>One way to find out which value you need to change is:</p>
 <ol>
-<li>Start ZAP with a clean directory, eg * ./zap.sh -dir test1</li>
+<li>Start ZAP with a clean directory, e.g. <code>./zap.sh -dir test1</code></li>
 <li>Close ZAP</li>
-<li>Start ZAP with another clean directory, eg * ./zap.sh -dir test2</li>
+<li>Start ZAP with another clean directory, e.g. <code>./zap.sh -dir test2</code></li>
 <li>Set the option you want to know the key of</li>
 <li>Close ZAP</li>
-<li>Diff the 2 config files: * diff test1/config.xml test2/config.xml</li>
+<li>Diff the 2 config files: <code>diff test1/config.xml test2/config.xml</code></li>
 <li>Work out the XML hierarchy of the item that has changed</li>
 <li>Convert that to dot notation</li>
 </ol>
 <p>For example, the default scanner strength level is in:</p>
-<pre><code>&lt;scanner&gt;&lt;strength&gt;MEDIUM&lt;/strength&gt;&lt;/scanner&gt;
-</code></pre>
-<p>Which in dot notation is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-XML" data-lang="XML"><span style="color:#f92672">&lt;scanner</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">&lt;strength</span><span style="color:#f92672">&gt;</span>MEDIUM<span style="color:#f92672">&lt;/strength&gt;</span><span style="color:#f92672">&lt;/scanner&gt;</span>
+</code></pre></div><p>Which in dot notation is:</p>
 <pre><code>scanner.strength=MEDIUM
 </code></pre>
 <p>Note that you can set &lsquo;arrays&rsquo; using keys like:</p>

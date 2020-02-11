@@ -438,6 +438,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/neonmarker/">Neonmarker</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/online-menu/">Online Menu</a>
         <ul class="tree-branch">
         </ul>
@@ -1194,7 +1200,7 @@
 <p>The following alpha quality active scan rules are included in this add-on:</p>
 <h2 id="an-example-active-scan-rule-which-loads-data-from-a-file">An example active scan rule which loads data from a file</h2>
 <p>This implements an example active scan rule that loads strings from a file that the user can edit.<br>
-For more details see: <a href="http://zaproxy.blogspot.co.uk/2014/04/hacking-zap-4-active-scan-rules.html">Hacking ZAP Part 4: Active Scan Rules.</a></p>
+For more details see: <a href="/blog/2014-04-30-hacking-zap-4-active-scan-rules/">Hacking ZAP Part 4: Active Scan Rules</a>.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/ExampleFileActiveScanner.java">ExampleFileActiveScanner.java</a></p>
 <h2 id="cloud-metadata-attack">Cloud Metadata Attack</h2>
 <p>Attempts to abuse a misconfigured NGINX server in order to access the instance metadata maintained by cloud service providers such as AWS, GCP and Azure.<br>
@@ -1205,7 +1211,7 @@ All of these providers provide metadata via an internal unroutable IP address &l
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/EnvFileScanner.java">EnvFileScanner.java</a></p>
 <h2 id="example-active-scanner-denial-of-service">Example Active Scanner: Denial of Service</h2>
 <p>This implements a very simple example active scan rule.<br>
-For more details see: <a href="http://zaproxy.blogspot.co.uk/2014/04/hacking-zap-4-active-scan-rules.html">Hacking ZAP Part 4: Active Scan Rules.</a></p>
+For more details see: <a href="/blog/2014-04-30-hacking-zap-4-active-scan-rules/">Hacking ZAP Part 4: Active Scan Rules</a>.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/ExampleSimpleActiveScanner.java">ExampleSimpleActiveScanner.java</a></p>
 <h2 id="hidden-file-finder">Hidden File Finder</h2>
 <p>This scan rule checks for various web accessible files which may leak administrative, configuration, or credential information. The built-in set of payloads are based on <a href="https://github.com/hannob/snallygaster">Snallygaster</a> by Hanno Böck. Such payloads are verified by checking response code, and content. If the response code is 200 (Ok) then additional content checks are performed to increase alert confidence. If the response code is 401 (Unauthorized) or 403 (Forbidden) then an alert is raised with lower confidence. <strong>Note:</strong> If the Custom Payloads addon is installed you can add your own hidden file paths (payloads) in the Custom Payloads options panel. For custom payloads only the response status code is checked. If there is a requirement to include a content check then it is also possible to add payloads to the <code>json/hidden_files.json</code> file in ZAP's user directory.</p>

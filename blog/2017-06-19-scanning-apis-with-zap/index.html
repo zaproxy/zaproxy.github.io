@@ -115,12 +115,12 @@
     <div class="flex latest-versions">
       <article class="col-2-3 pr-30 content single-post">
           <div class="breadcrumbs">
-              <a href="/blog">The ZAP Blog</a>
+              <a href="/blog/">The ZAP Blog</a>
           </div>
 
           <h1 class="post-title">Scanning APIs with ZAP</h1>
           <main class="post-content">
-            <p>The previous ZAP blog post explained how you could <a href="https://zaproxy.blogspot.com/2017/04/exploring-apis-with-zap.html">Explore APIs with ZAP</a>.<br>
+            <p>The previous ZAP blog post explained how you could <a href="/blog/2017-04-03-exploring-apis-with-zap/">Explore APIs with ZAP</a>.<br>
 This blog post goes one step further, and explains how you can both explore and perform security scanning of APIs using ZAP from the command
 line.<br>
 This allows you to easily automate the scanning of your APIs.</p>
@@ -146,7 +146,7 @@ escape data that has been originally entered via a user.</p>
 <h3 id="command-line-options">Command Line Options</h3>
 <p>The script has a number of command line options that allow it to be tuned to your requirements:</p>
 <pre><code>Usage: zap-api-scan.py -t &lt;target&gt; -f &lt;format&gt; [options]  
-    -t target         target API definition, OpenAPI or SOAP, local file or URL, eg https://www.example.com/openapi.json  
+    -t target         target API definition, OpenAPI or SOAP, local file or URL, e.g. https://www.example.com/openapi.json  
     -f format         either openapi or soap  
 Options:  
     -c config_file    config file to use to INFO, IGNORE or FAIL warnings  
@@ -163,7 +163,7 @@ Options:
     -l level          minimum level to show: PASS, IGNORE, INFO, WARN or FAIL, use with -s to hide example URLs  
     -n context_file   context file which will be loaded prior to scanning the target  
     -p progress_file  progress file which specifies issues that are being addressed  
-    -s                short output format - dont show PASSes or example URLs  
+    -s                short output format - don't show PASSes or example URLs  
     -z zap_options ZAP command line options e.g. -z &quot;-config aaa=bbb -config ccc=ddd&quot;  
 </code></pre><h3 id="scan-rules">Scan Rules</h3>
 <p>By default the script will use a <a href="/docs/desktop/start/features/scanpolicy/">Scan Policy</a> tuned for APIs.<br>
@@ -192,12 +192,12 @@ For example the options:</p>
   -config formhandler.fields.field\\(1\\).value=012345678 \  
   -config formhandler.fields.field\\(1\\).enabled=true  
 </code></pre><p>Will supply the following values to the named fields:<br>
-  username -&gt; <a href="mailto:test@example.com">test@example.com</a><br>
-  phone -&gt; 012345678<br>
+  <code>username</code> -&gt; <code>test@example.com</code><br>
+  <code>phone</code> -&gt; <code>012345678</code><br>
 Support for specifying values for APIs defined using SOAP is also planned – if you need this then get in touch with the ZAP development team and
 we will do our best to prioritize this.</p>
 <p>Note that as these are ZAP command line options you will need to specify them to the script using the -z script option.<br>
-If you need to specify lots of options then you can put them all in a property file, eg called options.prop<br>
+If you need to specify lots of options then you can put them all in a property file, e.g. called options.prop<br>
 You can then run the API scan using a command like:</p>
 <pre><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py \  
     -t https://www.example.com/openapi.json -f openapi \  
@@ -221,8 +221,8 @@ For example the options:</p>
   -config replacer.full_list\\(1\\).regex=false \  
   -config replacer.full_list\\(1\\).replacement=abcdefghi  
 </code></pre><p>will cause the following headers to be added to every request ZAP makes:<br>
-  Authorization: 123456789<br>
-  AnotherHeader: abcdefghi<br>
+  <code>Authorization: 123456789</code><br>
+  <code>AnotherHeader: abcdefghi</code><br>
 You can specify as many headers as you need to by using incrementing indexes.</p>
 <p>This functionality is provided by the <a href="/docs/desktop/addons/replacer/">Replacer</a> add-on included by
 default with ZAP. It is very powerful and can do much more than just inject new header values, so if you need to manipulate the requests ZAP

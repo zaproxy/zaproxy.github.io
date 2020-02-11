@@ -438,6 +438,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/neonmarker/">Neonmarker</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/online-menu/">Online Menu</a>
         <ul class="tree-branch">
         </ul>
@@ -1227,7 +1233,7 @@ At LOW threshold all responses apart from images and CSS are considered includin
 <p>Raises an alert if the response is lacking a Content-Type header or if the header exists but the value is empty.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentTypeMissingScanner.java">ContentTypeMissingScanner.java</a></p>
 <h2 id="cookie-httponly">Cookie HttpOnly</h2>
-<p>Ensures that as cookies are set they are flagged HttpOnly. The HttpOnly flag indicates to browsers that the cookie being set should be acted upon by client side script (such as JavaScript).</p>
+<p>Ensures that as cookies are set they are flagged HttpOnly. The HttpOnly flag indicates to browsers that the cookie being set should not be acted upon by client side script (such as JavaScript).</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CookieHttpOnlyScanner.java">CookieHttpOnlyScanner.java</a></p>
 <h2 id="cookie---loosely-scoped">Cookie - Loosely Scoped</h2>
 <p>Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. <a href="http://www.nottrusted.com,">www.nottrusted.com,</a> or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com.</p>
@@ -1271,7 +1277,7 @@ Note: Javascript responses are only assessed at LOW threshold.</p>
 <p>Attempts to identify the existence of sensitive details within the visited URIs themselves (this may include parameters, document names, directory names, etc.).</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InformationDisclosureInURL.java">InformationDisclosureInURL.java</a></p>
 <h2 id="information-disclosure-referrer">Information Disclosure: Referrer</h2>
-<p>Identifies the existence of sensitive details within the the Referrer header field of HTTP requests (this may include parameters, document names, directory names, etc.).</p>
+<p>Identifies the existence of sensitive details within the Referrer header field of HTTP requests (this may include parameters, document names, directory names, etc.).</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InformationDisclosureReferrerScanner.java">InformationDisclosureReferrerScanner.java</a></p>
 <h2 id="information-disclosure-suspicious-comments">Information Disclosure: Suspicious Comments</h2>
 <p>Analyzes web content to identify comments which contain potentially sensitive details. Which may lead to further attack or exposure of unintended data.</p>

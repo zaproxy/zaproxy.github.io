@@ -125,17 +125,16 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <h1 id="vaadin-guideance">Vaadin Guideance</h1>
-<p>The information in this FAQ is based on details from:
+            <p>The information in this FAQ is based on details from:
 <a href="https://groups.google.com/forum/#!topic/zaproxy-users/wXAX_5MmIxA">This user group thread</a></p>
 <p>The Vaadin framework makes heavy use of JavaScript, so it seems the Ajax Spider is the way to go.</p>
 <p>As you work to figure things out and get them configured correctly it makes sense to starting by proxying your browser through ZAP, identifying the http session and then flagging it as the &lsquo;active session&rsquo; before starting the Ajax Spider.</p>
 <p>You may need to look at the source of various components to make sure the spider can effectively navigate your app.</p>
 <p>For example use the Firefox &lsquo;right click&rsquo; &lsquo;Inspect Element&rsquo; for this, but you can also use the ZAP Response tab or the View Source in your browser of choice.
 The login button is defined as:</p>
-<pre><code>&lt;div class=&quot;v-button v-widget primary v-button-primary&quot; role=&quot;button&quot; tabindex=&quot;0&quot;&gt;
-&lt;span class=&quot;v-button-wrap&quot;&gt;&lt;span class=&quot;v-button-caption&quot;&gt;Sign In&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;
-</code></pre><p>So its a div. Great. Why use HTML conventions when you can do anything you like? ;)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button v-widget primary v-button-primary&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">tabindex</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>&gt;
+&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button-wrap&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button-caption&#34;</span>&gt;Sign In&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</code></pre></div><p>So it's a div. Great. Why use HTML conventions when you can do anything you like? ;)
 Anyway, this means that the default elements (a, button, input) won't be enough, so in Options / AJAX Spider uncheck &lsquo;Click default elements only (a, button, input)'. This might actually be enough to make it all work.
 However for me the loading time looked like it was over 1 second, so I increased the Options / AJAX Spider &lsquo;Event&rsquo; and &lsquo;Reload&rsquo; wait times.</p>
 <p>This then meant that crawling from <a href="https://demo.vaadin.com/dashboard">https://demo.vaadin.com/dashboard</a> with the Ajax Spider worked - initially it just keeps reloading the login page but eventually it did get to the real content. It takes time because it now has to click on every div as it can't know which will do things and which won't.</p>
