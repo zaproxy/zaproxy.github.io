@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.ac56d.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/zap-in-ten/" title="ZAP in Ten page">
+                  ZAP in Ten
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/get-involved/" title="Get Involved page">
+                  Get Involved
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <h1 class="post-title">ZAP Newsletter - 2016 January</h1>
+          <main class="post-content">
+            <h2 id="introduction">Introduction</h2>
+<p>Happy New Year!<br>
+For the first newsletter of 2016 we have a special feature on a new vulnerability <strong>“XCOLD Information Leak”</strong> that caught the eye of one of our
+key contributors, how he found it and how you can use a new ZAP rule to detect it.</p>
+<h2 id="news">News</h2>
+<p>Steve Springett (<a href="https://twitter.com/stevespringett">@stevespringett</a>) has implemented a <a href="https://github.com/stevespringett/zap-sonar-plugin">ZAP Sonar plugin</a> which integrates ZAP into SonarQube v5.1 or higher. He’s also looking for anyone interested in maintaining this going
+forwards, so please have a play with it and get in touch with Steve and/or myself if you might be interested in keeping it going. Don't worry if
+you don't know much about the ZAP side of things, we can help with that!</p>
+<p>A new release of the ZAP Jenkins plugin is now available. You can download it here :
+<a href="https://wiki.jenkins-ci.org/display/JENKINS/ZAProxy+Plugin">https://wiki.jenkins-ci.org/display/JENKINS/ZAProxy+Plugin</a>.<br>
+This release implements the form based authentication method and fixes some issues.</p>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zapbot.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>Do you want to know things like:</p>
+<ul>
+<li>How many downloads ZAP gets?</li>
+<li>What are the most popular ZAP add-ons?</li>
+<li>How ZAP performs against <a href="https://github.com/sectooladdict/wavsep">wavsep</a> and <a href="https://github.com/bedirhan/wivet">wivet</a>?</li>
+</ul>
+<p>You can find all of that out via: <a href="https://zapbot.github.io/zap-mgmt-scripts/index.html">https://zapbot.github.io/zap-mgmt-scripts/index.html</a><br>
+These stats are maintained by zapbot, which now even has its own icon :)</p>
+<h2 id="new--improved-add-ons">New / Improved Add-ons</h2>
+<p><em>This section details add-ons that have been added or significantly updated since the last newsletter.</em><br>
+Add-ons are available to download and install within ZAP.<br>
+Just click on the ‘Manage Add-ons’ toolbar button and select the Marketplace tab:</p>
+<p><img src="/img/zap-screenshot-browse-addons.png" alt=""></p>
+<p>Note that all add-ons on the Marketplace are completely free and open source and anyone can publish add-ons to it - see the <a href="https://github.com/zaproxy/zap-extensions/wiki/AddOnDevelopment">zap-extensions
+wiki</a> for details.</p>
+<p>The <a href="/docs/desktop/addons/selenium/">Selenium</a> add-on has been updated to include the latest version of
+the selenium jar - this fixes problems with the latest version of Firefox so update asap.</p>
+<p>The <a href="/docs/desktop/addons/passive-scan-rules-alpha/">Passive scan rules - alpha</a> have been updated to
+include a new scanner for identifying info leaks via X-ChromeLogger-Data or X-ChromePhp-Data. See the special feature below.</p>
+<h2 id="special-feature-xcold-information-leak">Special Feature: XCOLD Information Leak</h2>
+<p>This special feature from Kingthorin (<a href="https://github.com/kingthorin">kingthorin</a>) explains how functionality aimed at assisting developers
+caught the eye of an IT Security Professional:</p>
+<p>Ottawa ended up with an uncharacteristically green Christmas this year, but finally got snow as I’m drafting this (Dec 29th), so I'm going to
+dub this the XCOLD Info Leak ( <strong>X</strong> - <strong>C</strong> hr <strong>O</strong> me <strong>L</strong> ogger- <strong>D</strong> ata).</p>
+<p>It all started rather innocently when an item in the <a href="https://www.mozilla.org/en-US/firefox/43.0/releasenotes/">Firefox 43 release notes</a> caught
+my eye:</p>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/firefox-43.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>With my penetration tester hat on all I could think was: “Huh? What? I can get server logs in a client? Sweet, I can think of all sorts of Low
+to Pwned scenarios … Yay!”</p>
+<p>Off I went to read further:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Console_messages#Server">https://developer.mozilla.org/en-US/docs/Tools/Web_Console/Console_messages#Server</a>,</li>
+<li><a href="https://craig.is/writing/chrome-logger">https://craig.is/writing/chrome-logger</a>.</li>
+</ul>
+<p>Basically it boils down as follows:</p>
+<ul>
+<li>Decide you want server side messages available to clients.</li>
+<li>Stick some code into your web app.
+<ul>
+<li>Support seems to be quite extensive: Python, PHP, Ruby, Node.js, .NET, ColdFusion, Go, Java, and Perl. Though the majority of the existing install/usage seems to be PHP.</li>
+</ul>
+</li>
+<li>Boom get messages in the browser (Chrome requires an extension, while Firefox now has native support).
+<ul>
+<li>Messages are returned as Base64 encoded JSON via the response header X-ChromeLogger-Data.</li>
+<li>Browsing <a href="https://github.com/ccampbell/chromelogger/issues">https://github.com/ccampbell/chromelogger/issues</a> one can also learn that older or alternate implementations use(d) X-ChromePhp-Data.</li>
+</ul>
+</li>
+</ul>
+<p>Curious to see if this was already in Production use I headed over to Shodan, to see what there was to see. The following images are courtesy of
+Shodan, <a href="https://www.shodan.io">via www.shodan.io</a> .</p>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/shodan1.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>Ok so X-ChromeLogger-Data is in use. Not extensively but the numbers are increasing. The image here is from 2015-12-29, I had previously poked
+around on this topic around the 18th. Though I don’t remember the specific number I’d previously queried there seems to have been an increase in
+a short period and over the holidays.</p>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/shodan2.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>It also seems that X-ChromePhp-Data is in use to a much lesser extent. So off I go to see what kind of data people might be exposing.</p>
+<p>Keep in mind the following findings are based on public data, I’m not revealing anything here that the site(s) haven’t already revealed to the
+world.</p>
+<p>Below I’ve just copied the Base64 encoded header values from the Shodan results and run them through the handy online decoder at
+<a href="https://www.base64decode.org/">https://www.base64decode.org/</a>.</p>
+<p><em>Alternative 1</em> : Proxy your shodan result browsing through ZAP, select the base64 string and use the “Encode/Decode/Hash” context menu:</p>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-1.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-2.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p><em>Alternative 2</em> : You could also pop the dev tools console (F12) and do a atob(“”); and hit enter. For example atob(“ZW5jb2RlIHRoaXM=”); returns
+encode this. I used the online service below since the dev tools console doesn’t line wrap :(</p>
+<p>Picking the first X-ChromePhp-Data shodan result I got the following:<br>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-3.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+Ok not terribly revealing, however it does give the entire disk location of AppController.php. Might be able to leverage that in other attacks
+or use the knowledge to social engineer something.</p>
+<p>Here’s another example that’s really verbose, note <code>Undefined index: admin</code> references:<br>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-4.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+<p>Here’s another, note the failures in processing various tokens, PREBODY, and HTTP_USER_AGENT. Those details might lead a pentester to another
+useful finding such as UA specific response or UA injection of some sort.<br>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-5.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+<p>Here’s one that appears to be a WordPress plugin:
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-6.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+<p>Here’s what seems to be a windows host running some WordPress gallery:
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-7.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+<p>To top it off, here’s an example leaking raw SQL details:
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/zap-xcold-8.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+<p>I guess that’s enough examples. As you can see a ton of information is and can be leaked via this functionality.</p>
+<p>While the benefits to a developer are obvious I would suggest that the following considerations or implementation choices be made if using the
+functionality:</p>
+<ol>
+<li>Do you want this turned on for Production use?</li>
+<li>If you do want it on for Production use can you ensure that you don’t leak information that might be leveraged by an attacker or malicious individual?</li>
+<li>Can you tie it to your authorization framework so that the information (header + content) is returned only to admins and support personnel not “all” users?</li>
+</ol>
+<p>Curious if your app or site is exposing anything similar to the examples above? Do you have the XCOLD Info Leak? Checkout the new ZAP passive
+plugin that looks for and identifies information leaks via X-ChromeLogger-Data and X-ChromePhp-Data. This is included in the latest Passive scan
+rules - alpha available from the <a href="/addons/">ZAP Marketplace</a>.</p>
+<p>Update: Here's a slide deck from a presentation kingthorin recently did on XCOLD with OWASP-Ottawa: <a href="https://files.meetup.com/12990252/XCOLD-OWASP-Ottawa-20160125.pdf">https://files.meetup.com/12990252/XCOLD-OWASP-Ottawa-20160125.pdf</a></p>
+<h2 id="upcoming-talks-and-training">Upcoming Talks and Training</h2>
+<p><strong>Akash Mahajan</strong> (<a href="https://twitter.com/makash">@makash</a>, the founder of The App Sec Lab) will be running a hands on workshop: &ldquo;Application #SecurityTesting with OWASP ZAP&rdquo; at the Open Source Summit on February 6th in Bangalore:
+<a href="https://www.facebook.com/joinunicom/photos/a.10151206545805033.498192.288931845032/10153652426465033/?type=1&amp;theater">https://www.facebook.com/joinunicom/photos/a.10151206545805033.498192.288931845032/10153652426465033/?type=1&amp;theater</a></p>
+<h2 id="featured-contributor-paulo-brito">Featured Contributor: Paulo Brito</h2>
+<p><em>Each month we introduce you to one of the many ZAP contributors.</em></p>
+
+<figure>
+	<img src="/blog/2016-01-04-zap-newsletter-2016-january/images/pbrito.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p><strong>Q: Who are you?</strong></p>
+<p><strong>A:</strong> Paulo Brito (aka PB, <a href="https://twitter.com/pbrito1">@pbrito1</a>), computer security enthusiast, computer science student.</p>
+<p><strong>Q: Where are you based?</strong></p>
+<p><strong>A:</strong> Campinas, Brazil</p>
+<p><strong>Q: What do you do in your day job?</strong></p>
+<p><strong>A:</strong> I am a journalist. I work as a free lancer, writing mainly IT and business stories for a couple of brazilian newspapers and magazines. I
+also publish a blog on computer security at <a href="http://www.cibersecurity.com.br">www.cibersecurity.com.br</a>.</p>
+<p><strong>Q: Why do you contribute to ZAP?</strong></p>
+<p><strong>A:</strong> ZAP is a fantastic security tool. As I localize it for PT BR I help to make ZAP resources available for all portuguese speaking students
+and information security professionals. I'd love to also contribute writing code but I'm still learning, so the best way I could contribute to
+the ZAP community was localizing the framework.</p>
+<p><strong>Q: How do you contribute to ZAP?</strong></p>
+<p><strong>A:</strong> I am currently translating the help files and the user interface. At this moment roughly 70% of the work is done. It's a lot of text, so
+it's taking also a lot of time. Sometimes I have to step back and retranslate when an improvement is deployed, and this will happen forever,
+because ZAP will always being improved.</p>
+<p><strong>Q: What would you like to contribute in the future?</strong></p>
+<p><strong>A:</strong> I will certainly be available to keep the localization updated.</p>
+<p><strong>Q: What do you like about the ZAP community?</strong></p>
+<p><strong>A:</strong> I like the fact that ZAP is a community with an important goal, developing an extremely important tool for web/computer security pros, and
+that really cares about its members, maintaining them always informed on what's going on.</p>
+<p><strong>Q: What do you get out of contributing?</strong></p>
+<p><strong>A:</strong> I get the pleasure of contributing to a build a superb computer security framework, besides learning how to use ZAP and understanding how
+each feature is designed to check a security flaw. I also get a better understanding on how these flaws need to be fixed.</p>
+<p><strong>Q: Do you have any advice for people who would like to contribute to ZAP?</strong></p>
+<p><strong>A:</strong> I would say that this is a project that's worth to contribute to. The project has a clear objective and its development is of great value
+to the community of information security professionals. Its members are talented people, dedicated to a good cause and deserve all the help we
+can give, contributing to strengthening the ZAP project.</p>
+<p><strong>Q: Do you contribute to any other open source projects?</strong></p>
+<p><strong>A:</strong> No. ZAP is the only project I am currently contributing to.</p>
+<p><strong>Q: What do you do outside of work?</strong></p>
+<p><strong>A:</strong> Outside of my work I like to listen classical music – I am a fan of Mozart and Bach -, watch aviation documentaries and travelling when
+possible.</p>
+<p><strong>Q: What do you [most] dislike about the ZAP development?</strong></p>
+<p><strong>A:</strong> I don't see any point I could dislike regarding the development. To the contrary, what I see is all the coders/testers working all the
+time to improve the framework</p>
+<p><strong>Q: What do you think could be done [a lot] better?</strong></p>
+<p><strong>A:</strong> I don't exactly how, but may be OWASP could start (if didn't yet) evangelizing on ZAP to universities faculty and students, besides doing
+some PR (public relations) to enlarge the users base and the volunteers community as well.</p>
+<h2 id="feedback">Feedback</h2>
+<p>Please fill in this quick <a href="https://docs.google.com/forms/d/1_XaettHPjLOD56AbSlui67gk-771yJ_xfd7w2lSEdXw/viewform?usp=send_form">Feedback Form</a>
+so that we can make sure this newsletter is as useful to you as possible.</p>
+<h2 id="coming-next-month">Coming next month…</h2>
+<p>That depends on you!<br>
+Let us know what you would like to see using the above feedback form.<br>
+If you would like to write content for the newsletter then please get in touch - anything ZAP related, such as talks / training you are giving,
+a 3rd party tool you develop or maybe an add-on you’d like to explain in more detail.<br>
+And we’re also looking for one or more editors for the ZAP newsletter - you don't need any detailed ZAP knowledge, just a bit of time each month
+you can dedicate to chasing up people for content and bashing it into something that reads better than this one :P Think that's you? Get in
+touch!</p>
+<p>Simon Bennetts (ZAP Project Lead)</p>
+
+          </main>
+          <div class="next-content">
+              
+                Prev: <a class="previous" href="/blog/2015-12-15-zap-newsletter-2015-december/"> ZAP Newsletter - 2015 December</a>
+              
+              
+                Next: <a class="next" href="/blog/2016-02-19-zap-newsletter-2016-february/"> ZAP Newsletter - 2016 February</a>
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          <h4 id="date"> Mon Jan 4, 2016 </h4>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#new--improved-add-ons">New / Improved Add-ons</a></li>
+    <li><a href="#special-feature-xcold-information-leak">Special Feature: XCOLD Information Leak</a></li>
+    <li><a href="#upcoming-talks-and-training">Upcoming Talks and Training</a></li>
+    <li><a href="#featured-contributor-paulo-brito">Featured Contributor: Paulo Brito</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="#coming-next-month">Coming next month…</a></li>
+  </ul>
+</nav>
+
+          <div class="post-authors">
+            <h4>Authors</h4>
+            
+            
+              <section class="post-author-single flex p-10">
+              
+                <div class="col-1-5">
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                </div>
+                <div class="author-name col-4-5">
+                  Simon Bennetts
+                  <a class="author-twitter" href="https://twitter.com/@psiinon">@psiinon</a>
+                </div>
+              
+              </section>
+          
+          </div>
+          <h5 id="wordcount"> 1796 Words </h5>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <nav class="footer-nav">
+      <ul class="flex">        
+      
+      
+        
+          <li class="ml-10">
+            <a href="/" title="Home page">
+              Home
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/zap-in-ten/" title="ZAP in Ten page">
+              ZAP in Ten
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/get-involved/" title="Get Involved page">
+              Get Involved
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/support/" title="Support page">
+              Support
+            </a>
+          </li>
+        
+      
+      </ul>
+    </nav>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Flagship project</a><br>
+      © Copyright 2020 the ZAP Dev Team
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ac56d.js"></script>
+  
+</div>
+</body>
+</html>

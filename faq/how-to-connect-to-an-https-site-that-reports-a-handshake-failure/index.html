@@ -134,8 +134,8 @@ reload the content to see if the issue is resolved.</p>
 installing the &lsquo;Java Cryptography Extension (JCE) Unlimited Strength
 Jurisdiction Policy Files&rsquo;:</p>
 <ul>
-<li>Java 8 : <a href="http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html">http://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html</a></li>
-<li>Java 9 : Should not require the JCE Policy Files, per <a href="http://www.oracle.com/technetwork/java/javase/terms/readme/jdk9-readme-3852447.html#jce">JDK 9 Readme</a> (as reviewed 20171212):</li>
+<li>Java 8 : <a href="https://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html">https://www.oracle.com/technetwork/java/javase/downloads/jce8-download-2133166.html</a></li>
+<li>Java 9 : Should not require the JCE Policy Files, per <a href="https://www.oracle.com/technetwork/java/javase/terms/readme/jdk9-readme-3852447.html#jce">JDK 9 Readme</a> (as reviewed 20171212):</li>
 </ul>
 <blockquote>
 <p>The default JCE policy files bundled in this Java Runtime Environment allow
@@ -147,19 +147,18 @@ to start ZAP with an installed JRE from the command line, or you can edit
 <code>zap.sh</code> located under <code>/Applications/OWASP ZAP.app/Contents/Java</code> and comment
 out the statement shown below(as of version 2.5.0), the script will launch
 automatically using the JRE from the system:</p>
-<pre><code>#if [ &quot;$OS&quot; = &quot;Darwin&quot; ]; then
-#  if [ -e ../PlugIns/jre*/Contents/Home/bin/java ]; then
-#    pushd ../PlugIns/jre*/Contents/Home/bin &gt; /dev/null
-#    JAVA_PATH=`pwd -P`
-#    PATH=&quot;$JAVA_PATH:$PATH&quot;
-#    popd &gt; /dev/null
-#  fi
-#fi
-</code></pre>
-<p>Java 8 users note you may encounter SSLHandshakeException, on sites that
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#if [ &#34;$OS&#34; = &#34;Darwin&#34; ]; then</span>
+<span style="color:#75715e">#  if [ -e ../PlugIns/jre*/Contents/Home/bin/java ]; then</span>
+<span style="color:#75715e">#    pushd ../PlugIns/jre*/Contents/Home/bin &gt; /dev/null</span>
+<span style="color:#75715e">#    JAVA_PATH=`pwd -P`</span>
+<span style="color:#75715e">#    PATH=&#34;$JAVA_PATH:$PATH&#34;</span>
+<span style="color:#75715e">#    popd &gt; /dev/null</span>
+<span style="color:#75715e">#  fi</span>
+<span style="color:#75715e">#fi</span>
+</code></pre></div><p>Java 8 users note you may encounter SSLHandshakeException, on sites that
 support RC4 ciphers. More info
 <a href="https://github.com/zaproxy/zaproxy/issues/1892#issuecomment-139906996">here</a>,
-and <a href="http://stackoverflow.com/questions/32009083/javax-net-ssl-sslhandshakeexception-handshake-failure-when-using-jmeter-with-ss">here</a>.
+and <a href="https://stackoverflow.com/questions/32009083/javax-net-ssl-sslhandshakeexception-handshake-failure-when-using-jmeter-with-ss">here</a>.
 Solution(s): Disable RC4 on the server.</p>
 <p>If you're in a corporate or business environment that normally requires the
 use of an Enterprise proxy you can have ZAP use it as well via the <a href="/docs/desktop/ui/dialogs/options/connection/">Options :
@@ -172,7 +171,7 @@ Group</a>.</p>
 <h2 id="error-javalangruntimeexception-could-not-generate-dh-keypair">Error &ldquo;java.lang.RuntimeException: Could not generate DH keypair&rdquo;</h2>
 <p>The error and the likely cause is described in
 <a href="https://github.com/zaproxy/zaproxy/issues/2626">#2626</a>: Java 8 does not
-support DH parameters with more than 2048 bit. It works with Java 9 (Debian:</p>
+support DH parameters with more than 2048 bit. It works with Java 9 (Debian: Install <code>openjdk-9-jre</code>).</p>
 
           </main>
       </article>

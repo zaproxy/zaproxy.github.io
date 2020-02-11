@@ -115,22 +115,22 @@
     <div class="flex latest-versions">
       <article class="col-2-3 pr-30 content single-post">
           <div class="breadcrumbs">
-              <a href="/blog">The ZAP Blog</a>
+              <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">ZAP Newsletter  2016 March</h1>
+          <h1 class="post-title">ZAP Newsletter - 2016 March</h1>
           <main class="post-content">
             <h2 id="introduction">Introduction</h2>
 <p>Welcome to the March newsletter, read on for some really good news, details of the new site level stats ZAP now supports and an introduction to
 scripting.</p>
 <h2 id="news">News</h2>
 <p>The big new this month is that ZAP was voted the <strong>TOP</strong> free/open source security tool for 2015 by Toolswatch readers:
-<a href="http://www.toolswatch.org/2016/02/2015-top-security-tools-as-voted-by-toolswatch-org-readers/">http://www.toolswatch.org/2016/02/2015-top-security-tools-as-voted-by-toolswatch-org-readers/</a><br>
+<a href="https://www.toolswatch.org/2016/02/2015-top-security-tools-as-voted-by-toolswatch-org-readers/">https://www.toolswatch.org/2016/02/2015-top-security-tools-as-voted-by-toolswatch-org-readers/</a><br>
 This is the second time we've come top and is a great validation of what we are doing. Thank you to all of you who voted for us!</p>
 <p>Other important news is that ZAP is taking part in the Google Summer of Code (GSoC) 2016. For those of you who don't know, GSoC pays students to
 work on open source projects over the summer, and we've had key ZAP features like WebSockets, the Ajax Spider and Access Control testing
 implement by GSoC students.<br>
-The deadline for submissions has just passed and we've had 9 ZAP proposals. We'll evaluate those asap, but we dont currently know how many slots
+The deadline for submissions has just passed and we've had 9 ZAP proposals. We'll evaluate those asap, but we don't currently know how many slots
 OWASP (and ZAP) will actually get so fingers crossed!</p>
 <p>And in other breaking news, CommonSense Media have just published a Information Security Primer for Evaluating Educational Software which makes
 heavy use of ZAP - you can read all about it here: <a href="https://www.graphite.org/privacy/blog/information-security-primer-initial-release">https://www.graphite.org/privacy/blog/information-security-primer-initial-release</a></p>
@@ -144,23 +144,23 @@ may well be included by default in future full releases.</p>
 <h2 id="new-features">New Features</h2>
 <p><em>This section details enhancements that have been made to the core and are available in the latest weekly release.</em><br>
 The traditional spider has been updated so that you can constrain it to a subtree when using it via the UI or API. For example this means that
-with this option if you start spidering from <a href="https://www.example.com/app1">https://www.example.com/app1</a> you can be sure that it wont explore any other apps under
-<a href="https://www.example.com/">https://www.example.com/</a> - without this option it will explore anything in that domain it finds links to.</p>
+with this option if you start spidering from <code>https://www.example.com/app1</code> you can be sure that it won't explore any other apps under
+<code>https://www.example.com/</code> - without this option it will explore anything in that domain it finds links to.</p>
 <p>ZAP now records a range of site based statistics, including:</p>
 <ul>
-<li>Response codes, eg
+<li>Response codes, e.g.
 <ul>
 <li>stats.code.200</li>
 <li>stats.code.302</li>
 </ul>
 </li>
-<li>Content types, eg
+<li>Content types, e.g.
 <ul>
 <li>stats.contentType.text/css</li>
 <li>stats.contentType.text/html;charset=utf-8</li>
 </ul>
 </li>
-<li>Tags (some of which are built in but can also be user defined), eg
+<li>Tags (some of which are built in but can also be user defined), e.g.
 <ul>
 <li>stats.tag.Password</li>
 <li>stats.tag.Hidden</li>
@@ -168,7 +168,7 @@ with this option if you start spidering from <a href="https://www.example.com/ap
 <li>stats.acsrf.anticsrf</li>
 </ul>
 </li>
-<li>Response times (using a logarithmic scale) eg
+<li>Response times (using a logarithmic scale) e.g.
 <ul>
 <li>stats.responseTime.1</li>
 <li>stats.responseTime.2</li>
@@ -177,7 +177,7 @@ with this option if you start spidering from <a href="https://www.example.com/ap
 <li>stats.responseTime.16</li>
 </ul>
 </li>
-<li>Authentication information, eg
+<li>Authentication information, e.g.
 <ul>
 <li>stats.auth.success</li>
 <li>stats.auth.failure</li>
@@ -192,13 +192,13 @@ with this option if you start spidering from <a href="https://www.example.com/ap
 ZAP has scanned a large site.</p>
 <h2 id="tutorial-introduction-to-scripting">Tutorial: Introduction to Scripting</h2>
 <p><em>This section teaches you more about a different ZAP feature every month.</em><br>
-There is an almost infinite range of web applications and so its not possible for any tool to build in support for all of the strange things you
-will encounter. As ZAP is an open source project you can change the source code to handle anything you like. However this isnt always practical</p>
+There is an almost infinite range of web applications and so it's not possible for any tool to build in support for all of the strange things you
+will encounter. As ZAP is an open source project you can change the source code to handle anything you like. However this isn't always practical</p>
 <ul>
 <li>ZAP is a large and complex project and even if you understand the code base very well, firing up an IDE to rewrite ZAP every time you
 encounter something strange is definitely not ideal.<br>
 Fortunately ZAP has powerful scripting capabilities, and ZAP scripts can access all of the code and data structures.<br>
-There are so many aspect to ZAP scripting that one tutorial wont be enough, so we're going to start with an overview.</li>
+There are so many aspect to ZAP scripting that one tutorial won't be enough, so we're going to start with an overview.</li>
 </ul>
 <p>Scripting support is included in all ZAP releases, but if you want to use scripting in the &lsquo;core&rsquo; version then you will really need to download
 the Script Console and Zest add-ons from the marketplace.<br>
@@ -265,19 +265,18 @@ the relevant script type and must have an appropriate extension for the script l
 Scripts that can be written to will be added to the Scripts tree and those that are read only will be added to the Templates. This means you can
 build up your own libraries of scripts and even manage them in a central place using a shared drive.</p>
 <h3 id="community-scripts-repo">Community Scripts repo</h3>
-<p>The Community Scripts repo is a collection of ZAP scripts written by the community, ie people like you :)<br>
+<p>The Community Scripts repo is a collection of ZAP scripts written by the community, i.e. people like you :)<br>
 It lives on github: <a href="https://github.com/zaproxy/community-scripts">https://github.com/zaproxy/community-scripts</a> and, not surprisingly, is structured so that it can be added as a script
 directory via the Script Options. It is also available as <a href="/docs/desktop/addons/community-scripts/">an add-on</a> on the ZAP Marketplace.</p>
 <p>Hopefully that gives you an overview of the scripting support in ZAP. Future tutorials will go into scripting in more detail. In the meantime if
-you have any questions about ZAP scripting then we have a dedicated group where you can ask them: &lt;https://groups.google.com/group/zaproxy-
-scripts&gt;</p>
+you have any questions about ZAP scripting then we have a dedicated group where you can ask them: <a href="https://groups.google.com/group/zaproxy-scripts">https://groups.google.com/group/zaproxy-scripts</a></p>
 <h2 id="upcoming-talks-and-training">Upcoming Talks and Training</h2>
 <p>ZAP will be featured in the OWASP Pune Chapter Meeting on March 31st in Pune (not surprisingly): <a href="https://docs.google.com/forms/d/1uIbCJ8kF5xMeIB-C9_jvwvfEdex_Vly8CRU87Bupsws/viewform?c=0&amp;w=1">https://docs.google.com/forms/d/1uIbCJ8kF5xMeIB-C9_jvwvfEdex_Vly8CRU87Bupsws/viewform?c=0&amp;w=1</a></p>
-<p><strong>Adrian Winckles</strong> will be demoing ZAP at the SecureCambridge Cyber Security Technology Showcase on April 5th in Cambridge: <a href="http://isc2chapter-eastofengland.co.uk/">http://isc2chapter-eastofengland.co.uk/</a></p>
+<p><strong>Adrian Winckles</strong> will be demoing ZAP at the SecureCambridge Cyber Security Technology Showcase on April 5th in Cambridge: <a href="https://www.isc2chapter-eastofengland.co.uk/">https://www.isc2chapter-eastofengland.co.uk/</a></p>
 <p><strong>Azzedine RAMRAMI and Sebastien Gioria</strong> will be demoing ZAP in their &lsquo;Securing your application with OpenSource tools&rsquo; at Devoxx France on
-April 22nd in Paris: <a href="http://cfp.devoxx.fr/2016/talk/HNE-6288/Securiser_son_developpement_avec_10_outils_open-source">http://cfp.devoxx.fr/2016/talk/HNE-6288/Securiser_son_developpement_avec_10_outils_open-source</a></p>
-<p><strong>Sumanth Damarla</strong> (<a href="http://www.twitter.com/Sumanth_Damarla">@Sumanth_Damarla</a>) will be giving a talk: &ldquo;Securing Web @ZAP&rdquo; at the I T.A.K.E
-Unconference on May 19th in Bucharest: <a href="http://itakeunconf.com/sessions/securing-web-zap/">http://itakeunconf.com/sessions/securing-web-zap/</a></p>
+April 22nd in Paris: <a href="https://cfp.devoxx.fr/2016/talk/HNE-6288/Securiser_son_developpement_avec_10_outils_open-source">https://cfp.devoxx.fr/2016/talk/HNE-6288/Securiser_son_developpement_avec_10_outils_open-source</a></p>
+<p><strong>Sumanth Damarla</strong> (<a href="https://www.twitter.com/Sumanth_Damarla">@Sumanth_Damarla</a>) will be giving a talk: &ldquo;Securing Web @ZAP&rdquo; at the I T.A.K.E
+Unconference on May 19th in Bucharest: <a href="https://itakeunconf.com/sessions/securing-web-zap/">https://itakeunconf.com/sessions/securing-web-zap/</a></p>
 <h2 id="feedback">Feedback</h2>
 <p>Please fill in this quick <a href="https://docs.google.com/forms/d/1_XaettHPjLOD56AbSlui67gk-771yJ_xfd7w2lSEdXw/viewform?usp=send_form">Feedback Form</a>
 so that we can make sure this newsletter is as useful to you as possible.</p>
@@ -287,12 +286,14 @@ Let us know what you would like to see using the above feedback form.<br>
 If you would like to write content for the newsletter then please get in touch - anything ZAP related, such as talks / training you are giving,
 a 3rd party tool you develop or maybe an add-on you'd like to explain in more detail.<br>
 And we're also looking for one or more editors for the ZAP newsletter - you don't need any detailed ZAP knowledge, just a bit of time each month
-you can dedicate to chasing up people for content and bashing it into something that reads better than this one :P Think thats you? Get in
+you can dedicate to chasing up people for content and bashing it into something that reads better than this one :P Think that's you? Get in
 touch!</p>
 <p>Simon Bennetts (ZAP Project Lead)</p>
 
           </main>
           <div class="next-content">
+              
+                Prev: <a class="previous" href="/blog/2016-02-19-zap-newsletter-2016-february/"> ZAP Newsletter - 2016 February</a>
               
               
                 Next: <a class="next" href="/blog/2016-06-03-zap-2-5-0/"> ZAP 2.5.0</a>
@@ -342,7 +343,7 @@ touch!</p>
               </section>
           
           </div>
-          <h5 id="wordcount"> 1792 Words </h5>
+          <h5 id="wordcount"> 1791 Words </h5>
                     
         </section>
       </aside>

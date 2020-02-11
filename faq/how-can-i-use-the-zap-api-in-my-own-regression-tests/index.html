@@ -128,34 +128,16 @@
             <p>You can use ZAP to perform security regression tests on your own products.</p>
 <p>Note that this answer is very basic and WILL need to be improved ;)</p>
 <p>You need to have installed Java and ZAP.</p>
-<p>To launch ZAP from a java program you can do something like:</p>
-<pre><code>ProcessBuilder pb = new ProcessBuilder(&quot;/home/myuser/fullpath/ZAP_1.3.0/zap.sh&quot;);  // full path to script, use zap.bat on Windows
-pb.directory(new File(&quot;/home/myuser/fullpath/ZAP_1.3.0/&quot;));  // directory ZAP script in
-Process p = pb.start();
-</code></pre>
-<p>Note that this will bring up the full UI, which is useful for initial testing.
+<p>To launch ZAP from a Java program you can do something like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Java" data-lang="Java">ProcessBuilder pb <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ProcessBuilder<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/home/myuser/fullpath/ZAP 2.9.0/zap.sh&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  <span style="color:#75715e">// full path to script, use zap.bat on Windows
+</span><span style="color:#75715e"></span>pb<span style="color:#f92672">.</span><span style="color:#a6e22e">directory</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> File<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/home/myuser/fullpath/ZAP 2.9.0/&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>  <span style="color:#75715e">// directory where the script is in
+</span><span style="color:#75715e"></span>Process p <span style="color:#f92672">=</span> pb<span style="color:#f92672">.</span><span style="color:#a6e22e">start</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><p>Note that this will bring up the full UI, which is useful for initial testing.
 To launch it in the background pass &ldquo;-daemon&rdquo; as an argument to the script.
 Obviously there will be equivalents in other languages - you just need to run
 the relevant script (zap.sh or zap.bat) with the working directory set up to
 the location of that script.</p>
-<p>Next run your unit tests proxying via ZAP. Then you can do things like kicking
-off the spider via:</p>
-<pre><code>http://zap/json/spider/action/scan/?url=http://localhost:8080/zap-wave/
-</code></pre>
-<p>Or the active scanner via</p>
-<pre><code>http://zap/json/ascan/action/scan/?url=http://localhost:8080/
-</code></pre>
-<p>These are both async, so you'll have to wait for them to complete. You can
-then access any alerts raised etc. ZAP supports JSON and XML.</p>
-<p>Theres examples here (including waiting for the async ops to complete):</p>
-<p><a href="https://github.com/zaproxy/zaproxy/blob/develop/src/org/zaproxy/zap/junit/TestDaemonWave.java">https://github.com/zaproxy/zaproxy/blob/develop/src/org/zaproxy/zap/junit/TestDaemonWave.java</a></p>
-<p>To stop ZAP use</p>
-<pre><code>http://zap/json/core/action/shutdown/
-</code></pre>
-<p>Note that you can browse the APIs available via</p>
-<pre><code>http://zap/
-</code></pre>
-<p>once you are proxying via ZAP.</p>
+<p>Next run your unit tests proxying via ZAP. You can then control ZAP using the <a href="/docs/api/">ZAP API</a>, for example, to spider or active scan.</p>
 
           </main>
       </article>

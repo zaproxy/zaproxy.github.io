@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.ac56d.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/zap-in-ten/" title="ZAP in Ten page">
+                  ZAP in Ten
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/get-involved/" title="Get Involved page">
+                  Get Involved
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <h1 class="post-title">ZAP Newsletter - 2016 February</h1>
+          <main class="post-content">
+            <h2 id="introduction">Introduction</h2>
+<p>Welcome to a slightly delayed February newsletter - we were holding on for some expected news that will now have to wait until next time ;)</p>
+<h2 id="news">News</h2>
+<p>We have started another <a href="https://docs.google.com/forms/d/1-k-vcj_sSxlil6XLxCFade-m-IQVeE2h9gduA-2ZPPA/viewform">user questionnaire</a>. We ran one
+2 years ago - the answers were very helpful and definitely shaped the direction ZAP is now taking. So if you want your voice to be heard then
+please fill it in.</p>
+<p>Both OWASP and Mozilla will be applying to take part in Google Summer of Code this year. ZAP has greatly benefited from students taking part in
+this via both of these organizations, and we’re hoping at least one will be accepted so that we can take part again. If you have any suggestions
+for suitable projects or anything else to contribute then please join the <a href="https://groups.google.com/d/msg/zaproxy-develop/4Pro0YpO7B8/d9naWJkFEQAJ">discussion</a> on the Dev group.</p>
+<h2 id="new--improved-add-ons">New / Improved Add-ons</h2>
+<p><em>This section details add-ons that have been added or significantly updated since the last newsletter.</em><br>
+Add-ons are available to download and install within ZAP.<br>
+Just click on the ‘Manage Add-ons’ toolbar button and select the Marketplace tab:</p>
+<p><img src="/img/zap-screenshot-browse-addons.png" alt=""></p>
+<p>Note that all add-ons on the Marketplace are completely free and open source and anyone can publish add-ons to it - see the <a href="https://github.com/zaproxy/zap-extensions/wiki/AddOnDevelopment">zap-extensions
+wiki</a> for details.</p>
+<p>New versions of the <a href="/docs/desktop/addons/active-scan-rules-beta/">Active scan rules (beta)</a> and SAML add-ons have been released - these include security fixes so if you use them then please update them asap.</p>
+<p>And a new version of the Wappalyzer (technology detection) add-on has been released which includes the latest changes from the Wappalyzer
+project (<a href="https://wappalyzer.com/">https://wappalyzer.com/</a>)</p>
+<p>A new <a href="/docs/desktop/addons/community-scripts/">Community Scripts</a> add-on has been released.
+This is a packaged version of the community-scripts repo (<a href="https://github.com/zaproxy/community-scripts">https://github.com/zaproxy/community-scripts</a>) which is a collection of ZAP scripts
+that anyone can easily contribute to. Please contribute any scripts you create for your own use using pull requests!<br>
+Also note that version 1 of this add-on contained a bug which can result in your ZAP configuration being lost, so if you downloaded that one
+then please update to the latest version asap.</p>
+<h2 id="tutorial-contexts">Tutorial: Contexts</h2>
+<p><em>This section teaches you more about a different ZAP feature every month.</em><br>
+Contexts are a way to group sets of related URLs together. You can use contexts to define the applications you are testing, as well as parts of
+those applications that you want to handle in non-default ways. Contexts allow you to define extra properties associated with those URLs so that
+ZAP can handle them more effectively. They are displayed at the top of the Sites and can be imported and exported using the buttons on the Sites
+toolbar.<br>
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Contexts1.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+For this tutorial we will be using the BodgeIt Store, a simple vulnerable web application available from <a href="https://github.com/psiinon/bodgeit">https://github.com/psiinon/bodgeit</a>,
+but you can use any application that uses authentication.</p>
+<p>You need to access the target application before you can add it to a Context, so open the BodgeIt home page in your browser while proxying
+through ZAP. Find the BodgeIt top node in the Sites tree, right click it and &lsquo;Include in Context -&gt; Default Context&rsquo;.
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Context-add-to-default.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+The Session Contexts Dialog will be displayed, which is part of the Session
+Properties dialog and is where you can define all of the properties associated with each context. The &lsquo;bodgeit&rsquo; node and all of the nodes
+underneath it will now have been added to the &lsquo;Default Context&rsquo;.<br>
+Note that you can define as many contexts as you need.</p>
+<p>All details about a context are defined in the session properties. You can access these at any time by double clicking on the relevant context
+or by pressing the &lsquo;Session Properties&rsquo; button on the main toolbar.<br>
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Context-session-props.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+<h3 id="context-top-page">Context: Top Page</h3>
+<p>The top page of each context allows you to specify the name and description. It also allows you to define if this context is &lsquo;in scope&rsquo;, i.e. they
+are part of the system that you are testing at any specific time. All nodes that are in scope are shown with a &lsquo;target&rsquo; icon on them in the
+Sites tree. You can also switch Contexts in and out of scope by right clicking them in the Contexts tree. You can choose to spider or scan all
+of the contexts that are in scope with one command. You can also use the &lsquo;Protected mode&rsquo; - this will only allow you to attack nodes that are in
+scope. Many of the ZAP tabs, including the Sites, History and Alert tabs have buttons which allow you to only display information that is in
+scope.</p>
+<h3 id="context-include-in--exclude-from-context">Context: Include In / Exclude From Context</h3>
+<p>
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Context-include.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+The first 2 child pages allow you to define the URLs that are included in the
+context. This is done using regular expressions (regexes). The easiest way to include any leaf nodes and subtrees is to use the &lsquo;Include in
+Context&rsquo; and &lsquo;Exclude from Context&rsquo; right click options in the Sites and History tabs. However if you need to define more complex regexes then
+you will need to do this manually using theses screens. Always double check the nodes that are included by verifying that the target icons are
+set correctly.</p>
+<h3 id="context-structure">Context: Structure</h3>
+<p>The Structure page allows you to define the properties that define the context structure. The Sites tree is ZAP’s representation of the
+structure of all of the sites you visit. It is very important that ZAP correctly understands the structure of the applications you are testing
+otherwise it will not be able to attack them correctly.<br>
+By default ZAP assumes that URLs are of the form:</p>
+<ul>
+<li><code>https://www.example.com/page?p1=v1&amp;p2=v2</code></li>
+</ul>
+<p>In this case the URL Key Value Pair Separator is <strong><code>&amp;</code></strong> and the URL Key Value Separator is <strong><code>=</code></strong><br>
+If (for example) part of an application you are testing uses URLs of the form:</p>
+<ul>
+<li><code>https://www.example.com/page?p1:v1;p2:v2</code></li>
+</ul>
+<p>then you should define those URLs to be part of a context and change the separators in this screen to <strong><code>:</code></strong> and <strong><code>;</code></strong>.</p>
+<p>Structural Modifiers are controls which change how ZAP represents the structure of the application. There are currently 2 types of Structural
+Modifiers:</p>
+<ul>
+<li>Data Driven Content which identify URL paths that represent data - these can be used to tell ZAP that specific pages are generated from database content and can so be treated the same</li>
+<li>Structural Parameters which identify parameters that represent application structure instead of user data - these can be used to allow ZAP to correctly represent &lsquo;single page applications&rsquo;</li>
+</ul>
+<p>For more details see the relevant section in the <a href="/docs/desktop/start/features/structmods/">User Guide</a>.</p>
+<h3 id="context-technology">Context: Technology</h3>
+<p>This page allows you to specify the technologies used in the context, if known. By default all technologies are included. If you exclude
+technologies that you know are not used then this may speed up active scanning as rules specific to the excluded technologies can be skipped.</p>
+<h3 id="context-authentication">Context: Authentication</h3>
+<p>This page allows you to manage the way authentication is handled for this context. Once you have defined the authentication and one or more
+valid users then you will be able to perform authenticated attacks on your target application, as well as perform more advanced testing of the
+applications access control. There are very few standards with regards to web application authentication, but ZAP is extremely flexible and so
+should be able to cope with any situation you come across. It can even cope with browser based single-sign-on systems like Personna.<br>
+For this tutorial we will just handle the simple Form Based authentication that the BodgeIt store uses. A future tutorial will go into more
+depth on authentication.</p>
+<p>In the BodgeIt store register a new user. BodgeIt will automatically log this user in, so logout and login again as we want the login request
+and not the registration request.<br>
+Identify the login POST request in the History tab, right click it and select &lsquo;Flag as Context-&gt; Default Context: Form-based Auth Login Request&rsquo;<br>
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Contexts-flag-auth.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+You will now be shown the Context Authentication page, which you will need to tweak.</p>
+<p>The Login Form Target URL and Login Request POST Data should be filled in correctly. However at least one of the Username or Password parameter
+fields will need changing - they should be:</p>
+<ul>
+<li>Username Parameter: username</li>
+<li>Password Parameter: password</li>
+</ul>
+<p>In order for ZAP to know when it need to authenticate we need to configure a way for it to tell if the user is logged in or not. We do this via
+regex patterns which should match strings that indicate that the user is either logged in or logged out. You only need to define one of these,
+not both. You can configure these manually, but it’s easier and safer to use the UI:</p>
+<ul>
+<li>In the ZAP history select a request made to bodgeit before you authenticated</li>
+<li>Look at the response, find and highlight the HTML which defines the Login link</li>
+<li>Right click the highlighted text and select &ldquo;Flag as Context -&gt; Default Context: Authentication Logged-out indicator&rdquo;</li>
+</ul>
+<p>
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Context-flag-logged-out.png" alt="" />
+	<figcaption></figcaption>
+</figure> You will now be shown the Context Authentication page again with the Logged-out regex pattern correctly defined.
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Contexts-auth.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+ZAP now understands how he BodgeIt authentication
+works, but it will need to know about at least one user before you can make use of this. You can configure that using the next screen.</p>
+<h3 id="context-users">Context: Users</h3>
+<p>This page allows you to define as many users as you need for testing. If your application supports roles you should define at least one user for
+each role. You will need to fill in the correct authentication details for each user. ZAP will have automatically added the one used in the
+authentication request you specified, you just need to make sure it is enabled.
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Contexts-users.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+<h3 id="context-forced-user">Context: Forced User</h3>
+<p>The forced user mode allows you to force a specific user to be used for all requests that are generated by or proxied through ZAP. The forced
+user mode is switched on and off via an icon on the main toolbar. It will be disabled until all of the necessary configuration has been made.
+For this example select the user you previously registered with ZAP. Once you have saved the dialog you should see that the Forced User mode
+button is now enabled.<br>
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Contexts-forceduser.png" alt="" />
+	<figcaption></figcaption>
+</figure><br>
+Before enabling it make sure that you have logged out of BodgeIt. Then click the button to enable Forced User mode and click on one of the links
+in BodgeIt. You should see that you are now logged in - ZAP will have authenticated as that user in the background.</p>
+<p>If you are not authenticated then you will have made an error in your configuration. All of the authentication requests ZAP makes on your behalf
+will be shown in the History tab, so you can use those to help you resolve your issue. The Forced User mode is one of the simplest
+authentication tools but it is very useful for checking that you have configured the authentication correctly.</p>
+<p>Once you have checked that the forced user mode works you can now perform authenticated spidering and active scanning of your application. You
+can do this by keeping the forced user mode on, or by switching it off and then selecting the user you want to use in the Spider or Active Scan
+dialogs.</p>
+<h3 id="context-session-management">Context: Session Management</h3>
+<p>This page allows you to manage the way in which Session Management is being done for the Context. After selecting the Session Management Method
+type, the options that need to be configured depend on the Session Management Method. For most applications you probably won't need to change
+anything on this page.</p>
+<h3 id="context-authorization">Context: Authorization</h3>
+<p>This page allows you to define how unauthorised requests are handled by your application. This is used by the Access Control add-on which allows
+you to automatically test your applications access control.</p>
+<h2 id="3rd-party-tool-faraday">3rd Party Tool: Faraday</h2>
+<p>
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image03.png" alt="" />
+	<figcaption></figcaption>
+</figure><br>
+<strong>Faraday</strong> is an <strong>Integrated Multi-User Pentest Environment</strong> that’s principal goal is to map and leverage information you generate in real-time. Named after the British scientist Michael Faraday who was famous for his meticulous note taking (as well as the Faraday cage), our tool
+tries to emulate his rule of systematically recording everything.</p>
+<p>With more than 10 years in the industry, we have learned over here at Infobyte that pentesters and security teams have unique toolsets and
+skills. The idea isn’t to change a security professional’s workflow but to get everyone on one platform in real-time where information can be
+easily documented and used to gain greater insights for a security team.</p>
+<p>With 50+ supported tools Faraday is the connective tissue that brings together your different tools and team members to increase efficiency and
+analysis of your security engagements. 
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image02.png" alt="" />
+	<figcaption></figcaption>
+</figure><br>
+The ZAP plugin recognizes information such as Hosts, Interfaces, Services, Vulnerabilities and send this to Faraday. With only a copy of a
+report, all this information is available in Faraday for all the members of your team.</p>
+<p><strong>How can we use it?</strong></p>
+<ol>
+<li>
+<p>Open OWASP ZAP and start a attack, wait for the attack to finish.</p>
+</li>
+<li>
+<p>Go to Report menu =&gt; Generate XML report…
+
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image00.png" alt="" />
+	<figcaption></figcaption>
+</figure></p>
+</li>
+<li>
+<p>Save the report with any name.</p>
+</li>
+<li>
+<p>Open Faraday and copy that report to $HOME/.faraday/report/$WORKSPACE where $WORKSPACE is the active workspace name in Faraday.</p>
+</li>
+<li>
+<p>Ready! All information is loaded now</p>
+</li>
+</ol>
+<p>
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image05.png" alt="" />
+	<figcaption></figcaption>
+</figure> Here, you can see the “Tree Hosts” showing you information of a report of OWASP ZAP.<br>
+Hosts, interfaces, Services, Notes and how many vulnerabilities have been loaded. 
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image04.png" alt="" />
+	<figcaption></figcaption>
+</figure> You can see more
+information about vulnerabilities found: Name, Description, Severity, References ( URLs, CVE and CWE), Path, and more. If you like web
+interfaces more than QT interface, Faraday has one! 
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image07.png" alt="" />
+	<figcaption></figcaption>
+</figure> Here you can see the same information as in the
+QT interface , but you here you can work with the information. Group vulnerabilities by a field, show or not a field, show details about a
+vulnerability, edit or delete one, and download all the data such as CSV file. Also, Faraday greatly speeds up the time needed for a security
+engagement by simplifying vulnerability adjustments with severity classifications (CVSS standards supported).</p>
+<p>However, too much information can get confusing… Faraday has a dashboard with a summary of the active workspace for a more general overview of
+your project. 
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image01.png" alt="" />
+	<figcaption></figcaption>
+</figure> Faraday comes in three flavors, a free community version that can be downloaded on
+our <a href="https://github.com/infobyte/faraday">GitHub</a> and a pro and enterprise version. 
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/image06.png" alt="" />
+	<figcaption></figcaption>
+</figure> In the
+Professional and Corporate editions you have role differentiation, different workspaces., workspace comparisons, tags, webshells, graphic
+customization (Corporate) and one-click report generation which typically has been the bane of security teams.</p>
+<p>We believe that awesome open-source tools don’t get the love they properly deserve and because of that we developed the Faraday awards, in which
+with your purchase of Faraday, you get to choose one open-source tool and we make a donation on your behalf to that tool It’s a way of giving
+back to an underappreciated community.</p>
+<p>More information can be found at:</p>
+<ul>
+<li>Faraday GitHub Site: <a href="https://github.com/infobyte/faraday">https://github.com/infobyte/faraday</a></li>
+<li>Faraday Homepage: <a href="https://www.faradaysec.com/">https://www.faradaysec.com/</a></li>
+</ul>
+<h2 id="upcoming-talks-and-training">Upcoming Talks and Training</h2>
+<p><strong>Dan Billing</strong> (<a href="https://twitter.com/TheTestDoctor">@TheTestDoctor</a>) will be holding &ldquo;The Test Doctor’s Proxy Surgery&rdquo; at the TestBash Workshop
+Day on March 10th in Brighton: <a href="https://www.ministryoftesting.com/training-events/testbash-brighton-2016/testbash-workshop-day/">https://www.ministryoftesting.com/training-events/testbash-brighton-2016/testbash-workshop-day/</a></p>
+<p><strong>Sumanth Damarla</strong> (<a href="https://www.twitter.com/Sumanth_Damarla">@Sumanth_Damarla</a>) will be giving a talk: &ldquo;Securing Web @ZAP&rdquo; at the I T.A.K.E
+Unconference on May 19th in Bucharest: <a href="https://itakeunconf.com/sessions/securing-web-zap/">https://itakeunconf.com/sessions/securing-web-zap/</a></p>
+<h2 id="featured-contributor-johanna-curiel">Featured Contributor: Johanna Curiel</h2>
+<p><em>Each month we introduce you to one of the many ZAP contributors.</em></p>
+<p>
+<figure>
+	<img src="/blog/2016-02-19-zap-newsletter-2016-february/images/Johanna.jpg" alt="" />
+	<figcaption></figcaption>
+</figure><br>
+<strong>Q: Who are you?</strong></p>
+<p><strong>A:</strong> Johanna Curiel (aka <a href="https://twitter.com/jctechno">@jctechno</a>), Software &amp; Security Engineer.</p>
+<p><strong>Q: Where are you based?</strong></p>
+<p><strong>A:</strong> Curacao, Dutch Caribbean</p>
+<p><strong>Q: What do you do in your day job?</strong></p>
+<p><strong>A:</strong> I work as a programmer and pen tester part-time. At the moment I'm also working on cyber security research.</p>
+<p><strong>Q: Why do you contribute to ZAP?</strong></p>
+<p><strong>A:</strong> Because I use it in my work. It's a tool with some wonderful features that work even better than many commercial tools in the same
+category. Also I have learned many things from using ZAP and understanding its programming core and architecture.</p>
+<p><strong>Q: How do you contribute to ZAP?</strong></p>
+<p><strong>A:</strong> Sporadically. Promoting it as pen testing tool, instruction videos, participating as mentor, working on documentation, testing and
+reporting issues.<br>
+<em>Editors note: Johanna has also been helping with applying for grants - more on that in a future newsletter ;)</em></p>
+<p><strong>Q: What would you like to contribute in the future?</strong></p>
+<p><strong>A:</strong> I have been working on an some add-ons, but I have not publicise them. I really would like to get more into creating add-ons and ZEST
+scripts and publicise them to the community.</p>
+<p><strong>Q: What do you like about the ZAP community?</strong></p>
+<p><strong>A:</strong> ZAP has great contributors, all working to help improve ZAP in different ways. It is amazing what a group of people can reach when they
+work towards a goal with the guidance of a great leader.</p>
+<p><strong>Q: What do you get out of contributing?</strong></p>
+<p><strong>A:</strong> Most important is that I use ZAP in my work. ZAP is for free and open source, with some incredible features that I use it in my pen
+testing and research. ZAP is the best free proxy available and by contributing you also give something back to help and keep ZAP developing and
+improving. ZAP has helped me understand security vulnerabilities much better.</p>
+<p><strong>Q: Do you have any advice for people who would like to contribute to ZAP?</strong></p>
+<p><strong>A:</strong> There are many ways you can contribute, whether promoting it, documentation, translating , coding, testing. Start with something small
+that you enjoy doing. Take your time to learn ZAP and find out where your skills can help best.</p>
+<p><strong>Q: Do you contribute to any other open source projects?</strong></p>
+<p><strong>A:</strong> Yes. I do contribute to other open source initiatives , specially those ones I would like to see grow and develop further.</p>
+<p><strong>Q: What do you do outside of work?</strong></p>
+<p><strong>A:</strong> I live in the Caribbean so it's quite nice weather most of the time. I like windsurfing with my daughter , swimming, BBQ and travelling.</p>
+<p><strong>Q: What do you [most] dislike about the ZAP development?</strong></p>
+<p><strong>A:</strong> I think ZAP is one of the easiest open source software to join development. There is a lot of documentation available to new developers
+wanting to get involved. I like the way the code has been structured and with the add-on concept it makes it even easier to experiment on your
+own, so I have nothing to dislike about. But as a developer if you think to be a serious contributor , you will need to invest some serious time
+to understand the code and start development, this is a quite common barrier to all new developer contributors.</p>
+<p><strong>Q: What do you think could be done [a lot] better?</strong></p>
+<p><strong>A:</strong> I would like to see more instruction videos or documentation on how to use ZAP with more complex features and writing ZEST scripts . There
+is a lot already published on youtube but ZAP has had an amazing development the last years that most of the videos are outdated.</p>
+<h2 id="feedback">Feedback</h2>
+<p>Please fill in this quick <a href="https://docs.google.com/forms/d/1_XaettHPjLOD56AbSlui67gk-771yJ_xfd7w2lSEdXw/viewform?usp=send_form">Feedback Form</a>
+so that we can make sure this newsletter is as useful to you as possible.</p>
+<h2 id="coming-next-month">Coming next month…</h2>
+<p>That depends on you!<br>
+Let us know what you would like to see using the above feedback form.<br>
+If you would like to write content for the newsletter then please get in touch - anything ZAP related, such as talks / training you are giving,
+a 3rd party tool you develop or maybe an add-on you’d like to explain in more detail.<br>
+And we’re also looking for one or more editors for the ZAP newsletter - you don't need any detailed ZAP knowledge, just a bit of time each month
+you can dedicate to chasing up people for content and bashing it into something that reads better than this one :P Think that's you? Get in
+touch!</p>
+<p>Simon Bennetts (ZAP Project Lead)</p>
+
+          </main>
+          <div class="next-content">
+              
+                Prev: <a class="previous" href="/blog/2016-01-04-zap-newsletter-2016-january/"> ZAP Newsletter - 2016 January</a>
+              
+              
+                Next: <a class="next" href="/blog/2016-03-29-zap-newsletter-2016-march/"> ZAP Newsletter - 2016 March</a>
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          <h4 id="date"> Fri Feb 19, 2016 </h4>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#new--improved-add-ons">New / Improved Add-ons</a></li>
+    <li><a href="#tutorial-contexts">Tutorial: Contexts</a>
+      <ul>
+        <li><a href="#context-top-page">Context: Top Page</a></li>
+        <li><a href="#context-include-in--exclude-from-context">Context: Include In / Exclude From Context</a></li>
+        <li><a href="#context-structure">Context: Structure</a></li>
+        <li><a href="#context-technology">Context: Technology</a></li>
+        <li><a href="#context-authentication">Context: Authentication</a></li>
+        <li><a href="#context-users">Context: Users</a></li>
+        <li><a href="#context-forced-user">Context: Forced User</a></li>
+        <li><a href="#context-session-management">Context: Session Management</a></li>
+        <li><a href="#context-authorization">Context: Authorization</a></li>
+      </ul>
+    </li>
+    <li><a href="#3rd-party-tool-faraday">3rd Party Tool: Faraday</a></li>
+    <li><a href="#upcoming-talks-and-training">Upcoming Talks and Training</a></li>
+    <li><a href="#featured-contributor-johanna-curiel">Featured Contributor: Johanna Curiel</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="#coming-next-month">Coming next month…</a></li>
+  </ul>
+</nav>
+
+          <div class="post-authors">
+            <h4>Authors</h4>
+            
+            
+              <section class="post-author-single flex p-10">
+              
+                <div class="col-1-5">
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                </div>
+                <div class="author-name col-4-5">
+                  Simon Bennetts
+                  <a class="author-twitter" href="https://twitter.com/@psiinon">@psiinon</a>
+                </div>
+              
+              </section>
+          
+          </div>
+          <h5 id="wordcount"> 3246 Words </h5>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <nav class="footer-nav">
+      <ul class="flex">        
+      
+      
+        
+          <li class="ml-10">
+            <a href="/" title="Home page">
+              Home
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/zap-in-ten/" title="ZAP in Ten page">
+              ZAP in Ten
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/get-involved/" title="Get Involved page">
+              Get Involved
+            </a>
+          </li>
+        
+      
+        
+          <li class="ml-10">
+            <a href="/support/" title="Support page">
+              Support
+            </a>
+          </li>
+        
+      
+      </ul>
+    </nav>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Flagship project</a><br>
+      © Copyright 2020 the ZAP Dev Team
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ac56d.js"></script>
+  
+</div>
+</body>
+</html>
