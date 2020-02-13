@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -209,7 +211,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <a href="/"><img src="images/logo.png" title="Click here to return to ZAP home page" alt="Logo" /></a>
         <div class="lang-selector">
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="java">java</a>
@@ -1718,23 +1720,23 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://github.com/zaproxy/zaproxy/wiki'>ZAP Wiki</a></li>
+            <li><a href='https://www.zaproxy.org/'>ZAP Website</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1><h2 id='overview'>Overview</h2>
-<p>Welcome to ZAP API Documentation! The <a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project">OWASP Zed Attack Proxy</a> (<strong>ZAP</strong>) 
+<p>Welcome to ZAP API Documentation! The <a href="https://www.zaproxy.org/">OWASP Zed Attack Proxy</a> (<strong>ZAP</strong>) 
 is one of the world&#39;s most popular free security tools which lets you automatically find security vulnerabilities in your 
 applications. ZAP also has an extremely powerful API that allows you to do nearly everything that is possible via the desktop interface.
 This allows the developers to automate pentesting and security regression testing of the application in the CI/CD pipeline. </p>
 
 <p>This document provides example guides &amp; API definitions for ZAP APIs. You can view code examples in the dark area to 
 the right; switch the programming language of the examples with the tabs on the top right. 
-If anything is missing or seems incorrect, please check the <a href="https://github.com/zaproxy/zaproxy/wiki/FAQtoplevel">FAQs</a> or the
+If anything is missing or seems incorrect, please check the <a href="https://www.zaproxy.org/faq/">FAQs</a> or the
 <a href="https://github.com/zaproxy/zaproxy/issues">GitHub issues</a> for existing known issues.
-Also, if you are new to ZAP, then check out the <a href="https://github.com/zaproxy/zaproxy/releases/download/v2.8.0/ZAPGettingStartedGuide-2.8.pdf">getting started guide</a> 
+Also, if you are new to ZAP, then check out the <a href="https://www.zaproxy.org/getting-started/">getting started guide</a> 
 to learn the basic concepts behind ZAP. </p>
 
 <p>The following are some of the features provided by ZAP:</p>
@@ -1803,7 +1805,7 @@ when you are proxying through ZAP, or via the host and port ZAP is listening on,
 
 <p><img src="images/zap_api_ui.png" alt="zap_api_ui" /></p>
 
-<p>By default only the machine ZAP is running on is able to access the APIs. You can <a href="https://github.com/zaproxy/zaproxy/wiki/FAQremote">allow other machines</a>, 
+<p>By default only the machine ZAP is running on is able to access the APIs. You can <a href="https://www.zaproxy.org/faq/how-can-i-connect-to-zap-remotely/">allow other machines</a>, 
 that are able to use ZAP as a proxy, access to the API.</p>
 <h3 id='client-sdks'>Client SDKs</h3>
 <p>API clients are available for the following languages:</p>
@@ -1868,7 +1870,7 @@ specific <a href="#exploring-the-app">example</a> to experiment with specific fe
 
 <span class="c"># For Windows, Run the exe file or zap.bat script to start ZAP</span>
 </code></pre>
-<p>To install ZAP, go to ZAP&#39;s <a href="https://github.com/zaproxy/zaproxy/wiki/Downloads">home page</a> and download the installer specific to the 
+<p>To install ZAP, go to ZAP&#39;s <a href="https://www.zaproxy.org/download/">home page</a> and download the installer specific to the 
 operating system. After extracting the bundle you can start ZAP by issuing the following command shown in the right column.</p>
 
 <p>The API key must be specified on all API <code>actions</code> and some <code>other</code> operations. The API key is used to prevent malicious 
@@ -2104,19 +2106,19 @@ or <a href="#spideractionpause">pause</a> APIs. Additional APIs are available in
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre><pre class="highlight shell tab-shell"><code><span class="c"># To start the Ajax Spider</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/scan/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/action/scan/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=&lt;URL&gt;&amp;inScope=&amp;contextName=&amp;subtreeOnly="</span>
 
 <span class="c"># To view the status</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/status/?apikey=&lt;ZAP_API_KEY&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/status/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 
 <span class="c"># To view the number of results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/numberOfResults/?apikey=&lt;ZAP_API_KEY&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/numberOfResults/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 
 <span class="c"># To view the results</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/view/fullResults/?apikey=&lt;ZAP_API_KEY&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/view/fullResults/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 
 <span class="c"># To stop the Ajax Spider</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/AjaxSpider/action/stop/?apikey=&lt;ZAP_API_KEY&gt;"</span>
+<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ajaxSpider/action/stop/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 </code></pre>
 <p>Use the Ajax Spider if you have applications which heavily depend on Ajax or JavaScript. The Ajax Spider allows you to crawl web applications 
 written in Ajax in far more depth than the traditional Spider.You should also use the traditional Spider as well for complete coverage 
@@ -2166,7 +2168,7 @@ only use ZAP with targets that you have been specifically given permission to te
 
         <span class="k">try</span> <span class="o">{</span>
             <span class="c1">// TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
-            <span class="c1">// Loop until the ajax spider has finished or the timeout has exceeded</span>
+            <span class="c1">// Loop until the passive scan has finished</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
                 <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">();</span>
@@ -2199,7 +2201,7 @@ only use ZAP with targets that you have been specifically given permission to te
 
 <span class="c"># TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
 <span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="c"># Loop until the ajax spider has finished or the timeout has exceeded</span>
+    <span class="c"># Loop until the passive scan has finished</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Records to passive scan : '</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
@@ -2230,7 +2232,7 @@ has completed the alerts can be obtained via the alerts endpoint(s).</p>
 <p>View the <a href="#passive-scan-settings">advanced section</a> to know how to configure additional parameters of Passive Scan.</p>
 <h2 id='using-active-scan'>Using Active Scan</h2>
 <p>Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets. Active scanning 
-is an attack on those targets. You should <strong>NOT</strong> use it on applications that you do not own. </p>
+is an attack on those targets. You should <strong>NOT</strong> use it on applications that you do not have permission to. </p>
 <h3 id='start-active-scanner'>Start Active Scanner</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveScan</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
@@ -2499,9 +2501,9 @@ and HTTP authentication based session management.</p>
 
 <p><strong>Step 6. Enable forced user mode (Optional)</strong></p>
 
-<p>Now enable the <img src="https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png" alt="Forceduseroff" /> &quot;<a href="https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off">Forced User Mode disabled - click to enable</a>&quot; 
+<p>Now enable the <img src="https://www.zaproxy.org/docs/desktop/images/fugue/forcedUserOff.png" alt="Forceduseroff" /> &quot;<a href="https://www.zaproxy.org/docs/desktop/ui/tltoolbar/#--forced-user-mode-on--off">Forced User Mode disabled - click to enable</a>&quot; 
 button. Pressing this button will cause ZAP to resend the authentication request whenever it detects that the user is no 
-longer logged in, ie by using the &#39;logged in&#39; or &#39;logged out&#39; indicator. But the forced used mode is ignored for scans that already have a user set. </p>
+longer logged in, ie by using the &#39;logged in&#39; or &#39;logged out&#39; indicator. But the forced user mode is ignored for scans that already have a user set. </p>
 
 <aside class="info">
 In order for auth to work one of the indicators(logged in/out) needs to be set, however, ZAP will allow users to proceed without having to set 
@@ -2678,7 +2680,7 @@ them because there are other methods of setting them. However, if one isn't set,
 </code></pre><pre class="highlight shell tab-shell"><code><span class="c"># To include in default context</span>
 curl <span class="s1">'http://localhost:8080/JSON/context/action/includeInContext/?contextName=Default+Context&amp;regex=http%3A%2F%2Flocalhost%3A8090%2Fbodgeit.*'</span>
 
-<span class="c"># Set login details (URL Endoded)</span>
+<span class="c"># Set login details (URL Encoded)</span>
 curl <span class="s1">'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&amp;authMethodName=formBasedAuthentication&amp;authMethodConfigParams=loginUrl%3Dhttp%3A%2F%2Flocalhost%3A8090%2Fbodgeit%2Flogin.jsp%26loginRequestData%3Dusername%253D%257B%2525username%2525%257D%2526password%253D%257B%2525password%2525%257D'</span>
 
 <span class="c"># To set the login indicator</span>
@@ -2699,7 +2701,7 @@ curl <span class="s1">'http://localhost:8080/JSON/forcedUser/action/setForcedUse
 <span class="c"># To enable forced user mode</span>
 curl <span class="s1">'http://localhost:8080/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true'</span>
 </code></pre>
-<p>The following example performs a simple <a href="(https://github.com/zaproxy/zaproxy/wiki/FAQformauth)">form-based authentication</a> using 
+<p>The following example performs a simple <a href="https://www.zaproxy.org/faq/how-can-zap-automatically-authenticate-via-forms/">form-based authentication</a> using 
 the Bodgeit vulnerable application. It&#39;s recommended that you configure the authentication via the desktop UI before attempting the APIs.</p>
 <h3 id='setup-target-application'>Setup Target Application</h3>
 <p>Bodgeit uses a simple form-based authentication to authenticate the users to the application. Use the following command 
@@ -2728,20 +2730,20 @@ the regex needed for the login indicator. The following image shows the complete
 <p><img src="images/auth_bodgeit_form_settings.png" alt="auth" /></p>
 
 <p>Now let&#39;s add the user credentials by going to the <code>context -&gt; users -&gt; Add</code> section. After adding the credentials, enable 
-the <img src="https://github.com/zaproxy/zap-core-help/wiki/images/fugue/forcedUserOff.png" alt="Forceduseroff" /> &quot;<a href="https://github.com/zaproxy/zap-core-help/wiki/HelpUiTltoolbar#--forced-user-mode-on--off">Forced User</a>&quot;
+the <img src="https://www.zaproxy.org/docs/desktop/images/fugue/forcedUserOff.png" alt="Forceduseroff" /> &quot;<a href="https://www.zaproxy.org/docs/desktop/ui/tltoolbar/#--forced-user-mode-on--off">Forced User</a>&quot;
 mode in the desktop UI to forcefully authenticate the user prior to the testing of the application. </p>
 
 <p>Now let&#39;s test the authentication by performing an authenticated Spidering with ZAP. To accomplish this, go to the Spider and select the <code>default</code> 
 context and the <code>test user</code> to perform the authentication. After this, you should see the Spider crawling all the protected resources.</p>
 
 <aside class="info">
-It's not madatory to set the forced used mode, if you manually set a user for ZAP activities such as scanning.
+It's not mandatory to set the forced user mode, if you manually set a user for ZAP activities such as scanning.
 </aside>
 <h3 id='steps-to-reproduce-via-api'>Steps to Reproduce via API</h3>
 <p>If you have configured the authentication via the desktop UI, then export the context and import it using the 
 <a href="#contextactionimportcontext">importContext</a> API. Otherwise follow the steps below to configure the authentication setting for the context. </p>
 <h4 id='include-in-context'>Include in Context</h4>
-<p>Inorder to proceed with authentication, the URL of the application should be added to the context. As the Bodgit is available
+<p>In order to proceed with authentication, the URL of the application should be added to the context. As the Bodgit is available
 via <a href="http://localhost:8090/bodgeit">http://localhost:8090/bodgeit</a> use the <a href="#contextactionincludeincontext">includeInContext</a> API to add the
 URL to a context.</p>
 <h4 id='set-authentication-method'>Set Authentication Method</h4>
@@ -2769,10 +2771,10 @@ the <a href="#forceduseractionsetforcedusermodeenabled">SetForcedUserModeEnabled
 
 <p><img src="images/spider_advanced.png" alt="spider_advanced" /></p>
 
-<p>Use the <a href="#spideractionsetoptionmaxdepth">setOptionMaxDepth</a> to set the maximum depth the spider can crawl, where 0 refers to unlimited depth. 
-The <a href="#spideractionsetoptionmaxchildren">setOptionMaxChildren</a> sets the maximum number of child nodes (per node) that can be crawled, 
+<p>Use the <a href="#spideractionsetoptionmaxdepth">setOptionMaxDepth</a> API to set the maximum depth the spider can crawl, where 0 refers to unlimited depth. 
+The <a href="#spideractionsetoptionmaxchildren">setOptionMaxChildren</a> API sets the maximum number of child nodes (per node) that can be crawled, 
 where 0 means no limit. The <a href="#spideractionsetoptionmaxduration">setOptionMaxDuration</a> API can be used to set the maximum duration the Spider will run.
-Use the <a href="#spideractionsetoptionmaxparsesizebytes">setOptionMaxParseSizeBytes</a> to limit the amount of data parsed by the spider. 
+Use the <a href="#spideractionsetoptionmaxparsesizebytes">setOptionMaxParseSizeBytes</a> API to limit the amount of data parsed by the spider. 
 This allows the spider to skip big responses/files. </p>
 
 <p>View the <a href="#spider">Spider section</a> in the API Catalogue for additional APIs.</p>
@@ -2783,14 +2785,63 @@ This allows the spider to skip big responses/files. </p>
 
 <p>Similar to the Spider API, the Ajax spider also provides APIs to set the <a href="#">maximum depth</a>, <a href="#">crawl state</a>, and <a href="#">maximum duration</a>.</p>
 <h2 id='passive-scan-settings'>Passive Scan Settings</h2>
-<p>The scanning rules can be enabled/disabled using the <a href="#pscanactionenablescanners">enableScanners</a> and <a href="(#pscanactiondisablescanners)">disableScanners</a> API.
+<p>The scanning rules can be enabled/disabled using the <a href="#pscanactionenablescanners">enableScanners</a> and <a href="(#pscanactiondisablescanners)">disableScanners</a> APIs.
 Also use the <a href="#pscanviewscanonlyinscope">setScanOnlyInScope</a> API to limit the passive scanning to a scope. View
 the advanced section to learn how to configure a context or scope using ZAP APIs.</p>
 
 <p>Passive scanning can also be used to automatically add tags and raise alerts for potential issues. A set of rules for 
 automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags Screen.</p>
-<h2 id='active-scan-settings'>Active Scan Settings</h2>
-<p>Content in progress!</p>
+<h2 id='active-scan-settings'>Active Scan Settings</h2><h3 id='general-options'>General Options</h3>
+<p>The general options for Active Scan can be configured using the options tab in the desktop UI shown below.</p>
+
+<p><img src="images/ascan_advanced_options.png" alt="options" /></p>
+
+<p>Use the <a href="#ascanactionsetoptionmaxscandurationinmins">setOptionMaxScanDurationInMins</a> API to limit the duration of scan and 
+<a href="#ascanactionsetoptionmaxruledurationinmins">setOptionMaxRuleDurationInMins</a> API to limit the time of individual active scan rules.
+This can be used to prevent rules from running for an excessive amount of time.</p>
+
+<p>Use the <a href="#ascanactionsetoptionhostperscan">setOptionHostPerScan</a> API to set the maximum number of hosts that will be scanned at the same time. 
+Furthermore, use the <a href="#ascanactionsetoptionthreadperhost">setOptionThreadPerHost</a> API to set the number of threads the scanner will use per host. 
+Increasing both of these values will reduce the active scanning time but this may put extra strain on the server ZAP is running on.</p>
+
+<p>Use the <a href="#ascanactionsetoptiondelayinms">setOptionDelayInMs</a> API to delay each request from ZAP in milliseconds. Setting this to a non zero value will increase 
+the time an active scan takes, but will put less of a strain on the target host. View the <a href="#zap-api-ascan">Active Scan</a> section in 
+the API Catalogue for additional information regarding the APIs.</p>
+<h3 id='input-vectors'>Input Vectors</h3>
+<p>Input vectors refers to the elements that Active Scan will target. Specifying the exact elements to target will improve the
+scanning time and accuracy of the results. For example, for the following configuration the <a href="#ascanviewoptiontargetparamsinjectable">optionTargetParamsInjectable</a> and 
+<a href="#ascanviewoptiontargetparamsenabledrpc">optionTargetParamsEnabledRPC</a> will yield the results of 11 and 39. 
+The numbers can be deconstructed in the following manner:</p>
+
+<ul>
+<li>1+2+8 = 11 [Query String(1), Post Data(2), HTTP Headers(8)]</li>
+<li>1+2+4+32 = 39 [Multipart (1), XML (2), JSON (4), DWR (32)]</li>
+</ul>
+
+<p><img src="images/ascan_advanced_input_vectors_code.png" alt="input_vectors_code" /></p>
+
+<p>Thus, to change the values of <code>Injectable targets</code> and <code>Input Vector Handlers</code> calculate the exact values and 
+use the <a href="#ascanactionsetoptiontargetparamsinjectable">setoptiontargetparamsinjectable</a> and <a href="#ascanactionsetoptiontargetparamsenabledrpc">setoptiontargetparamsenabledrpc</a> APIs accordingly.</p>
+
+<p>The <code>Add URL query parameter</code> option under the <code>Injectable Tragets</code> sets whether or not the active scanner should add a query param 
+to GET requests which do not have parameters to start with. This option can be enabled using the <a href="#ascanactionsetoptionaddqueryparam">setoptionaddqueryparam</a> API.</p>
+<h3 id='technology'>Technology</h3>
+<p><img src="images/ascan_advanced_tech.png" alt="technology" /></p>
+
+<p>The Technology tab allows you to specify which types of technologies to scan. Un-selecting technologies that you know are 
+not present in the target application may speed up the scan, as rules which target that technology can skip those tests.
+For an example, if the target web application does not have a database then removing it will increase the performance of the Active Scan.</p>
+
+<p>Use the <a href="#contextactionincludecontexttechnologies">includeContextTechnologies</a> and <a href="#contextactionexcludecontexttechnologies">excludeContextTechnologies</a> 
+API endpoints to include and exclude the technology list from the context.</p>
+<h3 id='policy'>Policy</h3>
+<p>A scan policy defines exactly which rules are run as part of an active scan. It also defines how these rules run influencing 
+how many requests are made and how likely potential issues are to be flagged. You can define as many scan policies as you 
+like and select the most appropriate one when you start the scan via the Active Scan. </p>
+
+<p><img src="images/ascan_advanced_policy.png" alt="policy" /></p>
+
+<p>The Policy tab shown in the above image allows you to override any of the settings specified in the selected scan policy.</p>
 <h1 id='contributions-welcome'>Contributions Welcome!</h1>
 <p>Contributions are welcome! There are many ways you can contribute to OWASP ZAP, both as a user and as a developer.</p>
 
@@ -2808,7 +2859,7 @@ automatic tagging are provided by default. These can be changed, deleted or adde
 <p><strong>3. Feature Documentation</strong></p>
 
 <p>Feature documentation related to ZAP is available on <a href="https://github.com/zaproxy/zaproxy/wiki">ZAP wiki</a>, 
-    <a href="https://github.com/zaproxy/zap-core-help/wiki">ZAP user guide</a>, and <a href="https://github.com/zaproxy/zap-extensions/wiki">ZAP extensions</a> repositories.</p>
+    <a href="https://www.zaproxy.org/docs/desktop/">ZAP user guide</a>, and <a href="https://github.com/zaproxy/zap-extensions/wiki">ZAP extensions</a> repositories.</p>
 <h2 id='how-to-contribute'>How to Contribute</h2>
 <p>The ZAP API documentation is developed according to the <a href="https://www.writethedocs.org/guide/docs-as-code/">docs as code</a> philosophy.
 The most direct and effective way to contribute to the docs is to submit a pull request(PR) or raise an 

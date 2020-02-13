@@ -20,7 +20,7 @@ only use ZAP with targets that you have been specifically given permission to te
 
         <span class="k">try</span> <span class="o">{</span>
             <span class="c1">// TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
-            <span class="c1">// Loop until the ajax spider has finished or the timeout has exceeded</span>
+            <span class="c1">// Loop until the passive scan has finished</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
                 <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
                 <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">();</span>
@@ -53,7 +53,7 @@ only use ZAP with targets that you have been specifically given permission to te
 
 <span class="c"># TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
 <span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="c"># Loop until the ajax spider has finished or the timeout has exceeded</span>
+    <span class="c"># Loop until the passive scan has finished</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Records to passive scan : '</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
@@ -84,7 +84,7 @@ has completed the alerts can be obtained via the alerts endpoint(s).</p>
 <p>View the <a href="#passive-scan-settings">advanced section</a> to know how to configure additional parameters of Passive Scan.</p>
 <h2 id='using-active-scan'>Using Active Scan</h2>
 <p>Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets. Active scanning 
-is an attack on those targets. You should <strong>NOT</strong> use it on applications that you do not own. </p>
+is an attack on those targets. You should <strong>NOT</strong> use it on applications that you do not have permission to. </p>
 <h3 id='start-active-scanner'>Start Active Scanner</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveScan</span> <span class="o">{</span>
 
     <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>

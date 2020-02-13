@@ -5,10 +5,10 @@
 
 <p><img src="/images/spider_advanced.png" alt="spider_advanced" /></p>
 
-<p>Use the <a href="#spideractionsetoptionmaxdepth">setOptionMaxDepth</a> to set the maximum depth the spider can crawl, where 0 refers to unlimited depth. 
-The <a href="#spideractionsetoptionmaxchildren">setOptionMaxChildren</a> sets the maximum number of child nodes (per node) that can be crawled, 
+<p>Use the <a href="#spideractionsetoptionmaxdepth">setOptionMaxDepth</a> API to set the maximum depth the spider can crawl, where 0 refers to unlimited depth. 
+The <a href="#spideractionsetoptionmaxchildren">setOptionMaxChildren</a> API sets the maximum number of child nodes (per node) that can be crawled, 
 where 0 means no limit. The <a href="#spideractionsetoptionmaxduration">setOptionMaxDuration</a> API can be used to set the maximum duration the Spider will run.
-Use the <a href="#spideractionsetoptionmaxparsesizebytes">setOptionMaxParseSizeBytes</a> to limit the amount of data parsed by the spider. 
+Use the <a href="#spideractionsetoptionmaxparsesizebytes">setOptionMaxParseSizeBytes</a> API to limit the amount of data parsed by the spider. 
 This allows the spider to skip big responses/files. </p>
 
 <p>View the <a href="#spider">Spider section</a> in the API Catalogue for additional APIs.</p>
@@ -19,11 +19,60 @@ This allows the spider to skip big responses/files. </p>
 
 <p>Similar to the Spider API, the Ajax spider also provides APIs to set the <a href="#">maximum depth</a>, <a href="#">crawl state</a>, and <a href="#">maximum duration</a>.</p>
 <h2 id='passive-scan-settings'>Passive Scan Settings</h2>
-<p>The scanning rules can be enabled/disabled using the <a href="#pscanactionenablescanners">enableScanners</a> and <a href="(#pscanactiondisablescanners)">disableScanners</a> API.
+<p>The scanning rules can be enabled/disabled using the <a href="#pscanactionenablescanners">enableScanners</a> and <a href="(#pscanactiondisablescanners)">disableScanners</a> APIs.
 Also use the <a href="#pscanviewscanonlyinscope">setScanOnlyInScope</a> API to limit the passive scanning to a scope. View
 the advanced section to learn how to configure a context or scope using ZAP APIs.</p>
 
 <p>Passive scanning can also be used to automatically add tags and raise alerts for potential issues. A set of rules for 
 automatic tagging are provided by default. These can be changed, deleted or added to via the Options Passive Scan Tags Screen.</p>
-<h2 id='active-scan-settings'>Active Scan Settings</h2>
-<p>Content in progress!</p>
+<h2 id='active-scan-settings'>Active Scan Settings</h2><h3 id='general-options'>General Options</h3>
+<p>The general options for Active Scan can be configured using the options tab in the desktop UI shown below.</p>
+
+<p><img src="/images/ascan_advanced_options.png" alt="options" /></p>
+
+<p>Use the <a href="#ascanactionsetoptionmaxscandurationinmins">setOptionMaxScanDurationInMins</a> API to limit the duration of scan and 
+<a href="#ascanactionsetoptionmaxruledurationinmins">setOptionMaxRuleDurationInMins</a> API to limit the time of individual active scan rules.
+This can be used to prevent rules from running for an excessive amount of time.</p>
+
+<p>Use the <a href="#ascanactionsetoptionhostperscan">setOptionHostPerScan</a> API to set the maximum number of hosts that will be scanned at the same time. 
+Furthermore, use the <a href="#ascanactionsetoptionthreadperhost">setOptionThreadPerHost</a> API to set the number of threads the scanner will use per host. 
+Increasing both of these values will reduce the active scanning time but this may put extra strain on the server ZAP is running on.</p>
+
+<p>Use the <a href="#ascanactionsetoptiondelayinms">setOptionDelayInMs</a> API to delay each request from ZAP in milliseconds. Setting this to a non zero value will increase 
+the time an active scan takes, but will put less of a strain on the target host. View the <a href="#zap-api-ascan">Active Scan</a> section in 
+the API Catalogue for additional information regarding the APIs.</p>
+<h3 id='input-vectors'>Input Vectors</h3>
+<p>Input vectors refers to the elements that Active Scan will target. Specifying the exact elements to target will improve the
+scanning time and accuracy of the results. For example, for the following configuration the <a href="#ascanviewoptiontargetparamsinjectable">optionTargetParamsInjectable</a> and 
+<a href="#ascanviewoptiontargetparamsenabledrpc">optionTargetParamsEnabledRPC</a> will yield the results of 11 and 39. 
+The numbers can be deconstructed in the following manner:</p>
+
+<ul>
+<li>1+2+8 = 11 [Query String(1), Post Data(2), HTTP Headers(8)]</li>
+<li>1+2+4+32 = 39 [Multipart (1), XML (2), JSON (4), DWR (32)]</li>
+</ul>
+
+<p><img src="/images/ascan_advanced_input_vectors_code.png" alt="input_vectors_code" /></p>
+
+<p>Thus, to change the values of <code>Injectable targets</code> and <code>Input Vector Handlers</code> calculate the exact values and 
+use the <a href="#ascanactionsetoptiontargetparamsinjectable">setoptiontargetparamsinjectable</a> and <a href="#ascanactionsetoptiontargetparamsenabledrpc">setoptiontargetparamsenabledrpc</a> APIs accordingly.</p>
+
+<p>The <code>Add URL query parameter</code> option under the <code>Injectable Tragets</code> sets whether or not the active scanner should add a query param 
+to GET requests which do not have parameters to start with. This option can be enabled using the <a href="#ascanactionsetoptionaddqueryparam">setoptionaddqueryparam</a> API.</p>
+<h3 id='technology'>Technology</h3>
+<p><img src="/images/ascan_advanced_tech.png" alt="technology" /></p>
+
+<p>The Technology tab allows you to specify which types of technologies to scan. Un-selecting technologies that you know are 
+not present in the target application may speed up the scan, as rules which target that technology can skip those tests.
+For an example, if the target web application does not have a database then removing it will increase the performance of the Active Scan.</p>
+
+<p>Use the <a href="#contextactionincludecontexttechnologies">includeContextTechnologies</a> and <a href="#contextactionexcludecontexttechnologies">excludeContextTechnologies</a> 
+API endpoints to include and exclude the technology list from the context.</p>
+<h3 id='policy'>Policy</h3>
+<p>A scan policy defines exactly which rules are run as part of an active scan. It also defines how these rules run influencing 
+how many requests are made and how likely potential issues are to be flagged. You can define as many scan policies as you 
+like and select the most appropriate one when you start the scan via the Active Scan. </p>
+
+<p><img src="/images/ascan_advanced_policy.png" alt="policy" /></p>
+
+<p>The Policy tab shown in the above image allows you to override any of the settings specified in the selected scan policy.</p>
