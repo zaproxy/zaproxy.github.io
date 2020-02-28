@@ -8,42 +8,42 @@ the application.</p>
 In many jurisdictions it is illegal to "test" web sites/applications without permission. Please be aware that you should 
 only use ZAP with targets that you have been specifically given permission to test.
 </aside>
-<h2 id='using-passive-scan'>Using Passive Scan</h2><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PassiveScan</span> <span class="o">{</span>
+<h2 id='using-passive-scan'>Using Passive Scan</h2><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PassiveScan</span> <span class="o">{</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientApi</span><span class="o">(</span><span class="n">ZAP_ADDRESS</span><span class="o">,</span> <span class="n">ZAP_PORT</span><span class="o">,</span> <span class="n">ZAP_API_KEY</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClientApi</span><span class="o">(</span><span class="no">ZAP_ADDRESS</span><span class="o">,</span> <span class="no">ZAP_PORT</span><span class="o">,</span> <span class="no">ZAP_API_KEY</span><span class="o">);</span>
         <span class="kt">int</span> <span class="n">numberOfRecords</span><span class="o">;</span>
 
         <span class="k">try</span> <span class="o">{</span>
             <span class="c1">// TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
             <span class="c1">// Loop until the passive scan has finished</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">2000</span><span class="o">);</span>
                 <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">();</span>
-                <span class="n">numberOfRecords</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">()).</span><span class="na">getValue</span><span class="o">());</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Number of records left for scanning : "</span> <span class="o">+</span> <span class="n">numberOfRecords</span><span class="o">);</span>
+                <span class="n">numberOfRecords</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(((</span><span class="nc">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">pscan</span><span class="o">.</span><span class="na">recordsToScan</span><span class="o">()).</span><span class="na">getValue</span><span class="o">());</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Number of records left for scanning : "</span> <span class="o">+</span> <span class="n">numberOfRecords</span><span class="o">);</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">numberOfRecords</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
                     <span class="k">break</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Passive Scan completed"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Passive Scan completed"</span><span class="o">);</span>
 
             <span class="c1">// Print Passive scan results/alerts</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Alerts:"</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">xmlreport</span><span class="o">(),</span> <span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Alerts:"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">xmlreport</span><span class="o">(),</span> <span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
 
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
             <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="c">#!/usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">time</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1">#!/usr/bin/env python
+</span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
@@ -51,24 +51,24 @@ only use ZAP with targets that you have been specifically given permission to te
 <span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
 <span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="p">{</span><span class="s">'http'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">,</span> <span class="s">'https'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">})</span>
 
-<span class="c"># TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details</span>
-<span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="c"># Loop until the passive scan has finished</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Records to passive scan : '</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span>
+<span class="c1"># TODO : explore the app (Spider, etc) before using the Passive Scan API, Refer the explore section for details
+</span><span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># Loop until the passive scan has finished
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">'Records to passive scan : '</span> <span class="o">+</span> <span class="n">zap</span><span class="o">.</span><span class="n">pscan</span><span class="o">.</span><span class="n">records_to_scan</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Passive Scan completed'</span><span class="p">)</span>
 
-<span class="c"># Print Passive scan results/alerts</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
+<span class="c1"># Print Passive scan results/alerts
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">())</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># To view the number of records left to be scanned</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/pscan/view/recordsToScan/?apikey=&lt;ZAP_API_KEY&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># To view the number of records left to be scanned</span>
+<span class="nv">$ </span>curl <span class="s2">"http://localhost:8080/JSON/pscan/view/recordsToScan/?apikey=&lt;ZAP_API_KEY&gt;"</span>
 
 <span class="c"># To view the alerts of passive scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=&lt;TARGET_URL&gt;&amp;start=0&amp;count=10"</span>
-</code></pre>
+<span class="nv">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=&lt;TARGET_URL&gt;&amp;start=0&amp;count=10"</span>
+</code></pre></div>
 <p>All requests that are proxied through ZAP or initialised by tools like the Spider are passively scanned. You do not have 
 to manually start the passive scan process, ZAP by default passively scans all HTTP and WebSocket messages (requests and responses)<br>
 which are sent to the application. </p>
@@ -85,51 +85,51 @@ has completed the alerts can be obtained via the alerts endpoint(s).</p>
 <h2 id='using-active-scan'>Using Active Scan</h2>
 <p>Active scanning attempts to find potential vulnerabilities by using known attacks against the selected targets. Active scanning 
 is an attack on those targets. You should <strong>NOT</strong> use it on applications that you do not have permission to. </p>
-<h3 id='start-active-scanner'>Start Active Scanner</h3><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveScan</span> <span class="o">{</span>
+<h3 id='start-active-scanner'>Start Active Scanner</h3><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ActiveScan</span> <span class="o">{</span>
 
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">TARGET</span> <span class="o">=</span> <span class="s">"https://public-firing-range.appspot.com"</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 
-        <span class="n">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClientApi</span><span class="o">(</span><span class="n">ZAP_ADDRESS</span><span class="o">,</span> <span class="n">ZAP_PORT</span><span class="o">,</span> <span class="n">ZAP_API_KEY</span><span class="o">);</span>
+        <span class="nc">ClientApi</span> <span class="n">api</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClientApi</span><span class="o">(</span><span class="no">ZAP_ADDRESS</span><span class="o">,</span> <span class="no">ZAP_PORT</span><span class="o">,</span> <span class="no">ZAP_API_KEY</span><span class="o">);</span>
 
         <span class="k">try</span> <span class="o">{</span>
             <span class="c1">// TODO : explore the app (Spider, etc) before using the Active Scan API, Refer the explore section</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scanning target : "</span> <span class="o">+</span> <span class="n">TARGET</span><span class="o">);</span>
-            <span class="n">ApiResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">ascan</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="n">TARGET</span><span class="o">,</span> <span class="s">"True"</span><span class="o">,</span> <span class="s">"False"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-            <span class="n">String</span> <span class="n">scanid</span><span class="o">;</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scanning target : "</span> <span class="o">+</span> <span class="no">TARGET</span><span class="o">);</span>
+            <span class="nc">ApiResponse</span> <span class="n">resp</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="na">ascan</span><span class="o">.</span><span class="na">scan</span><span class="o">(</span><span class="no">TARGET</span><span class="o">,</span> <span class="s">"True"</span><span class="o">,</span> <span class="s">"False"</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+            <span class="nc">String</span> <span class="n">scanid</span><span class="o">;</span>
             <span class="kt">int</span> <span class="n">progress</span><span class="o">;</span>
 
             <span class="c1">// The scan now returns a scan id to support concurrent scanning</span>
-            <span class="n">scanid</span> <span class="o">=</span> <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getValue</span><span class="o">();</span>
+            <span class="n">scanid</span> <span class="o">=</span> <span class="o">((</span><span class="nc">ApiResponseElement</span><span class="o">)</span> <span class="n">resp</span><span class="o">).</span><span class="na">getValue</span><span class="o">();</span>
             <span class="c1">// Poll the status until it completes</span>
             <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
-                <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
                 <span class="n">progress</span> <span class="o">=</span>
-                        <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span>
-                                <span class="o">((</span><span class="n">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">ascan</span><span class="o">.</span><span class="na">status</span><span class="o">(</span><span class="n">scanid</span><span class="o">)).</span><span class="na">getValue</span><span class="o">());</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scan progress : "</span> <span class="o">+</span> <span class="n">progress</span> <span class="o">+</span> <span class="s">"%"</span><span class="o">);</span>
+                        <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span>
+                                <span class="o">((</span><span class="nc">ApiResponseElement</span><span class="o">)</span> <span class="n">api</span><span class="o">.</span><span class="na">ascan</span><span class="o">.</span><span class="na">status</span><span class="o">(</span><span class="n">scanid</span><span class="o">)).</span><span class="na">getValue</span><span class="o">());</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scan progress : "</span> <span class="o">+</span> <span class="n">progress</span> <span class="o">+</span> <span class="s">"%"</span><span class="o">);</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="o">)</span> <span class="o">{</span>
                     <span class="k">break</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
 
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scan complete"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Active Scan complete"</span><span class="o">);</span>
             <span class="c1">// Print vulnerabilities found by the scanning</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Alerts:"</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="n">String</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">xmlreport</span><span class="o">(),</span> <span class="n">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Alerts:"</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">api</span><span class="o">.</span><span class="na">core</span><span class="o">.</span><span class="na">xmlreport</span><span class="o">(),</span> <span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
 
-        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Exception : "</span> <span class="o">+</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>
             <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
         <span class="o">}</span>
     <span class="o">}</span>
 <span class="o">}</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="c">#!/usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">time</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1">#!/usr/bin/env python
+</span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
@@ -137,31 +137,31 @@ is an attack on those targets. You should <strong>NOT</strong> use it on applica
 <span class="n">target</span> <span class="o">=</span> <span class="s">'https://public-firing-range.appspot.com'</span>
 <span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">,</span> <span class="n">proxies</span><span class="o">=</span><span class="p">{</span><span class="s">'http'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">,</span> <span class="s">'https'</span><span class="p">:</span> <span class="s">'http://127.0.0.1:8080'</span><span class="p">})</span>
 
-<span class="c"># TODO : explore the app (Spider, etc) before using the Active Scan API, Refer the explore section</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Active Scanning target {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
+<span class="c1"># TODO : explore the app (Spider, etc) before using the Active Scan API, Refer the explore section
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Active Scanning target {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">target</span><span class="p">))</span>
 <span class="n">scanID</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
 <span class="k">while</span> <span class="nb">int</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanID</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
-    <span class="c"># Loop until the scanner has finished</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">'Scan progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanID</span><span class="p">)))</span>
+    <span class="c1"># Loop until the scanner has finished
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">'Scan progress </span><span class="si">%</span><span class="s">: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">ascan</span><span class="o">.</span><span class="n">status</span><span class="p">(</span><span class="n">scanID</span><span class="p">)))</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">'Active Scan completed'</span><span class="p">)</span>
-<span class="c"># Print vulnerabilities found by the scanning</span>
-<span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
+<span class="c1"># Print vulnerabilities found by the scanning
+</span><span class="k">print</span><span class="p">(</span><span class="s">'Hosts: {}'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="s">', '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">hosts</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'Alerts: '</span><span class="p">)</span>
 <span class="n">pprint</span><span class="p">(</span><span class="n">zap</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">alerts</span><span class="p">(</span><span class="n">baseurl</span><span class="o">=</span><span class="n">target</span><span class="p">))</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># To start the the active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=&lt;TARGET_URL&gt;&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># To start the the active scan</span>
+<span class="nv">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/scan/?apikey=&lt;ZAP_API_KEY&gt;&amp;url=&lt;TARGET_URL&gt;&amp;recurse=true&amp;inScopeOnly=&amp;scanPolicyName=&amp;method=&amp;postData=&amp;contextId="</span>
 
 <span class="c"># To view the the status of active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
+<span class="nv">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/view/status/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
 
 <span class="c"># To view the alerts of active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=&lt;TARGET_URL&gt;&amp;start=0&amp;count=10"</span>
+<span class="nv">$ </span>curl <span class="s2">"http://localhost:8080/JSON/core/view/alerts/?apikey=&lt;ZAP_API_KEY&gt;&amp;baseurl=&lt;TARGET_URL&gt;&amp;start=0&amp;count=10"</span>
 
 <span class="c"># To stop the active scan</span>
-<span class="gp">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
-</code></pre>
+<span class="nv">$ </span>curl <span class="s2">"http://localhost:8080/JSON/ascan/action/stop/?apikey=&lt;ZAP_API_KEY&gt;&amp;scanId=&lt;SCAN_ID&gt;"</span>
+</code></pre></div>
 <p>The <a href="#ascanactionscan">scan</a> endpoint runs the active scanner against the given URL or Context. Optionally, the &#39;recurse&#39; parameter can be used to scan URLs 
 under the given URL, the parameter &#39;inScopeOnly&#39; can be used to constrain the scan to URLs that are in scope (ignored if a Context is specified).
 The parameter &#39;scanPolicyName&#39; allows to specify the scan policy (if none is given it uses the default scan policy). 
