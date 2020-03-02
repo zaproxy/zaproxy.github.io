@@ -120,41 +120,94 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">Alberto&#39;s GSoC 2014 Project for ZAP  SOAP Scanner Add-On</h1>
+          <h1 class="post-title">Hacking ZAP #2 - Getting Started</h1>
           <main class="post-content">
-            <p>Hello everybody, my name is Alberto Verza, a 23 year student from Spain, and this summer I have participated in <a href="https://www.google-melange.com/archive/gsoc/2014/orgs/owasp">Google Summer of Code 2014</a>. My
-project was the SOAP Scanner add-on for ZAP, in which I worked during all the Program. Let me explain you the features it includes.</p>
-<p>One of the interesting features this add-on provides is WSDL file scanning. Until now, ZAP could find these kind of files and it could even
-search URLs inside them, but further petitions to these URLs had not a valid SOAP format specified by the WSDL file. With the SOAP Scanner add-on,
-detected WSDL files are now read and SOAP petitions now follow the correct format. You can provide WSDL files in many ways: using the main
-window &ldquo;quickscan&rdquo; option, through proxy navigation, or even importing single files through tools menu.</p>
-<p>However, SOAP Scanner add-on functionality doesn't end here. It couldn't be called &ldquo;scanner&rdquo; if it wasn't capable of scanning vulnerabilities
-after all. That's why it has some SOAP dedicated scanners, which simulates specific attack vectors for some known vulnerabilities like SOAP
-Action Spoofing or XML Injection, and it raises alerts when something unusual is coming from server's response. Moreover, the add-on not only
-works with scanners made in this project, but also it is compatible with previous developed ones like SQL Injection Scanner or Cross-Site
-Scripting Scanner, among others.</p>
-<p>SOAP Scanner add-on has passed GSoC final evaluations in alpha state, so if you want to give it a try, you should take a look to the <a href="https://docs.google.com/document/d/1yy7eZHP0mg46nHC7a2KaOfM08HNb84f5Kn5GF02-v9M/edit">User Guide</a> first.</p>
-<p>Finally, I want to stress that OWASP ZAP and SOAP Scanner add-on are Open Source Software under Apache License 2.0, so contributions to the code
-are always welcome. If you have not worked for ZAP before, then ZAP Developers will be pleased to help anyone who wants to contribute through the <a href="https://groups.google.com/forum/#!forum/zaproxy-develop">developer group</a>, so don't hesitate to ask there.</p>
-<p>I hope you find this useful :)</p>
+            <p>Welcome to a <a href="https://github.com/zaproxy/zaproxy/wiki/Development#hacking-zap">series of blog posts</a> aimed at
+helping you “hack the ZAP source code”.<br>
+The previous post in this series is: <a href="/blog/2014-03-10-hacking-zap-1-why-should-you/">Hacking ZAP #1 - Why should you?</a></p>
+<p>In order to change the ZAP source code you will need to set up a development environment.</p>
+<h2 id="requirements">Requirements</h2>
+<p>The following software is used/required to obtain and build ZAP (core) and the add-ons:</p>
+<ul>
+<li>A JDK (minimum version 8), for example, <a href="https://www.azul.com/downloads/zulu-community/">Zulu JDK</a> or <a href="https://adoptopenjdk.net/">AdoptOpenJDK</a>;</li>
+<li><a href="https://git-scm.com/downloads">Git</a>, to obtain the source code;</li>
+<li><a href="https://gradle.org/">Gradle</a>, to build the source code. It's recommend to use the <a href="https://docs.gradle.org/current/userguide/gradle_wrapper.html">Gradle Wrapper</a> provided in the corresponding projects.</li>
+</ul>
+<h2 id="projects">Projects</h2>
+<p>The ZAP projects are located in GitHub under the <a href="https://github.com/zaproxy/">zaproxy organization</a>.</p>
+<p>The main projects are <a href="https://github.com/zaproxy/zaproxy/"><code>zaproxy</code></a> and <a href="https://github.com/zaproxy/zap-extensions/"><code>zap-extensions</code></a>.</p>
+<h2 id="the-zap-core">The ZAP core</h2>
+<p>The <code>zaproxy</code> project is often called “the core”.</p>
+<p>The project follows the typical directory structure for Java projects, with main code under
+<a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/">src/main/java</a> and tests under
+<a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/test/java/">src/test/java</a>.</p>
+<p>The main packages are:</p>
+<ul>
+<li><a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/org/parosproxy">org.parosproxy</a>  The code inherited from the Paros project</li>
+<li><a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/org/zaproxy">org.zaproxy</a>        New ZAP code</li>
+</ul>
+<p>We try to implement significant new features in the <code>zap-extensions</code> project as ‘add-ons’.<br>
+We do this for the following reasons:</p>
+<ol>
+<li>Core changes can only be delivered via ‘full’ ZAP releases. We typically only do these a few times a year.</li>
+<li>Add-ons can be released and updated as frequently as required. Users can dynamically install and update add-ons, often without having to even restart ZAP.</li>
+<li>Add-ons progress from alpha through beta to release, allowing users to understand how robust an add-on is likely to be. This allows developers to release early without worrying about breaking ZAP for everyone.</li>
+<li>Add-ons can still be included in ‘full’ ZAP releases - the WebSockets and Ajax Spider are 2 add-ons that we include by default.</li>
+</ol>
+<p>Having said that, you may well find that changes you want to make can only be made in the core.<br>
+That is not a problem - you can make changes to the core - but these changes will probably not be available to users as quickly as those made to add-ons.</p>
+<p>We also add new functionality to the core if we want it to be available for other add-ons to build on.</p>
+<p>It's important to note that if you make changes to Paros&rsquo; code then you must include a comment at the top of the file mentioning
+your change. This is required to satisfy the <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/dist/license/TheClarifiedArtisticLicense.htm">Clarified Artistic License</a> that Paros was released under.<br>
+We have a standard format for these comments</p>
+<blockquote>
+<p>// ZAP: yyyy/mm/dd Issue xyz: Description of the changes</p>
+</blockquote>
+<p>e.g. see <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/parosproxy/paros/CommandLine.java#L21">CommandLine.java</a></p>
+<p>The <code>zaproxy</code> project uses <a href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>, that means if
+you make changes to the core then you typically just need to make them to the <code>develop</code> branch.</p>
+<h2 id="add-ons-extensions-and-rules">Add-ons, Extensions and Rules</h2>
+<p>There are many ways to extend ZAP programmatically.<br>
+Some of the main ways include:</p>
+<ul>
+<li>Extensions, which are classes that extend the <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/parosproxy/paros/extension/Extension.java"><code>Extension</code></a> class. They are a powerful way of adding functionality to ZAP, and much of the ‘core’ is actually implemented as extensions.</li>
+<li>Active Scan rules, which are classes which extend <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/parosproxy/paros/core/scanner/Plugin.java"><code>Plugin</code></a>, detect potential vulnerabilities and run as part of the Active Scanner. These rules typically make multiple requests on the target system. They only run when explicitly invoked by the user.</li>
+<li>Passive Scan rules, which are classes which extend <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/zaproxy/zap/extension/pscan/PluginPassiveScanner.java">PluginPassiveScanner</a>, detect potential vulnerabilities and run as part of the Passive Scanner. These rules cannot make any requests - all they can do is examine the requests and responses. They are typically invoked for every request that is sent through ZAP.</li>
+</ul>
+<p>Add-ons are packages which can include all of these components as well as ‘raw’ files. They are usually available on the <a href="/addons/">ZAP Marketplace</a> so that
+users can discover, download, and install them from within ZAP. You can also install add-ons from the filestore via the “File / Load Add-on
+file…” menu.</p>
+<p>New add-ons should be created with alpha status and only move to the beta and then release status after they have been reviewed.</p>
+<p>You can also create add-ons in your own repositories. If they are open source then they will still be eligible to be uploaded to the ZAP
+Marketplace.</p>
+<p>We will cover all of these components (and more) in more detail in a future posts.</p>
+<p>If you have any questions about ZAP development then please ask them on the <a href="https://groups.google.com/group/zaproxy-develop">ZAP Developer</a>
+group.</p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2014-04-30-hacking-zap-4-active-scan-rules/"> Hacking ZAP #4 - Active scan rules</a>
+                Prev: <a class="previous" href="/blog/2014-03-10-hacking-zap-1-why-should-you/"> Hacking ZAP #1 - Why should you?</a>
               
               
-                Next: <a class="next" href="/blog/2015-05-27-zap-as-a-service-zaas/"> ZAP as a Service (ZaaS)</a>
+                Next: <a class="next" href="/blog/2014-04-03-hacking-zap-3-passive-scan-rules/"> Hacking ZAP #3 - Passive scan rules</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Wed Sep 3, 2014 </h4>
+          <h4 id="date"> Thu Mar 20, 2014 </h4>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents"></nav>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#requirements">Requirements</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#the-zap-core">The ZAP core</a></li>
+    <li><a href="#add-ons-extensions-and-rules">Add-ons, Extensions and Rules</a></li>
+  </ul>
+</nav>
 
           <div class="post-authors">
             <h4>Authors</h4>
@@ -173,7 +226,7 @@ are always welcome. If you have not worked for ZAP before, then ZAP Developers w
               </section>
           
           </div>
-          <h5 id="wordcount"> 325 Words </h5>
+          <h5 id="wordcount"> 714 Words </h5>
                     
         </section>
       </aside>
@@ -213,7 +266,7 @@ are always welcome. If you have not worked for ZAP before, then ZAP Developers w
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2014-09-03-alberto-s-gsoc-2014-project-for-zap-soap-scanner-add-on/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2014-03-20-hacking-zap-2-getting-started/index.md">Edit on GitHub</a>
   </div>
 
     </div>

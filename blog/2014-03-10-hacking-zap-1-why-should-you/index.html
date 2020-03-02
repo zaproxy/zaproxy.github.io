@@ -120,41 +120,78 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">Alberto&#39;s GSoC 2014 Project for ZAP  SOAP Scanner Add-On</h1>
+          <h1 class="post-title">Hacking ZAP #1 - Why should you?</h1>
           <main class="post-content">
-            <p>Hello everybody, my name is Alberto Verza, a 23 year student from Spain, and this summer I have participated in <a href="https://www.google-melange.com/archive/gsoc/2014/orgs/owasp">Google Summer of Code 2014</a>. My
-project was the SOAP Scanner add-on for ZAP, in which I worked during all the Program. Let me explain you the features it includes.</p>
-<p>One of the interesting features this add-on provides is WSDL file scanning. Until now, ZAP could find these kind of files and it could even
-search URLs inside them, but further petitions to these URLs had not a valid SOAP format specified by the WSDL file. With the SOAP Scanner add-on,
-detected WSDL files are now read and SOAP petitions now follow the correct format. You can provide WSDL files in many ways: using the main
-window &ldquo;quickscan&rdquo; option, through proxy navigation, or even importing single files through tools menu.</p>
-<p>However, SOAP Scanner add-on functionality doesn't end here. It couldn't be called &ldquo;scanner&rdquo; if it wasn't capable of scanning vulnerabilities
-after all. That's why it has some SOAP dedicated scanners, which simulates specific attack vectors for some known vulnerabilities like SOAP
-Action Spoofing or XML Injection, and it raises alerts when something unusual is coming from server's response. Moreover, the add-on not only
-works with scanners made in this project, but also it is compatible with previous developed ones like SQL Injection Scanner or Cross-Site
-Scripting Scanner, among others.</p>
-<p>SOAP Scanner add-on has passed GSoC final evaluations in alpha state, so if you want to give it a try, you should take a look to the <a href="https://docs.google.com/document/d/1yy7eZHP0mg46nHC7a2KaOfM08HNb84f5Kn5GF02-v9M/edit">User Guide</a> first.</p>
-<p>Finally, I want to stress that OWASP ZAP and SOAP Scanner add-on are Open Source Software under Apache License 2.0, so contributions to the code
-are always welcome. If you have not worked for ZAP before, then ZAP Developers will be pleased to help anyone who wants to contribute through the <a href="https://groups.google.com/forum/#!forum/zaproxy-develop">developer group</a>, so don't hesitate to ask there.</p>
-<p>I hope you find this useful :)</p>
+            <p>Welcome to a <a href="https://github.com/zaproxy/zaproxy/wiki/Development#hacking-zap">series of blog posts</a> aimed at
+helping you “hack the ZAP source code”.</p>
+<p>ZAP is an open source tool for finding vulnerabilities in web applications. It is the <a href="https://www.openhub.net/orgs/OWASP">most active OWASP
+project</a> and is very community focused - it probably has more
+<a href="https://www.openhub.net/p/zaproxy/contributors/summary">contributors</a> than any other web application security tool. It is being <a href="https://www.openhub.net/p/zaproxy/commits/summary">continually enhanced</a> and, unusually for a security tool, has been translated into over <a href="https://crowdin.com/project/owasp-zap">25 languages</a> thanks to over 70 translators.<br>
+This series is designed to help newcomers dive head-first into the ZAP source code. However for this first blog post I thought I’d take a step back and give some reasons why you might want to change the ZAP source code in the first place.</p>
+<h2 id="you-help-others">You help others</h2>
+<p>ZAP was voted the <a href="https://www.toolswatch.org/2013/12/2013-top-security-tools-as-voted-by-toolswatch-org-readers/">most popular security tool of 2013 by ToolsWatch.org readers</a>, competes with <a href="http://www.sectoolmarket.com/price-and-feature-comparison-of-web-application-scanners-unified-list.html">commercial security tools</a> and in some cases exceeds their capabilities. For example ZAP was the first security tool to support WebSockets, something few commercial tools support, even now. By contributing to ZAP you help all of the people that are using it to make their applications more secure.</p>
+<h2 id="its-a-great-way-to-learn">It’s a great way to learn</h2>
+<p>I’m a developer. I started ZAP as a way to teach myself about security, and I’m a big fan of learning by doing, or in this case, ‘coding’. If
+you want to understand a particular vulnerability properly then why not write some code that you think will detect it? By the end of that
+process you should understand the vulnerability much better! It doesn't matter if you are completely new to security (as I was) or have been
+working on it for many years - there’s always more to learn. I want ZAP to be a great teaching tool, and that’s why I encourage students to get
+involved with ZAP development. We have had some great features implemented by students, both in their own time and as part of the <a href="https://summerofcode.withgoogle.com/">Google Summer of Code</a>. If you are a student and would like to contribute to ZAP (for example as part of your course work)
+then we’d be delighted to hear from you. The <a href="https://groups.google.com/group/zaproxy-develop">ZAP developer group</a> is available specifically to
+help people work on ZAP, and we always do our best to help newcomers find their feet. And of course, having contributions to a major open source
+security project like ZAP on your CV or resume can be a real benefit when trying to break into the security industry.</p>
+<h2 id="you-can-make-zap-work-your-way">You can make ZAP work your way</h2>
+<p>ZAP is open source, and one of the big advantages of open source is that you can change it to work exactly as <em>you</em> want. You can keep your
+changes to yourself of course, but we realize that people want to work in different ways, and so we are always happy for people to add new
+options to ZAP so that people can choose exactly how it works for them. And even if you want to take ZAP off in a direction we (the ZAP core
+developers) think is completely irrelevant to what we are trying to achieve, we’ll still happily work with you to try to make sure you can
+achieve what you want. Without breaking ZAP for everyone else of course.</p>
+<h2 id="its-a-powerful-environment">It’s a powerful environment</h2>
+<p>Lets say you’ve come up with a neat way to find vulnerabilities, either in a completely automated way or with manual assistance. A small stand
+alone tool is ok, but there are so many things you need to handle when using such a tool on real world application. Things like authentication,
+session handling and managing CSRF tokens. ZAP provides a complete testing environment and already handles a whole range of problems that you
+are likely to encounter.  If it can’t handle a particular problem then let us know - we are constantly improving ZAP, and so we might already be
+working on it. And if we are not then we’ll add it to the list of enhancement requests - someone else reading this post might just decide to
+work on it. One of the advantages of using an open source project like ZAP is that you can access all of the ZAP internals. We have no ‘secret
+sauce’ and so we can give you access to all of the ZAP functionality without having to limit you to a restricted API for commercial reasons.</p>
+<h2 id="it-provides-more-exposure-for-your-project">It provides more exposure for your project</h2>
+<p>Maybe you’ve started a small open source project, it might even an <a href="https://owasp.org/">OWASP</a> one. You may well find that it takes time to
+get people interested in it, particularly if it's completely stand alone. While ZAP is a great environment to build on, we realize that there are
+many reasons why people might not want to just build on top of ZAP. However you can wrap your project in a ZAP add-on while keeping ownership
+and maintaining it separately from ZAP. We are big fans of reuse, and encourage people to write new functionality in a way that allows it to be
+reused across a range of security tools, even our competitors. We practice what we preach, having done that for major new features in ZAP like
+<a href="https://developer.mozilla.org/en-US/docs/Plug-n-Hack">Plug-n-Hack</a> and <a href="https://developer.mozilla.org/en-US/docs/zest">Zest</a>. The <a href="/addons/">ZAP Marketplace</a>
+allows users to browse, download and install add-ons from within ZAP. Repackaging your tool as a ZAP add-on will introduce your
+project to people who might otherwise never have known about it or bothered to try it.</p>
+<h2 id="profit">Profit???</h2>
+<p>ZAP is open source, and will stay open source. You will never have to pay for a ‘pro’ version. However we have no problem with people developing
+and selling closed source add-ons to ZAP. If you think you can make money from selling ZAP add-ons then go for it.</p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2014-04-30-hacking-zap-4-active-scan-rules/"> Hacking ZAP #4 - Active scan rules</a>
+                Prev: <a class="previous" href="/blog/2012-12-10-zap-2-0-0-and-the-google-summer-of-code-2012-projects/"> ZAP 2.0.0 and the Google Summer of Code 2012 Projects</a>
               
               
-                Next: <a class="next" href="/blog/2015-05-27-zap-as-a-service-zaas/"> ZAP as a Service (ZaaS)</a>
+                Next: <a class="next" href="/blog/2014-03-20-hacking-zap-2-getting-started/"> Hacking ZAP #2 - Getting Started</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Wed Sep 3, 2014 </h4>
+          <h4 id="date"> Mon Mar 10, 2014 </h4>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents"></nav>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#you-help-others">You help others</a></li>
+    <li><a href="#its-a-great-way-to-learn">It’s a great way to learn</a></li>
+    <li><a href="#you-can-make-zap-work-your-way">You can make ZAP work your way</a></li>
+    <li><a href="#its-a-powerful-environment">It’s a powerful environment</a></li>
+    <li><a href="#it-provides-more-exposure-for-your-project">It provides more exposure for your project</a></li>
+    <li><a href="#profit">Profit???</a></li>
+  </ul>
+</nav>
 
           <div class="post-authors">
             <h4>Authors</h4>
@@ -173,7 +210,7 @@ are always welcome. If you have not worked for ZAP before, then ZAP Developers w
               </section>
           
           </div>
-          <h5 id="wordcount"> 325 Words </h5>
+          <h5 id="wordcount"> 956 Words </h5>
                     
         </section>
       </aside>
@@ -213,7 +250,7 @@ are always welcome. If you have not worked for ZAP before, then ZAP Developers w
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2014-09-03-alberto-s-gsoc-2014-project-for-zap-soap-scanner-add-on/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2014-03-10-hacking-zap-1-why-should-you/index.md">Edit on GitHub</a>
   </div>
 
     </div>
