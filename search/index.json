@@ -1696,6 +1696,14 @@
     "content": "options statistics screen allows you configure that zap maintains memory enabled by default disable uncheck box statsd server check order address will send its hostname host running port listening 8125 prefix prepend sends see also ui overview user interface dialogs details other dialog screens "
     },
 {
+    "url": "/blog/2020-03-09-zap-ssrf-setup/",
+    "title": "ZAP SSRF Setup",
+    "keywords": ["blog","setup","ssrf","zap"],
+    "tags": ["blog"],
+    "summary": "Some vulnerabilities can only be found by sending payloads that cause a callback to the tester. One example is XXE vulnerabilities when the XML rendering result is not available to the user. ZAP can find these vulnerabilities that depend on SSRF detection but the target system needs to be able to reach the ZAP callback endpoint. In many cases the computer running ZAP is behind some kind of NAT and doesn’t have a public IP so it will not receive the expected callbacks and miss some of the existent vulnerabilities.",
+    "content": "some vulnerabilities can only found by sending payloads that cause callback tester one example xxe when xml rendering result not available user zap find these depend ssrf detection target system needs able reach endpoint many cases computer running behind kind nat doesnt have public ip will receive expected callbacks miss existent note: owasp taking part gsoc 2020 there open project idea type external service created use see: detectionhandling more info solution tldr: domain like somethingmydomainorg pointing server you own further details below set always same port define remote address your via options screen forward requests received local ssh forwarding: 38193:localhost:38193 myusersomethingmydomainorg my setup: setup need dns name dont want spend money create free https:duckdnsorg numerous other services ones tldr image google cloud allows me instance 38193 important because changes check every time start change command selected make scan rules request urls static we previously defined rule send entities leveraging url such as: http:somethingmydomainorg:38193callbackxxesd215f vulnerability exists made location somehow redirect machine way require forwarding what does connect through listen all traffic is: valid https certificate run reverse proxy nginx 9999 address: 9999:localhost:38193 troubleshoot: ports firewall shure allow config etcsshsshdconfig: allowtcpforwarding gatewayports conclusion while scanners burp suite collaborator which facilitate reception from still lacks functionality luckily obtained easy trick ability log used out band oob tests may necessary appsystem blocks outbound httphttps connections "
+    },
+{
     "url": "/blog/2020-03-04-dark-mode-in-the-weekly-release/",
     "title": "Dark Mode in the Weekly Release",
     "keywords": ["blog","dark","in","mode","release","the","weekly"],
