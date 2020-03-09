@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-03-04-dark-mode-in-the-weekly-release/images/zap-dark-desktop.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-03-09-zap-ssrf-setup/images/callback-options-setup.png"/>
 
-<meta name="twitter:title" content="Dark Mode in the Weekly Release"/>
-<meta name="twitter:description" content="The ZAP Desktop now supports a Dark Mode in the Weekly Release"/>
+<meta name="twitter:title" content="ZAP SSRF Setup"/>
+<meta name="twitter:description" content="How to create a setup to receive SSRF calbacks on your machine"/>
 
-    <meta property="og:title" content="Dark Mode in the Weekly Release" />
-<meta property="og:description" content="The ZAP Desktop now supports a Dark Mode in the Weekly Release" />
+    <meta property="og:title" content="ZAP SSRF Setup" />
+<meta property="og:description" content="How to create a setup to receive SSRF calbacks on your machine" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-03-04-dark-mode-in-the-weekly-release/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-03-04-dark-mode-in-the-weekly-release/images/zap-dark-desktop.png" />
-<meta property="article:published_time" content="2020-03-04T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-04T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2020-03-09-zap-ssrf-setup/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-03-09-zap-ssrf-setup/images/callback-options-setup.png" />
+<meta property="article:published_time" content="2020-03-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-09T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -142,48 +142,81 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">Dark Mode in the Weekly Release</h1>
+          <h1 class="post-title">ZAP SSRF Setup</h1>
           <main class="post-content">
-            <p>We release ZAP every week: <a href="/download/#weekly">https://www.zaproxy.org/download/#weekly</a></p>
-<p>We’re happy to announce that this week’s release includes the first steps towards an all new <strong>dark mode</strong> for the ZAP Desktop UI:</p>
-
-<figure>
-	<img src="/blog/2020-03-04-dark-mode-in-the-weekly-release/images/zap-dark-desktop.png" alt="" />
-	<figcaption></figcaption>
-</figure>
-<p>It’s early days - not all screens use suitable colours, but it should be mostly usable.
-To enable it in the weekly release:</p>
+            <p>Some vulnerabilities can only be found by sending payloads that cause a callback to the tester. One example is <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing">XXE vulnerabilities</a> when the XML rendering result is not available to the user. ZAP can find these vulnerabilities that depend on <a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery">SSRF</a> detection but the target system needs to be able to reach the ZAP callback endpoint. In many cases the computer running ZAP is behind some kind of NAT and doesn’t have a public IP so it will not receive the expected callbacks and miss some of the existent vulnerabilities.</p>
+<p><strong>Note</strong>: OWASP is taking part in <a href="https://owasp.org/www-community/initiatives/gsoc/gsoc2020">GSoC for 2020</a> and there is an open project idea to have an SSRF type external service created for use with ZAP, see: <a href="https://owasp.org/www-community/initiatives/gsoc/gsoc2020ideas#idea-two-ssrf-detectionhandling">SSRF Detection/Handling</a> for more info.</p>
+<h2 id="solution">Solution</h2>
+<h3 id="tldr">TLDR:</h3>
 <ol>
-<li>Open up the ZAP Options</li>
-<li>Select the Display screen</li>
-<li>Select either ‘Flat Dark’ or ‘Flat Darcula’</li>
-<li>Restart ZAP</li>
-</ol>
-
+<li>Have a domain like something.mydomain.org pointing to a server you own (further details below).</li>
+<li>Set ZAP to always use the same callback port and define the Remote Address as your domain something.mydomain.org. (Via the <a href="https://www.zaproxy.org/docs/desktop/ui/dialogs/options/callback/">Callback Options</a> screen.) 
 <figure>
-	<img src="/blog/2020-03-04-dark-mode-in-the-weekly-release/images/zap-dark-options.png" alt="" />
+	<img src="/blog/2020-03-09-zap-ssrf-setup/images/callback-options-setup.png" alt="" />
 	<figcaption></figcaption>
-</figure>
-<p>If you want to see the progress on fixing the known issues, or to report any more, have a look at this issue: <a href="https://github.com/zaproxy/zaproxy/issues/5542">https://github.com/zaproxy/zaproxy/issues/5542</a></p>
-<p>Many thanks to <a href="https://twitter.com/JFormDesigner">@JFormDesigner</a> for the <a href="https://github.com/JFormDesigner/FlatLaf">FlatLaf</a> Look and Feel which adds this feature to ZAP.</p>
+</figure></li>
+<li>Forward requests received on the server to the local ZAP with SSH port forwarding:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
+</code></pre></div></li>
+</ol>
+<h3 id="my-setup">My Setup:</h3>
+<p>For this setup you will need a DNS name and a server with a public address. If you don’t have a DNS name and you don’t want to spend money you can create one for free on <a href="https://duckdns.org">https://duckdns.org</a> (or numerous other free services). The options I use on ZAP are the ones on the TLDR image.</p>
+<ol>
+<li>
+<p>I have a domain like something.mydomain.org pointing to a <a href="https://www.freecodecamp.org/news/how-to-create-and-connect-to-google-cloud-virtual-machine-with-ssh-81a68b8f74dd/">Google Cloud</a> server I own, this allows me to have a public IP.</p>
+</li>
+<li>
+<p>I set ZAP to always use the same callback port, for instance 38193. This is important because if the port for ZAP callbacks changes you need to check it every time you start ZAP and change the system command for the port selected. (Via the <a href="https://www.zaproxy.org/docs/desktop/ui/dialogs/options/callback/">Callback Options</a> screen.)</p>
+</li>
+<li>
+<p>I setup the Remote Address to my domain something.mydomain.org. This will make ZAP scan rules create SSRF request URLs with the domain something.mydomain.org and the static port we previously defined. For instance the XXE scan rule will send payloads with external entities leveraging a URL such as: <a href="http://something.mydomain.org:38193/callback/XXESD215F">http://something.mydomain.org:38193/callback/XXESD215F</a>.</p>
+</li>
+<li>
+<p>If a vulnerability exists the server will make a request to <a href="http://something.mydomain.org:38193/callback/XXESD215F">http://something.mydomain.org:38193/callback/XXESD215F</a>. This request will be made to my cloud server because it is the location my DNS is pointing to. To receive this request on ZAP you need to somehow redirect the request to your local machine. One way that doesn’t require a public address on your machine is to use <a href="https://www.ssh.com/ssh/tunneling/example">SSH port forwarding</a>. What it does is to connect to your server through SSH, listen to a port on the server and send all the traffic received on that port to a port on your machine. The command I use is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
+</code></pre></div></li>
+</ol>
+<p>If you want to have a valid HTTPS certificate you can run some reverse proxy on your server (as Nginx) with a certificate, proxy the requests to other port, for instance 9999, and change the port forwarding to that address:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 9999:localhost:38193 myUser@something.mydomain.org
+</code></pre></div><h3 id="troubleshoot">Troubleshoot:</h3>
+<ul>
+<li>open the ports on the firewall</li>
+<li>make shure you allow port forwarding on the server ssh config <code>/etc/ssh/sshd_config</code>:
+<pre><code>...
+AllowTcpForwarding yes
+GatewayPorts yes
+...
+</code></pre></li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>While other vulnerability scanners like Burp Suite have an external server (<a href="https://portswigger.net/burp/documentation/collaborator">Collaborator</a>) which facilitate reception of requests from the target server, ZAP still lacks that functionality. Luckily it can be obtained with this easy trick. This solution still lacks the ability to log DNS requests that can be used for out of band (OOB) tests, which may be necessary when the target app/system blocks outbound HTTP/HTTPS connections.</p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2020-03-02-zap-blog-has-moved/"> The ZAP Blog has Moved</a>
+                Prev: <a class="previous" href="/blog/2020-03-04-dark-mode-in-the-weekly-release/"> Dark Mode in the Weekly Release</a>
               
-              
-                Next: <a class="next" href="/blog/2020-03-09-zap-ssrf-setup/"> ZAP SSRF Setup</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Wed Mar 4, 2020 </h4>
+          <h4 id="date"> Mon Mar 9, 2020 </h4>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents"></nav>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#tldr">TLDR:</a></li>
+        <li><a href="#my-setup">My Setup:</a></li>
+        <li><a href="#troubleshoot">Troubleshoot:</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
 
           <div class="post-authors">
             <h4>Authors</h4>
@@ -192,17 +225,17 @@ To enable it in the weekly release:</p>
               <section class="post-author-single flex p-10">
               
                 <div class="col-1-5">
-                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  <img class="author-picture" src="" />
                 </div>
                 <div class="author-name col-4-5">
-                  Simon Bennetts
-                  <a class="author-twitter" href="https://twitter.com/@psiinon">@psiinon</a>
+                  Diogo Silva
+                  <a class="author-twitter" href="https://twitter.com/@Dimiresi">@Dimiresi</a>
                 </div>
               
               </section>
           
           </div>
-          <h5 id="wordcount"> 110 Words </h5>
+          <h5 id="wordcount"> 604 Words </h5>
                     
         </section>
       </aside>
@@ -246,7 +279,7 @@ To enable it in the weekly release:</p>
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-03-04-dark-mode-in-the-weekly-release/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-03-09-zap-ssrf-setup/index.md">Edit on GitHub</a>
   </div>
 
     </div>
