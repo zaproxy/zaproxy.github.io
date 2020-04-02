@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-03-09-zap-ssrf-setup/images/callback-options-setup.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/images/zap-companies.png"/>
 
-<meta name="twitter:title" content="ZAP SSRF Setup"/>
-<meta name="twitter:description" content="How to create a setup to receive SSRF calbacks on your machine"/>
+<meta name="twitter:title" content="Is ZAP the World’s most Popular Web Scanner?"/>
+<meta name="twitter:description" content="ZAP is the most popular free and open source web scanner, but maybe it&#39;s more popular than most/all commercial scanners too?"/>
 
-    <meta property="og:title" content="ZAP SSRF Setup" />
-<meta property="og:description" content="How to create a setup to receive SSRF calbacks on your machine" />
+    <meta property="og:title" content="Is ZAP the World’s most Popular Web Scanner?" />
+<meta property="og:description" content="ZAP is the most popular free and open source web scanner, but maybe it&#39;s more popular than most/all commercial scanners too?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-03-09-zap-ssrf-setup/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-03-09-zap-ssrf-setup/images/callback-options-setup.png" />
-<meta property="article:published_time" content="2020-03-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-03-09T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/images/zap-companies.png" />
+<meta property="article:published_time" content="2020-04-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-02T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -142,81 +142,65 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">ZAP SSRF Setup</h1>
+          <h1 class="post-title">Is ZAP the World’s most Popular Web Scanner?</h1>
           <main class="post-content">
-            <p>Some vulnerabilities can only be found by sending payloads that cause a callback to the tester. One example is <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing">XXE vulnerabilities</a> when the XML rendering result is not available to the user. ZAP can find these vulnerabilities that depend on <a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery">SSRF</a> detection but the target system needs to be able to reach the ZAP callback endpoint. In many cases the computer running ZAP is behind some kind of NAT and doesn’t have a public IP so it will not receive the expected callbacks and miss some of the existent vulnerabilities.</p>
-<p><strong>Note</strong>: OWASP is taking part in <a href="https://owasp.org/www-community/initiatives/gsoc/gsoc2020">GSoC for 2020</a> and there is an open project idea to have an SSRF type external service created for use with ZAP, see: <a href="https://owasp.org/www-community/initiatives/gsoc/gsoc2020ideas#idea-two-ssrf-detectionhandling">SSRF Detection/Handling</a> for more info.</p>
-<h2 id="solution">Solution</h2>
-<h3 id="tldr">TLDR:</h3>
-<ol>
-<li>Have a domain like something.mydomain.org pointing to a server you own (further details below).</li>
-<li>Set ZAP to always use the same callback port and define the Remote Address as your domain something.mydomain.org. (Via the <a href="https://www.zaproxy.org/docs/desktop/ui/dialogs/options/callback/">Callback Options</a> screen.) 
-<figure>
-	<img src="/blog/2020-03-09-zap-ssrf-setup/images/callback-options-setup.png" alt="" />
-	<figcaption></figcaption>
-</figure></li>
-<li>Forward requests received on the server to the local ZAP with SSH port forwarding:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
-</code></pre></div></li>
-</ol>
-<h3 id="my-setup">My Setup:</h3>
-<p>For this setup you will need a DNS name and a server with a public address. If you don’t have a DNS name and you don’t want to spend money you can create one for free on <a href="https://duckdns.org">https://duckdns.org</a> (or numerous other free services). The options I use on ZAP are the ones on the TLDR image.</p>
-<ol>
-<li>
-<p>I have a domain like something.mydomain.org pointing to a <a href="https://www.freecodecamp.org/news/how-to-create-and-connect-to-google-cloud-virtual-machine-with-ssh-81a68b8f74dd/">Google Cloud</a> server I own, this allows me to have a public IP.</p>
-</li>
-<li>
-<p>I set ZAP to always use the same callback port, for instance 38193. This is important because if the port for ZAP callbacks changes you need to check it every time you start ZAP and change the system command for the port selected. (Via the <a href="https://www.zaproxy.org/docs/desktop/ui/dialogs/options/callback/">Callback Options</a> screen.)</p>
-</li>
-<li>
-<p>I setup the Remote Address to my domain something.mydomain.org. This will make ZAP scan rules create SSRF request URLs with the domain something.mydomain.org and the static port we previously defined. For instance the XXE scan rule will send payloads with external entities leveraging a URL such as: <a href="http://something.mydomain.org:38193/callback/XXESD215F">http://something.mydomain.org:38193/callback/XXESD215F</a>.</p>
-</li>
-<li>
-<p>If a vulnerability exists the server will make a request to <a href="http://something.mydomain.org:38193/callback/XXESD215F">http://something.mydomain.org:38193/callback/XXESD215F</a>. This request will be made to my cloud server because it is the location my DNS is pointing to. To receive this request on ZAP you need to somehow redirect the request to your local machine. One way that doesn’t require a public address on your machine is to use <a href="https://www.ssh.com/ssh/tunneling/example">SSH port forwarding</a>. What it does is to connect to your server through SSH, listen to a port on the server and send all the traffic received on that port to a port on your machine. The command I use is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
-</code></pre></div></li>
-</ol>
-<p>If you want to have a valid HTTPS certificate you can run some reverse proxy on your server (as Nginx) with a certificate, proxy the requests to other port, for instance 9999, and change the port forwarding to that address:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 9999:localhost:38193 myUser@something.mydomain.org
-</code></pre></div><h3 id="troubleshoot">Troubleshoot:</h3>
+            <p>I’ve stated that ZAP is the world’s most popular free and open source web application scanner on stage at security conferences around the world for many years. No one has ever contradicted me so it must be true :)</p>
+<p>However I’ve started to wonder if ZAP is actually more popular than most <em>if not all</em> of the commercial scanners as well?</p>
+<p>That is actually pretty hard to tell - ZAP is a free tool that anyone can download, so determining how many users we really have is difficult. I’ve also not been able to find any figures published by our commercial competitors.</p>
+<h2 id="the-statistics">The Statistics</h2>
+<p>However we do have some statistics for ZAP.</p>
+<p>We can tell how many people <a href="https://api.github.com/repos/zaproxy/zaproxy/releases/tags/v2.9.0">download</a> ZAP directly and how many <a href="https://registry.hub.docker.com/v2/repositories/owasp/zap2docker-stable/">Docker</a> pulls it gets.</p>
+<p>ZAP also by default performs up to one check-for-updates request per day and checks for news every time it starts. All of the ‘calls home’ are <a href="https://www.zaproxy.org/faq/what-calls-home-does-zap-make/">documented</a> and can be disabled via the <code>-silent</code> command line option.</p>
+<p>We record these figures every month, and it is clear that ZAP usage has been increasing ever since it was launched in 2010. In fact its use appears to be accelerating.</p>
+<p>Last month, <strong>March 2020</strong>:</p>
 <ul>
-<li>open the ports on the firewall</li>
-<li>make sure you allow port forwarding on the server ssh config <code>/etc/ssh/sshd_config</code>:
-<pre><code>...
-AllowTcpForwarding yes
-GatewayPorts yes
-...
-</code></pre></li>
+<li>ZAP was directly downloaded more than 85,000 times</li>
+<li>ZAP Docker images were pulled more than 220,000 times</li>
+<li>ZAP was started more than <strong>1 million times</strong>!</li>
 </ul>
-<h2 id="conclusion">Conclusion</h2>
-<p>While other vulnerability scanners like Burp Suite have an external server (<a href="https://portswigger.net/burp/documentation/collaborator">Collaborator</a>) which facilitate reception of requests from the target server, ZAP still lacks that functionality. Luckily it can be obtained with this easy trick. This solution still lacks the ability to log DNS requests that can be used for out of band (OOB) tests, which may be necessary when the target app/system blocks outbound HTTP/HTTPS connections.</p>
+<p>Does this make ZAP the world’s most popular web security scanner?</p>
+
+<figure>
+	<img src="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/images/zap-companies.png" alt="" />
+	<figcaption></figcaption>
+</figure>
+<p>I don’t know, but we’re happy to update this post to link to any similar stats that other web scanners publish.</p>
+<p>We don't get much other information, but we can see that around two thirds of the time the ZAP desktop is started while one third of the time the ZAP daemon is used.</p>
+<p>The top 3 countries that use the ZAP desktop are:</p>
+<ol>
+<li>USA</li>
+<li>India</li>
+<li>Japan</li>
+</ol>
+<p>The top 3 countries that use the ZAP daemon are:</p>
+<ol>
+<li>USA</li>
+<li>Australia</li>
+<li>Germany</li>
+</ol>
+<h2 id="the-conclusion">The Conclusion</h2>
+<p>One thing is clear.</p>
+<p>If you want to have an impact in the web security field then you should seriously consider contributing to ZAP. Any improvements you make, any new or improved scan rules you add will be heavily used and will help to make the online world safer.</p>
+<p>ZAP is, of course, completely open source and highly extensible. If you want to learn more about contributing to or extending ZAP then see the <a href="https://github.com/zaproxy/zaproxy/blob/develop/CONTRIBUTING.md">Contributing Guide</a>.</p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2020-03-04-dark-mode-in-the-weekly-release/"> Dark Mode in the Weekly Release</a>
+                Prev: <a class="previous" href="/blog/2020-03-09-zap-ssrf-setup/"> ZAP SSRF Setup</a>
               
-              
-                Next: <a class="next" href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/"> Is ZAP the World’s most Popular Web Scanner?</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Mon Mar 9, 2020 </h4>
+          <h4 id="date"> Thu Apr 2, 2020 </h4>
           
 
           <h4>Table of Contents</h4>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#solution">Solution</a>
-      <ul>
-        <li><a href="#tldr">TLDR:</a></li>
-        <li><a href="#my-setup">My Setup:</a></li>
-        <li><a href="#troubleshoot">Troubleshoot:</a></li>
-      </ul>
-    </li>
-    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#the-statistics">The Statistics</a></li>
+    <li><a href="#the-conclusion">The Conclusion</a></li>
   </ul>
 </nav>
 
@@ -227,19 +211,21 @@ GatewayPorts yes
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Diogo Silva
+                    Simon Bennetts
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/Dimiresi">@Dimiresi</a>
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
                   
                 </div>
               </section>
           
           </div>
-          <h5 id="wordcount"> 604 Words </h5>
+          <h5 id="wordcount"> 394 Words </h5>
                     
         </section>
       </aside>
@@ -283,7 +269,7 @@ GatewayPorts yes
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-03-09-zap-ssrf-setup/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/index.md">Edit on GitHub</a>
   </div>
 
     </div>
