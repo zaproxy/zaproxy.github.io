@@ -298,7 +298,7 @@ It's not mandatory to set the forced user mode, if you manually set a user for Z
 <p>If you have configured the authentication via the desktop UI, then export the context and import it using the 
 <a href="#contextactionimportcontext">importContext</a> API. Otherwise follow the steps below to configure the authentication setting for the context. </p>
 <h4 id='include-in-context'>Include in Context</h4>
-<p>In order to proceed with authentication, the URL of the application should be added to the context. As the Bodgit is available
+<p>In order to proceed with authentication, the URL of the application should be added to the context. As Bodgeit is available
 via <a href="http://localhost:8090/bodgeit">http://localhost:8090/bodgeit</a> use the <a href="#contextactionincludeincontext">includeInContext</a> API to add the
 URL to a context.</p>
 <h4 id='set-authentication-method'>Set Authentication Method</h4>
@@ -319,3 +319,298 @@ The Following is the regex command to match the successful response with the Bod
 <h4 id='create-user-and-enable-forced-user-mode'>Create User and Enable Forced User Mode</h4>
 <p>Now add the user credentials via the <a href="#usersactionsetauthenticationcredentials">setAuthenticationCredentials</a> API and use
 the <a href="#forceduseractionsetforcedusermodeenabled">SetForcedUserModeEnabled</a> to enable the forced user mode in ZAP.</p>
+<h2 id='script-based-authentication'>Script Based Authentication</h2><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1">#!/usr/bin/env python
+</span><span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
+
+<span class="n">context_id</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeMe'</span>
+<span class="n">context_name</span> <span class="o">=</span> <span class="s">'Default Context'</span>
+<span class="n">target_url</span> <span class="o">=</span> <span class="s">'http://localhost:3000'</span>
+
+<span class="c1"># By default ZAP API client will connect to port 8080
+</span><span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">)</span>
+
+<span class="c1"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
+# zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+</span>
+
+<span class="k">def</span> <span class="nf">set_include_in_context</span><span class="p">():</span>
+    <span class="n">include_url</span> <span class="o">=</span> <span class="s">'http://localhost:3000.*'</span>
+
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">include_in_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="n">include_url</span><span class="p">)</span>
+
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">exclude_from_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="s">'</span><span class="se">\\</span><span class="s">Qhttp://localhost:3000/login.php</span><span class="se">\\</span><span class="s">E'</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">exclude_from_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="s">'</span><span class="se">\\</span><span class="s">Qhttp://localhost:3000/logout.php</span><span class="se">\\</span><span class="s">E'</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">exclude_from_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="s">'</span><span class="se">\\</span><span class="s">Qhttp://localhost:3000/setup.php</span><span class="se">\\</span><span class="s">E'</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">exclude_from_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="s">'</span><span class="se">\\</span><span class="s">Qhttp://localhost:3000/security.php</span><span class="se">\\</span><span class="s">E'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Configured include and exclude regex(s) in context'</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">set_logged_in_indicator</span><span class="p">():</span>
+
+    <span class="n">logged_in_regex</span> <span class="o">=</span> <span class="s">"</span><span class="se">\\</span><span class="s">Q&lt;a href=</span><span class="se">\"</span><span class="s">logout.php</span><span class="se">\"</span><span class="s">&gt;Logout&lt;/a&gt;</span><span class="se">\\</span><span class="s">E"</span>
+    <span class="n">logged_out_regex</span> <span class="o">=</span> <span class="s">"(?:Location: [./]*login</span><span class="se">\\</span><span class="s">.php)|(?:</span><span class="se">\\</span><span class="s">Q&lt;form action=</span><span class="se">\"</span><span class="s">login.php</span><span class="se">\"</span><span class="s"> method=</span><span class="se">\"</span><span class="s">post</span><span class="se">\"</span><span class="s">&gt;</span><span class="se">\\</span><span class="s">E)"</span>
+
+    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_logged_in_indicator</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">logged_in_regex</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_logged_out_indicator</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">logged_out_regex</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Configured logged in indicator regex '</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">set_script_based_auth</span><span class="p">():</span>
+    <span class="n">post_data</span> <span class="o">=</span> <span class="s">"username={</span><span class="si">%</span><span class="s">username</span><span class="si">%</span><span class="s">}&amp;password={</span><span class="si">%</span><span class="s">password</span><span class="si">%</span><span class="s">}"</span> <span class="o">+</span> <span class="s">"&amp;Login=Login&amp;user_token={</span><span class="si">%</span><span class="s">user_token</span><span class="si">%</span><span class="s">}"</span>
+    <span class="n">post_data_encoded</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">post_data</span><span class="p">)</span>
+    <span class="n">login_request_data</span> <span class="o">=</span> <span class="s">"scriptName=auth-dvwa.js&amp;Login_URL=http://localhost:3000/login.php&amp;CSRF_Field=user_token"</span> \
+                         <span class="s">"&amp;POST_Data="</span> <span class="o">+</span> <span class="n">post_data_encoded</span>
+
+    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_authentication_method</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="s">'scriptBasedAuthentication'</span><span class="p">,</span> <span class="n">login_request_data</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Configured script based authentication'</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">set_user_auth_config</span><span class="p">():</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="s">'Administrator'</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="s">'admin'</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="s">'password'</span>
+
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">new_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+    <span class="n">user_auth_config</span> <span class="o">=</span> <span class="s">'Username='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;Password='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_authentication_credentials</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">user_auth_config</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_user_enabled</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="s">'true'</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user_mode_enabled</span><span class="p">(</span><span class="s">'true'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'User Auth Configured'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">user_id</span>
+
+
+<span class="k">def</span> <span class="nf">upload_script</span><span class="p">():</span>
+    <span class="n">script_name</span> <span class="o">=</span> <span class="s">'auth-dvwa.js'</span>
+    <span class="n">script_type</span> <span class="o">=</span> <span class="s">'authentication'</span>
+    <span class="n">script_engine</span> <span class="o">=</span> <span class="s">'Oracle Nashorn'</span>
+    <span class="n">file_name</span> <span class="o">=</span> <span class="s">'/tmp/auth-dvwa.js'</span>
+    <span class="n">charset</span> <span class="o">=</span> <span class="s">'UTF-8'</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">script</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">script_name</span><span class="p">,</span> <span class="n">script_type</span><span class="p">,</span> <span class="n">script_engine</span><span class="p">,</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">charset</span><span class="o">=</span><span class="n">charset</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">start_spider</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">spider</span><span class="o">.</span><span class="n">scan_as_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">target_url</span><span class="p">,</span> <span class="n">recurse</span><span class="o">=</span><span class="s">'true'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'Started Scanning with Authentication'</span><span class="p">)</span>
+
+
+<span class="n">set_include_in_context</span><span class="p">()</span>
+<span class="n">upload_script</span><span class="p">()</span>
+<span class="n">set_script_based_auth</span><span class="p">()</span>
+<span class="n">set_logged_in_indicator</span><span class="p">()</span>
+<span class="n">user_id_response</span> <span class="o">=</span> <span class="n">set_user_auth_config</span><span class="p">()</span>
+<span class="n">start_spider</span><span class="p">(</span><span class="n">user_id_response</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight java tab-java"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ScriptAuth</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ZAP_ADDRESS</span> <span class="o">=</span> <span class="s">"localhost"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">ZAP_PORT</span> <span class="o">=</span> <span class="mi">8080</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ZAP_API_KEY</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">contextId</span> <span class="o">=</span> <span class="s">"1"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">contextName</span> <span class="o">=</span> <span class="s">"Default Context"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">target</span> <span class="o">=</span> <span class="s">"http://localhost:3000"</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setIncludeAndExcludeInContext</span><span class="o">(</span><span class="nc">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">UnsupportedEncodingException</span><span class="o">,</span> <span class="nc">ClientApiException</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">includeInContext</span> <span class="o">=</span> <span class="s">"http://localhost:3000.*"</span><span class="o">;</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">context</span><span class="o">.</span><span class="na">includeInContext</span><span class="o">(</span><span class="n">contextName</span><span class="o">,</span> <span class="n">includeInContext</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">context</span><span class="o">.</span><span class="na">excludeFromContext</span><span class="o">(</span><span class="n">contextName</span><span class="o">,</span> <span class="s">"\\Qhttp://localhost:3000/login.php\\E"</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">context</span><span class="o">.</span><span class="na">excludeFromContext</span><span class="o">(</span><span class="n">contextName</span><span class="o">,</span> <span class="s">"\\Qhttp://localhost:3000/logout.php\\E"</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">context</span><span class="o">.</span><span class="na">excludeFromContext</span><span class="o">(</span><span class="n">contextName</span><span class="o">,</span> <span class="s">"\\Qhttp://localhost:3000/setup.php\\E"</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">context</span><span class="o">.</span><span class="na">excludeFromContext</span><span class="o">(</span><span class="n">contextName</span><span class="o">,</span> <span class="s">"\\Qhttp://localhost:3000/security.php\\E"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setLoggedInIndicator</span><span class="o">(</span><span class="nc">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">UnsupportedEncodingException</span><span class="o">,</span> <span class="nc">ClientApiException</span> <span class="o">{</span>
+        <span class="c1">// Prepare values to set, with the logged in indicator as a regex matching the logout link</span>
+        <span class="nc">String</span> <span class="n">loggedInIndicator</span> <span class="o">=</span> <span class="s">"\\Q&lt;a href=\"logout.php\"&gt;Logout&lt;/a&gt;\\E"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">loggedOutIndicator</span> <span class="o">=</span> <span class="s">"(?:Location: [./]*login\\.php)|(?:\\Q&lt;form action=\"login.php\" method=\"post\"&gt;\\E)"</span><span class="o">;</span>
+        <span class="c1">// Actually set the logged in indicator</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setLoggedInIndicator</span><span class="o">(</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">loggedInIndicator</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setLoggedOutIndicator</span><span class="o">(</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">loggedOutIndicator</span><span class="o">);</span>
+        <span class="c1">// Check out the logged in indicator that is set</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Configured logged in indicator regex: "</span>
+                <span class="o">+</span> <span class="o">((</span><span class="nc">ApiResponseElement</span><span class="o">)</span> <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">getLoggedInIndicator</span><span class="o">(</span><span class="n">contextId</span><span class="o">)).</span><span class="na">getValue</span><span class="o">());</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">setScriptBasedAuthenticationForDVWA</span><span class="o">(</span><span class="nc">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ClientApiException</span><span class="o">,</span>
+            <span class="nc">UnsupportedEncodingException</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">postData</span> <span class="o">=</span> <span class="s">"username={%username%}&amp;password={%password%}"</span> <span class="o">+</span> <span class="s">"&amp;Login=Login&amp;user_token={%user_token%}"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">postDataEncode</span> <span class="o">=</span> <span class="nc">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">postData</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">sb</span> <span class="o">=</span> <span class="o">(</span><span class="s">"scriptName=auth-dvwa.js&amp;Login_URL=http://localhost:3000/login.php&amp;CSRF_Field=user_token&amp;"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">concat</span><span class="o">(</span><span class="s">"POST_Data="</span><span class="o">).</span><span class="na">concat</span><span class="o">(</span><span class="n">postDataEncode</span><span class="o">);</span>
+
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setAuthenticationMethod</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="s">"scriptBasedAuthentication"</span><span class="o">,</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Authentication config: "</span> <span class="o">+</span> <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">getAuthenticationMethod</span><span class="o">(</span><span class="n">contextId</span><span class="o">).</span><span class="na">toString</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">setUserAuthConfigForDVWA</span><span class="o">(</span><span class="nc">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ClientApiException</span><span class="o">,</span> <span class="nc">UnsupportedEncodingException</span> <span class="o">{</span>
+        <span class="c1">// Prepare info</span>
+        <span class="nc">String</span> <span class="n">user</span> <span class="o">=</span> <span class="s">"Admin"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">username</span> <span class="o">=</span> <span class="s">"admin"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"password"</span><span class="o">;</span>
+
+        <span class="c1">// Make sure we have at least one user</span>
+        <span class="nc">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">extractUserId</span><span class="o">(</span><span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">newUser</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">user</span><span class="o">));</span>
+
+        <span class="c1">// Prepare the configuration in a format similar to how URL parameters are formed. This</span>
+        <span class="c1">// means that any value we add for the configuration values has to be URL encoded.</span>
+        <span class="nc">StringBuilder</span> <span class="n">userAuthConfig</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuilder</span><span class="o">();</span>
+        <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"Username="</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="nc">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">username</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+        <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"&amp;Password="</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="nc">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">password</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
+
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Setting user authentication configuration as: "</span> <span class="o">+</span> <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">setAuthenticationCredentials</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">setUserEnabled</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">forcedUser</span><span class="o">.</span><span class="na">setForcedUser</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">forcedUser</span><span class="o">.</span><span class="na">setForcedUserModeEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+
+        <span class="c1">// Check if everything is set up ok</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Authentication config: "</span> <span class="o">+</span> <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">getUserById</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">).</span><span class="na">toString</span><span class="o">(</span><span class="mi">0</span><span class="o">));</span>
+        <span class="k">return</span> <span class="n">userId</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">uploadScript</span><span class="o">(</span><span class="nc">ClientApi</span> <span class="n">clientApi</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ClientApiException</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">script_name</span> <span class="o">=</span> <span class="s">"auth-dvwa.js"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">script_type</span> <span class="o">=</span> <span class="s">"authentication"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">script_engine</span> <span class="o">=</span> <span class="s">"Oracle Nashorn"</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">file_name</span> <span class="o">=</span> <span class="s">"/tmp/auth-dvwa.js"</span><span class="o">;</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">script</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="n">script_name</span><span class="o">,</span> <span class="n">script_type</span><span class="o">,</span> <span class="n">script_engine</span><span class="o">,</span> <span class="n">file_name</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">extractUserId</span><span class="o">(</span><span class="nc">ApiResponse</span> <span class="n">response</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">((</span><span class="nc">ApiResponseElement</span><span class="o">)</span> <span class="n">response</span><span class="o">).</span><span class="na">getValue</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">scanAsUser</span><span class="o">(</span><span class="nc">ClientApi</span> <span class="n">clientApi</span><span class="o">,</span> <span class="nc">String</span> <span class="n">userId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ClientApiException</span> <span class="o">{</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">spider</span><span class="o">.</span><span class="na">scanAsUser</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="s">"true"</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="cm">/**
+     * The main method.
+     *
+     * @param args the arguments
+     * @throws ClientApiException
+     * @throws UnsupportedEncodingException
+     */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ClientApiException</span><span class="o">,</span> <span class="nc">UnsupportedEncodingException</span> <span class="o">{</span>
+        <span class="nc">ClientApi</span> <span class="n">clientApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClientApi</span><span class="o">(</span><span class="no">ZAP_ADDRESS</span><span class="o">,</span> <span class="no">ZAP_PORT</span><span class="o">,</span> <span class="no">ZAP_API_KEY</span><span class="o">);</span>
+        <span class="n">uploadScript</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">setIncludeAndExcludeInContext</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">setScriptBasedAuthenticationForDVWA</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">setLoggedInIndicator</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">setUserAuthConfigForDVWA</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
+        <span class="n">scanAsUser</span><span class="o">(</span><span class="n">clientApi</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>
+<span class="c"># To add in default context</span>
+curl <span class="s1">'http://localhost:8080/JSON/context/action/includeInContext/?contextName=Default+Context&amp;regex=http%3A%2F%2Flocalhost%3A3000.*'</span>
+
+<span class="c"># To add exclude in context</span>
+curl <span class="s1">'http://localhost:8080/JSON/context/action/excludeFromContext/?contextName=Default+Context&amp;regex=%5CQhttp%3A%2F%2Flocalhost%3A3000%2Flogout.php%5CE'</span>
+
+<span class="c"># To upload the script</span>
+curl <span class="s1">'http://localhost:8080/JSON/script/action/load/?scriptName=auth-dvwa.js&amp;scriptType=authentication&amp;scriptEngine=Oracle+Nashorn&amp;fileName=%2Ftmp%2Fauth-dvwa.js&amp;scriptDescription=&amp;charset='</span>
+
+<span class="c"># To set up authentication information</span>
+curl <span class="s1">'http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/?contextId=1&amp;authMethodName=scriptBasedAuthentication&amp;authMethodConfigParams=scriptName%3Dauth-dvwa.js%26Login_URL%3Dhttp%3A%2F%2Flocalhost%3A3000%2Flogin.php%26CSRF_Field%3Duser_token%26POST_Data%3Dusername%253D%257B%2525username%2525%257D%2526password%253D%257B%2525password%2525%257D%2526Login%253DLogin%2526user_token%253D%257B%2525user_token%2525%257D'</span>
+
+<span class="c"># To set the login indicator</span>
+curl <span class="s1">'http://localhost:8080/JSON/authentication/action/setLoggedInIndicator/?contextId=1&amp;loggedInIndicatorRegex=%5CQ%3Ca+href%3D%5C%22logout.php%5C%22%3ELogout%3C%2Fa%3E%5CE'</span>
+
+<span class="c"># To set logged out indicator</span>
+curl <span class="s1">'http://localhost:8080/JSON/authentication/action/setLoggedOutIndicator/?contextId=1&amp;loggedOutIndicatorRegex=%28%3F%3ALocation%3A+%5B.%2F%5D*login%5C.php%29%7C%28%3F%3A%5CQ%3Cform+action%3D%22login.php%22+method%3D%22post%22%3E%5CE%29'</span>
+
+<span class="c"># To create a user (The first user id is: 0)</span>
+curl <span class="s1">'http://localhost:8080/JSON/users/action/newUser/?contextId=1&amp;name=Test+User'</span>
+
+<span class="c"># To add the credentials for the user</span>
+curl <span class="s1">'http://localhost:8080/JSON/users/action/setAuthenticationCredentials/?contextId=1&amp;userId=0&amp;authCredentialsConfigParams=Username%3Dadmin%26Password%3Dpassword'</span>
+
+<span class="c"># To enable the user</span>
+curl <span class="s1">'http://localhost:8080/JSON/users/action/setUserEnabled/?contextId=1&amp;userId=0&amp;enabled=true'</span>
+
+<span class="c"># To set forced user</span>
+curl <span class="s1">'http://localhost:8080/JSON/forcedUser/action/setForcedUser/?contextId=1&amp;userId=0'</span>
+
+<span class="c"># To enable forced user mode</span>
+curl <span class="s1">'http://localhost:8080/JSON/forcedUser/action/setForcedUserModeEnabled/?boolean=true'</span>
+</code></pre></div>
+<p>ZAP has scripting support for most of the popular languages. The following are some of the scripting languages supported by ZAP.</p>
+
+<ul>
+<li>JavaScript</li>
+<li>Python</li>
+<li>Ruby</li>
+<li>Groovy</li>
+<li>Zest</li>
+</ul>
+
+<p>ZAP has an Add-on Marketplace where you can get add-ons for additional scripting engines. Click the red, blue, &amp; green box stacked 
+icon in ZAP to bring up the marketplace modal. After it pops up, switch to the Marketplace and install the appropriate scripting engine.</p>
+
+<p>The following example performs a script based authentication for the Damn Vulnerable Web Application. Similar to the
+Bodgeit example DVWA also uses <code>POST</code> request to authenticate the users. But apart from username and password DVWA sends an 
+additional token to protect against the Cross-Site request forgery attacks. This token is obtained from the landing page.
+The following image shows the embedded token in the login page.</p>
+
+<aside class="info">
+The newer ZAP versions support anti-CSRF tokens with the form-based authentication. The example provided below shows how the
+script-based authentication method can be used to perform custom workflows in ZAP.
+</aside>
+
+<p><img src="/images/auth_dvwa_token_html.png" alt="csrf_token" /></p>
+
+<p>If the token is not included with the login script as a POST parameter, the request will be rejected. In order to send this 
+token, lets use the script based authentication technique. The authentication script will parse the HTML content and extract
+the token and append it in the POST request.</p>
+<h3 id='setup-target-application-2'>Setup Target Application</h3>
+<p>Use the following docker command to start the DVWA. In order to fully complete the setup you need to login (<a href="http://localhost:3000">http://localhost:3000</a>) 
+to the application and press the configure button. Use the default credentials of the application to login and finish the setup (Username: admin, Password: password). </p>
+
+<p><code>docker run --rm -it -p 3000:80 vulnerables/web-dvwa</code></p>
+<h3 id='create-the-script'>Create the Script</h3>
+<p>Go to the Scripts tab and create a new Authentication script. Provide a name to the script and select 
+<code>JavaScript/Nashorn</code> as the engine and replace the script contents with the following <a href="https://github.com/zaproxy/zap-api-docs/source/scripts/auth-dvwa.js">script</a>. </p>
+
+<p><img src="/images/auth_dvwa_zap_script.png" alt="script_tab" /></p>
+<h3 id='configure-context-authentication'>Configure Context Authentication</h3>
+<p>Now navigate to <a href="http://localhost:3000">http://localhost:3000</a> and add the URL to the default context. Then double click
+on the default context and select the script-based authentication as the authentication method. Now load the script from the 
+drop down provided and the following parameter values.</p>
+
+<ul>
+<li>Login URL: <code>http://localhost:3000/login.php</code></li>
+<li>CSRF Field: <code>user_token</code></li>
+<li>POST Data: <code>username={%username%}&amp;password={%password%}&amp;Login=Login&amp;user_token={%user_token%}</code></li>
+<li>Logged in regex: <code>\Q&lt;a href=&quot;logout.php&quot;&gt;Logout&lt;/a&gt;\E</code></li>
+<li>Logged out regex: <code>(?:Location: [./]*login\.php)|(?:\Q&lt;form action=&quot;login.php&quot; method=&quot;post&quot;&gt;\E)</code></li>
+</ul>
+
+<p><img src="/images/auth_dvwa_context_auth.png" alt="context_auth" /></p>
+
+<p>Now add the default admin user to the users tab and enable the user.</p>
+
+<ul>
+<li>User Name: <code>Administrator</code></li>
+<li>Username: <code>admin</code></li>
+<li>Password: <code>password</code></li>
+</ul>
+
+<p>As the login operation is performed by the script lets add the login URL as out of context. Additionally you should add 
+pages which will disrupt the login process to out of context. For example, by not excluding the logout URL, the Spider will 
+trigger unwanted logouts (ex.: logoff/password change, etc.). Therefore, add the following regex(s) to the &quot;Exclude from Context&quot; tab.</p>
+
+<ul>
+<li><code>\Qhttp://localhost:3000/login.php\E</code></li>
+<li><code>\Qhttp://localhost:3000/logout.php\E</code></li>
+<li><code>\Qhttp://localhost:3000/setup.php\E</code></li>
+<li><code>\Qhttp://localhost:3000/security.php\E</code></li>
+</ul>
+
+<p>Now you can enable the forced user mode and start the Spider or manually select the admin user for the Spider scan. 
+If you have selected the forced user mode and also manually selected a user; then the manually selected user/context will supersede the forced user mode.
+After this you should see the Spider crawling all the protected resources. The authentication results will be available through the Output panel and
+you can also select the login POST request in the History tab to verify the token has been sent to the application.</p>
+
+<aside class="info">
+It's not mandatory to set the forced user mode, if you manually set a user for ZAP activities such as scanning.
+</aside>
+<h3 id='steps-to-reproduce-via-api-2'>Steps to Reproduce via API</h3>
+<p>Use the scripts endpoint to upload the script file. Thereafter the configurations are very similar to the form based authentication
+with the Bodgeit application. Use the <a href="#contextactionincludeincontext">includeInContext</a> API to add the URL to the default context
+and use the <a href="#authenticationactionsetauthenticationmethod">setAuthenticationMethod</a> to setup the authentication method and 
+the configuration parameters. Finally use the users API to create the admin user. Refer the script in the right column
+on how to use the above APIs.</p>
