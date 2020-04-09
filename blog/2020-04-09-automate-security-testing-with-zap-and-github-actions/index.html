@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/images/zap-companies.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/images/zap-action.png"/>
 
-<meta name="twitter:title" content="Is ZAP the World’s most Popular Web Scanner?"/>
-<meta name="twitter:description" content="ZAP is the most popular free and open source web scanner, but maybe it&#39;s more popular than most/all commercial scanners too?"/>
+<meta name="twitter:title" content="Automate Security Testing with ZAP and GitHub Actions"/>
+<meta name="twitter:description" content="How ZAP baseline and GitHib actions can help to automate the security testing"/>
 
-    <meta property="og:title" content="Is ZAP the World’s most Popular Web Scanner?" />
-<meta property="og:description" content="ZAP is the most popular free and open source web scanner, but maybe it&#39;s more popular than most/all commercial scanners too?" />
+    <meta property="og:title" content="Automate Security Testing with ZAP and GitHub Actions" />
+<meta property="og:description" content="How ZAP baseline and GitHib actions can help to automate the security testing" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/images/zap-companies.png" />
-<meta property="article:published_time" content="2020-04-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-04-02T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/images/zap-action.png" />
+<meta property="article:published_time" content="2020-04-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-09T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -142,69 +142,100 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">Is ZAP the World’s most Popular Web Scanner?</h1>
+          <h1 class="post-title">Automate Security Testing with ZAP and GitHub Actions</h1>
           <main class="post-content">
-            <p>I’ve stated that ZAP is the world’s most popular free and open source web application scanner on stage at security conferences around the world for many years. No one has ever contradicted me so it must be true :)</p>
-<p>However I’ve started to wonder if ZAP is actually more popular than most <em>if not all</em> of the commercial scanners as well?</p>
-<p>That is actually pretty hard to tell - ZAP is a free tool that anyone can download, so determining how many users we really have is difficult. I’ve also not been able to find any figures published by our commercial competitors.</p>
-<h2 id="the-statistics">The Statistics</h2>
-<p>However we do have some statistics for ZAP.</p>
-<p>We can tell how many people <a href="https://api.github.com/repos/zaproxy/zaproxy/releases/tags/v2.9.0">download</a> ZAP directly and how many <a href="https://registry.hub.docker.com/v2/repositories/owasp/zap2docker-stable/">Docker</a> pulls it gets.</p>
-<p>ZAP also by default performs up to one check-for-updates request per day and checks for news every time it starts. All of the ‘calls home’ are <a href="https://www.zaproxy.org/faq/what-calls-home-does-zap-make/">documented</a> and can be disabled via the <code>-silent</code> command line option.</p>
-<p>We record these figures every month, and it is clear that ZAP usage has been increasing ever since it was launched in 2010. In fact its use appears to be accelerating.</p>
-<p>Last month, <strong>March 2020</strong>:</p>
-<ul>
-<li>ZAP was directly downloaded more than 85,000 times</li>
-<li>ZAP Docker images were pulled more than 220,000 times</li>
-<li>ZAP was started more than <strong>1 million times</strong>!</li>
-</ul>
-<p>Does this make ZAP the world’s most popular web security scanner?</p>
+            <p><a href="https://github.com/marketplace/actions/owasp-zap-baseline-scan"><img src="./images/zap-action.png" alt="zap-action"></a></p>
+<p>With the increasing number of web application security breaches, it is essential to keep your web application secure at all times.
+Furthermore having security integrated into your CI/CD pipeline (DevSecOps) will become a lifesaver if you are actively
+developing the application. To cater to this need ZAP provides a baseline scan feature to find common security faults in
+a web application without doing any active attacks.</p>
+<p><a href="https://github.com/features/actions">GitHub Actions</a> make it easier to automate how to scan and secure
+web applications at scale. Actions let you write scripts that are triggered based on certain events in your GitHub repo
+such as — creating a new issue, pushing a commit, or on a scheduled basis. This makes it convenient and easy to automate security testing and to run ZAP scans
+without involving any of your own infrastructures. The ZAP baseline action is available in the GitHub Marketplace under
+the actions/security category.</p>
+<p>The <a href="https://github.com/marketplace/actions/owasp-zap-baseline-scan">ZAP baseline-action</a> can be configured to periodically
+scan a publicly available web application. Also, ZAP baseline-action can be configured to public and private repositories as well.
+Based on the scan results ZAP will maintain an active issue in GitHub repository. The action will update the issue if it identifies
+any new or resolved alerts and will close the issue if all the alerts have been resolved. A detailed report is attached to the
+<a href="https://github.com/zaproxy/zaproxy-website/actions/runs/74379241">workflow run</a> to get more information regarding the identified alerts.
+The report is available in HTML and Markdown formats.</p>
+<p>The following <a href="https://github.com/zaproxy/zaproxy-website/issues/93">issue</a> shows how the GitHub Baseline Action scans the
+<a href="https://www.zaproxy.org/">https://www.zaproxy.org/</a> website and notifies the users via opening an issue in the ZAP website repository.
+The issue will be created by the GitHub Actions bot and will list the alerts as issue comments.</p>
+<p><a href="https://github.com/zaproxy/zaproxy-website/issues/93#issue-597219582"><img src="images/zap-issue-1.png" alt="issue open"></a></p>
+<p>To demonstrate the workflow of the action; we are ignoring the alerts as they are not relevant, but this has the same effect as fixing them.
+Therefore during the second scan we are ignoring few alerts via ZAP rules and the action bot updates the issue with the newly ignored/resolved alerts.
+<a href="https://github.com/zaproxy/zaproxy-website/issues/93#issuecomment-611490632"><img src="images/zap-issue-2.png" alt="comment with issues resolved"></a></p>
+<p>During the last scan we are ignoring all the alerts, thus resulting in finding zero alerts. Based on the scan results
+the actions bot will close the ongoing open issue.
+<a href="https://github.com/zaproxy/zaproxy-website/issues/93#issuecomment-611496321"><img src="images/zap-issue-3.png" alt="issue closed"></a></p>
+<p>The ZAP baseline action scan runs the ZAP spider against the specified web application for (by default) 1 minute and
+then waits for the passive scanning to complete before reporting the results. This means that the script doesn't
+perform any actual ‘attacks’ and will run for a relatively short period of time (a few minutes at most).</p>
+<p>The following YAML config shows how to configure the action to scan a publicly accessible web application.
+In order to start scanning, create a file called <code>zap_scan.yaml</code> inside the <code>.github/workflows</code>
+folder in your repository.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">on:
+  schedule:
+    <span style="color:#75715e"># Runs every day At 01:00.</span>
+    - cron:  <span style="color:#e6db74">&#39;0 1 * * *&#39;</span>
 
-<figure>
-	<img src="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/images/zap-companies.png" alt="" />
-	<figcaption></figcaption>
-</figure>
-<p>I don’t know, but we’re happy to update this post to link to any similar stats that other web scanners publish.</p>
-<p>We don't get much other information, but we can see that around two thirds of the time the ZAP desktop is started while one third of the time the ZAP daemon is used.</p>
-<p>The top 3 countries that use the ZAP desktop are:</p>
-<ol>
-<li>USA</li>
-<li>India</li>
-<li>Japan</li>
-</ol>
-<p>The top 3 countries that use the ZAP daemon are:</p>
-<ol>
-<li>USA</li>
-<li>Australia</li>
-<li>Germany</li>
-</ol>
-<h2 id="the-conclusion">The Conclusion</h2>
-<p>One thing is clear.</p>
-<p>If you want to have an impact in the web security field then you should seriously consider contributing to ZAP. Any improvements you make, any new or improved scan rules you add will be heavily used and will help to make the online world safer.</p>
-<p>ZAP is, of course, completely open source and highly extensible. If you want to learn more about contributing to or extending ZAP then see the <a href="https://github.com/zaproxy/zaproxy/blob/develop/CONTRIBUTING.md">Contributing Guide</a>.</p>
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan ZAP website
+    steps:
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0<span style="color:#ae81ff">.2</span><span style="color:#ae81ff">.0</span>
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: <span style="color:#e6db74">&#39;https://www.zaproxy.org/&#39;</span>
+</code></pre></div><p>The ZAP baseline action can be also used to scan a locally built web application. The general idea is to build and serve your web
+application and make it available locally so ZAP can access the site via the localhost.</p>
+<p>By default, baseline scan reports all alerts as WARNings but you can specify a config file that can change any rules to FAIL or IGNORE.
+The following shows a sample rules file. Create the <code>rules.tsv</code> file inside your repository (example: inside <code>.zap</code> folder) and make sure to update the action
+file with the relative path to the rule file. Also, you can supply additional baseline <a href="https://github.com/zaproxy/zaproxy/wiki/ZAP-Baseline-Scan">command-line options</a>
+via the <code>cmd_options</code> parameter. For example passing <code>-a</code> as a command-line argument will include the alpha passive scan rules as well.</p>
+<pre><code class="language-tsv" data-lang="tsv">10035	IGNORE	(Strict-Transport-Security Header Not Set)
+10098	IGNORE	(Cross-Domain Misconfiguration)
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan ZAP website
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+      - name: ZAP Scan
+        uses: zaproxy/action-baseline@v0<span style="color:#ae81ff">.2</span><span style="color:#ae81ff">.0</span>
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: <span style="color:#e6db74">&#39;https://www.zaproxy.org/&#39;</span>
+          rules_file_name: <span style="color:#e6db74">&#39;.zap/rules.tsv&#39;</span>
+          cmd_options: <span style="color:#e6db74">&#39;-a&#39;</span>
+</code></pre></div><p>Also, you can view the scan logs by navigating to the ZAP <a href="https://github.com/zaproxy/zaproxy-website/runs/573792586?check_suite_focus=true">scan job</a>.</p>
+<p><a href="https://github.com/zaproxy/zaproxy-website/runs/573792586?check_suite_focus=true"><img src="./images/scan-job.png" alt="scan-job"></a></p>
+<p>We are excited to hear your thoughts and feedback for the new ZAP Baseline Action. If you find the action useful please star the action.
+The ZAP team is also working on a ZAP Full Scan Action, stay tuned for updates. Reach us through the <a href="https://groups.google.com/group/zaproxy-develop">dev group</a>
+or for any additional enhancements please feel free to create an issue in the <a href="https://github.com/zaproxy/action-baseline">following repository</a>.</p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2020-03-09-zap-ssrf-setup/"> ZAP SSRF Setup</a>
+                Prev: <a class="previous" href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/"> Is ZAP the World’s most Popular Web Scanner?</a>
               
-              
-                Next: <a class="next" href="/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/"> Automate Security Testing with ZAP and GitHub Actions</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Thu Apr 2, 2020 </h4>
+          <h4 id="date"> Thu Apr 9, 2020 </h4>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents">
-  <ul>
-    <li><a href="#the-statistics">The Statistics</a></li>
-    <li><a href="#the-conclusion">The Conclusion</a></li>
-  </ul>
-</nav>
+          <nav id="TableOfContents"></nav>
 
           <div class="post-authors">
             <h4>Authors</h4>
@@ -213,21 +244,21 @@
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  <img class="author-picture" src="/img/authors/nirojan-selvanathan_400x400.png" />
                   
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Simon Bennetts
+                    Nirojan Selvanathan
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  <a class="author-twitter" href="https://twitter.com/sshniro">@sshniro</a>
                   
                 </div>
               </section>
           
           </div>
-          <h5 id="wordcount"> 394 Words </h5>
+          <h5 id="wordcount"> 744 Words </h5>
                     
         </section>
       </aside>
@@ -271,7 +302,7 @@
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/index.md">Edit on GitHub</a>
   </div>
 
     </div>
