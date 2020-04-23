@@ -133,7 +133,7 @@
 This blog post goes one step further, and explains how you can both explore and perform security scanning of APIs using ZAP from the command
 line.<br>
 This allows you to easily automate the scanning of your APIs.</p>
-<p>Following the approach taken by the <a href="https://github.com/zaproxy/zaproxy/wiki/ZAP-Baseline-Scan">Baseline Scan</a> we have introduced a new API
+<p>Following the approach taken by the <a href="/docs/docker/baseline-scan/">Baseline Scan</a> we have introduced a new API
 scanning script which has only one dependency – Docker. You don’t need to install either ZAP or Java.<br>
 The script, zap-api-scan.py is included in the <a href="https://hub.docker.com/r/owasp/zap2docker-weekly/">Weekly</a> and
 <a href="https://hub.docker.com/r/owasp/zap2docker-live/">Live</a> ZAP Docker images, it will also be included in the next
@@ -184,8 +184,7 @@ additional rules that are implemented as scripts:</p>
 </ul>
 <p>You can change which rules are run and how failures are reported using a configuration file. This allows you to tune the scanning script to meet
 your requirements for each of your APIs.<br>
-To generate a configuration file use the ‘-g’ option. This will create a file which includes all of the <a href="/docs/desktop/start/features/ascan/">active</a> and <a href="/docs/desktop/start/features/pscan/">passive</a> scan rules available:
-<a href="https://github.com/zaproxy/zaproxy/wiki/ZAP-API-Scan#configuration-file">https://github.com/zaproxy/zaproxy/wiki/ZAP-API-Scan#configuration-file</a>. You can edit this file using a text editor.<br>
+To generate a configuration file use the ‘-g’ option. This will create a file which includes all of the <a href="/docs/desktop/start/features/ascan/">active</a> and <a href="/docs/desktop/start/features/pscan/">passive</a> scan rules available. See <a href="/docs/docker/api-scan/#configuration-file">configuration file</a> for further details. You can edit this file using a text editor.<br>
 Changing a passive rule will only affect how failures are reported, but changing an active rule to IGNORE will prevent the rule from running.
 This is to reduce the overall scan time – passive rules are very quick while active rules can take a significant amount of time.</p>
 <h3 id="specifying-values">Specifying Values</h3>
@@ -292,7 +291,7 @@ It can be used ‘out of the box’ or quickly tuned to meet your requirements v
               </section>
           
           </div>
-          <h5 id="wordcount"> 1095 Words </h5>
+          <h5 id="wordcount"> 1100 Words </h5>
                     
         </section>
       </aside>
