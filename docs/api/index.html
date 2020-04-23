@@ -2528,12 +2528,12 @@ them because there are other methods of setting them. However, if one isn't set,
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
 <span class="n">context_id</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeMe'</span>
+<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeMe'</span>
 <span class="n">context_name</span> <span class="o">=</span> <span class="s">'Default Context'</span>
 <span class="n">target_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit'</span>
 
 <span class="c1"># By default ZAP API client will connect to port 8080
-</span><span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">)</span>
+</span><span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
 
 
 <span class="c1"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
@@ -2542,14 +2542,14 @@ them because there are other methods of setting them. However, if one isn't set,
 <span class="k">def</span> <span class="nf">set_include_in_context</span><span class="p">():</span>
     <span class="n">exclude_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit/logout.jsp'</span>
     <span class="n">include_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit.*'</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">include_in_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="n">include_url</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">exclude_from_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="n">exclude_url</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">include_in_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="n">include_url</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">exclude_from_context</span><span class="p">(</span><span class="n">context_name</span><span class="p">,</span> <span class="n">exclude_url</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Configured include and exclude regex(s) in context'</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">set_logged_in_indicator</span><span class="p">():</span>
     <span class="n">logged_in_regex</span> <span class="o">=</span> <span class="s">'</span><span class="err">\</span><span class="s">Q&lt;a href="logout.jsp"&gt;Logout&lt;/a&gt;</span><span class="err">\</span><span class="s">E'</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_logged_in_indicator</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">logged_in_regex</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_logged_in_indicator</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">logged_in_regex</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Configured logged in indicator regex: '</span><span class="p">)</span>
 
 
@@ -2557,7 +2557,7 @@ them because there are other methods of setting them. However, if one isn't set,
     <span class="n">login_url</span> <span class="o">=</span> <span class="s">'http://localhost:8090/bodgeit/login.jsp'</span>
     <span class="n">login_request_data</span> <span class="o">=</span> <span class="s">'username={</span><span class="si">%</span><span class="s">username</span><span class="si">%</span><span class="s">}&amp;password={</span><span class="si">%</span><span class="s">password</span><span class="si">%</span><span class="s">}'</span>
     <span class="n">form_based_config</span> <span class="o">=</span> <span class="s">'loginUrl='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login_url</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;loginRequestData='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login_request_data</span><span class="p">)</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_authentication_method</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="s">'formBasedAuthentication'</span><span class="p">,</span> <span class="n">form_based_config</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">authentication</span><span class="o">.</span><span class="n">set_authentication_method</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="s">'formBasedAuthentication'</span><span class="p">,</span> <span class="n">form_based_config</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'Configured form based authentication'</span><span class="p">)</span>
 
 
@@ -2566,12 +2566,12 @@ them because there are other methods of setting them. However, if one isn't set,
     <span class="n">username</span> <span class="o">=</span> <span class="s">'test@example.com'</span>
     <span class="n">password</span> <span class="o">=</span> <span class="s">'weakPassword'</span>
 
-    <span class="n">user_id</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">new_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">user_id</span> <span class="o">=</span> <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">new_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
     <span class="n">user_auth_config</span> <span class="o">=</span> <span class="s">'username='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">username</span><span class="p">)</span> <span class="o">+</span> <span class="s">'&amp;password='</span> <span class="o">+</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_authentication_credentials</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">user_auth_config</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_user_enabled</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="s">'true'</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
-    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user_mode_enabled</span><span class="p">(</span><span class="s">'true'</span><span class="p">,</span> <span class="n">apiKey</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_authentication_credentials</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="n">user_auth_config</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">set_user_enabled</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">,</span> <span class="s">'true'</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="n">user_id</span><span class="p">)</span>
+    <span class="n">zap</span><span class="o">.</span><span class="n">forcedUser</span><span class="o">.</span><span class="n">set_forced_user_mode_enabled</span><span class="p">(</span><span class="s">'true'</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'User Auth Configured'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">user_id</span>
 
@@ -2610,7 +2610,7 @@ them because there are other methods of setting them. However, if one isn't set,
         <span class="nc">String</span> <span class="n">loggedInIndicator</span> <span class="o">=</span> <span class="s">"&lt;a href=\"logout.jsp\"&gt;Logout&lt;/a&gt;"</span><span class="o">;</span>
 
         <span class="c1">// Actually set the logged in indicator</span>
-        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setLoggedInIndicator</span><span class="o">(</span><span class="no">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">regex</span><span class="o">.</span><span class="na">Pattern</span><span class="o">.</span><span class="na">quote</span><span class="o">(</span><span class="n">loggedInIndicator</span><span class="o">));</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setLoggedInIndicator</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">java</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">regex</span><span class="o">.</span><span class="na">Pattern</span><span class="o">.</span><span class="na">quote</span><span class="o">(</span><span class="n">loggedInIndicator</span><span class="o">));</span>
 
         <span class="c1">// Check out the logged in indicator that is set</span>
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Configured logged in indicator regex: "</span>
@@ -2632,7 +2632,7 @@ them because there are other methods of setting them. However, if one isn't set,
 
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Setting form based authentication configuration as: "</span>
                 <span class="o">+</span> <span class="n">formBasedConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setAuthenticationMethod</span><span class="o">(</span><span class="no">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="s">"formBasedAuthentication"</span><span class="o">,</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">authentication</span><span class="o">.</span><span class="na">setAuthenticationMethod</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="s">"formBasedAuthentication"</span><span class="o">,</span>
                 <span class="n">formBasedConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
 
         <span class="c1">// Check if everything is set up ok</span>
@@ -2647,7 +2647,7 @@ them because there are other methods of setting them. However, if one isn't set,
         <span class="nc">String</span> <span class="n">password</span> <span class="o">=</span> <span class="s">"weakPassword"</span><span class="o">;</span>
 
         <span class="c1">// Make sure we have at least one user</span>
-        <span class="nc">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">extractUserId</span><span class="o">(</span><span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">newUser</span><span class="o">(</span><span class="no">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">user</span><span class="o">));</span>
+        <span class="nc">String</span> <span class="n">userId</span> <span class="o">=</span> <span class="n">extractUserId</span><span class="o">(</span><span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">newUser</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">user</span><span class="o">));</span>
 
         <span class="c1">// Prepare the configuration in a format similar to how URL parameters are formed. This</span>
         <span class="c1">// means that any value we add for the configuration values has to be URL encoded.</span>
@@ -2656,7 +2656,7 @@ them because there are other methods of setting them. However, if one isn't set,
         <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"&amp;password="</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="nc">URLEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">password</span><span class="o">,</span> <span class="s">"UTF-8"</span><span class="o">));</span>
 
         <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Setting user authentication configuration as: "</span> <span class="o">+</span> <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
-        <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">setAuthenticationCredentials</span><span class="o">(</span><span class="no">ZAP_API_KEY</span><span class="o">,</span> <span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">setAuthenticationCredentials</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="n">userAuthConfig</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
         <span class="n">clientApi</span><span class="o">.</span><span class="na">users</span><span class="o">.</span><span class="na">setUserEnabled</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">,</span> <span class="s">"true"</span><span class="o">);</span>
         <span class="n">clientApi</span><span class="o">.</span><span class="na">forcedUser</span><span class="o">.</span><span class="na">setForcedUser</span><span class="o">(</span><span class="n">contextId</span><span class="o">,</span> <span class="n">userId</span><span class="o">);</span>
         <span class="n">clientApi</span><span class="o">.</span><span class="na">forcedUser</span><span class="o">.</span><span class="na">setForcedUserModeEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
@@ -2682,7 +2682,7 @@ them because there are other methods of setting them. However, if one isn't set,
      * @throws UnsupportedEncodingException
      */</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ClientApiException</span><span class="o">,</span> <span class="nc">UnsupportedEncodingException</span> <span class="o">{</span>
-        <span class="nc">ClientApi</span> <span class="n">clientApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClientApi</span><span class="o">(</span><span class="no">ZAP_ADDRESS</span><span class="o">,</span> <span class="no">ZAP_PORT</span><span class="o">);</span>
+        <span class="nc">ClientApi</span> <span class="n">clientApi</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClientApi</span><span class="o">(</span><span class="no">ZAP_ADDRESS</span><span class="o">,</span> <span class="no">ZAP_PORT</span><span class="o">,</span> <span class="no">ZAP_API_KEY</span><span class="o">);</span>
 
         <span class="n">setIncludeAndExcludeInContext</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
         <span class="n">setFormBasedAuthenticationForBodgeit</span><span class="o">(</span><span class="n">clientApi</span><span class="o">);</span>
@@ -2783,12 +2783,12 @@ the <a href="#forceduseractionsetforcedusermodeenabled">SetForcedUserModeEnabled
 <span class="kn">from</span> <span class="nn">zapv2</span> <span class="kn">import</span> <span class="n">ZAPv2</span>
 
 <span class="n">context_id</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">apiKey</span> <span class="o">=</span> <span class="s">'changeMe'</span>
+<span class="n">apikey</span> <span class="o">=</span> <span class="s">'changeMe'</span>
 <span class="n">context_name</span> <span class="o">=</span> <span class="s">'Default Context'</span>
 <span class="n">target_url</span> <span class="o">=</span> <span class="s">'http://localhost:3000'</span>
 
 <span class="c1"># By default ZAP API client will connect to port 8080
-</span><span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apiKey</span><span class="p">)</span>
+</span><span class="n">zap</span> <span class="o">=</span> <span class="n">ZAPv2</span><span class="p">(</span><span class="n">apikey</span><span class="o">=</span><span class="n">apikey</span><span class="p">)</span>
 
 <span class="c1"># Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
 # zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
