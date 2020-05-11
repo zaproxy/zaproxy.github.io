@@ -6,18 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/images/zap-action.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-05-11-alert-overrides-youdontknowzap/images/zapbot.png"/>
 
-<meta name="twitter:title" content="Automate Security Testing with ZAP and GitHub Actions"/>
-<meta name="twitter:description" content="How ZAP baseline and GitHib actions can help to automate the security testing"/>
+<meta name="twitter:title" content="Customize Alert Details"/>
+<meta name="twitter:description" content="ZAP functionality that let&#39;s you customize Alert details"/>
 
-    <meta property="og:title" content="Automate Security Testing with ZAP and GitHub Actions" />
-<meta property="og:description" content="How ZAP baseline and GitHib actions can help to automate the security testing" />
+    <meta property="og:title" content="Customize Alert Details" />
+<meta property="og:description" content="ZAP functionality that let&#39;s you customize Alert details" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/images/zap-action.png" />
-<meta property="article:published_time" content="2020-04-09T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-04-09T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2020-05-11-alert-overrides-youdontknowzap/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-05-11-alert-overrides-youdontknowzap/images/zapbot.png" />
+<meta property="article:published_time" content="2020-05-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-05-11T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -142,101 +142,67 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">Automate Security Testing with ZAP and GitHub Actions</h1>
+          <h1 class="post-title">Customize Alert Details</h1>
           <main class="post-content">
-            <p><a href="https://github.com/marketplace/actions/owasp-zap-baseline-scan"><img src="./images/zap-action.png" alt="zap-action"></a></p>
-<p>With the increasing number of web application security breaches, it is essential to keep your web application secure at all times.
-Furthermore having security integrated into your CI/CD pipeline (DevSecOps) will become a lifesaver if you are actively
-developing the application. To cater to this need ZAP provides a baseline scan feature to find common security faults in
-a web application without doing any active attacks.</p>
-<p><a href="https://github.com/features/actions">GitHub Actions</a> make it easier to automate how to scan and secure
-web applications at scale. Actions let you write scripts that are triggered based on certain events in your GitHub repo
-such as — creating a new issue, pushing a commit, or on a scheduled basis. This makes it convenient and easy to automate security testing and to run ZAP scans
-without involving any of your own infrastructures. The ZAP baseline action is available in the GitHub Marketplace under
-the actions/security category.</p>
-<p>The <a href="https://github.com/marketplace/actions/owasp-zap-baseline-scan">ZAP baseline-action</a> can be configured to periodically
-scan a publicly available web application. Also, ZAP baseline-action can be configured to public and private repositories as well.
-Based on the scan results ZAP will maintain an active issue in GitHub repository. The action will update the issue if it identifies
-any new or resolved alerts and will close the issue if all the alerts have been resolved. A detailed report is attached to the
-<a href="https://github.com/zaproxy/zaproxy-website/actions/runs/74379241">workflow run</a> to get more information regarding the identified alerts.
-The report is available in HTML and Markdown formats.</p>
-<p>The following <a href="https://github.com/zaproxy/zaproxy-website/issues/93">issue</a> shows how the GitHub Baseline Action scans the
-<a href="https://www.zaproxy.org/">https://www.zaproxy.org/</a> website and notifies the users via opening an issue in the ZAP website repository.
-The issue will be created by the GitHub Actions bot and will list the alerts as issue comments.</p>
-<p><a href="https://github.com/zaproxy/zaproxy-website/issues/93#issue-597219582"><img src="images/zap-issue-1.png" alt="issue open"></a></p>
-<p>To demonstrate the workflow of the action; we are ignoring the alerts as they are not relevant, but this has the same effect as fixing them.
-Therefore during the second scan we are ignoring few alerts via ZAP rules and the action bot updates the issue with the newly ignored/resolved alerts.
-<a href="https://github.com/zaproxy/zaproxy-website/issues/93#issuecomment-611490632"><img src="images/zap-issue-2.png" alt="comment with issues resolved"></a></p>
-<p>During the last scan we are ignoring all the alerts, thus resulting in finding zero alerts. Based on the scan results
-the actions bot will close the ongoing open issue.
-<a href="https://github.com/zaproxy/zaproxy-website/issues/93#issuecomment-611496321"><img src="images/zap-issue-3.png" alt="issue closed"></a></p>
-<p>The ZAP baseline action scan runs the ZAP spider against the specified web application for (by default) 1 minute and
-then waits for the passive scanning to complete before reporting the results. This means that the script doesn't
-perform any actual ‘attacks’ and will run for a relatively short period of time (a few minutes at most).</p>
-<p>The following YAML config shows how to configure the action to scan a publicly accessible web application.
-In order to start scanning, create a file called <code>zap_scan.yaml</code> inside the <code>.github/workflows</code>
-folder in your repository.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">on:
-  schedule:
-    <span style="color:#75715e"># Runs every day At 01:00.</span>
-    - cron:  <span style="color:#e6db74">&#39;0 1 * * *&#39;</span>
-
-jobs:
-  zap_scan:
-    runs-on: ubuntu-latest
-    name: Scan ZAP website
-    steps:
-      - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0<span style="color:#ae81ff">.3</span><span style="color:#ae81ff">.0</span>
-        with:
-          target: <span style="color:#e6db74">&#39;https://www.zaproxy.org/&#39;</span>
-</code></pre></div><p>The ZAP baseline action can be also used to scan a locally built web application. The general idea is to build and serve your web
-application and make it available locally so ZAP can access the site via the localhost.</p>
-<p>By default, baseline scan reports all alerts as WARNings but you can specify a config file that can change any rules to FAIL or IGNORE.
-The following shows a sample rules file. Create the <code>rules.tsv</code> file inside your repository (example: inside <code>.zap</code> folder) and make sure to update the action
-file with the relative path to the rule file. Also, you can supply additional baseline <a href="/docs/docker/baseline-scan/">command-line options</a>
-via the <code>cmd_options</code> parameter. For example passing <code>-a</code> as a command-line argument will include the alpha passive scan rules as well.</p>
-<pre><code class="language-tsv" data-lang="tsv">10035	IGNORE	(Strict-Transport-Security Header Not Set)
-10098	IGNORE	(Cross-Domain Misconfiguration)
-</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">jobs:
-  zap_scan:
-    runs-on: ubuntu-latest
-    name: Scan ZAP website
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: master
-      - name: ZAP Scan
-        uses: zaproxy/action-baseline@v0<span style="color:#ae81ff">.3</span><span style="color:#ae81ff">.0</span>
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          target: <span style="color:#e6db74">&#39;https://www.zaproxy.org/&#39;</span>
-          rules_file_name: <span style="color:#e6db74">&#39;.zap/rules.tsv&#39;</span>
-          cmd_options: <span style="color:#e6db74">&#39;-a&#39;</span>
-</code></pre></div><p>Also, you can view the scan logs by navigating to the ZAP <a href="https://github.com/zaproxy/zaproxy-website/runs/573792586?check_suite_focus=true">scan job</a>.</p>
-<p><a href="https://github.com/zaproxy/zaproxy-website/runs/573792586?check_suite_focus=true"><img src="./images/scan-job.png" alt="scan-job"></a></p>
-<p>We are excited to hear your thoughts and feedback for the new ZAP Baseline Action. If you find the action useful please star the action.
-The ZAP team is also working on a ZAP Full Scan Action, stay tuned for updates. Reach us through the <a href="https://groups.google.com/group/zaproxy-develop">dev group</a>
-or for any additional enhancements please feel free to create an issue in the <a href="https://github.com/zaproxy/action-baseline">following repository</a>.</p>
+            <p>Did you know that you or your company/organization could customize the generic details of the alerts that ZAP raises?</p>
+<p>Alerts raised by ZAP contain a variety of information, some generic, some specific to the issue at hand. Specific details may include things such as
+URL, parameter, values, etc. While generic details include things like a description, solution, and links to related background material and resources.</p>
+<p>Using &lsquo;Alert Overrides&rsquo; functionality you can replace or add generic information, allowing you to include details that may be more relevant to your
+company or organization. This is accomplished by creating and using an &lsquo;alerts overrides&rsquo; configuration file.</p>
+<p>An alert override config file is a UTF-8 property file containing the information you would like to change. The file may contain comments for
+convenience by pre-pending <code>#</code> on the line, ex: <code># 2 - Private IP Disclosure</code>. Such comments will be ignored when ZAP uses the file.</p>
+<h2 id="how-to">How-to</h2>
+<p>The format of entries in the file is:</p>
+<p><code>&lt;alertid&gt;.&lt;property&gt; = [ + | - ] &lt;your information&gt;</code></p>
+<p>With the following properties supported: <code>name</code>, <code>description</code>, <code>solution</code>, <code>otherInfo</code>, and <code>reference</code>. Alert details can be added, replaced, or removed:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">If the value starts with a ‘+’ then it is appended to the existing information.
+If it starts with a ‘-’ then it is prepended to the existing information.
+If it does not start with a ‘+’ or ‘-’ then it replaces the existing information.
+</code></pre></div><p>For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># 40012 = Reflected XSS
+40012.solution = Follow our company specific guidelines at http://internet.example.com/xss.html
+</code></pre></div><h2 id="example-usage">Example Usage</h2>
+<p>Let's say you work for Juice Shop corporation, and the organization is particular sensitive to disclosure of internal IP addresses, etc. After an initial scan with ZAP
+you decide that your developers and security team should have some additional information when reading reports and addressing certain issues.</p>
+<p><img src="images/initial_results.png" alt="Initial Results"></p>
+<p>So you establish an overrides files such as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># 2 - Private IP Disclosure
+2.reference = +\nhttp://intranet.owasp-juice.shop/devdocs/internal-ip/
+# 10096 - Timestamp Disclosure
+10096.solution = If this timestamp evaluates to a date before 2014-10-04 (First release) then the finding is almost definitely a false positive.
+</code></pre></div><p>This file can be leveraged by:</p>
+<ul>
+<li>Specifying its use (location) in ZAP's Options dialog.</li>
+<li>Via the <a href="/docs/desktop/start/features/api/">API</a></li>
+<li>From the command line: <code>-config alert.overridesFilename=/path/to/filename</code></li>
+</ul>
+<p>Setting the file via the Options dialog:
+<img src="images/options-dialog.png" alt="Options Dialog"></p>
+<p>Overridden details:
+<img src="images/overridden-results.png" alt="Overridden Results"></p>
+<p><img src="images/after-override.png" alt="After Override"></p>
+<p>For further details see this <a href="/docs/desktop/start/features/alerts/#alert-overrides">help entry</a>.</p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/"> Is ZAP the World’s most Popular Web Scanner?</a>
+                Prev: <a class="previous" href="/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/"> Automate Security Testing with ZAP and GitHub Actions</a>
               
-              
-                Next: <a class="next" href="/blog/2020-05-11-alert-overrides-youdontknowzap/"> Customize Alert Details</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Thu Apr 9, 2020 </h4>
+          <h4 id="date"> Mon May 11, 2020 </h4>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents"></nav>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-to">How-to</a></li>
+    <li><a href="#example-usage">Example Usage</a></li>
+  </ul>
+</nav>
 
           <div class="post-authors">
             <h4>Authors</h4>
@@ -245,21 +211,21 @@ or for any additional enhancements please feel free to create an issue in the <a
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/nirojan-selvanathan_400x400.png" />
+                  <img class="author-picture" src="/img/authors/rick-mitchell_400x400.jpg" />
                   
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Nirojan Selvanathan
+                    Rick Mitchell
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/sshniro">@sshniro</a>
+                  <a class="author-twitter" href="https://twitter.com/kingthorin_rm">@kingthorin_rm</a>
                   
                 </div>
               </section>
           
           </div>
-          <h5 id="wordcount"> 740 Words </h5>
+          <h5 id="wordcount"> 381 Words </h5>
                     
         </section>
       </aside>
@@ -303,7 +269,7 @@ or for any additional enhancements please feel free to create an issue in the <a
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-05-11-alert-overrides-youdontknowzap/index.md">Edit on GitHub</a>
   </div>
 
     </div>
