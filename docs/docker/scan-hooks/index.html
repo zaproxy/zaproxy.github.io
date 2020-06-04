@@ -168,7 +168,8 @@ zap-baseline.py -t https://example.com --hook<span style="color:#f92672">=</span
 <span style="color:#75715e"># or using Docker</span> 
 docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -t https://www.example.com -g gen.conf -r testreport.html --hook<span style="color:#f92672">=</span>/zap/wrk/my-hooks.py
-</code></pre></div><h2 id="list-of-hooks">List of Hooks</h2>
+</code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
+<h2 id="list-of-hooks">List of Hooks</h2>
 <ul>
 <li><code>cli_opts(opts)</code></li>
 <li><code>zap_started(zap, target)</code></li>
