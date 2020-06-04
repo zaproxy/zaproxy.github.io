@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Highlights from ZAP release 2.9.0">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-06-04-zap-2-9-0-highlights/images/zapbot.png"/>
+
+<meta name="twitter:title" content="ZAP 2.9 Highlights"/>
+<meta name="twitter:description" content="Highlights from ZAP release 2.9.0"/>
+
+    <meta property="og:title" content="ZAP 2.9 Highlights" />
+<meta property="og:description" content="Highlights from ZAP release 2.9.0" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2020-06-04-zap-2-9-0-highlights/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-06-04-zap-2-9-0-highlights/images/zapbot.png" />
+<meta property="article:published_time" content="2020-06-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-04T00:00:00+00:00" />
+
+  
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.7d9e3.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/zap-in-ten/" title="ZAP in Ten page">
+                  ZAP in Ten
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/get-involved/" title="Get Involved page">
+                  Get Involved
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <h1 class="post-title">ZAP 2.9 Highlights</h1>
+          <main class="post-content">
+            <p>Do you know what interesting bits were added to ZAP 2.9.0?
+Don't read release notes?</p>
+<p>This blog post is for you!</p>
+<p>Of course I can't cover absolutely everything, but here's some details on some notable items.
+For full details see the <a href="/docs/desktop/releases/2.9.0/">2.9.0 release notes</a>.</p>
+<p>To be clear ZAP 2.9.0 was released back in Jan of 2020. 😉, so this post is kind of playing catch-up.</p>
+<h2 id="proxy-info-display">Proxy Info Display</h2>
+<p>Contributed by: <a href="https://twitter.com/kingthorin_rm">Rick Mitchell (kingthorin)</a>.</p>
+<p>The primary ZAP proxy is now displayed in the left footer area of the main window:</p>
+<p><img src="images/footer_proxy.png" alt="Primary Proxy Display in Left Footer Area"></p>
+<p>Futher if you have additional proxies setup, they'll be displayed in the tooltip text when you hover your cursor over the primary proxy display:</p>
+<p><img src="images/local_proxy_options.png" alt="Local Proxy Options"></p>
+<p><img src="images/footer_proxy_tooltip.png" alt="Proxy Tooltip Display"></p>
+<h2 id="proxy-port-reservation-failure-handling">Proxy Port Reservation Failure Handling</h2>
+<p>Contributed by: <a href="https://twitter.com/kingthorin_rm">Rick Mitchell (kingthorin)</a>.</p>
+<p>Have you ever had ZAP complain at startup that it can't bind to the default port (8080), because you're running Tomcat (or something else) locally? No problem
+ZAP will now suggest a port that you could use.</p>
+<p><img src="images/startup_conflict.gif" alt="Animated GIF illustrating the startup behavior when a proxy port conflict is encountered"></p>
+<h2 id="options-panels-filter">Options Panel(s) Filter</h2>
+<p>Contributed by: <a href="https://twitter.com/dennis_kniep">Dennis Kniep</a></p>
+<p>ZAP has a quite extensive options interface, sometimes it's not straight forward to locate the setting you want/need. Now you can search settings
+and have things highlighted for you:</p>
+<p>In the following example the user searched the Options panel for &ldquo;proxy&rdquo;, you can see all the panels names outlined in yellow where the panel contains the word &ldquo;proxy&rdquo;</p>
+<p><img src="images/options_search.png" alt="Options Panel &ldquo;Proxy&rdquo; Search Example"></p>
+<p>Selecting one of those panels the applicable labels/fields will be highlighted:</p>
+<p><img src="images/options_search_result.png" alt="Options Panel &ldquo;Proxy&rdquo; Search Results"></p>
+<p>This functionality is available in multiple places including the Active Scan Policy interface:</p>
+<p><img src="images/scan_policy_search.png" alt="Active Scan Policy Search Example"></p>
+<p><img src="images/scan_policy_search_result.png" alt="Active Scan Policy Search Result"></p>
+<h2 id="active-scan-filter">Active Scan Filter</h2>
+<p>Contributed by: <a href="https://github.com/preetkaran20">Karan Preet Singh Sasan (@preetkaran20)</a>.</p>
+<p>ZAP has plenty of options of targeting or refining Active Scan this feature makes it even more flexible. When starting an active scan users can now define filter criteria for inclusion/exclusion of various requests. The available criteria include:</p>
+<ul>
+<li>Defining which HTTP methods/verbs should be included.</li>
+<li>Defining which HTTP requests should be included, based on the existing response code.</li>
+<li>Defining which HTTP requests should be included or excluded based on the assigned Passive Scan Tags (as seen in the History table).</li>
+<li>Identifying which HTTP requests should be included or excluded based on Regex.</li>
+</ul>
+<p>In the following example only successful (200 - Ok) requests which use the POST method will be included for active scanning.</p>
+<p><img src="images/scan_filter.png" alt="Active Scan Filter Example (200 - Ok & POSTs)"></p>
+<h2 id="session-management-scripts">Session Management Scripts</h2>
+<p>Contributed by: <a href="https://twitter.com/psiinon">Simon Bennetts (@psiinon)</a></p>
+<p>Prior to ZAP 2.9 the only options for session management were cookie based or HTTP authentication based. It had been possibe to work around these limitations through
+the use of HttpSender scripts which harvested tokens and set them into subsequent requests, however that was not terribly user friendly. Therefore in order to
+accommodate technologies such as JWT, bearer tokens, etc. With 2.9 comes the concept of Session Management Scripts which greatly simplify the process of maintaining
+authenticated sessions for more modern applications.</p>
+<p>ZAP now ships with a JavaScript template for scripted session management, as well as an <a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a> example script.
+It is the Juice Shop example that we will discuss here.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#75715e">/*
+</span><span style="color:#75715e"> * Session Management script for OWASP Juice Shop
+</span><span style="color:#75715e"> * 
+</span><span style="color:#75715e"> * For Authentication select:
+</span><span style="color:#75715e"> * 		Authentication method:		JSON-based authentication
+</span><span style="color:#75715e"> * 		Login FORM target URL:		http://localhost:3000/rest/user/login
+</span><span style="color:#75715e"> * 		URL to GET Login Page:		http://localhost:3000/
+</span><span style="color:#75715e"> * 		Login Request POST data:	{&#34;email&#34;:&#34;test@test.com&#34;,&#34;password&#34;:&#34;test1&#34;}
+</span><span style="color:#75715e"> * 		Username Parameter:			email
+</span><span style="color:#75715e"> * 		Password Parameter:			password
+</span><span style="color:#75715e"> * 		Logged out regex:			\Q{&#34;user&#34;:{}}\E
+</span><span style="color:#75715e"> * 
+</span><span style="color:#75715e"> * Obviously update with any local changes as necessary.
+</span><span style="color:#75715e"> */</span>
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">COOKIE_TYPE</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">parosproxy</span>.<span style="color:#a6e22e">paros</span>.<span style="color:#a6e22e">network</span>.<span style="color:#a6e22e">HtmlParameter</span>.<span style="color:#a6e22e">Type</span>.<span style="color:#a6e22e">cookie</span>;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">HtmlParameter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;org.parosproxy.paros.network.HtmlParameter&#39;</span>)
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ScriptVars</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;org.zaproxy.zap.extension.script.ScriptVars&#39;</span>);
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extractWebSession</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
+	<span style="color:#75715e">// parse the authentication response
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">json</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>().<span style="color:#a6e22e">getResponseBody</span>().<span style="color:#a6e22e">toString</span>());
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">authentication</span>.<span style="color:#a6e22e">token</span>;
+	<span style="color:#75715e">// save the authentication token
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getSession</span>().<span style="color:#a6e22e">setValue</span>(<span style="color:#e6db74">&#34;token&#34;</span>, <span style="color:#a6e22e">token</span>);
+	<span style="color:#a6e22e">ScriptVars</span>.<span style="color:#a6e22e">setGlobalVar</span>(<span style="color:#e6db74">&#34;juiceshop.token&#34;</span>, <span style="color:#a6e22e">token</span>);
+}
+    	
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">clearWebSessionIdentifiers</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">headers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>().<span style="color:#a6e22e">getRequestHeader</span>();
+	<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#66d9ef">null</span>);
+	<span style="color:#a6e22e">ScriptVars</span>.<span style="color:#a6e22e">setGlobalVar</span>(<span style="color:#e6db74">&#34;juiceshop.token&#34;</span>, <span style="color:#66d9ef">null</span>);
+}
+    	
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processMessageToMatchSession</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getSession</span>().<span style="color:#a6e22e">getValue</span>(<span style="color:#e6db74">&#34;token&#34;</span>);
+	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">token</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+		<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#39;JS mgmt script: no token&#39;</span>);
+		<span style="color:#66d9ef">return</span>;
+	}
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlParameter</span>(<span style="color:#a6e22e">COOKIE_TYPE</span>, <span style="color:#e6db74">&#34;token&#34;</span>, <span style="color:#a6e22e">token</span>);
+	<span style="color:#75715e">// add the saved authentication token as an Authentication header and a cookie
+</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>();
+	<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#e6db74">&#34;Bearer &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">token</span>);
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookies</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">getCookieParams</span>();
+	<span style="color:#a6e22e">cookies</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">cookie</span>);
+	<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">setCookieParams</span>(<span style="color:#a6e22e">cookies</span>);
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getRequiredParamsNames</span>() {
+	<span style="color:#66d9ef">return</span> []; 
+}
+
+<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getOptionalParamsNames</span>() {
+	<span style="color:#66d9ef">return</span> [];
+}
+</code></pre></div><p>The example starts out with a documentation block explaining the assumptions for the Context setup and user being authenticated. The next few lines define the
+imports/types that will be used by the script. Then we get to the business part of the script.</p>
+<p>The <code>extractWebSession</code> function extracts the token value and saves it into a Global variable where it can later be retrieved by other scripts/functions, as well as saving it into the session (which is used internally when processing messages).</p>
+<p>The next function <code>clearWebSessionIdentifiers</code> is setup to remove or invalidate a token from within ZAP.</p>
+<p><code>processMessageToMatchSession</code> is responsible for inserting the token where necessary, in the case of Juice Shop both the <code>Authorization</code> header value and a
+cookie value.</p>
+<p>The functions <code>getRequiredParamsNames</code> and <code>getOptionalParamsNames</code> are un-used for Juice Shop session management.
+These functions are called during the script loading to obtain a list of the names of the required (or optional, as applicable) configuration parameters,
+that will be shown in the Session Properties -&gt; Session Management panel for configuration. They can be used to input dynamic data into the script,
+from the user interface or API (e.g. a JSONPath expression for extracting values from a JSON response, the name of a header, a login URL, or name of POST parameters, etc.)</p>
+<p>For more information about getting familiar with ZAP and setting up/managing authentication for ZAP scans refer to the
+<a href="https://www.alldaydevops.com/zap-in-ten">ZAP in Ten</a> series.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>This blog post delved into specific of some of the features that were new to ZAP in 2.9.0. ZAP is constantly being improved by a Global community
+of volunteers. Watch for more of these blogs in the future.</p>
+<p>For further details see the <a href="/docs/desktop/releases/2.9.0/">2.9.0 release notes</a>.</p>
+
+          </main>
+          <div class="next-content">
+              
+                Prev: <a class="previous" href="/blog/2020-05-15-dynamic-application-security-testing-with-zap-and-github-actions/"> Dynamic Application Security Testing with ZAP and GitHub Actions</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          <h4 id="date"> Thu Jun 4, 2020 </h4>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#proxy-info-display">Proxy Info Display</a></li>
+    <li><a href="#proxy-port-reservation-failure-handling">Proxy Port Reservation Failure Handling</a></li>
+    <li><a href="#options-panels-filter">Options Panel(s) Filter</a></li>
+    <li><a href="#active-scan-filter">Active Scan Filter</a></li>
+    <li><a href="#session-management-scripts">Session Management Scripts</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+          <div class="post-authors">
+            <h4>Authors</h4>
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/rick-mitchell_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Rick Mitchell
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/kingthorin_rm">@kingthorin_rm</a>
+                  
+                </div>
+              </section>
+          
+          </div>
+          <h5 id="wordcount"> 953 Words </h5>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/zap-in-ten/" title="ZAP in Ten page">ZAP in Ten</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/get-involved/" title="Get Involved page">Get Involved</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/support/" title="Support page">Support</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-06-04-zap-2-9-0-highlights/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2020 the ZAP Dev Team
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.7d9e3.js"></script>
+  
+</div>
+</body>
+</html>
