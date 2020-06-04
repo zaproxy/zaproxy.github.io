@@ -168,7 +168,8 @@ See the <a href="../webswing/">Webswing</a> page for details.</p>
 </code></pre></div><p>If you use &lsquo;file&rsquo; params then you need to mount the directory those file are in or will be generated in, eg</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-weekly zap-baseline.py <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -t https://www.example.com -g gen.conf -r testreport.html
-</code></pre></div><p>For more details see the <a href="../baseline-scan/">ZAP Baseline Scan</a> page.</p>
+</code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
+<p>For more details see the <a href="../baseline-scan/">ZAP Baseline Scan</a> page.</p>
 <h3 id="zap-cli">ZAP CLI:</h3>
 <p><a href="https://github.com/Grunny/zap-cli">ZAP CLI</a> is a ZAP wrapper written in Python. It provides a simple way to do scanning from the command line:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i owasp/zap2docker-stable zap-cli quick-scan --self-contained <span style="color:#ae81ff">\

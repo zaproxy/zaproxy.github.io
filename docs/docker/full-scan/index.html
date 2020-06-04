@@ -169,7 +169,8 @@ Options:
 </code></pre><p>If you use &lsquo;file&rsquo; params then you need to mount the directory those file are in or will be generated in, eg</p>
 <pre><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py \
     -t https://www.example.com -g gen.conf -r testreport.html
-</code></pre><h3 id="scan-hooks">Scan Hooks</h3>
+</code></pre><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
+<h3 id="scan-hooks">Scan Hooks</h3>
 <p>This script supports <a href="../scan-hooks/">scan hooks</a> which allow you to override or modify behaviour of the script components instead of having to write a new script.</p>
 
           </main>

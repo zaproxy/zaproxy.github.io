@@ -170,7 +170,8 @@ Options:
 </code></pre><p>If you use &lsquo;file&rsquo; params then you need to mount the directory those file are in or will be generated in, eg</p>
 <pre><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py \
     -t https://www.example.com -g gen.conf -r testreport.html
-</code></pre><h3 id="example-output">Example Output</h3>
+</code></pre><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
+<h3 id="example-output">Example Output</h3>
 <pre><code>docker run -t owasp/zap2docker-stable zap-baseline.py -t https://www.example.com
 May 17, 2016 1:24:32 PM java.util.prefs.FileSystemPreferences$1 run
 INFO: Created user preferences directory.
