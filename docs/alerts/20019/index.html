@@ -139,9 +139,9 @@
 <h3 id="description">Description</h3>
 <p>URL redirectors represent common functionality employed by web sites to forward an incoming request to an alternate resource. This can be done for a variety of reasons and is often done to allow resources to be moved within the directory structure and to avoid breaking functionality for users that request the resource at its previous location. URL redirectors may also be used to implement load balancing, leveraging abbreviated URLs or recording outgoing links. It is this last implementation which is often used in phishing attacks as described in the example below. URL redirectors do not necessarily represent a direct security vulnerability but can be abused by attackers trying to social engineer victims into believing that they are navigating to a site other than the true destination.</p>
 <h3 id="solution">Solution</h3>
-<p>Assume all input is malicious. Use an &ldquo;accept known good&rdquo; input validation strategy, i.e., use a whitelist of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a blacklist). However, blacklists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.</p>
+<p>Assume all input is malicious. Use an &ldquo;accept known good&rdquo; input validation strategy, i.e., use an allow list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a deny list). However, deny lists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.</p>
 <p>When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, &ldquo;boat&rdquo; may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as &ldquo;red&rdquo; or &ldquo;blue.&rdquo;</p>
-<p>Use a whitelist of approved URLs or domains to be used for redirection.</p>
+<p>Use an allow list of approved URLs or domains to be used for redirection.</p>
 <p>Use an intermediate disclaimer page that provides the user with a clear warning that they are leaving your site. Implement a long timeout before the redirect occurs, or force the user to click on the link. Be careful to avoid XSS problems when generating the disclaimer page.</p>
 <p>When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs.</p>
 <p>For example, ID 1 could map to &ldquo;/login.asp&rdquo; and ID 2 could map to &ldquo;<a href="http://www.example.com/%22">http://www.example.com/&quot;</a>. Features such as the ESAPI AccessReferenceMap provide this capability.</p>
@@ -158,7 +158,7 @@
 <ul>
 <li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/TestExternalRedirect.java">org/zaproxy/zap/extension/ascanrules/TestExternalRedirect.java</a></li>
 </ul>
-<h6 id="last-updated-2020-04-30-161239623z">Last updated: 2020-04-30 16:12:39.623Z</h6>
+<h6 id="last-updated-2020-07-20-085337296z">Last updated: 2020-07-20 08:53:37.296Z</h6>
 
           </main>
       </article>
