@@ -1259,11 +1259,19 @@ Various formats are including, including some formats such as MD4, MD5, and SHA*
 <h2 id="https-to-http-insecure-transition-in-form-post">HTTPS to HTTP Insecure Transition in Form Post</h2>
 <p>This check identifies secure HTTPS pages that host insecure HTTP forms. The issue is that a secure page is transitioning to an insecure page when data is uploaded through a form. The user may think they're submitting data to a secure page when in fact they are not.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/InsecureFormPostScanner.java">InsecureFormPostScanner.java</a></p>
+<h2 id="modern-web-application">Modern Web Application</h2>
+<p>This raises an informational alert if a site appears to be a modern web application.<br>
+It does not indicate any potential vulnerabilities but it could indicate that the ajax spider might be more effective at exploring this site compared to the traditional spider.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/ModernAppDetectionScanner.java">ModernAppDetectionScanner.java</a></p>
 <h2 id="open-redirect">Open Redirect</h2>
 <p>Open redirects are one of the OWASP 2010 Top Ten vulnerabilities. This check looks at user-supplied input in query string parameters and POST data to identify where open redirects might be possible. Open redirects occur when an application allows user-supplied input (e.g. <a href="http://nottrusted.com">http://nottrusted.com</a>) to control an offsite redirect. This is generally a pretty accurate way to find where 301 or 302 redirects could be exploited by spammers or phishing attacks.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/UserControlledOpenRedirectScanner.java">UserControlledOpenRedirectScanner.java</a></p>
-<h2 id="pii-disclosure-scanner">PII Disclosure scanner</h2>
+<h2 id="pii-disclosure">PII Disclosure</h2>
 <p>PII is information like credit card number, SSN etc. This check currently reports only numbers which match credit card numbers and pass Luhn checksum, which gives high confidence, that this is a credit card number.</p>
+<p>Note: In the case of suspected credit card values, the potential credit card numbers are looked up against a Bank Identification Number List
+(BINList). If a match is found the alert is raised at High confidence and additional details are added to the &lsquo;Other Information&rsquo; field in the
+alert, otherwise the alerts will have Medium confidence.
+See: <a href="https://github.com/iannuttall/binlist-data">binlist-data</a> for more information.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/PiiScanner.java">PiiScanner.java</a></p>
 <h2 id="retrieved-from-cache">Retrieved from Cache</h2>
 <p>This scanner detect content that has been served from a shared cache.</p>
@@ -1275,7 +1283,7 @@ At HIGH threshold it will only report links that use the &ldquo;_blank&rdquo; ta
 You can specify a comma separated list of URL regex patterns using the <code>rules.domains.trusted</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any link URL that matches one of these patterns will be considered to be in a trusted domain and will therefore not be reported.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/LinkTargetScanner.java">LinkTargetScanner.java</a></p>
 <h2 id="servlet-parameter-pollution">Servlet Parameter Pollution</h2>
-<p>Searches response content for HTML forms which fail to specify an action element. Version 3 of the Java Servlet spec calls for aggregation of query string and post data elements which may result in unintended handling of user controlled data. This may impact other frameworks and technologies as well. <strong>Note:</strong> This scan rule will only analyze responses on LOW Threshold.</p>
+<p>Searches response content for HTML forms which fail to specify an action element. Version 3 of the Java Servlet spec calls for aggregation of query string and post data elements which may result in unintended handling of user controlled data. This may impact other frameworks and technologies as well. <strong>Note:</strong> This scan rule will only analyze responses on LOW Threshold, and in Context URLs for which the Tech JSP/Servlet is applicable.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/ServletParameterPollutionScanner.java">ServletParameterPollutionScanner.java</a></p>
 <h2 id="strict-transport-security-header-scanner">Strict Transport Security Header Scanner</h2>
 <p>This scanner checks HTTPS responses for the presence of a HTTP Strict Transport Security (HSTS) header and tests for various implementation concerns, alerting if they're found. Alerts generated:</p>

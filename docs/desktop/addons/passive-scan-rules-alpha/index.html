@@ -1237,6 +1237,7 @@ For more details see: <a href="/blog/2014-04-03-hacking-zap-3-passive-scan-rules
 <li><strong>ASP.NET ViewState Integrity:</strong> The application does not use a Message Authentication Code (MAC) to protect the integrity of the ASP.NET ViewState, which can be tampered with by a malicious client</li>
 <li><strong>Base64 Disclosure:</strong> Base64 encoded data was disclosed by the application/web server</li>
 </ul>
+<p><strong>Note:</strong> At Low Threshold all occurrences within each response will be included.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/Base64Disclosure.java">Base64Disclosure.java</a></p>
 <h2 id="content-cacheability">Content Cacheability</h2>
 <p>This scanner analyzes the cache control and pragma headers in HTTP traffic and resports on the cacheability of the requests from a RFC7234 point of view.</p>
@@ -1260,39 +1261,6 @@ Redirects are ignored except at the Low threshold.</p>
 If the Threshold is Low then status 200 - Ok responses are analyzed as well.<br>
 The presence of such banners may facilitate more targeted attacks against known vulnerabilities.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/InPageBannerInfoLeakScanner.java">InPageBannerInfoLeakScanner.java</a></p>
-<h2 id="insecure-component">Insecure Component</h2>
-<p>Passively scans the server response headers and body generator content for product versions, which are then cross-referenced against a list of product versions known to be vulnerable to various CVEs. A list of ranked CVEs and CVSS severity scores is output for each product noted to be vulnerable. Currently, the following server side products are supported:<br>
-Apache Tomcat application server (limited functionality due to limited information leakage by Tomcat)<br>
-Apache web server<br>
-mod_auth_radius Apache module<br>
-mod_fcgid Apache module<br>
-mod_imap Apache module<br>
-mod_jk Apache module<br>
-mod_perl Apache module<br>
-mod_python Apache module<br>
-mod_ssl Apache module<br>
-OpenSSL Apache module<br>
-Perl Apache module<br>
-Python Apache module<br>
-IBM HTTP Server<br>
-JBoss application server<br>
-Jetty web server / application server<br>
-LiteSpeed web server<br>
-Lighttpd web server<br>
-Microsoft IIS web server<br>
-Netscape Enterprise web server<br>
-Nginx web server<br>
-OpenCMS<br>
-Oracle Application Server<br>
-Oracle Web Cache<br>
-PHP<br>
-Phusion_Passenger<br>
-Squid proxy server<br>
-Sun One web server<br>
-Sun Java System Web Server<br>
-TornadoServer web server<br>
-WordPress</p>
-<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/InsecureComponentScanner.java">InsecureComponentScanner.java</a></p>
 <h2 id="java-serialization-object">Java Serialization Object</h2>
 <p>Java Serialization Object (JSO) is a way to save and exchange objects between Java applications.<br>
 Different problems are associated with JSO. Sensitive data can leak to the stream of bytes.<br>
@@ -1300,10 +1268,6 @@ An attacker can also modify the data and exploit JSO to do a Remote Code Executi
 JSO should not be used by Java programs. Strong controls must be done on serialized data.<br>
 JSO are a type of vulnerabilities associated to A8:2017-Insecure Deserialization.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/JsoScanner.java">JsoScanner.java</a></p>
-<h2 id="modern-web-application">Modern Web Application</h2>
-<p>This raises an informational alert if a site appears to be a modern web application.<br>
-It does not indicate any potential vulnerabilities but it could indicate that the ajax spider might be more effective at exploring this site compared to the traditional spider.</p>
-<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ModernAppDetectionScanner.java">ModernAppDetectionScanner.java</a></p>
 <h2 id="source-code-disclosure">Source Code Disclosure</h2>
 <p>Application Source Code was disclosed by the web server</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/SourceCodeDisclosureScanner.java">SourceCodeDisclosureScanner.java</a></p>
@@ -1311,6 +1275,10 @@ It does not indicate any potential vulnerabilities but it could indicate that th
 <p>This scanner checks whether the integrity attribute in the script or the link element served by an external resource (for example: CDN) is missing.<br>
 It helps mitigate an attack where the CDN has been compromised and content has been replaced by malicious content.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/SubResourceIntegrityAttributeScanner.java">SubResourceIntegrityAttributeScanner.java</a></p>
+<h2 id="dangerous-js-functions">Dangerous JS Functions</h2>
+<p>This scanner checks for any dangerous JS functions present in a site response.<br>
+<strong>Note:</strong> If the Custom Payloads addon is installed you can add your own function names (payloads) in the Custom Payloads options panel. They will also be searched for in responses as they're passively scanned. Keep in mind that the greater the number of payloads the greater the amount of time needed to passively scan.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/JSFunctionPassiveScanner.java">JSFunctionPassiveScanner.java</a></p>
 
         </div>
       </div>
