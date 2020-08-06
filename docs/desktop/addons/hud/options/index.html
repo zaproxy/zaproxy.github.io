@@ -1233,10 +1233,21 @@
 <p>When set the HUD will be injected into HTML responses when the ZAP Desktop is used. This defaults to true.</p>
 <h2 id="enable-when-using-zap-in-daemon-mode">Enable when using ZAP in daemon mode</h2>
 <p>When set the HUD will be injected into HTML responses when ZAP is started in daemon or &lsquo;headless&rsquo; mode. This defaults to false as many people use ZAP for automation, injecting the HUD would not help and could cause existing tests to break.</p>
+<h2 id="enable-anonymous-telemetry">Enable anonymous telemetry</h2>
+<p>When set will send pings to a bit.ly URL when:</p>
+<ul>
+<li>The HUD is used</li>
+<li>The HUD tutorial first page is visited</li>
+<li>The HUD tutorial last page is visited</li>
+</ul>
+<p>Each ping is sent at most once per ZAP run and the only information available to the ZAP team is the number of pings made and the countries they have come from.<br>
+We get very little feedback and so information like this really helps us understand how ZAP is being used. We have limited time to spend and so want to focus on features that people are actually using.</p>
 <h2 id="show-the-hud-welcome-screen-when-a-browser-is-opened">Show the HUD welcome screen when a browser is opened</h2>
 <p>When set the HUD Welcome screen, which includes a link to the tutorial, will be shown whenever a browser that is proxying through ZAP is opened. The welcome screen includes an option to not show the screen again, if that is selected then this is the only way to make the welcome screen appear again.</p>
 <h2 id="enable-the-hud-only-for-urls-that-are-in-scope">Enable the HUD only for URLs that are in scope</h2>
 <p>If selected then only URLs flagged as &lsquo;in scope&rsquo; in ZAP will have the HUD injected into them. The plan is to expose this option via the HUD, but until that time if the option is enabled then you will need to add URLs to the scope via the ZAP Desktop.</p>
+<p>When this option is selected then the HUD icon in the desktop toolbar will have a small &lsquo;target&rsquo; overlay on the
+bottom right hand side.</p>
 <h2 id="enable-on-domain-messages">Enable on-domain messages</h2>
 <p>Allow messages to be sent from the target domain to the ZAP domain. This is needed for features such as showing the number of hidden fields and displaying the alert associated with a specific field. If you think that the target domain could be malicious then you can turn this option off. The HUD does not trust any messages from the target domain but a malicious site could potentially do mildly annoying things such as causing ZAP alerts to be displayed unexpectedly. You will need to restart your browser after changing this setting in order for it to take effect.</p>
 <h2 id="remove-csp-from-target-pages">Remove CSP from target pages</h2>
