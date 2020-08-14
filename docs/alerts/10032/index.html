@@ -134,16 +134,72 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <h3 id="type-passive-scan">Type: Passive Scan</h3>
+            <h2 id="name-potential-ip-addresses-found-in-the-viewstate">Name: Potential IP Addresses Found in the Viewstate</h2>
+<h3 id="type-passive-scan-rule">Type: Passive Scan Rule</h3>
+<h3 id="risk-medium">Risk: Medium</h3>
 <h3 id="description">Description</h3>
-<p><em>Unavailable</em></p>
+<p>The following potential IP addresses were found being serialized in the viewstate field:</p>
 <h3 id="solution">Solution</h3>
 <p>Verify the provided information isn't confidential.</p>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--14">WASC:  14</h3>
+<h2 id="name-emails-found-in-the-viewstate">Name: Emails Found in the Viewstate</h2>
+<h3 id="risk-medium-1">Risk: Medium</h3>
+<h3 id="description-1">Description</h3>
+<p>The following emails were found being serialized in the viewstate field:</p>
+<h3 id="solution-1">Solution</h3>
+<p>Verify the provided information isn't confidential.</p>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html-1">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--14-1">WASC:  14</h3>
+<h2 id="name-old-aspnet-version-in-use">Name: Old Asp.Net Version in Use</h2>
+<h3 id="risk-low">Risk: Low</h3>
+<h3 id="description-2">Description</h3>
+<p>*** EXPERIMENTAL ***
+This website uses ASP.NET version 1.0 or 1.1.</p>
+<h3 id="solution-2">Solution</h3>
+<p>Ensure the engaged framework is still supported by Microsoft.</p>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html-2">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--14-2">WASC:  14</h3>
+<h2 id="name-viewstate-without-mac-signature-unsure">Name: Viewstate without MAC Signature (Unsure)</h2>
+<h3 id="risk-high">Risk: High</h3>
+<h3 id="description-3">Description</h3>
+<p>*** EXPERIMENTAL ***
+This website uses ASP.NET's Viewstate but maybe without any MAC.</p>
+<h3 id="solution-3">Solution</h3>
+<p>Ensure the MAC is set for all pages on this website.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/ff649308.aspx">http://msdn.microsoft.com/en-us/library/ff649308.aspx</a></li>
+</ul>
+<h3 id="cwe-642httpscwemitreorgdatadefinitions642html">CWE: <a href="https://cwe.mitre.org/data/definitions/642.html">642</a></h3>
+<h3 id="wasc--14-3">WASC:  14</h3>
+<h2 id="name-viewstate-without-mac-signature-sure">Name: Viewstate without MAC Signature (Sure)</h2>
+<h3 id="risk-high-1">Risk: High</h3>
+<h3 id="description-4">Description</h3>
+<p>*** EXPERIMENTAL ***
+This website uses ASP.NET's Viewstate but without any MAC.</p>
+<h3 id="solution-4">Solution</h3>
+<p>Ensure the MAC is set for all pages on this website.</p>
+<h3 id="references-1">References</h3>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/ff649308.aspx">http://msdn.microsoft.com/en-us/library/ff649308.aspx</a></li>
+</ul>
+<h3 id="cwe-642httpscwemitreorgdatadefinitions642html-1">CWE: <a href="https://cwe.mitre.org/data/definitions/642.html">642</a></h3>
+<h3 id="wasc--14-4">WASC:  14</h3>
+<h2 id="name-split-viewstate-in-use">Name: Split Viewstate in Use</h2>
+<h3 id="risk-informational">Risk: Informational</h3>
+<h3 id="description-5">Description</h3>
+<p>*** EXPERIMENTAL ***
+This website uses ASP.NET's Viewstate and its value is split into several chunks.</p>
+<h3 id="solution-5">Solution</h3>
+<p>None - the guys running the server may have tuned the configuration as this isn't the default setting.</p>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html-3">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--14-5">WASC:  14</h3>
 <h3 id="code">Code</h3>
 <ul>
 <li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ViewstateScanRule.java">org/zaproxy/zap/extension/pscanrules/ViewstateScanRule.java</a></li>
 </ul>
-<h6 id="last-updated-2020-08-11-102214660z">Last updated: 2020-08-11 10:22:14.660Z</h6>
+<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
 
           </main>
       </article>

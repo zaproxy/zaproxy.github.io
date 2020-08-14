@@ -134,16 +134,20 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <h3 id="type-passive-scan">Type: Passive Scan</h3>
+            <h2 id="name-application-error-disclosure">Name: Application Error Disclosure</h2>
+<h3 id="type-passive-scan-rule">Type: Passive Scan Rule</h3>
+<h3 id="risk-medium">Risk: Medium</h3>
 <h3 id="description">Description</h3>
 <p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>
 <h3 id="solution">Solution</h3>
 <p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>
+<h3 id="cwe-200httpscwemitreorgdatadefinitions200html">CWE: <a href="https://cwe.mitre.org/data/definitions/200.html">200</a></h3>
+<h3 id="wasc--13">WASC:  13</h3>
 <h3 id="code">Code</h3>
 <ul>
 <li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ApplicationErrorScanRule.java">org/zaproxy/zap/extension/pscanrules/ApplicationErrorScanRule.java</a></li>
 </ul>
-<h6 id="last-updated-2020-08-11-102214660z">Last updated: 2020-08-11 10:22:14.660Z</h6>
+<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
 
           </main>
       </article>

@@ -134,16 +134,60 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <h3 id="type-passive-scan">Type: Passive Scan</h3>
+            <h2 id="name-x-frame-options-header-not-set">Name: X-Frame-Options Header Not Set</h2>
+<h3 id="type-passive-scan-rule">Type: Passive Scan Rule</h3>
+<h3 id="risk-medium">Risk: Medium</h3>
 <h3 id="description">Description</h3>
-<p><em>Unavailable</em></p>
+<p>X-Frame-Options header is not included in the HTTP response to protect against &lsquo;ClickJacking&rsquo; attacks.</p>
 <h3 id="solution">Solution</h3>
-<p><em>Unavailable</em></p>
+<p>Most modern Web browsers support the X-Frame-Options HTTP header. Ensure it's set on all web pages returned by your site (if you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. ALLOW-FROM allows specific websites to frame the web page in supported web browsers).</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</a></li>
+</ul>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--15">WASC:  15</h3>
+<h2 id="name-multiple-x-frame-options-header-entries">Name: Multiple X-Frame-Options Header Entries</h2>
+<h3 id="risk-medium-1">Risk: Medium</h3>
+<h3 id="description-1">Description</h3>
+<p>X-Frame-Options (XFO) headers were found, a response with multiple XFO header entries may not be predictably treated by all user-agents.</p>
+<h3 id="solution-1">Solution</h3>
+<p>Ensure only a single X-Frame-Options header is present in the response.</p>
+<h3 id="references-1">References</h3>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc7034">https://tools.ietf.org/html/rfc7034</a></li>
+</ul>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html-1">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--15-1">WASC:  15</h3>
+<h2 id="name-x-frame-options-defined-via-meta-non-compliant-with-spec">Name: X-Frame-Options Defined via META (Non-compliant with Spec)</h2>
+<h3 id="risk-medium-2">Risk: Medium</h3>
+<h3 id="description-2">Description</h3>
+<p>An X-Frame-Options (XFO) META tag was found, defining XFO via a META tag is explicitly not supported by the spec (RFC 7034).</p>
+<h3 id="solution-2">Solution</h3>
+<p>Ensure X-Frame-Options is set via a response header field.</p>
+<h3 id="references-2">References</h3>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc7034#section-4">https://tools.ietf.org/html/rfc7034#section-4</a></li>
+</ul>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html-2">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--15-2">WASC:  15</h3>
+<h2 id="name-x-frame-options-setting-malformed">Name: X-Frame-Options Setting Malformed</h2>
+<h3 id="risk-medium-3">Risk: Medium</h3>
+<h3 id="description-3">Description</h3>
+<p>An X-Frame-Options header was present in the response but the value was not correctly set.</p>
+<h3 id="solution-3">Solution</h3>
+<p>Ensure a valid setting is used on all web pages returned by your site (if you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. ALLOW-FROM allows specific websites to frame the web page in supported web browsers).</p>
+<h3 id="references-3">References</h3>
+<ul>
+<li><a href="https://tools.ietf.org/html/rfc7034#section-2.1">https://tools.ietf.org/html/rfc7034#section-2.1</a></li>
+</ul>
+<h3 id="cwe-16httpscwemitreorgdatadefinitions16html-3">CWE: <a href="https://cwe.mitre.org/data/definitions/16.html">16</a></h3>
+<h3 id="wasc--15-3">WASC:  15</h3>
 <h3 id="code">Code</h3>
 <ul>
 <li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/XFrameOptionScanRule.java">org/zaproxy/zap/extension/pscanrules/XFrameOptionScanRule.java</a></li>
 </ul>
-<h6 id="last-updated-2020-08-11-102214660z">Last updated: 2020-08-11 10:22:14.660Z</h6>
+<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
 
           </main>
       </article>

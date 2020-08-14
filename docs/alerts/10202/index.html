@@ -134,7 +134,8 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <h3 id="type-passive-scan">Type: Passive Scan</h3>
+            <h2 id="name-absence-of-anti-csrf-tokens">Name: Absence of Anti-CSRF Tokens</h2>
+<h3 id="type-passive-scan-rule">Type: Passive Scan Rule</h3>
 <h3 id="description">Description</h3>
 <p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p>
 <p>CSRF attacks are effective in a number of situations, including:
@@ -158,11 +159,16 @@ This control includes a component for CSRF.</p>
 <p>Do not use the GET method for any request that triggers a state change.</p>
 <p>Phase: Implementation
 Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="http://projects.webappsec.org/Cross-Site-Request-Forgery">http://projects.webappsec.org/Cross-Site-Request-Forgery</a></li>
+<li><a href="http://cwe.mitre.org/data/definitions/352.html">http://cwe.mitre.org/data/definitions/352.html</a></li>
+</ul>
 <h3 id="code">Code</h3>
 <ul>
 <li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CsrfCountermeasuresScanRule.java">org/zaproxy/zap/extension/pscanrules/CsrfCountermeasuresScanRule.java</a></li>
 </ul>
-<h6 id="last-updated-2020-08-11-102214660z">Last updated: 2020-08-11 10:22:14.660Z</h6>
+<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
 
           </main>
       </article>
