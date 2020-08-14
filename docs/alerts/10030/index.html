@@ -134,7 +134,8 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <h3 id="type-passive-scan">Type: Passive Scan</h3>
+            <h2 id="name-user-controllable-charset">Name: User Controllable Charset</h2>
+<h3 id="type-passive-scan-rule">Type: Passive Scan Rule</h3>
 <h3 id="description">Description</h3>
 <p>This check looks at user-supplied input in query string parameters and POST data to identify where Content-Type or meta tag charset declarations might be user-controlled. Such charset declarations should always be declared by the application. If an attacker can control the response charset, they could manipulate the HTML to perform XSS or other attacks. For example, an attacker controlling the <!-- raw HTML omitted --> element charset value is able to declare UTF-7 and is also able to include enough user-controlled payload early in the HTML document to have it interpreted as UTF-7. By encoding their payload with UTF-7 the attacker is able to bypass any server-side XSS protections and embed script in the page.</p>
 <h3 id="solution">Solution</h3>
@@ -143,7 +144,7 @@
 <ul>
 <li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/UserControlledCharsetScanRule.java">org/zaproxy/zap/extension/pscanrulesBeta/UserControlledCharsetScanRule.java</a></li>
 </ul>
-<h6 id="last-updated-2020-08-11-102214660z">Last updated: 2020-08-11 10:22:14.660Z</h6>
+<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
 
           </main>
       </article>
