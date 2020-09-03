@@ -4,18 +4,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="Now attack GraphQL endpoints with the new GraphQL add-on for ZAP">
+  <meta name="description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP">
   
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Introducing the GraphQL Add-on for ZAP"/>
-<meta name="twitter:description" content="Now attack GraphQL endpoints with the new GraphQL add-on for ZAP"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png"/>
 
-    <meta property="og:title" content="Introducing the GraphQL Add-on for ZAP" />
-<meta property="og:description" content="Now attack GraphQL endpoints with the new GraphQL add-on for ZAP" />
+<meta name="twitter:title" content="ZAP JWT Support Add-on"/>
+<meta name="twitter:description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP"/>
+
+    <meta property="og:title" content="ZAP JWT Support Add-on" />
+<meta property="og:description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/" />
-<meta property="article:published_time" content="2020-08-28T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-08-28T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2020-09-03-zap-jwt-scanner/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png" />
+<meta property="article:published_time" content="2020-09-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-03T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -140,91 +143,70 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">Introducing the GraphQL Add-on for ZAP</h1>
+          <h1 class="post-title">ZAP JWT Support Add-on</h1>
           <main class="post-content">
-            <p>GraphQL Schemas can be very large and testing them can be a very time-consuming process. Currently, there is a lack of tools that allow developers to launch and automate attacks on these endpoints. The GraphQL add-on for ZAP intends to fill this gap.</p>
-<p>The add-on is still in an early stage, so the range of its functionality is limited. However, you can combine it with existing ZAP functionality to abuse GraphQL endpoints in many different ways.</p>
-<p>This post will first highlight the core features of the add-on, and then go on to describe how easy it is for a newbie programmer (with a passion for learning) to begin contributing to ZAP.</p>
-<h2 id="installing-the-add-on">Installing the Add-on</h2>
-<p>If you are using the latest version of ZAP then you can browse and download add-ons from within ZAP by clicking on this button in the toolbar:</p>
-<p><img src="images/manage-add-ons-button.png" alt="The Manage Add-ons Button"></p>
-<p>The <em>Manage Add-ons</em> window will open.</p>
-<p><img src="images/marketplace.png" alt="The GraphQL Add-on in the Marketplace"></p>
-<p>Under the <em>Marketplace</em> tab, you will find the GraphQL Support add-on. Toggle the checkbox next to it and click on &ldquo;Install Selected&rdquo;.</p>
-<h2 id="import-a-graphql-schema-into-zap">Import a GraphQL Schema into ZAP</h2>
-<p>If you look under the Import option in the menu bar, you will find two new entries:</p>
+            <p>With the popularity of JSON Web Tokens (JWTs) there comes the need to secure their use so that they are not misused because of bad configuration, older libraries, or buggy implementations. So the JWT Support add-on is used to find such vulnerabilities and this blog explains on how to use it.</p>
+<h2 id="configuration">Configuration</h2>
+<p>As the JWT add-on includes a rule for the Active Scanner as well as Fuzzer functionality, there are configuration details which are specific for the JWT add-on.
+Under ZAP's Options dialog you will find a JWT section as shown below:
+<img src="./images/jwt-options-panel.png" alt="JWT"></p>
+<h3 id="explanation">Explanation</h3>
+<h4 id="scanner-configuration">Scanner Configuration:</h4>
+<p>In case the application which you are trying to scan is using RSA or more specifically RS* algorithm then please configure the public certificate TrustStore path and TrustStore password. These fields are used to find certain vulnerabilities related to RS* based JWTs.</p>
+<p>The Enable Client Configuration Scan option is used to enable client-side validations like JWT being sent to the browser in an insecure or non-recommended way.</p>
+<h4 id="fuzzer-configuration">Fuzzer Configuration:</h4>
+<p>Since JWT is a signed token; fuzzing field values requires resigning the JWT therefore the fuzzer requires an HMac secret key or RSA private key as per the algorithm header field of the JWT. So that the Fuzzer configuration corresponds to the same.</p>
+<h3 id="scanner-vulnerability-coverage">Scanner Vulnerability Coverage</h3>
+<p>The JWT add-on's scan rule attempts to identified vulnerabilities in both Client/Browser and Server/Library implementations.</p>
+<p>For the Client-side it covers most of the vulnerabilities mentioned in the <a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-storage-on-client-side">OWASP JWT CheatSheet</a>.</p>
+<p>For Server-side it mainly covers following vulnerabilities:</p>
 <ol>
-<li>Import a GraphQL Schema from a File</li>
-<li>Import a GraphQL Schema from a URL</li>
+<li><a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/#Meet.the..None..Algorithm">None Algorithm attack</a></li>
+<li><a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/#RSA.or.HMAC.">Algorithm Confusion attack</a></li>
+<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-0114">Trusting JWK provided with the Token</a></li>
+<li>Empty JWT</li>
+<li>Null Byte Injection attack</li>
 </ol>
-<p>Put simply, both of these options allow you to import a GraphQL schema into ZAP. If you have the schema on your computer, use Option 1. If the schema is in a remote location, pick Option 2.</p>
-<p>If you do not have the schema, no worries at all! Chances are, the endpoint you want to attack has <a href="https://graphql.org/learn/introspection/">Introspection</a> enabled by default. That will allow us to generate the schema locally by sending a single large introspection query to the endpoint. ZAP will do this automatically. You just have to specify the endpoint URL via the second option.</p>
-<p><img src="images/import-from-url.png" alt="The Import From URL Dialog"></p>
-<p>The add-on also adds rules for the ZAP Spider. So, if during a scan you inadvertently come across a GraphQL endpoint, an introspection query will be sent to it automatically. Note that this will only work with recent weeklies or version 2.10.0 when it is released.</p>
-<p>You can also import a GraphQL Schema via the API or the CLI.</p>
-<p>Regardless of how a Schema is obtained, if everything is valid and correctly specified, it will be ready for the next stage: query generation.</p>
-<h2 id="query-generation">Query Generation</h2>
-<p>The imported schema will be parsed and queries will be generated from it.</p>
-<p>What exactly do we mean by <em>generated</em>?</p>
-<p>Basically, ZAP parses the imported schema and tries to create all possible valid queries from it. Allow me to explain this with the help of an example.</p>
-<p>For example: If the imported schema is,</p>
-<pre><code>type  Query {
-   polygon (sides: Int, regular: Boolean): Polygon
-}
-
-type  Polygon {
-   perimeter: Float
-   area: Float
-}
-</code></pre><p>Then one possible generated query is,</p>
-<pre><code>query {
-  polygon(sides: 1, regular: true) {
-	perimeter
-	area
-  }
-}
-</code></pre><p>This is in fact a <a href="https://github.com/zaproxy/zap-extensions/blob/3cb399a8e8a3b998e4b90cf8bffba99501ef00f0/addOns/graphql/src/test/java/org/zaproxy/addon/graphql/GraphQlGeneratorUnitTest.java#L72">unit test</a> for the add-on. You can look at the other tests for more examples.</p>
-<p>Now, if you go to <em>Tools -&gt; Options -&gt; GraphQL</em>, you will find the following settings panel:</p>
-<p><img src="images/graphql-options-panel.png" alt="The GraphQL Options Panel"></p>
-<p>These settings allow you to control the output of the add-on's Query Generator. Based on the combination of your chosen values for the above options, you will be able to send unique queries to the endpoint.</p>
-<p>For example, by increasing the maximum query depth, you may be able to exhaust the server's resources. Or if you specify arguments using variables, you could perform injection attacks by making use of ZAP's input vectors. You may also be able to bypass authorization and discover IDORs by generating queries with or without certain arguments and fields. The possibilities are endless!</p>
-<p>I did say before, that the add-on is still in an early stage. If you face any problems or have any feature requests, feel free to join in the discussion on the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a> or contact me directly. You can also ping us on the irc channel (<a href="https://webchat.freenode.net/#zaproxy">#zaproxy on Freenode</a>) or raise a GitHub issue for bugs.</p>
-<h2 id="the-story-behind-this-add-on">The Story Behind this Add-On</h2>
-<p>Developing this add-on was my project this summer, as part of Google Summer of Code 2020. The summer will soon turn to autumn, but I'm going to continue working on the project. Yes, that's how fun it was! Over the course of 3 months, under the guidance of Simon, Ricardo and Rick, I was able to learn a lot. I was a complete beginner a few months ago - I didn't even know what an API was! If I was able to develop an add-on, then you can too!</p>
-<p>I primarily worked on the <a href="https://github.com/zaproxy/zap-extensions/">zap-extensions</a> GitHub repository. Here are all the major pull requests I made:</p>
-<ul>
-<li>PR <a href="https://github.com/zaproxy/zap-extensions/pull/2396">#2396</a> - Bare bones add-on</li>
-<li>PR <a href="https://github.com/zaproxy/zap-extensions/pull/2420">#2420</a> - Import Dialog</li>
-<li>PR <a href="https://github.com/zaproxy/zap-extensions/pull/2431">#2431</a> - Import Functionality</li>
-<li>PR <a href="https://github.com/zaproxy/zap-extensions/pull/2485">#2485</a> - Generate GraphQL Queries from Schema</li>
-<li>PR <a href="https://github.com/zaproxy/zap-extensions/pull/2521">#2521</a> - Add Option for Separated Arguments</li>
-<li>PR <a href="https://github.com/zaproxy/zaproxy/pull/6044">#6044</a> - Call default spider filter after custom filters</li>
-</ul>
-<p>The released add-on package can be found <a href="https://github.com/zaproxy/zap-extensions/releases/tag/graphql-v0.1.0">here</a>.</p>
-<p>If you'd like to know more about the implementation details of this add-on, you can go to the <a href="https://akshathkothari.com/gsoc/">blog</a> for this project. If you are also interested in contributing to ZAP, I urge you to read the &ldquo;<a href="/blog/2014-03-10-hacking-zap-1-why-should-you/">Hacking ZAP</a>&rdquo; series of blog posts or go through the recently released &ldquo;<a href="https://www.alldaydevops.com/zap-in-ten">ZAP in Ten</a>&rdquo; videos. Finally, go check out <a href="https://github.com/zaproxy/zaproxy/blob/develop/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
+<h3 id="fuzzer-view">Fuzzer View</h3>
+<p>JWT Fuzzer view is different from HTTP Fuzzer view as JWT's need to be parsed, then JWT field values can be fuzzed. The following is the Fuzzer view:
+<img src="./images/fuzzer-view.png" alt="Fuzzer View"></p>
+<p>The <strong>Signature Operation</strong> drop down is used to control the operations on the Signature field of JWT.</p>
+<ol>
+<li><strong>No Signature</strong>: This value is used to remove the signature component from the newly fuzzed JWT.</li>
+<li><strong>Same Signature</strong>: This value is used to use the same signature for the newly fuzzed JWT.</li>
+<li><strong>New Signature</strong>: This value is used to generate new signature for the newly fuzzed JWT.</li>
+</ol>
+<p>The <strong>Component</strong> drop down is used to choose the <strong>Header</strong> or the <strong>Payload</strong> components of the JWT.</p>
+<p>The <strong>Key</strong> drop down is used to choose the fields to be fuzzed in the <strong>Header</strong> or <strong>Payload</strong> components of the JWT.</p>
+<h3 id="fuzzer-view-animation">Fuzzer View Animation</h3>
+<p><img src="./images/fuzzer-animation.gif" alt="Fuzzer Animation"></p>
+<p>The JWT add-on is available in the marketplace and can be installed from within ZAP.
+For more information please visit <a href="https://github.com/SasanLabs/owasp-zap-jwt-addon">JWT Support</a></p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2020-06-04-zap-2-9-0-highlights/"> ZAP 2.9 Highlights</a>
+                Prev: <a class="previous" href="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/"> Introducing the GraphQL Add-on for ZAP</a>
               
-              
-                Next: <a class="next" href="/blog/2020-09-03-zap-jwt-scanner/"> ZAP JWT Support Add-on</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Fri Aug 28, 2020 </h4>
+          <h4 id="date"> Thu Sep 3, 2020 </h4>
           
 
           <h4>Table of Contents</h4>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#installing-the-add-on">Installing the Add-on</a></li>
-    <li><a href="#import-a-graphql-schema-into-zap">Import a GraphQL Schema into ZAP</a></li>
-    <li><a href="#query-generation">Query Generation</a></li>
-    <li><a href="#the-story-behind-this-add-on">The Story Behind this Add-On</a></li>
+    <li><a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#explanation">Explanation</a></li>
+        <li><a href="#scanner-vulnerability-coverage">Scanner Vulnerability Coverage</a></li>
+        <li><a href="#fuzzer-view">Fuzzer View</a></li>
+        <li><a href="#fuzzer-view-animation">Fuzzer View Animation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -235,21 +217,19 @@ type  Polygon {
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/akshath-kothari_400x400.jpg" />
-                  
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Akshath Kothari
+                    Karan Preet Singh Sasan
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/ricekot_">@ricekot_</a>
+                  <a class="author-twitter" href="https://twitter.com/sasan_karan">@sasan_karan</a>
                   
                 </div>
               </section>
           
           </div>
-          <h5 id="wordcount"> 888 Words </h5>
+          <h5 id="wordcount"> 423 Words </h5>
                     
         </section>
       </aside>
@@ -293,7 +273,7 @@ type  Polygon {
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-09-03-zap-jwt-scanner/index.md">Edit on GitHub</a>
   </div>
 
     </div>
