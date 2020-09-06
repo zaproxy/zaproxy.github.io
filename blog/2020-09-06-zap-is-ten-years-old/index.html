@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP">
+  <meta name="description" content="ZAP was first released on 6th September 2010">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-09-06-zap-is-ten-years-old/images/bugtraq-zap.png"/>
 
-<meta name="twitter:title" content="ZAP JWT Support Add-on"/>
-<meta name="twitter:description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP"/>
+<meta name="twitter:title" content="ZAP is Ten Years Old"/>
+<meta name="twitter:description" content="ZAP was first released on 6th September 2010"/>
 
-    <meta property="og:title" content="ZAP JWT Support Add-on" />
-<meta property="og:description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP" />
+    <meta property="og:title" content="ZAP is Ten Years Old" />
+<meta property="og:description" content="ZAP was first released on 6th September 2010" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-09-03-zap-jwt-scanner/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png" />
-<meta property="article:published_time" content="2020-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-09-03T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2020-09-06-zap-is-ten-years-old/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-06-zap-is-ten-years-old/images/bugtraq-zap.png" />
+<meta property="article:published_time" content="2020-09-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-06T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -143,72 +143,50 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">ZAP JWT Support Add-on</h1>
+          <h1 class="post-title">ZAP is Ten Years Old</h1>
           <main class="post-content">
-            <p>With the popularity of JSON Web Tokens (JWTs) there comes the need to secure their use so that they are not misused because of bad configuration, older libraries, or buggy implementations. So the JWT Support add-on is used to find such vulnerabilities and this blog explains on how to use it.</p>
-<h2 id="configuration">Configuration</h2>
-<p>As the JWT add-on includes a rule for the Active Scanner as well as Fuzzer functionality, there are configuration details which are specific for the JWT add-on.
-Under ZAP's Options dialog you will find a JWT section as shown below:
-<img src="./images/jwt-options-panel.png" alt="JWT"></p>
-<h3 id="explanation">Explanation</h3>
-<h4 id="scanner-configuration">Scanner Configuration:</h4>
-<p>In case the application which you are trying to scan is using RSA or more specifically RS* algorithm then please configure the public certificate TrustStore path and TrustStore password. These fields are used to find certain vulnerabilities related to RS* based JWTs.</p>
-<p>The Enable Client Configuration Scan option is used to enable client-side validations like JWT being sent to the browser in an insecure or non-recommended way.</p>
-<h4 id="fuzzer-configuration">Fuzzer Configuration:</h4>
-<p>Since JWT is a signed token; fuzzing field values requires resigning the JWT therefore the fuzzer requires an HMac secret key or RSA private key as per the algorithm header field of the JWT. So that the Fuzzer configuration corresponds to the same.</p>
-<h3 id="scanner-vulnerability-coverage">Scanner Vulnerability Coverage</h3>
-<p>The JWT add-on's scan rule attempts to identified vulnerabilities in both Client/Browser and Server/Library implementations.</p>
-<p>For the Client-side it covers most of the vulnerabilities mentioned in the <a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-storage-on-client-side">OWASP JWT CheatSheet</a>.</p>
-<p>For Server-side it mainly covers following vulnerabilities:</p>
-<ol>
-<li><a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/#Meet.the..None..Algorithm">None Algorithm attack</a></li>
-<li><a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/#RSA.or.HMAC.">Algorithm Confusion attack</a></li>
-<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-0114">Trusting JWK provided with the Token</a></li>
-<li>Empty JWT</li>
-<li>Null Byte Injection attack</li>
-</ol>
-<h3 id="fuzzer-view">Fuzzer View</h3>
-<p>JWT Fuzzer view is different from HTTP Fuzzer view as JWT's need to be parsed, then JWT field values can be fuzzed. The following is the Fuzzer view:
-<img src="./images/fuzzer-view.png" alt="Fuzzer View"></p>
-<p>The <strong>Signature Operation</strong> drop down is used to control the operations on the Signature field of JWT.</p>
-<ol>
-<li><strong>No Signature</strong>: This value is used to remove the signature component from the newly fuzzed JWT.</li>
-<li><strong>Same Signature</strong>: This value is used to use the same signature for the newly fuzzed JWT.</li>
-<li><strong>New Signature</strong>: This value is used to generate new signature for the newly fuzzed JWT.</li>
-</ol>
-<p>The <strong>Component</strong> drop down is used to choose the <strong>Header</strong> or the <strong>Payload</strong> components of the JWT.</p>
-<p>The <strong>Key</strong> drop down is used to choose the fields to be fuzzed in the <strong>Header</strong> or <strong>Payload</strong> components of the JWT.</p>
-<h3 id="fuzzer-view-animation">Fuzzer View Animation</h3>
-<p><img src="./images/fuzzer-animation.gif" alt="Fuzzer Animation"></p>
-<p>The JWT add-on is available in the marketplace and can be installed from within ZAP.
-For more information please visit <a href="https://github.com/SasanLabs/owasp-zap-jwt-addon">JWT Support</a></p>
+            <h2 id="ten-years-ago">Ten Years Ago</h2>
+<p>On September 6th 2010 I posted this message to Bugtraq:</p>
+<p><a href="https://seclists.org/bugtraq/2010/Sep/38"><img src="images/bugtraq-zap.png" alt="The Zed Attack Proxy (ZAP) version 1.0.0"></a></p>
+<p>From those very humble beginnings ZAP has now become what we believe is the world’s <a href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/">most frequently used web application scanner</a>.</p>
+<p>I started hacking on the Paros code to help me learn more about web security.
+However I also wanted to start contributing to open source software, and looked for an active community based security project I could contribute to. Surprisingly there were not any at that time and so I ended up releasing ZAP in an attempt to create the community project that I wanted to join.</p>
+<h2 id="the-community">The Community</h2>
+<p>I’m convinced that ZAP’s success is down to this community focus and all of the <a href="/docs/desktop/credits/">contributors</a> who’ve helped make ZAP what it is today.</p>
+<p>I especially want to thank all of the members of the ZAP Core Team, past and present. It just wouldn’t have been possible without all of their efforts.</p>
+<p>I’m also very proud of all of the students who have helped improve ZAP through initiatives such as Google Summer of Code, Mozilla Winter of Security and as part of their courses. For more details see the <a href="/student-hall-of-fame/">ZAP Student Hall of Fame</a>.</p>
+<h2 id="zap-innovations">ZAP Innovations</h2>
+<p>Despite being maintained by volunteers, ZAP has led the way in many areas, introducing support for websockets, launching browsers, automating browsers for crawling applications and introducing an online marketplace for add-ons significantly earlier than much better funded commercial security tools.</p>
+<p>ZAP is arguably still leading the field when it comes to API support and scripting integration, and no other security tools have anything to compare with Zest scripting and our innovative <a href="https://github.com/zaproxy/zap-hud">Heads Up Display</a>.</p>
+<h2 id="the-future">The Future</h2>
+<p>I’ve spent a lot of time working on ZAP, but that commitment has been repaid many times over.</p>
+<p>My work on ZAP enabled me to move into the security industry, present at conferences all over the world, meet and work with some incredible people.</p>
+<p>It was the reason I was offered a job at Mozilla, a company I had always admired and whose philosophy I was trying to replicate in the ZAP community. It turned out that my first boss at Mozilla had seen that very first Bugtraq post and had been following my progress ever since before getting in touch with me about a possible job.</p>
+<p>It is also the reason that I’ve now joined <a href="https://www.stackhawk.com/">StackHawk</a> who are building a business around offering ZAP as a service to developers.</p>
+<p>My focus is still very much on the ZAP open source project and building the ZAP community.</p>
+<p>ZAP 2.10.0 is going to be released fairly soon - we did talk about releasing it on ZAP’s 10th birthday but that proved to be too optimistic!</p>
+<p>We will keep improving ZAP but there are always loads of things that we just cannot find time to do. So if you are interested in <a href="/get-involved/">contributing to ZAP</a> then please get in touch! Who knows where it may lead you?</p>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/"> Introducing the GraphQL Add-on for ZAP</a>
+                Prev: <a class="previous" href="/blog/2020-09-03-zap-jwt-scanner/"> ZAP JWT Support Add-on</a>
               
-              
-                Next: <a class="next" href="/blog/2020-09-06-zap-is-ten-years-old/"> ZAP is Ten Years Old</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Thu Sep 3, 2020 </h4>
+          <h4 id="date"> Sun Sep 6, 2020 </h4>
           
 
           <h4>Table of Contents</h4>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#configuration">Configuration</a>
-      <ul>
-        <li><a href="#explanation">Explanation</a></li>
-        <li><a href="#scanner-vulnerability-coverage">Scanner Vulnerability Coverage</a></li>
-        <li><a href="#fuzzer-view">Fuzzer View</a></li>
-        <li><a href="#fuzzer-view-animation">Fuzzer View Animation</a></li>
-      </ul>
-    </li>
+    <li><a href="#ten-years-ago">Ten Years Ago</a></li>
+    <li><a href="#the-community">The Community</a></li>
+    <li><a href="#zap-innovations">ZAP Innovations</a></li>
+    <li><a href="#the-future">The Future</a></li>
   </ul>
 </nav>
 
@@ -219,19 +197,21 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Karan Preet Singh Sasan
+                    Simon Bennetts
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/sasan_karan">@sasan_karan</a>
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
                   
                 </div>
               </section>
           
           </div>
-          <h5 id="wordcount"> 423 Words </h5>
+          <h5 id="wordcount"> 490 Words </h5>
                     
         </section>
       </aside>
@@ -275,7 +255,7 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-09-03-zap-jwt-scanner/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-09-06-zap-is-ten-years-old/index.md">Edit on GitHub</a>
   </div>
 
     </div>
