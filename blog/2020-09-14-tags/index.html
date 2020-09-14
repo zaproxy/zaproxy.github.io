@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="ZAP was first released on 6th September 2010">
+  <meta name="description" content="Use cases and details on ZAP&#39;s Tag functionality and Neonmarker add-on">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-09-06-zap-is-ten-years-old/images/bugtraq-zap.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-09-14/images/zapbot_tagged.png"/>
 
-<meta name="twitter:title" content="ZAP is Ten Years Old"/>
-<meta name="twitter:description" content="ZAP was first released on 6th September 2010"/>
+<meta name="twitter:title" content="ZAP Tags"/>
+<meta name="twitter:description" content="Use cases and details on ZAP&#39;s Tag functionality and Neonmarker add-on"/>
 
-    <meta property="og:title" content="ZAP is Ten Years Old" />
-<meta property="og:description" content="ZAP was first released on 6th September 2010" />
+    <meta property="og:title" content="ZAP Tags" />
+<meta property="og:description" content="Use cases and details on ZAP&#39;s Tag functionality and Neonmarker add-on" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-09-06-zap-is-ten-years-old/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-06-zap-is-ten-years-old/images/bugtraq-zap.png" />
-<meta property="article:published_time" content="2020-09-06T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-09-06T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2020-09-14-tags/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-14/images/zapbot_tagged.png" />
+<meta property="article:published_time" content="2020-09-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-09-14T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -143,52 +143,61 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">ZAP is Ten Years Old</h1>
+          <h1 class="post-title">ZAP Tags</h1>
           <main class="post-content">
-            <h2 id="ten-years-ago">Ten Years Ago</h2>
-<p>On September 6th 2010 I posted this message to Bugtraq:</p>
-<p><a href="https://seclists.org/bugtraq/2010/Sep/38"><img src="images/bugtraq-zap.png" alt="The Zed Attack Proxy (ZAP) version 1.0.0"></a></p>
-<p>From those very humble beginnings ZAP has now become what we believe is the world’s <a href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/">most frequently used web application scanner</a>.</p>
-<p>I started hacking on the Paros code to help me learn more about web security.
-However I also wanted to start contributing to open source software, and looked for an active community based security project I could contribute to. Surprisingly there were not any at that time and so I ended up releasing ZAP in an attempt to create the community project that I wanted to join.</p>
-<h2 id="the-community">The Community</h2>
-<p>I’m convinced that ZAP’s success is down to this community focus and all of the <a href="/docs/desktop/credits/">contributors</a> who’ve helped make ZAP what it is today.</p>
-<p>I especially want to thank all of the members of the ZAP Core Team, past and present. It just wouldn’t have been possible without all of their efforts.</p>
-<p>I’m also very proud of all of the students who have helped improve ZAP through initiatives such as Google Summer of Code, Mozilla Winter of Security and as part of their courses. For more details see the <a href="/student-hall-of-fame/">ZAP Student Hall of Fame</a>.</p>
-<h2 id="zap-innovations">ZAP Innovations</h2>
-<p>Despite being maintained by volunteers, ZAP has led the way in many areas, introducing support for websockets, launching browsers, automating browsers for crawling applications and introducing an online marketplace for add-ons significantly earlier than much better funded commercial security tools.</p>
-<p>ZAP is arguably still leading the field when it comes to API support and scripting integration, and no other security tools have anything to compare with Zest scripting and our innovative <a href="https://github.com/zaproxy/zap-hud">Heads Up Display</a>.</p>
-<h2 id="the-future">The Future</h2>
-<p>I’ve spent a lot of time working on ZAP, but that commitment has been repaid many times over.</p>
-<p>My work on ZAP enabled me to move into the security industry, present at conferences all over the world, meet and work with some incredible people.</p>
-<p>It was the reason I was offered a job at Mozilla, a company I had always admired and whose philosophy I was trying to replicate in the ZAP community. It turned out that my first boss at Mozilla had seen that very first Bugtraq post and had been following my progress ever since before getting in touch with me about a possible job.</p>
-<p>It is also the reason that I’ve now joined <a href="https://www.stackhawk.com/">StackHawk</a> who are building a business around offering ZAP as a service to developers.</p>
-<p>My focus is still very much on the ZAP open source project and building the ZAP community.</p>
-<p>ZAP 2.10.0 is going to be released fairly soon - we did talk about releasing it on ZAP’s 10th birthday but that proved to be too optimistic!</p>
-<p>We will keep improving ZAP but there are always loads of things that we just cannot find time to do. So if you are interested in <a href="/get-involved/">contributing to ZAP</a> then please get in touch! Who knows where it may lead you?</p>
+            <h2 id="basics">Basics</h2>
+<p>A bit of functionality that ZAP has had since early days is the ability to apply a tag to a message that passes through the proxy. They allow for quick and simple summaries that highlight key aspects of requests or responses.</p>
+<p><img src="./images/history_tags.png" alt="History panel showing tags"></p>
+<p>The tags are defined in and controlled by ZAP's options:</p>
+<p><img src="./images/options_tags.png" alt="Options tags panel"></p>
+<p>Each Tag is defined by a regex pattern and is applied via ZAP's <a href="/docs/desktop/start/features/pscan/">passive scanning functionality</a>, for example the Hidden tag looks for form fields that have HTML <code>type=&quot;hidden&quot;</code>:</p>
+<p><img src="./images/tag_hidden.png" alt="Hidden Tag configuration"></p>
+<p><img src="./images/contact_hidden.png" alt="Contact page hidden tag and source"></p>
+<p>Tags can also be used to filter History entries. For example, if you wanted to see only those messages that had Hidden fields:</p>
+<p><img src="./images/filter_tags.png" alt="History Filter dialog"></p>
+<p><img src="./images/filtered_history.png" alt="Filtered History"></p>
+<h2 id="interpolation">Interpolation</h2>
+<p>A lesser known feature that was added in <a href="/docs/desktop/releases/2.8.0/">version 2.8.0</a> is Tag Interpolation. This may sound like an advanced or daunting technology. But really it boils down to allowing the value returned  by a Regex capturing group to be used in the Tag text. For example a user could configure a Tag to identify the ID or name of a product:</p>
+<p><img src="./images/product_tag.png" alt="Product Tag configuration"></p>
+<p>This Tag is setup such that the value of the first (and only) <code>$1</code> capturing group <code>([\d]+)</code>is returned as part of the tag value: <code>Product-$1</code>.</p>
+<p><img src="./images/history_product_tag.png" alt="Product Tag example"></p>
+<p>This could also be used for things like extracting usernames from responses (attributing logged in user), etc.</p>
+<h2 id="neonmarker">Neonmarker</h2>
+<p>There is an add-on for ZAP which allows colouring of history items (rows) based on tags. The add-on is called Neonmarker and is available via <a href="/addons/">ZAP's Marketplace</a>.</p>
+<p><img src="./images/neonmarker_online.png" alt="Neonmarker online marketplace"></p>
+<p><img src="./images/zap-screenshot-browse-addons.png" alt="ZAP toolbar, marketplace button"></p>
+<p><img src="./images/marketplace.png" alt="Marketplace dialog, Neonmarker"></p>
+<p>For example if you wanted all the messages with <code>Hidden</code> fields to be purple:
+<img src="./images/neonmarker_hidden_tag.png" alt="Neonmarker example"></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>By reading this post you've learned:</p>
+<ul>
+<li>Generally about ZAP's Passive Scan Tag functionality.</li>
+<li>How to configure tags.</li>
+<li>Now to use interpolation with tags.</li>
+<li>How to get and use the Neonmarker add-on.</li>
+</ul>
 
           </main>
           <div class="next-content">
               
-                Prev: <a class="previous" href="/blog/2020-09-03-zap-jwt-scanner/"> ZAP JWT Support Add-on</a>
+                Prev: <a class="previous" href="/blog/2020-09-06-zap-is-ten-years-old/"> ZAP is Ten Years Old</a>
               
-              
-                Next: <a class="next" href="/blog/2020-09-14-tags/"> ZAP Tags</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Sun Sep 6, 2020 </h4>
+          <h4 id="date"> Mon Sep 14, 2020 </h4>
           
 
           <h4>Table of Contents</h4>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#ten-years-ago">Ten Years Ago</a></li>
-    <li><a href="#the-community">The Community</a></li>
-    <li><a href="#zap-innovations">ZAP Innovations</a></li>
-    <li><a href="#the-future">The Future</a></li>
+    <li><a href="#basics">Basics</a></li>
+    <li><a href="#interpolation">Interpolation</a></li>
+    <li><a href="#neonmarker">Neonmarker</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
 
@@ -199,21 +208,21 @@ However I also wanted to start contributing to open source software, and looked 
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  <img class="author-picture" src="/img/authors/rick-mitchell_400x400.jpg" />
                   
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Simon Bennetts
+                    Rick Mitchell
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  <a class="author-twitter" href="https://twitter.com/kingthorin_rm">@kingthorin_rm</a>
                   
                 </div>
               </section>
           
           </div>
-          <h5 id="wordcount"> 490 Words </h5>
+          <h5 id="wordcount"> 282 Words </h5>
                     
         </section>
       </aside>
@@ -257,7 +266,7 @@ However I also wanted to start contributing to open source software, and looked 
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-09-06-zap-is-ten-years-old/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-09-14-tags/index.md">Edit on GitHub</a>
   </div>
 
     </div>
