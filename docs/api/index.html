@@ -330,6 +330,17 @@
               </ul>
           </li>
           <li>
+            <a href="#troubleshooting" class="toc-h1 toc-link" data-title="Troubleshooting">Troubleshooting</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#enable-useful-dev-options" class="toc-h2 toc-link" data-title="Enable Useful Dev Options">Enable Useful Dev Options</a>
+                  </li>
+                  <li>
+                    <a href="#common-errors" class="toc-h2 toc-link" data-title="Common Errors">Common Errors</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#api-catalogue" class="toc-h1 toc-link" data-title="API Catalogue">API Catalogue</a>
           </li>
           <li>
@@ -1769,7 +1780,7 @@ to learn the basic concepts behind ZAP. </p>
 
 <p>Have a look at the examples below to learn how to use each of these features via ZAP API.</p>
 <h2 id='documentation-structure'>Documentation Structure</h2>
-<p>The API documentation is divided into eight main sections.</p>
+<p>The API documentation is divided into nine main sections.</p>
 
 <ul>
 <li><a href="#introduction"><strong>Introduction</strong></a> section contains introductory information of ZAP and installation guide to set up ZAP for testing.</li>
@@ -1780,6 +1791,7 @@ to learn the basic concepts behind ZAP. </p>
 <li><a href="#advanced-settings"><strong>Advanced Settings</strong></a> section contains advanced configurations on how to fine tune ZAP results.</li>
 <li><a href="#contributions-welcome"><strong>Contributions</strong></a> section contains guidelines and instructions on how to contribute to ZAP&#39;s documentation.</li>
 <li><a href="#api-catalogue"><strong>API Catalogue</strong></a> section contains OpenAPI definitions and auto generated code for ZAP APIs. </li>
+<li><a href="#troubleshooting"><strong>Troubleshooting</strong></a> section contains solutions for trouble shooting ZAP API related issues. </li>
 </ul>
 
 <aside class="notice">
@@ -1798,6 +1810,11 @@ in the daemon mode and the desktop mode. If you are using ZAP desktop, then the 
 ZAP requires an API Key to perform specific actions via the REST API. The API key must be specified on all API 'actions' and some 'other' operations. 
 The API key is used to prevent malicious sites from accessing ZAP APIs. It is strongly recommended that you set a key 
 unless you are using ZAP in a completely isolated environment.
+</aside>
+
+<aside class="warning">
+Also make sure that you have installed the necessary add-ons while invoking features which are not bundled with the ZAP core.
+For example, if you receive "no_implementor error" in relation to Ajax Spider calls, perhaps the Ajax Spider add-on isn't installed.
 </aside>
 
 <p>Please note that not all the operations which are available in the desktop interface are available via the APIs. 
@@ -3579,6 +3596,51 @@ Refer to the <a href="https://github.com/slatedocs/slate/wiki/Markdown-Syntax">S
 The documentation currently supports <code>python</code>, <code>java</code>, and <code>shell</code> languages.</p>
 
 <p><img src="images/code_example.png" alt="code_example" /></p>
+<h1 id='troubleshooting'>Troubleshooting</h1>
+<p>This section explains how to troubleshoot issues that might occur when interacting with the ZAP API.</p>
+<h2 id='enable-useful-dev-options'>Enable Useful Dev Options</h2>
+<p>While developing scripts/programs that interact with ZAP API it&#39;s recommended that the following <a href="https://www.zaproxy.org/docs/desktop/ui/dialogs/options/api/">ZAP API options</a> 
+are enabled, to have more information about possible errors:</p>
+
+<ul>
+<li><code>Report permission errors via API</code></li>
+<li><code>Report error details via API</code></li>
+</ul>
+
+<p>The API response will then contain the details about why the API request was rejected or was not successful.
+<aside class="info">
+The ZAP log/output will always provide these details if you are not able to enable those options, e.g. not developing in a safe environment.
+</aside></p>
+<h2 id='common-errors'>Common Errors</h2><h3 id='wrong-api-key-or-address-not-allowed'>Wrong API Key or Address Not Allowed</h3><div class="highlight"><pre class="highlight java tab-java"><code><span class="c1">//org.zaproxy.clientapi.core.ClientApiException: java.net.SocketException: Unexpected end of file from server</span>
+<span class="c1">//  at org.zaproxy.clientapi.core.ClientApi.callApiDom(ClientApi.java:366)</span>
+<span class="c1">//  at org.zaproxy.clientapi.core.ClientApi.callApi(ClientApi.java:350)</span>
+<span class="c1">//  at org.zaproxy.clientapi.gen.Spider.scan(Spider.java:242)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">ProxyError</span><span class="p">:</span> <span class="n">HTTPConnectionPool</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'127.0.0.1'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">):</span> <span class="n">Max</span> <span class="n">retries</span> <span class="n">exceeded</span> <span class="k">with</span> 
+<span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">zap</span><span class="o">/</span><span class="n">JSON</span><span class="o">/</span><span class="n">spider</span><span class="o">/</span><span class="n">action</span><span class="o">/</span><span class="n">scan</span><span class="o">/</span><span class="err">?</span><span class="n">apikey</span><span class="o">=</span><span class="n">changeMe</span><span class="o">&amp;</span><span class="n">url</span><span class="o">=</span><span class="n">https</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">2</span><span class="n">F</span><span class="o">%</span><span class="mi">2</span><span class="n">Fexample</span><span class="p">.</span><span class="n">com</span> 
+<span class="p">(</span><span class="n">Caused</span> <span class="n">by</span> <span class="n">ProxyError</span><span class="p">(</span><span class="s">'Cannot connect to proxy.'</span><span class="p">,</span> <span class="n">RemoteDisconnected</span><span class="p">(</span><span class="s">'Remote end closed connection without response'</span><span class="p">)))</span>
+</code></pre></div>
+<p>By default, ZAP will close the connection without a response if an API request is not from an allowed address or the API key is wrong.
+If you get exceptions similar to the following ensure that the API client is using the correct API key and that the address is allowed.</p>
+<h3 id='no-connection-to-zap'>No Connection to ZAP</h3><div class="highlight"><pre class="highlight java tab-java"><code><span class="c1">//org.zaproxy.clientapi.core.ClientApiException: java.net.ConnectException: Connection refused: connect</span>
+<span class="c1">//  at org.zaproxy.clientapi.core.ClientApi.callApiDom(ClientApi.java:366)</span>
+<span class="c1">//  at org.zaproxy.clientapi.core.ClientApi.callApi(ClientApi.java:350)</span>
+<span class="c1">//  at org.zaproxy.clientapi.gen.Spider.scan(Spider.java:242)</span>
+<span class="c1">//  at ZAP_tests.Spider.main(Spider.java:25)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">requests</span><span class="p">.</span><span class="n">exceptions</span><span class="p">.</span><span class="n">ProxyError</span><span class="p">:</span> <span class="n">HTTPConnectionPool</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">'127.0.0.1'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8080</span><span class="p">):</span> <span class="n">Max</span> <span class="n">retries</span> <span class="n">exceeded</span> <span class="k">with</span> 
+<span class="n">url</span><span class="p">:</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">zap</span><span class="o">/</span><span class="n">JSON</span><span class="o">/</span><span class="n">spider</span><span class="o">/</span><span class="n">action</span><span class="o">/</span><span class="n">scan</span><span class="o">/</span><span class="err">?</span><span class="n">apikey</span><span class="o">=</span><span class="n">changeMe</span><span class="o">&amp;</span><span class="n">url</span><span class="o">=</span><span class="n">https</span><span class="o">%</span><span class="mi">3</span><span class="n">A</span><span class="o">%</span><span class="mi">2</span><span class="n">F</span><span class="o">%</span><span class="mi">2</span><span class="n">Fexample</span><span class="p">.</span><span class="n">com</span> 
+<span class="p">(</span><span class="n">Caused</span> <span class="n">by</span> <span class="n">ProxyError</span><span class="p">(</span><span class="s">'Cannot connect to proxy.'</span><span class="p">,</span> <span class="n">NewConnectionError</span><span class="p">(</span><span class="s">'&lt;urllib3.connection.HTTPConnection object at 
+0x101be78e0&gt;: Failed to establish a new connection: [Errno 61] Connection refused'</span><span class="p">)))</span>
+</code></pre></div>
+<p>There are several reasons that the API client might not be able to connect to ZAP:</p>
+
+<ul>
+<li>ZAP is not yet started, some clients might have methods to wait for ZAP;</li>
+<li>ZAP is not listening on the address, for example, if the API client is connecting from an external machine then ZAP will have to listen on the external address (or all addresses <code>0.0.0.0</code>)</li>
+<li>The API client is not configured with correct address/port;</li>
+</ul>
+<h3 id='error-no-implementor'>Error: No Implementor</h3>
+<p>If you come across the <code>No Implementor Error</code> while invoking the APIs: Check the necessary add-on or component is installed and enabled. 
+(For example if you receive &quot;no_implementor&quot; in relation to Ajax Spider calls, perhaps the Ajax Spider add-on isn&#39;t installed.)</p>
 <h1 id='api-catalogue'>API Catalogue</h1>
 <blockquote>
 <p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>

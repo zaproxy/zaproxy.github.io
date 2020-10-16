@@ -24,7 +24,7 @@ to learn the basic concepts behind ZAP. </p>
 
 <p>Have a look at the examples below to learn how to use each of these features via ZAP API.</p>
 <h2 id='documentation-structure'>Documentation Structure</h2>
-<p>The API documentation is divided into eight main sections.</p>
+<p>The API documentation is divided into nine main sections.</p>
 
 <ul>
 <li><a href="#introduction"><strong>Introduction</strong></a> section contains introductory information of ZAP and installation guide to set up ZAP for testing.</li>
@@ -35,6 +35,7 @@ to learn the basic concepts behind ZAP. </p>
 <li><a href="#advanced-settings"><strong>Advanced Settings</strong></a> section contains advanced configurations on how to fine tune ZAP results.</li>
 <li><a href="#contributions-welcome"><strong>Contributions</strong></a> section contains guidelines and instructions on how to contribute to ZAP&#39;s documentation.</li>
 <li><a href="#api-catalogue"><strong>API Catalogue</strong></a> section contains OpenAPI definitions and auto generated code for ZAP APIs. </li>
+<li><a href="#troubleshooting"><strong>Troubleshooting</strong></a> section contains solutions for trouble shooting ZAP API related issues. </li>
 </ul>
 
 <aside class="notice">
@@ -53,6 +54,11 @@ in the daemon mode and the desktop mode. If you are using ZAP desktop, then the 
 ZAP requires an API Key to perform specific actions via the REST API. The API key must be specified on all API 'actions' and some 'other' operations. 
 The API key is used to prevent malicious sites from accessing ZAP APIs. It is strongly recommended that you set a key 
 unless you are using ZAP in a completely isolated environment.
+</aside>
+
+<aside class="warning">
+Also make sure that you have installed the necessary add-ons while invoking features which are not bundled with the ZAP core.
+For example, if you receive "no_implementor error" in relation to Ajax Spider calls, perhaps the Ajax Spider add-on isn't installed.
 </aside>
 
 <p>Please note that not all the operations which are available in the desktop interface are available via the APIs. 
