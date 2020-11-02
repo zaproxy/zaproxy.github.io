@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.4dcb7.css" rel="stylesheet">
+    <link href="/main.2f703.css" rel="stylesheet">
   
 </head>
 <body>
@@ -127,42 +127,98 @@
 </section>
 
 <div class="wrapper py-20" data-kind="page">
-    <div class="breadcrumbs">
+    <header class="breadcrumbs">
         <a href="/docs/">Docs</a> &gt;
         <a href="/docs/alerts/">Alerts</a>
-    </div>
-    <div class="flex">
-      <article class="pr-30 content single-post">
-          <main class="post-content">
-            <h2 id="name-relative-path-confusion">Name: Relative Path Confusion</h2>
-<h3 id="type-active-scan-rule">Type: Active Scan Rule</h3>
-<h3 id="risk-medium">Risk: Medium</h3>
-<h3 id="description">Description</h3>
-<p>The web server is configured to serve responses to ambiguous URLs in a manner that is likely to lead to confusion about the correct &ldquo;relative path&rdquo; for the URL. Resources (CSS, images, etc.) are also specified in the page response using relative, rather than absolute URLs. In an attack, if the web browser parses the &ldquo;cross-content&rdquo; response in a permissive manner, or can be tricked into permissively parsing the &ldquo;cross-content&rdquo; response, using techniques such as framing, then the web browser may be fooled into interpreting HTML as CSS (or other content types), leading to an XSS vulnerability.</p>
-<h3 id="solution">Solution</h3>
-<p>Web servers and frameworks should be updated to be configured to not serve responses to ambiguous URLs in such a way that the relative path of such URLs could be mis-interpreted by components on either the client side, or server side.
-Within the application, the correct use of the &ldquo;<!-- raw HTML omitted -->&rdquo; HTML tag in the HTTP response will unambiguously specify the base URL for all relative URLs in the document.
-Use the &ldquo;Content-Type&rdquo; HTTP response header to make it harder for the attacker to force the web browser to mis-interpret the content type of the response.
-Use the &ldquo;X-Content-Type-Options: nosniff&rdquo; HTTP response header to prevent the web browser from &ldquo;sniffing&rdquo; the content type of the response.
-Use a modern DOCTYPE such as &ldquo;&lt;!doctype html&gt;&rdquo; to prevent the page from being rendered in the web browser using &ldquo;Quirks Mode&rdquo;, since this results in the content type being ignored by the web browser.
-Specify the &ldquo;X-Frame-Options&rdquo; HTTP response header to prevent Quirks Mode from being enabled in the web browser using framing attacks.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="http://www.thespanner.co.uk/2014/03/21/rpo/">http://www.thespanner.co.uk/2014/03/21/rpo/</a></li>
-<li><a href="https://hsivonen.fi/doctype/">https://hsivonen.fi/doctype/</a></li>
-<li><a href="http://www.w3schools.com/tags/tag_base.asp">http://www.w3schools.com/tags/tag_base.asp</a></li>
-</ul>
-<h3 id="cwe-20httpscwemitreorgdatadefinitions20html">CWE: <a href="https://cwe.mitre.org/data/definitions/20.html">20</a></h3>
-<h3 id="wasc--20">WASC:  20</h3>
-<h3 id="code">Code</h3>
-<ul>
-<li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/RelativePathConfusionScanRule.java">org/zaproxy/zap/extension/ascanrulesBeta/RelativePathConfusionScanRule.java</a></li>
-</ul>
-<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
+    </header>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
+            <tr>
+              <th colspan="2">
+                Details
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>10051</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Active Scan Rule</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>beta</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>Medium</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/20.html">
+                  20
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>20</td>
+            </tr>
+          </tbody>
+        </table>
 
-          </main>
-      </article>
-    </div>
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>The web server is configured to serve responses to ambiguous URLs in a manner that is likely to lead to confusion about the correct &ldquo;relative path&rdquo; for the URL. Resources (CSS, images, etc.) are also specified in the page response using relative, rather than absolute URLs. In an attack, if the web browser parses the &ldquo;cross-content&rdquo; response in a permissive manner, or can be tricked into permissively parsing the &ldquo;cross-content&rdquo; response, using techniques such as framing, then the web browser may be fooled into interpreting HTML as CSS (or other content types), leading to an XSS vulnerability.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Web servers and frameworks should be updated to be configured to not serve responses to ambiguous URLs in such a way that the relative path of such URLs could be mis-interpreted by components on either the client side, or server side. Within the application, the correct use of the &#39;&lt;base&gt;&#39; HTML tag in the HTTP response will unambiguously specify the base URL for all relative URLs in the document. Use the &#39;Content-Type&#39; HTTP response header to make it harder for the attacker to force the web browser to mis-interpret the content type of the response. Use the &#39;X-Content-Type-Options: nosniff&#39; HTTP response header to prevent the web browser from &#39;sniffing&#39; the content type of the response. Use a modern DOCTYPE such as &#39;&lt;!doctype html&gt;&#39; to prevent the page from being rendered in the web browser using &#39;Quirks Mode&#39;, since this results in the content type being ignored by the web browser. Specify the &#39;X-Frame-Options&#39; HTTP response header to prevent Quirks Mode from being enabled in the web browser using framing attacks. 
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
+            <a href="http://www.thespanner.co.uk/2014/03/21/rpo/">http://www.thespanner.co.uk/2014/03/21/rpo/</a>
+          </li>
+        
+          <li>
+            <a href="https://hsivonen.fi/doctype/">https://hsivonen.fi/doctype/</a>
+          </li>
+        
+          <li>
+            <a href="http://www.w3schools.com/tags/tag_base.asp">http://www.w3schools.com/tags/tag_base.asp</a>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/RelativePathConfusionScanRule.java'>
+            org/zaproxy/zap/extension/ascanrulesBeta/RelativePathConfusionScanRule.java
+          </a>
+      </section>
+  </main>
 </div>
 
  </div>
@@ -221,7 +277,7 @@ Specify the &ldquo;X-Frame-Options&rdquo; HTTP response header to prevent Quirks
 
   
   
-    <script src="/main.4dcb7.js"></script>
+    <script src="/main.2f703.js"></script>
   
 </div>
 </body>

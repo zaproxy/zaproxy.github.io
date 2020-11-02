@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.4dcb7.css" rel="stylesheet">
+    <link href="/main.2f703.css" rel="stylesheet">
   
 </head>
 <body>
@@ -127,53 +127,111 @@
 </section>
 
 <div class="wrapper py-20" data-kind="page">
-    <div class="breadcrumbs">
+    <header class="breadcrumbs">
         <a href="/docs/">Docs</a> &gt;
         <a href="/docs/alerts/">Alerts</a>
-    </div>
-    <div class="flex">
-      <article class="pr-30 content single-post">
-          <main class="post-content">
-            <h2 id="name-source-code-disclosure---cve-2012-1823">Name: Source Code Disclosure - CVE-2012-1823</h2>
-<h3 id="type-active-scan-rule">Type: Active Scan Rule</h3>
-<h3 id="risk-high">Risk: High</h3>
-<h3 id="description">Description</h3>
-<p>Improper input handling is one of the most common weaknesses identified across applications today. Poorly handled input is a leading cause behind critical vulnerabilities that exist in systems and applications.</p>
+    </header>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
+            <tr>
+              <th colspan="2">
+                Details
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>20017</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Active Scan Rule</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>beta</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/20.html">
+                  20
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>20</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>Improper input handling is one of the most common weaknesses identified across applications today. Poorly handled input is a leading cause behind critical vulnerabilities that exist in systems and applications.</p>
 <p>Generally, the term input handing is used to describe functions like validation, sanitization, filtering, encoding and/or decoding of input data. Applications receive input from various sources including human users, software agents (browsers), and network/peripheral devices to name a few. In the case of web applications, input can be transferred in various formats (name value pairs, JSON, SOAP, etc&hellip;) and obtained via URL query strings, POST data, HTTP headers, Cookies, etc&hellip; Non-web application input can be obtained via application variables, environment variables, the registry, configuration files, etc&hellip; Regardless of the data format or source/location of the input, all input should be considered untrusted and potentially malicious. Applications which process untrusted input may become vulnerable to attacks such as Buffer Overflows, SQL Injection, OS Commanding, Denial of Service just to name a few.</p>
 <p>One of the key aspects of input handling is validating that the input satisfies a certain criteria. For proper validation, it is important to identify the form and type of data that is acceptable and expected by the application. Defining an expected format and usage of each instance of untrusted input is required to accurately define restrictions.</p>
 <p>Validation can include checks for type safety and correct syntax. String input can be checked for length (min and max number of characters) and character set validation while numeric input types like integers and decimals can be validated against acceptable upper and lower bound of values. When combining input from multiple sources, validation should be performed during concatenation and not just against the individual data elements. This practice helps avoid situations where input validation may succeed when performed on individual data items but fails when done on a combined set from all the sources.</p>
-<h3 id="solution">Solution</h3>
-<p>Phase: Architecture and Design</p>
-<p>Use an input validation framework such as Struts or the OWASP ESAPI Validation API.</p>
-<p>Understand all the potential areas where untrusted inputs can enter your software: parameters or arguments, cookies, anything read from the network, environment variables, reverse DNS lookups, query results, request headers, URL components, e-mail, files, databases, and any external systems that provide data to the application. Remember that such inputs may be obtained indirectly through API calls.</p>
-<p>For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server.</p>
-<p>Even though client-side checks provide minimal benefits with respect to server-side security, they are still useful. First, they can support intrusion detection. If the server receives input that should have been rejected by the client, then it may be an indication of an attack. Second, client-side error-checking can provide helpful feedback to the user about the expectations for valid input. Third, there may be a reduction in server-side processing time for accidental input errors, although this is typically a small savings.</p>
-<p>Do not rely exclusively on deny list validation to detect malicious input or to encode output. There are too many ways to encode the same character, so you're likely to miss some variants.</p>
-<p>When your application combines data from multiple sources, perform the validation after the sources have been combined. The individual data elements may pass the validation step but violate the intended restrictions after they have been combined.</p>
-<p>Assume all input is malicious. Use an &ldquo;accept known good&rdquo; input validation strategy, i.e., use an allow list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a deny list). However, deny lists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.</p>
-<p>When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, &ldquo;boat&rdquo; may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as &ldquo;red&rdquo; or &ldquo;blue.&rdquo;</p>
-<p>Phase: Implementation</p>
-<p>Be especially careful to validate your input when you invoke code that crosses language boundaries, such as from an interpreted language to native code. This could create an unexpected interaction between the language boundaries. Ensure that you are not violating any of the expectations of the language with which you are interfacing. For example, even though Java may not be susceptible to buffer overflows, providing a large argument in a call to native code might trigger an overflow.</p>
-<p>Directly convert your input type into the expected data type, such as using a conversion function that translates a string into a number. After converting to the expected data type, ensure that the input's values fall within the expected range of allowable values and that multi-field consistencies are maintained.</p>
-<p>Inputs should be decoded and canonicalized to the application's current internal representation before being validated. Make sure that your application does not inadvertently decode the same input twice. Such errors could be used to bypass allow list schemes by introducing dangerous inputs after they have been checked. Use libraries such as the OWASP ESAPI Canonicalization control.</p>
-<p>Consider performing repeated canonicalization until your input does not change any more. This will avoid double-decoding and similar scenarios, but it might inadvertently modify inputs that are allowed to contain properly-encoded dangerous content.</p>
-<p>When exchanging data between components, ensure that both components are using the same character encoding. Ensure that the proper encoding is applied at each interface. Explicitly set the encoding you are using whenever the protocol allows you to do so.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="http://projects.webappsec.org/Improper-Input-Handling">http://projects.webappsec.org/Improper-Input-Handling</a></li>
-<li><a href="http://cwe.mitre.org/data/definitions/89.html">http://cwe.mitre.org/data/definitions/89.html</a></li>
-</ul>
-<h3 id="cwe-20httpscwemitreorgdatadefinitions20html">CWE: <a href="https://cwe.mitre.org/data/definitions/20.html">20</a></h3>
-<h3 id="wasc--20">WASC:  20</h3>
-<h3 id="code">Code</h3>
-<ul>
-<li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/SourceCodeDisclosureCve0121823ScanRule.java">org/zaproxy/zap/extension/ascanrulesBeta/SourceCodeDisclosureCve0121823ScanRule.java</a></li>
-</ul>
-<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
 
-          </main>
-      </article>
-    </div>
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Phase: Architecture and Design
+Use an input validation framework such as Struts or the OWASP ESAPI Validation API.
+Understand all the potential areas where untrusted inputs can enter your software: parameters or arguments, cookies, anything read from the network, environment variables, reverse DNS lookups, query results, request headers, URL components, e-mail, files, databases, and any external systems that provide data to the application. Remember that such inputs may be obtained indirectly through API calls.
+For any security checks that are performed on the client side, ensure that these checks are duplicated on the server side. Attackers can bypass the client-side checks by modifying values after the checks have been performed, or by changing the client to remove the client-side checks entirely. Then, these modified values would be submitted to the server.
+Even though client-side checks provide minimal benefits with respect to server-side security, they are still useful. First, they can support intrusion detection. If the server receives input that should have been rejected by the client, then it may be an indication of an attack. Second, client-side error-checking can provide helpful feedback to the user about the expectations for valid input. Third, there may be a reduction in server-side processing time for accidental input errors, although this is typically a small savings.
+Do not rely exclusively on deny list validation to detect malicious input or to encode output. There are too many ways to encode the same character, so you&#39;re likely to miss some variants.
+When your application combines data from multiple sources, perform the validation after the sources have been combined. The individual data elements may pass the validation step but violate the intended restrictions after they have been combined.
+Assume all input is malicious. Use an &#39;accept known good&#39; input validation strategy, i.e., use an allow list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a deny list). However, deny lists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.
+When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, &#39;boat&#39; may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as &#39;red&#39; or &#39;blue.&#39;
+Phase: Implementation
+Be especially careful to validate your input when you invoke code that crosses language boundaries, such as from an interpreted language to native code. This could create an unexpected interaction between the language boundaries. Ensure that you are not violating any of the expectations of the language with which you are interfacing. For example, even though Java may not be susceptible to buffer overflows, providing a large argument in a call to native code might trigger an overflow.
+Directly convert your input type into the expected data type, such as using a conversion function that translates a string into a number. After converting to the expected data type, ensure that the input&#39;s values fall within the expected range of allowable values and that multi-field consistencies are maintained.
+Inputs should be decoded and canonicalized to the application&#39;s current internal representation before being validated. Make sure that your application does not inadvertently decode the same input twice. Such errors could be used to bypass allow list schemes by introducing dangerous inputs after they have been checked. Use libraries such as the OWASP ESAPI Canonicalization control.
+Consider performing repeated canonicalization until your input does not change any more. This will avoid double-decoding and similar scenarios, but it might inadvertently modify inputs that are allowed to contain properly-encoded dangerous content.
+When exchanging data between components, ensure that both components are using the same character encoding. Ensure that the proper encoding is applied at each interface. Explicitly set the encoding you are using whenever the protocol allows you to do so.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
+            <a href="http://projects.webappsec.org/Improper-Input-Handling">http://projects.webappsec.org/Improper-Input-Handling</a>
+          </li>
+        
+          <li>
+            <a href="http://cwe.mitre.org/data/definitions/89.html">http://cwe.mitre.org/data/definitions/89.html</a>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/SourceCodeDisclosureCve0121823ScanRule.java'>
+            org/zaproxy/zap/extension/ascanrulesBeta/SourceCodeDisclosureCve0121823ScanRule.java
+          </a>
+      </section>
+  </main>
 </div>
 
  </div>
@@ -232,7 +290,7 @@
 
   
   
-    <script src="/main.4dcb7.js"></script>
+    <script src="/main.2f703.js"></script>
   
 </div>
 </body>

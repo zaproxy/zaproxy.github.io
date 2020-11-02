@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.4dcb7.css" rel="stylesheet">
+    <link href="/main.2f703.css" rel="stylesheet">
   
 </head>
 <body>
@@ -127,41 +127,96 @@
 </section>
 
 <div class="wrapper py-20" data-kind="page">
-    <div class="breadcrumbs">
+    <header class="breadcrumbs">
         <a href="/docs/">Docs</a> &gt;
         <a href="/docs/alerts/">Alerts</a>
-    </div>
-    <div class="flex">
-      <article class="pr-30 content single-post">
-          <main class="post-content">
-            <h2 id="name-httpoxy---proxy-header-misuse">Name: Httpoxy - Proxy Header Misuse</h2>
-<h3 id="type-active-scan-rule">Type: Active Scan Rule</h3>
-<h3 id="risk-high">Risk: High</h3>
-<h3 id="description">Description</h3>
-<p>The server initiated a proxied request via the proxy specified in the HTTP Proxy header of the request.Httpoxy typically affects code running in CGI or CGI like environments.
+    </header>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
+            <tr>
+              <th colspan="2">
+                Details
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>10107</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Active Scan Rule</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>beta</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/20.html">
+                  20
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>20</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>The server initiated a proxied request via the proxy specified in the HTTP Proxy header of the request.Httpoxy typically affects code running in CGI or CGI like environments.
 This may allow attackers to:</p>
 <ul>
 <li>Proxy the outgoing HTTP requests made by the web application</li>
 <li>Direct the server to open outgoing connections to an address and port of their choosing or</li>
 <li>Tie up server resources by forcing the vulnerable software to use a malicious proxy</li>
 </ul>
-<h3 id="solution">Solution</h3>
-<p>The best immediate mitigation is to block Proxy request headers as early as possible, and before they hit your application.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="https://httpoxy.org/">https://httpoxy.org/</a></li>
-</ul>
-<h3 id="cwe-20httpscwemitreorgdatadefinitions20html">CWE: <a href="https://cwe.mitre.org/data/definitions/20.html">20</a></h3>
-<h3 id="wasc--20">WASC:  20</h3>
-<h3 id="code">Code</h3>
-<ul>
-<li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/HttPoxyScanRule.java">org/zaproxy/zap/extension/ascanrulesBeta/HttPoxyScanRule.java</a></li>
-</ul>
-<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
 
-          </main>
-      </article>
-    </div>
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          The best immediate mitigation is to block Proxy request headers as early as possible, and before they hit your application.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
+            <a href="https://httpoxy.org/">https://httpoxy.org/</a>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/HttPoxyScanRule.java'>
+            org/zaproxy/zap/extension/ascanrulesBeta/HttPoxyScanRule.java
+          </a>
+      </section>
+  </main>
 </div>
 
  </div>
@@ -220,7 +275,7 @@ This may allow attackers to:</p>
 
   
   
-    <script src="/main.4dcb7.js"></script>
+    <script src="/main.2f703.js"></script>
   
 </div>
 </body>
