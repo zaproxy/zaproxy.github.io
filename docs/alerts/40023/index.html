@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.4dcb7.css" rel="stylesheet">
+    <link href="/main.2f703.css" rel="stylesheet">
   
 </head>
 <body>
@@ -127,36 +127,94 @@
 </section>
 
 <div class="wrapper py-20" data-kind="page">
-    <div class="breadcrumbs">
+    <header class="breadcrumbs">
         <a href="/docs/">Docs</a> &gt;
         <a href="/docs/alerts/">Alerts</a>
-    </div>
-    <div class="flex">
-      <article class="pr-30 content single-post">
-          <main class="post-content">
-            <h2 id="name-possible-username-enumeration">Name: Possible Username Enumeration</h2>
-<h3 id="type-active-scan-rule">Type: Active Scan Rule</h3>
-<h3 id="risk-informational">Risk: Informational</h3>
-<h3 id="description">Description</h3>
-<p>It may be possible to enumerate usernames, based on differing HTTP responses when valid and invalid usernames are provided. This would greatly increase the probability of success of password brute-forcing attacks against the system. Note that false positives may sometimes be minimised by increasing the &lsquo;Attack Strength&rsquo; Option in ZAP.  Please manually check the &lsquo;Other Info&rsquo; field to confirm if this is actually an issue.</p>
-<h3 id="solution">Solution</h3>
-<p>Do not divulge details of whether a username is valid or invalid. In particular, for unsuccessful login attempts, do not differentiate between an invalid user and an invalid password in the error message, page title, page contents, HTTP headers, or redirection logic.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html</a></li>
-<li><a href="http://sebastian-schinzel.de/_download/ifip-sec2011.pdf">http://sebastian-schinzel.de/_download/ifip-sec2011.pdf</a></li>
-</ul>
-<h3 id="cwe-200httpscwemitreorgdatadefinitions200html">CWE: <a href="https://cwe.mitre.org/data/definitions/200.html">200</a></h3>
-<h3 id="wasc--13">WASC:  13</h3>
-<h3 id="code">Code</h3>
-<ul>
-<li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/UsernameEnumerationScanRule.java">org/zaproxy/zap/extension/ascanrulesBeta/UsernameEnumerationScanRule.java</a></li>
-</ul>
-<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
+    </header>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
+            <tr>
+              <th colspan="2">
+                Details
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>40023</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Active Scan Rule</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>beta</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>Informational</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/200.html">
+                  200
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>13</td>
+            </tr>
+          </tbody>
+        </table>
 
-          </main>
-      </article>
-    </div>
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>It may be possible to enumerate usernames, based on differing HTTP responses when valid and invalid usernames are provided. This would greatly increase the probability of success of password brute-forcing attacks against the system. Note that false positives may sometimes be minimised by increasing the &lsquo;Attack Strength&rsquo; Option in ZAP.  Please manually check the &lsquo;Other Info&rsquo; field to confirm if this is actually an issue.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Do not divulge details of whether a username is valid or invalid. In particular, for unsuccessful login attempts, do not differentiate between an invalid user and an invalid password in the error message, page title, page contents, HTTP headers, or redirection logic.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
+            <a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account.html</a>
+          </li>
+        
+          <li>
+            <a href="http://sebastian-schinzel.de/_download/ifip-sec2011.pdf">http://sebastian-schinzel.de/_download/ifip-sec2011.pdf</a>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/UsernameEnumerationScanRule.java'>
+            org/zaproxy/zap/extension/ascanrulesBeta/UsernameEnumerationScanRule.java
+          </a>
+      </section>
+  </main>
 </div>
 
  </div>
@@ -215,7 +273,7 @@
 
   
   
-    <script src="/main.4dcb7.js"></script>
+    <script src="/main.2f703.js"></script>
   
 </div>
 </body>

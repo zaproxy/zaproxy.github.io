@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.4dcb7.css" rel="stylesheet">
+    <link href="/main.2f703.css" rel="stylesheet">
   
 </head>
 <body>
@@ -127,38 +127,96 @@
 </section>
 
 <div class="wrapper py-20" data-kind="page">
-    <div class="breadcrumbs">
+    <header class="breadcrumbs">
         <a href="/docs/">Docs</a> &gt;
         <a href="/docs/alerts/">Alerts</a>
-    </div>
-    <div class="flex">
-      <article class="pr-30 content single-post">
-          <main class="post-content">
-            <h2 id="name-source-code-disclosure---web-inf-folder">Name: Source Code Disclosure - /WEB-INF folder</h2>
-<h3 id="type-active-scan-rule">Type: Active Scan Rule</h3>
-<h3 id="risk-high">Risk: High</h3>
-<h3 id="description">Description</h3>
-<p>Predictable Resource Location is an attack technique used to uncover hidden web site content and functionality. By making educated guesses via brute forcing an attacker can guess file and directory names not intended for public viewing. Brute forcing filenames is easy because files/paths often have common naming convention and reside in standard locations. These can include temporary files, backup files, logs, administrative site sections, configuration files, demo applications, and sample files. These files may disclose sensitive information about the website, web application internals, database information, passwords, machine names, file paths to other sensitive areas, etc&hellip;</p>
-<p>This will not only assist with identifying site surface which may lead to additional site vulnerabilities, but also may disclose valuable information to an attacker about the environment or its users. Predictable Resource Location is also known as Forced Browsing, Forceful Browsing, File Enumeration, and Directory Enumeration.</p>
-<h3 id="solution">Solution</h3>
-<p>Apply appropriate access control authorizations for each access to all restricted URLs, scripts or files.</p>
-<p>Consider using MVC based frameworks such as Struts.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="http://projects.webappsec.org/Predictable-Resource-Location">http://projects.webappsec.org/Predictable-Resource-Location</a></li>
-<li><a href="http://cwe.mitre.org/data/definitions/425.html">http://cwe.mitre.org/data/definitions/425.html</a></li>
-</ul>
-<h3 id="cwe-541httpscwemitreorgdatadefinitions541html">CWE: <a href="https://cwe.mitre.org/data/definitions/541.html">541</a></h3>
-<h3 id="wasc--34">WASC:  34</h3>
-<h3 id="code">Code</h3>
-<ul>
-<li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SourceCodeDisclosureWebInfScanRule.java">org/zaproxy/zap/extension/ascanrules/SourceCodeDisclosureWebInfScanRule.java</a></li>
-</ul>
-<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
+    </header>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
+            <tr>
+              <th colspan="2">
+                Details
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>10045</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Active Scan Rule</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>release</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/541.html">
+                  541
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>34</td>
+            </tr>
+          </tbody>
+        </table>
 
-          </main>
-      </article>
-    </div>
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>Predictable Resource Location is an attack technique used to uncover hidden web site content and functionality. By making educated guesses via brute forcing an attacker can guess file and directory names not intended for public viewing. Brute forcing filenames is easy because files/paths often have common naming convention and reside in standard locations. These can include temporary files, backup files, logs, administrative site sections, configuration files, demo applications, and sample files. These files may disclose sensitive information about the website, web application internals, database information, passwords, machine names, file paths to other sensitive areas, etc&hellip;</p>
+<p>This will not only assist with identifying site surface which may lead to additional site vulnerabilities, but also may disclose valuable information to an attacker about the environment or its users. Predictable Resource Location is also known as Forced Browsing, Forceful Browsing, File Enumeration, and Directory Enumeration.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Apply appropriate access control authorizations for each access to all restricted URLs, scripts or files.
+Consider using MVC based frameworks such as Struts.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
+            <a href="http://projects.webappsec.org/Predictable-Resource-Location">http://projects.webappsec.org/Predictable-Resource-Location</a>
+          </li>
+        
+          <li>
+            <a href="http://cwe.mitre.org/data/definitions/425.html">http://cwe.mitre.org/data/definitions/425.html</a>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SourceCodeDisclosureWebInfScanRule.java'>
+            org/zaproxy/zap/extension/ascanrules/SourceCodeDisclosureWebInfScanRule.java
+          </a>
+      </section>
+  </main>
 </div>
 
  </div>
@@ -217,7 +275,7 @@
 
   
   
-    <script src="/main.4dcb7.js"></script>
+    <script src="/main.2f703.js"></script>
   
 </div>
 </body>

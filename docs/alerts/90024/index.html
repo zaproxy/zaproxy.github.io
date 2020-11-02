@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.4dcb7.css" rel="stylesheet">
+    <link href="/main.2f703.css" rel="stylesheet">
   
 </head>
 <body>
@@ -127,38 +127,102 @@
 </section>
 
 <div class="wrapper py-20" data-kind="page">
-    <div class="breadcrumbs">
+    <header class="breadcrumbs">
         <a href="/docs/">Docs</a> &gt;
         <a href="/docs/alerts/">Alerts</a>
-    </div>
-    <div class="flex">
-      <article class="pr-30 content single-post">
-          <main class="post-content">
-            <h2 id="name-generic-padding-oracle">Name: Generic Padding Oracle</h2>
-<h3 id="type-active-scan-rule">Type: Active Scan Rule</h3>
-<h3 id="risk-high">Risk: High</h3>
-<h3 id="description">Description</h3>
-<p>By manipulating the padding on an encrypted string, an attacker is able to generate an error message that indicates a likely &lsquo;padding oracle&rsquo; vulnerability. Such a vulnerability can affect any application or framework that uses encryption improperly, such as some versions of ASP.net, Java Server Faces, and Mono. An attacker may exploit this issue to decrypt data and recover encryption keys, potentially viewing and modifying confidential data. This rule should detect the MS10-070 padding oracle vulnerability in ASP.net if CustomErrors are enabled for that.</p>
-<h3 id="solution">Solution</h3>
-<p>Update the affected server software, or modify the scripts so that they properly validate encrypted data before attempting decryption.</p>
-<h3 id="references">References</h3>
-<ul>
-<li><a href="http://netifera.com/research/">http://netifera.com/research/</a></li>
-<li><a href="http://www.microsoft.com/technet/security/bulletin/ms10-070.mspx">http://www.microsoft.com/technet/security/bulletin/ms10-070.mspx</a></li>
-<li><a href="http://www.mono-project.com/Vulnerabilities#ASP.NET_Padding_Oracle">http://www.mono-project.com/Vulnerabilities#ASP.NET_Padding_Oracle</a></li>
-<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=623799">https://bugzilla.redhat.com/show_bug.cgi?id=623799</a></li>
-</ul>
-<h3 id="cwe-209httpscwemitreorgdatadefinitions209html">CWE: <a href="https://cwe.mitre.org/data/definitions/209.html">209</a></h3>
-<h3 id="wasc--20">WASC:  20</h3>
-<h3 id="code">Code</h3>
-<ul>
-<li><a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/PaddingOracleScanRule.java">org/zaproxy/zap/extension/ascanrulesBeta/PaddingOracleScanRule.java</a></li>
-</ul>
-<h6 id="last-updated-2020-08-14-114843628z">Last updated: 2020-08-14 11:48:43.628Z</h6>
+    </header>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
+            <tr>
+              <th colspan="2">
+                Details
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>90024</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Active Scan Rule</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>beta</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/209.html">
+                  209
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>20</td>
+            </tr>
+          </tbody>
+        </table>
 
-          </main>
-      </article>
-    </div>
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>By manipulating the padding on an encrypted string, an attacker is able to generate an error message that indicates a likely &lsquo;padding oracle&rsquo; vulnerability. Such a vulnerability can affect any application or framework that uses encryption improperly, such as some versions of ASP.net, Java Server Faces, and Mono. An attacker may exploit this issue to decrypt data and recover encryption keys, potentially viewing and modifying confidential data. This rule should detect the MS10-070 padding oracle vulnerability in ASP.net if CustomErrors are enabled for that.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Update the affected server software, or modify the scripts so that they properly validate encrypted data before attempting decryption.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
+            <a href="http://netifera.com/research/">http://netifera.com/research/</a>
+          </li>
+        
+          <li>
+            <a href="http://www.microsoft.com/technet/security/bulletin/ms10-070.mspx">http://www.microsoft.com/technet/security/bulletin/ms10-070.mspx</a>
+          </li>
+        
+          <li>
+            <a href="http://www.mono-project.com/Vulnerabilities#ASP.NET_Padding_Oracle">http://www.mono-project.com/Vulnerabilities#ASP.NET_Padding_Oracle</a>
+          </li>
+        
+          <li>
+            <a href="https://bugzilla.redhat.com/show_bug.cgi?id=623799">https://bugzilla.redhat.com/show_bug.cgi?id=623799</a>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/PaddingOracleScanRule.java'>
+            org/zaproxy/zap/extension/ascanrulesBeta/PaddingOracleScanRule.java
+          </a>
+      </section>
+  </main>
 </div>
 
  </div>
@@ -217,7 +281,7 @@
 
   
   
-    <script src="/main.4dcb7.js"></script>
+    <script src="/main.2f703.js"></script>
   
 </div>
 </body>
