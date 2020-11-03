@@ -18,8 +18,7 @@
       <guid>/docs/desktop/ui/dialogs/options/ascan/</guid>
       <description>Options Active Scan screen This screen allows you to configure the active scan options:
 Number of Hosts Scanned Concurrently The maximum number of hosts that will be scanned at the same time. Increasing this may put extra strain on the computer ZAP is running on.
-Concurrent Scanning Threads per Host The number of threads the scanner will use per host.
-Increasing the number of threads will speed up the scan but may put extra strain on the computer ZAP is running on and the target host.</description>
+Concurrent Scanning Threads per Host The number of threads the scanner will use per host.</description>
     </item>
     
     <item>
@@ -30,9 +29,7 @@ Increasing the number of threads will speed up the scan but may put extra strain
       <guid>/docs/desktop/ui/dialogs/options/ascaninput/</guid>
       <description>Options Active Scan Input Vectors screen This screen allows you to configure the active scan input vectors.
 These are the elements that the active scanner will attack.
-Scanning all of the elements supported will take longer, but not scanning some elements may cause some vulnerabilities to be missed.
-Injectable Targets The request elements that the active scanner will target:
-URL Query String &amp;amp; Data Driven Nodes Key value pairs in the request URL query, ie after the ?</description>
+Scanning all of the elements supported will take longer, but not scanning some elements may cause some vulnerabilities to be missed.</description>
     </item>
     
     <item>
@@ -44,9 +41,7 @@ URL Query String &amp;amp; Data Driven Nodes Key value pairs in the request URL 
       <description>Options Alerts screen This screen allows you to configure the alerts options:
 Merge related alerts in report If selected then related issues will be merged in any reports generated.
 This will significantly reduce the size of the report as duplicated information will be removed.
-Max alert instances in report The maximum number of alert instances to include in a report.
-A value of zero is treated as unlimited.
-Alert overrides file The full name of a properties file that specifies any alert overrides that you want to apply.</description>
+Max alert instances in report The maximum number of alert instances to include in a report.</description>
     </item>
     
     <item>
@@ -68,7 +63,7 @@ See also            UI Overview for an overview of the user interface    Options
       <guid>/docs/desktop/ui/dialogs/options/api/</guid>
       <description>Options API screen This screen allows you to configure the API options:
 Enabled If enabled then the API is available to all machines that are able to use ZAP as a proxy.
-Web UI Enabled If enabled then the API Web UI is available to all machines that are able to use ZAP as a proxy. To access the API Web UI point your browser to the host and port that ZAP is listening on.</description>
+Web UI Enabled If enabled then the API Web UI is available to all machines that are able to use ZAP as a proxy.</description>
     </item>
     
     <item>
@@ -80,8 +75,7 @@ Web UI Enabled If enabled then the API Web UI is available to all machines that 
       <description>Options Breakpoints screen This screen allows you to configure the breakpoint options:
 Confirm drop trapped message Asks for confirmation when a request or response is dropped.
 Only break on messages in scope The &amp;lsquo;global&amp;rsquo; breakpoint will only be triggered by requests that are in scope.
-Custom breakpoints will not be affected.
-ZAP always on top when breakpoint hit If selected this will mean that ZAP stays on top of all other windows whenever a breakpoint is hit.</description>
+Custom breakpoints will not be affected.</description>
     </item>
     
     <item>
@@ -91,8 +85,7 @@ ZAP always on top when breakpoint hit If selected this will mean that ZAP stays 
       
       <guid>/docs/desktop/ui/dialogs/options/callback/</guid>
       <description>Options Callback Address screen The Callback Address screen allows you to configure the address used to detect vulnerabilities that allow an attacker to call remote URLs.
-In previous versions the ZAP API was used for this purpose, but from 2.6.0 onwards a separate endpoint is used so that target systems no longer need access to the API.
-Local Address (e.g. 0.0.0.0) The local address that ZAP will listen on for incoming connections.</description>
+In previous versions the ZAP API was used for this purpose, but from 2.6.0 onwards a separate endpoint is used so that target systems no longer need access to the API.</description>
     </item>
     
     <item>
@@ -102,7 +95,7 @@ Local Address (e.g. 0.0.0.0) The local address that ZAP will listen on for incom
       
       <guid>/docs/desktop/ui/dialogs/options/certificate/</guid>
       <description>Options Client Certificate screen The Client Certificate screen allows you to add a client certificate for ZAP to use when testing applications protected using mutual SSL. It is also possible to set the Client Certificate from the command line with the following switches:
--config certificate.use=true -config certificate.pkcs12.path=/path/to/file.p12 -config certificate.pkcs12.password=WhateverThePasswordIs -config certificate.pkcs12.index=1 -config certificate.persist=true -config certificate.pkcs12.index is only necessary if the file contains multiple certificates and you wish to use one other than the first.</description>
+-config certificate.use=true -config certificate.pkcs12.path=/path/to/file.p12 -config certificate.</description>
     </item>
     
     <item>
@@ -112,9 +105,7 @@ Local Address (e.g. 0.0.0.0) The local address that ZAP will listen on for incom
       
       <guid>/docs/desktop/ui/dialogs/options/checkforupdates/</guid>
       <description>Options Check for Updates screen This screen allows you to configure whether ZAP checks to see if you are running the latest version when it starts, and if so what it does.
-Check for Updates on startup If selected then ZAP will automatically check for updates to the whole application and all of the add-ons when it starts.
-It is strongly recommended that you check this box.
-If for any reason you choose not to then you should manually check for updates frequently.</description>
+Check for Updates on startup If selected then ZAP will automatically check for updates to the whole application and all of the add-ons when it starts.</description>
     </item>
     
     <item>
@@ -125,8 +116,7 @@ If for any reason you choose not to then you should manually check for updates f
       <guid>/docs/desktop/ui/dialogs/options/connection/</guid>
       <description>Options Connection screen The Options Connection screen allows you to configure the ZAP connection options:
 Timeout (in seconds) This makes is easier to test slow applications.
-Default User Agent The user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).
-Single Cookie Request Header Controls whether the ZAP&#39;s managed cookies (Enable (Global) HTTP State) should be set on a single &amp;ldquo;Cookie&amp;rdquo; request header or multiple &amp;ldquo;Cookie&amp;rdquo; request headers, when sending an HTTP request to the server.</description>
+Default User Agent The user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).</description>
     </item>
     
     <item>
@@ -137,8 +127,7 @@ Single Cookie Request Header Controls whether the ZAP&#39;s managed cookies (Ena
       <guid>/docs/desktop/ui/dialogs/options/database/</guid>
       <description>Options Database screen This screen allows you to configure the database options:
 Compact (on exit) Allows to compact the database when ZAP is closed, compacting the database ensures a minimal space disk usage but it will also take longer to exit ZAP.
-Recovery Log Controls whether or not database&#39;s recovery log is enabled.
-Improves the performance of the database when disabled but might lead to data loss if ZAP is exited abruptly.</description>
+Recovery Log Controls whether or not database&#39;s recovery log is enabled.</description>
     </item>
     
     <item>
@@ -158,8 +147,7 @@ Show (local) CONNECT requests If the HTTP CONNECT requests received by the Local
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/desktop/ui/dialogs/options/dynsslcert/</guid>
-      <description>Option Dynamic SSL Certificates OWASP ZAP allows you to transparently decrypt SSL connections. For doing so, ZAP has to encrypt each request before sending to the server and decrypt each response, which comes back. But, this is already done by the browser. That&#39;s why, the only way to decrypt or intercept the transmission, is to do a &amp;lsquo;man in the middle&amp;rsquo; approach.
-Overview In short words, every data send to and received from the server is encrypted/decrypted by using the original server&#39;s certificate inside ZAP.</description>
+      <description>Option Dynamic SSL Certificates OWASP ZAP allows you to transparently decrypt SSL connections. For doing so, ZAP has to encrypt each request before sending to the server and decrypt each response, which comes back. But, this is already done by the browser. That&#39;s why, the only way to decrypt or intercept the transmission, is to do a &amp;lsquo;man in the middle&amp;rsquo; approach.</description>
     </item>
     
     <item>
@@ -170,8 +158,7 @@ Overview In short words, every data send to and received from the server is encr
       <guid>/docs/desktop/ui/dialogs/options/ext/</guid>
       <description>Options Extensions screen This screen allows you to enable/disable extensions that are available to ZAP, either core or added by add-ons.
 Enable/Disable Extensions Enabled extensions will be loaded by ZAP, thus adding the functionalities provided by those extensions. Disabled extensions will not be loaded.
-Core Extensions Core extensions are extensions that if disabled will impair ZAP&#39;s minimal functionality. Extensions marked as core cannot be disabled.
-Note: Core extensions can be disabled through the configuration file, although it&#39;s not recommend.</description>
+Core Extensions Core extensions are extensions that if disabled will impair ZAP&#39;s minimal functionality.</description>
     </item>
     
     <item>
@@ -182,8 +169,7 @@ Note: Core extensions can be disabled through the configuration file, although i
       <guid>/docs/desktop/ui/dialogs/options/globalexcludeurl/</guid>
       <description>Options Global Exclude URL screen This screen allows you to configure the Global Exclude URL regexs in ZAP:
 Regex A regex of the URL that ZAP will ignore. Click the buttons Add, Modify, or Remove to edit each regex.
-Enabled If the box is checked, then this regex URL will be ignored by ZAP.
-See also            UI Overview for an overview of the user interface    Options dialogs for details of the other Options dialog screens    </description>
+Enabled If the box is checked, then this regex URL will be ignored by ZAP.</description>
     </item>
     
     <item>
@@ -193,8 +179,7 @@ See also            UI Overview for an overview of the user interface    Options
       
       <guid>/docs/desktop/ui/dialogs/options/httpsessions/</guid>
       <description>Options HTTP Sessions screen This screen allows you to configure the HTTP Sessions Extension&#39;s options:
-Default Tokens These are the names of the Cookies that are considered by default to be session tokens. As soon they are detected as parameters on a Site, they are automatically added as session tokens for that Site, unless manually overriden by user command.
-The session tokens are used case-insensitive, therefore the default session tokens will automatically be lower-cased.</description>
+Default Tokens These are the names of the Cookies that are considered by default to be session tokens. As soon they are detected as parameters on a Site, they are automatically added as session tokens for that Site, unless manually overriden by user command.</description>
     </item>
     
     <item>
@@ -216,8 +201,7 @@ The option was added so that the Java maximum memory allocation pool size can be
       <guid>/docs/desktop/ui/dialogs/options/keyboard/</guid>
       <description>Options Keyboard screen This screen allows you to configure keyboard shortcuts for all of the ZAP menus.
 Clicking on any of the table rows will bring up a dialog box which allows you to change the keyboard shortcuts.
-&amp;lsquo;Action&amp;rsquo; Cheatsheet Clicking on this button will generate an HTML page which shows all of the keyboard shortcuts sorted by &amp;lsquo;action&amp;rsquo;.
-This button is only enabled if the API is enabled and your operating systems supports opening URLs in a browser.</description>
+&amp;lsquo;Action&amp;rsquo; Cheatsheet Clicking on this button will generate an HTML page which shows all of the keyboard shortcuts sorted by &amp;lsquo;action&amp;rsquo;.</description>
     </item>
     
     <item>
@@ -229,8 +213,7 @@ This button is only enabled if the API is enabled and your operating systems sup
       <description>Options language screen The language screen allows you to configure:
 Language selection The language ZAP uses for its display.
 A set of languages are built into ZAP, however more languages may be available after the last release.
-Check the ZAP download page for the latest language pack available.
-Use system&#39;s locale for formatting If the formatting of numbers, dates, and times is done with the system&#39;s locale instead of the locale of the selected language.</description>
+Check the ZAP download page for the latest language pack available.</description>
     </item>
     
     <item>
@@ -240,9 +223,7 @@ Use system&#39;s locale for formatting If the formatting of numbers, dates, and 
       
       <guid>/docs/desktop/ui/dialogs/options/localproxy/</guid>
       <description>Options Local Proxies screen This screen allows you to configure the addresses and ports on which ZAP accepts incoming connections.
-Local Proxy By default ZAP will listen on one local address and port, and these are the address and port that you must configure your browser to use as a proxy.
-Address The local address which ZAP will use. All of the available addresses are automatically identified.
-Port The port on which ZAP will listen.</description>
+Local Proxy By default ZAP will listen on one local address and port, and these are the address and port that you must configure your browser to use as a proxy.</description>
     </item>
     
     <item>
@@ -253,7 +234,7 @@ Port The port on which ZAP will listen.</description>
       <guid>/docs/desktop/ui/dialogs/options/pscanrules/</guid>
       <description>Options Passive Scan Rules Screen This screen allows you to configure the passive scan rules.
 Threshold This controls how likely ZAP is to report potential vulnerabilities.
- If you select Off then the scanner won&#39;t run. If you select Low then more potential issues will be raised which may increase the number of false positives. If you select High then fewer potential issues will be raised which may mean that some real issues are missed (false negatives).</description>
+ If you select Off then the scanner won&#39;t run. If you select Low then more potential issues will be raised which may increase the number of false positives.</description>
     </item>
     
     <item>
@@ -273,7 +254,7 @@ Tag Interpolation In order to allow some flexibility in Tag creation and content
       
       <guid>/docs/desktop/ui/dialogs/options/pscanner/</guid>
       <description>Options Passive Scanner screen This screen allows you to configure the passive scanner.
-Configuration Options    Field Details Default Config File     Only scan messages in scope Sets whether or not the passive scan should be performed only on messages that are in scope. Deselected Key: pscans.scanOnlyInScope Values: true or false   Include traffic from the Fuzzer when passive scanning Sets whether or not the passive scanning should be performed on messages generated by the Fuzzer.</description>
+Configuration Options    Field Details Default Config File     Only scan messages in scope Sets whether or not the passive scan should be performed only on messages that are in scope.</description>
     </item>
     
     <item>
@@ -284,8 +265,7 @@ Configuration Options    Field Details Default Config File     Only scan message
       <guid>/docs/desktop/ui/dialogs/options/ruleconfig/</guid>
       <description>Options Rule Configuration screen This screen allows you to configure the behaviour of specific active and passive scan rules.
 Select any of the listed rows to see details of the specific configuration and to change the associated value. Both individual and all rules can be reset.
-The built-in rules include:
-   Name Default Description     rules.common.sleep 15 The length of time in seconds used for timing attacks.</description>
+The built-in rules include:</description>
     </item>
     
     <item>
@@ -296,8 +276,7 @@ The built-in rules include:
       <guid>/docs/desktop/ui/dialogs/options/script/</guid>
       <description>Options Scripts screen This screen allows you to configure the script options:
 Directories A list of directories from which scripts will be loaded. ZAP will read (and write) the scripts using the character encoding UTF-8.
-The scripts must be in subdirectories named after the relevant script type (such as &amp;lsquo;active&amp;rsquo;, &amp;lsquo;passive&amp;rsquo;, &amp;lsquo;proxy&amp;rsquo; etc) and must have an appropriate extension for the script language used.
-Scripts that cannot be written to will be added to the Templates section.</description>
+The scripts must be in subdirectories named after the relevant script type (such as &amp;lsquo;active&amp;rsquo;, &amp;lsquo;passive&amp;rsquo;, &amp;lsquo;proxy&amp;rsquo; etc) and must have an appropriate extension for the script language used.</description>
     </item>
     
     <item>
@@ -319,7 +298,7 @@ See also            UI Overview for an overview of the user interface    Options
       <guid>/docs/desktop/ui/dialogs/options/spider/</guid>
       <description>Options Spider screen This screen allows you to configure the spider options.
 It should be noted that modifying most of these options also affects the running Spider.
-Maximum depth to crawl The parameter defines the maximum depth in the crawling process where a page must be found in order for it to be processed. Resources found deeper than this level are not fetched and parsed by the spider. The value zero means unlimited depth.</description>
+Maximum depth to crawl The parameter defines the maximum depth in the crawling process where a page must be found in order for it to be processed.</description>
     </item>
     
     <item>
@@ -330,9 +309,7 @@ Maximum depth to crawl The parameter defines the maximum depth in the crawling p
       <guid>/docs/desktop/ui/dialogs/options/stats/</guid>
       <description>Options Statistics screen This screen allows you to configure the statistics that ZAP maintains.
 In Memory Statistics Enabled By default ZAP maintains the statistics in memory. To disable the in memory statistics uncheck this box.
-Statsd Server Enabled Check this box in order to configure the address of a Statsd server that ZAP will send its statistics to.
-Statsd Hostname The host that the Statsd server is running on.
-Statsd Port The port that the Statsd server is listening to, default 8125.</description>
+Statsd Server Enabled Check this box in order to configure the address of a Statsd server that ZAP will send its statistics to.</description>
     </item>
     
   </channel>

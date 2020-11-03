@@ -18,8 +18,7 @@
       <guid>/docs/docker/api-scan/</guid>
       <description>The ZAP API scan is a script that is available in the ZAP Docker images.
 It is tuned for performing scans against APIs defined by OpenAPI via either a local file or a URL.
-It imports the definition that you specify and then runs an Active Scan against the URLs found. The Active Scan is tuned to APIs, so it doesn&#39;t bother looking for things like XSSs.
-It also includes 2 scripts that:</description>
+It imports the definition that you specify and then runs an Active Scan against the URLs found.</description>
     </item>
     
     <item>
@@ -30,8 +29,7 @@ It also includes 2 scripts that:</description>
       <guid>/docs/docker/baseline-scan/</guid>
       <description>The ZAP Baseline scan is a script that is available in the ZAP Docker images.
 It runs the ZAP spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.
-This means that the script doesn&#39;t perform any actual &amp;lsquo;attacks&amp;rsquo; and will run for a relatively short period of time (a few minutes at most).
-By default it reports all alerts as WARNings but you can specify a config file which can change any rules to FAIL or IGNORE.</description>
+This means that the script doesn&#39;t perform any actual &amp;lsquo;attacks&amp;rsquo; and will run for a relatively short period of time (a few minutes at most).</description>
     </item>
     
     <item>
@@ -42,8 +40,7 @@ By default it reports all alerts as WARNings but you can specify a config file w
       <guid>/docs/docker/full-scan/</guid>
       <description>The ZAP full scan is a script that is available in the ZAP Docker images.
 It runs the ZAP spider against the specified target (by default with no time limit) followed by an optional ajax spider scan and then a full active scan before reporting the results.
-This means that the script does perform actual &amp;lsquo;attacks&amp;rsquo; and can potentially run for a long period of time.
-By default it reports all alerts as WARNings but you can specify a config file which can change any rules to FAIL or IGNORE.</description>
+This means that the script does perform actual &amp;lsquo;attacks&amp;rsquo; and can potentially run for a long period of time.</description>
     </item>
     
     <item>
@@ -54,7 +51,7 @@ By default it reports all alerts as WARNings but you can specify a config file w
       <guid>/docs/docker/scan-hooks/</guid>
       <description>Scan Hooks To make it easy to make little tweaks here and there a hook system is in place to help you. It enables you to override or modify behaviour of the script components instead of having to write a new script.
 Use Cases Modifying Args
-For the AJAX crawler you may want to target a suburl with a specific hash (http://example.com vs http://example.com/#/dashboard). You can use the zap_ajax_spider hook to intercept the arguments and modify them.</description>
+For the AJAX crawler you may want to target a suburl with a specific hash (http://example.</description>
     </item>
     
     <item>
@@ -65,7 +62,7 @@ For the AJAX crawler you may want to target a suburl with a specific hash (http:
       <guid>/docs/docker/webswing/</guid>
       <description>Starting with version 2.5.0 you can run the ZAP Desktop UI in your browser without having to install Java, thanks to the magic of Docker and Webswing
 To do this you will just need Docker installed. Start the container with webswing support:
- Stable:  docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.sh   Weekly:  docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-weekly zap-webswing.</description>
+ Stable:  docker run -u zap -p 8080:8080 -p 8090:8090 -i owasp/zap2docker-stable zap-webswing.</description>
     </item>
     
     <item>
@@ -78,8 +75,7 @@ To do this you will just need Docker installed. Start the container with webswin
 Details Install Instructions: For the stable release:
 docker pull owasp/zap2docker-stable For the latest weekly release:
 docker pull owasp/zap2docker-weekly For the live release (built whenever the zaproxy project is changed):
-docker pull owasp/zap2docker-live For the bare release (a very small Docker image, contains only the necessary required dependencies to run ZAP, ideal for CI environments):
-docker pull owasp/zap2docker-bare The Dockerfiles can be found here.</description>
+docker pull owasp/zap2docker-live For the bare release (a very small Docker image, contains only the necessary required dependencies to run ZAP, ideal for CI environments):</description>
     </item>
     
   </channel>

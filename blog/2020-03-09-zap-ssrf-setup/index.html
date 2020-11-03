@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.def6b.css" rel="stylesheet">
+    <link href="/main.925da.css" rel="stylesheet">
   
 </head>
 <body>
@@ -145,6 +145,10 @@
 
           <h1 class="post-title">ZAP SSRF Setup</h1>
           <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday March 9, 2020</span>
+              <span class="word-count fl-r"> 604 Words </span>
+            </section>
             <p>Some vulnerabilities can only be found by sending payloads that cause a callback to the tester. One example is <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing">XXE vulnerabilities</a> when the XML rendering result is not available to the user. ZAP can find these vulnerabilities that depend on <a href="https://owasp.org/www-community/attacks/Server_Side_Request_Forgery">SSRF</a> detection but the target system needs to be able to reach the ZAP callback endpoint. In many cases the computer running ZAP is behind some kind of NAT and doesn’t have a public IP so it will not receive the expected callbacks and miss some of the existent vulnerabilities.</p>
 <p><strong>Note</strong>: OWASP is taking part in <a href="https://owasp.org/www-community/initiatives/gsoc/gsoc2020">GSoC for 2020</a> and there is an open project idea to have an SSRF type external service created for use with ZAP, see: <a href="https://owasp.org/www-community/initiatives/gsoc/gsoc2020ideas#idea-two-ssrf-detectionhandling">SSRF Detection/Handling</a> for more info.</p>
 <h2 id="solution">Solution</h2>
@@ -193,36 +197,20 @@ GatewayPorts yes
 <p>While other vulnerability scanners like Burp Suite have an external server (<a href="https://portswigger.net/burp/documentation/collaborator">Collaborator</a>) which facilitate reception of requests from the target server, ZAP still lacks that functionality. Luckily it can be obtained with this easy trick. This solution still lacks the ability to log DNS requests that can be used for out of band (OOB) tests, which may be necessary when the target app/system blocks outbound HTTP/HTTPS connections.</p>
 
           </main>
-          <div class="next-content">
+          <div class="next-content bg--blue-lightest p-10">
               
-                Prev: <a class="previous" href="/blog/2020-03-04-dark-mode-in-the-weekly-release/"> Dark Mode in the Weekly Release</a>
+                Previous <a class="previous" href="/blog/2020-03-04-dark-mode-in-the-weekly-release/"> Dark Mode in the Weekly Release</a>
               
               
-                Next: <a class="next" href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/"> Is ZAP the World’s most Popular Web Scanner?</a>
+                Next <a class="next" href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/"> Is ZAP the World’s most Popular Web Scanner?</a>
               
           </div>
       </article>
       <aside class="col-1-3">
         <section class="post-meta">
-          <h4 id="date"> Mon Mar 9, 2020 </h4>
           
-
-          <h4>Table of Contents</h4>
-          <nav id="TableOfContents">
-  <ul>
-    <li><a href="#solution">Solution</a>
-      <ul>
-        <li><a href="#tldr">TLDR:</a></li>
-        <li><a href="#my-setup">My Setup:</a></li>
-        <li><a href="#troubleshoot">Troubleshoot:</a></li>
-      </ul>
-    </li>
-    <li><a href="#conclusion">Conclusion</a></li>
-  </ul>
-</nav>
-
+          
           <div class="post-authors">
-            <h4>Authors</h4>
             
             
               <section class="post-author-single flex p-10">
@@ -239,8 +227,22 @@ GatewayPorts yes
                 </div>
               </section>
           
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#solution">Solution</a>
+      <ul>
+        <li><a href="#tldr">TLDR:</a></li>
+        <li><a href="#my-setup">My Setup:</a></li>
+        <li><a href="#troubleshoot">Troubleshoot:</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
           </div>
-          <h5 id="wordcount"> 604 Words </h5>
                     
         </section>
       </aside>
@@ -310,7 +312,7 @@ GatewayPorts yes
 
   
   
-    <script src="/main.def6b.js"></script>
+    <script src="/main.925da.js"></script>
   
 </div>
 </body>
