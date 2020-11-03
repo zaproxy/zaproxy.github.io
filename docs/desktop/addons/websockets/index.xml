@@ -18,7 +18,7 @@
       <guid>/docs/desktop/addons/websockets/tab/</guid>
       <description>WebSocket tab The WebSockets tab displays all messages from WebSocket connections. While ZAP is active, visit e.g.: Mozilla&#39;s BrowserQuest to see WebSockets in action.
 Filters Channel Selector You can restrict the display of messages to one specific WebSocket channel or all.
-If you select a specific channel, then the Show handshake button () becomes enabled. When you click on it, the corresponding HTTP handshake is shown in the Request/Response tab.</description>
+If you select a specific channel, then the Show handshake button () becomes enabled.</description>
     </item>
     
     <item>
@@ -28,7 +28,7 @@ If you select a specific channel, then the Show handshake button () becomes enab
       
       <guid>/docs/desktop/addons/websockets/options/</guid>
       <description>WebSocket specific options This screen allows you to configure the WebSocket options:
-Forward all If you&#39;re not interested in WebSockets communication, but you want to allow its messages being sent back &amp;amp; forth through ZAP, then you should enable this option. As a result no message will be stored in the session database. Moreover no message will appear in the WebSockets tab. This setting can be useful if you have to deal with performance critical WebSocket connections and you&#39;re not interested what is being sent.</description>
+Forward all If you&#39;re not interested in WebSockets communication, but you want to allow its messages being sent back &amp;amp; forth through ZAP, then you should enable this option. As a result no message will be stored in the session database.</description>
     </item>
     
     <item>
@@ -38,8 +38,7 @@ Forward all If you&#39;re not interested in WebSockets communication, but you wa
       
       <guid>/docs/desktop/addons/websockets/sessionproperties/</guid>
       <description>WebSocket specific session properties Exclude from WebSocket This allows you to manage the URLs where WebSocket communication is not processed in ZAP.
-Although all messages from excluded URLs are forwarded, nothing is stored nor can you view them in the user interface. This feature is useful for high volume, performance critical WebSocket connections.
-You can differentiate on the port for one given domain, by using e.g.: example.com:443 to exclude WebSocket connections from example.</description>
+Although all messages from excluded URLs are forwarded, nothing is stored nor can you view them in the user interface. This feature is useful for high volume, performance critical WebSocket connections.</description>
     </item>
     
     <item>
@@ -49,9 +48,7 @@ You can differentiate on the port for one given domain, by using e.g.: example.c
       
       <guid>/docs/desktop/addons/websockets/script/</guid>
       <description>WebSocket Scripts WebSocket Sender WebSocket Sender scripts are called before forwarding the WebSocket message frame to the server or client and can access and change any WebSocket message that is proxied via ZAP.
-They are initially disabled, to enable them right click the relevant script in the Scripts tree and select &amp;ldquo;enable&amp;rdquo;.
-A template script is provided which gives details of the methods and parameters supported.
-Fuzzer WebSocket Processor Fuzzer WebSocket Processor scripts are called before forwarding a fuzzed WebSocket message to the client/server.</description>
+They are initially disabled, to enable them right click the relevant script in the Scripts tree and select &amp;ldquo;enable&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -65,7 +62,7 @@ message Mandatory Parameters:
  channelId: the channel identifier messageId: the message identifier  Returns full details of the specified message.
 The &amp;lsquo;channelId&amp;rsquo; and &amp;lsquo;messageId&amp;rsquo; can be discovered via the &amp;lsquo;messages&amp;rsquo; view.
 messages Optional Parameters:
- channelId: the channel identifier start: the offset to start returning messages from, starting from 0. count: the number of messages to return. payloadPreviewLength: the maximum number bytes to return for the payload contents.</description>
+ channelId: the channel identifier start: the offset to start returning messages from, starting from 0.</description>
     </item>
     
     <item>
@@ -75,8 +72,7 @@ messages Optional Parameters:
       
       <guid>/docs/desktop/addons/websockets/pscanrules/</guid>
       <description>WebSocket Passive Scan Rules Scripts Scripts which are included by default in the add-on and they implement the following WebSocket passive scan rules:
-Base64 Disclosure This script analyzes incoming WebSocket message payload for Base64 strings. The encoded information may include sensitive data which may not specifically meant for end user consumption.
-The regular expression which is used to identify the Base64 string is based on padding characters. As result False Negative may occur if the encoded string has length N bits where (N)mod6 = 0.</description>
+Base64 Disclosure This script analyzes incoming WebSocket message payload for Base64 strings. The encoded information may include sensitive data which may not specifically meant for end user consumption.</description>
     </item>
     
     <item>
@@ -87,7 +83,7 @@ The regular expression which is used to identify the Base64 string is based on p
       <guid>/docs/desktop/addons/websockets/about/</guid>
       <description>Web Sockets - About Source Code https://github.com/zaproxy/zap-extensions/tree/master/addOns/websocket
 Authors ZAP Dev Team
-History Version 19 - 2019-06-07  Fix exceptions when handling/dispatching events. Add wrapper to websocket API responses. Fix exception when handling API request with no API implementor. Correct output stream used in server mode. Add support for &amp;lsquo;other&amp;rsquo; API operations. Handle API options. Validate the Origin for API connections. Generate websocket events. Add break API endpoints. Scale fonts and icons correctly  Version 18 - 2018/08/01  Allow to reopen WebSocket connection to (re)send messages (Issue 4290).</description>
+History Version 19 - 2019-06-07  Fix exceptions when handling/dispatching events. Add wrapper to websocket API responses. Fix exception when handling API request with no API implementor. Correct output stream used in server mode. Add support for &amp;lsquo;other&amp;rsquo; API operations.</description>
     </item>
     
   </channel>
