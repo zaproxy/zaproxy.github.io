@@ -155,7 +155,7 @@ tests you want to run.</p>
 <h4 id="define-your-hooks-in-a-python-file-my-hookspy">Define your hooks in a python file <code>my-hooks.py</code></h4>
 <p>You define all the hooks you want to integrate with using python methods that
 correspond with the name of the hook. By default, ZAP scans will load hooks defined in
-<code>~/.zap_hooks.py</code> or you may specify the hooks location using a command line flag <code>--hook=my-hooks.py</code>.</p>
+<code>~/.zap_hooks.py</code>, the CWD (post 2.9.0) or you may specify the hooks location using a command line flag <code>--hook=my-hooks.py</code>.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># vim my-hooks.py</span>
 <span style="color:#75715e"># Change the zap_ajax_spider target to hit dashboard hash </span>
 <span style="color:#75715e"># Change the crawl_depth to 2</span>
@@ -170,6 +170,8 @@ zap-baseline.py -t https://example.com --hook<span style="color:#f92672">=</span
 docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -t https://www.example.com -g gen.conf -r testreport.html --hook<span style="color:#f92672">=</span>/zap/wrk/my-hooks.py
 </code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
+<h2 id="example-hooks">Example Hooks</h2>
+<p>See <a href="https://github.com/zaproxy/community-scripts/tree/master/scan-hooks">https://github.com/zaproxy/community-scripts/tree/master/scan-hooks</a></p>
 <h2 id="list-of-hooks">List of Hooks</h2>
 <ul>
 <li><code>cli_opts(opts)</code></li>
@@ -193,6 +195,9 @@ docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef
 <li><code>zap_import_context(zap, context_file)</code></li>
 <li><code>zap_import_context_wrap(context_id)</code></li>
 <li><code>zap_pre_shutdown(zap)</code></li>
+<li><code>zap_set_scan_user(zap, username)</code> - post 2.9.0</li>
+<li><code>zap_set_scan_user_wrap(unused)</code> - post 2.9.0</li>
+<li><code>zap_tuned</code> - post 2.9.0</li>
 <li><code>pre_exit(fail_count, warn_count, pass_count)</code></li>
 </ul>
 
