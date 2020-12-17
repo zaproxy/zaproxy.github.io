@@ -317,7 +317,7 @@
     </li>
 
     <li data-depth="2" class="">
-            <a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a>
+            <a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash dialog</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/encode-decode-hash/options/">Options Encode/Decode screen</a>
@@ -677,6 +677,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/soap-support/">SOAP Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger Files</a>
         <ul class="tree-branch">
         </ul>
@@ -830,6 +836,9 @@
                             <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -906,6 +915,12 @@
                             <a href="/docs/desktop/start/features/authentication/">Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/breakpoints/">Breakpoints</a>
                         </li>  
                         <li> 
@@ -913,6 +928,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/contexts/">Contexts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/custompages/">Custom Page</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a>
@@ -924,7 +942,10 @@
                             <a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/start/features/intercept/">Man-in-the-middle Proxy</a>
+                            <a href="/docs/desktop/start/features/intercept/">Manipulator-in-the-middle Proxy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/marketplace/">Marketplace</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/modes/">Modes</a>
@@ -942,7 +963,13 @@
                             <a href="/docs/desktop/start/features/scope/">Scope</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/scripts/">Scripts</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/sessionmanagement/">Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/spider/">Spider</a>
@@ -1262,118 +1289,7 @@
 
 
 </ol>
-          <h1 id="encode--decode--hash-dialog">Encode / Decode / Hash dialog</h1>
-<p>This allows you to encode, decode or hash text.</p>
-<h2 id="common-fields">Common fields</h2>
-<p>The dialog has one field that is common to all of the tabs:</p>
-<h3 id="text-to-be-encodeddecodedhashed">Text to be encoded/decoded/hashed</h3>
-<p>This field is for the text that you want to be encoded, decoded or hashed.<br>
-If any text is selected when the dialog is invoked then it will be put in this field. The other fields will be updated dynamically if you change the text</p>
-<h2 id="encode-tab-fields">Encode tab fields</h2>
-<p>This tab has the following fields:</p>
-<h3 id="base-64-encode">Base 64 Encode</h3>
-<p>This read only field will be updated with the base 64 encoding of the text you enter.</p>
-<h3 id="url-encode">URL Encode</h3>
-<p>This read only field will be updated with the URL encoding of the text you enter.</p>
-<h3 id="ascii-hex-encode">ASCII Hex Encode</h3>
-<p>This read only field will be updated with the ASCII hex encoding of the text you enter.</p>
-<h3 id="html-encode">HTML Encode</h3>
-<p>This read only field will be updated with the HTML encoding of the text you enter. For example, the text <code>&quot;piñata&quot;</code> would be encoded as <code>&amp;quot;pi&amp;ntilde;ata&amp;quot;</code>.</p>
-<h3 id="javascript-encode">JavaScript Encode</h3>
-<p>This read only field will be updated with the escaped JavaScript literals of the text you enter. For example, the text <code>&quot;2￠&quot;</code> would be encoded as <code>\&quot;2\uFFE0\&quot;</code>.</p>
-<h2 id="decode-tab-fields">Decode tab fields</h2>
-<p>This tab has the following fields:</p>
-<h3 id="base-64-decode">Base 64 Decode</h3>
-<p>This read only field will be updated with the base 64 decoding of the text you enter.<br>
-If there is no valid decoding then the field will be disabled.</p>
-<h3 id="url-decode">URL Decode</h3>
-<p>This read only field will be updated with the URL decoding of the text you enter.</p>
-<h3 id="ascii-hex-decode">ASCII Hex Decode</h3>
-<p>This read only field will be updated with the ASCII hex decoding of the text you enter.<br>
-If there is no valid decoding then the field will be disabled.</p>
-<h3 id="html-decode">HTML Decode</h3>
-<p>This read only field will be updated with the HTML decoding of the text you enter. For example, the text <code>&amp;quot;pi&amp;ntilde;ata&amp;quot;</code> would be decoded as <code>&quot;piñata&quot;</code>.</p>
-<h3 id="javascript-decode">JavaScript Decode</h3>
-<p>This read only field will be updated with the unescaped JavaScript literals of the text you enter. For example, the text <code>\&quot;2\uFFE0\&quot;</code> would be decoded as <code>&quot;2￠&quot;</code>.</p>
-<h2 id="hash-tab-fields">Hash tab fields</h2>
-<p>This tab has the following fields:</p>
-<h3 id="sha1-hash">SHA1 Hash</h3>
-<p>This read only field will be updated with the SHA1 hash of the text you enter.</p>
-<h3 id="md5-hash">MD5 Hash</h3>
-<p>This read only field will be updated with the MD5 hash of the text you enter.</p>
-<h2 id="illegal-utf-8">Illegal UTF-8</h2>
-<p>This tab has the following fields:</p>
-<h3 id="2-byte">2 byte</h3>
-<p>This read only field will be updated with an illegal UTF-8 character sequence with 2 bytes.</p>
-<h3 id="3-byte">3 byte</h3>
-<p>This read only field will be updated with an illegal UTF-8 character sequence with 3 bytes.</p>
-<h3 id="4-byte">4 byte</h3>
-<p>This read only field will be updated with an illegal UTF-8 character sequence with 4 bytes.</p>
-<h2 id="unicode">Unicode</h2>
-<p>This tab has the following fields:</p>
-<h3 id="escaped-text">Escaped Text</h3>
-<p>This read only field will be updated with escaped Unicode characters. For example, the text <code>Açores</code> would be encoded as <code>%u0041%u00e7%u006f%u0072%u0065%u0073</code>.</p>
-<h3 id="unescaped-text">Unescaped Text</h3>
-<p>This read only field will be updated with the unescaped Unicode characters. For example, the text <code>%u0041%u00e7%u006f%u0072%u0065%u0073</code> would be decoded as <code>Açores</code>.</p>
-<h2 id="accessed-via">Accessed via</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/tlmenu/edit/">Top level Edit menu</a></td>
-<td>&lsquo;Encode/Decode/Hash&hellip;&rsquo; menu item</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/tabs/break/">Break tab</a></td>
-<td>&lsquo;Encode/Decode/Hash&hellip;&rsquo; right click menu item</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/tabs/request/">Request tab</a></td>
-<td>&lsquo;Encode/Decode/Hash&hellip;&rsquo; right click menu item</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/tabs/response/">Response tab</a></td>
-<td>&lsquo;Encode/Decode/Hash&hellip;&rsquo; right click menu item</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/tabs/spider/">Spider tab</a></td>
-<td>&lsquo;Encode/Decode/Hash&hellip;&rsquo; right click menu item</td>
-</tr>
-</tbody>
-</table>
-<h2 id="see-also">See also</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/">UI Overview</a></td>
-<td>for an overview of the user interface</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/dialogs/">Dialogs</a></td>
-<td>for details of the dialogs or popups</td>
-</tr>
-</tbody>
-</table>
+          <p>The Encode / Decode / Hash dialog is now provided by the <a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash add-on</a>.</p>
 
         </div>
         
