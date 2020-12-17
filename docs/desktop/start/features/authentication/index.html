@@ -317,7 +317,7 @@
     </li>
 
     <li data-depth="2" class="">
-            <a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a>
+            <a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash dialog</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/encode-decode-hash/options/">Options Encode/Decode screen</a>
@@ -677,6 +677,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/soap-support/">SOAP Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger Files</a>
         <ul class="tree-branch">
         </ul>
@@ -830,6 +836,9 @@
                             <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -906,6 +915,12 @@
                             <a href="/docs/desktop/start/features/authentication/">Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/breakpoints/">Breakpoints</a>
                         </li>  
                         <li> 
@@ -913,6 +928,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/contexts/">Contexts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/custompages/">Custom Page</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a>
@@ -924,7 +942,10 @@
                             <a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/start/features/intercept/">Man-in-the-middle Proxy</a>
+                            <a href="/docs/desktop/start/features/intercept/">Manipulator-in-the-middle Proxy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/marketplace/">Marketplace</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/modes/">Modes</a>
@@ -942,7 +963,13 @@
                             <a href="/docs/desktop/start/features/scope/">Scope</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/scripts/">Scripts</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/sessionmanagement/">Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/spider/">Spider</a>
@@ -1263,124 +1290,59 @@
 
 </ol>
           <h1 id="authentication">Authentication</h1>
-<p>ZAP handles multiple types of authentication (called <strong>Authentication
-Methods</strong> ) that can be used for websites / webapps. Each <strong><a href="/docs/desktop/start/features/contexts/">Context</a></strong> has an Authentication Method
-defined which dictates how authentication is handled. The
-authentication is used to create Web Sessions that correspond to
-authenticated webapp <a href="/docs/desktop/start/features/users/">Users</a>.</p>
-<p>In order to detect when response messages from web servers correspond
-to authenticated requests, a set of indicators can be configured. The
-<strong>Logged in indicator</strong> , when present in a response message (either
-the header or the body), signifies that the response message
-corresponds to an authenticated request (e.g. presence of a &lsquo;logout
-link&rsquo; or a &lsquo;Welcome back, User X&rsquo; pattern). Similarly, the <strong>Logged
-out indicator</strong> indicates an unauthenticated request (e.g. presence of
-a &lsquo;login link&rsquo;). If ZAP detects the logged out indicator it will re-authenticate,
-otherwise it's assumed that's already authenticated and will continue as usual.
-Only one (1) of the two (2) indicators is necessary for
-proper functionality. In the case neither of the
-indicators has been specified, all messages are considered, by
-default, authenticated.</p>
-<p>To set one of the <strong>Logged in/out Indicators</strong> , either type the regex
-directly in the <em><a href="/docs/desktop/ui/dialogs/session/contexts/#auth">Session
-Properties</a> dialog -&gt; Authentication panel -&gt; Logged In/Out Indicator field</em> ,
-either find an authenticated message in the Sites Tree, select it, open the
-Response View and select the text you wish to define as the indicator using the
-mouse and select the <em>Flag as Context&hellip; Logged in/out indicator</em> right-click menu option.</p>
+<p>ZAP can handle a wide range of authentication mechanisms.<br>
+Each <a href="/docs/desktop/start/features/contexts/">Context</a> has:</p>
+<ul>
+<li>an <a href="/docs/desktop/start/features/authmethods/">Authentication Method</a> which defines how authentication is handled. The authentication is used to create Web Sessions that correspond to authenticated webapp <a href="/docs/desktop/start/features/users/">Users</a>.</li>
+<li>an <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategy</a> which defines how ZAP should detect when messages correspond to authenticated requests.</li>
+</ul>
+<p>You can use any combination of Authentication Method and Verification Strategy which works for your webapp.</p>
 <p>In order to perform the authentication of a user on a website /
-in a webapp, the Authentication Method defines how the authentication
+in a webapp, the Authentication Method and Verification Strategy define how the authentication
 is done (the process), while the necessary credentials (the exact
 identifiers) are dependent on the user, so, in ZAP, they are
 configured in the Users.</p>
 <p>The generic <strong>main steps</strong> that are needed to configure authentication for a web application
 are the following:</p>
 <ol>
-<li>properly configure a ZAP <a href="/docs/desktop/start/features/contexts/">Context</a> for the web application</li>
-<li>set up the <a href="/docs/desktop/start/features/sessionmanagement/">session management method</a> for the context to the one that is used in your app</li>
-<li>set up the authentication method for the context:
+<li>Configure a ZAP <a href="/docs/desktop/start/features/contexts/">Context</a> for the web application, ensuring that all required URLs are included</li>
+<li>Set up the <a href="/docs/desktop/start/features/sessionmanagement/">Session Management Method</a> for the context to the one that is used in your app</li>
+<li>Configure the <a href="/docs/desktop/start/features/authmethods/">Authentication Method</a> for your application, specifying all the requirements</li>
+<li>Configure the <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategy</a> for your application, specifying at least one of the <em>Logged In Indicator</em> or the <em>Logged out indicator</em></li>
+<li>Configure one or more <a href="/docs/desktop/start/features/users/">Users</a> for the context that directly correspond to the authentication method for the context</li>
+</ol>
+<h2 id="configuration-example">Configuration example</h2>
+<p>A configuration example showing how to fully configure a webapp that uses <em>form-based authentication</em> ,
+<em>cookie-based session management</em> and returns full HTML pages (including an indication of whether the user is logged in) is seen below:</p>
 <ol>
-<li>set up at least one of the <em>Logged In Indicator</em> or the <em>Logged out indicator</em>, as described above</li>
-<li>configure the authentication method for your application, specifying all the requirements (as seen below)</li>
+<li>Set up a context for the web application</li>
+<li>Set up the session management method to <em>Cookie-based Session Management</em></li>
+<li>Make sure your browser proxies everything through ZAP and log into your application using the browser</li>
+<li>Go to ZAP and identify the request that was done for the login (most usually it's a HTTP POST request containing the username and the password and possibly other elements)</li>
+<li>If there is an anti-CSRF token in the login request, add the token name in <a href="/docs/desktop/ui/dialogs/options/anticsrf/">Options Anti CSRF screen</a>, if not present.</li>
+<li>Set up the authentication method:
+<ol>
+<li>Right click on the authentication request and &lsquo;Flag as Context&hellip; Form-based Auth Login Request&rsquo;</li>
+<li>A window will be opened already containing the request URL and the parameters (if any). Use the dropdown options to select which of the parameters correspond to the username and to the password</li>
 </ol>
 </li>
-<li>configure a set of <a href="/docs/desktop/start/features/users/">users</a> for the context that directly correspond to the authentication method for the context</li>
-</ol>
-<p>Authentication methods can be used in multiple places around
-ZAP. Some of the examples include:</p>
-<ul>
-<li>defining Users and automatic login</li>
-<li>detection of authenticated/unauthenticated states</li>
-<li>performing automatic re-authentication</li>
-</ul>
-<p>Multiple authentication methods have been implemented and the
-system supports easy addition of new methods, according to user needs.
-They main ones are described below.</p>
-<h3 id="manual">Manual Authentication</h3>
-<p>This method allows users to perform the authentication manually
-(e.g. authenticate in the browser while proxy-ing through ZAP) and
-then select the corresponding HTTP session. As the actual
-authentication is being performed by you, this method does not support
-re-authentication in case the webapp logs a user out.</p>
-<p>When using this authentication method, configuring a User for the context
-require choosing an authenticated HTTP session.</p>
-<h3 id="formBased">Form-Based Authentication</h3>
-<p>This method is used for websites / webapps where authentication is
-done by submitting a form or performing a GET request to a &lsquo;login url&rsquo;
-using a &lsquo;username/password&rsquo; pair of authentication credentials.
-Re-authentication is possible. Configuration can be done using the <a href="/docs/desktop/ui/dialogs/session/contexts/#auth">Session
-Contexts Dialog</a> or using the contextual PopupMenu: <em>Flag as&hellip;
-Form-Based Authentication Login Request</em>.</p>
-<p>When using this authentication method, configuring a User for the context requires
-setting up the <em>username/password</em> pair of credentials that are used for the form based
-authentication.</p>
-<p>If the application requires submitting the anti-CSRF token presented in the login page, ZAP will
-handle it automatically. Make sure the token
-name is configured in <a href="/docs/desktop/ui/dialogs/options/anticsrf/">Options Anti CSRF screen</a>.</p>
-<h3 id="jsonBased">JSON-Based Authentication</h3>
-<p>This method is used for websites / webapps where authentication is
-done by submitting a JSON object to a &lsquo;login url&rsquo; using a &lsquo;username/password&rsquo;
-pair of authentication credentials.
-Re-authentication is possible. Configuration can be done using the <a href="/docs/desktop/ui/dialogs/session/contexts/#auth">Session
-Contexts Dialog</a> or using the contextual PopupMenu: <em>Flag as&hellip;
-JSON-Based Authentication Login Request</em>.</p>
-<p>When using this authentication method, configuring a User for the context requires
-setting up the <em>username/password</em> pair of credentials that are used for the
-authentication.</p>
-<h3 id="httpAuth">HTTP/NTLM Authentication</h3>
-<p>This method is used for websites / webapps where authentication is
-enforced using the HTTP or NTLM Authentication mechanisms employing HTTP message headers.
-Three authentication schemes are supported: Basic, Digest and NTLM.
-Re-authentication is possible, as the authentication headers are sent with every authenticated
-request. Configuration can be done using the <a href="/docs/desktop/ui/dialogs/session/contexts/#auth">Session
-Contexts Dialog</a>.</p>
-<p>When using this authentication method, configuring a User for the context requires
-setting up the <em>username/password</em> pair of credentials that are used for the HTTP/NTLM authentication.</p>
-<h3 id="scriptBased">Script-Based Authentication</h3>
-<p>This method is useful for websites / webapps where the authentication is a more complex one and some custom
-scripts that handle the authentication process are beneficial. To use this method, you must first define an Authentication script
-which sends messages or performs other actions as needed by your web-application. This script is then selected for use for a given Context
-and it is called whenever an authentication is performed. Re-authentication is possible.
-Configuration can be done using the <a href="/docs/desktop/ui/dialogs/session/contexts/#auth">Session
-Contexts Dialog</a> and requires you to have the Scripts Console ZAP Addon installed from the Marketplace.</p>
-<p>When using this authentication method, configuring a User for the context requires
-setting up the a set of parameters defined in the script. For more details, see the provided Authentication Script examples.</p>
-<h2 id="configuration-example">Configuration example</h2>
-<p>A configuration example showing how to fully configure a webapp that uses <em>form-based authentication</em> and
-<em>cookie-based session management</em> is
-seen below:</p>
+<li>Set up the authentication verification strategy:
 <ol>
-<li>set up a context for the web application</li>
-<li>set up the session management method to <em>Cookie-based Session Management</em></li>
-<li>make sure your browser proxies everything through ZAP and log into your application using the browser</li>
-<li>go to ZAP and identify the request that was done for the login (most usually it's a HTTP POST request containing the username and the password and possibly other elements)</li>
-<li>If there is an anti-CSRF token in the login request, add the token name in <a href="/docs/desktop/ui/dialogs/options/anticsrf/">Options Anti CSRF screen</a>, if not present.</li>
-<li>right click on the request and Flag as Context&hellip; Form-based Auth Login Request</li>
-<li>a window will be opened already containing the request URL and the parameters (if any). Use the dropdown options to select which of the parameters correspond to the username and to the password</li>
-<li>then you need to tell ZAP how to identify whether an authentication succeeded or not. You can do this by setting logged in or logged out indicators. These are regex patterns which, if found in a response, tell ZAP whether it's authenticated or not (e.g. presence of a <a href="http://example.com/logout">http://example.com/logout</a> link or the presence of a &lsquo;Welcome, User X&rsquo;). Only one of them is necessary. To set one of them, either type the regex directly in the Session Properties -&gt; Authentication -&gt; Logged In Indicator, either find an authenticated message in the Sites Tree, select it, open the Response View and select the text you wish to define as the indicator using the mouse and select the Flag as Context&hellip; Logged in indicator right-click menu option.</li>
-<li>define as many users as you need in the Session Properties -&gt; Users section.</li>
-<li>after this step, various actions are available in ZAP. For example, you can now select the user in <a href="/docs/desktop/ui/dialogs/spider/">Spider dialogue</a>. Or, using the Forced User Mode, you can force all the interactions that go through ZAP for a given Context to be from the perspective of a User. The User Forced Mode is enabled via the previous-to-last button in the toolbar (the one with the user and the lock) and is configured via Session Properties -&gt; Forced User Mode.</li>
+<li>Select a message which has a suitable logged in or logged out indicator e.g. a logout link or a welcome message</li>
+<li>Select the relevant text, right click on it and select either &lsquo;Flag as Context&hellip; Authentication Logged-in Indicator&rsquo; or &lsquo;Flag as Context&hellip; Authentication Logged-out Indicator&rsquo; as appropriate</li>
 </ol>
-<p>Most of the steps above apply as well for other authentication methods. The only things that change when trying to configure authentication using a different method are steps 3, 4, 5 and 6. Instead of these, select the authentication method required from the drop-down list and configure it as needed. More details about configuring each type of authentication can be above and <a href="/docs/desktop/ui/dialogs/session/contexts/">here</a>.</p>
+</li>
+<li>Define as many users as you need in the Session Properties -&gt; Users section.</li>
+</ol>
+<p>After configuring authentication, various actions are available in ZAP. For example, you can now select the user in the <a href="/docs/desktop/ui/dialogs/spider/">Spider dialogue</a>. Or, using the Forced User Mode, you can force all the interactions that go through ZAP for a given Context to be from the perspective of a User. The Forced User Mode is enabled via a button in the toolbar (the one with the user and the lock) and is configured via Session Properties -&gt; Forced User Mode.<br>
+Most of the steps above apply as well for other authentication methods. The only things that change when trying to configure authentication using a different method is step 6. Instead of that, select the authentication method required from the drop-down list and configure it as needed. More details about configuring each type of authentication can be found in the <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a> page and in the <a href="/docs/desktop/ui/dialogs/session/contexts/">Context Session screens</a>.</p>
+<h2 id="envvars">Authentication Header Environmental Variables</h2>
+<p>A set of environmental variables are available which allow you to easily add an authentication header to all of the requests that are proxied through ZAP or initiated by the ZAP tools, including the spiders and active scanner:</p>
+<ul>
+<li>ZAP_AUTH_HEADER_VALUE - if this is defined then its value will be added as a header to all of the requests</li>
+<li>ZAP_AUTH_HEADER - if this is defined then its value will be used as the header name - if it is not defined then the standard <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization</a> header will be used</li>
+<li>ZAP_AUTH_HEADER_SITE - if this is defined then header will only be included in sites who's name includes its value</li>
+</ul>
 <h2 id="configured-via">Configured via</h2>
 <table>
 <thead>
@@ -1437,6 +1399,29 @@ seen below:</p>
 <td></td>
 <td><a href="/docs/desktop/start/features/anticsrf/">Anti-CSRF tokens</a></td>
 <td>for an overview of anti-CSRF tokens</td>
+</tr>
+</tbody>
+</table>
+<h2 id="official-videos">Official Videos</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><a href="https://play.sonatype.com/watch/ttqKANDzJCAdBUkPrsz6Td">ZAP In Ten: Authentication: Basic and Digest</a> (9:57)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="https://play.sonatype.com/watch/B1vhaLSUsme7eA5hU8WeGB">ZAP In Ten: Authentication: Form Based</a> (12:59)</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="/addo-auth-workshop/">ZAP In Ten: ADDO Automation and Authentication Workshop</a> (8 videos)</td>
 </tr>
 </tbody>
 </table>

@@ -318,7 +318,7 @@
     </li>
 
     <li data-depth="2" class="">
-            <a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a>
+            <a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash dialog</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/encode-decode-hash/options/">Options Encode/Decode screen</a>
@@ -678,6 +678,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/soap-support/">SOAP Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger Files</a>
         <ul class="tree-branch">
         </ul>
@@ -831,6 +837,9 @@
                             <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -907,6 +916,12 @@
                             <a href="/docs/desktop/start/features/authentication/">Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/breakpoints/">Breakpoints</a>
                         </li>  
                         <li> 
@@ -914,6 +929,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/contexts/">Contexts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/custompages/">Custom Page</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a>
@@ -925,7 +943,10 @@
                             <a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/start/features/intercept/">Man-in-the-middle Proxy</a>
+                            <a href="/docs/desktop/start/features/intercept/">Manipulator-in-the-middle Proxy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/marketplace/">Marketplace</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/modes/">Modes</a>
@@ -943,7 +964,13 @@
                             <a href="/docs/desktop/start/features/scope/">Scope</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/scripts/">Scripts</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/sessionmanagement/">Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/spider/">Spider</a>
@@ -1263,7 +1290,7 @@
 <p>The Script Console add-on allows you to run scripts that can be embedded within ZAP and can access internal ZAP data structures.<br>
 It supports any scripting language that supports JSR 223 (<a href="http://www.jcp.org/en/jsr/detail?id=223">http://www.jcp.org/en/jsr/detail?id=223</a>) , including:</p>
 <ul>
-<li>ECMAScript / Javascript (using <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/">Nashorn engine</a>, included by default)</li>
+<li>ECMAScript / JavaScript (using <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/scripting/nashorn/">Nashorn engine</a>, included by default)</li>
 <li>Zest <a href="https://developer.mozilla.org/en-US/docs/zest">https://developer.mozilla.org/en-US/docs/zest</a> (included by default)</li>
 <li>Groovy <a href="http://groovy-lang.org/">http://groovy-lang.org/</a></li>
 <li>Python <a href="http://www.jython.org">http://www.jython.org</a></li>
@@ -1277,14 +1304,16 @@ It supports any scripting language that supports JSR 223 (<a href="http://www.jc
 <li>Stand Alone - scripts that are self contained and are only run when your start them manually</li>
 <li>Active Rules - these run as part of the Active Scanner and can be individually enabled</li>
 <li>Passive Rules - these run as part of the Passive Scanner and can be individually enabled</li>
-<li>Proxy Rules - these run &lsquo;inline&rsquo;, can change every request and response and can be individually enabled. They can also trigger break points</li>
+<li>Proxy - these run &lsquo;inline&rsquo;, can change every request and response and can be individually enabled. They can also trigger break points</li>
 <li>HTTP Sender - scripts that run against every request/response sent/received by ZAP. This includes the proxied messages, messages sent during active scanner, fuzzer, &hellip;</li>
-<li>Targeted Rules - scripts that invoked with a target URL and are only run when your start them manually</li>
-<li>Authentication - scripts that invoked when authentication is performed for a Context. To be used, they need to be selected when configuring the Script-Based Authentication Method for a Context.</li>
-<li>Script Input Vectors - scripts for defining exactly what ZAP should attack</li>
-<li>Extenders - scripts which can add new functionality, including graphical elements and new API end points</li>
+<li>Targeted - scripts that are invoked with a target URL and are only run when your start them manually</li>
+<li>Authentication - scripts that are invoked when authentication is performed for a Context. To be used, they need to be selected when configuring the Script-Based Authentication Method for a Context.</li>
+<li>Script Input Vector - scripts for defining exactly what ZAP should attack</li>
+<li>Extender - scripts which can add new functionality, including graphical elements and new API end points</li>
 </ul>
-<p>All scripts that are run automatically are initially &lsquo;disabled&rsquo; - you must enable them via the <a href="/docs/desktop/addons/script-console/tree/">The Scripts &lsquo;tree&rsquo; tab</a> before they will run.<br>
+<p><strong>Note:</strong> Add-ons can add additional types of scripts, which should be described in the help of the corresponding add-on.</p>
+<p>All scripts that are run automatically are initially &lsquo;disabled&rsquo; - you must enable them via the <a href="/docs/desktop/addons/script-console/tree/">The Scripts &lsquo;tree&rsquo; tab</a>
+before they will run.<br>
 If an error occurs when they run then they will be disabled.<br>
 When you select the script then the last error will be shown in the <a href="/docs/desktop/addons/script-console/console/">Script Console tab</a>.<br>
 Targeted scripts can be invoked by right clicking on a record in the Sites or History tabs and selecting the &lsquo;Invoke with script&hellip;&rsquo; menu item.</p>
@@ -1293,17 +1322,17 @@ will typically have templates. However you may well be able to adapt a template 
 If your favourite language is not available on the Marketplace then please raise a new issue via the &ldquo;Online/Report an issue&rdquo; menu item.</p>
 <h2 id="global-variables">Global Variables</h2>
 <p>Variables can be shared between all scripts via the class org.zaproxy.zap.extension.script.ScriptVars.<br>
-For example in Javascript you can use this class as follows:</p>
+For example in JavaScript you can use this class as follows:</p>
 <p><code>org.zaproxy.zap.extension.script.ScriptVars.setGlobalVar(&quot;var.name&quot;,&quot;value&quot;)</code><br>
 <code>org.zaproxy.zap.extension.script.ScriptVars.getGlobalVar(&quot;var.name&quot;)</code><br>
 <code></code></p>
 <h2 id="script-variables">Script Variables</h2>
 <p>Variables can be shared between separate invocations of the same script via the same org.zaproxy.zap.extension.script.ScriptVars class.<br>
-For example in Javascript you can use this class as follows:</p>
+For example in JavaScript you can use this class as follows:</p>
 <p><code>org.zaproxy.zap.extension.script.ScriptVars.setScriptVar(this.context, &quot;var.name&quot;,&quot;value&quot;)</code><br>
 <code>org.zaproxy.zap.extension.script.ScriptVars.getScriptVar(this.context, &quot;var.name&quot;)</code><br>
 <code></code><br>
-Note that these methods are only usable from scripting languages that provide access to the ScriptContext (like Javascript). For other scripting languages (in ZAP versions after 2.7.0) the variables can be accessed/set by manually specifying the name of the script:</p>
+Note that these methods are only usable from scripting languages that provide access to the ScriptContext (like JavaScript). For other scripting languages (in ZAP versions after 2.7.0) the variables can be accessed/set by manually specifying the name of the script:</p>
 <p><code>org.zaproxy.zap.extension.script.ScriptVars.setScriptVar(&quot;ScriptName&quot;, &quot;var.name&quot;,&quot;value&quot;)</code><br>
 <code>org.zaproxy.zap.extension.script.ScriptVars.getScriptVar(&quot;ScriptName&quot;, &quot;var.name&quot;)</code><br>
 <code></code></p>

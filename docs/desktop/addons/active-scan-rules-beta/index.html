@@ -318,7 +318,7 @@
     </li>
 
     <li data-depth="2" class="">
-            <a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a>
+            <a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash dialog</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/encode-decode-hash/options/">Options Encode/Decode screen</a>
@@ -678,6 +678,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/soap-support/">SOAP Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger Files</a>
         <ul class="tree-branch">
         </ul>
@@ -831,6 +837,9 @@
                             <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -907,6 +916,12 @@
                             <a href="/docs/desktop/start/features/authentication/">Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/breakpoints/">Breakpoints</a>
                         </li>  
                         <li> 
@@ -914,6 +929,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/contexts/">Contexts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/custompages/">Custom Page</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a>
@@ -925,7 +943,10 @@
                             <a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/start/features/intercept/">Man-in-the-middle Proxy</a>
+                            <a href="/docs/desktop/start/features/intercept/">Manipulator-in-the-middle Proxy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/marketplace/">Marketplace</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/modes/">Modes</a>
@@ -943,7 +964,13 @@
                             <a href="/docs/desktop/start/features/scope/">Scope</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/scripts/">Scripts</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/sessionmanagement/">Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/spider/">Spider</a>
@@ -1261,15 +1288,16 @@
 </ol>
           <h1 id="active-scan-rules---beta">Active Scan Rules - Beta</h1>
 <p>The following beta quality active scan rules are included in this add-on:</p>
-<h2 id="htaccess-information-leak">.htaccess Information Leak</h2>
-<p>Checks for web accessible .htaccess files which may leak sensitive information (such as usernames, error handling, redirects, directory listing settings, etc.).</p>
-<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/HtAccessScanRule.java">HtAccessScanRule.java</a></p>
 <h2 id="apache-range-header-dos-cve-2011-3192">Apache Range Header DoS (CVE-2011-3192)</h2>
 <p>Tests to see if the server is vulnerable to the Apache Range Header Denial of Service issue, by requesting eleven (11) different byte ranges. Eleven ranges is one more than is accepted by patched/fixed servers.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/ApacheRangeHeaderDosScanRule.java">ApacheRangeHeaderDosScanRule.java</a></p>
 <h2 id="backup-file-disclosure">Backup File Disclosure</h2>
 <p>Scans for commonly-named backup copies of files on the web server, which may reveal sensitive information.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/BackupFileDisclosureScanRule.java">BackupFileDisclosureScanRule.java</a></p>
+<h2 id="cloud-metadata-attack">Cloud Metadata Attack</h2>
+<p>Attempts to abuse a misconfigured NGINX server in order to access the instance metadata maintained by cloud service providers such as AWS, GCP and Azure.<br>
+All of these providers provide metadata via an internal unroutable IP address &lsquo;169.254.169.254&rsquo; - this can be exposed by incorrectly configured NGINX servers and accessed by using this IP address in the Host header field.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/CloudMetadataScanRule.java">CloudMetadataScanRule.java</a></p>
 <h2 id="cookie-slack-detector">Cookie Slack Detector</h2>
 <p>Tests cookies to detect if some have no effect on response size when omitted, especially cookies containing the name &ldquo;session&rdquo; or &ldquo;userid&rdquo;.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/SlackerCookieDetector.java">SlackerCookieDetector.java</a></p>
@@ -1282,11 +1310,9 @@ Alerts on requests which do not appear to contain Anti-CSRF tokens.<br>
 At HIGH alert threshold only scans messages which are in scope.<br>
 Post 2.5.0 you can specify a comma separated list of identifiers in the <code>rules.csrf.ignorelist</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any FORMs with a name or ID that matches one of these identifiers will be ignored when scanning for missing Anti-CSRF tokens. Only use this feature to ignore FORMs that you know are safe, for example search forms.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/CsrfTokenScanRule.java">CsrfTokenScanRule.java</a></p>
-<h2 id="elmah-information-leak">ELMAH Information Leak</h2>
-<p>Tests to see if the Error Logging Modules and Handlers (elmah.axd) HTTP Module is available. Although this module is handy for developers and other stakeholders it can also leak a significant amount of information which a security analyst or malicious individual may be interested in.</p>
-<p>The ELMAH scan rule targets Microsoft based technologies: IIS, Windows, ASP, and MSSQL.<br>
-Files are only reported if they contain the text &ldquo;Error Log for&rdquo; unless a LOW alert threshold is set.</p>
-<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/ElmahScanRule.java">ElmahScanRule.java</a></p>
+<h2 id="env-information-leak">.env Information Leak</h2>
+<p>Checks for web accessible .env files which may leak sensitive information (such as usernames, passwords, API or APP keys, etc.).</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/EnvFileScanRule.java">EnvFileScanRule.java</a></p>
 <h2 id="expression-language-injection">Expression Language Injection</h2>
 <p>Checks if the web application is subject to Expression Language (EL) injection attacks, which occur when an application fails to sufficiently neutralize special elements that could modify the intended EL statement before it is executed.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/ExpressionLanguageInjectionScanRule.java">ExpressionLanguageInjectionScanRule.java</a></p>
@@ -1296,6 +1322,35 @@ Files are only reported if they contain the text &ldquo;Error Log for&rdquo; unl
 <h2 id="heartbleed-openssl-vulnerability">Heartbleed OpenSSL Vulnerability</h2>
 <p>Detects if the web server is vulnerable to the Heartbleed OpenSSL Vulnerability, by exploiting it. For further details refer to CVE-2014-0160.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/HeartBleedActiveScanRule.java">HeartBleedActiveScanRule.java</a></p>
+<h2 id="hidden-file-finder">Hidden File Finder</h2>
+<p>This scan rule checks for various web accessible files which may leak administrative, configuration, or credential information. The original included set of payloads were based on <a href="https://github.com/hannob/snallygaster">Snallygaster</a> by Hanno Böck. Such payloads are verified by checking response code, and content. If the response code is 200 (Ok) then additional content checks are performed to increase alert confidence. If the response code is 401 (Unauthorized) or 403 (Forbidden) or the content checks are un-successful then an alert is raised with lower confidence (at HIGH Threshold). <strong>Note:</strong> If the Custom Payloads addon is installed you can add your own hidden file paths (payloads) in the Custom Payloads options panel. For custom payloads only the response status code is checked. If there is a requirement to include a content check then it is also possible to add payloads to the <code>json/hidden_files.json</code> file in ZAP's user directory (in which case they will be treated as included payloads).</p>
+<p>The following describes the fields of the JSON entries.</p>
+<pre><code>{
+  &quot;path&quot;:&quot;some/path/without/leading/slash.ext&quot;,
+  &quot;content&quot;:[&quot;content you want to find in responses&quot;],
+  &quot;not_content&quot;:[&quot;content you do not want the response to have&quot;],
+  &quot;binary&quot;:&quot;\\x01\\x00&quot;,
+  &quot;links&quot;:[&quot;https://example.com/relevant/reference.html,&quot;https://other.example.org/&quot;],
+  &quot;type&quot;:&quot;short_identifier&quot;,
+  &quot;source&quot;:&quot;attribution_not_used_by_output_or_checks&quot;
+}
+</code></pre>
+<p>Details worth noting:</p>
+<ul>
+<li>The only field that is required is path.</li>
+<li>The fields content, not_content, and links can have multiple quoted, comma separated values (arrays of strings).</li>
+<li>Checks of binary content are based on starting position 0 (ex: startsWith not contains).</li>
+</ul>
+<p>The following is an example JSON entry:</p>
+<pre><code>{
+  &quot;path&quot;:&quot;CVS/root&quot;,
+  &quot;content&quot;:[&quot;:&quot;],
+  &quot;not_content&quot;:[&quot;&lt;&quot;],
+  &quot;type&quot;:&quot;cvs_dir&quot;,
+  &quot;source&quot;:&quot;snallygaster&quot;
+}
+</code></pre>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/HiddenFilesScanRule.java">HiddenFilesScanRule.java</a></p>
 <h2 id="http-only-site">HTTP Only Site</h2>
 <p>This active scan rule checks whether an HTTP site is served under HTTPS.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/HttpOnlySiteScanRule.java">HttpOnlySiteScanRule.java</a></p>
@@ -1408,6 +1463,10 @@ The rule tests only for time-based SQL injection vulnerabilities.</p>
 <h2 id="xpath-injection">XPath Injection</h2>
 <p>As described by OWASP: &ldquo;XPath Injection attacks occur when a web site uses user-supplied information to construct an XPath query for XML data. By sending intentionally malformed information into the web site, an attacker can find out how the XML data is structured, or access data that he may not normally have access to. He may even be able to elevate his privileges on the web site if the XML data is being used for authentication (such as an XML based user file) or authorization.&rdquo; This rule attempts to identify such weaknesses.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/XpathInjectionScanRule.java">XpathInjectionScanRule.java</a></p>
+<h2 id="xslt-injection">XSLT Injection</h2>
+<p>This scan rule checks for certain responses induced by injecting XSL transformations.<br>
+It attempts to obtain those responses with payloads which may induce: error responses, disclosure of library/framework vendor name, remote port scanning, or command execution.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/XsltInjectionScanRule.java">XsltInjectionScanRule.java</a></p>
 <h2 id="xxe">XXE</h2>
 <p>This component attempts to identify applications which are subject to XML eXternal Entity (XXE) attacks. Applications which parse XML input may be subject to XXE when weakly or poorly configured parsers handle XML input containing reference to an external entity such as a local file, HTTP requests to internal or tertiary systems, etc.</p>
 <p>It requires the Callback extension, so will not work if this extension is disabled or removed. It is also recommended that you test that the Callback extension is correctly configured for your target site. If the target system cannot connect to the Callback Address then some XXE vulnerabilities will not be detected.</p>

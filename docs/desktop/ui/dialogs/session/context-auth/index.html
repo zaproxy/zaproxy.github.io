@@ -317,7 +317,7 @@
     </li>
 
     <li data-depth="2" class="">
-            <a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a>
+            <a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash dialog</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/encode-decode-hash/options/">Options Encode/Decode screen</a>
@@ -677,6 +677,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/soap-support/">SOAP Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger Files</a>
         <ul class="tree-branch">
         </ul>
@@ -830,6 +836,9 @@
                             <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -906,6 +915,12 @@
                             <a href="/docs/desktop/start/features/authentication/">Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/breakpoints/">Breakpoints</a>
                         </li>  
                         <li> 
@@ -913,6 +928,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/contexts/">Contexts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/custompages/">Custom Page</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a>
@@ -924,7 +942,10 @@
                             <a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/start/features/intercept/">Man-in-the-middle Proxy</a>
+                            <a href="/docs/desktop/start/features/intercept/">Manipulator-in-the-middle Proxy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/marketplace/">Marketplace</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/modes/">Modes</a>
@@ -942,7 +963,13 @@
                             <a href="/docs/desktop/start/features/scope/">Scope</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/scripts/">Scripts</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/sessionmanagement/">Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/spider/">Spider</a>
@@ -1268,28 +1295,50 @@
 </ol>
           <h1 id="session-context-authentication-screen">Session Context Authentication screen</h1>
 <p>This is one of the <a href="/docs/desktop/ui/dialogs/session/contexts/">Session Context screens</a>
-which allows you to manage the way in which <a href="/docs/desktop/start/features/authentication/">Authentication</a> is being done for the Context.
-After selecting the Authentication Method type, the options that need to be configured depend on the Authentication Method.</p>
+which allows you to manage the way in which <a href="/docs/desktop/start/features/authentication/">Authentication</a> is being done for the Context.</p>
+<h2 id="authentication-method">Authentication Method</h2>
+<p>After selecting the <a href="/docs/desktop/start/features/authmethods/">Authentication Method</a> type, the options that need to be configured depend on the Authentication Method.</p>
 <p><strong>Note:</strong> Changing the authentication method after Users have been defined might cause its credentials to be reset,
 as the type of user credentials need to match the authentication scheme. A confirmation dialogue will be shown when that happens.</p>
-<h4 id="manual-authentication">Manual Authentication</h4>
-<p>No configuration is needed for this authentication method. Read <a href="/docs/desktop/start/features/authentication/#manual">more</a>&hellip;</p>
-<h4 id="form-based-authentication">Form-Based Authentication</h4>
+<h3 id="manual-authentication">Manual Authentication</h3>
+<p>No configuration is needed for this authentication method. Read <a href="/docs/desktop/start/features/authmethods/#manual">more</a>&hellip;</p>
+<h3 id="form-based-authentication">Form-Based Authentication</h3>
 <p>To configure this authentication method, you need to supply the <strong>login url</strong> , to which the login request is performed, the <strong>request body</strong> (POST data), if needed, and identify the <strong>parameters</strong> used to supply the &lsquo;username&rsquo; and &lsquo;password&rsquo;. If no request body is supplied, the login request is performed as a HTTP GET, otherwise an HTTP POST is used. The credentials themselves are configured in the <a href="/docs/desktop/ui/dialogs/session/contexts/#users">Users</a> tab. The <strong>login page</strong> can also be supplied to indicate from where to obtain a new session (e.g. cookies) and regenerate <a href="/docs/desktop/start/features/anticsrf/">Anti CSRF tokens</a> present in the <strong>request body</strong> . If the <strong>login page</strong> is not supplied it is used the <strong>login url</strong> .<br>
-Read <a href="/docs/desktop/start/features/authentication/#formBased">more</a>&hellip;</p>
-<h4 id="json-based-authentication">JSON-Based Authentication</h4>
+Read <a href="/docs/desktop/start/features/authmethods/#formBased">more</a>&hellip;</p>
+<h3 id="json-based-authentication">JSON-Based Authentication</h3>
 <p>To configure this authentication method, you need to supply the <strong>login url</strong> , to which the login request is performed, the <strong>JSON object</strong> (POST data, <code>application/json</code>), and identify the <strong>parameters</strong> used to supply the &lsquo;username&rsquo; and &lsquo;password&rsquo;. The credentials themselves are configured in the <a href="/docs/desktop/ui/dialogs/session/contexts/#users">Users</a> tab. The <strong>login page</strong> can also be supplied to indicate from where to obtain a new session (e.g. cookies). If the <strong>login page</strong> is not supplied it is used the <strong>login url</strong> .<br>
-Read <a href="/docs/desktop/start/features/authentication/#jsonBased">more</a>&hellip;<br>
+Read <a href="/docs/desktop/start/features/authmethods/#jsonBased">more</a>&hellip;<br>
 Examples of POST data:</p>
 <ul>
 <li><code>{&quot;username&quot;:&quot;{%username%}&quot;,&quot;password&quot;:&quot;{%password%}&quot;}</code></li>
 <li><code>{&quot;user&quot;:{&quot;mail&quot;:&quot;{%username%}&quot;,&quot;password&quot;:&quot;{%password%}&quot;}}</code></li>
 </ul>
 <p>where <code>{%username%}</code> and <code>{%password%}</code> indicate where the authentication credentials are set.</p>
-<h4 id="httpntlm-authentication">HTTP/NTLM Authentication</h4>
-<p>To configure this authentication method, you need to supply the <strong>hostname</strong> and the <strong>port</strong> of the server the authentication is done with and the <strong>realm</strong> the credentials apply to. The credentials themselves are configured in the <a href="/docs/desktop/ui/dialogs/session/contexts/#users">Users</a> tab. Read <a href="/docs/desktop/start/features/authentication/#httpAuth">more</a>&hellip;</p>
-<h4 id="script-based-authentication">Script-Based Authentication</h4>
-<p>To use this authentication method, you <strong>first</strong> need to write (and save) an <strong>Authentication Script</strong> using the <strong>Scripts</strong> tab (see the provided examples and templates for this script type in the Scripts tab). Then you need to supply the name of the script in the dropdown list. After selecting the script, you need to press the <strong>Load</strong> button, loading all the requirements of the script. Any parameters that you have specified as <em>required</em> or <em>optional</em> in the script will be shown in the interface to be defined. Their values are available to be used in the script, during the authentication, as seen in the provided examples for Authentication Scripts. Make sure that after doing any changes to the parameters required by the Authentication script you re-load the script. Otherwise, the parameters shown in the interface might not be the ones used during the authentication and errors might occur. The <em>credentials</em> used for each User during the authentication processed can be also specified in the Authentication Script and are configured in the <a href="/docs/desktop/ui/dialogs/session/contexts/#users">Users</a> tab. Read <a href="/docs/desktop/start/features/authentication/#scriptBased">more</a>&hellip;</p>
+<h3 id="httpntlm-authentication">HTTP/NTLM Authentication</h3>
+<p>To configure this authentication method, you need to supply the <strong>hostname</strong> and the <strong>port</strong> of the server the authentication is done with and the <strong>realm</strong> the credentials apply to. The credentials themselves are configured in the <a href="/docs/desktop/ui/dialogs/session/contexts/#users">Users</a> tab. Read <a href="/docs/desktop/start/features/authmethods/#httpAuth">more</a>&hellip;</p>
+<h3 id="script-based-authentication">Script-Based Authentication</h3>
+<p>To use this authentication method, you <strong>first</strong> need to write (and save) an <strong>Authentication Script</strong> using the <strong>Scripts</strong> tab (see the provided examples and templates for this script type in the Scripts tab). Then you need to supply the name of the script in the dropdown list. After selecting the script, you need to press the <strong>Load</strong> button, loading all the requirements of the script. Any parameters that you have specified as <em>required</em> or <em>optional</em> in the script will be shown in the interface to be defined. Their values are available to be used in the script, during the authentication, as seen in the provided examples for Authentication Scripts. Make sure that after doing any changes to the parameters required by the Authentication script you re-load the script. Otherwise, the parameters shown in the interface might not be the ones used during the authentication and errors might occur. The <em>credentials</em> used for each User during the authentication processed can be also specified in the Authentication Script and are configured in the <a href="/docs/desktop/ui/dialogs/session/contexts/#users">Users</a> tab. Read <a href="/docs/desktop/start/features/authmethods/#scriptBased">more</a>&hellip;</p>
+<h2 id="authentication-verification">Authentication Verification</h2>
+<h3 id="verification-strategy">Verification Strategy</h3>
+<p>Select the <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategy</a> required.</p>
+<h3 id="regexloggedin">Regex pattern used to identify Logged in messages</h3>
+<p>If this regex pattern is specified and matches any string in the specified message then ZAP will treat this message as logged in. For example the pattern could be used to match a <a href="http://example.com/logout">http://example.com/logout</a> link or the presence of a &lsquo;Welcome, User X&rsquo; message.</p>
+<h3 id="regexloggedout">Regex pattern used to identify Logged out messages</h3>
+<p>If this regex pattern is specified and matches any string in the specified message then ZAP will treat this message as logged out. For example the pattern could be used to match a <a href="http://example.com/login">http://example.com/login</a> link or the presence of a &lsquo;Welcome, Guest&rsquo; message.</p>
+<h3 id="pollfreq">Poll Frequency</h3>
+<p>This controls how frequently ZAP will poll to see if a user is still authenticated. The integer will either represent the number of Requests that will be made before ZAP will poll again or the number of Seconds before it will poll again, depending on pulldown selected.<br>
+The option is only relevant if the &ldquo;Poll the Specified URL&rdquo; Verification Strategy has been selected.</p>
+<h3 id="pollurl">URL to Poll for Verification</h3>
+<p>This is the URL that ZAP will poll to see if a user is still authenticated.<br>
+The option is only relevant if the &ldquo;Poll the Specified URL&rdquo; Verification Strategy has been selected.</p>
+<h3 id="polldata">Poll Request POST Data</h3>
+<p>If supplied then this will be sent as a POST in the poll request. If it is empty then ZAP will make a GET request<br>
+The option is only relevant if the &ldquo;Poll the Specified URL&rdquo; Verification Strategy has been selected.</p>
+<h3 id="pollheaders">Additional Poll Request Headers</h3>
+<p>An optional set of headers that will be sent with the poll request. Each line should be one header and value separated by a colon e.g</p>
+<pre><code>Content-Type: application/json
+X-Requested-With: XMLHttpRequest
+</code></pre><p>The option is only relevant if the &ldquo;Poll the Specified URL&rdquo; Verification Strategy has been selected.</p>
 <h2 id="accessed-via">Accessed via</h2>
 <table>
 <thead>
@@ -1302,8 +1351,8 @@ Examples of POST data:</p>
 <tbody>
 <tr>
 <td></td>
-<td><a href="/docs/desktop/ui/tlmenu/file/">Top level File menu</a></td>
-<td>&lsquo;Properties&hellip;&rsquo; menu item</td>
+<td><a href="/docs/desktop/ui/tabs/sites/">Sites tab</a></td>
+<td>Double click a Context</td>
 </tr>
 </tbody>
 </table>

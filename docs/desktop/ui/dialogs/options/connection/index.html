@@ -317,7 +317,7 @@
     </li>
 
     <li data-depth="2" class="">
-            <a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a>
+            <a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash dialog</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/encode-decode-hash/options/">Options Encode/Decode screen</a>
@@ -677,6 +677,12 @@
     </li>
 
     <li data-depth="2" class="">
+            <a href="/docs/desktop/addons/soap-support/">SOAP Support</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
             <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger Files</a>
         <ul class="tree-branch">
         </ul>
@@ -830,6 +836,9 @@
                             <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -906,6 +915,12 @@
                             <a href="/docs/desktop/start/features/authentication/">Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/breakpoints/">Breakpoints</a>
                         </li>  
                         <li> 
@@ -913,6 +928,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/contexts/">Contexts</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/custompages/">Custom Page</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a>
@@ -924,7 +942,10 @@
                             <a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/start/features/intercept/">Man-in-the-middle Proxy</a>
+                            <a href="/docs/desktop/start/features/intercept/">Manipulator-in-the-middle Proxy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/marketplace/">Marketplace</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/modes/">Modes</a>
@@ -942,7 +963,13 @@
                             <a href="/docs/desktop/start/features/scope/">Scope</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/start/features/scripts/">Scripts</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/start/features/sessionmanagement/">Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/features/spider/">Spider</a>
@@ -1299,6 +1326,37 @@ The option SSLv2Hello must be selected in conjunction with at least one SSL/TLS 
 This is often required in a corporate environment.</p>
 <h3 id="proxy-authentication">Proxy Authentication</h3>
 <p>This section allows you to configure the outgoing proxy authentication.</p>
+<h3 id="socks-proxy">SOCKS Proxy</h3>
+<p>This section allows you to configure an outgoing SOCKS proxy, by default the SOCKS proxy configuration applies to all connections made by ZAP.</p>
+<p>The SOCKS proxy system properties (e.g. <code>socksProxyHost</code>, <code>socksProxyPort</code>) take precedence over the persisted configurations
+for compatibility with older ZAP versions. ZAP will use and display the values of the system's properties when defined at startup, the configurations
+can still be changed in this panel.</p>
+<p><strong>Note:</strong> Loopback addresses (e.g. <code>localhost</code>, <code>127.0.01</code>, <code>::1</code>) are not proxied through the SOCKS proxy, the connections will be done directly.</p>
+<h4 id="enabled">Enabled</h4>
+<p>If ZAP should use the configured SOCKS proxy.<br>
+Default: <code>unselected</code>, unless the SOCKS proxy system properties are defined, in which case it is <code>selected</code>.</p>
+<h4 id="host">Host</h4>
+<p>The host name or address of the SOCKS proxy.<br>
+Default: <code>localhost</code>.</p>
+<h4 id="port">Port</h4>
+<p>The port of the SOCKS proxy.<br>
+Default: <code>1080</code>.</p>
+<h4 id="version">Version</h4>
+<p>The version of the SOCKS proxy.<br>
+Default: <code>5</code>.</p>
+<h4 id="use-socks-dns">Use SOCKS&rsquo; DNS</h4>
+<p>If ZAP should let the SOCKS proxy resolve the host names. Requires a version 5 SOCKS proxy.<br>
+This might lead to connection failures if the SOCKS proxy is not able to resolve the host name (e.g. use of names that are defined in a <code>hosts</code> file).<br>
+Default: <code>selected</code>.</p>
+<h4 id="authentication">Authentication</h4>
+<p>The following fields allow to configure the authentication credentials for the SOCKS proxy.</p>
+<h5 id="user-name">User Name</h5>
+<p>The user name.<br>
+Default: none.</p>
+<h5 id="password">Password</h5>
+<p>The password.<br>
+Default: none.<br>
+<strong>Note:</strong> Stored in clear text in the configuration file.</p>
 <h2 id="see-also">See also</h2>
 <table>
 <thead>
