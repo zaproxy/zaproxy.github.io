@@ -4,7 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
+  <meta name="description" content="ZAP 2.10.0 Anniversary Release">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/images/2-10-0-loading.png"/>
+
+<meta name="twitter:title" content="ZAP 2.10.0 - The 10 Year Anniversary Release"/>
+<meta name="twitter:description" content="ZAP 2.10.0 Anniversary Release"/>
+
+    <meta property="og:title" content="ZAP 2.10.0 - The 10 Year Anniversary Release" />
+<meta property="og:description" content="ZAP 2.10.0 Anniversary Release" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/images/2-10-0-loading.png" />
+<meta property="article:published_time" content="2020-12-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-21T00:00:00+00:00" />
+
   
   <title>OWASP ZAP</title>
 
@@ -129,74 +144,74 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">Announcing the ZAP Jenkins Plugin</h1>
+          <h1 class="post-title">ZAP 2.10.0 - The 10 Year Anniversary Release</h1>
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Tuesday November 22, 2016</span>
-              <span class="word-count fl-r"> 463 Words </span>
+              Posted <span class="post-date">Monday December 21, 2020</span>
+              <span class="word-count fl-r"> 618 Words </span>
             </section>
-            <p>Using ZAP during the development process is now easier than ever. We are proud to present the Jenkins plugin, it extends the functionality of
-the ZAP security tool into a CI Environment.</p>
-
-<figure>
-	<img src="/blog/2016-11-22-announcing-the-official-zap-jenkins-plugin/images/ZAP_CI_SMALLER.png" alt="" />
-	<figcaption></figcaption>
-</figure>
-<h5 id="the-process-explained">The process explained</h5>
-<ol>
-<li>A Jenkins CI Build step initializes ZAP</li>
-<li>Traffic flows (Regression Pack) through ZAP (Web Proxy)</li>
-<li>ZAP modifies requests to include Vulnerability Tests</li>
-<li>Target Application/Server sends Response back through ZAP</li>
-<li>ZAP sends reporting data back to Jenkins</li>
-<li>Jenkins publishes and archives the report(s)</li>
-<li>Jenkins creates JIRA tickets for the alerts</li>
-</ol>
-<p>The ZAP Jenkins plugin makes use of the readily available and diverse ZAP API, allowing you to use the same session files and scan policy
-profiles between ZAP and the Jenkins plugin, so they can be interchangeably loaded.</p>
-<h5 id="so-what-can-you-do">So what can you do?</h5>
-<p>Automate the site mapping process with a selenium script, have ZAP act as an intercepting proxy to map the structure of your
-site and record passive alerts. Fire off an active scan and finish it off by generating a report in one of three available formats (xhtml, xml
-or json). These can be sent off to management or you can load the session later and inspect each raised alert at your convenience.<br>
-Providing a seamless workflow and the same functionality as the GUI. You can</p>
-<ul>
-<li>Manage Sessions (Load or Persist)</li>
-<li>Define Context (Name, Include URLs and Exclude URLs)</li>
-<li>Attack Contexts (Spider Scan, AJAX Spider, Active Scan)</li>
-</ul>
-<p>You can also:</p>
-<ul>
-<li>Setup Authentication (Form Based or Script Based)</li>
-<li>Run as Pre-Build as part of a Selenium Build</li>
-<li>Generate Reports (.xhtml, .xml, .json)</li>
-</ul>
-<p>All while giving you all the benefits of Jenkins to automate the process. Scan between build and deployment all from taking advantage of the
-automation server.</p>
+            <p>As you hopefully already know ZAP was released on <a href="/blog/2020-09-06-zap-is-ten-years-old/">September 6th 2010</a>.</p>
+<p>ZAP 2.10.0 has just been released and is now available to download via the <a href="/download/">Downloads</a> page so we're treating this as a belated 10 year anniversary release!</p>
+<p>I've recorded a training video in which I go through many of the new features:</p>
 <div class='embed-youtube'>
-  <iframe src='https://www.youtube.com/embed/' frameborder='0' allowfullscreen></iframe>
+  <iframe src='https://www.youtube.com/embed/rrVr-_-y6Xo' frameborder='0' allowfullscreen></iframe>
 </div>
 
-<h5 id="where-we-go-from-here">Where we go from here&hellip;</h5>
-<p>We plan to extend the authentication method to allow authenticated AJAX
-Spider Scans and support HTTP/NTLM Authentication. To further the continuous integration process, we will be adding Build Management tools in
-the near future which will allow you to set the thresholds that will determine a builds pass or failure. But we’re not stopping here, we will be
-continuously advancing our API to meet the needs of community requests for the Jenkins Plugin.<br>
-We will work with our community, taking advice and feedback to improve and support this plugin in the short and long term.  We hope it will become
-one of your favorite additions into your development lifecycle.<br>
-We hope to expand this project and open it to community involvement, we welcome you; the community members to help us maintain and improve the
-plugin and we thank you for your continued support.<br>
-Documentation: See the <a href="https://wiki.jenkins-ci.org/display/JENKINS/zap+plugin">Wiki</a> for more details.<br>
-Questions: Ask on our <a href="https://groups.google.com/forum/#!forum/zaproxy-jenkins">Google Group</a>.<br>
-Issue Tracking: Report on the <a href="https://issues.jenkins-ci.org/issues/?jql=project%20%3D%20JENKINS%20AND%20component%20%3D%20zap-plugin">Jenkins JIRA</a> for the project, please read the <a href="https://wiki.jenkins-ci.org/display/JENKINS/How+to+report+an+issue">JIRA guidelines</a> before reporting
-an issue.</p>
+<p>You will see that there is one demo that I was unable to run as I hit some issues. We investigated those and have now released fixes for them.
+Luckily we were able to fix them in add-ons rather than the core - if they had been in the latter then we would have had to release ZAP 2.10.1!
+So when you start using ZAP 2.10.0 make sure you <a href="/docs/desktop/start/features/marketplace/">check for updates</a> and install any add-ons that have newer versions.</p>
+<h2 id="the-changes">The Changes</h2>
+<p>Some of the more significant enhancements in this release include:</p>
+<h3 id="custom-pages">Custom Pages</h3>
+<p><a href="/docs/desktop/start/features/custompages/">Custom Pages</a> can be defined on a per context basis -
+these allow ZAP to identify various non-standard error handling conditions such as custom error pages and handle them more effectively.</p>
+<h3 id="authentication-polling">Authentication Polling</h3>
+<p>The concept of <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a> has been introduced which allows ZAP to handle
+a wider range of authentication mechanisms including the option to poll a specified page for the authentication status of a user.</p>
+<h3 id="site-tree-control">Site Tree Control</h3>
+<p>Scripts and add-ons now have full access to how nodes are represented in the <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>.
+Both <a href="https://github.com/zaproxy/community-scripts/tree/master/variant/">Input Vector Scripts</a> and add-ons which include implementations of the
+<a href="https://static.javadoc.io/org.zaproxy/zap/2.10.0/org/parosproxy/paros/core/scanner/Variant.html">Variant</a> class can change both the tree
+structure and names used for new nodes.</p>
+<p>For more details see the <a href="/blog/2020-09-22-sites-tree-modifiers/">Site Tree Modifiers</a> Blog post.</p>
+<h3 id="dynamic-look-and-feel-including-dark-mode">Dynamic Look and Feel including Dark Mode</h3>
+<p>The Desktop UI includes a new set of open source Look and Feel's c/o <a href="https://github.com/JFormDesigner/FlatLaf">FlatLaf</a> including 2 Dark Mode options.</p>
+<p>You can also dynamically switch the Look and Feel via a button on the <a href="/docs/desktop/ui/tltoolbar/">Top Level Toolbar</a>.</p>
+<p>For more details of the dark mode see the <a href="/blog/2020-03-04-dark-mode-in-the-weekly-release/">Dark Mode in the Weekly Release</a> Blog post.</p>
+<h3 id="authentication-headers-via-env-vars">Authentication Headers via Env Vars</h3>
+<p>A new set of environmental variables are available which allow you to easily add an authentication header to all of the requests that are proxied through ZAP or initiated by the ZAP tools, including the spiders and active scanner.
+These are documented on the <a href="/docs/desktop/start/features/authentication/#envvars">Authentication</a> page.</p>
+<h3 id="socks-proxy-configuration">SOCKS Proxy Configuration</h3>
+<p>It is now possible to dynamically configure the outgoing SOCKS proxy in the <a href="/docs/desktop/ui/dialogs/options/connection/">Options&rsquo; Connection screen</a>.
+By default the SOCKS proxy configuration applies to all connections made by ZAP.</p>
+<h3 id="cached-scripts">Cached Scripts</h3>
+<p>The following script types are now cached between invocations reducing the time it takes to reuse them:</p>
+<ul>
+<li>Active Rules</li>
+<li>HTTP Sender</li>
+<li>Input Vectors, when used for the Sites tree</li>
+<li>Passive Rules</li>
+<li>Proxy</li>
+</ul>
+<h3 id="new-add-ons">New Add-Ons</h3>
+<p>The following add-ons are included by default in this release for the first time:</p>
+<ul>
+<li><a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a> - this replaces the old core encode/decode/hash dialog</li>
+<li><a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS Scan Rule</a> - an Active Scan rule for detecting DOM XSS vulnerabilities</li>
+<li><a href="/docs/desktop/addons/form-handler/">Form Handler</a> - allows for the custom configuration of values used in forms based on field names</li>
+<li><a href="/docs/desktop/addons/graalvm-javascript/">GraalVM JavaScript</a> - included as Java 15+ no longer includes the Oracle Nashorn JavaScript engine</li>
+<li><a href="/docs/desktop/addons/graphql-support/">GraphQL Support</a> - allows you to import and active scan GraphQL definitions</li>
+<li><a href="/docs/desktop/addons/retire.js/">Retire.js</a> - a Passive Scan rule which implements checks provided by <a href="https://retirejs.github.io/retire.js/">Retire.js</a> in order to identify vulnerable or out-dated JavaScript packages</li>
+<li><a href="/docs/desktop/addons/soap-support/">SOAP Support</a> - allows you to import and active scan WSDL files containing SOAP endpoints</li>
+</ul>
+<p>For the full set of changes, including changes to the Docker images, the updated add-ons, smaller enhancements and bug fixes see the <a href="/docs/desktop/releases/2.10.0/">Release Notes</a>.</p>
+<p>A big thank you to everyone who has contributed to this release or has supported the ZAP project in any way!</p>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2016-08-22-announcing-zap-unit-test-bounties/"> Announcing ZAP Unit Test Bounties</a>
+                Previous <a class="previous" href="/blog/2020-09-22-sites-tree-modifiers/"> Sites Tree Modifiers</a>
               
-              
-                Next <a class="next" href="/blog/2017-02-06-introducing-the-jxbrowser-add-on-for-zap/"> Introducing the JxBrowser add-on for ZAP</a>
               
           </div>
       </article>
@@ -210,11 +225,15 @@ an issue.</p>
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Jordan GS
+                    Simon Bennetts
                   
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
                   
                 </div>
               </section>
@@ -223,9 +242,16 @@ an issue.</p>
           <h4>Table of Contents</h4>
           <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#the-changes">The Changes</a>
       <ul>
-        <li></li>
+        <li><a href="#custom-pages">Custom Pages</a></li>
+        <li><a href="#authentication-polling">Authentication Polling</a></li>
+        <li><a href="#site-tree-control">Site Tree Control</a></li>
+        <li><a href="#dynamic-look-and-feel-including-dark-mode">Dynamic Look and Feel including Dark Mode</a></li>
+        <li><a href="#authentication-headers-via-env-vars">Authentication Headers via Env Vars</a></li>
+        <li><a href="#socks-proxy-configuration">SOCKS Proxy Configuration</a></li>
+        <li><a href="#cached-scripts">Cached Scripts</a></li>
+        <li><a href="#new-add-ons">New Add-Ons</a></li>
       </ul>
     </li>
   </ul>
@@ -271,7 +297,7 @@ an issue.</p>
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2016-11-22-announcing-the-official-zap-jenkins-plugin/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/index.md">Edit on GitHub</a>
   </div>
 
     </div>
