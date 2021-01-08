@@ -133,7 +133,7 @@
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
               Posted <span class="post-date">Thursday March 20, 2014</span>
-              <span class="word-count fl-r"> 714 Words </span>
+              <span class="word-count fl-r"> 713 Words </span>
             </section>
             <p>Welcome to a <a href="https://github.com/zaproxy/zaproxy/wiki/Development#hacking-zap">series of blog posts</a> aimed at
 helping you “hack the ZAP source code”.<br>
@@ -152,12 +152,12 @@ The previous post in this series is: <a href="/blog/2014-03-10-hacking-zap-1-why
 <h2 id="the-zap-core">The ZAP core</h2>
 <p>The <code>zaproxy</code> project is often called “the core”.</p>
 <p>The project follows the typical directory structure for Java projects, with main code under
-<a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/">src/main/java</a> and tests under
-<a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/test/java/">src/test/java</a>.</p>
+<a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/java/">src/main/java</a> and tests under
+<a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/test/java/">src/test/java</a>.</p>
 <p>The main packages are:</p>
 <ul>
-<li><a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/org/parosproxy">org.parosproxy</a>  The code inherited from the Paros project</li>
-<li><a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/org/zaproxy">org.zaproxy</a>        New ZAP code</li>
+<li><a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/java/org/parosproxy">org.parosproxy</a>  The code inherited from the Paros project</li>
+<li><a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/java/org/zaproxy">org.zaproxy</a>        New ZAP code</li>
 </ul>
 <p>We try to implement significant new features in the <code>zap-extensions</code> project as ‘add-ons’.<br>
 We do this for the following reasons:</p>
@@ -171,21 +171,20 @@ We do this for the following reasons:</p>
 That is not a problem - you can make changes to the core - but these changes will probably not be available to users as quickly as those made to add-ons.</p>
 <p>We also add new functionality to the core if we want it to be available for other add-ons to build on.</p>
 <p>It's important to note that if you make changes to Paros&rsquo; code then you must include a comment at the top of the file mentioning
-your change. This is required to satisfy the <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/dist/license/TheClarifiedArtisticLicense.htm">Clarified Artistic License</a> that Paros was released under.<br>
+your change. This is required to satisfy the <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/dist/license/TheClarifiedArtisticLicense.htm">Clarified Artistic License</a> that Paros was released under.<br>
 We have a standard format for these comments</p>
 <blockquote>
 <p>// ZAP: yyyy/mm/dd Issue xyz: Description of the changes</p>
 </blockquote>
-<p>e.g. see <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/parosproxy/paros/CommandLine.java#L21">CommandLine.java</a></p>
-<p>The <code>zaproxy</code> project uses <a href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a>, that means if
-you make changes to the core then you typically just need to make them to the <code>develop</code> branch.</p>
+<p>e.g. see <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/CommandLine.java#L21">CommandLine.java</a></p>
+<p>The <code>zaproxy</code> project uses a single branch that means if you make changes to the core then you typically just need to make them out of the <code>main</code> branch.</p>
 <h2 id="add-ons-extensions-and-rules">Add-ons, Extensions and Rules</h2>
 <p>There are many ways to extend ZAP programmatically.<br>
 Some of the main ways include:</p>
 <ul>
-<li>Extensions, which are classes that extend the <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/parosproxy/paros/extension/Extension.java"><code>Extension</code></a> class. They are a powerful way of adding functionality to ZAP, and much of the ‘core’ is actually implemented as extensions.</li>
-<li>Active Scan rules, which are classes which extend <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/parosproxy/paros/core/scanner/Plugin.java"><code>Plugin</code></a>, detect potential vulnerabilities and run as part of the Active Scanner. These rules typically make multiple requests on the target system. They only run when explicitly invoked by the user.</li>
-<li>Passive Scan rules, which are classes which extend <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/zaproxy/zap/extension/pscan/PluginPassiveScanner.java">PluginPassiveScanner</a>, detect potential vulnerabilities and run as part of the Passive Scanner. These rules cannot make any requests - all they can do is examine the requests and responses. They are typically invoked for every request that is sent through ZAP.</li>
+<li>Extensions, which are classes that extend the <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/extension/Extension.java"><code>Extension</code></a> class. They are a powerful way of adding functionality to ZAP, and much of the ‘core’ is actually implemented as extensions.</li>
+<li>Active Scan rules, which are classes which extend <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/Plugin.java"><code>Plugin</code></a>, detect potential vulnerabilities and run as part of the Active Scanner. These rules typically make multiple requests on the target system. They only run when explicitly invoked by the user.</li>
+<li>Passive Scan rules, which are classes which extend <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PluginPassiveScanner.java">PluginPassiveScanner</a>, detect potential vulnerabilities and run as part of the Passive Scanner. These rules cannot make any requests - all they can do is examine the requests and responses. They are typically invoked for every request that is sent through ZAP.</li>
 </ul>
 <p>Add-ons are packages which can include all of these components as well as ‘raw’ files. They are usually available on the <a href="/addons/">ZAP Marketplace</a> so that
 users can discover, download, and install them from within ZAP. You can also install add-ons from the filestore via the “File / Load Add-on

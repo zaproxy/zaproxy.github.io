@@ -205,7 +205,7 @@ While we do our best to make sure that ZAP can always understand the structure o
 <h1 id="the-solution">The Solution</h1>
 <p>This will be solved in the next version of ZAP (2.10.0) which extends the definition of Input Vector Scripts to allow them to change the way URLs are represented in the Sites Tree. This means that anyone can write a script which will allow their app to be correctly represented in the Sites Tree and therefore be attacked effectively.</p>
 <p>The changes have already been made and are available in the latest weekly release for you to try out now.</p>
-<p>An example script will be included in ZAP: <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/dist/scripts/templates/variant/Site%20modifying%20JSON%20example.js">Site modifying JSON example.js</a></p>
+<p>An example script will be included in ZAP: <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/dist/scripts/templates/variant/Site%20modifying%20JSON%20example.js">Site modifying JSON example.js</a></p>
 <p>Note that if you try this script out with the ZAP weekly Desktop then you will need to disable the HUD to prevent it from trying to upgrade HTTP connections to HTTPS ones!</p>
 <p>This script will work with requests like:</p>
 <ul>
@@ -229,7 +229,7 @@ While we do our best to make sure that ZAP can always understand the structure o
 <p>In this case it will change the Site Tree node paths to be:</p>
 <p><img src="./images/sites_tree_mod_path.png" alt="Site Tree Change Path"></p>
 <p>Input Vector scripts can change Site Tree node names and/or node paths, which gives complete control over how URLs are represented in the Sites Tree.</p>
-<p>In addition to this in 2.10.0 the underlying <a href="https://github.com/zaproxy/zaproxy/blob/develop/zap/src/main/java/org/parosproxy/paros/core/scanner/Variant.java">Variant.java</a> class will become plugable, meaning that ZAP add-ons will be able to dynamically add (and remove) classes which can identify input vectors to attack and change how URLs are represented in the Sites Tree.</p>
+<p>In addition to this in 2.10.0 the underlying <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/Variant.java">Variant.java</a> class will become plugable, meaning that ZAP add-ons will be able to dynamically add (and remove) classes which can identify input vectors to attack and change how URLs are represented in the Sites Tree.</p>
 <p>These 2 changes will allow ZAP to handle any custom data formats and ensure that ZAP can then effectively attack the applications that use them.</p>
 <p>This functionality will be showcased by the <a href="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/">GraphQL add-on</a> implemented as part of this year's Google Summer of Code and which is still being enhanced.</p>
 
