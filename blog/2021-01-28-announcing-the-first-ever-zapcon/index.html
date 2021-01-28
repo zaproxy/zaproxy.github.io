@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="ZAP 2.10.0 Anniversary Release">
+  <meta name="description" content="First Ever ZAPCon - Call For Papers">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/images/2-10-0-loading.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2021-01-28-announcing-the-first-ever-zapcon/images/zapcon-social.png"/>
 
-<meta name="twitter:title" content="ZAP 2.10.0 - The 10 Year Anniversary Release"/>
-<meta name="twitter:description" content="ZAP 2.10.0 Anniversary Release"/>
+<meta name="twitter:title" content="1st Ever ZAPCon - Call For Papers"/>
+<meta name="twitter:description" content="First Ever ZAPCon - Call For Papers"/>
 
-    <meta property="og:title" content="ZAP 2.10.0 - The 10 Year Anniversary Release" />
-<meta property="og:description" content="ZAP 2.10.0 Anniversary Release" />
+    <meta property="og:title" content="1st Ever ZAPCon - Call For Papers" />
+<meta property="og:description" content="First Ever ZAPCon - Call For Papers" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/images/2-10-0-loading.png" />
-<meta property="article:published_time" content="2020-12-21T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-12-21T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2021-01-28-announcing-the-first-ever-zapcon/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2021-01-28-announcing-the-first-ever-zapcon/images/zapcon-social.png" />
+<meta property="article:published_time" content="2021-01-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-01-28T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -144,76 +144,40 @@
               <a href="/blog/">The ZAP Blog</a>
           </div>
 
-          <h1 class="post-title">ZAP 2.10.0 - The 10 Year Anniversary Release</h1>
+          <h1 class="post-title">1st Ever ZAPCon - Call For Papers</h1>
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Monday December 21, 2020</span>
-              <span class="word-count fl-r"> 618 Words </span>
+              Posted <span class="post-date">Thursday January 28, 2021</span>
+              <span class="word-count fl-r"> 167 Words </span>
             </section>
-            <p>As you hopefully already know ZAP was released on <a href="/blog/2020-09-06-zap-is-ten-years-old/">September 6th 2010</a>.</p>
-<p>ZAP 2.10.0 has just been released and is now available to download via the <a href="/download/">Downloads</a> page so we're treating this as a belated 10 year anniversary release!</p>
-<p>I've recorded a training video in which I go through many of the new features:</p>
-<div class='embed-youtube'>
-  <iframe src='https://www.youtube.com/embed/rrVr-_-y6Xo' frameborder='0' allowfullscreen></iframe>
-</div>
-
-<p>You will see that there is one demo that I was unable to run as I hit some issues. We investigated those and have now released fixes for them.
-Luckily we were able to fix them in add-ons rather than the core - if they had been in the latter then we would have had to release ZAP 2.10.1!
-So when you start using ZAP 2.10.0 make sure you <a href="/docs/desktop/start/features/marketplace/">check for updates</a> and install any add-ons that have newer versions.</p>
-<h2 id="the-changes">The Changes</h2>
-<p>Some of the more significant enhancements in this release include:</p>
-<h3 id="custom-pages">Custom Pages</h3>
-<p><a href="/docs/desktop/start/features/custompages/">Custom Pages</a> can be defined on a per context basis -
-these allow ZAP to identify various non-standard error handling conditions such as custom error pages and handle them more effectively.</p>
-<h3 id="authentication-polling">Authentication Polling</h3>
-<p>The concept of <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a> has been introduced which allows ZAP to handle
-a wider range of authentication mechanisms including the option to poll a specified page for the authentication status of a user.</p>
-<h3 id="site-tree-control">Site Tree Control</h3>
-<p>Scripts and add-ons now have full access to how nodes are represented in the <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>.
-Both <a href="https://github.com/zaproxy/community-scripts/tree/master/variant/">Input Vector Scripts</a> and add-ons which include implementations of the
-<a href="https://static.javadoc.io/org.zaproxy/zap/2.10.0/org/parosproxy/paros/core/scanner/Variant.html">Variant</a> class can change both the tree
-structure and names used for new nodes.</p>
-<p>For more details see the <a href="/blog/2020-09-22-sites-tree-modifiers/">Site Tree Modifiers</a> Blog post.</p>
-<h3 id="dynamic-look-and-feel-including-dark-mode">Dynamic Look and Feel including Dark Mode</h3>
-<p>The Desktop UI includes a new set of open source Look and Feel's c/o <a href="https://github.com/JFormDesigner/FlatLaf">FlatLaf</a> including 2 Dark Mode options.</p>
-<p>You can also dynamically switch the Look and Feel via a button on the <a href="/docs/desktop/ui/tltoolbar/">Top Level Toolbar</a>.</p>
-<p>For more details of the dark mode see the <a href="/blog/2020-03-04-dark-mode-in-the-weekly-release/">Dark Mode in the Weekly Release</a> Blog post.</p>
-<h3 id="authentication-headers-via-env-vars">Authentication Headers via Env Vars</h3>
-<p>A new set of environmental variables are available which allow you to easily add an authentication header to all of the requests that are proxied through ZAP or initiated by the ZAP tools, including the spiders and active scanner.
-These are documented on the <a href="/docs/desktop/start/features/authentication/#envvars">Authentication</a> page.</p>
-<h3 id="socks-proxy-configuration">SOCKS Proxy Configuration</h3>
-<p>It is now possible to dynamically configure the outgoing SOCKS proxy in the <a href="/docs/desktop/ui/dialogs/options/connection/">Options&rsquo; Connection screen</a>.
-By default the SOCKS proxy configuration applies to all connections made by ZAP.</p>
-<h3 id="cached-scripts">Cached Scripts</h3>
-<p>The following script types are now cached between invocations reducing the time it takes to reuse them:</p>
+            <h2 id="announcing-the-first-ever-zapcon">Announcing the First Ever ZAPCon!</h2>
+<p>Today we are calling for topics and speakers in the first-ever OWASP ZAP User Conference!</p>
+<p>This will be heavily focused on using ZAP at scale and Application Security practices.</p>
+<p>Do you have a story to tell about how you use ZAP inside your company or a sweet ZAP tweak that made ZAP sing? Other ZAP users would love to hear about it!</p>
+<p><img src="./images/zapcon.png" alt=""></p>
+<h2 id="details">Details</h2>
 <ul>
-<li>Active Rules</li>
-<li>HTTP Sender</li>
-<li>Input Vectors, when used for the Sites tree</li>
-<li>Passive Rules</li>
-<li>Proxy</li>
-</ul>
-<h3 id="new-add-ons">New Add-Ons</h3>
-<p>The following add-ons are included by default in this release for the first time:</p>
+<li><strong>When:</strong> Airing March 9th, 8am-Noon PT / 4pm-8pm GMT</li>
+<li><strong>Who:</strong> ZAP Users and those looking to learn more about ZAP</li>
+<li><strong>What (Topics):</strong> Initial topic ideas include:
 <ul>
-<li><a href="/docs/desktop/addons/encode-decode-hash/">Advanced Encode / Decode / Hash dialog</a> - this replaces the old core encode/decode/hash dialog</li>
-<li><a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS Scan Rule</a> - an Active Scan rule for detecting DOM XSS vulnerabilities</li>
-<li><a href="/docs/desktop/addons/form-handler/">Form Handler</a> - allows for the custom configuration of values used in forms based on field names</li>
-<li><a href="/docs/desktop/addons/graalvm-javascript/">GraalVM JavaScript</a> - included as Java 15+ no longer includes the Oracle Nashorn JavaScript engine</li>
-<li><a href="/docs/desktop/addons/graphql-support/">GraphQL Support</a> - allows you to import and active scan GraphQL definitions</li>
-<li><a href="/docs/desktop/addons/retire.js/">Retire.js</a> - a Passive Scan rule which implements checks provided by <a href="https://retirejs.github.io/retire.js/">Retire.js</a> in order to identify vulnerable or out-dated JavaScript packages</li>
-<li><a href="/docs/desktop/addons/soap-support/">SOAP Support</a> - allows you to import and active scan WSDL files containing SOAP endpoints</li>
+<li>Automating ZAP</li>
+<li>Scripting ZAP</li>
+<li>Dealing with ZAP and Authentication</li>
+<li>If you have a topic that is not included in this list, great! Send us an outline and we’ll review it!</li>
 </ul>
-<p>For the full set of changes, including changes to the Docker images, the updated add-ons, smaller enhancements and bug fixes see the <a href="/docs/desktop/releases/2.10.0/">Release Notes</a>.</p>
-<p>A big thank you to everyone who has contributed to this release or has supported the ZAP project in any way!</p>
+</li>
+<li><strong>Where:</strong> This will be a virtual event. Details to follow on platform, chat, etc.</li>
+<li><strong>Format:</strong> Presentations should be ~30min in length, with 10-15min Q&amp;A Discussion to follow.</li>
+</ul>
+<p>The conference will, of course, be completely free for attendees.</p>
+<p><strong>Submit your talk proposal here <a href="https://sessionize.com/zapcon-cfs">https://sessionize.com/zapcon-cfs</a></strong></p>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2020-09-22-sites-tree-modifiers/"> Sites Tree Modifiers</a>
+                Previous <a class="previous" href="/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/"> ZAP 2.10.0 - The 10 Year Anniversary Release</a>
               
-              
-                Next <a class="next" href="/blog/2021-01-28-announcing-the-first-ever-zapcon/"> 1st Ever ZAPCon - Call For Papers</a>
               
           </div>
       </article>
@@ -244,18 +208,8 @@ By default the SOCKS proxy configuration applies to all connections made by ZAP.
           <h4>Table of Contents</h4>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#the-changes">The Changes</a>
-      <ul>
-        <li><a href="#custom-pages">Custom Pages</a></li>
-        <li><a href="#authentication-polling">Authentication Polling</a></li>
-        <li><a href="#site-tree-control">Site Tree Control</a></li>
-        <li><a href="#dynamic-look-and-feel-including-dark-mode">Dynamic Look and Feel including Dark Mode</a></li>
-        <li><a href="#authentication-headers-via-env-vars">Authentication Headers via Env Vars</a></li>
-        <li><a href="#socks-proxy-configuration">SOCKS Proxy Configuration</a></li>
-        <li><a href="#cached-scripts">Cached Scripts</a></li>
-        <li><a href="#new-add-ons">New Add-Ons</a></li>
-      </ul>
-    </li>
+    <li><a href="#announcing-the-first-ever-zapcon">Announcing the First Ever ZAPCon!</a></li>
+    <li><a href="#details">Details</a></li>
   </ul>
 </nav>
 
@@ -299,7 +253,7 @@ By default the SOCKS proxy configuration applies to all connections made by ZAP.
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2021-01-28-announcing-the-first-ever-zapcon/index.md">Edit on GitHub</a>
   </div>
 
     </div>
