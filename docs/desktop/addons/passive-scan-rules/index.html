@@ -1426,7 +1426,7 @@ The following conditions may result in an alert:</p>
 <li><strong>X-Frame-Options Header Not Set:</strong> If the X-Frame-Options header is missing from the response completely.</li>
 <li><strong>Multiple X-Frame-Options Header Entries:</strong> When more than one X-Frame-Options header is detected on the response.</li>
 <li><strong>X-Frame-Options Defined via META (Non-compliant with Spec):</strong> A &ldquo;http-equiv&rdquo; entry was found in the response that attempts to define X-Frame-Options, which is not supported by the specification.</li>
-<li><strong>X-Frame-Options Setting Malformed:</strong> The header is present with no value, or the value is not as expected (i.e.: other than &ldquo;DENY&rdquo;, &ldquo;SAMEORIGIN&rdquo;, or &ldquo;ALLOW-FROM&rdquo;).</li>
+<li><strong>X-Frame-Options Setting Malformed:</strong> The header is present with no value, or the value is not as expected (i.e.: other than &ldquo;DENY&rdquo;, or &ldquo;SAMEORIGIN&rdquo;).</li>
 </ul>
 <p>By default no alerts will be raised in the response includes a Content-Security-Policy &lsquo;frame-ancestors&rsquo; element as this take precedence over the X-Frame-Options header. However at LOW threshold the above issues will still be reported but at a LOW risk.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/XFrameOptionScanRule.java">XFrameOptionScanRule.java</a></p>
