@@ -306,9 +306,9 @@ Via the UI:
       
       <guid>/faq/how-do-you-configure-zap-logging/</guid>
       <description>ZAP logs to a file called &amp;ldquo;zap.log&amp;rdquo; in the ZAP &amp;lsquo;home&amp;rsquo; directory.
-The logging is configured by the log4j.properties file in the same directory.
-By default the &amp;lsquo;main&amp;rsquo; logging levels are set to &amp;ldquo;INFO&amp;rdquo; by these 2 lines:
-log4j.logger.org.parosproxy.paros=INFO log4j.logger.org.zaproxy.zap=INFO  Changing these to &amp;ldquo;DEBUG&amp;rdquo; (and restarting ZAP) will significantly increase the amount of logging performed:</description>
+The logging is configured by the log4j2.properties file in the same directory.
+By default the &amp;lsquo;main&amp;rsquo; logging levels are set to info by these lines:
+logger.paros.name = org.parosproxy.paros logger.paros.level = info logger.zap.name = org.zaproxy.zap logger.zap.level = info  Changing these to debug (and restarting ZAP) will significantly increase the amount of logging performed:</description>
     </item>
     
     <item>

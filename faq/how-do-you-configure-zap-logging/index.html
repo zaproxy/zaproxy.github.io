@@ -144,23 +144,37 @@
             <p>ZAP logs to a file called &ldquo;zap.log&rdquo; in the ZAP <a href="/faq/what-is-the-default-directory-that-zap-uses/">&lsquo;home&rsquo;
 directory</a>.</p>
 <p>The logging is configured by the
-<a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/resources/org/zaproxy/zap/resources/log4j.properties">log4j.properties</a>
+<a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/resources/org/zaproxy/zap/resources/log4j2-home.properties">log4j2.properties</a>
 file in the same directory.</p>
-<p>By default the &lsquo;main&rsquo; logging levels are set to &ldquo;INFO&rdquo; by these 2 lines:</p>
-<pre><code>log4j.logger.org.parosproxy.paros=INFO
-log4j.logger.org.zaproxy.zap=INFO
+<p>By default the &lsquo;main&rsquo; logging levels are set to <code>info</code> by these lines:</p>
+<pre><code>logger.paros.name = org.parosproxy.paros
+logger.paros.level = info
+
+logger.zap.name = org.zaproxy.zap
+logger.zap.level = info
 </code></pre>
-<p>Changing these to &ldquo;DEBUG&rdquo; (and restarting ZAP) will <em>significantly</em> increase
+<p>Changing these to <code>debug</code> (and restarting ZAP) will <em>significantly</em> increase
 the amount of logging performed:</p>
-<pre><code>log4j.logger.org.parosproxy.paros=DEBUG
-log4j.logger.org.zaproxy.zap=DEBUG
+<pre><code>logger.paros.name = org.parosproxy.paros
+logger.paros.level = debug
+
+logger.zap.name = org.zaproxy.zap
+logger.zap.level = debug
 </code></pre>
 <p>Logging can be selectively enabled using a <a href="/docs/desktop/addons/script-console/#script-types">Stand Alone script</a> while ZAP is
 running (the example below is a JavaScript script):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#75715e">// The following will enable DEBUG logging for the API
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">apache</span>.<span style="color:#a6e22e">log4j</span>.<span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">getLogger</span>(<span style="color:#e6db74">&#34;org.zaproxy.zap.extension.api.API&#34;</span>).<span style="color:#a6e22e">setLevel</span>(<span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">apache</span>.<span style="color:#a6e22e">log4j</span>.<span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>);
-<span style="color:#75715e">// The following will enable DEBUG logging for the SessionFixation scanner
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">apache</span>.<span style="color:#a6e22e">log4j</span>.<span style="color:#a6e22e">Logger</span>.<span style="color:#a6e22e">getLogger</span>(<span style="color:#e6db74">&#34;org.zaproxy.zap.extension.ascanrulesBeta.SessionFixation&#34;</span>).<span style="color:#a6e22e">setLevel</span>(<span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">apache</span>.<span style="color:#a6e22e">log4j</span>.<span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>);
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Level</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.apache.logging.log4j.Level&#34;</span>)
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">LoggerContext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.apache.logging.log4j.core.LoggerContext&#34;</span>)
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LoggerContext</span>.<span style="color:#a6e22e">getContext</span>()
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">getConfiguration</span>()
+
+<span style="color:#75715e">// The following will enable DEBUG logging for the API
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">getLoggerConfig</span>(<span style="color:#e6db74">&#34;org.zaproxy.zap.extension.api.API&#34;</span>).<span style="color:#a6e22e">setLevel</span>(<span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>)
+<span style="color:#75715e">// The following will enable DEBUG logging for the Session Fixation scan rule
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">getLoggerConfig</span>(<span style="color:#e6db74">&#34;org.zaproxy.zap.extension.ascanrulesBeta.SessionFixationScanRule&#34;</span>).<span style="color:#a6e22e">setLevel</span>(<span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>)
+
+<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">updateLoggers</span>()
 </code></pre></div>
           </main>
       </article>
