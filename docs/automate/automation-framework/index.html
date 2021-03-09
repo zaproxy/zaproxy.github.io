@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/docs/docker/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; ZAP Docker Documentation</title>
+  <title>OWASP ZAP &ndash; Automation Framework</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -130,72 +129,32 @@
 
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">ZAP Docker Documentation</h1>
+      <h1 class="text--white">Automation Framework</h1>
   </div>
 </section>
-
-  <section>
-    <div class="wrapper py-70">
-      
-      <p>ZAP's docker images provide an easy way to <a href="/docs/automate/">automate</a> ZAP, especially in a CI/CD environment.</p>
-
-      
-        <div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                <p> <b><a href="about/"> ZAP Docker User Guide</a></b>  - a good place to start if you are new to ZAP&#39;s docker images </p>
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                <p> <b><a href="baseline-scan/"> Baseline Scan</a></b>  - a time limited spider which reports issues found passively </p>
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                <p> <b><a href="full-scan/"> Full Scan</a></b>  - a full spider, optional ajax spider and active scan which reports issues found actively and passively </p>
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                <p> <b><a href="api-scan/"> API Scan</a></b>  - a full scan of an API defined using OpenAPI / Swagger, or GraphQL (post 2.9.0) </p>
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                <p> <b><a href="scan-hooks/"> Scan Hooks</a></b>  - to make it easy to make little tweaks here and there a hook system is in place to assist you with the packaged scans </p>
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                <p> <b><a href="webswing/"> Webswing</a></b>  - you can run the ZAP Desktop UI in your browser leveraging Docker and Webswing </p>
-              </div>
-            </div>
-          
-        </div>
-      
-      
-    </div>
-  </section>
-
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+    <main><p>The new Automation Framework will in time replace the Command Line and Packaged Scan options.
+It allows you to control ZAP via one YAML file and provides more flexibility while not being tied to any specific container technology.</p>
+<p>To use the Automation Framework with ZAP 2.10.0 install the <a href="/docs/desktop/addons/automation-framework/">Automation Framework</a>
+add-on and update the rest of the add-ons that you have installed.
+The framework is plugable and many of the existing add-ons have been enhanced to support it. It is included in the latest weekly releases.</p>
+<p>For details of how to get started with the framework see the main <a href="/docs/desktop/addons/automation-framework/">framework help page</a>.</p>
+<p>The full set of jobs currently supported by the framework are:</p>
+<ul>
+<li><a href="/docs/desktop/addons/automation-framework/job-ascan/">activeScan</a> - runs the active scanner</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-addons/">addons</a> - add-on management</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-pscanconf/">passiveScan-config</a> - passive scan configuration</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-pscanwait/">passiveScan-wait</a> - waits for the passive scanner to finish processing the current queue</li>
+<li><a href="/docs/desktop/addons/openapi-support/automation/">openapi</a> - OpenAPI definition import, provided of the <a href="/docs/desktop/addons/openapi-support/">OpenAPI</a> add-on</li>
+<li><a href="docs/desktop/addons/report-generation/automation/">report</a> - report generation, provided of the <a href="/docs/desktop/addons/report-generation/">Report Generation</a> add-on</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-spider/">spider</a> - runs the traditional spider</li>
+<li><a href="/docs/desktop/addons/ajax-spider/automation/">spiderAjax</a> - runs the ajax spider, provided of the <a href="/docs/desktop/addons/ajax-spider/">Ajax Spider</a> add-on</li>
+</ul>
+<p>For details of future changes planned see the <a href="https://github.com/zaproxy/zaproxy/issues/6461">tracker issue</a>.</p>
+</main>
+  </article>
+</section>
 
  </div>
   <footer class="site-footer py-20 mt-20">
