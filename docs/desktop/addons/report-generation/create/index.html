@@ -1345,6 +1345,17 @@ extension:   # The extension to use when generating the report
 </code></pre><h3 id="reportext">report.<em>ext</em></h3>
 <p>The Thymeleaf report template.<br>
 This should have the same extension that is specified in the template.yaml file (e.g. &lsquo;report.md&rsquo;) except if it is a PDF report, in which case &ldquo;html&rdquo; should be used (see below).</p>
+<h3 id="messagesproperties">Messages.properties</h3>
+<p>The report subdirectory may also include a &ldquo;Messages.properties&rdquo; language file for template specific strings localised to English as well as &ldquo;Message_*locale* .property&rdquo; files for localising the strings into other languages.<br>
+The template specific strings should all start with &lsquo;<code>report.template.</code>&rsquo;<br>
+The language files may also override the default translations built into the reports add-on.</p>
+<h3 id="resources">Resources</h3>
+<p>The report subdirectory may also include a &ldquo;resources&rdquo; directory. If this is present then when a report is generated a subdirectory will be created based on the report name and all of the files in the resources directory will be copied into it.<br>
+You should reference the files in the &ldquo;resources&rdquo; subdirectory in the following way so that they can be accessed both via the template and by the report when the subdirectory is created:</p>
+<pre><code>   &lt;script th:src=&quot;${resources + '/script.js'}&quot; src=&quot;resources/script.js&quot;&gt;&lt;/script&gt;
+   &lt;link rel=&quot;stylesheet&quot; th:href=&quot;${resources + '/style.css'}&quot; href=&quot;resources/style.css&quot;&gt;
+   &lt;img th:src=&quot;${resources + '/image.png'}&quot; src=&quot;resources/image.png&quot;&gt;
+</code></pre><p>The &lsquo;traditional-html-plus&rsquo; template includes examples of JavaScript, CSS and image resources.</p>
 <h2 id="data-available">Data Available</h2>
 <p>The following data items are available to all reports. These can be accessed via the Thymeleaf Standard Dialect, e.g. <code>${reportTitle}</code></p>
 <h3 id="alerttree">alertTree</h3>
