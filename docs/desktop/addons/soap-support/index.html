@@ -441,6 +441,9 @@
                 <a href="/docs/desktop/addons/graphql-support/">GraphQL Support</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/graphql-support/automation/">GraphQL Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/graphql-support/options/">GraphQL Options</a>
                         </li>  
                         <li> 
@@ -727,7 +730,10 @@
 
     <li data-depth="2" class="tree-active tree-branch-active">
                 <a href="/docs/desktop/addons/soap-support/">SOAP Support</a>
-        <ul class="tree-branch">
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/soap-support/automation/">SOAP Automation Framework Support</a>
+                        </li>
         </ul>
     </li>
 
@@ -1328,6 +1334,7 @@
 </ol>
           <h1 id="soap-support">SOAP Support</h1>
 <p>This add-on imports and scans WSDL files containing SOAP endpoints.</p>
+<p>It also supports the <a href="/docs/desktop/addons/soap-support/automation/">Automation Framework</a>.</p>
 <h2 id="importing">Importing</h2>
 <p>The add-on will automatically detect any SOAP definitions and spider them as long as they are in scope.</p>
 <p>2 menu items are also added to the Import menu:</p>
@@ -1336,6 +1343,7 @@
 <li>Import a WSDL file from a URL</li>
 </ul>
 <p>These operations are also available via the API.</p>
+<p><strong>NOTE:</strong> As of version 6 of this add-on, only encoded URLs are supported.</p>
 <h3 id="form-handler-add-on-support">Form Handler Add-on Support</h3>
 <p>The SOAP add-on supports overriding default parameter values based on field names via the Form Handler add-on. For example,<br>
 <img src="/docs/desktop/addons/soap-support/images/formHandlerExample.png" alt="Form Handler Example"></p>
@@ -1344,6 +1352,11 @@
 <ul>
 <li>Action Spoofing : <a href="http://www.ws-attacks.org/index.php/SOAPAction_Spoofing">http://www.ws-attacks.org/index.php/SOAPAction_Spoofing</a></li>
 <li>XML Injection : <a href="http://www.ws-attacks.org/index.php/XML_Injection">http://www.ws-attacks.org/index.php/XML_Injection</a></li>
+</ul>
+<h2 id="statistics">Statistics</h2>
+<p>This add-on maintains the following statistics:</p>
+<ul>
+<li>soap.urls.added: The total number of URLs (or SOAP Actions) added from imported WSDL files.</li>
 </ul>
 
         </div>
