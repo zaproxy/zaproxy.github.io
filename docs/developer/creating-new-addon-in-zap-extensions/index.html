@@ -172,7 +172,7 @@ zapAddOn {
 <h2 id="update-the-source-code">Update the Source Code</h2>
 <p>These are the minimum changes needed to get your new add-on working.</p>
 <h3 id="messageproperties">Message.properties</h3>
-<p>Edit the file <code>addOns/myaddon/src/main/resources/org/zaproxy/zap/extension/simpleexample/resources/Messages.properties</code>
+<p>Edit the file <code>addOns/myaddon/src/main/resources/org/zaproxy/addon/simpleexample/resources/Messages.properties</code>
 and change all of the instances of <code>simpleexample</code> in the keys to <code>myaddon</code> as well as changing the <code>Simple Example</code> strings to something like <code>My Add-on</code>.</p>
 <pre><code># An example ZAP extension which adds a top level menu item. 
 #
@@ -188,7 +188,7 @@ myaddon.popup.title = My Add-on: Example right click menu
 myaddon.topmenu.tools.msg = My Add-on: Example message
 myaddon.topmenu.tools.title = My Add-on: Example top menu
 </code></pre><h3 id="extensionsimpleexamplejava">ExtensionSimpleExample.java</h3>
-<p>Edit the file <code>addOns/myaddon/src/main/java/org/zaproxy/zap/extension/simpleexample/ExtensionSimpleExample.java</code> and change the NAME and PREFIX strings:</p>
+<p>Edit the file <code>addOns/myaddon/src/main/java/org/zaproxy/addon/simpleexample/ExtensionSimpleExample.java</code> and change the NAME and PREFIX strings:</p>
 <pre><code>    // The name is public so that other extensions can access it
     public static final String NAME = &quot;ExtensionMyAddOn&quot;;
 
@@ -207,7 +207,7 @@ myaddon.topmenu.tools.title = My Add-on: Example top menu
 <h2 id="next-steps">Next Steps</h2>
 <p>You should update the following files before you make too many other changes:</p>
 <h3 id="package-name">Package Name</h3>
-<p>Change the package from <code>org/zaproxy/zap/extension/simpleexample</code> to something like <code>org/zaproxy/addon/myaddon/</code>
+<p>Change the package from <code>org/zaproxy/addon/simpleexample</code> to something like <code>org/zaproxy/addon/myaddon/</code>
 You can change the package name (and class names in the following section) by just editing the files but in general your IDE is likely to make this easier.</p>
 <h3 id="class-names">Class Names</h3>
 <p>Change the class names to something more appropriate for your add-on.</p>
