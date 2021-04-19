@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="How we collect and publish statistics for ZAP">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2021-04-19-collecting-statistics-for-open-source-projects/images/check-for-updates.png"/>
+
+<meta name="twitter:title" content="Collecting Statistics for Open Source Projects"/>
+<meta name="twitter:description" content="How we collect and publish statistics for ZAP"/>
+
+    <meta property="og:title" content="Collecting Statistics for Open Source Projects" />
+<meta property="og:description" content="How we collect and publish statistics for ZAP" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2021-04-19-collecting-statistics-for-open-source-projects/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2021-04-19-collecting-statistics-for-open-source-projects/images/check-for-updates.png" />
+<meta property="article:published_time" content="2021-04-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-04-19T00:00:00+00:00" />
+
+  
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.ec7c8.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler">
+              <img height="20" width="20" src="/img/search.svg" />
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Collecting Statistics for Open Source Projects</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday April 19, 2021</span>
+              <span class="word-count fl-r"> 1841 Words </span>
+            </section>
+            <p>This blog post will show you how you can collect and publish statistics on your open source projects using free resources and open source scripts, based on the setup we have for ZAP.</p>
+<p><img src="images/check-for-updates.png" alt="ZAP Check for Updates Chart"></p>
+<p>We’re not doing anything particularly sophisticated and all of the scripts should be easy to understand.</p>
+<h2 id="why-collect-statistics">Why Collect Statistics?</h2>
+<p>I released ZAP on <a href="/blog/2020-09-06-zap-is-ten-years-old/">6th September 2010</a>.
+At some point in December it was accepted as an OWASP project and by 1st January 2011 downloads had jumped from virtually none to 433. Is my memory that good?
+No, it was significant enough for me to record that number and I’ve been recording the ZAP download counts at the start of every month in a Google Spreadsheet ever since.</p>
+<p>For many years this was a completely manual process but to be honest I did not mind.
+I wrote a set of scripts to help me and it was always interesting to see how things were changing every month.
+Maintaining an open source project for many years can be a thankless task, but seeing the numbers steadily increase often gave me the encouragement I needed to keep going.</p>
+<p>But don’t worry, this blog post is not just how to maintain statistics in a spreadsheet. We have now automated the process using a set of relatively simple scripts that should be easy for you to copy and adapt to your needs.</p>
+<p>Although we only collect limited stats we do get some really useful feedback. For example we have seen the percentage of people using the ZAP daemon increase steadily to the point where it is significantly higher than the desktop usage. This helps us plan what features we should focus on.</p>
+<p>Statistics can also be great bragging rights - we now proudly state that ZAP is “the world’s most widely used web app scanner”.
+We were able to back that claim up with <a href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/">our statistics</a>
+and made sure that our open source and commercial competitors were well aware of it.
+None of them have chosen to contest the claim so it must be true 😁</p>
+<h2 id="what-to-collect">What to Collect</h2>
+<p>Which statistics you collect will depend on your project and what's available to you, but these are some of the ones we collect for ZAP.</p>
+<h3 id="downloads">Downloads</h3>
+<p>How often is your app downloaded? This doesn’t tell us how many people actually use it but it is still good to know how the number of downloads changes over time.</p>
+<p>This was initially all I recorded. When we had to move our downloads then a key requirement was that whatever platform we chose gave us download stats.
+All of the ZAP downloads are hosted on GitHub so we can use their public APIs to access them. GitHub does not provide any history so recording these stats regularly is important.</p>
+<p>This is of course more complicated if your app can be downloaded from different places. For example ZAP can be downloaded or accessed via a wide range of options including <a href="https://software.opensuse.org/download.html?project=home%3Acabelo&amp;package=owasp-zap">Linux repos</a>,
+<a href="https://formulae.brew.sh/cask/owasp-zap">Homebrew</a>, <a href="https://snapcraft.io/zaproxy">Snapcraft</a>, <a href="https://flathub.org/apps/details/org.zaproxy.ZAP">Flathub</a>
+and bundled in <a href="https://tools.kali.org/web-applications/zaproxy">Kali</a>.
+Very few of these options provide any stats so we do not really know how many people use ZAP in these ways.</p>
+<h3 id="docker-pulls">Docker Pulls</h3>
+<p>Another key metric for us, especially as the <a href="/docs/docker/about/">ZAP Docker images</a> have proved so popular.
+Docker also provides public APIs which we can use. Again there is no history so it is important to record these regularly.</p>
+<p>Some people have started asking us to make the ZAP Docker images available via Amazon ECR but so far I have not found out if it is possible to get usage stats for the pulls.
+If that is not possible then I’ll resist these calls - statistics are that important to us.</p>
+<h3 id="check-for-update-requests">Check for Update Requests</h3>
+<p>ZAP makes various “<a href="/faq/what-calls-home-does-zap-make/">calls home</a>” -
+these are all via <a href="https://bitly.com/">Bitly</a> URLs which means we get to find out how many calls were made.
+We create new Bitly URLs for each release so we can see which versions of ZAP people are using, and since 2.9.0 whether they are using ZAP in daemon or desktop mode.</p>
+<p>Bitly does provide a limited history with a free account but again we record these stats via their API regularly so that we have the complete history.</p>
+<p>These statistics are really useful for us as they give us an indication of the number of people who are actually using ZAP.
+We know that this is not the full picture - we are very public about what we collect and provide a <a href="/docs/desktop/cmdline/">command line</a> option which will prevent any of these calls being made.
+We also know that many users use ZAP in environments where either all outgoing calls are blocked or just those to services like Bitly.</p>
+<h3 id="user-interactions">User Interactions</h3>
+<p>Users can interact with us in a <a href="/community/">large number of ways</a>, including a set of GitHub issues, Google Groups, Slack channels, Discord, IRC, email, StackOverflow … the list goes on and on.</p>
+<p>We try to push most discussions to the ZAP User Group and so we collect statistics for this group as well.
+Google Groups are actually a pain - there is no API for it and no easy way to collect statistics.
+Right now I manually run a simple <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/group_count.gs">script</a> against my GMail inbox once a month -
+I don’t delete any emails from this group so it should be accurate.
+It is not pretty but it works!</p>
+<h2 id="the-framework">The Framework</h2>
+<p>For ZAP we follow a simple framework which is based on one I introduced when I was working in the Mozilla Web Security team.
+It worked well there so I simplified it even further and changed it to only use free services and resources (well, mostly).</p>
+<p>At a high level all we do is:</p>
+<ol>
+<li>Schedule</li>
+<li>Collect</li>
+<li>Store</li>
+<li>Process</li>
+<li>Display</li>
+</ol>
+<h3 id="schedule">Schedule</h3>
+<p>You should collect your stats at regular intervals. When I was doing this manually I did it once a month but now it’s all automated we record them daily.
+At Mozilla we used a Jenkins service for the scheduling as we were already using that for other jobs, but for ZAP we use GitHub Actions.
+We have a separate set of “zapbot” accounts we use for many of the ZAP admin tasks and so the GitHub action we use is in the zapbot/zap-mgmt-scripts repo :
+<a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/.github/workflows/record-stats-v2.yml">record-stats-v2.yml</a></p>
+<h3 id="collect">Collect</h3>
+<p>The GitHub action calls a simple <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/stats.py">stats.py</a> script passing in the ‘collect’ parameter.
+This in turn calls the collect method of subordinate scripts:</p>
+<ul>
+<li><a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/bitly.py">bitly.py</a></li>
+<li><a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/docker.py">docker.py</a></li>
+<li><a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/github.py">github.py</a></li>
+<li><a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/groups.py">groups.py</a></li>
+</ul>
+<p>Each of these scripts is responsible for handling the statistics for a service. They call the relevant APIs to retrieve the data we want.</p>
+<h3 id="store">Store</h3>
+<p>We store the raw and processed data in flat text files.
+It doesn't really matter where you store them, for many years the Mozilla security stats were stored in a private GitHub repo. However we were collecting a lot of stats and over time the repo became very large so we switched to putting them in S3 buckets.
+We do the same for ZAP stats - it’s not strictly speaking a free solution but as a flagship OWASP project we get access to various AWS services including S3 so that’s what we use.</p>
+<p>The file structure is:</p>
+<ul>
+<li>s3://project-zap/stats/
+<ul>
+<li>bitly
+<ul>
+<li>daily</li>
+<li>monthly</li>
+<li>raw</li>
+</ul>
+</li>
+<li>docker
+<ul>
+<li>daily</li>
+<li>monthly</li>
+<li>raw</li>
+</ul>
+</li>
+<li>downloads
+<ul>
+<li>daily</li>
+<li>monthly</li>
+<li>raw</li>
+</ul>
+</li>
+<li>groups
+<ul>
+<li>monthly</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>When downloaded the statistics are stored in the relevant “raw” directory in a filename with the format YYYY-MM-DD-<em>statistic</em>.json
+We store the full response from the relevant API, this means that we will be able to extract more data from these responses in the future if we decide we need to.
+The “<em>statistic</em>” part will relate to the relevant statistic, for example for downloads this will be the version number.</p>
+<h3 id="process">Process</h3>
+<p>The same <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/.github/workflows/record-stats-v2.yml">record-stats-v2.yml</a> GitHub action calls the same
+<a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/stats.py">stats.py</a> script but this time passing in the ‘daily’ parameter.
+The sub-scripts then process any of the raw files that have not been processed, extracts only what we are interested in and outputs that into a new file in the relevant “daily” directory. These files contain all of the stats for that day and are all named YYYY-MM-DD.csv</p>
+<p>The scripts also generate the relevant “monthly” files. Originally the plan was to do this on a separate schedule but it turned out to be easier to generate them this way, or at least that’s what I think.</p>
+<p>When I created the infrastructure for the Mozilla web security stats we actually fed these into AWS Athena. Athena supports complex data structures so it is possible to skip this processing step if you use it or something with a similar option. However I found the configuration confusing and difficult to maintain. I’m a developer and understand code so even then I processed the stats with a script and created simple CSV files. These can be easily used by a wide range of technologies and services.</p>
+<p>If you are able to use a service like Redash, Athena, Quicksight or Data Studio then you probably do not need to maintain separate ‘monthly’ files. We do as it makes the generation of our monthly charts much easier and because of the monthly stats that I used to collect manually - I’ve added some of these to S3 so can go back much further with the monthly stats than we can with the daily ones.</p>
+<p>Finally the GitHub Action pushes any newly created files back into S3.</p>
+<h3 id="display">Display</h3>
+<p>At Mozilla we used Redash, AWS Quicksight and Google Data Studio.</p>
+<p>As the ZAP data is already in S3 I tried out Quicksight again. Unfortunately I found it didn’t meet my requirements, especially because I couldn’t share dashboards publicly.</p>
+<p>So in the end I chose a simpler option - creating charts directly on this static website: <a href="https://www.zaproxy.org">https://www.zaproxy.org</a>.</p>
+<p>We have another GitHub action <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/.github/workflows/update-website-stats.yml">update-website-stats.yml</a>
+which runs once a month. This calls the <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/stats.py">stats.py</a> script passing in the ‘website’ parameter.
+The sub-scripts process the monthly files and generate data files for our website.
+This is implemented using Hugo and I implemented a simple Hugo shortcode <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/layouts/shortcodes/chart.html">chart.html</a> which creates a chart using <a href="https://developers.google.com/chart">Google Charts</a> and the data file supplied.
+The action then submits a pull request which we need to manually approve before it will be applied to the site. We do this for all of the other data that we update on this site.</p>
+<p>And that is it! You can see all of the ZAP public stats on <a href="/statistics/">https://www.zaproxy.org/statistics/</a></p>
+<h2 id="the-future">The Future</h2>
+<p>Am I happy with the statistics that we collect for ZAP?</p>
+<p>No - I want to know a lot more! I want to know which ZAP features people actually use.</p>
+<p>My plan is to add telemetry to ZAP. However ZAP is a security tool and it therefore deals with very sensitive data. We have no need or desire to collect any information that may make our users nervous.
+This means that we will have to be very careful with the data we collect, be very public about it and make it easy for people to opt out.
+If and when we do implement this then you can be sure that we’ll write another blog post about it.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2021-03-29-zap-2-10-0-features/"> ZAP 2.10 Features</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-collect-statistics">Why Collect Statistics?</a></li>
+    <li><a href="#what-to-collect">What to Collect</a>
+      <ul>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#docker-pulls">Docker Pulls</a></li>
+        <li><a href="#check-for-update-requests">Check for Update Requests</a></li>
+        <li><a href="#user-interactions">User Interactions</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-framework">The Framework</a>
+      <ul>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#collect">Collect</a></li>
+        <li><a href="#store">Store</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#display">Display</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-future">The Future</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/statistics/">statistics</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2021-04-19-collecting-statistics-for-open-source-projects/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2021 the ZAP Dev Team</br>
+      OWASP is a registered trademark of the OWASP Foundation, Inc.
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ec7c8.js"></script>
+  
+</div>
+</body>
+</html>
