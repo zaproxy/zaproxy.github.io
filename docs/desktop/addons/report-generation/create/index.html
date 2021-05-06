@@ -632,6 +632,9 @@
                             <a href="/docs/desktop/addons/report-generation/about/">Report Generation - About</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/report-generation/api/">Report Generation API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/report-generation/automation/">Report Generation Automation Framework Support</a>
                         </li>  
                         <li class="tree-active"> 
@@ -1353,6 +1356,7 @@ format:      # The format, eg one of HTML, XML, MD, JSON, PDF - this is used int
 mode:        # The Thymeleaf template mode, one of HTML, RAW, TEXT, HTML
 extension:   # The extension to use when generating the report
 sections:    # An optional list of sections - parts of the report which may be included or excluded
+themes:      # An optional list of themes - different colours and styles which apply to the same content
 </code></pre><h3 id="reportext">report.<em>ext</em></h3>
 <p>The Thymeleaf report template.<br>
 This should have the same extension that is specified in the template.yaml file (e.g. &lsquo;report.md&rsquo;) except if it is a PDF report, in which case &ldquo;html&rdquo; should be used (see below).</p>
@@ -1360,6 +1364,7 @@ This should have the same extension that is specified in the template.yaml file 
 <p>The report subdirectory may also include a &ldquo;Messages.properties&rdquo; language file for template specific strings localised to English as well as &ldquo;Message_ *locale* .property&rdquo; files for localising the strings into other languages.<br>
 The template specific strings should all start with ' <code>report.template.</code> '<br>
 If the report included sections then they must be defined in this file - the keys will automatically be prefixed by <code>report.template.section.</code> . Section names in the template.yaml file must just be alphanumeric strings and not start with an integer.<br>
+If a report includes themes then they must be defined in this file - the keys will automatically be prefixed by <code>report.template.theme.</code> . Theme names in the template.yaml file must just be alphanumeric strings and not start with an integer.<br>
 The language files may also override the default translations built into the reports add-on.</p>
 <h3 id="resources">Resources</h3>
 <p>The report subdirectory may also include a &ldquo;resources&rdquo; directory. If this is present then when a report is generated a subdirectory will be created based on the report name and all of the files in the resources directory will be copied into it.<br>
@@ -1388,16 +1393,27 @@ details in the same way.</p>
 <h3 id="helper">helper</h3>
 <p>An instance of the <a href="https://github.com/zaproxy/zap-extensions/tree/master/addOns/reports/src/main/java/org/zaproxy/addon/reports/ReportHelper.java">ReportHelper</a> class that provides useful methods, including:</p>
 <ul>
-<li><code>getRiskString(int risk)</code> Returns an internationalised string for the associated risk code</li>
 <li><code>getConfidenceString(int confidence)</code> Returns an internationalised string for the associated confidence code</li>
+<li><code>getRiskString(int risk)</code> Returns an internationalised string for the associated risk code</li>
+<li><code>getHttpStatusCode(int code)</code> Returns the meaning of the specified HTTP status code</li>
+<li><code>getHostForSite(String site)</code> Returns the hostname for a given site URL</li>
+<li><code>getPortForSite(String site)</code> Returns the port for a given site URL</li>
+<li><code>isSslSite(String site)</code> Returns true if the given site URL is using SSL</li>
+<li><code>getStatisticsString(String stat)</code> Returns the meaning of the specific statistics key - currently only supported for authentication stats</li>
+<li><code>getSiteStats(String site, String prefix)</code> Returns a Map of the statistics for the given site starting with the (optional) prefix</li>
+<li><code>hasSiteStats(String site, String prefix)</code> Returns true if the given site has any statistics starting with the (optional) prefix</li>
 </ul>
 <h3 id="alertcounts">alertCounts</h3>
 <p>A Map of risk levels to the number of unique alerts. This can be used by reports, for example, to generate a summary table.</p>
+<h3 id="alertcountsbyrule">alertCountsByRule</h3>
+<p>A Map of scan rule IDs to the number of instances.</p>
 <h3 id="reportdata">reportData</h3>
 <p>An instance of the <a href="https://github.com/zaproxy/zap-extensions/tree/master/addOns/reports/src/main/java/org/zaproxy/addon/reports/ReportData.java">ReportData</a> class that defines the data to be included in the report. This can be used, for example, to tell if there were no level alerts of a specific level or if they were deliberately excluded.</p>
 <p>Automation jobs can make additional data available to the
 reports, in many cases even if the automation framework was not used.
 See the help pages for the relevant jobs for more details.</p>
+<h3 id="stats">stats</h3>
+<p>A Map of the global statistics. The site based statistics are available via the helper.</p>
 <h2 id="testing-reports">Testing Reports</h2>
 <p>ZAP does not cache the report templates, so it rereads them every time you generate a report. This makes it much easier to test them. Just make sure that the &lsquo;Template Directory&rsquo; parameter is set to the top level directory you are using for your reports, then when you create a new report it will use the latest version of the template that you have saved. You will not need to restart ZAP in order to pick up any changes to existing reports that you have made.</p>
 <h2 id="pdf-reports">PDF Reports</h2>
