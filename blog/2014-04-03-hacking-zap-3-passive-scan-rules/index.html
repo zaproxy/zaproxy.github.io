@@ -154,9 +154,9 @@ some of the concepts and the underlying classes available to you.</p>
 <p>The easiest way to get started is to rip off an existing rule. The passive scan rules can be found in 3 add-ons in the
 <a href="https://github.com/zaproxy/zap-extensions/">zap-extensions</a> project, depending on their status:</p>
 <ul>
-<li>Release quality:  <a href="https://github.com/zaproxy/zap-extensions/tree/master/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules">addOns/pscanrules</a></li>
-<li>Beta quality:       <a href="https://github.com/zaproxy/zap-extensions/tree/master/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta">addOns/pscanrulesBeta</a></li>
-<li>Alpha quality:     <a href="https://github.com/zaproxy/zap-extensions/tree/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha">addOns/pscanrulesAlpha</a></li>
+<li>Release quality:  <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules">addOns/pscanrules</a></li>
+<li>Beta quality:       <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta">addOns/pscanrulesBeta</a></li>
+<li>Alpha quality:     <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha">addOns/pscanrulesAlpha</a></li>
 </ul>
 <p>There are also some simple examples that we will examine in more detail. These are all in the <code>pscanrulesAlpha</code> add-on.</p>
 <h2 id="the-main-classes">The main classes</h2>
@@ -222,7 +222,7 @@ potential vulnerabilities. It supports the following fields:</p>
 <li><code>wascId</code>             The <a href="http://www.webappsec.org/projects/threat/">WASC Threat Classification</a> id</li>
 </ul>
 <h2 id="simple-example">Simple example</h2>
-<p>The <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleSimplePassiveScanRule.java"><code>ExampleSimplePassiveScanRule</code></a> class implements a very simple passive
+<p>The <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleSimplePassiveScanRule.java"><code>ExampleSimplePassiveScanRule</code></a> class implements a very simple passive
 scan rule. As you will see, it just raises an alert randomly, so it isn't of any practical use. However it does demonstrate a couple of useful
 features:</p>
 <p>It uses the <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/model/Vulnerabilities.java"><code>Vulnerabilities</code></a> class to get the
@@ -236,14 +236,14 @@ messages.</p>
 <p>Note that the <code>pluginId</code> needs to be unique across all active and passive scan rules. The master list of ids is in the
 <a href="https://github.com/zaproxy/zaproxy/blob/main/docs/scanners.md">scanners.md</a> file.</p>
 <h2 id="file-based-example">File based example</h2>
-<p>The <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleFilePassiveScanRule.java"><code>ExampleFilePassiveScanRule</code></a> class implements a
-slightly more complex passive scan rule. In this case it reads in a set of strings from a <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/src/main/zapHomeFiles/txt/example-pscan-file.txt">configuration file</a> and checks for their presence in
+<p>The <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleFilePassiveScanRule.java"><code>ExampleFilePassiveScanRule</code></a> class implements a
+slightly more complex passive scan rule. In this case it reads in a set of strings from a <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/zapHomeFiles/txt/example-pscan-file.txt">configuration file</a> and checks for their presence in
 the response. It could also use hardcoded strings, but the advantage of the approach taken is that a knowledgeable user could manually edit the
 file to meet their requirement.<br>
 (ZAP automatically extracts the files located in the <code>zapHomeFiles</code> directory into a directory underneath the ZAP user directory.)</p>
 <p>This class also demonstrates a couple of other features:</p>
 <p>Instead of using the <code>Vulnerabilities</code> class the code uses <code>Constant.messages.getString(str)</code>. All of the strings used in this way are defined in the
-<a href="https://github.com/zaproxy/zap-extensions/tree/master/addOns/pscanrulesAlpha/src/main/resources/org/zaproxy/zap/extension/pscanrulesAlpha/resources/Messages.properties">Messages.properties</a> file. If you are just implementing the rule
+<a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/pscanrulesAlpha/src/main/resources/org/zaproxy/zap/extension/pscanrulesAlpha/resources/Messages.properties">Messages.properties</a> file. If you are just implementing the rule
 for your own benefit then you can hardcode the strings if you want, but internationalizing them is very simple and saves having to go back and
 change your code if you want to have your rule included in the ZAP Marketplace.</p>
 <p>The code also makes use of the <code>getAlertThreshold()</code> method. This returns an <code>AlertThreshold</code> which indicates how strictly you should check for
@@ -256,9 +256,9 @@ vulnerabilities. The threshold returned can be one of:</p>
 <p>You do not have to use the threshold - especially as it might not be relevant for the vulnerability you are testing for, but it is also a useful
 way for the user to tune how the rules work and so it's worth using if you can.</p>
 <h2 id="building-and-deploying">Building and deploying</h2>
-<p>The alpha passive active scan rules add-on build file is <a href="https://github.com/zaproxy/zap-extensions/blob/master/addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts">addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts</a>. All you need to do is run the Gradle task <code>:addOns:pscanrulesAlpha:copyZapAddOn</code> in the <code>zap-extensions</code> project and the relevant add-on will be built and copied to the correct location, assuming you have a ZAP core project called <code>zaproxy</code>. If you want to deploy to a different location then you can use the command line argument <code>--into=/path/to/copy/into/</code>.</p>
+<p>The alpha passive active scan rules add-on build file is <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts">addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts</a>. All you need to do is run the Gradle task <code>:addOns:pscanrulesAlpha:copyZapAddOn</code> in the <code>zap-extensions</code> project and the relevant add-on will be built and copied to the correct location, assuming you have a ZAP core project called <code>zaproxy</code>. If you want to deploy to a different location then you can use the command line argument <code>--into=/path/to/copy/into/</code>.</p>
 <h2 id="updating-the-help">Updating the help</h2>
-<p>To finish off a new rule you should add a short description of the rule to the help file: <a href="https://github.com/zaproxy/zap-extensions/tree/master/addOns/pscanrulesAlpha/src/main/javahelp/org/zaproxy/zap/extension/pscanrulesAlpha/resources/help/contents/pscanalpha.html">pscanalpha.html</a><br>
+<p>To finish off a new rule you should add a short description of the rule to the help file: <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/pscanrulesAlpha/src/main/javahelp/org/zaproxy/zap/extension/pscanrulesAlpha/resources/help/contents/pscanalpha.html">pscanalpha.html</a><br>
 This is not really necessary unless you want to publish your rules.</p>
 <p>A future post will cover how to contribute your code back to the ZAP community and progress it from alpha to beta and then release status.</p>
 
