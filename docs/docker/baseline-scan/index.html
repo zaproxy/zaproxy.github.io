@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.f2c60.css" rel="stylesheet">
+    <link href="/main.3e3c1.css" rel="stylesheet">
   
 </head>
 <body>
@@ -155,7 +155,7 @@ Options:
     -a                include the alpha passive scan rules as well
     -d                show debug messages
     -P                specify listen port
-    -D                delay in seconds to wait for passive scanning 
+    -D secs           delay in seconds to wait for passive scanning 
     -i                default rules not in the config file to INFO
     -I                do not return failure on warning
     -j                use the Ajax spider in addition to the traditional one
@@ -163,10 +163,12 @@ Options:
     -n context_file   context file which will be loaded prior to spidering the target
     -p progress_file  progress file which specifies issues that are being addressed
     -s                short output format - dont show PASSes or example URLs
-    -T                max time in minutes to wait for ZAP to start and the passive scan to run
+    -T mins           max time in minutes to wait for ZAP to start and the passive scan to run
     -U user           username to use for authenticated scans - must be defined in the given context file (post 2.9.0)
     -z zap_options    ZAP command line options e.g. -z &quot;-config aaa=bbb -config ccc=ddd&quot;
     --hook            path to python file that define your custom hooks
+    --auto            use the automation framework if supported for the given parameters (this will become the default soon)
+    --autooff         do not use the automation framework even if supported for the given parameters
 </code></pre><p>To run it with no &lsquo;file&rsquo; params use:</p>
 <pre><code>docker run -t owasp/zap2docker-stable zap-baseline.py -t https://www.example.com
 </code></pre><p>If you use &lsquo;file&rsquo; params then you need to mount the directory those file are in or will be generated in, eg</p>
@@ -286,6 +288,9 @@ The weekly version of ZAP supports scan rule configuration. One particular confi
 These generate a <a href="https://github.com/zaproxy/community-scripts/wiki/Baseline-Summary">dashboard</a> which will show you a summary of the results on one wiki page.</p>
 <h3 id="scan-hooks">Scan Hooks</h3>
 <p>This script supports <a href="../scan-hooks/">scan hooks</a> which allow you to override or modify behaviour of the script components instead of having to write a new script.</p>
+<h3 id="automation-framework-migration">Automation Framework Migration</h3>
+<p>The baseline scan is in the process of being migrated to use the <a href="/docs/automate/automation-framework/">Automation Framework</a>.
+For more details see the blog post: <a href="/blog/2021-06-15-baseline-scan-changes/">Baseline Scan Changes</a></p>
 <h3 id="source-code">Source Code</h3>
 <p>The source code for this script is in <a href="https://github.com/zaproxy/zaproxy/tree/main/docker">https://github.com/zaproxy/zaproxy/tree/main/docker</a>.</p>
 
@@ -349,7 +354,7 @@ These generate a <a href="https://github.com/zaproxy/community-scripts/wiki/Base
 
   
   
-    <script src="/main.f2c60.js"></script>
+    <script src="/main.3e3c1.js"></script>
   
 </div>
 </body>
