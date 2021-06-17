@@ -1341,6 +1341,7 @@
 <ul>
 <li>It does not use the &lsquo;Global JavaScript variables&rsquo; as these are difficult to test without a &lsquo;full&rsquo; browser</li>
 <li>It does not not show the confidence - this is still todo</li>
+<li>It does not match technologies on the basis of DOM properties as some properties are set by JavaScript in the browser after the response has passed through ZAP</li>
 <li>It allows you to see the &lsquo;evidence&rsquo; used to detect the technologies</li>
 </ul>
 <h2 id="the-technology-tab">The Technology Tab</h2>
@@ -1352,6 +1353,8 @@ table information currently being displayed. There is also a toggle button which
 passive scanner.</p>
 <p>The toolbar includes an enable/disable toggle button which controls whether the technology detection passive scan rule is functioning or not.
 This enabled state is persisted between ZAP sessions.</p>
+<h2 id="reporting">Reporting</h2>
+<p>Technology data is available to reports via the <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/wappalyzer/src/main/java/org/zaproxy/zap/extension/wappalyzer/automation/WappalyzerJobResultData">WappalyzerJobResultData</a> class.</p>
 <h2 id="external-links">External Links</h2>
 <table>
 <thead>
