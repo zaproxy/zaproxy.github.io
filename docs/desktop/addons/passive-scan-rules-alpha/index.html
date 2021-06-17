@@ -1378,10 +1378,6 @@ For example, an attacker site can include an image tag with an attribute src to 
 <p>This implements a very simple example passive scan rule.<br>
 For more details see: <a href="/blog/2014-04-03-hacking-zap-3-passive-scan-rules/">Hacking ZAP Part 3: Passive Scan Rules</a>.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleSimplePassiveScanRule.java">ExampleSimplePassiveScanRule.java</a></p>
-<h2 id="feature-policy-header-not-set">Feature Policy Header Not Set</h2>
-<p>This rule checks the HTTP response headers (on HTML and JavaScript responses) for inclusion of a &ldquo;Feature-Policy&rdquo; header, and alerts if one is not found.<br>
-Redirects are ignored except at the Low threshold.</p>
-<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/FeaturePolicyScanRule.java">FeaturePolicyScanRule.java</a></p>
 <h2 id="in-page-banner-information-leak">In Page Banner Information Leak</h2>
 <p>Analyzes response body content for the presence of web or application server banners (when the responses have error status codes).<br>
 If the Threshold is Low then status 200 - Ok responses are analyzed as well.<br>
@@ -1394,6 +1390,10 @@ An attacker can also modify the data and exploit JSO to do a Remote Code Executi
 JSO should not be used by Java programs. Strong controls must be done on serialized data.<br>
 JSO are a type of vulnerabilities associated to A8:2017-Insecure Deserialization.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/JsoScanRule.java">JsoScanRule.java</a></p>
+<h2 id="permissions-policy-header-not-set">Permissions Policy Header Not Set</h2>
+<p>This rule checks the HTTP response headers (on HTML and JavaScript responses) for inclusion of a &ldquo;Permissions-Policy&rdquo; header, and alerts if one is not found.<br>
+Redirects are ignored except at the Low threshold.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/PermissionsPolicyScanRule.java">PermissionsPolicyScanRule.java</a></p>
 <h2 id="source-code-disclosure">Source Code Disclosure</h2>
 <p>Application Source Code was disclosed by the web server.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/SourceCodeDisclosureScanRule.java">SourceCodeDisclosureScanRule.java</a></p>
@@ -1403,7 +1403,7 @@ It helps mitigate an attack where the CDN has been compromised and content has b
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/SubResourceIntegrityAttributeScanRule.java">SubResourceIntegrityAttributeScanRule.java</a></p>
 <h2 id="dangerous-js-functions">Dangerous JS Functions</h2>
 <p>This scan rule checks for any dangerous JS functions present in a site response.<br>
-<strong>Note:</strong> If the Custom Payloads addon is installed you can add your own function names (payloads) in the Custom Payloads options panel. They will also be searched for in responses as they're passively scanned. Keep in mind that the greater the number of payloads the greater the amount of time needed to passively scan.</p>
+<strong>Note:</strong> If the Custom Payloads addon is installed you can add your own function names (payloads) in the Custom Payloads options panel. They will also be searched for in responses as they're passively scanned. Keep in mind that the greater the number of payloads the greater the amount of time needed to passively scan. <strong>Note:</strong> $ is stripped from the start of the strings/payloads and is optionally included when the patterns are assembled.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/JsFunctionScanRule.java">JsFunctionScanRule.java</a></p>
 
         </div>

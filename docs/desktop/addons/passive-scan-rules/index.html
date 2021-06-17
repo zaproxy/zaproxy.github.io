@@ -1348,9 +1348,9 @@ amount of time needed to passively scan.</p>
 <p>It is also possible to add patterns to the <code>xml/application_errors.xml</code> file in ZAP's user directory.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ApplicationErrorScanRule.java">ApplicationErrorScanRule.java</a></p>
 <h2 id="cache-control">Cache Control</h2>
-<p>Checks &ldquo;Cache-Control&rdquo; and &ldquo;Pragma&rdquo; response headers against general industry best practice settings for protection of sensitive content.<br>
-At MEDIUM and HIGH thresholds only non-error or non-redirect text responses (excluding JavaScript) are considered.<br>
-At LOW threshold all responses apart from images and CSS are considered including errors and redirects.</p>
+<p>Checks &ldquo;Cache-Control&rdquo; response headers against general industry best practice settings for protection of sensitive content.<br>
+At MEDIUM and HIGH thresholds only non-error or non-redirect text responses (excluding JavaScript and CSS) are considered.<br>
+At LOW threshold all responses are considered including errors and redirects.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CacheControlScanRule.java">CacheControlScanRule.java</a></p>
 <h2 id="charset-mismatch">Charset Mismatch</h2>
 <p>This check identifies responses where the HTTP Content-Type header declares a charset different from the charset defined by the body of the HTML or XML. When there's a charset mismatch between the HTTP header and content body Web browsers can be forced into an undesirable content-sniffing mode to determine the content's correct character set.</p>
@@ -1386,7 +1386,12 @@ At LOW threshold all responses apart from images and CSS are considered includin
 <p>Looks for cookies set during HTTPS sessions, raises an alert for those that are set but do not include the secure flag. A cookie set with the secure flag will not be sent during a plain HTTP session.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CookieSecureFlagScanRule.java">CookieSecureFlagScanRule.java</a></p>
 <h2 id="cookie-without-samesite-attribute">Cookie Without SameSite Attribute</h2>
-<p>This reports any cookies that do not have the SameSite attribute or that do not have a recognised valid value for that attribute.</p>
+<p>This reports any cookies that:</p>
+<ul>
+<li>do not have the SameSite attribute</li>
+<li>have the attribute set to &ldquo;None&rdquo; (ignored at HIGH Threshold)</li>
+<li>do not have a recognised valid value for that attribute</li>
+</ul>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CookieSameSiteScanRule.java">CookieSameSiteScanRule.java</a></p>
 <h2 id="cross-domain-script-inclusion">Cross Domain Script Inclusion</h2>
 <p>Validates whether or not scripts are included from domains other than the domain hosting the content. By looking at the &ldquo;src&rdquo; attributes of &ldquo;script&rdquo; tags in HTML responses.<br>
@@ -1402,13 +1407,12 @@ The current implementation looks at excessively permissive CORS headers.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CrossDomainMisconfigurationScanRule.java">CrossDomainMisconfigurationScanRule.java</a></p>
 <h2 id="csp-content-security-policy">CSP (Content Security Policy)</h2>
 <p>The Content Security Policy (CSP) passive scan rule parses and analyzes CSP headers for potential misconfiguration or weakness. This rule leverages Shape Security's <a href="https://github.com/shapesecurity/salvation">Salvation</a> library to perform it's parsing and assessment of CSPs.</p>
-<p>Note: If multiple CSP headers are encountered they are merged (intersected) into a single policy for analysis, check the &lsquo;Other Info&rsquo; field of alerts
-for further details.</p>
+<p>If a response has multiple CSPs they are analyzed individually, as there is no sure way to intersect/merge the policies and further different browsers have varying levels of CSP support and enforcement.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyScanRule.java">ContentSecurityPolicyScanRule.java</a></p>
 <h2 id="csrf-countermeasures">CSRF Countermeasures</h2>
 <p>This rule identifies &ldquo;potential&rdquo; vulnerabilities with the lack of known CSRF countermeasures in pages with forms.<br>
 At HIGH alert threshold only scans messages which are in scope.<br>
-Post 2.5.0 you can specify a comma separated list of identifiers in the <code>rules.csrf.ignorelist</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any FORMs with a name or ID that matches one of these identifiers will be ignored when scanning for missing Anti-CSRF tokens. Only use this feature to ignore FORMs that you know are safe, for example search forms.</p>
+Post 2.5.0 you can specify a comma separated list of identifiers in the <code>rules.csrf.ignorelist</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any FORMs with a name or ID that matches one of these identifiers will be ignored when scanning for missing Anti-CSRF tokens. Only use this feature to ignore FORMs that you know are safe, for example search forms. Form element names are sorted and de-duplicated when they are printed in the Zap Report.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CsrfCountermeasuresScanRule.java">CsrfCountermeasuresScanRule.java</a></p>
 <h2 id="information-disclosure-debug-errors">Information Disclosure: Debug Errors</h2>
 <p>This passive scan rule checks the content of web responses for known Debug Error message fragments. Access to such details may provide a malicious individual with means by which to further abuse the web site. They may also leak data not specifically meant for end user consumption.<br>
