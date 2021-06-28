@@ -74,7 +74,7 @@ History Version 1 First Version</description>
       
       <guid>/docs/desktop/addons/automation-framework/environment/</guid>
       <description>Automation Framework - Environment This section of the YAML configuration file defines the applications which the rest of the jobs can act on.
-env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory url: # The top level url, mandatory, everything under this will be included includePaths: # TBA: An optional list of regexes to include excludePaths: # TBA: An optional list of regexes to exclude authentication: # TBA: In time to cover all auth configs parameters: failOnError: true # If set exit on an error failOnWarning: false # If set exit on a warning progressToStdout: true # If set will write job progress to stdout </description>
+env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: # TBA: In time to cover all auth configs parameters: failOnError: true # If set exit on an error failOnWarning: false # If set exit on a warning progressToStdout: true # If set will write job progress to stdout vars: # List of 1 or more custom variables to be used throughout the config file myVarOne: CustomConfigVarOne # Can be used as ${myVarOne} anywhere throughout the config myVarTwo: ${myVarOne}.</description>
     </item>
     
     <item>
@@ -1257,7 +1257,7 @@ A simple web UI which allows you to explore and use the API is available via the
       <guid>/docs/desktop/addons/automation-framework/job-spider/</guid>
       <description>Automation Framework - spider Job This job runs the traditional spider. This is fast but does not handle modern applications as effectively.
 By default this job will spider the first context defined in the environment and so none of the parameters are mandatory.
-YAML  - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context url: # String: Url to start spidering from, default: first context URL failIfFoundUrlsLessThan: # Int: Fail if spider finds less than the specified number of URLs, default: 0 warnIfFoundUrlsLessThan: # Int: Warn if spider finds less than the specified number of URLs, default: 0 maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
+YAML  - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
     </item>
     
     <item>
@@ -1446,16 +1446,6 @@ Base64 Disclosure This script analyzes incoming WebSocket message payload for Ba
       <guid>/docs/desktop/start/features/authmethods/</guid>
       <description>Authentication Methods ZAP handles multiple types of authentication (called Authentication Methods ) that can be used for websites / webapps. Each Context has an Authentication Method defined which dictates how authentication is handled. The authentication is used to create Web Sessions that correspond to authenticated webapp Users.
 Authentication methods can be used in multiple places around ZAP.</description>
-    </item>
-    
-    <item>
-      <title>Automation Framework - About</title>
-      <link>/docs/desktop/addons/automation-framework/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/automation-framework/about/</guid>
-      <description>Automation Framework - About Source Code https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
-Authors ZAP Dev Team</description>
     </item>
     
     <item>
@@ -1773,6 +1763,16 @@ Selecting an alert with one click will display it in the right hand pane.</descr
       <guid>/docs/desktop/start/features/authstrategies/</guid>
       <description>Authentication Verification Strategies Verification Strategies ZAP supports multiple Verification Strategies in order to detect when messages correspond to authenticated requests.
 Check every Response When this strategy is used then ZAP will use the specified Regex Patterns on every response. This is typically useful for traditional webapps which return full HTML pages.</description>
+    </item>
+    
+    <item>
+      <title>Automation Framework - About</title>
+      <link>/docs/desktop/addons/automation-framework/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/automation-framework/about/</guid>
+      <description>Automation Framework - About Source Code https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
+Authors ZAP Dev Team</description>
     </item>
     
     <item>
