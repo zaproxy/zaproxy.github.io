@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Community Questionnaire Results">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2021-06-29-community-questionnaire/images/first-help.png"/>
+
+<meta name="twitter:title" content="Community Questionnaire Results"/>
+<meta name="twitter:description" content="Community Questionnaire Results"/>
+
+    <meta property="og:title" content="Community Questionnaire Results" />
+<meta property="og:description" content="Community Questionnaire Results" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2021-06-29-community-questionnaire-results/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2021-06-29-community-questionnaire/images/first-help.png" />
+<meta property="article:published_time" content="2021-06-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-29T00:00:00+00:00" />
+
+  
+  <title>OWASP ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.3e3c1.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler">
+              <img height="20" width="20" src="/img/search.svg" />
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Community Questionnaire Results</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday June 29, 2021</span>
+              <span class="word-count fl-r"> 1305 Words </span>
+            </section>
+            <p>In December 2021 we published a Community Questionnaire focused on feedback and documentation.
+We have just closed that questionnaire and wanted to share the results and explain how they are changing what we do.</p>
+<h2 id="the-results">The Results</h2>
+<p><strong>Thank you</strong> to all of the 290 people who answered our questions - as you'll see we find the answers really helpful and they <strong>do</strong> impact what we do.</p>
+<h3 id="where-do-you-go-to-first-for-help-with-zap">Where do you go to first for help with ZAP?</h3>
+<p><img src="images/first-help.png" alt="Where do you go to first for help with ZAP?"></p>
+<p>The largest single response was to go to Google or other search engine.
+It is a little bit problematic for us in that we have no direct control over what search engines return.</p>
+<p>However it is also not too surprising - I must admit that I also use Google to find out specific things about ZAP (including things that I have documented!) and fortunately our content tends to come high up in the search results.</p>
+<p>The combination of the User Guide (on and off line) and this site (which includes the user guide) account for nearly 50% which is good to see.</p>
+<p>I must admit I’m a bit puzzled by the 5.5% of people who go to <a href="https://owasp.org">https://owasp.org</a> first as we have no real content there, just a redirect to this site!</p>
+<h3 id="whats-the-main-way-you-get-news-about-zap">What's the main way you get news about ZAP?</h3>
+<p><img src="images/main-news.png" alt="What's the main way you get news about ZAP?"></p>
+<p>It's good to see that the sites we have some control over, the ZAP Groups, website, twitter and blog account for nearly 70% of the responses.</p>
+<p>The 21.3% who use <a href="https://owasp.org">https://owasp.org</a> are again a bit troubling as we do not tend to use that very much for ZAP news.</p>
+<h3 id="how-useful-do-you-find-the-zap-documentation">How useful do you find the ZAP documentation?</h3>
+<p><img src="images/docs-useful.png" alt="How useful do you find the ZAP documentation?"></p>
+<p>The low number of &ldquo;Not useful&rdquo; and relatively high numbers of &ldquo;Fairly&rdquo; and &ldquo;Very&rdquo; useful replies are very gratifying to see.
+Documentation used to be one of ZAP's weak spots and it's something we have been focusing on.
+We know there's (always) more to do but its good to see that we appear to be going in the right direction.</p>
+<p>The fact that fewer people use the API documentation is not too concerning as we know that will only be of interest to a subset of ZAP users.</p>
+<p>However it does appear that many people have not used any of the ZAP docs. Is that because ZAP is so intuitive that they don't need to??
+To be honest I have no idea!</p>
+<h3 id="what-would-you-like-us-to-document-better">What would you like us to document better?</h3>
+<p>This was a free format question so a bit harder to analyse.</p>
+<p>However there were definitely some recurring themes:</p>
+<p>Lots of people would like more <strong>examples and case studies</strong>.
+That is not too surprising as it is not something we've really focused on.</p>
+<p>The next most popular type of answer was that people were <strong>happy</strong> with the documentation we already have. That is good to hear, but we will not be resting on our laurels!</p>
+<p><strong>Scripting</strong> was the next most popular topic, despite the fact that we've recorded quite a few <a href="/videos-list/">videos</a> specifically on scripting.</p>
+<p><strong>APIs</strong> also came up in quite a few of the responses, including requests for more examples and better documentation around the format of the responses.</p>
+<p>There were a few answers relating the <strong>contexts and scope</strong> but after that the rest of the answers covered a wide range of different topics.</p>
+<h3 id="what-format-would-you-find-most-useful-articles-videos-etc">What format would you find most useful (articles, videos, etc)?</h3>
+<p>Although this was free format the answers were much more focused making it easier to analyse.</p>
+<p>The answers were pretty evenly split between <strong>articles</strong> and <strong>videos</strong>, with some people preferring one and other people liking both.</p>
+<h3 id="would-you-like-to-be-featured-in-a-zap-success-stories-section-on-wwwzaproxyorg">Would you like to be featured in a &ldquo;ZAP Success Stories&rdquo; section on <a href="http://www.zaproxy.org?">www.zaproxy.org?</a></h3>
+<p>Quite a few of you said you might be interested - we have contacted some of you and will contact the rest very shortly.</p>
+<h3 id="do-you-have-any-other-feedback-about-zap">Do you have any other feedback about ZAP?</h3>
+<p>We had some great feedback here, for example:</p>
+<hr>
+<p><code>I like opensource projects because for their transparency and reliability and because they are accessible to more people and give the possibility of learning more deeply. It has been very important for my learning and training. I'm neurodivergent person (autistic) and I would like more easy ways of learning, like subtitles and traductions in videos (I'm half deaf too) and wroten articles.</code></p>
+<hr>
+<p><code>Great tool! Thanks for all of your contributions to the community.</code></p>
+<hr>
+<p><code>It's amazing to see what ZAP has accomplished, and what can be accomplished with ZAP.  Huge thanks to Simon and all of the other contributors who continue to work on it.</code></p>
+<hr>
+<p><code>Thank you for building and maintaining the best DAST tool there is.</code></p>
+<hr>
+<p><code>Thank you so much for this wonderful open source tool!!!</code></p>
+<hr>
+<p><code>very impressive tool</code></p>
+<hr>
+<p><code>Great! Keep going.</code></p>
+<hr>
+<p><code>Thank you for providing this awesome tool</code></p>
+<hr>
+<p><code>Great work, Simon and Team.</code></p>
+<hr>
+<p><code>You guys have done a really fuc*ing good work</code></p>
+<hr>
+<p><code>Great job guys! I'm new in the community, but fairly like ZAP so far...</code></p>
+<hr>
+<p><code>Best App For Analysing Websites</code></p>
+<hr>
+<p><code>Like with all open-source community projects: keep it up and thank you for everything! I guess I'll reach out to OWASP in the near future because I would like to get involved in such work too</code></p>
+<hr>
+<p><code>it's great that this becomes somewhat industry standard when things get escalated to vendor such as firewall/security app, they know what you are talking about and acknowledge there is some ground to investigate instead of treating you like an yahoo.</code></p>
+<hr>
+<p><code>ZAP is simply awesome!!!</code></p>
+<hr>
+<p><code>Great tool, love that it works everywhere!!!</code></p>
+<hr>
+<p><code>Thank you for this awesome gratis + open source software.</code></p>
+<hr>
+<p><code>Great Job, this is one of my favorite tools, please make access control validation easier, manually selecting every single page for every single user is too much</code></p>
+<hr>
+<p><code>OWASP ZAP is an amazing tool for web pentesting it have every thing i desired for web app pentration testing</code></p>
+<hr>
+<p><code>I love this tool</code></p>
+<hr>
+<p><code>Sorry, but the reporting sucks, and limits the usefulness of the tool.</code></p>
+<h2 id="what-we-are-going-to-do-differently">What we are going to do differently</h2>
+<p>We publish questionnaires like this one because we do want feedback from you.
+And there is no point in asking for feedback if we do not change what we do as a result!</p>
+<h3 id="news">News</h3>
+<p>The current split of blog posts, tweets and messages to the ZAP groups seems to be working well.</p>
+<p>Although maybe we should look at getting a bit <strong>more content</strong> onto <a href="https://owasp.org">https://owasp.org</a> !</p>
+<h3 id="documentation">Documentation</h3>
+<p>Most of you are already going directly to our documentation, or searching for it via Google or other search providers.
+To me that indicates we are on the right track - we need to produce <strong>more documentation</strong> like this and ensure it is <strong>high quality</strong> so that it appears high up in search results.</p>
+<p>Articles and videos appear to be equally popular, and I can see why they are both useful.
+We have been focusing on creating new <a href="/videos-list/">videos</a> but it is clear we need to <strong>focus on articles</strong> just as much, or possibly more in order to catch up!</p>
+<p>We need to seriously look at producing more (or even some!) more <strong>detailed examples</strong> and <strong>case studies</strong>.
+This is not something we have a great deal of experience doing so if you would like to help us with this then please <a href="mailto:zaproxy-admin@googlegroups.com">get in contact</a> with us.</p>
+<p>And it looks like articles on <strong>scripting</strong> and the <strong>APIs</strong> are well overdue!</p>
+<h3 id="success-stories">Success Stories</h3>
+<p>We will be <strong>following up</strong> with people who said they might be interested in contributing the the ZAP <a href="/success/">Success Stories</a> but if you did not reply but would still like to be featured then just get in touch with us as per the links on that page.</p>
+<p>The positive feedback was great to receive, and to the person who (rightly) complained about the reporting - hopefully the new <a href="/docs/desktop/addons/report-generation/">Report Generation</a> add-on has addressed this long standing problem. If not then let us know what <a href="https://github.com/zaproxy/zaproxy/issues/new?assignees=&amp;labels=enhancement&amp;template=Feature_request.md">enhancements</a> you would like to see!</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2021-06-15-baseline-scan-changes/"> Baseline Scan Changes</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-results">The Results</a>
+      <ul>
+        <li><a href="#where-do-you-go-to-first-for-help-with-zap">Where do you go to first for help with ZAP?</a></li>
+        <li><a href="#whats-the-main-way-you-get-news-about-zap">What's the main way you get news about ZAP?</a></li>
+        <li><a href="#how-useful-do-you-find-the-zap-documentation">How useful do you find the ZAP documentation?</a></li>
+        <li><a href="#what-would-you-like-us-to-document-better">What would you like us to document better?</a></li>
+        <li><a href="#what-format-would-you-find-most-useful-articles-videos-etc">What format would you find most useful (articles, videos, etc)?</a></li>
+        <li><a href="#would-you-like-to-be-featured-in-a-zap-success-stories-section-on-wwwzaproxyorg">Would you like to be featured in a &ldquo;ZAP Success Stories&rdquo; section on </a></li>
+        <li><a href="#do-you-have-any-other-feedback-about-zap">Do you have any other feedback about ZAP?</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-we-are-going-to-do-differently">What we are going to do differently</a>
+      <ul>
+        <li><a href="#news">News</a></li>
+        <li><a href="#documentation">Documentation</a></li>
+        <li><a href="#success-stories">Success Stories</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/questionnaire/">questionnaire</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2021-06-29-community-questionnaire-results/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2021 the ZAP Dev Team</br>
+      OWASP is a registered trademark of the OWASP Foundation, Inc.
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.3e3c1.js"></script>
+  
+</div>
+</body>
+</html>
