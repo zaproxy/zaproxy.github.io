@@ -1381,7 +1381,8 @@ It does not indicate any potential vulnerabilities but it could indicate that th
 <p>This check looks at user-supplied input in query string parameters and POST data to identify where open redirects might be possible. Open redirects occur when an application allows user-supplied input (e.g. <a href="http://nottrusted.com">http://nottrusted.com</a>) to control an offsite redirect. This is generally a pretty accurate way to find where 301 or 302 redirects could be exploited by spammers or phishing attacks.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/UserControlledOpenRedirectScanRule.java">UserControlledOpenRedirectScanRule.java</a></p>
 <h2 id="pii-disclosure">PII Disclosure</h2>
-<p>PII is information like credit card number, SSN etc. This check currently reports only numbers which match credit card numbers and pass Luhn checksum, which gives high confidence, that this is a credit card number.</p>
+<p>PII is information like credit card number, SSN etc. This check currently reports only numbers which match credit card numbers and pass Luhn checksum, which gives high confidence, that this is a credit card number (images and CSS are ignored).<br>
+At MEDIUM and HIGH threshold it attempts to use three characters of context on each side of potential matches to exclude matches within deicmal like content. At LOW threshold, alerts will be raised for such matches.</p>
 <p>Note: In the case of suspected credit card values, the potential credit card numbers are looked up against a Bank Identification Number List
 (BINList). If a match is found the alert is raised at High confidence and additional details are added to the &lsquo;Other Information&rsquo; field in the
 alert, otherwise the alerts will have Medium confidence.
