@@ -237,6 +237,9 @@
                             <a href="/docs/desktop/addons/automation-framework/environment/">Automation Framework - Environment</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/automation-framework/gui/">Automation Framework - GUI</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-addons/">Automation Framework - addOns Job</a>
                         </li>  
                         <li> 
@@ -247,6 +250,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-pscanwait/">Automation Framework - passiveScan-wait Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-requestor/">Automation Framework - requestor Job</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-spider/">Automation Framework - spider Job</a>
@@ -1378,6 +1384,25 @@ Following some examples, overriding:</p>
 <li>ACTION importUrl (url, hostOverride)</li>
 </ul>
 <p>Both <code>target</code> and <code>hostOverride</code> support the <code>Target URL</code> format explained earlier. The definitions will be imported synchronously and any warnings will be returned.</p>
+<h3 id="data-driven-nodes">Data Driven Nodes</h3>
+<p>When the OpenAPI schema contains path params the plugin will automatically generate data driven nodes in either the default context or for the context from the provided <code>contextId</code>. For example, the following OpenAPI definition will result in at least one data driven node. <strong>openapi.yml</strong> `
+&hellip;
+/users/v1/{username}/email:
+&hellip;
+parameters:</p>
+<ul>
+<li>name: username
+in: path
+description: username to update email
+required: true
+schema:
+type: string
+&hellip;
+<code>**Default Context \&gt; Structure \&gt; Structural Modifiers**</code>
+DDN0: (/)(.+?)(/.<em>)
+DDN1: (/users/v1/)(.+?)(/.</em>)
+`</li>
+</ul>
 <h2 id="command-line">Command Line</h2>
 <p>The following Command Line options are added:</p>
 <ul>
