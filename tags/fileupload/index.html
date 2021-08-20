@@ -4,23 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-    <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png"/>
-
-<meta name="twitter:title" content="ZAP JWT Support Add-on"/>
-<meta name="twitter:description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP"/>
-
-    <meta property="og:title" content="ZAP JWT Support Add-on" />
-<meta property="og:description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-09-03-zap-jwt-scanner/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png" />
-<meta property="article:published_time" content="2020-09-03T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-09-03T00:00:00+00:00" />
-
-  
+  <link rel="alternate" type="application/rss+xml" href="/tags/fileupload/index.xml" title="OWASP ZAP" />
   <title>OWASP ZAP</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -136,125 +122,75 @@
 </header>
 
   
-
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">ZAP JWT Support Add-on</h1>
+    <h1 class="text--white">Tag: fileupload</h1>
   </div>
 </section>
-
-<div class="wrapper py-70" data-kind="page">
-    <div class="flex latest-versions">
-      <article class="col-2-3 pr-30 content single-post">
-          <div class="breadcrumbs">
-              <a href="/blog/">The ZAP Blog</a>
-          </div>
-
-          <main class="post-content">
-            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Thursday September 3, 2020</span>
-              <span class="word-count fl-r"> 423 Words </span>
-            </section>
-            <p>With the popularity of JSON Web Tokens (JWTs) there comes the need to secure their use so that they are not misused because of bad configuration, older libraries, or buggy implementations. So the JWT Support add-on is used to find such vulnerabilities and this blog explains on how to use it.</p>
-<h2 id="configuration">Configuration</h2>
-<p>As the JWT add-on includes a rule for the Active Scanner as well as Fuzzer functionality, there are configuration details which are specific for the JWT add-on.
-Under ZAP's Options dialog you will find a JWT section as shown below:
-<img src="./images/jwt-options-panel.png" alt="JWT"></p>
-<h3 id="explanation">Explanation</h3>
-<h4 id="scanner-configuration">Scanner Configuration:</h4>
-<p>In case the application which you are trying to scan is using RSA or more specifically RS* algorithm then please configure the public certificate TrustStore path and TrustStore password. These fields are used to find certain vulnerabilities related to RS* based JWTs.</p>
-<p>The Enable Client Configuration Scan option is used to enable client-side validations like JWT being sent to the browser in an insecure or non-recommended way.</p>
-<h4 id="fuzzer-configuration">Fuzzer Configuration:</h4>
-<p>Since JWT is a signed token; fuzzing field values requires resigning the JWT therefore the fuzzer requires an HMac secret key or RSA private key as per the algorithm header field of the JWT. So that the Fuzzer configuration corresponds to the same.</p>
-<h3 id="scanner-vulnerability-coverage">Scanner Vulnerability Coverage</h3>
-<p>The JWT add-on's scan rule attempts to identified vulnerabilities in both Client/Browser and Server/Library implementations.</p>
-<p>For the Client-side it covers most of the vulnerabilities mentioned in the <a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-storage-on-client-side">OWASP JWT CheatSheet</a>.</p>
-<p>For Server-side it mainly covers following vulnerabilities:</p>
-<ol>
-<li><a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/#Meet.the..None..Algorithm">None Algorithm attack</a></li>
-<li><a href="https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/#RSA.or.HMAC.">Algorithm Confusion attack</a></li>
-<li><a href="https://nvd.nist.gov/vuln/detail/CVE-2018-0114">Trusting JWK provided with the Token</a></li>
-<li>Empty JWT</li>
-<li>Null Byte Injection attack</li>
-</ol>
-<h3 id="fuzzer-view">Fuzzer View</h3>
-<p>JWT Fuzzer view is different from HTTP Fuzzer view as JWT's need to be parsed, then JWT field values can be fuzzed. The following is the Fuzzer view:
-<img src="./images/fuzzer-view.png" alt="Fuzzer View"></p>
-<p>The <strong>Signature Operation</strong> drop down is used to control the operations on the Signature field of JWT.</p>
-<ol>
-<li><strong>No Signature</strong>: This value is used to remove the signature component from the newly fuzzed JWT.</li>
-<li><strong>Same Signature</strong>: This value is used to use the same signature for the newly fuzzed JWT.</li>
-<li><strong>New Signature</strong>: This value is used to generate new signature for the newly fuzzed JWT.</li>
-</ol>
-<p>The <strong>Component</strong> drop down is used to choose the <strong>Header</strong> or the <strong>Payload</strong> components of the JWT.</p>
-<p>The <strong>Key</strong> drop down is used to choose the fields to be fuzzed in the <strong>Header</strong> or <strong>Payload</strong> components of the JWT.</p>
-<h3 id="fuzzer-view-animation">Fuzzer View Animation</h3>
-<p><img src="./images/fuzzer-animation.gif" alt="Fuzzer Animation"></p>
-<p>The JWT add-on is available in the marketplace and can be installed from within ZAP.
-For more information please visit <a href="https://github.com/SasanLabs/owasp-zap-jwt-addon">JWT Support</a></p>
-
-          </main>
-          <div class="next-content bg--blue-lightest p-10">
-              
-                Previous <a class="previous" href="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/"> Introducing the GraphQL Add-on for ZAP</a>
-              
-              
-                Next <a class="next" href="/blog/2020-09-06-zap-is-ten-years-old/"> ZAP is Ten Years Old</a>
-              
-          </div>
-      </article>
-      <aside class="col-1-3">
-        <section class="post-meta">
-          
-          
-          <div class="post-authors">
+  <div class="wrapper py-70">
+      <div class="flex latest-versions">
+        <div class="col-2-3 pr-30">
             
-            
-              <section class="post-author-single flex p-10">
-                <div class="col-1-5">
-                  
-                  <img class="author-picture" src="/img/authors/karan-preet-singh-sasan_400x400.jpeg" />
-                  
-                </div>
-                <div class="author-name col-4-5">
-                  
-                    Karan Preet Singh Sasan
-                  
-                  
-                  <a class="author-twitter" href="https://twitter.com/sasan_karan">@sasan_karan</a>
-                  
-                </div>
-              </section>
+            <article class="blog-post-preview pt-40 pb-40">
+                <h3 class="mb-10">
+                  <a href="/blog/2021-08-20-zap-fileupload-addon/">ZAP FileUpload Add-on</a>
+                </h3>
+                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+                  Posted <span class="post-date">Friday August 20, 2021</span>
+                  <span class="word-count fl-r"> 580 Words </span>
+                </section>
+                <section class="summary">Overview File upload is becoming a more and more essential part of any application, where the user is able to upload their photo, their CV, or a video showcasing a project they are working on. The application should be able to fend off bogus and malicious files in a way to keep the application and the users safe.</section>
+            </article>
           
+        </div>
 
-          <h4>Table of Contents</h4>
-          <nav id="TableOfContents">
-  <ul>
-    <li><a href="#configuration">Configuration</a>
-      <ul>
-        <li><a href="#explanation">Explanation</a></li>
-        <li><a href="#scanner-vulnerability-coverage">Scanner Vulnerability Coverage</a></li>
-        <li><a href="#fuzzer-view">Fuzzer View</a></li>
-        <li><a href="#fuzzer-view-animation">Fuzzer View Animation</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+        <div class="col-1-3 ml-20">
+          
+<section class="p-20">
+    <h3>Tags</h3>
+    <ul class="taxonomy-list tax-tags">
+    
+        <li><a href="/tags/api/">api</a></li>
+    
+        <li><a href="/tags/asvs/">asvs</a></li>
+    
+        <li><a href="/tags/blog/">blog</a></li>
+    
+        <li><a href="/tags/browser/">browser</a></li>
+    
+        <li><a href="/tags/competition/">competition</a></li>
+    
+        <li><a href="/tags/docker/">docker</a></li>
+    
+        <li><a href="/tags/fileupload/">fileupload</a></li>
+    
+        <li><a href="/tags/guide/">guide</a></li>
+    
+        <li><a href="/tags/hacking/">hacking</a></li>
+    
+        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
+    
+        <li><a href="/tags/questionnaire/">questionnaire</a></li>
+    
+        <li><a href="/tags/reporting/">reporting</a></li>
+    
+        <li><a href="/tags/statistics/">statistics</a></li>
+    
+        <li><a href="/tags/top10/">top10</a></li>
+    
+        <li><a href="/tags/tutorial/">tutorial</a></li>
+    
+        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
+    
+        <li><a href="/tags/zapcon/">zapcon</a></li>
+    
+    </ul>
+</section>
 
-          
-          <h4>Tags</h4>
-          <ul id="tags">
-           
-           <li> <a href="/tags/blog/">blog</a> </li>
-           
-          </ul>
-          
-          </div>
-                    
-        </section>
-      </aside>
-    </div>
-</div>
+
+        </div>
+      </div>
+  </div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -289,13 +225,6 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
         </ul>
       </nav>
       
-
-
-
-  <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2020-09-03-zap-jwt-scanner/index.md">Edit on GitHub</a>
-  </div>
-
     </div>
   </div>
 
