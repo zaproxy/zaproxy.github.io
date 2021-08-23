@@ -1395,7 +1395,7 @@
         statistic: 'stats.addon.something'    # Name of an integer / long statistic
         operator: '&gt;='                        # One of '==', '!=', '&gt;=', '&gt;', '&lt;', '&lt;='
         value: 10                             # Value to compare statistic against
-        onFail: 'warn'                        # One of 'warn', 'error', 'ignore'
+        onFail: 'info'                        # String: One of 'warn', 'error', 'info', mandatory
 
 </code></pre><h2 id="alert">Alert</h2>
 <p>Alert tests are supported by the activeScan and passiveScan-wait jobs. These tests can be used to validate the presence/absence of specific alerts in the active/passive scan. It is mandatory for the alerts specified in the plan to have a scanRuleId, against which the generated alerts will always be matched. All other fields describing an alert are optional regexes, and will be matched against only if they are specified. A job can have tests for multiple alerts, and multiple tests can be created for alerts having the same scanRuleId.</p>
@@ -1421,7 +1421,7 @@
         confidence:                            # String: The confidence of the alert, one of 'False Positive', 'Low', 'Medium', 'High', 'Confirmed', optional
         risk:                                  # String: The risk of the alert, one of 'Informational', 'Low', 'Medium', 'High', optional
         otherInfo:                             # String: Additional information corresponding to the alert, optional
-        onFail: 'warn'                         # One of 'warn', 'error', 'ignore'
+        onFail: 'info'                         # String: One of 'warn', 'error', 'info', mandatory
   
 </code></pre>
         </div>
