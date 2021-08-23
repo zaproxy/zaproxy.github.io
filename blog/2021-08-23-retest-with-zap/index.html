@@ -4,21 +4,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="How to use ZAP FileUpload Add-on for finding Vulnerabilities in file upload functionality">
+  <meta name="description" content="Introducing the Retest add-on for ZAP">
   
-    <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2021-08-20-zap-fileupload-addon/images/fileupload-options-panel.png"/>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Retesting alerts with OWASP ZAP"/>
+<meta name="twitter:description" content="Introducing the Retest add-on for ZAP"/>
 
-<meta name="twitter:title" content="ZAP FileUpload Add-on"/>
-<meta name="twitter:description" content="How to use ZAP FileUpload Add-on for finding Vulnerabilities in file upload functionality"/>
-
-    <meta property="og:title" content="ZAP FileUpload Add-on" />
-<meta property="og:description" content="How to use ZAP FileUpload Add-on for finding Vulnerabilities in file upload functionality" />
+    <meta property="og:title" content="Retesting alerts with OWASP ZAP" />
+<meta property="og:description" content="Introducing the Retest add-on for ZAP" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2021-08-20-zap-fileupload-addon/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2021-08-20-zap-fileupload-addon/images/fileupload-options-panel.png" />
-<meta property="article:published_time" content="2021-08-20T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-08-20T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2021-08-23-retest-with-zap/" />
+<meta property="article:published_time" content="2021-08-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-08-23T00:00:00+00:00" />
 
   
   <title>OWASP ZAP</title>
@@ -139,7 +136,7 @@
 
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">ZAP FileUpload Add-on</h1>
+    <h1 class="text--white">Retesting alerts with OWASP ZAP</h1>
   </div>
 </section>
 
@@ -152,55 +149,68 @@
 
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Friday August 20, 2021</span>
-              <span class="word-count fl-r"> 596 Words </span>
+              Posted <span class="post-date">Monday August 23, 2021</span>
+              <span class="word-count fl-r"> 788 Words </span>
             </section>
-            <h2 id="overview">Overview</h2>
-<p>File upload is becoming a more and more essential part of any application, where the user is able to upload their photo, their CV, or a video showcasing a project they are working on. The application should be able to fend off bogus and malicious files in a way to keep the application and the users safe. Generally file upload functionality is quite complex to automate and has huge attack surface hence there is a need to automate the process and also secure it. So the FileUpload add-on has scan rule which is used to find vulnerabilities in file upload functionality and this blog explains on how to use it.</p>
-<h2 id="configuration">Configuration</h2>
-<p>File upload functionality generally has 2 endpoints, one from where file is uploaded and one from where file is retrieved. It is necessary to know both these endpoints. While Active Scanning an application, file upload endpoint is already known but retrieval endpoint is not known to the scan rule hence there are configuration details specific to the retrieval endpoint.</p>
-<p>Under ZAP's Options dialog you will find the File Upload screen as shown below:</p>
-<p><img src="./images/fileupload-options-panel.png" alt="FileUpload"></p>
-<h3 id="explanation">Explanation</h3>
-<p>For finding the URL to retrieve/view the uploaded file, here are some options:</p>
-<ol>
-<li>In some applications, the URL to retrieve the uploaded file is <strong>static</strong> and doesn't change or only the file name is changed. For handling this type of configuration, options panel has <strong>Static Location Configuration</strong> where static URL is added into URI Regex field. URI Regex field also supports the dynamic file name by <strong>${fileName}</strong> parameter, for e.g. <code>http://&lt;baseurl&gt;/${fileName}</code>.</li>
-<li>In some applications the URL to retrieve the uploaded file is present in the <strong>file upload request's response</strong>. For handling this type of configuration, options panel has <strong>Parse HTTP Response Configuration</strong> which has 2 parameters <strong>Start Identifier</strong> and <strong>End Identifier</strong>. These identifiers are used to locate the URL within the response.</li>
-<li>In some applications the URL to retrieve the uploaded file is present in the <strong>response of a different URL</strong> which is called a <strong>preflight request</strong>. E.g. Profile picture URL is part of profile page and hence we need to parse the response of the profile page to find the URL of the profile picture. For handling this type of configuration, the options panel has <strong>Dynamic Location Configuration</strong> which has a <strong>URI Regex</strong> and <strong>Parse HTTP Response Configuration</strong> which has <strong>Start Identifier</strong>, and <strong>End Identifier</strong>. So the FileUpload add-on will invoke the URI mentioned in URI Regex and then parse the response using Start Identifier and End Identifier. URI Regex field also supports the dynamic file name by <strong>${fileName}</strong>.</li>
-</ol>
-<p>As FileUpload add-on's scan rule will execute as part of OWASP ZAP Active Scan, so after filling these configuration details, run the active scan in order to find the vulnerabilities in file upload functionality.</p>
-<h2 id="vulnerability-coverage">Vulnerability Coverage</h2>
-<p>The FileUpload add-on's scan rule attempts to upload various types of files with payloads and then tries to retrieve them to identify vulnerabilities present in the file upload functionality.</p>
-<p>FileUpload add-on uploads following types of files:</p>
-<ul>
-<li>HTML and its variants</li>
-<li>JSP and its variants</li>
-<li>JPEG and GIF images</li>
-<li>EICAR file</li>
-<li>SVG images</li>
-</ul>
-<p>Vulnerabilities covered are:</p>
-<ul>
-<li>Cross site scripting</li>
-<li>Remote Code Execution by uploading JSP and its variants</li>
-<li>No virus scan.</li>
-</ul>
-<p>The FileUpload add-on is currently only available for dev versions of ZAP such as weekly releases or built from source, as it depends on an up-to-date version of ZAP's core.
-For more information please visit <a href="https://github.com/SasanLabs/owasp-zap-fileupload-addon">FileUpload addon</a></p>
-<p>For detailed information on FileUpload add-on configuration see the following video: <div class='embed-youtube'>
-  <iframe src='https://www.youtube.com/embed/3bHjrpbLQmA' frameborder='0' allowfullscreen></iframe>
-</div>
-</p>
-<h2 id="special-thanks">Special Thanks</h2>
-<p>This addon is highly inspired from <a href="https://github.com/portswigger/upload-scanner">Upload-Scanner</a> and uses many concepts from Upload-Scanner extension.</p>
+            <p>ZAP is a great tool to detect vulnerabilities of different kinds in web applications and generate alerts accordingly. However, it currently lacks a user-friendly mechanism to revalidate or retest the identified weaknesses.</p>
+<p>Whenever any reported vulnerability is claimed to have been fixed by the developer, a tester using ZAP has to set up all the original scan settings used to detect the vulnerability once again, which is a tiresome and time-consuming process.</p>
+<p>The add-on aims to simplify this process, by generating a &ldquo;Retest Plan&rdquo; corresponding to the alerts selected for retesting, which could then be run in ZAP via the use of the Automation Framework.</p>
+<h2 id="generating-a-plan">Generating a Plan</h2>
+<p><img src="images/dialog.png" alt="Retest Dialog"></p>
+<p>The user can select any number of alerts that they wish to retest in the Alerts tab. Then they can right-click, and choose the &ldquo;Retest&hellip;&rdquo; option, which would open up the Retest Dialog. The dialog can also be opened via using the <code>Tools</code> → <code>Retest...</code> option.
+Here, they can add further alerts to be included in the plan by selecting them in the alerts tree on the left and clicking on the &lsquo;+&rsquo; button. They can also remove alerts by selecting them in the panel on the right and clicking on the &lsquo;-&rsquo; button.
+All selected alerts can also be edited using the &lsquo;Edit&rsquo; button, which allows the users to (optionally) specify regexes for various fields against which to match any alerts which are generated.</p>
+<h2 id="verifying-and-running-a-plan">Verifying and Running a Plan</h2>
+<p><img src="images/panel.png" alt="Automation Panel"></p>
+<p>The dialog has a &lsquo;Verify&rsquo; button, which checks whether the alerts which have been selected to be included in the plan, are actually present at that moment. This ensures that the user is faced with no surprises when they use the plan somewhat later down the line.
+Each selected alert has a status column in the table, which displays the current status of the alert, which is one out of &lsquo;Not Verified&rsquo;, &lsquo;Present&rsquo; and &lsquo;Absent&rsquo;.</p>
+<p>The user can click on the &lsquo;Create&rsquo; button, which creates the plan and loads it in the automation panel. From here, the user can reorder/modify the jobs as required and also run the plan. More information on how the Automation Framework GUI works is given <a href="https://www.zaproxy.org/docs/desktop/addons/automation-framework/gui/">here</a>
+Since a retest plan can be run from the command line too, it is also easy to integrate it within a CI/CD pipeline.</p>
+<h2 id="retest-result">Retest Result</h2>
+<p><img src="images/result.png" alt="Output Tab"></p>
+<p>The user can see the result of running the retest plan in the Output tab of the automation panel. The &lsquo;Pass&rsquo;/&lsquo;Failed&rsquo; status for an alert test depends on whether that alert was being checked for its absence or for its presence. This value can be configured by changing the &lsquo;Action&rsquo; field
+of an alert via the Edit alert functionality described above.</p>
+<h2 id="the-retest-api">The Retest API</h2>
+<p>The add-on also has an API, which currently supports only one &lsquo;retest&rsquo; action. The user can supply a list of comma separated alert IDs for retesting, and would receive a response containing the &lsquo;Present&rsquo;/&lsquo;Absent&rsquo; status of an alert along with the values of all the fields describing that alert.</p>
+<h2 id="future-plans">Future Plans</h2>
+<p>The add-on is still currently in its early stages, so feel free to report any issues you face at the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a> or raise a GitHub <a href="https://github.com/zaproxy/zaproxy/issues">issue</a> for bugs.
+One major enhancement that the add-on definitely needs is the ability to retest authenticated alerts. I definitely plan to add this soon, as retesting alerts without having to deal with authentication, was one of the main reasons which lead people to request for this functionality.
+Currently, all the information required to retest any authenticated alert is not persisted to a ZAP session. Once authentication is in place, I also plan to implement this, as it would allow users to create a plan from a previously saved session.</p>
+<p>There are other UI enhancements which I plan to implement in the future, such as adding tests grouped by their alert ID, adding a flag icon on the right-hand pane for tests with the risk set (thus allowing users to ID the most important tests) etc.</p>
+<p>I implemented this add-on as a part of my Google Summer of Code 2021 project, and this would not have been possible without the constant guidance and help I received from my mentors Simon, Ricardo and Rick.
+Their feedback was instrumental in helping me finish what initially seemed like a gigantic task. I also learned a lot from them during the course of the project, and I am grateful to them for the same.</p>
+<h2 id="list-of-retest-prs">List of Retest PRs</h2>
+<p>This is a list of all pull requests (excluding those related to releases) that were created for the retest add-on.</p>
+<table>
+<thead>
+<tr>
+<th>Pull Request</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/zaproxy/zap-extensions/pull/2998">#2998</a></td>
+<td>Add a new requestor job to the automation framework</td>
+</tr>
+<tr>
+<td><a href="https://github.com/zaproxy/zap-extensions/pull/3020">#3020</a></td>
+<td>Added alerts tests to the automation framework</td>
+</tr>
+<tr>
+<td><a href="https://github.com/zaproxy/zap-extensions/pull/3050">#3050</a></td>
+<td>The first version of the add-on</td>
+</tr>
+</tbody>
+</table>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2021-06-29-community-questionnaire-results/"> Community Questionnaire Results</a>
+                Previous <a class="previous" href="/blog/2021-08-20-zap-fileupload-addon/"> ZAP FileUpload Add-on</a>
               
               
-                Next <a class="next" href="/blog/2021-08-23-retest-with-zap/"> Retesting alerts with OWASP ZAP</a>
+                Next <a class="next" href="/blog/2021-08-23-oast-with-owasp-zap/"> Out-of-band Application Security Testing with OWASP ZAP</a>
               
           </div>
       </article>
@@ -214,15 +224,11 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/karan-preet-singh-sasan_400x400.jpeg" />
-                  
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Karan Preet Singh Sasan
+                    pranavsaxena17
                   
-                  
-                  <a class="author-twitter" href="https://twitter.com/sasan_karan">@sasan_karan</a>
                   
                 </div>
               </section>
@@ -231,14 +237,12 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
           <h4>Table of Contents</h4>
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#overview">Overview</a></li>
-    <li><a href="#configuration">Configuration</a>
-      <ul>
-        <li><a href="#explanation">Explanation</a></li>
-      </ul>
-    </li>
-    <li><a href="#vulnerability-coverage">Vulnerability Coverage</a></li>
-    <li><a href="#special-thanks">Special Thanks</a></li>
+    <li><a href="#generating-a-plan">Generating a Plan</a></li>
+    <li><a href="#verifying-and-running-a-plan">Verifying and Running a Plan</a></li>
+    <li><a href="#retest-result">Retest Result</a></li>
+    <li><a href="#the-retest-api">The Retest API</a></li>
+    <li><a href="#future-plans">Future Plans</a></li>
+    <li><a href="#list-of-retest-prs">List of Retest PRs</a></li>
   </ul>
 </nav>
 
@@ -247,8 +251,6 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
           <ul id="tags">
            
            <li> <a href="/tags/blog/">blog</a> </li>
-           
-           <li> <a href="/tags/fileupload/">fileupload</a> </li>
            
           </ul>
           
@@ -296,7 +298,7 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2021-08-20-zap-fileupload-addon/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2021-08-23-retest-with-zap/index.md">Edit on GitHub</a>
   </div>
 
     </div>
