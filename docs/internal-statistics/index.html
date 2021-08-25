@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
+  
+  <title>OWASP ZAP &ndash; ZAP Internal Statistics</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.3e3c1.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler">
+              <img height="20" width="20" src="/img/search.svg" />
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+    <div class="wrapper py-20">
+      <h1 class="text--white">ZAP Internal Statistics</h1>
+  </div>
+</section>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+    <main><p>ZAP maintains internal statistics which can be accessed via the <a href="/docs/api/#zap-api-stats">API</a>.</p>
+<table data-sort-filter class="table market-table">
+    <thead  align="left">
+    <tr>
+        <th style="width: 30%">Key / Link</th>
+        <th style="width: 10%">Scope</th>
+        <th style="width: 10%">Type</th>
+        <th style="width: 50%">Description</th>
+    </tr>
+    </thead>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="automation.spider.urls.added" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/automation/src/main/java/org/zaproxy/addon/automation/jobs/SpiderJob.java" target="_blank" rel="noopener noreferrer">automation.spider.urls.added</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of URLs added by the standard spider running in the automation framework
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.attack.&lt;vector&gt;" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.attack.&lt;vector&gt;</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of time the given DOM XSS attack vector was used
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.gets.count" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.gets.count</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of GET requests made by the DOM XSS scan rule
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.scan.count" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.scan.count</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of times the DOM XSS rule was run against a target URL
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.vulns.div1" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.vulns.div1</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of DOM XSS vulnerabilities found when retrieving div elements
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.vulns.div2" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.vulns.div2</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of DOM XSS vulnerabilities found when accessing div elements
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.vulns.get1" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.vulns.get1</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of DOM XSS vulnerabilities found using the first GET request
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.vulns.get2" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.vulns.get2</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of DOM XSS vulnerabilities found using the first second GET request
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.vulns.input1" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.vulns.input1</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of DOM XSS vulnerabilities found when retrieving input elements
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.vulns.possibleDomXSSTriggers2" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.vulns.possibleDomXSSTriggers2</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of DOM XSS vulnerabilities found using possibleDomXSSTriggers2
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="domxss.vulns.possibleDomXSSTriggers3" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java" target="_blank" rel="noopener noreferrer">domxss.vulns.possibleDomXSSTriggers3</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of DOM XSS vulnerabilities found using possibleDomXSSTriggers3
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="openapi.urls.added" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/openapi/src/main/java/org/zaproxy/zap/extension/openapi/HistoryPersister.java" target="_blank" rel="noopener noreferrer">openapi.urls.added</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of URLs added by importing an OpenAPI definition
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="soap.urls.added" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/soap/src/main/java/org/zaproxy/zap/extension/soap/WSDLCustomParser.java" target="_blank" rel="noopener noreferrer">soap.urls.added</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of URLs added by importing a SOAP definition
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="spiderAjax.urls.added" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/spiderAjax/src/main/java/org/zaproxy/zap/extension/spiderAjax/automation/AjaxSpiderJob.java" target="_blank" rel="noopener noreferrer">spiderAjax.urls.added</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of URLs found by the ajax spider
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="sqldb.&lt;key&gt;.calls" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/db/sql/DbSQL.java" target="_blank" rel="noopener noreferrer">sqldb.&lt;key&gt;.calls</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of times the SQL statement with the given key has been called
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="sqldb.&lt;key&gt;.pool" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/db/sql/DbSQL.java" target="_blank" rel="noopener noreferrer">sqldb.&lt;key&gt;.pool</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            highwatermark
+        </td>
+        <td >
+            The highest number of prepared statements in the pool for the given key
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="sqldb.&lt;key&gt;.time" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/db/sql/DbSQL.java" target="_blank" rel="noopener noreferrer">sqldb.&lt;key&gt;.time</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The cumulative number of milliseconds taken by the corresponding SQL statements
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="sqldb.conn.closed" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/db/sql/DbSQL.java" target="_blank" rel="noopener noreferrer">sqldb.conn.closed</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of time the ZAP db has been closed
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="sqldb.conn.openned" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/db/sql/DbSQL.java" target="_blank" rel="noopener noreferrer">sqldb.conn.openned</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of time the ZAP db has been openned
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.acsrf.&lt;token-name&gt;" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/anticsrf/AntiCsrfDetectScanner.java" target="_blank" rel="noopener noreferrer">stats.acsrf.&lt;token-name&gt;</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of time given token is present in an HTTP response
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.auth.failure" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/authentication/AuthenticationHelper.java" target="_blank" rel="noopener noreferrer">stats.auth.failure</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of authentication failures
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.auth.state.assumedin" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/authentication/AuthenticationMethod.java" target="_blank" rel="noopener noreferrer">stats.auth.state.assumedin</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages between successful polls that are assumed to be logged in
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.auth.state.loggedin" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/authentication/AuthenticationMethod.java" target="_blank" rel="noopener noreferrer">stats.auth.state.loggedin</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages that include the logged-in indicator
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.auth.state.loggedout" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/authentication/AuthenticationMethod.java" target="_blank" rel="noopener noreferrer">stats.auth.state.loggedout</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages that include the logged-out indicator
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.auth.state.noindicator" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/authentication/AuthenticationMethod.java" target="_blank" rel="noopener noreferrer">stats.auth.state.noindicator</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages where no logged in or out indicators have been set in the context
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.auth.state.unknown" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/authentication/AuthenticationMethod.java" target="_blank" rel="noopener noreferrer">stats.auth.state.unknown</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages which don&#39;t contain either logged in or out indicators
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.auth.success" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/authentication/AuthenticationHelper.java" target="_blank" rel="noopener noreferrer">stats.auth.success</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of authentication successes
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.code.&lt;response-code&gt;" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/scanner/StatsPassiveScanner.java" target="_blank" rel="noopener noreferrer">stats.code.&lt;response-code&gt;</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages which include the given response code
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.contentType.&lt;content-type&gt;" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/scanner/StatsPassiveScanner.java" target="_blank" rel="noopener noreferrer">stats.contentType.&lt;content-type&gt;</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages which include the given content type
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.pscan.&lt;rule-name&gt;" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PassiveScanThread.java" target="_blank" rel="noopener noreferrer">stats.pscan.&lt;rule-name&gt;</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The cumulative number of milliseconds taken to run the given scan rule
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.pscan.reqBodyTooBig" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PassiveScanThread.java" target="_blank" rel="noopener noreferrer">stats.pscan.reqBodyTooBig</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of requests that have not been passively scanned as they exceed the configured max body size to scan
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.pscan.respBodyTooBig" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PassiveScanThread.java" target="_blank" rel="noopener noreferrer">stats.pscan.respBodyTooBig</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of responses that have not been passively scanned as they exceed the configured max body size to scan
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.responseTime.&lt;time-slice&gt;" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/scanner/StatsPassiveScanner.java" target="_blank" rel="noopener noreferrer">stats.responseTime.&lt;time-slice&gt;</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages with response times in milliseconds the given (logerithmic) time slice (1, 2, 4, 8 etc)
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.tag.&lt;tag-name&gt;" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/scanner/RegexAutoTagScanner.java" target="_blank" rel="noopener noreferrer">stats.tag.&lt;tag-name&gt;</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of messages containing the given tag
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.bytes.incoming" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/websocket/src/main/java/org/zaproxy/zap/extension/websocket/WebSocketProxy.java" target="_blank" rel="noopener noreferrer">stats.websockets.bytes.incoming</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The cumulative number of incoming websocket bytes received
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.bytes.outgoing" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/websocket/src/main/java/org/zaproxy/zap/extension/websocket/WebSocketProxy.java" target="_blank" rel="noopener noreferrer">stats.websockets.bytes.outgoing</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The cumulative number of outgoing websocket bytes sent
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.close" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/websocket/src/main/java/org/zaproxy/zap/extension/websocket/WebSocketProxy.java" target="_blank" rel="noopener noreferrer">stats.websockets.close</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of time a websocket connection was closed
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.count.incoming" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/websocket/src/main/java/org/zaproxy/zap/extension/websocket/WebSocketProxy.java" target="_blank" rel="noopener noreferrer">stats.websockets.count.incoming</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of incoming websocket messages
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.count.outgoing" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/websocket/src/main/java/org/zaproxy/zap/extension/websocket/WebSocketProxy.java" target="_blank" rel="noopener noreferrer">stats.websockets.count.outgoing</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of outgoing websocket messages
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.opcode.&lt;opcode&gt;" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/websocket/src/main/java/org/zaproxy/zap/extension/websocket/WebSocketProxy.java" target="_blank" rel="noopener noreferrer">stats.websockets.opcode.&lt;opcode&gt;</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of websocket messages by opcode
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.open" href="https://github.com/zaproxy/zap-extensions/blob/main/zap/src/main/java/org/zaproxy/zap/extension/websocket/WebSocketProxy.java" target="_blank" rel="noopener noreferrer">stats.websockets.open</a>
+        </td>
+        <td align="center">
+            site
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of time a websocket connection was opened
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.websockets.pscan.&lt;pscanname&gt;" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/websocket/src/main/java/org/zaproxy/zap/extension/websocket/pscan/WebSocketPassiveScanThread.java" target="_blank" rel="noopener noreferrer">stats.websockets.pscan.&lt;pscanname&gt;</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            counter
+        </td>
+        <td >
+            The number of times the given rule was run against a message
+        </td>
+    </tr>
+    
+</table>
+
+<hr>
+<p>The scope can be:</p>
+<ul>
+<li>global - the stats are maintained for ZAP as a whole</li>
+<li>site - the stats are maintained on a per site basis</li>
+</ul>
+<p>The type can be:</p>
+<ul>
+<li>counter: an incrementing counter</li>
+<li>highwatermark: the maximum value seen</li>
+</ul>
+</main>
+  </article>
+</section>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2021 the ZAP Dev Team</br>
+      OWASP is a registered trademark of the OWASP Foundation, Inc.
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.3e3c1.js"></script>
+  
+</div>
+</body>
+</html>
