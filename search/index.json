@@ -1976,214 +1976,6 @@
     "content": "users zap representations websiteswebapps they allow certain actions performed from point view user webapps each context set can defined which then used related most commonly during various scans request messages sent concept tightly tied concepts session management authentication when first somewhere according method created configured after that requests modified necessary such way web server identifies them being by authenticated webappwebsite anytime appears unauthenticated determined verification strategy new updated accordingly order perform website webapp defines how done process while credentials exact identifiers dependent via contexts dialog see also youtube tutorial features external link https:youtubecr4gwcpzoa overview ui interface provided properties "
     },
 {
-    "url": "/blog/2021-08-23-oast-with-owasp-zap/",
-    "title": "Out-of-band Application Security Testing with OWASP ZAP",
-    "keywords": ["application","blog","gsoc","oast","out-of-band","owasp","security","testing","with","zap"],
-    "tags": ["blog","gsoc","oast"],
-    "summary": "An overview of the features of the OAST add-on for OWASP ZAP. This add-on allows you to discover out-of-band vulnerabilities like SSRF.",
-    "content": "oast addon zap enables communicate services like boast tuktuk interactsh given that they supported by thereby providing functionality similar portswiggers burp collaborator available download right now from marketplace blog post going go over features demonstrate how you can leverage zaps scripting write scripts exploit outofband vulnerabilities assumes already have installed currently supports two services: callbacks been part core since 2017 however callback service has made will deprecated soon titled ssrf setup good explainer configured perform attacks focus working registering server gui options window do could either tools click gear icon toolbar press ctrl alt choose list under select tab screen enter valid uri address should point used registrations polling include scheme host port events endpoint must running instance example is: https:examplecom:1337events frequency rate which registered servers polled takes values seconds minimum allowed value 10 there maximum default 60 register notice new entry added active table copy payload use your poll set report all interactions dns http main script following code snippet registers server: var control javatype34orgparosproxyparoscontrolcontrol34 extoast controlgetsingletongetextensionloadergetextension34extensionoast34 extoastgetboastservice boastregister34https:odisseu:1337events34 get details print34server uri: 34 servergeturi print34id: servergetid print34payload: servergetpayload print34canary: servergetcanary change frequency: boastgetparamsetpollingfrequency30 array with: registeredservers boastgetregisteredservers registeredserverforeachs printsgetpayload information allow its one crucial step being able action when actually discovers message received we request handler illustrated section scan rule function requesthandlerrequest print34source: requestgetsource print34referer: requestgetreferer print34handler: requestgethandler print boastaddoastrequesthandlerrequesthandler method addoastrequesthandler accepts oastrequesthandler parameter work oastservices make whatever want here some cases: notify webhook eg send slack discord raise issue bug tracker tweet something etc invoke another order yourself pizza selenium alert accessed thing noted adding not idempotent operation add same multiple times then also performed whats next rules update existing xxe externalredirect remotefileinclude serversideinclude them payloads introduce outofbandxss superblindsqlinjection blindssrf support api automation framework longterm across instances other based community feedback keep eye out updates visit page learn touch check project posts related development developed participant google summer 2021 am deeply grateful program organizers my mentors prs pull requests excluding those releases were created description 2996 create barebones 6675 type persisting oob messages 3033 first functional version 3053 fix major issues addon: showing up after registration 3067 boast: option changing show 3077 standalone template 3082 where templates loaded twice 6760 bundle weekly 3084 minor help "
-    },
-{
-    "url": "/blog/2021-08-23-retest-with-zap/",
-    "title": "Retesting alerts with OWASP ZAP",
-    "keywords": ["alerts","blog","gsoc","owasp","retest","retesting","with","zap"],
-    "tags": ["blog","gsoc","retest"],
-    "summary": "An overview of the features of the Retest add-on for OWASP ZAP. This add-on allows you to retest for previously generated alerts.",
-    "content": "zap great tool detect vulnerabilities different kinds web applications generate alerts accordingly however currently lacks userfriendly mechanism revalidate retest identified weaknesses whenever any reported vulnerability claimed have been fixed by developer tester using has set up all original scan settings used once which tiresome timeconsuming process addon aims simplify generating plan corresponding selected retesting could then run via use automation framework user can select number that they wish tab rightclick choose option would open dialog also opened tools here add further included selecting them tree left clicking button remove panel right edited edit allows users optionally specify regexes various fields against match generated verifying running verify checks whether actually present moment ensures faced surprises when somewhat later down line each alert status column table displays current one out not verified absent click create creates loads from reordermodify jobs required more information how gui works given since command too easy integrate within cicd pipeline result see output passfailed test depends was being checked its absence presence value configured changing action field functionality described above api supports only supply list comma separated ids receive response containing presentabsent along values describing future plans still early stages feel free report issues you face group raise github issue bugs major enhancement definitely needs ability authenticated soon without having deal authentication main reasons lead people request persisted session place implement allow previously saved there other ui enhancements such adding tests grouped their id flag icon righthand pane risk thus allowing most important etc implemented part my google summer code 2021 project possible constant guidance help received mentors simon ricardo rick feedback instrumental helping me finish what initially seemed like gigantic task learned lot during course am grateful same prs pull requests excluding those related releases were created description 2998 new requestor job 3020 added 3050 first version "
-    },
-{
-    "url": "/blog/2021-08-20-zap-fileupload-addon/",
-    "title": "ZAP FileUpload Add-on",
-    "keywords": ["add-on","blog","fileupload","zap"],
-    "tags": ["blog","fileupload"],
-    "summary": "Overview File upload is becoming a more and more essential part of any application, where the user is able to upload their photo, their CV, or a video showcasing a project they are working on. The application should be able to fend off bogus and malicious files in a way to keep the application and the users safe.",
-    "content": "overview file upload becoming more essential part any application where user able their photo cv video showcasing project they working should fend off bogus malicious files way keep users safe generally functionality quite complex automate has huge attack surface hence there need process also secure fileupload addon scan rule which used find vulnerabilities blog explains how use configuration endpoints one from uploaded retrieved necessary know both these while active scanning endpoint already known retrieval not details specific under zaps options dialog you will screen shown below: explanation finding url retrieveview here some options: applications retrieve static doesnt change only name changed handling type panel location added into uri regex field supports dynamic by filename parameter eg http:baseurlfilename present requests response parse http parameters start identifier end identifiers locate within different called preflight request profile picture page we invoke mentioned then using addons execute owasp zap after filling run order vulnerability coverage attempts various types payloads tries them identify uploads following files: html its variants jsp jpeg gif images eicar svg covered are: cross site scripting remote code execution uploading virus currently available dev versions such weekly releases built source depends uptodate version core information please visit detailed see video: special thanks highly inspired uploadscanner uses many concepts extension "
-    },
-{
-    "url": "/success/we45/",
-    "title": "we45 and AppSecEngineer",
-    "keywords": ["","and","appsecengineer","we45"],
-    "tags": null,
-    "summary": "We at we45 and our training venture, AppSecEngineer use and train on ZAP extensively. We strongly believe OWASP ZAP to be the most programmable DAST tool in its class, regardless of commercial or OSS alternatives.\nOne of the things we do with our clients is to implement continuous DAST scanning as part of their DevSecOps initiatives.",
-    "content": "we we45 our training venture appsecengineer use train zap extensively strongly believe owasp most programmable dast tool its class regardless commercial oss alternatives one things do clients implement continuous scanning part their devsecops initiatives many run bevy automated scans periodic basis triggered through ci tooling some those that have endtoend test automation scripts selenium cypress etc set up able authenticated completely which something find unique space fact biggest success stories corporate travel they wanted integrate sast sca process qa teams generated within hours were not only into pipeline also work authorized mode input speaks volumes simplicity power everexpanding ecosystem useful addons contributions "
-    },
-{
-    "url": "/success/orange/",
-    "title": "Orange Business Services",
-    "keywords": ["","business","orange","services"],
-    "tags": null,
-    "summary": "At OBS, we strive continually to bring our customers peace of mind with strengthened and reinforced application security.\nAs part of automating our web application and API security, we chose to deploy OWASP ZAP as one of our Dynamic Application Security Testing (DAST) technologies. This DevSecOps approach helps our developers and engineering teams to detect vulnerabilities, including the OWASP Top Ten Web and API, in CI/CD pipelines before releasing our solutions.",
-    "content": "obs we strive continually bring our customers peace mind strengthened reinforced application security part automating web api chose deploy owasp zap one dynamic testing dast technologies devsecops approach helps developers engineering teams detect vulnerabilities including top ten cicd pipelines before releasing solutions thanks its libraries highly customizable allowed us easily develop tools that use these resources many interesting features such scripting engine passive scripts python hooks addons developed by community make tool even more powerful easy "
-    },
-{
-    "url": "/blog/2021-06-29-community-questionnaire-results/",
-    "title": "Community Questionnaire Results",
-    "keywords": ["community","questionnaire","results"],
-    "tags": ["questionnaire"],
-    "summary": "The results of the Community Questionnaire which we ran during the first half of 2021.",
-    "content": "december 2020 we published community questionnaire focused feedback documentation have just closed that wanted share results explain how they changing what do thank you all 290 people who answered our questions youll see find answers really helpful impact where go first help zap largest single response was google other search engine little bit problematic us direct control over engines return however also not too surprising must admit use out specific things about including documented fortunately content tends come high up combination user guide off line site which includes account nearly 50 good im puzzled by 55 https:owasporg real there redirect whats main way get news its sites some groups website twitter blog 70 responses 213 troubling tend very much useful low number relatively numbers fairly replies gratifying used one zaps weak spots something been focusing know theres always more appear going right direction fact fewer api concerning will only interest subset users does many any docs because intuitive dont need honest idea would like document better free format question harder analyse were definitely recurring themes: lots examples case studies weve next most popular type answer happy already hear resting laurels scripting topic despite recorded quite few videos specifically apis came requests around relating contexts scope after rest covered wide range different topics articles etc although making easier pretty evenly split between preferring liking both featured success stories section wwwzaproxyorg said might interested contacted contact shortly had great here example: opensource projects their transparency reliability accessible give possibility learning deeply has important my training neurodivergent person autistic easy ways subtitles traductions half deaf wroten tool thanks your contributions amazing accomplished can huge simon contributors continue work building maintaining best dast wonderful open source impressive keep providing awesome team guys done fucing job new far app analysing websites projects: everything guess ill reach owasp near future involved such becomes somewhat industry standard when escalated vendor firewallsecurity talking acknowledge ground investigate instead treating yahoo simply love works everywhere gratis software favorite tools please make access validation manually selecting every page web pentesting thing desired pentration testing sorry reporting sucks limits usefulness differently publish questionnaires want from point asking change result current posts tweets messages seems working maybe should look getting onto directly searching via providers me indicates track produce ensure quality appears equally why creating clear focus possibly order catch seriously producing even detailed deal experience doing then looks overdue following contributing did reply still touch per links positive receive rightly complained hopefully report generation addon addressed long standing problem let enhancements "
-    },
-{
-    "url": "/blog/2021-06-15-baseline-scan-changes/",
-    "title": "Baseline Scan Changes",
-    "keywords": ["baseline","changes","docker","packaged_scan","scan"],
-    "tags": ["docker","packaged_scan"],
-    "summary": "Important information for anyone who uses the baseline scan in the Live or Weekly Docker images.",
-    "content": "we changing baseline scan other packaged scans time use new automation framework af hopefully changes will not affect any you who want make sure that understand what has changed do think working would also like try out soon possible report issues us current status is: live docker image used only explicitly enabled weekly stable next full release change summary depending which options choose may now instead controlling zap via api part ongoing development migrate all initially using auto option encourage everyone uses enabling happy there breaking point flag ignored however able autooff disable currently supported by why depend then work before even specified continually enhancing more become coming weeks process therefore warrant further blog posts see exactly parameters source code https:githubcomzaproxyzaproxyblobmaindockerzapbaselinepy output differences following line included output: diagnostic messages these differ significantly underlying mechanisms have reports errors warnings reported different way: run owaspzap2dockerweekly zapbaselinepy https:wwwexamplebad 2021061011:08:44764couldnotfindcustomhooksfileathomezapzaphookspy 2021061011:08:53809failedtoaccesssummaryfilezapzapoutjson usingtheautomationframework automationplanfailures: jobspiderfailedtoaccessurlhttps:wwwexamplebadcheckthatitisvalid:wwwexamplebad map drive zapwrk copy zapyaml job configuration file into mapped can away from take advantage features adding example yaml generated command: pwd:zapwrk:rw https:wwwexamplecom env: contexts: name: urls: parameters: failonerror: true progresstostdout: false jobs: install: pscanrulesbeta type: addons uninstall: enabletags: maxalertsperrule: 10 passivescanconfig maxduration: url: spider spiderajax passivescanwait format: long summaryfile: zapzapoutjson outputsummary note getting rid provide flexibility scanning examplecom 2021061013:21:56388couldnotfindcustomhooksfileathomezapzaphookspy totalof4urls pass:vulnerablejslibrary10003 pass:cookienohttponlyflag10010 pass:cookiewithoutsecureflag10011 pass:crossdomainjavascriptsourcefileinclusion10017 pass:contenttypeheadermissing10019 pass:informationdisclosuredebugerrormessages10023 pass:informationdisclosuresensitiveinformationinurl10024 pass:informationdisclosuresensitiveinformationinhttpreferrerheader10025 pass:httpparameteroverride10026 pass:informationdisclosuresuspiciouscomments10027 pass:openredirect10028 pass:cookiepoisoning10029 pass:usercontrollablecharset10030 pass:usercontrollablehtmlelementattributepotentialxss10031 pass:viewstate10032 pass:directorybrowsing10033 pass:heartbleedopensslvulnerabilityindicative10034 pass:serverleaksinformationviaxpoweredbyhttpresponseheaderfields10037 pass:xbackendserverheaderinformationleak10039 pass:securepagesincludemixedcontent10040 pass:httptohttpsinsecuretransitioninformpost10041 pass:httpstohttpinsecuretransitioninformpost10042 pass:usercontrollablejavascripteventxss10043 pass:bigredirectdetectedpotentialsensitiveinformationleak10044 pass:xchromeloggerdataxcoldheaderinformationleak10052 pass:cookiewithoutsamesiteattribute10054 pass:csp10055 pass:xdebugtokeninformationleak10056 pass:usernamehashfound10057 pass:xaspnetversionresponseheader10061 pass:piidisclosure10062 pass:timestampdisclosure10096 pass:hashdisclosure10097 pass:crossdomainmisconfiguration10098 pass:weakauthenticationmethod10105 pass:reversetabnabbing10108 pass:modernwebapplication10109 pass:absenceofanticsrftokens10202 pass:privateipdisclosure2 pass:sessionidinurlrewrite3 pass:scriptpassivescanrules50001 pass:statspassivescanrule50003 pass:insecurejsfviewstate90001 pass:charsetmismatch90011 pass:applicationerrordisclosure90022 pass:wsdlfiledetection90030 pass:looselyscopedcookie90033 warnnew:incompleteornocachecontrolheaderset10015x1 https:wwwexamplecom200 warnnew:xframeoptionsheader10020x1 warnnew:xcontenttypeoptionsheadermissing10021x1 warnnew:stricttransportsecurityheader10035x3 https:wwwexamplecomrobotstxt404 https:wwwexamplecomsitemapxml404 warnnew:httpserverresponseheader10036x4 warnnew:contentsecuritypolicycspheadernotset10038x3 warnnew:retrievedfromcache10050x3 failnew:0 failinprog:0 warnnew:7 warninprog:0 info:0 ignore:0 pass:47 without 2021061013:22:14620couldnotfindcustomhooksfileathomezapzaphookspy pass:retrievedfromcache10050 https:wwwexamplecom200ok warnnew:xframeoptionsheadernotset10020x1 warnnew:stricttransportsecurityheadernotset10035x3 https:wwwexamplecomrobotstxt404notfound https:wwwexamplecomsitemapxml404notfound warnnew:serverleaksversioninformationviaserverhttpresponseheaderfield10036x4 warnnew:6 case one issue than nonaf reverting original experience problems please let know asap while resolving them temporary available migrating scripts some removed must tell "
-    },
-{
-    "url": "/blog/2021-04-19-collecting-statistics-for-open-source-projects/",
-    "title": "Collecting Statistics for Open Source Projects",
-    "keywords": ["blog","collecting","for","open","projects","source","statistics"],
-    "tags": ["blog","statistics"],
-    "summary": "This blog post will show you how you can collect and publish statistics on your open source projects using free resources and open source scripts, based on the setup we have for ZAP.",
-    "content": "blog post will show you how can collect publish statistics your open source projects using free resources scripts based setup we have zap were not doing anything particularly sophisticated all should easy understand why released 6th september 2010 some point december was accepted owasp project by 1st january 2011 downloads had jumped from virtually none 433 my memory that good significant enough me record number ive been recording download counts start every month google spreadsheet ever since many years completely manual process honest did mind wrote set help always interesting see things changing maintaining thankless task seeing numbers steadily increase often gave encouragement needed keep going dont worry just maintain now automated relatively simple copy adapt needs although only limited stats do get really useful feedback example seen percentage people daemon where significantly higher than desktop usage helps us plan what features focus also great bragging rights proudly state worlds most widely used web app scanner able back claim up our made sure commercial competitors aware them chosen contest must true which depend whats available these ones downloaded doesnt tell actually use still know changes over time initially recorded when move then key requirement whatever platform chose hosted github their public apis access does provide any history regularly important course more complicated different places accessed via wide range options including linux repos homebrew snapcraft flathub bundled kali very few ways docker pulls another metric especially images proved popular provides there started asking make amazon ecr far found out possible ill resist calls check update requests makes various home bitly urls means find create new each release versions 290 whether they mode account api complete give indication who full picture about command line option prevent being users environments either outgoing blocked those services like user interactions interact large issues groups slack channels discord irc email stackoverflow list goes try push discussions group pain way right manually run script against gmail inbox once delete emails accurate pretty works framework follow one introduced working mozilla security team worked simplified even further changed mostly high level is: schedule store display regular intervals its daily jenkins service scheduling already other jobs actions separate zapbot accounts admin tasks action zapbotzapmgmtscripts repo recordstatsv2yml statspy passing parameter turn method subordinate scripts: bitlypy dockerpy githubpy groupspy responsible handling call relevant retrieve data want raw processed flat text files matter stored private however collecting lot became switched putting s3 buckets same strictly speaking solution flagship aws thats file structure s3:projectzapstats monthly directory filename format yyyymmddstatisticjson response extract responses future decide need statistic part relate version subscripts extracts interested outputs into contain day named yyyymmddcsv generate originally turned easier least think created infrastructure fed athena supports complex structures skip processing step something similar configuration confusing difficult im developer code csv easily technologies redash quicksight studio probably generation charts much because added go finally pushes newly tried unfortunately didnt meet requirements couldnt share dashboards publicly end simpler creating directly static website: https:wwwzaproxyorg updatewebsitestatsyml runs website implemented hugo shortcode charthtml creates chart supplied submits pull request approve before applied site https:wwwzaproxyorgstatistics am happy add telemetry tool therefore deals sensitive desire information may nervous careful opt implement write "
-    },
-{
-    "url": "/success/banzaicloud/",
-    "title": "Banzai Cloud",
-    "keywords": ["","banzai","cloud"],
-    "tags": null,
-    "summary": "At Banzai Cloud we use our dast-operator which leverages OWASP ZAP to run baseline scans against the services we deploy on the K8S cluster. This operator deploys OWASP ZAP to the K8S cluster and initiates automated security testing for web applications and APIs based on OpenAPI definitions. Besides the operator responsible for starting the scan against a service, it can prevent opening a vulnerable service to outside.",
-    "content": "banzai cloud we use our dastoperator which leverages owasp zap run baseline scans against services deploy k8s cluster operator deploys initiates automated security testing web applications apis based openapi definitions besides responsible starting scan service can prevent opening vulnerable outside prevention mechanism builtin admission controller watching ingress resources checks backend makes decision depending result "
-    },
-{
-    "url": "/success/motorola/",
-    "title": "Motorola Solutions",
-    "keywords": ["","motorola","solutions"],
-    "tags": null,
-    "summary": "Motorola Solutions follows S-SDLC (secure software development lifecycle) best practices for our product development. Similarly, these best practices can be found in another OWASP project, the Software Assurance Maturity Model. We build our software development approach on the OWASP SAMM, to ensure delivery of secure products, from architecture design to the deployment in our own or customer’s infrastructure.",
-    "content": "motorola solutions follows ssdlc secure software development lifecycle best practices our product similarly these can found another owasp project assurance maturity model we build approach samm ensure delivery products from architecture design deployment own customers infrastructure one requirements defined verification security testing practice highest level states that organization should embed part processes use number commercial tools both static dynamic application scans composition analysis measuring other metrics zap has been added toolset fitting needs many teams within company major strength ease being standalone java running smoothly docker container means easily installed closely scanned regardless targeted service runs closed onpremise lab kubernetes cluster hosted public cloud environment close proximity target brings advantages example allows us avoid web firewalls intrusion prevention systems which could impact results scan adopt important tool fits into existing additional value delivers prepackaged containers perfect automated simplify process even more prepared dedicated jobs applicable cicd pipelines its note there need modify itself highly customizable allowing change behavior custom scripts python hooks ways implemented common script handle authentication steps identity management solution now using same idm very easy start performing authenticated their distributed scanner every short living central system would allow scheduling importantly collection lack such observability disadvantage especially point view thanks packaging pipeline job were able add simple telemetry requests execution recorded track usage shortly after rollout adopted by several dozens frontend backend services daily grows month helping improve safety "
-    },
-{
-    "url": "/blog/2021-03-29-zap-2-10-0-features/",
-    "title": "ZAP 2.10 Features",
-    "keywords": ["blog","features","youdontknowzap","zap","2.10"],
-    "tags": ["blog","youdontknowzap"],
-    "summary": "Do you know what interesting bits were added to ZAP 2.10.0? Don't read release notes? This blog post is for you! Dark mode, Expand/Collapse top panes, Custom pages, Scriptable encode/decode/hash, Authentication polling, Auth header via ENV vars, Site tree control, and more.",
-    "content": "zap 2100 was released december 2020 article digs into details some new exciting features full see release notes dark mode now supports various different ui themes including selection modes modern default light theme look feel can set dynamically by clicking button main toolbar then selecting you want use dropdown menu flat expandablecollapseable top panes order facilitate greater number usage models panels support leftright expand collapse control example handy way hide sites tree left when more real estate deal reviewing requestresponse appears just below aligned directly above split pane divider: arrow will hiding tree: similarly scripts etc other work custom pages one zaps oldest issues piece development that years making came fruition have ever encountered application returned 200 ok instead proper 404 file not found 500 server error nonstandard handling users define their contexts these considered scan rules whenever url part defined enabled context functionality gives much specificity properly modeling therefore assessing targets there few ways impact scanning: rule considers initial condition skip testing requests state start response its analysis raise alerts configurations currently supported are: course types necessarily limited specific status code simple definition could definitely type 405 method allowed 501 implemented provided give further flexibility who script handle unanticipated circumstances also allows options definition: location: content match type: regex plain string obviously complex pattern may performance find video introduction here scriptable encodedecodehash via addon updated between releases still lot transformations: encoder decoders hashers byte illegal utf8 ascii hex decode md5 base 64 sha1 sha256 encode html javascript unescaped unicode text along allowing create own scripted transforms say wanted able double space add such as: var encodedecoderesult javatype34orgzaproxyaddonencoderprocessorsencodedecoderesult34 process input value return encodeddecodedhashed encodedecoderesultwitherror34error description34 provide description inside result view param returns function processvalue replace any character except last encodedecoderesultvaluereplaceall3434 340 34trim authentication polling concept verification strategies has been introduced which wider range mechanisms option poll specified page user checkout summary auth header env vars help simplify automated cicd environmental variables available allow easily all proxied through initiated tools spiders active scanner zapauthheadervalue added zapauthheader used name standard authorization zapauthheadersite only included whos includes learn bit about environment site addons access how nodes represented both vector include implementations variant class change structure names modifiers blog post conclusion delved were constantly being improved global community volunteers watch posts future "
-    },
-{
-    "url": "/docs/developer/building-zap-with-intellij-idea/",
-    "title": "Building ZAP with IntelliJ IDEA",
-    "keywords": ["building","guide","idea","intellij","tutorial","with","zap"],
-    "tags": ["guide","tutorial"],
-    "summary": "This guide explains how to make changes to ZAP using IntelliJ IDEA.\nPreparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of IntelliJ IDEA.\nGradle Resources Working with ZAP in IntelliJ IDEA may need a bit more Java resources for the Gradle actions.",
-    "content": "guide explains how make changes zap using intellij idea preparation you will need have followed quick start building installed version gradle resources working may bit more java actions adjust much memory can use your machine set option gradleproperties linuxosx echo 39orggradlejvmargsxmx4g xx:maxpermsize1g39 gradlegradleproperties windows 34orggradlejvmargsxmx4g xx:maxpermsize1g34 userprofilegradlegradleproperties import repositories welcome screen click new project window select empty next choose name eg development environment pick location choice finish structure that pops up jdk same modules tab under settings button module then file directory navigate any one cloned buildgradlekts present root its ok repeat last two steps until imported all should now able see worth noting some zapextensions addons fail compile do not required them expected problem unless want work those which case their readmes details running to: zaproxy src main org right run zapmain unable go view tool reload projects before trying step quite show warning dialogs close back edit configurations configuration application change by browsing zaproxyzapsrcmaindist here replaced complete path repository system apply try correctly configured tasks from command line within end result has lists available ordered going note own addition top level ones tips tricks refresh sometimes unexpectedly code occur switch between git branches different dependencies happens relevant doesnt either doing invalidate caches restart other send pr update page github link footer "
-    },
-{
-    "url": "/docs/developer/creating-new-addon-in-zap-extensions/",
-    "title": "Creating a New Add-on in zap-extensions",
-    "keywords": ["a","add-on","creating","guide","in","new","tutorial","zap-extensions"],
-    "tags": ["guide","tutorial"],
-    "summary": "ZAP has a plugin architecture and new functionality is implemented via add-ons.\nAdd-ons can be defined in any repository but most of the ones that the ZAP core team maintains live in zap-extensions. You should use this repository if you are planning on contributing your add-on to the ZAP project, but please talk to the ZAP Core team about this first via the ZAP Developer Group.",
-    "content": "zap has plugin architecture new functionality implemented via addons can defined any repository most ones that core team maintains live zapextensions you should use planning contributing your addon project please talk about first developer group maintaining yourself then create another guide will explain how quickly brand customise want preparation need have followed quick start building imported code into favourite ide command line instructions given below directory copy simple example just what sounds like called myaddon choose different name make sure chosen all commands linux macos done from using: cp addonssimpleexample addonsmyaddon windows xcopy eh update files simpleexamplegradlekts rename file myaddongradlekts macos: mv addonsmyaddonsimpleexamplegradlekts addonsmyaddonmyaddongradlekts edit change version description name: 001 zapaddon addonnamesetmy zapversionset2100 manifest authorsetzap dev settingsgradlekts add list refresh gradle source these minimum changes needed get working messageproperties addonsmyaddonsrcmainresourcesorgzaproxyaddonsimpleexampleresourcesmessagesproperties instances simpleexample keys changing strings something my extension which adds top level menu item defines default english variants internationalised messages myaddonapiactionhelloworld logs hello world debug myaddondesc myaddonerrornofile not found myaddonpanelmsg htmlthis status panelhtml myaddonpaneltitle myaddonpopupmsg right click invoked for:n myaddonpopuptitle addon: myaddontopmenutoolsmsg message myaddontopmenutoolstitle extensionsimpleexamplejava addonsmyaddonsrcmainjavaorgzaproxyaddonsimpleexampleextensionsimpleexamplejava prefix strings: public other extensions access static final string extensionmyaddon i18n by package one place easier protected deploy task: gradlew addons:myaddon:copyzapaddon gradlewbat restart now available tab bottom window green plus see next steps following before too many changes: orgzaproxyaddonsimpleexample orgzaproxyaddonmyaddon class names section editing general likely more appropriate "
-    },
-{
-    "url": "/docs/developer/building-zap-with-eclipse/",
-    "title": "Building ZAP with Eclipse",
-    "keywords": ["building","eclipse","guide","tutorial","with","zap"],
-    "tags": ["guide","tutorial"],
-    "summary": "If you want to make changes to ZAP using the Eclipse IDE then you are in the right place.\nPreparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of Eclipse suitable for Java development. We would suggest the \u0026ldquo;Eclipse IDE for Java Developers\u0026rdquo; package.",
-    "content": "you want make changes zap using eclipse ide then right place preparation will need have followed quick start guide building installed version suitable java development we would suggest developers package import repositories select file menu gradle existing project: following dialog enter full directory path one cloned before click finish repeat process until imported all worth noting that some zapextensions addons may fail compile do not required environment them expected problem unless work those which case see their readmes more details running project explorer navigate to: zaproxy src main org zapjava run application now set up quite show warning dialogs close go back configurations configuration arguments tab change working from default other enter: workspaceloc:zaproxyzapsrcmaindist should correctly configured tasks can command line within end result same has lists available ordered by note own addition top level ones debugging debug code repository without making any tweak your order runtime switch source add button ok able proceeding break relevant extensionquickstart constructor quickstart addon setting breakpoint documentation tips tricks refresh sometimes unexpectedly occur between git branches different dependencies happens presentation way displays hierarchy does very least our opinion buttton vertical dots hierarchical send pr update page use edit github link footer "
-    },
-{
-    "url": "/blog/2021-03-12-report-competition/",
-    "title": "ZAP Report Competition",
-    "keywords": ["blog","competition","report","reporting","zap"],
-    "tags": ["blog","competition","reporting"],
-    "summary": "Help us add modern, useful and stylish reports to ZAP - the competition is now open until October 1st 2021.",
-    "content": "competition currently open apparently people have been bit confused by some wording blog post just that clear: everyone regardless where they live long we legally able pay them will remain until accepted 10 templates july october 1st 2021 whichever comes first weve extended deadline months number date: 2876 awarded 200 due themes included 2896 100 new report generation addon detailed below while much more flexible current includes still very basic lets honest creating stylish reports probably not one zap core teams strengths hence award per htmlpdf template you submit which subsequently include do need any coding skills enter html css javascript important starts now start judging april 12th make sure plenty time give us add features see stay reserve right close after has running then accept couple than think there enough really good ones looking are: pdf supports jsonxmlmarkdown etc those easier create source can practical ie provide information want customisable internationalised dont translations unless english supported screen reader compatible too should lots online about different from each other clones real choice reporting order generate modern released zapcon 2021: available marketplace: early stage list enhancements planned related issue tracker key prioritised allow arbitrary data already provides access being support custom fields define users customise way sections multiple separate choose their load i18n files present internationalisation own these elements also how help section advice guidance ask user group thymeleaf templating engine using documented problems experience join updates especially raise pull request adding your directory underneath reportssrcmainzaphomefilesreports forward seeing what produce zaps traditional weaknesses into its recently published questionnaire asking question relevant answers shown me highlights want: look feel charts ability worth checking through previous posts keeps coming up details scan rules passed possible thats changes making keen higher was important: 65 less average importance: 194 29 387 97 129 226 323 useful would configure format 645 161 613 like free text field without changes: translate branding intention hired engagement internal thx certain formats hipaa is27001 owasp top10 pci cool please careful machine readable eg json xml fragmantates tool landscapes tools reading causes confusion when introducing types deprecate old awesome links asvs proactive controls nist cve cwe contain requestresponse apis called nice things alerts urls tried were marked pass use case: api all returned 401 unauthorized "
-    },
-{
-    "url": "/docs/automate/automation-framework/",
-    "title": "Automation Framework",
-    "keywords": ["automation","framework","guide"],
-    "tags": ["guide"],
-    "summary": "The new Automation Framework will in time replace the Command Line and Packaged Scan options. It allows you to control ZAP via one YAML file and provides more flexibility while not being tied to any specific container technology.\nTo use the Automation Framework with ZAP 2.10.0 install the Automation Framework add-on and update the rest of the add-ons that you have installed.",
-    "content": "new automation framework will time replace command line packaged scan options allows you control zap via one yaml file provides more flexibility while not being tied any specific container technology use 2100 install addon update rest addons that have installed plugable many existing been enhanced support included latest weekly releases details how get started see main help page full set jobs currently supported by are: activescan runs active scanner management graphql schema import provided openapi definition passivescanconfig passive configuration passivescanwait waits finish processing current queue report generation requestor send requests targets soap wsdl spider traditional spiderajax ajax future changes planned tracker issue "
-    },
-{
-    "url": "/blog/2021-03-04-zapcon-is-nearly-here/",
-    "title": "ZAPCon 2021 is Nearly Here",
-    "keywords": ["blog","here","is","nearly","zapcon","2021"],
-    "tags": ["blog","zapcon"],
-    "summary": "The talks and speakers have been announced. See \u003ca href=\"https://zapcon.io\"\u003ehttps://zapcon.io\u003c/a\u003e",
-    "content": "very first zapcon nearly here theres still time register schedule is: 08:00 am 08:20 pst conference opening 09:00 democratizing zap test automation domain specific languages abhay bhargav we45 09:10 break 09:50 project updates simon bennetts 10:00 10:40 mobile application security ankush mohanty milan sen tcs 10:50 11:30 pm implementation pakistani fintech salman khwaja muhammad hammad ul hassan tps 11:40 12:20 how enhance feedbackbased fuzzing khaled yakdan code intelligence 12:30 closing ceremonies full details https:zapconio must admit that was nervous when we started talking about possibility would anyone want talk such event more importantly listen should not have worried had 20 talks submitted many than expected high quality ones struggled choose best end decided accept originally planned also hoping release extra bonus after stay tuned over 1500 people sign up has exceeded my most optimistic forecast especially all been put together just few weeks hinted user developer groups will launching new framework already one easiest tools automate believe take another level become recommended way join hear work see action couple other surprise announcements hope you like youll them :d im really looking forward opportunity discuss what matters discord order get invited "
-    },
-{
-    "url": "/blog/2021-02-10-automate-checking-asvs-controls-using-zap-scripts/",
-    "title": "Automate checking ASVS controls using ZAP scripts",
-    "keywords": ["asvs","automate","blog","checking","controls","scripts","using","zap"],
-    "tags": ["blog","asvs"],
-    "summary": "Write scripts in ZAP which will check a target application's compliance against ASVS controls.",
-    "content": "many security teams required provide insights levels web applications they own posture change dynamically based attack surface known vulnerabilities numerous other factors due dynamic nature assessing level challenging task which needs performed regular basis usually undertaken by comparing current implementation against controls defined standard such owasp application verification asvs spans 14 sections over 260 each assigned level: that all should have processing sensitive data critical assessed fully penetrationtestable from black box perspective article focuses only considering how broad difficult ensure every nook cranny compliant here raises question: more coverage make auditing easier faster effective enter zap its scripting engine rarely consists one main page has subdirectories lot resources loaded them example thirdparty javascript will configured differently than belonging tested domain possible uses traditional spider ajax those cover first part question making lets look closer allows python ruby groovy zest kotlin these languages supported their java equivalent eg jython also write extension call internal structures do technically can extensibility support brilliant freedom there types scripts offers few include passive active used passively scan traffic passing through proxy assess response headers note status codes requests analyze body html code extract parameters comparison send target test specific vulnerability injection path traversal attempt gather information about server simply certain request great tool devsecops regression testing analysis compliance some integrating would benefit zaps dast capabilities below two corresponding control very tests functionality feature behaviour turn makes fairly easy script area take v4021441 written available verify http contains contenttype header text xml applicationxml content specify safe character set utf8 iso88591 check manually manual does not give good crawler additionally reused doing periodical eliminating need person we use because modify any already exists rule checks missing charset hence import re def scanps msg src: alerttitle 341441 type specifying iso 8859134 alertdescription 34the denotes what encoded declaring hinders xss attacks leveraging different encodings expects34 alertrisk alertreliability strmsggetresponseheadergetheader34contenttype34 alertsolution 34ensure included response3434ensure specifies iso8859134 alertparam 34contenttype header34 alertinfo 34control failure34 cweid 173 wascid patterntype recompiler34textxmlapplicationxml34 patterncharset recompiler34iutf8iso8859134 34none34: psraisealertalertrisk msggetrequestheadergeturitostring 3434 alertsolution0 elif researchpatterntypeheader: charsets researchpatterncharsetheader charsets: alertsolution1 breaking down above flow follows: next regex search responses equalling types: finally either directive failed alert raised similar workflow follows cases may straightforward require sending case v4021453 crossdomain resource sharing cors accesscontrolalloworigin strict allowlist trusted domains match null origin crossorigin mechanism additional tell browsers running access selected executes when protocol port indicates where fetch originates automatically user agent describe contexts caused initiate consult guide under 1453 391453 whitelist 34null34origin39 34this policy properly configured34 34use sites allowed your domain34 346 34exampletestsitecom34 scannodesas msg: origmsg copy before reusing origmsgclonerequest get doesn39t exist msggetrequestheadersetheader34origin34 sendandreceivemsg followredirect handleanticsrftoken sasisstop: return sassendandreceivemsg true false strmsggetresponseheadergetheader34accesscontrolalloworigin34 3434: 34wildcard accesscontrolalloworigin34 sasraisealertalertrisk origin: 34accesscontrolalloworigin reflects 34null34: null34 misconfiguration sends looks found then copies starts value exampletestsitecom onward after receiving wildcard means notusing order help you automate much ive created 25 function gain understanding state knowledge started using companies writing idea behind was concise understand even without includes description why important consequences complying requirements considered successful previously looked documented longest subchapter try keep 400 words fewer too into technical details accessible everyonethe earlier explanation project sound exciting like contribute am looking people willing review add new feel free drop me message twitter blazingwindsec "
-    },
-{
-    "url": "/blog/2021-02-03-run-zap-without-java-using-docker-and-webswing/",
-    "title": "Run ZAP without Java using Docker and Webswing",
-    "keywords": ["and","blog","docker","java","run","using","webswing","without","zap"],
-    "tags": ["blog"],
-    "summary": "You can access the ZAP Desktop even when it is running in Docker, and that means you do not have to install Java if you do not want to.",
-    "content": "zap docker images great way automate when testing new application diagnosing problems always easier use desktop that you can see what going run locally then running different environment will also need have java installed which some people unwilling unable do webswing luckily still access using product called amazing bit technology allows any swing browser commercial company behind strong supporters open source very kindly allowed us include start 8080:8080 8090:8090 owaspzap2dockerstable zapwebswingsh point your http:localhost:8080zap splash screen full spider active scan nearly everything interact exactly same would natively launch dialogs switch between them move resize restrictions although most functionality works there features not work particular other processes guis like browsers breaks feature many set up proxy through trust its root ca certificate proxying local order https based sites container drive mapped zapwrk eg using: pwd:zapwrk:rw note windows replace pwd current working directory create files drive: owaspzaprootcacrt public owaspzaprootcakey private profiles one control now via want we recommend profile firefox chrome configure import trusted sign websites handle another has all without having install restart automatically was exported earlier into "
-    },
-{
-    "url": "/blog/2021-01-28-announcing-the-first-ever-zapcon/",
-    "title": "1st Ever ZAPCon - Call For Papers",
-    "keywords": ["-","1st","blog","call","ever","for","papers","zapcon"],
-    "tags": ["blog","zapcon"],
-    "summary": "Today we are calling for topics and speakers in the first-ever OWASP ZAP User Conference!",
-    "content": "announcing first ever zapcon today we calling topics speakers firstever owasp zap user conference will heavily focused using scale application security practices do you have story tell about how use inside your company sweet tweak that made sing other users would love hear details when: airing march 9th 8amnoon pt 4pm8pm gmt who: those looking learn more what topics: initial topic ideas include: automating scripting dealing authentication not included list great send us outline review where: virtual event follow platform chat etc format: presentations should 30min length 1015min qa discussion cfp close feb 19th 10:59 pm 20th 6:59 am course completely free attendees submit talk proposal here https:sessionizecomzapconcfs "
-    },
-{
-    "url": "/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/",
-    "title": "ZAP 2.10.0 - The 10 Year Anniversary Release",
-    "keywords": ["-","2.10.0","anniversary","blog","release","the","year","zap","10"],
-    "tags": ["blog"],
-    "summary": "ZAP 2.10.0 has just been released so we're treating this as a belated 10 year anniversary release!",
-    "content": "you hopefully already know zap was released september 6th 2010 2100 has just been now available download via downloads page were treating belated 10 year anniversary release ive recorded training video which go through many new features: will see that there one demo unable run hit some issues we investigated those have fixes them luckily able fix addons rather than core they had latter then would 2101 when start using make sure check updates install any newer versions changes more significant enhancements include: custom pages can defined per context basis these allow identify various nonstandard error handling conditions such handle effectively authentication polling concept verification strategies introduced allows wider range mechanisms including option poll specified status user site tree control scripts full access how nodes represented sites both input vector include implementations variant class change structure names used details modifiers blog post dynamic look feel dark mode desktop ui includes set open source feels co flatlaf options also dynamically switch button top level toolbar weekly headers env vars environmental variables easily add header all requests proxied initiated by tools spiders active scanner documented socks proxy configuration possible configure outgoing connection screen default applies connections made cached following script types between invocations reducing time takes reuse them: rules http sender vectors passive included first time: advanced encode decode hash dialog replaces old encodedecodehash dom xss scan rule detecting vulnerabilities form handler values forms based field graalvm javascript java 15 longer oracle nashorn engine graphql support import definitions retirejs implements checks provided order vulnerable outdated packages soap wsdl files containing endpoints docker images updated smaller bug notes big thank everyone who contributed supported project way "
-    },
-{
-    "url": "/docs/developer/quick-start-build/",
-    "title": "A Quick Start Guide to Building ZAP",
-    "keywords": ["a","building","guide","quick","start","to","tutorial","zap"],
-    "tags": ["guide","tutorial"],
-    "summary": "Have you ever wanted to play around with the ZAP codebase but felt it was too overwhelming? This guide will walk you through building ZAP from the command line regardless of the operating system and IDE you're using.\nYou can also follow along with Simon as he sets the ZAP development environment in this Deep Dive video:",
-    "content": "have you ever wanted play around zap codebase felt was too overwhelming guide will walk through building from command line regardless operating system ide youre using can also follow along simon sets development environment deep dive video: lets jump right into preparation all need working local installation git jdk 11 newer versions might not work clone repo locally create new directory your run following that core repository https:githubcomzaproxyzaproxygit running source navigate cloned zaproxy folder replace gradlew gradlewbat windows user: thats now confirm see dev build loading window possible greeted prompt already some other application port 8080 case suggests different free starts listening when click uses gradle wrapper downloads dependencies project has been configured provide tasks convenience view these by note while successfully got doesnt come many key features provided addons installing name way enhance functionality there several allow do things zapextensions contains code maintained team first thing zapextensions: https:githubcomzaproxyzapextensionsgit then list available observe output one were interested in: copyzapaddon copies addon defaults rootdirzaproxyzapsrcmaindistplugin expected clones same must restart installed task installs install specific addons:identifier:copyzapaddon where identifier want find looking structure repository: accesscontrol alertfilters alertreport allinonenotes amf ascanrules instance release status active passive scan rules would run: addons:ascanrules:copyzapaddon addons:pscanrules:copyzapaddon hurry ao:ascanrules:czao ao:pscanrules:czao process hud help identical: their repositories https:githubcomzaproxyzaphudgit https:githubcomzaproxyzapcorehelpgit folders another useful is: copyweeklyaddons weekly plugin dir built repos essence each included zaproxyzapsrcmainweeklyaddonsjson better understanding check out user manual prospective contributors feel part improved enhanced updated any go ahead open pull request here steps before that: main illustrated above github account fork update tracked remote make changes submit pr page button towards top screen https:githubcomzaproxyzaproxy https:githubcomzaproxyzapextensions https:githubcomzaproxyzaphud https:githubcomzaproxyzapcorehelp remotes next point origin add upstream commands two procedure others identical username cd seturl https:githubcomusernamezaproxygit https:githubcomusernamezapextensionsgit questions related reach developer group irc channel "
-    },
-{
-    "url": "/docs/alerts/90004-1/",
-    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
-    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
-    "tags": null,
-    "summary": "Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.",
-    "content": "crossoriginresourcepolicy header optin designed counter sidechannels attacks like spectre resource should specifically set shareable amongst different origins "
-    },
-{
-    "url": "/docs/alerts/90004-2/",
-    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
-    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
-    "tags": null,
-    "summary": "Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).",
-    "content": "crossoriginembedderpolicy header response that prevents document from loading any crossorigin resources dont explicitly grant permission using corp cors "
-    },
-{
-    "url": "/docs/alerts/90004-3/",
-    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
-    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
-    "tags": null,
-    "summary": "Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.",
-    "content": "crossoriginopenerpolicy header response that allows site control others included documents share same browsing context sharing untrusted might lead data leak "
-    },
-{
-    "url": "/docs/alerts/90004/",
-    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
-    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
-    "tags": null,
-    "summary": "",
-    "content": ""
-    },
-{
     "url": "/docs/alerts/40034/",
     "title": ".env Information Leak",
     "keywords": ["",".env","information","leak"],
@@ -2224,20 +2016,20 @@
     "content": "crosssite request forgery attack that involves forcing victim send http target destination without their knowledge intent order perform action underlying cause application functionality using predictable urlform actions repeatable way nature csrf exploits trust web site has user by contrast scripting xss like attacks not necessarily they can also known xsrf oneclick session riding confused deputy sea surf effective number situations including: active authenticated via auth same local network primarily been used against victims privileges recent techniques have discovered disclose information gaining access response risk disclosure dramatically increased when vulnerable because platform allowing operate within bounds sameorigin policy "
     },
 {
-    "url": "/docs/alerts/10053/",
-    "title": "Apache Range Header DoS (CVE-2011-3192)",
-    "keywords": ["","(cve-2011-3192)","apache","dos","header","range"],
-    "tags": null,
-    "summary": "The byterange filter in earlier versions of the Apache HTTP Server allows remote attackers to cause a denial of service (memory and CPU exhaustion) via a Range request header that identifies multiple overlapping ranges. This issue was exploited in the wild in August 2011.",
-    "content": "byterange filter earlier versions apache http server allows remote attackers cause denial service memory cpu exhaustion via range request header that identifies multiple overlapping ranges issue was exploited wild august 2011 "
-    },
-{
     "url": "/docs/alerts/90022/",
     "title": "Application Error Disclosure",
     "keywords": ["","application","disclosure","error"],
     "tags": null,
     "summary": "This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.",
     "content": "page contains errorwarning message that may disclose sensitive information like location file produced unhandled exception can used launch further attacks against web application alert could false positive error found inside documentation "
+    },
+{
+    "url": "/docs/alerts/110001/",
+    "title": "Application Error Disclosure via WebSockets",
+    "keywords": ["","application","disclosure","error","via","websockets"],
+    "tags": null,
+    "summary": "This payload contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application.",
+    "content": "payload contains errorwarning message that may disclose sensitive information like location file produced unhandled exception can used launch further attacks against web application "
     },
 {
     "url": "/docs/alerts/10095/",
@@ -2256,6 +2048,14 @@
     "content": "base64 encoded data was disclosed by applicationweb server note: interests performance not all strings response were analyzed individually entire should looked analystsecurity teamdevelopers "
     },
 {
+    "url": "/docs/alerts/110002/",
+    "title": "Base64 Disclosure in WebSocket message",
+    "keywords": ["","base64","disclosure","in","message","websocket"],
+    "tags": null,
+    "summary": "A Base64-encoded string has been found in the websocket incoming message. Base64-encoded data may contain sensitive information such as usernames, passwords or cookies which should be further inspected. Decoded evidence: example.",
+    "content": "base64encoded string has been found websocket incoming message data may contain sensitive information such usernames passwords cookies which should further inspected decoded evidence: example "
+    },
+{
     "url": "/docs/alerts/10044/",
     "title": "Big Redirect Detected (Potential Sensitive Information Leak)",
     "keywords": ["","(potential","big","detected","information","leak)","redirect","sensitive"],
@@ -2270,6 +2070,14 @@
     "tags": null,
     "summary": "Buffer overflow errors are characterized by the overwriting of memory spaces of the background web process, which should have never been modified intentionally or unintentionally. Overwriting values of the IP (Instruction Pointer), BP (Base Pointer) and other registers causes exceptions, segmentation faults, and other process errors to occur. Usually these errors end execution of the application in an unexpected way.",
     "content": "buffer overflow errors characterized by overwriting memory spaces background web process which should have never been modified intentionally unintentionally values ip instruction pointer bp base other registers causes exceptions segmentation faults occur usually these end execution application unexpected way "
+    },
+{
+    "url": "/docs/alerts/40038/",
+    "title": "Bypassing 403",
+    "keywords": ["","bypassing","403"],
+    "tags": null,
+    "summary": "Bypassing 403 endpoints may be possible, the scan rule sent a payload that caused the response to be accessible (status code 200).",
+    "content": "bypassing 403 endpoints may possible scan rule sent payload that caused response accessible status code 200 "
     },
 {
     "url": "/docs/alerts/90011/",
@@ -2337,7 +2145,7 @@
     },
 {
     "url": "/docs/alerts/10054/",
-    "title": "Cookie Without SameSite Attribute",
+    "title": "Cookie without SameSite Attribute",
     "keywords": ["","attribute","cookie","samesite","without"],
     "tags": null,
     "summary": "A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a \u0026lsquo;cross-site\u0026rsquo; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.",
@@ -2350,6 +2158,38 @@
     "tags": null,
     "summary": "A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.",
     "content": "cookie has been set without secure flag which means that can accessed via unencrypted connections "
+    },
+{
+    "url": "/docs/alerts/40040-1/",
+    "title": "CORS Header",
+    "keywords": ["","cors","header"],
+    "tags": null,
+    "summary": "Cross-Origin Resource Sharing (CORS) is an HTTP-header based mechanism that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources. It relaxes the Same-Origin Policy (SOP).",
+    "content": "crossorigin resource sharing cors httpheader based mechanism that allows server indicate any other origins domain scheme port than its own from which browser should permit loading resources relaxes sameorigin policy sop "
+    },
+{
+    "url": "/docs/alerts/40040/",
+    "title": "CORS Header",
+    "keywords": ["","cors","header"],
+    "tags": null,
+    "summary": "",
+    "content": ""
+    },
+{
+    "url": "/docs/alerts/40040-2/",
+    "title": "CORS Misconfiguration",
+    "keywords": ["","cors","misconfiguration"],
+    "tags": null,
+    "summary": "This CORS misconfiguration could allow an attacker to perform AJAX queries to the vulnerable website from a malicious page loaded by the victim's user agent. In order to perform authenticated AJAX queries, the server must specify the header \u0026ldquo;Access-Control-Allow-Credentials: true\u0026rdquo; and the \u0026ldquo;Access-Control-Allow-Origin\u0026rdquo; header must be set to null or the malicious page's domain.",
+    "content": "cors misconfiguration could allow attacker perform ajax queries vulnerable website from malicious page loaded by victims user agent order authenticated server must specify header accesscontrolallowcredentials: true accesscontrolalloworigin set null pages domain even doesnt requests unauthenticated sensitive content can still accessed eg intranet websites belong also trusted flaws xss support http without tls allowing code injection through mitm etc "
+    },
+{
+    "url": "/docs/alerts/40040-3/",
+    "title": "CORS Misconfiguration",
+    "keywords": ["","cors","misconfiguration"],
+    "tags": null,
+    "summary": "This CORS misconfiguration could allow an attacker to perform AJAX queries to the vulnerable website from a malicious page loaded by the victim's user agent. In order to perform authenticated AJAX queries, the server must specify the header \u0026ldquo;Access-Control-Allow-Credentials: true\u0026rdquo; and the \u0026ldquo;Access-Control-Allow-Origin\u0026rdquo; header must be set to null or the malicious page's domain.",
+    "content": "cors misconfiguration could allow attacker perform ajax queries vulnerable website from malicious page loaded by victims user agent order authenticated server must specify header accesscontrolallowcredentials: true accesscontrolalloworigin set null pages domain even doesnt requests unauthenticated sensitive content can still accessed eg intranet websites belong also trusted flaws xss support http without tls allowing code injection through mitm etc "
     },
 {
     "url": "/docs/alerts/40003/",
@@ -2464,6 +2304,14 @@
     "content": "error logging modules handlers elmah elmahaxd http module was found available can leak significant amount valuable information "
     },
 {
+    "url": "/docs/alerts/110004/",
+    "title": "Email address found in WebSocket message",
+    "keywords": ["","address","email","found","in","message","websocket"],
+    "tags": null,
+    "summary": "An email address was found in a WebSocket Message.",
+    "content": "email address was found websocket message "
+    },
+{
     "url": "/docs/alerts/10032-2/",
     "title": "Emails Found in the Viewstate",
     "keywords": ["","emails","found","in","the","viewstate"],
@@ -2488,12 +2336,12 @@
     "content": "url redirectors represent common functionality employed by web sites forward incoming request alternate resource can done variety reasons often allow resources moved within directory structure avoid breaking users that its previous location may also used implement load balancing leveraging abbreviated urls recording outgoing links last implementation which phishing attacks described example below do not necessarily direct security vulnerability abused attackers trying social engineer victims into believing they navigating site other than true destination "
     },
 {
-    "url": "/docs/alerts/10063/",
-    "title": "Feature Policy Header Not Set",
-    "keywords": ["","feature","header","not","policy","set"],
+    "url": "/docs/alerts/40041/",
+    "title": "File Upload",
+    "keywords": ["","file","upload"],
     "tags": null,
-    "summary": "Feature Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Feature Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.",
-    "content": "feature policy header added layer security that helps restrict from unauthorized access usage browserclient features by web resources ensures user privacy limiting specifying browsers can used provides set standard http headers allow website owners limit which page such camera microphone location full screen etc "
+    "summary": "File Upload scan rule is used to scan the vulnerabilities in the File Upload functionality of web applications.",
+    "content": "file upload scan rule used vulnerabilities functionality web applications "
     },
 {
     "url": "/docs/alerts/30002/",
@@ -2633,16 +2481,24 @@
     },
 {
     "url": "/docs/alerts/10015/",
-    "title": "Incomplete or No Cache-control and Pragma HTTP Header Set",
-    "keywords": ["","and","cache-control","header","http","incomplete","no","or","pragma","set"],
+    "title": "Incomplete or No Cache-control Header Set",
+    "keywords": ["","cache-control","header","incomplete","no","or","set"],
     "tags": null,
-    "summary": "The cache-control and pragma HTTP header have not been set properly or are missing allowing the browser and proxies to cache content.",
-    "content": "cachecontrol pragma http header have not been set properly missing allowing browser proxies cache content "
+    "summary": "The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content.",
+    "content": "cachecontrol header has not been set properly missing allowing browser proxies cache content "
     },
 {
     "url": "/docs/alerts/10023/",
     "title": "Information Disclosure - Debug Error Messages",
     "keywords": ["","-","debug","disclosure","error","information","messages"],
+    "tags": null,
+    "summary": "The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.",
+    "content": "response appeared contain common error messages returned by platforms such aspnet webservers iis apache you can configure list debug "
+    },
+{
+    "url": "/docs/alerts/110003/",
+    "title": "Information Disclosure - Debug Error Messages via WebSocket",
+    "keywords": ["","-","debug","disclosure","error","information","messages","via","websocket"],
     "tags": null,
     "summary": "The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.",
     "content": "response appeared contain common error messages returned by platforms such aspnet webservers iis apache you can configure list debug "
@@ -2672,6 +2528,14 @@
     "content": "response appears contain suspicious comments which may help attacker note: matches made within script blocks files against entire content not only "
     },
 {
+    "url": "/docs/alerts/110008/",
+    "title": "Information Disclosure - Suspicious Comments in XML via WebSocket",
+    "keywords": ["","-","comments","disclosure","in","information","suspicious","via","websocket","xml"],
+    "tags": null,
+    "summary": "The response appears to contain suspicious comments which may help an attacker.",
+    "content": "response appears contain suspicious comments which may help attacker "
+    },
+{
     "url": "/docs/alerts/90028/",
     "title": "Insecure HTTP Method",
     "keywords": ["","http","insecure","method"],
@@ -2686,6 +2550,38 @@
     "tags": null,
     "summary": "The response at the following URL contains a ViewState value that has no cryptographic protections.",
     "content": "response following url contains viewstate value that has cryptographic protections "
+    },
+{
+    "url": "/docs/alerts/90004-1/",
+    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
+    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
+    "tags": null,
+    "summary": "Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.",
+    "content": "crossoriginresourcepolicy header optin designed counter sidechannels attacks like spectre resource should specifically set shareable amongst different origins "
+    },
+{
+    "url": "/docs/alerts/90004-2/",
+    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
+    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
+    "tags": null,
+    "summary": "Cross-Origin-Embedder-Policy header is a response header that prevents a document from loading any cross-origin resources that don't explicitly grant the document permission (using CORP or CORS).",
+    "content": "crossoriginembedderpolicy header response that prevents document from loading any crossorigin resources dont explicitly grant permission using corp cors "
+    },
+{
+    "url": "/docs/alerts/90004-3/",
+    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
+    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
+    "tags": null,
+    "summary": "Cross-Origin-Opener-Policy header is a response header that allows a site to control if others included documents share the same browsing context. Sharing the same browsing context with untrusted documents might lead to data leak.",
+    "content": "crossoriginopenerpolicy header response that allows site control others included documents share same browsing context sharing untrusted might lead data leak "
+    },
+{
+    "url": "/docs/alerts/90004/",
+    "title": "Insufficient Site Isolation Against Spectre Vulnerability",
+    "keywords": ["","against","insufficient","isolation","site","spectre","vulnerability"],
+    "tags": null,
+    "summary": "",
+    "content": ""
     },
 {
     "url": "/docs/alerts/30003/",
@@ -2784,6 +2680,22 @@
     "content": "path traversal attack technique allows attacker access files directories commands that potentially reside outside web document root directory may manipulate url such way site will execute reveal contents arbitrary anywhere server any device exposes httpbased interface vulnerable most sites restrict user specific portion filesystem typically called cgi these contain intended executable necessary drive application functionality attacks utilize ability specialcharacters sequences basic uses specialcharacter sequence alter resource location requested although popular servers prevent from escaping alternate encodings help bypass security filters method variations include valid invalid unicodeencoding u2216 c0af forward slash character backslash characters windowsbased encoded 2e2e2f double encoding 255c even properly restricts attempts itself still due improper handling usersupplied input common problem applications use template mechanisms load static text original parameter value substituted file name one dynamic scripts consequently results can source code because interpreted instead script techniques often employ additional special dot listing current working 00 null order rudimentary extension checks "
     },
 {
+    "url": "/docs/alerts/10063/",
+    "title": "Permissions Policy Header Not Set",
+    "keywords": ["","header","not","permissions","policy","set"],
+    "tags": null,
+    "summary": "Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.",
+    "content": "permissions policy header added layer security that helps restrict from unauthorized access usage browserclient features by web resources ensures user privacy limiting specifying browsers can used provides set standard http headers allow website owners limit which page such camera microphone location full screen etc "
+    },
+{
+    "url": "/docs/alerts/110005/",
+    "title": "Personally Identifiable Information via WebSocket",
+    "keywords": ["","identifiable","information","personally","via","websocket"],
+    "tags": null,
+    "summary": "The response contains Personally Identifiable Information, such as CC number. Credit Card type detected: undefined.",
+    "content": "response contains personally identifiable information such cc number credit card type detected: undefined "
+    },
+{
     "url": "/docs/alerts/10062/",
     "title": "PII Disclosure",
     "keywords": ["","disclosure","pii"],
@@ -2814,6 +2726,14 @@
     "tags": null,
     "summary": "A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.",
     "content": "private ip such 10xxx 172xxx 192168xx amazon ec2 hostname example ip1005678 has been found http response body information might helpful further attacks targeting internal systems "
+    },
+{
+    "url": "/docs/alerts/110006/",
+    "title": "Private IP Disclosure via WebSocket",
+    "keywords": ["","disclosure","ip","private","via","websocket"],
+    "tags": null,
+    "summary": "A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the incoming WebSocket message. This information might be helpful for further attacks targeting internal systems.",
+    "content": "private ip such 10xxx 172xxx 192168xx amazon ec2 hostname example ip1005678 has been found incoming websocket message information might helpful further attacks targeting internal systems "
     },
 {
     "url": "/docs/alerts/40025/",
@@ -2926,6 +2846,22 @@
     "tags": null,
     "summary": "URL rewrite is used to track user session ID. The session ID may be disclosed via cross-site referer header. In addition, the session ID might be stored in browser history or server logs.",
     "content": "url rewrite used track user session id may disclosed via crosssite referer header addition might stored browser history server logs "
+    },
+{
+    "url": "/docs/alerts/90026/",
+    "title": "SOAP Action Spoofing",
+    "keywords": ["","action","soap","spoofing"],
+    "tags": null,
+    "summary": "An unintended SOAP operation was executed by the server.",
+    "content": "unintended soap operation was executed by server "
+    },
+{
+    "url": "/docs/alerts/90029/",
+    "title": "SOAP XML Injection",
+    "keywords": ["","injection","soap","xml"],
+    "tags": null,
+    "summary": "Some XML injected code has been interpreted by the server.",
+    "content": "some xml injected code has been interpreted by server "
     },
 {
     "url": "/docs/alerts/10099/",
@@ -3120,6 +3056,14 @@
     "content": "hash username was found response may indicate that application subject insecure direct object reference idor vulnerability manual testing will required see discovery can abused "
     },
 {
+    "url": "/docs/alerts/110007/",
+    "title": "Username Hash Found in WebSocket message",
+    "keywords": ["","found","hash","in","message","username","websocket"],
+    "tags": null,
+    "summary": "A Example hash of {Example / context: Example} was found in incoming WebSocket message. This may indicate that the application is subject to an Insecure Direct Object Reference (IDOR) vulnerability. Manual testing will be required to see if this discovery can be abused.",
+    "content": "example hash context: was found incoming websocket message may indicate that application subject insecure direct object reference idor vulnerability manual testing will required see discovery can abused "
+    },
+{
     "url": "/docs/alerts/10032/",
     "title": "Viewstate",
     "keywords": ["","viewstate"],
@@ -3158,6 +3102,22 @@
     "tags": null,
     "summary": "HTTP basic or digest authentication has been used over an unsecured connection. The credentials can be read and then reused by someone with access to the network.",
     "content": "http basic digest authentication has been used over unsecured connection credentials can read then reused by someone access network "
+    },
+{
+    "url": "/docs/alerts/40039/",
+    "title": "Web Cache Deception",
+    "keywords": ["","cache","deception","web"],
+    "tags": null,
+    "summary": "Web cache deception may be possible. It may be possible for unauthorised user to view sensitive data on this page.",
+    "content": "web cache deception may possible unauthorised user view sensitive data page "
+    },
+{
+    "url": "/docs/alerts/90030/",
+    "title": "WSDL File Detection",
+    "keywords": ["","detection","file","wsdl"],
+    "tags": null,
+    "summary": "A WSDL File has been detected.",
+    "content": "wsdl file has been detected "
     },
 {
     "url": "/docs/alerts/10061/",
@@ -3254,6 +3214,190 @@
     "tags": null,
     "summary": "Injection using XSL transformations may be possible, and may allow an attacker to read system information, read and write files, or execute arbitrary code.",
     "content": "injection using xsl transformations may possible allow attacker read system information write files execute arbitrary code "
+    },
+{
+    "url": "/blog/2021-08-23-oast-with-owasp-zap/",
+    "title": "Out-of-band Application Security Testing with OWASP ZAP",
+    "keywords": ["application","blog","gsoc","oast","out-of-band","owasp","security","testing","with","zap"],
+    "tags": ["blog","gsoc","oast"],
+    "summary": "An overview of the features of the OAST add-on for OWASP ZAP. This add-on allows you to discover out-of-band vulnerabilities like SSRF.",
+    "content": "oast addon zap enables communicate services like boast tuktuk interactsh given that they supported by thereby providing functionality similar portswiggers burp collaborator available download right now from marketplace blog post going go over features demonstrate how you can leverage zaps scripting write scripts exploit outofband vulnerabilities assumes already have installed currently supports two services: callbacks been part core since 2017 however callback service has made will deprecated soon titled ssrf setup good explainer configured perform attacks focus working registering server gui options window do could either tools click gear icon toolbar press ctrl alt choose list under select tab screen enter valid uri address should point used registrations polling include scheme host port events endpoint must running instance example is: https:examplecom:1337events frequency rate which registered servers polled takes values seconds minimum allowed value 10 there maximum default 60 register notice new entry added active table copy payload use your poll set report all interactions dns http main script following code snippet registers server: var control javatype34orgparosproxyparoscontrolcontrol34 extoast controlgetsingletongetextensionloadergetextension34extensionoast34 extoastgetboastservice boastregister34https:odisseu:1337events34 get details print34server uri: 34 servergeturi print34id: servergetid print34payload: servergetpayload print34canary: servergetcanary change frequency: boastgetparamsetpollingfrequency30 array with: registeredservers boastgetregisteredservers registeredserverforeachs printsgetpayload information allow its one crucial step being able action when actually discovers message received we request handler illustrated section scan rule function requesthandlerrequest print34source: requestgetsource print34referer: requestgetreferer print34handler: requestgethandler print boastaddoastrequesthandlerrequesthandler method addoastrequesthandler accepts oastrequesthandler parameter work oastservices make whatever want here some cases: notify webhook eg send slack discord raise issue bug tracker tweet something etc invoke another order yourself pizza selenium alert accessed thing noted adding not idempotent operation add same multiple times then also performed whats next rules update existing xxe externalredirect remotefileinclude serversideinclude them payloads introduce outofbandxss superblindsqlinjection blindssrf support api automation framework longterm across instances other based community feedback keep eye out updates visit page learn touch check project posts related development developed participant google summer 2021 am deeply grateful program organizers my mentors prs pull requests excluding those releases were created description 2996 create barebones 6675 type persisting oob messages 3033 first functional version 3053 fix major issues addon: showing up after registration 3067 boast: option changing show 3077 standalone template 3082 where templates loaded twice 6760 bundle weekly 3084 minor help "
+    },
+{
+    "url": "/blog/2021-08-23-retest-with-zap/",
+    "title": "Retesting alerts with OWASP ZAP",
+    "keywords": ["alerts","blog","gsoc","owasp","retest","retesting","with","zap"],
+    "tags": ["blog","gsoc","retest"],
+    "summary": "An overview of the features of the Retest add-on for OWASP ZAP. This add-on allows you to retest for previously generated alerts.",
+    "content": "zap great tool detect vulnerabilities different kinds web applications generate alerts accordingly however currently lacks userfriendly mechanism revalidate retest identified weaknesses whenever any reported vulnerability claimed have been fixed by developer tester using has set up all original scan settings used once which tiresome timeconsuming process addon aims simplify generating plan corresponding selected retesting could then run via use automation framework user can select number that they wish tab rightclick choose option would open dialog also opened tools here add further included selecting them tree left clicking button remove panel right edited edit allows users optionally specify regexes various fields against match generated verifying running verify checks whether actually present moment ensures faced surprises when somewhat later down line each alert status column table displays current one out not verified absent click create creates loads from reordermodify jobs required more information how gui works given since command too easy integrate within cicd pipeline result see output passfailed test depends was being checked its absence presence value configured changing action field functionality described above api supports only supply list comma separated ids receive response containing presentabsent along values describing future plans still early stages feel free report issues you face group raise github issue bugs major enhancement definitely needs ability authenticated soon without having deal authentication main reasons lead people request persisted session place implement allow previously saved there other ui enhancements such adding tests grouped their id flag icon righthand pane risk thus allowing most important etc implemented part my google summer code 2021 project possible constant guidance help received mentors simon ricardo rick feedback instrumental helping me finish what initially seemed like gigantic task learned lot during course am grateful same prs pull requests excluding those related releases were created description 2998 new requestor job 3020 added 3050 first version "
+    },
+{
+    "url": "/blog/2021-08-20-zap-fileupload-addon/",
+    "title": "ZAP FileUpload Add-on",
+    "keywords": ["add-on","blog","fileupload","zap"],
+    "tags": ["blog","fileupload"],
+    "summary": "Overview File upload is becoming a more and more essential part of any application, where the user is able to upload their photo, their CV, or a video showcasing a project they are working on. The application should be able to fend off bogus and malicious files in a way to keep the application and the users safe.",
+    "content": "overview file upload becoming more essential part any application where user able their photo cv video showcasing project they working should fend off bogus malicious files way keep users safe generally functionality quite complex automate has huge attack surface hence there need process also secure fileupload addon scan rule which used find vulnerabilities blog explains how use configuration endpoints one from uploaded retrieved necessary know both these while active scanning endpoint already known retrieval not details specific under zaps options dialog you will screen shown below: explanation finding url retrieveview here some options: applications retrieve static doesnt change only name changed handling type panel location added into uri regex field supports dynamic by filename parameter eg http:baseurlfilename present requests response parse http parameters start identifier end identifiers locate within different called preflight request profile picture page we invoke mentioned then using addons execute owasp zap after filling run order vulnerability coverage attempts various types payloads tries them identify uploads following files: html its variants jsp jpeg gif images eicar svg covered are: cross site scripting remote code execution uploading virus currently available dev versions such weekly releases built source depends uptodate version core information please visit detailed see video: special thanks highly inspired uploadscanner uses many concepts extension "
+    },
+{
+    "url": "/success/we45/",
+    "title": "we45 and AppSecEngineer",
+    "keywords": ["","and","appsecengineer","we45"],
+    "tags": null,
+    "summary": "We at we45 and our training venture, AppSecEngineer use and train on ZAP extensively. We strongly believe OWASP ZAP to be the most programmable DAST tool in its class, regardless of commercial or OSS alternatives.\nOne of the things we do with our clients is to implement continuous DAST scanning as part of their DevSecOps initiatives.",
+    "content": "we we45 our training venture appsecengineer use train zap extensively strongly believe owasp most programmable dast tool its class regardless commercial oss alternatives one things do clients implement continuous scanning part their devsecops initiatives many run bevy automated scans periodic basis triggered through ci tooling some those that have endtoend test automation scripts selenium cypress etc set up able authenticated completely which something find unique space fact biggest success stories corporate travel they wanted integrate sast sca process qa teams generated within hours were not only into pipeline also work authorized mode input speaks volumes simplicity power everexpanding ecosystem useful addons contributions "
+    },
+{
+    "url": "/success/orange/",
+    "title": "Orange Business Services",
+    "keywords": ["","business","orange","services"],
+    "tags": null,
+    "summary": "At OBS, we strive continually to bring our customers peace of mind with strengthened and reinforced application security.\nAs part of automating our web application and API security, we chose to deploy OWASP ZAP as one of our Dynamic Application Security Testing (DAST) technologies. This DevSecOps approach helps our developers and engineering teams to detect vulnerabilities, including the OWASP Top Ten Web and API, in CI/CD pipelines before releasing our solutions.",
+    "content": "obs we strive continually bring our customers peace mind strengthened reinforced application security part automating web api chose deploy owasp zap one dynamic testing dast technologies devsecops approach helps developers engineering teams detect vulnerabilities including top ten cicd pipelines before releasing solutions thanks its libraries highly customizable allowed us easily develop tools that use these resources many interesting features such scripting engine passive scripts python hooks addons developed by community make tool even more powerful easy "
+    },
+{
+    "url": "/blog/2021-06-29-community-questionnaire-results/",
+    "title": "Community Questionnaire Results",
+    "keywords": ["community","questionnaire","results"],
+    "tags": ["questionnaire"],
+    "summary": "The results of the Community Questionnaire which we ran during the first half of 2021.",
+    "content": "december 2020 we published community questionnaire focused feedback documentation have just closed that wanted share results explain how they changing what do thank you all 290 people who answered our questions youll see find answers really helpful impact where go first help zap largest single response was google other search engine little bit problematic us direct control over engines return however also not too surprising must admit use out specific things about including documented fortunately content tends come high up combination user guide off line site which includes account nearly 50 good im puzzled by 55 https:owasporg real there redirect whats main way get news its sites some groups website twitter blog 70 responses 213 troubling tend very much useful low number relatively numbers fairly replies gratifying used one zaps weak spots something been focusing know theres always more appear going right direction fact fewer api concerning will only interest subset users does many any docs because intuitive dont need honest idea would like document better free format question harder analyse were definitely recurring themes: lots examples case studies weve next most popular type answer happy already hear resting laurels scripting topic despite recorded quite few videos specifically apis came requests around relating contexts scope after rest covered wide range different topics articles etc although making easier pretty evenly split between preferring liking both featured success stories section wwwzaproxyorg said might interested contacted contact shortly had great here example: opensource projects their transparency reliability accessible give possibility learning deeply has important my training neurodivergent person autistic easy ways subtitles traductions half deaf wroten tool thanks your contributions amazing accomplished can huge simon contributors continue work building maintaining best dast wonderful open source impressive keep providing awesome team guys done fucing job new far app analysing websites projects: everything guess ill reach owasp near future involved such becomes somewhat industry standard when escalated vendor firewallsecurity talking acknowledge ground investigate instead treating yahoo simply love works everywhere gratis software favorite tools please make access validation manually selecting every page web pentesting thing desired pentration testing sorry reporting sucks limits usefulness differently publish questionnaires want from point asking change result current posts tweets messages seems working maybe should look getting onto directly searching via providers me indicates track produce ensure quality appears equally why creating clear focus possibly order catch seriously producing even detailed deal experience doing then looks overdue following contributing did reply still touch per links positive receive rightly complained hopefully report generation addon addressed long standing problem let enhancements "
+    },
+{
+    "url": "/blog/2021-06-15-baseline-scan-changes/",
+    "title": "Baseline Scan Changes",
+    "keywords": ["baseline","changes","docker","packaged_scan","scan"],
+    "tags": ["docker","packaged_scan"],
+    "summary": "Important information for anyone who uses the baseline scan in the Live or Weekly Docker images.",
+    "content": "we changing baseline scan other packaged scans time use new automation framework af hopefully changes will not affect any you who want make sure that understand what has changed do think working would also like try out soon possible report issues us current status is: live docker image used only explicitly enabled weekly stable next full release change summary depending which options choose may now instead controlling zap via api part ongoing development migrate all initially using auto option encourage everyone uses enabling happy there breaking point flag ignored however able autooff disable currently supported by why depend then work before even specified continually enhancing more become coming weeks process therefore warrant further blog posts see exactly parameters source code https:githubcomzaproxyzaproxyblobmaindockerzapbaselinepy output differences following line included output: diagnostic messages these differ significantly underlying mechanisms have reports errors warnings reported different way: run owaspzap2dockerweekly zapbaselinepy https:wwwexamplebad 2021061011:08:44764couldnotfindcustomhooksfileathomezapzaphookspy 2021061011:08:53809failedtoaccesssummaryfilezapzapoutjson usingtheautomationframework automationplanfailures: jobspiderfailedtoaccessurlhttps:wwwexamplebadcheckthatitisvalid:wwwexamplebad map drive zapwrk copy zapyaml job configuration file into mapped can away from take advantage features adding example yaml generated command: pwd:zapwrk:rw https:wwwexamplecom env: contexts: name: urls: parameters: failonerror: true progresstostdout: false jobs: install: pscanrulesbeta type: addons uninstall: enabletags: maxalertsperrule: 10 passivescanconfig maxduration: url: spider spiderajax passivescanwait format: long summaryfile: zapzapoutjson outputsummary note getting rid provide flexibility scanning examplecom 2021061013:21:56388couldnotfindcustomhooksfileathomezapzaphookspy totalof4urls pass:vulnerablejslibrary10003 pass:cookienohttponlyflag10010 pass:cookiewithoutsecureflag10011 pass:crossdomainjavascriptsourcefileinclusion10017 pass:contenttypeheadermissing10019 pass:informationdisclosuredebugerrormessages10023 pass:informationdisclosuresensitiveinformationinurl10024 pass:informationdisclosuresensitiveinformationinhttpreferrerheader10025 pass:httpparameteroverride10026 pass:informationdisclosuresuspiciouscomments10027 pass:openredirect10028 pass:cookiepoisoning10029 pass:usercontrollablecharset10030 pass:usercontrollablehtmlelementattributepotentialxss10031 pass:viewstate10032 pass:directorybrowsing10033 pass:heartbleedopensslvulnerabilityindicative10034 pass:serverleaksinformationviaxpoweredbyhttpresponseheaderfields10037 pass:xbackendserverheaderinformationleak10039 pass:securepagesincludemixedcontent10040 pass:httptohttpsinsecuretransitioninformpost10041 pass:httpstohttpinsecuretransitioninformpost10042 pass:usercontrollablejavascripteventxss10043 pass:bigredirectdetectedpotentialsensitiveinformationleak10044 pass:xchromeloggerdataxcoldheaderinformationleak10052 pass:cookiewithoutsamesiteattribute10054 pass:csp10055 pass:xdebugtokeninformationleak10056 pass:usernamehashfound10057 pass:xaspnetversionresponseheader10061 pass:piidisclosure10062 pass:timestampdisclosure10096 pass:hashdisclosure10097 pass:crossdomainmisconfiguration10098 pass:weakauthenticationmethod10105 pass:reversetabnabbing10108 pass:modernwebapplication10109 pass:absenceofanticsrftokens10202 pass:privateipdisclosure2 pass:sessionidinurlrewrite3 pass:scriptpassivescanrules50001 pass:statspassivescanrule50003 pass:insecurejsfviewstate90001 pass:charsetmismatch90011 pass:applicationerrordisclosure90022 pass:wsdlfiledetection90030 pass:looselyscopedcookie90033 warnnew:incompleteornocachecontrolheaderset10015x1 https:wwwexamplecom200 warnnew:xframeoptionsheader10020x1 warnnew:xcontenttypeoptionsheadermissing10021x1 warnnew:stricttransportsecurityheader10035x3 https:wwwexamplecomrobotstxt404 https:wwwexamplecomsitemapxml404 warnnew:httpserverresponseheader10036x4 warnnew:contentsecuritypolicycspheadernotset10038x3 warnnew:retrievedfromcache10050x3 failnew:0 failinprog:0 warnnew:7 warninprog:0 info:0 ignore:0 pass:47 without 2021061013:22:14620couldnotfindcustomhooksfileathomezapzaphookspy pass:retrievedfromcache10050 https:wwwexamplecom200ok warnnew:xframeoptionsheadernotset10020x1 warnnew:stricttransportsecurityheadernotset10035x3 https:wwwexamplecomrobotstxt404notfound https:wwwexamplecomsitemapxml404notfound warnnew:serverleaksversioninformationviaserverhttpresponseheaderfield10036x4 warnnew:6 case one issue than nonaf reverting original experience problems please let know asap while resolving them temporary available migrating scripts some removed must tell "
+    },
+{
+    "url": "/blog/2021-04-19-collecting-statistics-for-open-source-projects/",
+    "title": "Collecting Statistics for Open Source Projects",
+    "keywords": ["blog","collecting","for","open","projects","source","statistics"],
+    "tags": ["blog","statistics"],
+    "summary": "This blog post will show you how you can collect and publish statistics on your open source projects using free resources and open source scripts, based on the setup we have for ZAP.",
+    "content": "blog post will show you how can collect publish statistics your open source projects using free resources scripts based setup we have zap were not doing anything particularly sophisticated all should easy understand why released 6th september 2010 some point december was accepted owasp project by 1st january 2011 downloads had jumped from virtually none 433 my memory that good significant enough me record number ive been recording download counts start every month google spreadsheet ever since many years completely manual process honest did mind wrote set help always interesting see things changing maintaining thankless task seeing numbers steadily increase often gave encouragement needed keep going dont worry just maintain now automated relatively simple copy adapt needs although only limited stats do get really useful feedback example seen percentage people daemon where significantly higher than desktop usage helps us plan what features focus also great bragging rights proudly state worlds most widely used web app scanner able back claim up our made sure commercial competitors aware them chosen contest must true which depend whats available these ones downloaded doesnt tell actually use still know changes over time initially recorded when move then key requirement whatever platform chose hosted github their public apis access does provide any history regularly important course more complicated different places accessed via wide range options including linux repos homebrew snapcraft flathub bundled kali very few ways docker pulls another metric especially images proved popular provides there started asking make amazon ecr far found out possible ill resist calls check update requests makes various home bitly urls means find create new each release versions 290 whether they mode account api complete give indication who full picture about command line option prevent being users environments either outgoing blocked those services like user interactions interact large issues groups slack channels discord irc email stackoverflow list goes try push discussions group pain way right manually run script against gmail inbox once delete emails accurate pretty works framework follow one introduced working mozilla security team worked simplified even further changed mostly high level is: schedule store display regular intervals its daily jenkins service scheduling already other jobs actions separate zapbot accounts admin tasks action zapbotzapmgmtscripts repo recordstatsv2yml statspy passing parameter turn method subordinate scripts: bitlypy dockerpy githubpy groupspy responsible handling call relevant retrieve data want raw processed flat text files matter stored private however collecting lot became switched putting s3 buckets same strictly speaking solution flagship aws thats file structure s3:projectzapstats monthly directory filename format yyyymmddstatisticjson response extract responses future decide need statistic part relate version subscripts extracts interested outputs into contain day named yyyymmddcsv generate originally turned easier least think created infrastructure fed athena supports complex structures skip processing step something similar configuration confusing difficult im developer code csv easily technologies redash quicksight studio probably generation charts much because added go finally pushes newly tried unfortunately didnt meet requirements couldnt share dashboards publicly end simpler creating directly static website: https:wwwzaproxyorg updatewebsitestatsyml runs website implemented hugo shortcode charthtml creates chart supplied submits pull request approve before applied site https:wwwzaproxyorgstatistics am happy add telemetry tool therefore deals sensitive desire information may nervous careful opt implement write "
+    },
+{
+    "url": "/success/banzaicloud/",
+    "title": "Banzai Cloud",
+    "keywords": ["","banzai","cloud"],
+    "tags": null,
+    "summary": "At Banzai Cloud we use our dast-operator which leverages OWASP ZAP to run baseline scans against the services we deploy on the K8S cluster. This operator deploys OWASP ZAP to the K8S cluster and initiates automated security testing for web applications and APIs based on OpenAPI definitions. Besides the operator responsible for starting the scan against a service, it can prevent opening a vulnerable service to outside.",
+    "content": "banzai cloud we use our dastoperator which leverages owasp zap run baseline scans against services deploy k8s cluster operator deploys initiates automated security testing web applications apis based openapi definitions besides responsible starting scan service can prevent opening vulnerable outside prevention mechanism builtin admission controller watching ingress resources checks backend makes decision depending result "
+    },
+{
+    "url": "/success/motorola/",
+    "title": "Motorola Solutions",
+    "keywords": ["","motorola","solutions"],
+    "tags": null,
+    "summary": "Motorola Solutions follows S-SDLC (secure software development lifecycle) best practices for our product development. Similarly, these best practices can be found in another OWASP project, the Software Assurance Maturity Model. We build our software development approach on the OWASP SAMM, to ensure delivery of secure products, from architecture design to the deployment in our own or customer’s infrastructure.",
+    "content": "motorola solutions follows ssdlc secure software development lifecycle best practices our product similarly these can found another owasp project assurance maturity model we build approach samm ensure delivery products from architecture design deployment own customers infrastructure one requirements defined verification security testing practice highest level states that organization should embed part processes use number commercial tools both static dynamic application scans composition analysis measuring other metrics zap has been added toolset fitting needs many teams within company major strength ease being standalone java running smoothly docker container means easily installed closely scanned regardless targeted service runs closed onpremise lab kubernetes cluster hosted public cloud environment close proximity target brings advantages example allows us avoid web firewalls intrusion prevention systems which could impact results scan adopt important tool fits into existing additional value delivers prepackaged containers perfect automated simplify process even more prepared dedicated jobs applicable cicd pipelines its note there need modify itself highly customizable allowing change behavior custom scripts python hooks ways implemented common script handle authentication steps identity management solution now using same idm very easy start performing authenticated their distributed scanner every short living central system would allow scheduling importantly collection lack such observability disadvantage especially point view thanks packaging pipeline job were able add simple telemetry requests execution recorded track usage shortly after rollout adopted by several dozens frontend backend services daily grows month helping improve safety "
+    },
+{
+    "url": "/blog/2021-03-29-zap-2-10-0-features/",
+    "title": "ZAP 2.10 Features",
+    "keywords": ["blog","features","youdontknowzap","zap","2.10"],
+    "tags": ["blog","youdontknowzap"],
+    "summary": "Do you know what interesting bits were added to ZAP 2.10.0? Don't read release notes? This blog post is for you! Dark mode, Expand/Collapse top panes, Custom pages, Scriptable encode/decode/hash, Authentication polling, Auth header via ENV vars, Site tree control, and more.",
+    "content": "zap 2100 was released december 2020 article digs into details some new exciting features full see release notes dark mode now supports various different ui themes including selection modes modern default light theme look feel can set dynamically by clicking button main toolbar then selecting you want use dropdown menu flat expandablecollapseable top panes order facilitate greater number usage models panels support leftright expand collapse control example handy way hide sites tree left when more real estate deal reviewing requestresponse appears just below aligned directly above split pane divider: arrow will hiding tree: similarly scripts etc other work custom pages one zaps oldest issues piece development that years making came fruition have ever encountered application returned 200 ok instead proper 404 file not found 500 server error nonstandard handling users define their contexts these considered scan rules whenever url part defined enabled context functionality gives much specificity properly modeling therefore assessing targets there few ways impact scanning: rule considers initial condition skip testing requests state start response its analysis raise alerts configurations currently supported are: course types necessarily limited specific status code simple definition could definitely type 405 method allowed 501 implemented provided give further flexibility who script handle unanticipated circumstances also allows options definition: location: content match type: regex plain string obviously complex pattern may performance find video introduction here scriptable encodedecodehash via addon updated between releases still lot transformations: encoder decoders hashers byte illegal utf8 ascii hex decode md5 base 64 sha1 sha256 encode html javascript unescaped unicode text along allowing create own scripted transforms say wanted able double space add such as: var encodedecoderesult javatype34orgzaproxyaddonencoderprocessorsencodedecoderesult34 process input value return encodeddecodedhashed encodedecoderesultwitherror34error description34 provide description inside result view param returns function processvalue replace any character except last encodedecoderesultvaluereplaceall3434 340 34trim authentication polling concept verification strategies has been introduced which wider range mechanisms option poll specified page user checkout summary auth header env vars help simplify automated cicd environmental variables available allow easily all proxied through initiated tools spiders active scanner zapauthheadervalue added zapauthheader used name standard authorization zapauthheadersite only included whos includes learn bit about environment site addons access how nodes represented both vector include implementations variant class change structure names modifiers blog post conclusion delved were constantly being improved global community volunteers watch posts future "
+    },
+{
+    "url": "/docs/developer/building-zap-with-intellij-idea/",
+    "title": "Building ZAP with IntelliJ IDEA",
+    "keywords": ["building","guide","idea","intellij","tutorial","with","zap"],
+    "tags": ["guide","tutorial"],
+    "summary": "This guide explains how to make changes to ZAP using IntelliJ IDEA.\nPreparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of IntelliJ IDEA.\nGradle Resources Working with ZAP in IntelliJ IDEA may need a bit more Java resources for the Gradle actions.",
+    "content": "guide explains how make changes zap using intellij idea preparation you will need have followed quick start building installed version gradle resources working may bit more java actions adjust much memory can use your machine set option gradleproperties linuxosx echo 39orggradlejvmargsxmx4g xx:maxpermsize1g39 gradlegradleproperties windows 34orggradlejvmargsxmx4g xx:maxpermsize1g34 userprofilegradlegradleproperties import repositories welcome screen click new project window select empty next choose name eg development environment pick location choice finish structure that pops up jdk same modules tab under settings button module then file directory navigate any one cloned buildgradlekts present root its ok repeat last two steps until imported all should now able see worth noting some zapextensions addons fail compile do not required them expected problem unless want work those which case their readmes details running to: zaproxy src main org right run zapmain unable go view tool reload projects before trying step quite show warning dialogs close back edit configurations configuration application change by browsing zaproxyzapsrcmaindist here replaced complete path repository system apply try correctly configured tasks from command line within end result has lists available ordered going note own addition top level ones tips tricks refresh sometimes unexpectedly code occur switch between git branches different dependencies happens relevant doesnt either doing invalidate caches restart other send pr update page github link footer "
+    },
+{
+    "url": "/docs/developer/creating-new-addon-in-zap-extensions/",
+    "title": "Creating a New Add-on in zap-extensions",
+    "keywords": ["a","add-on","creating","guide","in","new","tutorial","zap-extensions"],
+    "tags": ["guide","tutorial"],
+    "summary": "ZAP has a plugin architecture and new functionality is implemented via add-ons.\nAdd-ons can be defined in any repository but most of the ones that the ZAP core team maintains live in zap-extensions. You should use this repository if you are planning on contributing your add-on to the ZAP project, but please talk to the ZAP Core team about this first via the ZAP Developer Group.",
+    "content": "zap has plugin architecture new functionality implemented via addons can defined any repository most ones that core team maintains live zapextensions you should use planning contributing your addon project please talk about first developer group maintaining yourself then create another guide will explain how quickly brand customise want preparation need have followed quick start building imported code into favourite ide command line instructions given below directory copy simple example just what sounds like called myaddon choose different name make sure chosen all commands linux macos done from using: cp addonssimpleexample addonsmyaddon windows xcopy eh update files simpleexamplegradlekts rename file myaddongradlekts macos: mv addonsmyaddonsimpleexamplegradlekts addonsmyaddonmyaddongradlekts edit change version description name: 001 zapaddon addonnamesetmy zapversionset2100 manifest authorsetzap dev settingsgradlekts add list refresh gradle source these minimum changes needed get working messageproperties addonsmyaddonsrcmainresourcesorgzaproxyaddonsimpleexampleresourcesmessagesproperties instances simpleexample keys changing strings something my extension which adds top level menu item defines default english variants internationalised messages myaddonapiactionhelloworld logs hello world debug myaddondesc myaddonerrornofile not found myaddonpanelmsg htmlthis status panelhtml myaddonpaneltitle myaddonpopupmsg right click invoked for:n myaddonpopuptitle addon: myaddontopmenutoolsmsg message myaddontopmenutoolstitle extensionsimpleexamplejava addonsmyaddonsrcmainjavaorgzaproxyaddonsimpleexampleextensionsimpleexamplejava prefix strings: public other extensions access static final string extensionmyaddon i18n by package one place easier protected deploy task: gradlew addons:myaddon:copyzapaddon gradlewbat restart now available tab bottom window green plus see next steps following before too many changes: orgzaproxyaddonsimpleexample orgzaproxyaddonmyaddon class names section editing general likely more appropriate "
+    },
+{
+    "url": "/docs/developer/building-zap-with-eclipse/",
+    "title": "Building ZAP with Eclipse",
+    "keywords": ["building","eclipse","guide","tutorial","with","zap"],
+    "tags": ["guide","tutorial"],
+    "summary": "If you want to make changes to ZAP using the Eclipse IDE then you are in the right place.\nPreparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of Eclipse suitable for Java development. We would suggest the \u0026ldquo;Eclipse IDE for Java Developers\u0026rdquo; package.",
+    "content": "you want make changes zap using eclipse ide then right place preparation will need have followed quick start guide building installed version suitable java development we would suggest developers package import repositories select file menu gradle existing project: following dialog enter full directory path one cloned before click finish repeat process until imported all worth noting that some zapextensions addons may fail compile do not required environment them expected problem unless work those which case see their readmes more details running project explorer navigate to: zaproxy src main org zapjava run application now set up quite show warning dialogs close go back configurations configuration arguments tab change working from default other enter: workspaceloc:zaproxyzapsrcmaindist should correctly configured tasks can command line within end result same has lists available ordered by note own addition top level ones debugging debug code repository without making any tweak your order runtime switch source add button ok able proceeding break relevant extensionquickstart constructor quickstart addon setting breakpoint documentation tips tricks refresh sometimes unexpectedly occur between git branches different dependencies happens presentation way displays hierarchy does very least our opinion buttton vertical dots hierarchical send pr update page use edit github link footer "
+    },
+{
+    "url": "/blog/2021-03-12-report-competition/",
+    "title": "ZAP Report Competition",
+    "keywords": ["blog","competition","report","reporting","zap"],
+    "tags": ["blog","competition","reporting"],
+    "summary": "Help us add modern, useful and stylish reports to ZAP - the competition is now open until October 1st 2021.",
+    "content": "competition currently open apparently people have been bit confused by some wording blog post just that clear: everyone regardless where they live long we legally able pay them will remain until accepted 10 templates july october 1st 2021 whichever comes first weve extended deadline months number date: 2876 awarded 200 due themes included 2896 100 new report generation addon detailed below while much more flexible current includes still very basic lets honest creating stylish reports probably not one zap core teams strengths hence award per htmlpdf template you submit which subsequently include do need any coding skills enter html css javascript important starts now start judging april 12th make sure plenty time give us add features see stay reserve right close after has running then accept couple than think there enough really good ones looking are: pdf supports jsonxmlmarkdown etc those easier create source can practical ie provide information want customisable internationalised dont translations unless english supported screen reader compatible too should lots online about different from each other clones real choice reporting order generate modern released zapcon 2021: available marketplace: early stage list enhancements planned related issue tracker key prioritised allow arbitrary data already provides access being support custom fields define users customise way sections multiple separate choose their load i18n files present internationalisation own these elements also how help section advice guidance ask user group thymeleaf templating engine using documented problems experience join updates especially raise pull request adding your directory underneath reportssrcmainzaphomefilesreports forward seeing what produce zaps traditional weaknesses into its recently published questionnaire asking question relevant answers shown me highlights want: look feel charts ability worth checking through previous posts keeps coming up details scan rules passed possible thats changes making keen higher was important: 65 less average importance: 194 29 387 97 129 226 323 useful would configure format 645 161 613 like free text field without changes: translate branding intention hired engagement internal thx certain formats hipaa is27001 owasp top10 pci cool please careful machine readable eg json xml fragmantates tool landscapes tools reading causes confusion when introducing types deprecate old awesome links asvs proactive controls nist cve cwe contain requestresponse apis called nice things alerts urls tried were marked pass use case: api all returned 401 unauthorized "
+    },
+{
+    "url": "/docs/automate/automation-framework/",
+    "title": "Automation Framework",
+    "keywords": ["automation","framework","guide"],
+    "tags": ["guide"],
+    "summary": "The new Automation Framework will in time replace the Command Line and Packaged Scan options. It allows you to control ZAP via one YAML file and provides more flexibility while not being tied to any specific container technology.\nTo use the Automation Framework with ZAP 2.10.0 install the Automation Framework add-on and update the rest of the add-ons that you have installed.",
+    "content": "new automation framework will time replace command line packaged scan options allows you control zap via one yaml file provides more flexibility while not being tied any specific container technology use 2100 install addon update rest addons that have installed plugable many existing been enhanced support included latest weekly releases details how get started see main help page full set jobs currently supported by are: activescan runs active scanner management graphql schema import provided openapi definition passivescanconfig passive configuration passivescanwait waits finish processing current queue report generation requestor send requests targets soap wsdl spider traditional spiderajax ajax future changes planned tracker issue "
+    },
+{
+    "url": "/blog/2021-03-04-zapcon-is-nearly-here/",
+    "title": "ZAPCon 2021 is Nearly Here",
+    "keywords": ["blog","here","is","nearly","zapcon","2021"],
+    "tags": ["blog","zapcon"],
+    "summary": "The talks and speakers have been announced. See \u003ca href=\"https://zapcon.io\"\u003ehttps://zapcon.io\u003c/a\u003e",
+    "content": "very first zapcon nearly here theres still time register schedule is: 08:00 am 08:20 pst conference opening 09:00 democratizing zap test automation domain specific languages abhay bhargav we45 09:10 break 09:50 project updates simon bennetts 10:00 10:40 mobile application security ankush mohanty milan sen tcs 10:50 11:30 pm implementation pakistani fintech salman khwaja muhammad hammad ul hassan tps 11:40 12:20 how enhance feedbackbased fuzzing khaled yakdan code intelligence 12:30 closing ceremonies full details https:zapconio must admit that was nervous when we started talking about possibility would anyone want talk such event more importantly listen should not have worried had 20 talks submitted many than expected high quality ones struggled choose best end decided accept originally planned also hoping release extra bonus after stay tuned over 1500 people sign up has exceeded my most optimistic forecast especially all been put together just few weeks hinted user developer groups will launching new framework already one easiest tools automate believe take another level become recommended way join hear work see action couple other surprise announcements hope you like youll them :d im really looking forward opportunity discuss what matters discord order get invited "
+    },
+{
+    "url": "/blog/2021-02-10-automate-checking-asvs-controls-using-zap-scripts/",
+    "title": "Automate checking ASVS controls using ZAP scripts",
+    "keywords": ["asvs","automate","blog","checking","controls","scripts","using","zap"],
+    "tags": ["blog","asvs"],
+    "summary": "Write scripts in ZAP which will check a target application's compliance against ASVS controls.",
+    "content": "many security teams required provide insights levels web applications they own posture change dynamically based attack surface known vulnerabilities numerous other factors due dynamic nature assessing level challenging task which needs performed regular basis usually undertaken by comparing current implementation against controls defined standard such owasp application verification asvs spans 14 sections over 260 each assigned level: that all should have processing sensitive data critical assessed fully penetrationtestable from black box perspective article focuses only considering how broad difficult ensure every nook cranny compliant here raises question: more coverage make auditing easier faster effective enter zap its scripting engine rarely consists one main page has subdirectories lot resources loaded them example thirdparty javascript will configured differently than belonging tested domain possible uses traditional spider ajax those cover first part question making lets look closer allows python ruby groovy zest kotlin these languages supported their java equivalent eg jython also write extension call internal structures do technically can extensibility support brilliant freedom there types scripts offers few include passive active used passively scan traffic passing through proxy assess response headers note status codes requests analyze body html code extract parameters comparison send target test specific vulnerability injection path traversal attempt gather information about server simply certain request great tool devsecops regression testing analysis compliance some integrating would benefit zaps dast capabilities below two corresponding control very tests functionality feature behaviour turn makes fairly easy script area take v4021441 written available verify http contains contenttype header text xml applicationxml content specify safe character set utf8 iso88591 check manually manual does not give good crawler additionally reused doing periodical eliminating need person we use because modify any already exists rule checks missing charset hence import re def scanps msg src: alerttitle 341441 type specifying iso 8859134 alertdescription 34the denotes what encoded declaring hinders xss attacks leveraging different encodings expects34 alertrisk alertreliability strmsggetresponseheadergetheader34contenttype34 alertsolution 34ensure included response3434ensure specifies iso8859134 alertparam 34contenttype header34 alertinfo 34control failure34 cweid 173 wascid patterntype recompiler34textxmlapplicationxml34 patterncharset recompiler34iutf8iso8859134 34none34: psraisealertalertrisk msggetrequestheadergeturitostring 3434 alertsolution0 elif researchpatterntypeheader: charsets researchpatterncharsetheader charsets: alertsolution1 breaking down above flow follows: next regex search responses equalling types: finally either directive failed alert raised similar workflow follows cases may straightforward require sending case v4021453 crossdomain resource sharing cors accesscontrolalloworigin strict allowlist trusted domains match null origin crossorigin mechanism additional tell browsers running access selected executes when protocol port indicates where fetch originates automatically user agent describe contexts caused initiate consult guide under 1453 391453 whitelist 34null34origin39 34this policy properly configured34 34use sites allowed your domain34 346 34exampletestsitecom34 scannodesas msg: origmsg copy before reusing origmsgclonerequest get doesn39t exist msggetrequestheadersetheader34origin34 sendandreceivemsg followredirect handleanticsrftoken sasisstop: return sassendandreceivemsg true false strmsggetresponseheadergetheader34accesscontrolalloworigin34 3434: 34wildcard accesscontrolalloworigin34 sasraisealertalertrisk origin: 34accesscontrolalloworigin reflects 34null34: null34 misconfiguration sends looks found then copies starts value exampletestsitecom onward after receiving wildcard means notusing order help you automate much ive created 25 function gain understanding state knowledge started using companies writing idea behind was concise understand even without includes description why important consequences complying requirements considered successful previously looked documented longest subchapter try keep 400 words fewer too into technical details accessible everyonethe earlier explanation project sound exciting like contribute am looking people willing review add new feel free drop me message twitter blazingwindsec "
+    },
+{
+    "url": "/blog/2021-02-03-run-zap-without-java-using-docker-and-webswing/",
+    "title": "Run ZAP without Java using Docker and Webswing",
+    "keywords": ["and","blog","docker","java","run","using","webswing","without","zap"],
+    "tags": ["blog"],
+    "summary": "You can access the ZAP Desktop even when it is running in Docker, and that means you do not have to install Java if you do not want to.",
+    "content": "zap docker images great way automate when testing new application diagnosing problems always easier use desktop that you can see what going run locally then running different environment will also need have java installed which some people unwilling unable do webswing luckily still access using product called amazing bit technology allows any swing browser commercial company behind strong supporters open source very kindly allowed us include start 8080:8080 8090:8090 owaspzap2dockerstable zapwebswingsh point your http:localhost:8080zap splash screen full spider active scan nearly everything interact exactly same would natively launch dialogs switch between them move resize restrictions although most functionality works there features not work particular other processes guis like browsers breaks feature many set up proxy through trust its root ca certificate proxying local order https based sites container drive mapped zapwrk eg using: pwd:zapwrk:rw note windows replace pwd current working directory create files drive: owaspzaprootcacrt public owaspzaprootcakey private profiles one control now via want we recommend profile firefox chrome configure import trusted sign websites handle another has all without having install restart automatically was exported earlier into "
+    },
+{
+    "url": "/blog/2021-01-28-announcing-the-first-ever-zapcon/",
+    "title": "1st Ever ZAPCon - Call For Papers",
+    "keywords": ["-","1st","blog","call","ever","for","papers","zapcon"],
+    "tags": ["blog","zapcon"],
+    "summary": "Today we are calling for topics and speakers in the first-ever OWASP ZAP User Conference!",
+    "content": "announcing first ever zapcon today we calling topics speakers firstever owasp zap user conference will heavily focused using scale application security practices do you have story tell about how use inside your company sweet tweak that made sing other users would love hear details when: airing march 9th 8amnoon pt 4pm8pm gmt who: those looking learn more what topics: initial topic ideas include: automating scripting dealing authentication not included list great send us outline review where: virtual event follow platform chat etc format: presentations should 30min length 1015min qa discussion cfp close feb 19th 10:59 pm 20th 6:59 am course completely free attendees submit talk proposal here https:sessionizecomzapconcfs "
+    },
+{
+    "url": "/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/",
+    "title": "ZAP 2.10.0 - The 10 Year Anniversary Release",
+    "keywords": ["-","2.10.0","anniversary","blog","release","the","year","zap","10"],
+    "tags": ["blog"],
+    "summary": "ZAP 2.10.0 has just been released so we're treating this as a belated 10 year anniversary release!",
+    "content": "you hopefully already know zap was released september 6th 2010 2100 has just been now available download via downloads page were treating belated 10 year anniversary release ive recorded training video which go through many new features: will see that there one demo unable run hit some issues we investigated those have fixes them luckily able fix addons rather than core they had latter then would 2101 when start using make sure check updates install any newer versions changes more significant enhancements include: custom pages can defined per context basis these allow identify various nonstandard error handling conditions such handle effectively authentication polling concept verification strategies introduced allows wider range mechanisms including option poll specified status user site tree control scripts full access how nodes represented sites both input vector include implementations variant class change structure names used details modifiers blog post dynamic look feel dark mode desktop ui includes set open source feels co flatlaf options also dynamically switch button top level toolbar weekly headers env vars environmental variables easily add header all requests proxied initiated by tools spiders active scanner documented socks proxy configuration possible configure outgoing connection screen default applies connections made cached following script types between invocations reducing time takes reuse them: rules http sender vectors passive included first time: advanced encode decode hash dialog replaces old encodedecodehash dom xss scan rule detecting vulnerabilities form handler values forms based field graalvm javascript java 15 longer oracle nashorn engine graphql support import definitions retirejs implements checks provided order vulnerable outdated packages soap wsdl files containing endpoints docker images updated smaller bug notes big thank everyone who contributed supported project way "
+    },
+{
+    "url": "/docs/developer/quick-start-build/",
+    "title": "A Quick Start Guide to Building ZAP",
+    "keywords": ["a","building","guide","quick","start","to","tutorial","zap"],
+    "tags": ["guide","tutorial"],
+    "summary": "Have you ever wanted to play around with the ZAP codebase but felt it was too overwhelming? This guide will walk you through building ZAP from the command line regardless of the operating system and IDE you're using.\nYou can also follow along with Simon as he sets the ZAP development environment in this Deep Dive video:",
+    "content": "have you ever wanted play around zap codebase felt was too overwhelming guide will walk through building from command line regardless operating system ide youre using can also follow along simon sets development environment deep dive video: lets jump right into preparation all need working local installation git jdk 11 newer versions might not work clone repo locally create new directory your run following that core repository https:githubcomzaproxyzaproxygit running source navigate cloned zaproxy folder replace gradlew gradlewbat windows user: thats now confirm see dev build loading window possible greeted prompt already some other application port 8080 case suggests different free starts listening when click uses gradle wrapper downloads dependencies project has been configured provide tasks convenience view these by note while successfully got doesnt come many key features provided addons installing name way enhance functionality there several allow do things zapextensions contains code maintained team first thing zapextensions: https:githubcomzaproxyzapextensionsgit then list available observe output one were interested in: copyzapaddon copies addon defaults rootdirzaproxyzapsrcmaindistplugin expected clones same must restart installed task installs install specific addons:identifier:copyzapaddon where identifier want find looking structure repository: accesscontrol alertfilters alertreport allinonenotes amf ascanrules instance release status active passive scan rules would run: addons:ascanrules:copyzapaddon addons:pscanrules:copyzapaddon hurry ao:ascanrules:czao ao:pscanrules:czao process hud help identical: their repositories https:githubcomzaproxyzaphudgit https:githubcomzaproxyzapcorehelpgit folders another useful is: copyweeklyaddons weekly plugin dir built repos essence each included zaproxyzapsrcmainweeklyaddonsjson better understanding check out user manual prospective contributors feel part improved enhanced updated any go ahead open pull request here steps before that: main illustrated above github account fork update tracked remote make changes submit pr page button towards top screen https:githubcomzaproxyzaproxy https:githubcomzaproxyzapextensions https:githubcomzaproxyzaphud https:githubcomzaproxyzapcorehelp remotes next point origin add upstream commands two procedure others identical username cd seturl https:githubcomusernamezaproxygit https:githubcomusernamezapextensionsgit questions related reach developer group irc channel "
+    },
+{
+    "url": "/docs/alerts/10053/",
+    "title": "Apache Range Header DoS (CVE-2011-3192)",
+    "keywords": ["","(cve-2011-3192)","apache","dos","header","range"],
+    "tags": null,
+    "summary": "The byterange filter in earlier versions of the Apache HTTP Server allows remote attackers to cause a denial of service (memory and CPU exhaustion) via a Range request header that identifies multiple overlapping ranges. This issue was exploited in the wild in August 2011.",
+    "content": "byterange filter earlier versions apache http server allows remote attackers cause denial service memory cpu exhaustion via range request header that identifies multiple overlapping ranges issue was exploited wild august 2011 "
     },
 {
     "url": "/docs/alerts/10046/",

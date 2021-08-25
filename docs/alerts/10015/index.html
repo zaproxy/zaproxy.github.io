@@ -123,7 +123,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Incomplete or No Cache-control and Pragma HTTP Header Set</h1>
+      <h1 class="text--white">Incomplete or No Cache-control Header Set</h1>
   </div>
 </section>
 
@@ -153,7 +153,7 @@
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Passive Scan Rule</td>
+              <td>Passive</td>
             </tr>
             <tr> 
               <td>
@@ -191,18 +191,22 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>The cache-control and pragma HTTP header have not been set properly or are missing allowing the browser and proxies to cache content.</p>
+          <p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate; and that the pragma HTTP header is set with no-cache.
+          Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate.
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             <a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching">https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</a>
+          </li>
+        
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</a>
           </li>
         
         </ul>
