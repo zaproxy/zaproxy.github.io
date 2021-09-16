@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/docs/desktop/addons/token-generator/index.xml" title="OWASP ZAP" />
   <title>OWASP ZAP</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -191,13 +190,13 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/alert-filters/">Alert Filters</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/alert-filters/alertfilterdialog/">Alert Filter Dialog</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/alert-filters/automation/">Alert Filter Automation Framework Support</a>
                         </li>  
                         <li> 
@@ -818,7 +817,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="tree-active tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/token-generator/">Token Generation and Analysis</a>
         <ul class="tree-branch">  
                         <li> 
@@ -1384,41 +1383,35 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/token-generator/'>Token Generation and Analysis</a>
+        <a href='/docs/desktop/addons/alert-filters/'>Alert Filters</a>
+    </li>
+
+    <li>
+        <a href='/docs/desktop/addons/alert-filters/automation/'>Alert Filter Automation Framework Support</a>
     </li>
 
 
 </ol>
-          <h1 id="token-generation-and-analysis">Token Generation and Analysis</h1>
-<p>This add-on allows you to generate and analyse pseudo random tokens, such as those used for session handling or CSRF protection.</p>
-<p>To generate and analyse tokens:</p>
-<ul>
-<li>Find a request that contains the token you want to generate</li>
-<li>Right click in the Sites tab or one of the bottom tabs and select &lsquo;Generate Tokens&hellip;&rsquo;</li>
-<li>Choose the token you want to generate</li>
-<li>Press the Generate button</li>
-<li>The responses and tokens will then be listed in the &lsquo;Token Gen&rsquo; tab</li>
-<li>When all of the tokens have been generated the &lsquo;Analyse Tokens&rsquo; dialog will be displayed</li>
-</ul>
-<p><strong>Note:</strong> Token generations are not allowed in <code>Safe</code> mode nor <code>Protected</code> if the message is not in scope.</p>
-<h2 id="see-also">See also</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/addons/token-generator/options/">Options Token Generator screen</a></td>
-<td>for an overview of the Token Generator Options</td>
-</tr>
-</tbody>
-</table>
-
+          <h1 id="alert-filter-automation-framework-support">Alert Filter Automation Framework Support</h1>
+<p>This add-on supports the Automation Framework.</p>
+<h2 id="job-alertfilter">Job: alertFilter</h2>
+<p>The alertFilter job allows you to define global and context specific alert filters.</p>
+<pre><code>  - type: alertFilter                  # Used to change the risk levels of alerts
+    parameters:
+      deleteGlobalAlerts: true         # Boolean, if true then will delete all existing global alerts, default false
+    alertFilters:                      # A list of alertFilters to be applied
+      - ruleId:                        # Int: Mandatory alert rule id
+        newRisk:                       # String: Mandatory new risk level, one of 'False Positive', 'Info', 'Low', 'Medium', 'High'
+        context:                       # String: Optional context name, if empty then a global alert filter will be created
+        url:                           # String: Optional string to match against the alert, supports environment vars
+        urlRegex:                      # Boolean: Optional, if true then the url is a regex
+        parameter:                     # String: Optional string to match against the alert parameter field
+        parameterRegex:                # Boolean: Optional, if true then the parameter is a regex, supports environment vars
+        attack:                        # String: Optional string to match against the alert attack field
+        attackRegex:                   # Boolean: Optional, if true then the attack is a regex
+        evidence:                      # String: Optional string to match against the alert evidence field
+        evidenceRegex:                 # Boolean: Optional, if true then the evidence is a regex
+</code></pre>
         </div>
       </div>
   </div>
