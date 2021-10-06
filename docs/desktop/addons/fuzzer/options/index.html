@@ -1403,15 +1403,25 @@
 </ol>
           <h1 id="options-fuzzer-screen">Options Fuzzer screen</h1>
 <p>This screen allows you to configure the <a href="/docs/desktop/addons/fuzzer/">fuzzing</a> options:</p>
-<h3 id="default-category">Default category</h3>
-<p>The category that will be initially selected shown when the <a href="/docs/desktop/addons/fuzzer/dialogue/">Fuzz dialog</a> is displayed.</p>
-<h3 id="concurrent-scanning-threads-per-host">Concurrent scanning threads per host</h3>
-<p>The number of threads the scanner will use per host.<br>
-Increasing the number of threads will speed up the scan but may put extra strain on the computer ZAP is running on and the target host.</p>
-<h3 id="add-custom-fuzz-file">Add custom Fuzz file</h3>
+<h3 id="default-category">Default Category</h3>
+<p>The category that will initially be selected when the <a href="/docs/desktop/addons/fuzzer/dialogue/">Fuzz dialog</a> is displayed.</p>
+<h3 id="add-custom-fuzz-file">Add Custom Fuzz File</h3>
 <p>Allows you to add your own files to be used when fuzzing.<br>
-These should be text files with one attack per line.<br>
+These should be text files with one payload per line.<br>
 Files are added to the &lsquo;fuzzers&rsquo; directory underneath the ZAP home directory.</p>
+<h3 id="finished-fuzzers-in-ui">Finished Fuzzers in UI</h3>
+<p>It defines the numbers of fuzzers (that have completed their execution) visible in the fuzzer tab.</p>
+<h3 id="retries-on-io-error">Retries on IO Error</h3>
+<p>The number of retries when an input/output error occurs sending a request to the target.</p>
+<h3 id="max-errors-allowed">Max. Errors Allowed</h3>
+<p>If the number of errors exceed this limit, fuzzer will stop its execution.</p>
+<h3 id="payload-replacement-strategy">Payload Replacement Strategy</h3>
+<p>Rules defined to control the order that multiple payload lists are iterated.</p>
+<h3 id="concurrent-scanning-threads-per-scan">Concurrent Scanning Threads per Scan</h3>
+<p>The number of threads the fuzzer will use per scan.<br>
+Increasing the number of threads will speed up the scan but may put extra strain on the computer ZAP is running on as well as the target.</p>
+<h3 id="delay-when-fuzzing-in-milliseconds">Delay when Fuzzing (in milliseconds)</h3>
+<p>The number of milliseconds between requests by the fuzzer to the target host, usually done to avoid getting blocked by the target or if the target implements some sort of throttling requirement.</p>
 <h2 id="see-also">See also</h2>
 <table>
 <thead>
