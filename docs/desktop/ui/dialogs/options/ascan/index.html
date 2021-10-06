@@ -951,6 +951,9 @@
                             <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.11.0/">Release 2.11.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -1151,7 +1154,7 @@
                             <a href="/docs/desktop/ui/dialogs/manageaddons/">Manage Add-ons</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage Tags dialog</a>
+                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage History Tags dialog</a>
                         </li>
     <li data-depth="3" class="tree-branch-active">
                 <a href="/docs/desktop/ui/dialogs/options/">Options dialog</a>
@@ -1424,9 +1427,9 @@ Displaying a large number of results can significantly increase the time a scan 
 Setting this to a non zero value will increase the time an active scan takes, but will put less of a strain on the target host.</p>
 <h3 id="inject-plugin-id-in-header-for-all-active-scan-requests">Inject plugin ID in header for all active scan requests.</h3>
 <p>If this option is selected the active scanner will inject the request header <code>X-ZAP-Scan-ID</code> with the ID of the scanner that's sending the HTTP requests.</p>
-<h3 id="handle-anti-csrf-tokens-experimental-functionality">Handle anti-CSRF tokens (experimental functionality).</h3>
+<h3 id="handle-anti-csrf-tokens">Handle anti-CSRF tokens.</h3>
 <p>If this option is selected then the active scanner will attempt to automatically request <a href="/docs/desktop/start/features/anticsrf/">anti CSRF</a> tokens when required.<br>
-Note that this is experimental functionality and will slow down the scanning process as only one thread will be used to ensure that anti CSRF token requests dont get out of step.</p>
+Previously this would have forced the scanner to only use one thread, but that is no longer the case. You are strongly recommended to check that the anti CSRF tokens are being correctly generated if more than one thread is being used, for example using custom <a href="/docs/desktop/start/features/tags/">tags</a> to check for success / failure patterns in the response.</p>
 <h3 id="in-attack-mode-prompt-to-rescan-nodes-when-scope-changed">In Attack Mode prompt to rescan nodes when scope changed.</h3>
 <p>If this option is selected then when you select Attack <a href="/docs/desktop/start/features/modes/">mode</a> you will be prompted to choose whether to rescan nodes in scope.<br>
 If the option is not selected then the following option will control whether the nodes are rescanned.</p>

@@ -951,6 +951,9 @@
                             <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.11.0/">Release 2.11.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -1151,7 +1154,7 @@
                             <a href="/docs/desktop/ui/dialogs/manageaddons/">Manage Add-ons</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage Tags dialog</a>
+                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage History Tags dialog</a>
                         </li>
     <li data-depth="3" class="">
                 <a href="/docs/desktop/ui/dialogs/options/">Options dialog</a>
@@ -1485,6 +1488,14 @@ If you select one of the existing types then the Description, Solution and Other
 <p>A pull down field which allows you to specify which parameter the issue is associated with.<br>
 The field is prepopulated with any URL and FORM parameters found, but you can also enter your own parameter name.<br>
 Array parameters (in URL query component and <code>x-www-form-urlencoded</code> request body) are identified with its index. For example, for a request containing <code>choices[]=ChoiceA&amp;choices[]=ChoiceB</code> the first parameter would be identified as <code>choices[0]</code> and the second as <code>choices[1]</code>.</p>
+<h3 id="attack">Attack</h3>
+<p>The payload that was supplied to the <em>Parameter</em> . This is expected to be set only by active scan rules which are the ones that send payloads/attacks.</p>
+<h3 id="evidence">Evidence</h3>
+<p>The available information in the message request or response (header or body) that indicates that the issue is present.</p>
+<h3 id="cwe-id">CWE ID</h3>
+<p>The relevant Common Weakness Enumeration (CWE) ID associated with the flagged vulnerability. This field can only be an integer.</p>
+<h3 id="wasc-id">WASC ID</h3>
+<p>The relevant Web Application Security Consortium (WASC) ID associated with the flagged vulnerability. This field can only be an integer.</p>
 <h3 id="description">Description</h3>
 <p>A general description of the type of issue found.<br>
 This is populated when you select one of the predefined types, but you can also change it as required.<br>
@@ -1500,6 +1511,13 @@ Note that any changes you make will be lost if you select another type.</p>
 <p>One or more URLs pointing to more information on the internet about the selected type of alert.<br>
 This is populated when you select one of the predefined types, but you can also change it as required.<br>
 Note that any changes you make will be lost if you select another type.</p>
+<h3 id="alert-tags">Alert Tags</h3>
+<p>Alerts can be tagged with arbitrary keys or key=value pairs.<br>
+You can add as many tags as you want to each alert. However,</p>
+<ul>
+<li>You cannot have two tags with the same key.</li>
+<li>The key must be limited to 1024 characters and the value must be limited to 4000 characters for each tag.</li>
+</ul>
 <h2 id="accessed-via">Accessed via</h2>
 <table>
 <thead>

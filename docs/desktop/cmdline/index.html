@@ -951,6 +951,9 @@
                             <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.11.0/">Release 2.11.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -1151,7 +1154,7 @@
                             <a href="/docs/desktop/ui/dialogs/manageaddons/">Manage Add-ons</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage Tags dialog</a>
+                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage History Tags dialog</a>
                         </li>
     <li data-depth="3" class="">
                 <a href="/docs/desktop/ui/dialogs/options/">Options dialog</a>
@@ -1533,11 +1536,6 @@
 </tr>
 <tr>
 <td></td>
-<td>-last_scan_report &lt;path&gt;</td>
-<td>Generate the &lsquo;Last Scan Report&rsquo; into the specified path</td>
-</tr>
-<tr>
-<td></td>
 <td>-suppinfo</td>
 <td>Outputs details relevant for support and troubleshooting (to the console/standard out). Such as: ZAP version, java version, installed add-ons and version, locale info, operating system, etc.</td>
 </tr>
@@ -1570,8 +1568,8 @@ Configuration keys should be specified using the dot notation based their locati
 <pre><code>&lt;zap-script&gt; -daemon -newsession session
 </code></pre></li>
 <li>
-<p>Create a report of the last scan of an existing session and exit ZAP once finished:</p>
-<pre><code>&lt;zap-script&gt; -last_scan_report /full/path/to/save/report.xml -session /full/path/to/existing/session -cmd
+<p>Run a script against an existing session and exit ZAP once finished:</p>
+<pre><code>&lt;zap-script&gt; -session /full/path/to/existing/session -script /full/path/to/script.js -cmd
 </code></pre></li>
 </ul>
 <h2 id="see-also">See also</h2>
