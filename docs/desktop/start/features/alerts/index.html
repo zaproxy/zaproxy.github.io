@@ -951,6 +951,9 @@
                             <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.11.0/">Release 2.11.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -1151,7 +1154,7 @@
                             <a href="/docs/desktop/ui/dialogs/manageaddons/">Manage Add-ons</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage Tags dialog</a>
+                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage History Tags dialog</a>
                         </li>
     <li data-depth="3" class="">
                 <a href="/docs/desktop/ui/dialogs/options/">Options dialog</a>
@@ -1465,9 +1468,17 @@ Lines starting with &lsquo;#&rsquo; are treated as comments and ignored.</p>
 <li>otherInfo</li>
 <li>reference</li>
 </ul>
+<p>The format for alert tags is:</p>
+<pre><code>&lt;alertid&gt;.tag.&lt;key&gt; = [ + | - ] [ &lt;value&gt; ]
+</code></pre><p>Note that:</p>
+<ul>
+<li>Spaces in the tag key must be escaped with a backslash.</li>
+<li>The tag value is optional.</li>
+</ul>
 <p>For example</p>
 <pre><code># 40012 = Reflected XSS
 40012.solution = Follow our company specific guidelines at http://internet.example.com/xss.html
+40012.tag.Bug\ Tracker\ URL = https://example.com/issues/1234
 </code></pre><p>If the value starts with a &lsquo;+&rsquo; then it is appended to the existing information.<br>
 If it starts with a &lsquo;-&rsquo; then it is prepended to the existing information.<br>
 If it does not start with a &lsquo;+&rsquo; or &lsquo;-&rsquo; then it replaces the existing information.</p>

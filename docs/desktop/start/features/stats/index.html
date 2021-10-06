@@ -951,6 +951,9 @@
                             <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.11.0/">Release 2.11.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -1151,7 +1154,7 @@
                             <a href="/docs/desktop/ui/dialogs/manageaddons/">Manage Add-ons</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage Tags dialog</a>
+                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage History Tags dialog</a>
                         </li>
     <li data-depth="3" class="">
                 <a href="/docs/desktop/ui/dialogs/options/">Options dialog</a>
@@ -1405,53 +1408,8 @@
 <p>ZAP maintains statistics which can help you understand what is really happening when interacting with large applications.</p>
 <p>The statistics are available via the <a href="/docs/desktop/start/features/api/">API</a> and can be also sent to a Statsd server when
 configured via the <a href="/docs/desktop/ui/dialogs/options/stats/">Options Statistics screen</a>.</p>
-<h3 id="site-based-statistics">Site based statistics</h3>
-<p>Statistics maintained on a per site basis include:</p>
-<ul>
-<li>response codes, eg:
-<ul>
-<li>stats.code.200</li>
-<li>stats.code.302</li>
-</ul>
-</li>
-<li>response times in ms (using a logarithmic scale), eg:
-<ul>
-<li>stats.responseTime.1</li>
-<li>stats.responseTime.2</li>
-<li>stats.responseTime.4</li>
-<li>stats.responseTime.8</li>
-<li>stats.responseTime.16</li>
-</ul>
-</li>
-<li>content types, eg:
-<ul>
-<li>stats.contentType.text/css</li>
-<li>stats.contentType.text/html;charset=utf-8</li>
-</ul>
-</li>
-<li><a href="/docs/desktop/start/features/tags/">tags</a>, eg:
-<ul>
-<li>stats.tag.Password</li>
-<li>stats.tag.Hidden</li>
-</ul>
-</li>
-<li>anticsrf tokens generated:
-<ul>
-<li>stats.acsrf.anticsrf</li>
-</ul>
-</li>
-<li>authentication info:
-<ul>
-<li>stats.auth.success (number of authentication successes)</li>
-<li>stats.auth.failure (number of authentication failures)</li>
-<li>stats.auth.state.assumedin (number of messages between successful polls that are assumed to be logged in)</li>
-<li>stats.auth.state.loggedin (number of messages that appear to be logged in)</li>
-<li>stats.auth.state.loggedout (number of messages that appear to be logged out)</li>
-<li>stats.auth.state.noindicator (number of messages where no logged in or out indicators have been set)</li>
-<li>stats.auth.state.unknown (number of messages which don't contain either logged in or out indicators)</li>
-</ul>
-</li>
-</ul>
+<p>The full set of statistics maintained by the ZAP core and add-ons are maintained on the ZAP website:
+<a href="/docs/internal-statistics/">Internal Statistics</a>.</p>
 <h2 id="see-also">See also</h2>
 <table>
 <thead>

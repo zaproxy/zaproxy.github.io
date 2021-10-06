@@ -951,6 +951,9 @@
                             <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.11.0/">Release 2.11.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -1151,7 +1154,7 @@
                             <a href="/docs/desktop/ui/dialogs/manageaddons/">Manage Add-ons</a>
                         </li>  
                         <li> 
-                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage Tags dialog</a>
+                            <a href="/docs/desktop/ui/dialogs/managetags/">Manage History Tags dialog</a>
                         </li>
     <li data-depth="3" class="tree-branch-active">
                 <a href="/docs/desktop/ui/dialogs/options/">Options dialog</a>
@@ -1407,8 +1410,9 @@
 </ol>
           <h1 id="options-client-certificate-screen">Options Client Certificate screen</h1>
 <p>The Client Certificate screen allows you to add a client certificate for ZAP to use when testing applications
-protected using mutual SSL.
-It is also possible to set the Client Certificate from the command line with the following switches:</p>
+protected using mutual SSL. Currently supported ways to utilize certificates are PKCS12 and PKCS11.</p>
+<h2 id="using-pkcs12">Using PKCS12</h2>
+<p>It is possible to set the Client Certificate from the command line with the following switches:</p>
 <pre><code>-config certificate.use=true
 -config certificate.pkcs12.path=/path/to/file.p12
 -config certificate.pkcs12.password=WhateverThePasswordIs
@@ -1419,6 +1423,15 @@ and you wish to use one other than the first. Index values start at zero (0) whi
 in the file.</p>
 <p><code>-config certificate.persist=true</code> is only necessary if you would like the settings persisted in ZAP's regular
 configuration file (so that they apply for subsequent ZAP use).</p>
+<h2 id="using-pkcs11">Using PKCS11</h2>
+<p>PKCS11 is one of the Public-Key Cryptography Standards. Usually PKCS11 is used with Hardware Tokens (mostly USB style)
+that store the cryptographic material in a secure way. Thus usually a driver is needed. The drivers are most commonly provided
+by the Issuer of the Certificate stored on the token or the provider of the token. Certain tokens (especially if running
+under Linux) are supported by opensc/libccid combination.</p>
+<p>It is possible to set the Client Certificate from the command line with the following switches:</p>
+<pre><code>-config certificate.use=true
+-config certificate.experimentalSlotListIndex=true
+</code></pre><p>Setting PKCS11 Driver, Pin, and active certificate is not possible from the command line for the moment. Using <code>certificate.experimentalSlotListIndex=true</code> is only required for some cards. If without does not work try adding it.</p>
 <h2 id="see-also">See also</h2>
 <table>
 <thead>
