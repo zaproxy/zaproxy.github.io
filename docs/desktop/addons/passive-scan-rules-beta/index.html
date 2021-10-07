@@ -168,7 +168,7 @@
     </li>
 
     <li data-depth="2" class="">
-                <a href="/docs/desktop/addons/advanced-sqlinjection-scanner/">Advanced SQLInjection Scanner</a>
+                <a href="/docs/desktop/addons/advanced-sqlinjection-scanner/">Advanced SQLInjection Add-on</a>
         <ul class="tree-branch">
         </ul>
     </li>
@@ -1455,7 +1455,7 @@ See: <a href="https://github.com/iannuttall/binlist-data">binlist-data</a> for m
 <p>This scan rule detects content that has been served from a shared cache.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/RetrievedFromCacheScanRule.java">RetrievedFromCacheScanRule.java</a></p>
 <h2 id="reverse-tabnabbing">Reverse Tabnabbing</h2>
-<p>This checks to see if any links use a target attribute without using both of the &ldquo;noopener&rdquo; and &ldquo;noreferrer&rdquo; keywords in the &ldquo;rel&rdquo; attribute, as this will allow target pages to take over the page that opens them.<br>
+<p>This checks to see if any links use a target attribute using &ldquo;opener&rdquo; keyword in the &ldquo;rel&rdquo; attribute, as this may allow target pages to take over the page that opens them.<br>
 By default this rule will ignore all links that are in the same context as the page. At the LOW threshold it will only ignore links that are on the same host.<br>
 At HIGH threshold it will only report links that use the &ldquo;_blank&rdquo; target.<br>
 You can specify a comma separated list of URL regex patterns using the <code>rules.domains.trusted</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any link URL that matches one of these patterns will be considered to be in a trusted domain and will therefore not be reported.</p>
