@@ -168,7 +168,7 @@
     </li>
 
     <li data-depth="2" class="">
-                <a href="/docs/desktop/addons/advanced-sqlinjection-scanner/">Advanced SQLInjection Scanner</a>
+                <a href="/docs/desktop/addons/advanced-sqlinjection-scanner/">Advanced SQLInjection Add-on</a>
         <ul class="tree-branch">
         </ul>
     </li>
@@ -1542,7 +1542,7 @@ This rule is time sensitive, and should only be used in an attempt to find stubb
 For this reason, the number of active scan threads should be set to the minimum when using this scan rule, to minimise load on the web server, application server, and database, in order to avoid false positives caused by load delays rather than by SQL injection delays.<br>
 The rule tests only for time-based SQL injection vulnerabilities.</p>
 <p>Post 2.5.0 you can change the length of time used for the attack by changing the <code>rules.common.sleep</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel.</p>
-<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/SqlInjectionMyqlScanRule.java">SqlInjectionMyqlScanRule.java</a></p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/SqlInjectionMySqlScanRule.java">SqlInjectionMySqlScanRule.java</a></p>
 <h2 id="sql-injection---oracle-time-based">SQL Injection - Oracle (Time Based)</h2>
 <p>This scan rule uses Oracle-specific SQL syntax to attempt to induce time delays in the SQL statement called by the page.<br>
 If the unmodified query is not affected by a time delay, and the modified query's delay can be controlled, it is indicative of a time-based SQL Injection vulnerability in a Oracle SQL database.<br>
@@ -1582,7 +1582,7 @@ It attempts to obtain those responses with payloads which may induce: error resp
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/XsltInjectionScanRule.java">XsltInjectionScanRule.java</a></p>
 <h2 id="xxe">XXE</h2>
 <p>This component attempts to identify applications which are subject to XML eXternal Entity (XXE) attacks. Applications which parse XML input may be subject to XXE when weakly or poorly configured parsers handle XML input containing reference to an external entity such as a local file, HTTP requests to internal or tertiary systems, etc. The number of tags which are tested individually depends on the strength of the rule.</p>
-<p>It requires the Callback extension, so will not work if this extension is disabled or removed. It is also recommended that you test that the Callback extension is correctly configured for your target site. If the target system cannot connect to the Callback Address then some XXE vulnerabilities will not be detected.</p>
+<p>This scan rule will only run if the OAST add-on is installed and available. It is also recommended that you test that the Callbacks service in the OAST add-on is correctly configured for your target site. If the target system cannot connect to the Callback Address then some XXE vulnerabilities will not be detected.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/XxeScanRule.java">XxeScanRule.java</a></p>
 
         </div>
