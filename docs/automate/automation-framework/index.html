@@ -131,14 +131,16 @@
   <article class="on-sm-full">
     <main><p>The new Automation Framework will in time replace the Command Line and Packaged Scan options.
 It allows you to control ZAP via one YAML file and provides more flexibility while not being tied to any specific container technology.</p>
-<p>To use the Automation Framework with ZAP 2.10.0 install the <a href="/docs/desktop/addons/automation-framework/">Automation Framework</a>
-add-on and update the rest of the add-ons that you have installed.
-The framework is plugable and many of the existing add-ons have been enhanced to support it. It is included in the latest weekly releases.</p>
+<p>The Automation Framework in included with ZAP 2.11.0 as well as the stable docker image.
+The framework is plugable and many of the existing add-ons have been enhanced to support it.</p>
+<p><strong>Important:</strong>  if you run the framework from the command line you MUST either start ZAP with the <code>-addonupdate</code> option or
+NOT use the <a href="/docs/desktop/addons/automation-framework/job-addons/">addOns</a> <code>updateAddOns</code> option - this has been found to cause
+problems when updating add-ons which are defined in the current plan. A longer term solution is being worked on.</p>
 <p>For details of how to get started with the framework see the main <a href="/docs/desktop/addons/automation-framework/">framework help page</a>.</p>
 <p>The full set of jobs currently supported by the framework are:</p>
 <ul>
 <li><a href="/docs/desktop/addons/automation-framework/job-ascan/">activeScan</a> - runs the active scanner</li>
-<li><a href="/docs/desktop/addons/automation-framework/job-addons/">addons</a> - add-on management</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-addons/">addOns</a> - add-on management</li>
 <li><a href="/docs/desktop/addons/alert-filters/automation/">alertFilter</a> - alert filter configuration, provided with the <a href="/docs/desktop/addons/alert-filters/">Alert Filters</a> add-on</li>
 <li><a href="/docs/desktop/addons/graphql-support/automation/">graphql</a> - GraphQL schema import, provided with the <a href="/docs/desktop/addons/graphql-support/">GraphQL</a> add-on</li>
 <li><a href="/docs/desktop/addons/openapi-support/automation/">openapi</a> - OpenAPI definition import, provided with the <a href="/docs/desktop/addons/openapi-support/">OpenAPI</a> add-on</li>
