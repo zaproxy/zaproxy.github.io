@@ -123,7 +123,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Image Exposes Location or Privacy Data</h1>
+      <h1 class="text--white">Spring Actuator Information Leak</h1>
   </div>
 </section>
 
@@ -147,34 +147,34 @@
               <td>
                 <strong>Alert Id</strong>
               </td>
-              <td>10103</td>
+              <td>40042</td>
             </tr>
             <tr> 
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Passive</td>
+              <td>Active</td>
             </tr>
             <tr> 
               <td>
                 <strong>Status</strong>
               </td>
-              <td>beta</td>
+              <td>alpha</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td>Informational</td>
+              <td>Medium</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/200.html">
-                  200
+                <a href="https://cwe.mitre.org/data/definitions/215.html">
+                  215
                 </a>
               </td>
             </tr>
@@ -190,9 +190,9 @@
               </td>
               <td>
               
-              	<a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html">OWASP_2017_A06</a><br>
+              	<a href="https://owasp.org/www-project-top-ten/2017/A5_2017-Broken_Access_Control.html">OWASP_2017_A05</a><br>
               
-              	<a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/">OWASP_2021_A05</a><br>
+              	<a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">OWASP_2021_A01</a><br>
               
               </td>
             </tr>
@@ -203,23 +203,23 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>The image was found to contain embedded location information, such as GPS coordinates, or another privacy exposure, such as camera serial number.  Depending on the context of the image in the website, this information may expose private details of the users of a site.  For example, a site that allows users to upload profile pictures taken in the home may expose the home's address.</p>
+          <p>Spring Actuator for Health is enabled and may reveal sensitive information about this application. Spring Actuators can be used for real monitoring purposes, but should be used with caution as to not expose too much information about the application or the infrastructure running it.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Before allowing images to be stored on the server and/or transmitted to the browser, strip out the embedded location information from image.  This could mean removing all Exif data or just the GPS component.  Other data, like serial numbers, should also be removed.
+          Disable the Health Actuators and other actuators, or restrict them to administrative users.
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
-            <a href="https://www.veggiespam.com/ils/">https://www.veggiespam.com/ils/</a>
+            <a href="https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/#overview">https://docs.spring.io/spring-boot/docs/current/actuator-api/htmlsingle/#overview</a>
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/imagelocationscanner/src/main/java/org/zaproxy/zap/extension/imagelocationscanner/ImageLocationScanRule.java'>org/zaproxy/zap/extension/imagelocationscanner/ImageLocationScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/SpringActuatorScanRule.java'>org/zaproxy/zap/extension/ascanrulesAlpha/SpringActuatorScanRule.java</a>
       </section>
   </main>
 </div>
