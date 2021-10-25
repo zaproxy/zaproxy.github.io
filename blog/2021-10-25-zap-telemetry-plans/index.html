@@ -6,7 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/tags/statistics/index.xml" title="OWASP ZAP" />
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2021-10-25-zap-telemetry-plans/images/zap-telemetry.png"/>
+
+<meta name="twitter:title" content="ZAP Telemetry Plans"/>
+<meta name="twitter:description" content="We are planning to add telemetry to ZAP - data that will tell us more about how ZAP is being used. This blog post explains why we are planning on doing this, what data we plan to collect, what data we will definitely not collect,  the benefits you can expect, and how you will be able to opt out of it."/>
+
+    <meta property="og:title" content="ZAP Telemetry Plans" />
+<meta property="og:description" content="We are planning to add telemetry to ZAP - data that will tell us more about how ZAP is being used. This blog post explains why we are planning on doing this, what data we plan to collect, what data we will definitely not collect,  the benefits you can expect, and how you will be able to opt out of it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2021-10-25-zap-telemetry-plans/" />
+<meta property="og:image" content="https://www.zaproxy.org/blog/2021-10-25-zap-telemetry-plans/images/zap-telemetry.png" />
+<meta property="article:published_time" content="2021-10-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-25T00:00:00+00:00" />
+
+  
   <title>OWASP ZAP</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -122,124 +136,138 @@
 </header>
 
   
+
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">Tag: statistics</h1>
+    <h1 class="text--white">ZAP Telemetry Plans</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
-      <div class="flex latest-versions">
-        <div class="col-2-3 pr-30">
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday October 25, 2021</span>
+              <span class="word-count fl-r"> 584 Words </span>
+            </section>
+            <p>We are planning to add telemetry to ZAP - data that will tell us more about how ZAP is being used.
+This blog post explains why we are planning on doing this, what data we plan to collect, what data we will definitely not collect,
+the benefits you can expect, and how you will be able to opt out of it.</p>
+<p><img src="images/zap-telemetry.png" alt="ZAP Telemetry"></p>
+<h3 id="why-collect-more-data">Why Collect More Data</h3>
+<p>We currently have very little idea of how people use ZAP.
+The information currently available to us is detailed in the blog post <a href="/blog/2021-04-19-collecting-statistics-for-open-source-projects/">Collecting Statistics For Open Source Projects</a>.</p>
+<p>This gives us a very rough idea of the number of times ZAP is downloaded and used but nothing else.
+ZAP is maintained by a relatively small core team and therefore have to be very careful what we focus on.</p>
+<h3 id="what-data-are-we-planning-to-collect">What Data Are We Planning To Collect?</h3>
+<p>We want to know information which will help us focus on making ZAP better.</p>
+<p>This is likely to include:</p>
+<ul>
+<li>Information about the environment in which ZAP is running:
+<ul>
+<li>Operating System</li>
+<li>Java Version</li>
+<li>Amount of memory available</li>
+<li>If it is running in a container like Docker</li>
+</ul>
+</li>
+<li>The ZAP features being used, such as:
+<ul>
+<li>Traditional Spider</li>
+<li>Ajax Spider</li>
+<li>Active scanner etc</li>
+</ul>
+</li>
+<li>The optional add-ons which have been installed</li>
+<li>The ZAP active and passive rules being used</li>
+<li>The numbers of vulnerabilities each types of rule reports</li>
+<li>The numbers of issues flagged as false positives</li>
+</ul>
+<p>We will also get the IP addresses of ZAP instances which upload the telemetry but our plan is to <strong>not</strong> record the least significant part of the IP address - this will allow us to determine the probable country of origin without storing the full address.</p>
+<h3 id="what-data-will-we-never-collect">What Data Will We Never Collect?</h3>
+<p>We will never collect details of the sites ZAP is being used on, details of the vulnerabilities or any personal identifiable information (PII).</p>
+<p>We do not want this information and do not want to be responsible for storing or protecting it!</p>
+<p>ZAP will continue to be GDPR compliant as we will not be collecting PII.</p>
+<h3 id="what-benefits-can-you-expect">What Benefits Can You Expect?</h3>
+<p>In much the same way that we use the survey results to help focus the activities of ZAPs roadmap, the information we plan to collect will give us a much better understanding of how people are using ZAP. This will mean that we can focus on the features that people use the most.</p>
+<p>The information regarding the scan rules will allow us to understand which rules people are using and which ones are less effective. We can then focus on improving any rules that are causing problems.</p>
+<p>We plan to publish any information that we think could be helpful. This will help you understand which scan rules and add-ons are the most popular, which rules take more time to run and which are the most effective.</p>
+<h3 id="how-to-opt-out">How To Opt Out</h3>
+<p>The telemetry option will be enabled by default.</p>
+<p>We know that most people do not change the defaults so if it was “opt-in” then we would not collect enough representative information.
+However we will make it very easy to out-out of telemetry.
+There will be a command line option which will disable it when ZAP starts up and a desktop options panel which will allow you to opt in or out and see exactly what data ZAP has sent to us.</p>
+<p>The telemetry feature will of course also obey the <code>-silent</code> <a href="/docs/desktop/cmdline/">command line option</a>.</p>
+<p>If you have any thoughts or concerns about any of this then please get in touch. <!-- raw HTML omitted --></p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2021-10-07-zap-2-11-0/"> ZAP 2.11.0</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
             
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2021-10-25-zap-telemetry-plans/">ZAP Telemetry Plans</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Monday October 25, 2021</span>
-                  <span class="word-count fl-r"> 584 Words </span>
-                </section>
-                <section class="summary">We are planning to add telemetry to ZAP - data that will tell us more about how ZAP is being used. This blog post explains why we are planning on doing this, what data we plan to collect, what data we will definitely not collect,  the benefits you can expect, and how you will be able to opt out of it.</section>
-            </article>
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
           
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2021-04-19-collecting-statistics-for-open-source-projects/">Collecting Statistics for Open Source Projects</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Monday April 19, 2021</span>
-                  <span class="word-count fl-r"> 1841 Words </span>
-                </section>
-                <section class="summary">This blog post will show you how you can collect and publish statistics on your open source projects using free resources and open source scripts, based on the setup we have for ZAP.</section>
-            </article>
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#why-collect-more-data">Why Collect More Data</a></li>
+        <li><a href="#what-data-are-we-planning-to-collect">What Data Are We Planning To Collect?</a></li>
+        <li><a href="#what-data-will-we-never-collect">What Data Will We Never Collect?</a></li>
+        <li><a href="#what-benefits-can-you-expect">What Benefits Can You Expect?</a></li>
+        <li><a href="#how-to-opt-out">How To Opt Out</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
           
-        </div>
-
-        <div class="col-1-3 ml-20">
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/statistics/">statistics</a> </li>
+           
+          </ul>
           
-<section class="p-20">
-    <h3>Tags</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/tags/api/">api</a></li>
-    
-        <li><a href="/tags/asvs/">asvs</a></li>
-    
-        <li><a href="/tags/blog/">blog</a></li>
-    
-        <li><a href="/tags/browser/">browser</a></li>
-    
-        <li><a href="/tags/competition/">competition</a></li>
-    
-        <li><a href="/tags/docker/">docker</a></li>
-    
-        <li><a href="/tags/fileupload/">fileupload</a></li>
-    
-        <li><a href="/tags/graphql/">graphql</a></li>
-    
-        <li><a href="/tags/gsoc/">gsoc</a></li>
-    
-        <li><a href="/tags/guide/">guide</a></li>
-    
-        <li><a href="/tags/hacking/">hacking</a></li>
-    
-        <li><a href="/tags/oast/">oast</a></li>
-    
-        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
-    
-        <li><a href="/tags/questionnaire/">questionnaire</a></li>
-    
-        <li><a href="/tags/release/">release</a></li>
-    
-        <li><a href="/tags/reporting/">reporting</a></li>
-    
-        <li><a href="/tags/retest/">retest</a></li>
-    
-        <li><a href="/tags/soap/">soap</a></li>
-    
-        <li><a href="/tags/statistics/">statistics</a></li>
-    
-        <li><a href="/tags/top10/">top10</a></li>
-    
-        <li><a href="/tags/tutorial/">tutorial</a></li>
-    
-        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
-    
-        <li><a href="/tags/zapcon/">zapcon</a></li>
-    
-    </ul>
-</section>
-
-<section class="p-20">
-    <h3>Authors</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/authors/akshath/">akshath</a></li>
-    
-        <li><a href="/authors/alberto/">alberto</a></li>
-    
-        <li><a href="/authors/blazingwind/">blazingwind</a></li>
-    
-        <li><a href="/authors/diogo/">diogo</a></li>
-    
-        <li><a href="/authors/jordan/">jordan</a></li>
-    
-        <li><a href="/authors/nirojan/">nirojan</a></li>
-    
-        <li><a href="/authors/pranavsaxena/">pranavsaxena</a></li>
-    
-        <li><a href="/authors/preetkaran20/">preetkaran20</a></li>
-    
-        <li><a href="/authors/simon/">simon</a></li>
-    
-        <li><a href="/authors/thorin/">thorin</a></li>
-    
-    </ul>
-</section>
-
-        </div>
-      </div>
-  </div>
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -274,6 +302,13 @@
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2021-10-25-zap-telemetry-plans/index.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
