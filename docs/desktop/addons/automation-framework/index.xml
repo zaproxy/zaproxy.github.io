@@ -29,7 +29,18 @@ A toolbar provides the following buttons:
       
       <guid>/docs/desktop/addons/automation-framework/environment/</guid>
       <description>Automation Framework - Environment This section of the YAML configuration file defines the applications which the rest of the jobs can act on.
-env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: # TBA: In time to cover all auth configs parameters: failOnError: true # If set exit on an error failOnWarning: false # If set exit on a warning progressToStdout: true # If set will write job progress to stdout vars: # List of 1 or more custom variables to be used throughout the config file myVarOne: CustomConfigVarOne # Can be used as ${myVarOne} anywhere throughout the config myVarTwo: ${myVarOne}.</description>
+The Automation Framework supports a subset of the authentication mechanisms supported by ZAP.
+env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: method: # String, one of &#39;manual&#39;, &#39;http&#39; - in time will cover all methods supported by ZAP parameters: hostname: # String, only for &#39;http&#39; method port: # Int, only for &#39;http&#39; method realm: # String, only for &#39;http&#39; method verification: method: # String, one of &#39;response&#39;, &#39;request&#39;, &#39;both&#39;, &#39;poll&#39; loggedInRegex: # String, regex pattern for determining if logged in loggedOutRegex: # String, regex pattern for determining if logged out pollFrequency: # Int, the poll frequency, only for &#39;poll&#39; verification pollUnits: # String, the poll units, one of &#39;requests&#39;, &#39;seconds&#39;, only for &#39;poll&#39; verification pollUrl: # String, the URL to poll, only for &#39;poll&#39; verification pollPostData: # String, post dat to include in the poll, only for &#39;poll&#39; verification pollAdditionalHeaders: # List of additional headers for poll request, only for &#39;poll&#39; verification - header: # The header name value: # The header value sessionManagement: method: # String, one of &#39;cookie&#39;, &#39;http&#39;, &#39;script&#39; script: # String, path to script, only for &#39;script&#39; session management scriptEngine: # String, the name of the script engine to use, only for &#39;script&#39; session management users: # List of one or more users to use for authentication - name: # String, the name to be used by the jobs username: # String, the username to use when authenticating, vars supported password: # String, the password to use when authenticating, vars supported vars: # List of 0 or more custom variables to be used throughout the config file myVarOne: CustomConfigVarOne # Can be used as ${myVarOne} anywhere throughout the config myVarTwo: ${myVarOne}.</description>
+    </item>
+    
+    <item>
+      <title>Automation Framework - authentication</title>
+      <link>/docs/desktop/addons/automation-framework/authentication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/automation-framework/authentication/</guid>
+      <description>Automation Framework - authentication The Automation Framework supports a subset of the authentication mechanisms supported by ZAP.
+Environmental Variables ZAP supports a set of Authentication Header Environmental Variables - these will be applied by ZAP if they are defined however ZAP is run, including via the Automation Framework.</description>
     </item>
     
     <item>
@@ -70,7 +81,7 @@ The passive scanner runs against all requests and responses that are generated b
       <guid>/docs/desktop/addons/automation-framework/job-spider/</guid>
       <description>Automation Framework - spider Job This job runs the traditional spider. This is fast but does not handle modern applications as effectively.
 By default this job will spider the first context defined in the environment and so none of the parameters are mandatory.
-YAML  - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
+YAML  - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context user: # String: An optional user to use for authentication, must be defined in the env url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
     </item>
     
     <item>
@@ -101,6 +112,17 @@ Statistics Statistics-based tests are supported by all add-ons that have an auto
       <guid>/docs/desktop/addons/automation-framework/about/</guid>
       <description>Automation Framework - About Source Code https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
 Authors ZAP Dev Team</description>
+    </item>
+    
+    <item>
+      <title>Automation Framework - delay Job</title>
+      <link>/docs/desktop/addons/automation-framework/job-delay/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/automation-framework/job-delay/</guid>
+      <description>Automation Framework - delay Job This job waits for a specified time unless one of a specific set of conditions are met.
+It can be used to wait for regression tests being proxied through ZAP in order to explore your application more thoroughly.
+The time parameter supports the formats hh:mm:ss, mm:ss and ss, so &amp;ldquo;5&amp;rdquo; is 5 seconds, &amp;ldquo;1:30&amp;rdquo; is one minute and 30 seconds and &amp;ldquo;2:20:30&amp;rdquo; is 2 hours, 20 minutes and 30 seconds.</description>
     </item>
     
     <item>
