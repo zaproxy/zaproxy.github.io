@@ -483,7 +483,8 @@ Starting Point The URL which the AJAX spider will start crawling from, or a cont
       
       <guid>/docs/desktop/addons/automation-framework/environment/</guid>
       <description>Automation Framework - Environment This section of the YAML configuration file defines the applications which the rest of the jobs can act on.
-env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: # TBA: In time to cover all auth configs parameters: failOnError: true # If set exit on an error failOnWarning: false # If set exit on a warning progressToStdout: true # If set will write job progress to stdout vars: # List of 1 or more custom variables to be used throughout the config file myVarOne: CustomConfigVarOne # Can be used as ${myVarOne} anywhere throughout the config myVarTwo: ${myVarOne}.</description>
+The Automation Framework supports a subset of the authentication mechanisms supported by ZAP.
+env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: method: # String, one of &#39;manual&#39;, &#39;http&#39; - in time will cover all methods supported by ZAP parameters: hostname: # String, only for &#39;http&#39; method port: # Int, only for &#39;http&#39; method realm: # String, only for &#39;http&#39; method verification: method: # String, one of &#39;response&#39;, &#39;request&#39;, &#39;both&#39;, &#39;poll&#39; loggedInRegex: # String, regex pattern for determining if logged in loggedOutRegex: # String, regex pattern for determining if logged out pollFrequency: # Int, the poll frequency, only for &#39;poll&#39; verification pollUnits: # String, the poll units, one of &#39;requests&#39;, &#39;seconds&#39;, only for &#39;poll&#39; verification pollUrl: # String, the URL to poll, only for &#39;poll&#39; verification pollPostData: # String, post dat to include in the poll, only for &#39;poll&#39; verification pollAdditionalHeaders: # List of additional headers for poll request, only for &#39;poll&#39; verification - header: # The header name value: # The header value sessionManagement: method: # String, one of &#39;cookie&#39;, &#39;http&#39;, &#39;script&#39; script: # String, path to script, only for &#39;script&#39; session management scriptEngine: # String, the name of the script engine to use, only for &#39;script&#39; session management users: # List of one or more users to use for authentication - name: # String, the name to be used by the jobs username: # String, the username to use when authenticating, vars supported password: # String, the password to use when authenticating, vars supported vars: # List of 0 or more custom variables to be used throughout the config file myVarOne: CustomConfigVarOne # Can be used as ${myVarOne} anywhere throughout the config myVarTwo: ${myVarOne}.</description>
     </item>
     
     <item>
@@ -788,14 +789,13 @@ Alerts are shown in the UI with a flag indicating the risk:
     </item>
     
     <item>
-      <title>Automation Framework - addOns Job</title>
-      <link>/docs/desktop/addons/automation-framework/job-addons/</link>
+      <title>Automation Framework - authentication</title>
+      <link>/docs/desktop/addons/automation-framework/authentication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/automation-framework/job-addons/</guid>
-      <description>Automation Framework - addOns Job This job allows you to manage the ZAP add-ons.
-The add-on identifiers to use in the &amp;lsquo;install&amp;rsquo; and &amp;lsquo;uninstall&amp;rsquo; lists are shown in the ZAP Desktop &amp;lsquo;Manage Add-ons&amp;rsquo; dialog or can be found in the XML files which define the ZAP releases.
-YAML  - type: addOns # Add-on management parameters: updateAddOns: true # Update any add-ons that have new versions install: # A list of non standard add-ons to install from the ZAP Marketplace uninstall: # A list of standard add-ons to uninstall </description>
+      <guid>/docs/desktop/addons/automation-framework/authentication/</guid>
+      <description>Automation Framework - authentication The Automation Framework supports a subset of the authentication mechanisms supported by ZAP.
+Environmental Variables ZAP supports a set of Authentication Header Environmental Variables - these will be applied by ZAP if they are defined however ZAP is run, including via the Automation Framework.</description>
     </item>
     
     <item>
@@ -1073,13 +1073,14 @@ ZAP detects anti CSRF tokens purely by attribute names - the list of attribute n
     </item>
     
     <item>
-      <title>Automation Framework - passiveScan-config Job</title>
-      <link>/docs/desktop/addons/automation-framework/job-pscanconf/</link>
+      <title>Automation Framework - addOns Job</title>
+      <link>/docs/desktop/addons/automation-framework/job-addons/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/automation-framework/job-pscanconf/</guid>
-      <description>Automation Framework - passiveScan-config Job This job allows you to manage the passive scan configuration.
-The passive scanner runs against all requests and responses that are generated by ZAP or are proxied through it. If you want to configure the passive scan configuration then you should typically do so before running any other jobs.</description>
+      <guid>/docs/desktop/addons/automation-framework/job-addons/</guid>
+      <description>Automation Framework - addOns Job This job allows you to manage the ZAP add-ons.
+The add-on identifiers to use in the &amp;lsquo;install&amp;rsquo; and &amp;lsquo;uninstall&amp;rsquo; lists are shown in the ZAP Desktop &amp;lsquo;Manage Add-ons&amp;rsquo; dialog or can be found in the XML files which define the ZAP releases.
+YAML  - type: addOns # Add-on management parameters: updateAddOns: true # Update any add-ons that have new versions install: # A list of non standard add-ons to install from the ZAP Marketplace uninstall: # A list of standard add-ons to uninstall </description>
     </item>
     
     <item>
@@ -1316,12 +1317,13 @@ A simple web UI which allows you to explore and use the API is available via the
     </item>
     
     <item>
-      <title>Automation Framework - passiveScan-wait Job</title>
-      <link>/docs/desktop/addons/automation-framework/job-pscanwait/</link>
+      <title>Automation Framework - passiveScan-config Job</title>
+      <link>/docs/desktop/addons/automation-framework/job-pscanconf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/automation-framework/job-pscanwait/</guid>
-      <description>Automation Framework - passiveScan-wait Job This job waits for the passive scanner to finishing scanning the requests and responses in the current queue. You should typically run this job after the jobs that explore you application, such as the spider jobs or those that import API definitions. If any more requests are sent by ZAP or proxied through ZAP after this job has run then they will be processed by the passive scanner.</description>
+      <guid>/docs/desktop/addons/automation-framework/job-pscanconf/</guid>
+      <description>Automation Framework - passiveScan-config Job This job allows you to manage the passive scan configuration.
+The passive scanner runs against all requests and responses that are generated by ZAP or are proxied through it. If you want to configure the passive scan configuration then you should typically do so before running any other jobs.</description>
     </item>
     
     <item>
@@ -1414,14 +1416,12 @@ Each Context has:
     </item>
     
     <item>
-      <title>Automation Framework - spider Job</title>
-      <link>/docs/desktop/addons/automation-framework/job-spider/</link>
+      <title>Automation Framework - passiveScan-wait Job</title>
+      <link>/docs/desktop/addons/automation-framework/job-pscanwait/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/automation-framework/job-spider/</guid>
-      <description>Automation Framework - spider Job This job runs the traditional spider. This is fast but does not handle modern applications as effectively.
-By default this job will spider the first context defined in the environment and so none of the parameters are mandatory.
-YAML  - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
+      <guid>/docs/desktop/addons/automation-framework/job-pscanwait/</guid>
+      <description>Automation Framework - passiveScan-wait Job This job waits for the passive scanner to finishing scanning the requests and responses in the current queue. You should typically run this job after the jobs that explore you application, such as the spider jobs or those that import API definitions. If any more requests are sent by ZAP or proxied through ZAP after this job has run then they will be processed by the passive scanner.</description>
     </item>
     
     <item>
@@ -1513,13 +1513,14 @@ Authentication methods can be used in multiple places around ZAP.</description>
     </item>
     
     <item>
-      <title>Automation Framework - activeScan Job</title>
-      <link>/docs/desktop/addons/automation-framework/job-ascan/</link>
+      <title>Automation Framework - spider Job</title>
+      <link>/docs/desktop/addons/automation-framework/job-spider/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/automation-framework/job-ascan/</guid>
-      <description>Automation Framework - activeScan Job This job runs the active scanner. This actively attacks your applications and should therefore only be used against applications that you have permission to test.
-By default this job will actively scan the first context defined in the environment and so none of the parameters are mandatory.</description>
+      <guid>/docs/desktop/addons/automation-framework/job-spider/</guid>
+      <description>Automation Framework - spider Job This job runs the traditional spider. This is fast but does not handle modern applications as effectively.
+By default this job will spider the first context defined in the environment and so none of the parameters are mandatory.
+YAML  - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context user: # String: An optional user to use for authentication, must be defined in the env url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
     </item>
     
     <item>
@@ -1852,13 +1853,13 @@ Check every Response When this strategy is used then ZAP will use the specified 
     </item>
     
     <item>
-      <title>Automation Framework - Job Tests</title>
-      <link>/docs/desktop/addons/automation-framework/tests/</link>
+      <title>Automation Framework - activeScan Job</title>
+      <link>/docs/desktop/addons/automation-framework/job-ascan/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/automation-framework/tests/</guid>
-      <description>Automation Framework - Job Outcome Tests The automation framework supports testing the job outcomes based on conditions that you can set in the YAML file. Currently, tests of type &amp;lsquo;stats&amp;rsquo; and &amp;lsquo;alert&amp;rsquo; are available. More types will be added in the future.
-Statistics Statistics-based tests are supported by all add-ons that have an automation job.</description>
+      <guid>/docs/desktop/addons/automation-framework/job-ascan/</guid>
+      <description>Automation Framework - activeScan Job This job runs the active scanner. This actively attacks your applications and should therefore only be used against applications that you have permission to test.
+By default this job will actively scan the first context defined in the environment and so none of the parameters are mandatory.</description>
     </item>
     
     <item>
@@ -1915,13 +1916,13 @@ The &amp;lsquo;New Scan&amp;rsquo; button launches the Active Scan dialog which 
     </item>
     
     <item>
-      <title>Automation Framework - About</title>
-      <link>/docs/desktop/addons/automation-framework/about/</link>
+      <title>Automation Framework - Job Tests</title>
+      <link>/docs/desktop/addons/automation-framework/tests/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/automation-framework/about/</guid>
-      <description>Automation Framework - About Source Code https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
-Authors ZAP Dev Team</description>
+      <guid>/docs/desktop/addons/automation-framework/tests/</guid>
+      <description>Automation Framework - Job Outcome Tests The automation framework supports testing the job outcomes based on conditions that you can set in the YAML file. Currently, tests of type &amp;lsquo;stats&amp;rsquo; and &amp;lsquo;alert&amp;rsquo; are available. More types will be added in the future.
+Statistics Statistics-based tests are supported by all add-ons that have an automation job.</description>
     </item>
     
     <item>
@@ -1964,6 +1965,16 @@ Default User Agent The user agent that ZAP should use when creating HTTP message
       <guid>/docs/desktop/releases/2.4.2/</guid>
       <description>Release 2.4.2 The following changes were made in this release:
 Enhancements:  Issue 1306 : Java PermSize command line flag removed in Java 8 Issue 1593 : Auto-scroll in Spider tab Issue 1600 : Dont report X-Frame-Options alert on 403 and 404 pages Issue 1654 : httpSessions/createEmptySession should initialize a site that was not previously visited Issue 1702 : Add &amp;ldquo;recurse&amp;rdquo; option to the spider API Issue 1715 : Unable to pass arguments when launching ZAP from the command line on Mac OS X Issue 1766 : Remove context via the API Issue 1768 : Update to use a more recent user-agent Issue 1778 : Passive scan AJAX spider requests Issue 1790 : Move Buffer Overflow Scanner from Beta to Release Issue 1793 : Allow active scan scripts to check if the scan was stopped Issue 1795 : Allow JVM options to be configured via GUI Issue 1799 : Minor Feature Request: Allow URL to be pasted into start Spider dialog.</description>
+    </item>
+    
+    <item>
+      <title>Automation Framework - About</title>
+      <link>/docs/desktop/addons/automation-framework/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/automation-framework/about/</guid>
+      <description>Automation Framework - About Source Code https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
+Authors ZAP Dev Team</description>
     </item>
     
     <item>
@@ -4755,6 +4766,17 @@ Scope This can either be &amp;lsquo;Global&amp;rsquo; for a Global Alert Filter 
       <guid>/videos-list/</guid>
       <description>This lists all of the Official ZAP Videos, in reverse chronological order - ZAP changes so much that older videos may well be out of date.
  Series Title Length Tags Date    Deep Dive  WebSockets  18:06   scripts websockets  2021/07/15    Deep Dive  Fuzzing  33:09   fuzzing scripts  2021/06/10    Deep Dive  Zest Scripting Part 3  29:22   scripts zest  2021/05/13    Deep Dive  Zest Scripting Part 2  29:19   scripts zest  2021/05/06    Deep Dive  Zest Scripting Part 1  33:49   scripts zest  2021/04/15     Automating OWASP ZAP  59:08   automation conference intro  2021/04/12    Deep Dive  Setting up a ZAP Dev Environment  32:02   add-ons development  2021/03/25    Deep Dive  Report Generation  23:52   reporting  2021/03/18    ZAPCon 2021  The whole conference (4½ hours)  4:31:39   zapcon  2021/03/09    ZAPCon 2021  ZAP Project Updates  36:10   zapcon  2021/03/09    ZAPCon 2021  Simon Bennetts Ask Me Anything  1:03:55   ama zapcon  2021/03/09    ZAPCon 2021  Starting a Security Program on a Shoestring (with ZAP)  28:23   zapcon  2021/03/09    ZAPCon 2021  Enhancing ZAP with Feedback Based Fuzzing  40:40   fuzzing zapcon  2021/03/09    ZAPCon 2021  ZAP in Pakistani Fintech  34:42   zapcon  2021/03/09    ZAPCon 2021  Democratizing ZAP with Test Automation and DSLs  47:47   automation zapcon  2021/03/09    ZAPCon 2021  Mobile Application Security Testing with ZAP  37:37   mobile zapcon  2021/03/09    Deep Dive  Authenticated Packaged Scans  28:33   authentication forcedUserMode packagedScan  2021/02/25    Deep Dive  Automation  27:50   automation cmdline daemon docker githubAction packagedScan scanHooks  2021/02/18     ZAP Automation in CI/CD  1:29:05   automation conference intro  2021/02/16    Deep Dive  Configuration  26:37   config contexts scanPolicy scripts  2021/02/13    Deep Dive  Active Scanning  31:26   activeScan attackMode inputVectors scanPolicy  2021/01/22    Deep Dive  Passive Scanning  27:35   passiveScan  2021/01/11    Deep Dive  2.</description>
+    </item>
+    
+    <item>
+      <title>Automation Framework - delay Job</title>
+      <link>/docs/desktop/addons/automation-framework/job-delay/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/automation-framework/job-delay/</guid>
+      <description>Automation Framework - delay Job This job waits for a specified time unless one of a specific set of conditions are met.
+It can be used to wait for regression tests being proxied through ZAP in order to explore your application more thoroughly.
+The time parameter supports the formats hh:mm:ss, mm:ss and ss, so &amp;ldquo;5&amp;rdquo; is 5 seconds, &amp;ldquo;1:30&amp;rdquo; is one minute and 30 seconds and &amp;ldquo;2:20:30&amp;rdquo; is 2 hours, 20 minutes and 30 seconds.</description>
     </item>
     
     <item>

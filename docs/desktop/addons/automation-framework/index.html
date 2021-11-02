@@ -237,6 +237,9 @@
                             <a href="/docs/desktop/addons/automation-framework/about/">Automation Framework - About</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/automation-framework/authentication/">Automation Framework - authentication</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/automation-framework/environment/">Automation Framework - Environment</a>
                         </li>  
                         <li> 
@@ -247,6 +250,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-ascan/">Automation Framework - activeScan Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-delay/">Automation Framework - delay Job</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-pscanconf/">Automation Framework - passiveScan-config Job</a>
@@ -1410,6 +1416,13 @@
 <li>-autogenmax &lt;filename&gt; Generate template automation file with all parameters.</li>
 <li>-autogenconf &lt;filename&gt; Generate template automation file using the current configuration.</li>
 </ul>
+<p>If the <code>-autorun</code> option is used with the ZAP <code>-cmd</code> option then the ZAP exit value will be set as follows:</p>
+<ul>
+<li>0 - The plan completed successfully with no errors or warnings</li>
+<li>1 - The plan reported one or more errors</li>
+<li>2 - The plan reported no errors but one or more warnings</li>
+</ul>
+<p>Whether the plan completed after encountering errors or warnings will depend on the settings used in the <a href="/docs/desktop/addons/automation-framework/environment/">environment</a>.</p>
 <p>To use the automation framework:</p>
 <ol>
 <li>Generate a template automation file using one of the <code>-autogen*</code> command line options</li>
@@ -1417,8 +1430,10 @@
 <li>Run the file using the <code>-autorun</code> commandline option e.g. <code>./zap.sh -cmd -autorun config.yaml</code></li>
 </ol>
 <p>In most cases it is recommended to also use the <code>-cmd</code> command line option so that the ZAP desktop is not displayed and ZAP exits as soon as it has finished generating or running the jobs defined in the file. However you can choose to run Automation Framework jobs using the ZAP desktop to help you debug issues.</p>
+<h2 id="authentication">Authentication</h2>
+<p>The Automation Framework supports a subset of the <a href="/docs/desktop/addons/automation-framework/authentication/">authentication</a> mechanisms supported by ZAP.</p>
 <h2 id="gui">GUI</h2>
-<p>A <a href="/docs/desktop/addons/automation-framework/gui/">GUI</a> is under development and currently provides a limited set of functionality.</p>
+<p>A <a href="/docs/desktop/addons/automation-framework/gui/">GUI</a> is under development and provides an ever increasing set of features.</p>
 <h2 id="api">API</h2>
 <p>The following API endpoints are provided by this add-on:</p>
 <ul>
@@ -1432,13 +1447,16 @@
 <p>The following automation jobs are supported by this add-on:</p>
 <ul>
 <li><a href="/docs/desktop/addons/automation-framework/job-addons/">addOns</a> - add-on management</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-delay/">delay</a> - pauses the plan for a specified period of time or a specific condition is met</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-pscanconf/">passiveScan-config</a> - passive scan configuration</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-pscanwait/">passiveScan-wait</a> - waits for the passive scanner to finish processing the current queue</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-requestor/">requestor</a> - crafts specific requests to send to the corresponding targets</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-spider/">spider</a> - runs the traditional spider</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-ascan/">activeScan</a> - runs the active scanner</li>
 </ul>
-<p>This framework is plugable and so other add-ons may add support for other jobs, see the <a href="/docs/automate/automation-framework/">Automation Framework</a> website pages for a more complete list.</p>
+<p><a href="/docs/desktop/addons/automation-framework/tests/">Job tests</a> can be added to jobs to check that the jobs have performed as expected.</p>
+<p>This framework is plugable and so other add-ons may add support for other jobs, see the
+<a href="/docs/automate/automation-framework/">Automation Framework</a> website pages for a more complete list.</p>
 <p>The &lsquo;min&rsquo; and &lsquo;max&rsquo; templates include comments giving more information about the fields.</p>
 
         </div>
