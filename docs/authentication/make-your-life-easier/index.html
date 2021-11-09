@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/authors/akshath/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; akshath</title>
+  <title>OWASP ZAP &ndash; Authentication - Make your Life Easier</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -122,126 +121,34 @@
 </header>
 
   
+
 <section class="bolt-header">
-  <div class="wrapper py-20">
-    <h1 class="text--white">Author: akshath</h1>
-    <span class="text--white">Sorted by latest post date.</span>
+    <div class="wrapper py-20">
+      <h1 class="text--white">Authentication - Make your Life Easier</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
-      <div class="flex latest-versions">
-        <div class="col-2-3 pr-30">
-            
-            <article class="blog-post-preview pt-20 pb-20">
-                <h3 class="mb-10">
-                  <a href="/blog/2021-08-23-oast-with-owasp-zap/">Out-of-band Application Security Testing with OWASP ZAP</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Last Posted <span class="post-date">Monday August 23, 2021</span>
-                </section>
-                <section class="summary">An overview of the features of the OAST add-on for OWASP ZAP. This add-on allows you to discover out-of-band vulnerabilities like SSRF.</section>
-            </article>
-          
-            <article class="blog-post-preview pt-20 pb-20">
-                <h3 class="mb-10">
-                  <a href="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/">Introducing the GraphQL Add-on for ZAP</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Last Posted <span class="post-date">Friday August 28, 2020</span>
-                </section>
-                <section class="summary">GraphQL Schemas can be very large and testing them can be a very time-consuming process. Currently, there is a lack of tools that allow developers to launch and automate attacks on these endpoints. The GraphQL add-on for ZAP intends to fill this gap.
-The add-on is still in an early stage, so the range of its functionality is limited.</section>
-            </article>
-          
-        </div>
-
-        <div class="col-1-3 ml-20">
-          
-<section class="p-20">
-    <h3>Tags</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/tags/api/">api</a></li>
-    
-        <li><a href="/tags/asvs/">asvs</a></li>
-    
-        <li><a href="/tags/authentication/">authentication</a></li>
-    
-        <li><a href="/tags/blog/">blog</a></li>
-    
-        <li><a href="/tags/browser/">browser</a></li>
-    
-        <li><a href="/tags/competition/">competition</a></li>
-    
-        <li><a href="/tags/docker/">docker</a></li>
-    
-        <li><a href="/tags/fileupload/">fileupload</a></li>
-    
-        <li><a href="/tags/graphql/">graphql</a></li>
-    
-        <li><a href="/tags/gsoc/">gsoc</a></li>
-    
-        <li><a href="/tags/guide/">guide</a></li>
-    
-        <li><a href="/tags/hacking/">hacking</a></li>
-    
-        <li><a href="/tags/oast/">oast</a></li>
-    
-        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
-    
-        <li><a href="/tags/questionnaire/">questionnaire</a></li>
-    
-        <li><a href="/tags/release/">release</a></li>
-    
-        <li><a href="/tags/reporting/">reporting</a></li>
-    
-        <li><a href="/tags/retest/">retest</a></li>
-    
-        <li><a href="/tags/soap/">soap</a></li>
-    
-        <li><a href="/tags/statistics/">statistics</a></li>
-    
-        <li><a href="/tags/top10/">top10</a></li>
-    
-        <li><a href="/tags/tutorial/">tutorial</a></li>
-    
-        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
-    
-        <li><a href="/tags/zapcon/">zapcon</a></li>
-    
-    </ul>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+    <main><p>Authentication is a key way of restricting access to an app.
+Some authentication mechanisms also make it significantly harder to use tools like ZAP, even for those people who have permission to use them.</p>
+<h3 id="test-in-a-safe-environment">Test in a Safe Environment</h3>
+<p>Testing with valid credentials in a production environment is a really bad idea.
+You will pollute data stores with invalid data and you always run the risk of taking the service down or impacting valid users in some other way.</p>
+<h3 id="disable-security-controls">Disable Security Controls</h3>
+<p>You are in a safe environment and you want to test the app not the security controls, so disable any firewalls or other security features
+that you use in production.</p>
+<h3 id="disable-or-simplify-authentication">Disable or Simplify Authentication</h3>
+<p>If your app can be run with full functionality and without authentication then just do that - in this case you are testing the app, not the authentication controls.</p>
+<p>Single Sign On systems can be especially hard to work with.
+If you can use a simpler authentication mechanism like HTTP auth or a simple POST form then do that - these options will be much
+easier to set up and much less likely to break your testing.</p>
+<p>Two factor authentication (2AF) can be even harder to work with.
+ZAP does not work by magic - if you want to perform automated scanning but need a 2FA token then you are going to need to be able to
+get that token to ZAP. If you cannot do that then you will not be able to automate your authentication.</p>
+<p>If you are testing your own app then seriously consider what options you have you making it easier for you to test it using automation.</p>
+</main>
+  </article>
 </section>
-
-<section class="p-20">
-    <h3>Authors</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/authors/akshath/">akshath</a></li>
-    
-        <li><a href="/authors/alberto/">alberto</a></li>
-    
-        <li><a href="/authors/blazingwind/">blazingwind</a></li>
-    
-        <li><a href="/authors/diogo/">diogo</a></li>
-    
-        <li><a href="/authors/jordan/">jordan</a></li>
-    
-        <li><a href="/authors/nirojan/">nirojan</a></li>
-    
-        <li><a href="/authors/pranavsaxena/">pranavsaxena</a></li>
-    
-        <li><a href="/authors/preetkaran20/">preetkaran20</a></li>
-    
-        <li><a href="/authors/simon/">simon</a></li>
-    
-        <li><a href="/authors/thorin/">thorin</a></li>
-    
-    </ul>
-</section>
-
-        </div>
-      </div>
-  </div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -276,6 +183,13 @@ The add-on is still in an early stage, so the range of its functionality is limi
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/authentication/make-your-life-easier.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
