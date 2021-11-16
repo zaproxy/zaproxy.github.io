@@ -137,7 +137,7 @@
             <h1 id="introduction">Introduction</h1>
 <p>Docker image with OWASP Zed Attack Proxy preinstalled.</p>
 <h1 id="details">Details</h1>
-<h2 id="install-instructions">Install Instructions:</h2>
+<h2 id="install-instructions">Install Instructions</h2>
 <p>For the stable release:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-stable
 </code></pre></div><p>For the latest weekly release:</p>
@@ -149,14 +149,15 @@
 </code></pre></div><p>The Dockerfiles can be found <a href="https://github.com/zaproxy/zaproxy/tree/main/docker">here</a>.</p>
 <h3 id="healthcheck">Healthcheck</h3>
 <p>The docker file now supports <a href="https://docs.docker.com/engine/reference/builder/#healthcheck">healthcheck</a>. The check uses the <code>zap-cli status</code> to check that ZAP completed loading. If you are running ZAP with port other than the default <code>8080</code>, you need to set the <code>ZAP_PORT</code> environment variable. Otherwise, the healthcheck will fail.</p>
-<h2 id="usage-instructions">Usage Instructions:</h2>
-<h3 id="packaged-scans">Packaged Scans:</h3>
+<h2 id="usage-instructions">Usage Instructions</h2>
+<h3 id="packaged-scans">Packaged Scans</h3>
 <p>All of the docker images (apart from the &lsquo;bare&rsquo; one) provide a set of packaged scan scripts:</p>
 <ul>
 <li><a href="../baseline-scan/">Baseline Scan</a> which runs the ZAP spider against the target for (by default) 1 minute followed by an optional ajax spider scan before reporting the results of the passive scanning.</li>
 <li><a href="../full-scan/">Full Scan</a> which runs the ZAP spider against the target (by default with no time limit) followed by an optional ajax spider scan and then a full active scan before reporting the results.</li>
 <li><a href="../api-scan/">API Scan</a> which performs an active scan against APIs defined by OpenAPI, or GraphQL (post 2.9.0) via either a local file or a URL.</li>
 </ul>
+<p>The packaged scans are the simplest way to automate ZAP in docker, but also see the GitHub actions if you already use GitHub.</p>
 <p>In all cases the scans are tuned by:</p>
 <ul>
 <li>Disabling the Db recovery log</li>
@@ -164,37 +165,48 @@
 <li>Reporting a maximum of 10 passive scan alert instances</li>
 </ul>
 <p>The <code>zap_tuned()</code> <a href="../scan-hooks/">Scan Hook</a> is called after these changes have been made so you can undo them or apply other changes at this point if you want.</p>
-<h3 id="github-actions">GitHub Actions:</h3>
-<p>The following GitHub Actions wrap 2 of the above packaged scans and also support raising GitHub issues for potential vulnerabilities found:</p>
+<h3 id="github-actions">GitHub Actions</h3>
+<p>The following GitHub Actions wrap the above packaged scans and also support raising GitHub issues for potential vulnerabilities found:</p>
 <ul>
 <li><a href="https://github.com/marketplace/actions/owasp-zap-baseline-scan">OWASP ZAP Baseline Scan</a></li>
 <li><a href="https://github.com/marketplace/actions/owasp-zap-full-scan">OWASP ZAP Full Scan</a></li>
+<li><a href="https://github.com/marketplace/actions/owasp-zap-api-scan">OWASP ZAP API Scan</a></li>
 </ul>
 <p>For more details see the blog posts:</p>
 <ul>
 <li><a href="/blog/2020-04-09-automate-security-testing-with-zap-and-github-actions/">Automate Security Testing with ZAP and GitHub Actions</a></li>
 <li><a href="/blog/2020-05-15-dynamic-application-security-testing-with-zap-and-github-actions/">Dynamic Application Security Testing with ZAP and GitHub Actions</a></li>
 </ul>
-<h3 id="zap-gui-in-a-browser">ZAP GUI in a Browser:</h3>
+<p>These GitHub actions are a simple way to run the packaged scans, especially if you already use GitHub.</p>
+<h3 id="automation-framework">Automation Framework</h3>
+<p>The <a href="/docs/automate/automation-framework/">AutomationFramework</a> allows you to control ZAP via a single YAML file.
+It is under active development and will in time exceed the capabilities of the packaged scans and become the recommended option
+for people who want more control over ZAP. The packaged scans will not be removed but are being migrated to use the Automation Framework.</p>
+<p>You can run the Automation Framework in docker using the zap.yaml file in the current directory using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/zap.yaml
+</code></pre></div><p>If you want to make sure that ZAP is up to date before running the yaml file then the recommended approach is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable bash -c <span style="color:#e6db74">&#34;zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml&#34;</span>
+</code></pre></div><p>The latest version of the Automation Framework will set the ZAP exit value based on the result of the plan, in order to have access to this you need to use a command like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker container run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-weekly zap.sh -cmd -autorun /zap/wrk/zap.yaml
+</code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
+<h3 id="zap-gui-in-a-browser">ZAP GUI in a Browser</h3>
 <p>Yes, you can run the ZAP Desktop GUI in a browser. You can use it in just the same way as the Swing UI and can even proxy via it.<!-- raw HTML omitted -->
 See the <a href="../webswing/">Webswing</a> page for details.</p>
-<h3 id="zap-headless">ZAP Headless:</h3>
+<h3 id="zap-headless">ZAP Headless</h3>
 <p>You can also start the ZAP in headless mode with following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port <span style="color:#ae81ff">8080</span> -config api.addrs.addr.name<span style="color:#f92672">=</span>.* -config api.addrs.addr.regex<span style="color:#f92672">=</span>true -config api.key<span style="color:#f92672">=</span>&lt;api-key&gt;
 </code></pre></div><p><!-- raw HTML omitted --><strong>Note</strong>: <code>-config api.addrs.addr.name=.*</code> opens the API up for connections from any other host, it is prudent to configure this more specifically for your network/setup.<!-- raw HTML omitted --></p>
-<h3 id="zap-headless-with-xvfb">ZAP Headless with xvfb:</h3>
+<h3 id="zap-headless-with-xvfb">ZAP Headless with xvfb</h3>
 <p>You can start the ZAP in headless mode with xvfb following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap-x.sh -daemon -host 0.0.0.0 -port <span style="color:#ae81ff">8080</span> -config api.addrs.addr.name<span style="color:#f92672">=</span>.* -config api.addrs.addr.regex<span style="color:#f92672">=</span>true
 </code></pre></div><p><!-- raw HTML omitted --><strong>Note</strong>: <code>-config api.addrs.addr.name=.*</code> opens the API up for connections from any other host, it is prudent to configure this more specifically for your network/setup.<!-- raw HTML omitted --></p>
-<p>This first starts xvfb (X virtual frame buffer) which allows add-ons that use Selenium (like the Ajax Spider and DOM XSS scanner) to run in a headless environment. Firefox is also installed so can be used with these add-ons.</p>
-<h3 id="zap-cli">ZAP CLI:</h3>
-<p><a href="https://github.com/Grunny/zap-cli">ZAP CLI</a> is a ZAP wrapper written in Python. It provides a simple way to do scanning from the command line:</p>
+<p>This first starts xvfb (X virtual frame buffer) which allows add-ons that use Selenium (like the Ajax Spider and DOM XSS scanner) to run in a headless environment. Firefox is also installed so can be used with these add-ons.
+Note that by default add-ons which use Selenium will default to using headless browsers when running in docker so this option is not usually required.</p>
+<h3 id="zap-cli">ZAP CLI</h3>
+<p><a href="https://github.com/Grunny/zap-cli">ZAP CLI</a> is a 3rd party ZAP wrapper written in Python (not supported by the ZAP core team). It provides a way to perform scanning from the command line:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i owasp/zap2docker-stable zap-cli quick-scan --self-contained <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --start-options <span style="color:#e6db74">&#39;-config api.disablekey=true&#39;</span> http://target
-</code></pre></div><h3 id="zapr">ZAPR:</h3>
-<p>Zapr is ruby script for ZAP which allows commandline active scanning for desired target:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -u zap -i owasp/zap2docker-stable zapr --debug --summary http://target
-</code></pre></div><h3 id="accessing-the-api-from-outside-of-the-docker-container">Accessing the API from outside of the Docker container:</h3>
+</code></pre></div><h3 id="accessing-the-api-from-outside-of-the-docker-container">Accessing the API from outside of the Docker container</h3>
 <p>Docker appears to assign &lsquo;random&rsquo; IP addresses, so an approach that appears to work is:</p>
 <p>Run ZAP as a daemon listening on &ldquo;0.0.0.0&rdquo;:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -p 8090:8090 -i owasp/zap2docker-stable zap.sh -daemon -port <span style="color:#ae81ff">8090</span> -host 0.0.0.0
