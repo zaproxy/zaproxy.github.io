@@ -141,6 +141,7 @@
 getting access to any sensitive data such as your IP address.</p>
 <p>ZAP can be freely downloaded and we get very little feedback from most users -
 this at least tells us if ZAP is getting more or less popular :)</p>
+<p>From 2.12.0 (and in development) we will migrate from bitly to our own services using the zaproxy.org domain.</p>
 <h3 id="check-for-updates">Check for Updates</h3>
 <p>ZAP makes one request to see if ZAP or any of the add-ons are up to date.</p>
 <p>The Bitly URL resolves to the relevant version file in the zap-admin github
@@ -148,20 +149,33 @@ repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/ZapVersions
 <p>This check will be done at most once per day and can be disabled via the
 Desktop UI <a href="/docs/desktop/ui/dialogs/options/checkforupdates/">Check for Updates Options</a> screen.</p>
 <p>Since ZAP 2.9.0 the check for updates is also done when running in daemon mode.</p>
-<h3 id="browser-launch-start-page">Browser Launch Start Page</h3>
-<p>By default the Quick Start add-on makes one request to see if there is a new
-Quick Start page - this is the HTML shown by default when a browser is
-launched from ZAP.</p>
-<p>The Bitly URL resolves to the relevant quick start file in the zap-admin
-GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/files/launch/2.7.html">2.7.html</a></p>
-<p>This will be discontinued from ZAP 2.8.0</p>
+<p>From 2.12.0 (and in development) this request will be made to <a href="https://cfu.zaproxy.org">https://cfu.zaproxy.org</a></p>
+<p>The following information will be supplied:</p>
+<ul>
+<li>ZAP version</li>
+<li>ZAP runtime type (commandline, daemon or desktop)</li>
+<li>OS name and version</li>
+<li>Java version</li>
+<li>If ZAP is running in a known container (such as docker)</li>
+</ul>
+<p>The IP addresses of requests will be recorded but the least significant part will be zeroed to maintain anonymity.</p>
 <h3 id="zap-news">ZAP News</h3>
 <p>Starting from ZAP 2.8.0 the Quick Start add-on makes one request to see if
 there is any new ZAP news.</p>
 <p>The Bitly URL resolves to the relevant quick start file in the zap-admin
 GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/files/news/2_8.xml">2.8.xml</a></p>
+<p>From 2.12.0 (and in development) this request will be made to <a href="https://news.zaproxy.org">https://news.zaproxy.org</a> - the same information will be supplied as
+for the Check for Updates service.</p>
+<h3 id="browser-launch-start-page---discontinued">Browser Launch Start Page - Discontinued</h3>
+<p>By default the Quick Start add-on makes one request to see if there is a new
+Quick Start page - this is the HTML shown by default when a browser is
+launched from ZAP.</p>
+<p>The Bitly URL resolves to the relevant quick start file in the zap-admin
+GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/files/launch/2.7.html">2.7.html</a></p>
+<p>This was discontinued from ZAP 2.8.0</p>
 <h2 id="silent-mode">Silent Mode</h2>
-<p>Starting from ZAP 2.8.0 the &lsquo;-silent&rsquo; command line option can be used to prevent ZAP from making any &lsquo;calls home&rsquo;.</p>
+<p>Starting from ZAP 2.8.0 the &lsquo;-silent&rsquo; command line option can be used to prevent ZAP from making any &lsquo;calls home&rsquo;.
+If you explicitly ask ZAP to check for updates then it will still call the Check for Updates service.</p>
 <p>Note that some third party add-ons may not obey the &lsquo;-silent&rsquo; option.</p>
 <p>This FAQ will be updated to detail any of the add-ons in the <a href="/addons/">ZAP Marketplace</a>
 that fall into this category.</p>
