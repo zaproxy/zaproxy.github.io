@@ -15,10 +15,10 @@
     <meta property="og:title" content="Sites Tree Modifiers" />
 <meta property="og:description" content="Why the Sites Tree is so important to ZAP and how you will have much more control over it in ZAP 2.10.0" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-09-22-sites-tree-modifiers/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-22-sites-tree-modifiers/images/sites_tree_mod.png" />
+<meta property="og:url" content="/blog/2020-09-22-sites-tree-modifiers/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-22-sites-tree-modifiers/images/sites_tree_mod.png" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2020-09-22T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-09-22T00:00:00+00:00" />
+
 
   
   <title>OWASP ZAP &ndash; Sites Tree Modifiers</title>
@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -161,13 +161,13 @@
 <p>This blog post will explain why the Sites Tree is so important, how you can change it now and how you will be able to change it in the next ZAP release.</p>
 <h2 id="why-do-we-have-the-sites-tree">Why do we have the Sites Tree?</h2>
 <p>In ZAP we separate exploring an app from attacking it. This gives us much more flexibility to handle different scenarios.</p>
-<p>So let's take the case where we are proxying unit tests through ZAP.</p>
+<p>So let&rsquo;s take the case where we are proxying unit tests through ZAP.</p>
 <p>Unit tests are there to test functionality not to minimise HTTP(S) calls, so it is likely that the same URL will be called many times, potentially hundreds or thousands of times.</p>
-<p>One of the big drawbacks of Dynamic Application Security Testing (DAST) is the length of time it takes. The number of requests a scanner makes directly impacts the time taken, so it's important to try to minimise the number of requests while maximising their effectiveness. As always it's a balancing act.</p>
+<p>One of the big drawbacks of Dynamic Application Security Testing (DAST) is the length of time it takes. The number of requests a scanner makes directly impacts the time taken, so it&rsquo;s important to try to minimise the number of requests while maximising their effectiveness. As always it&rsquo;s a balancing act.</p>
 <p>If we only had the History table available then we would end up attacking that URL as many times as it occurs. There are currently 18 release quality active scan rules and at medium strength each of those can make around 12 requests per parameter per page. So if you have 3 parameters on that repeated URL then we will attack the same URL 18 x 12 x 3 = 648 times each time we come across it in the History table. That would make the scan way longer than it needs to be.</p>
 <h2 id="what-does-the-sites-tree-represent">What does the Sites Tree Represent?</h2>
 <p>The Sites Tree essentially removes the duplicates from the History table, but also does much more.
-It is ZAP's internal representation of the app and if it does not accurately reflect the app then ZAP will not be able to attack it effectively.
+It is ZAP&rsquo;s internal representation of the app and if it does not accurately reflect the app then ZAP will not be able to attack it effectively.
 Each node in the tree represents a different piece of functionality in the app.
 By default ZAP will create unique nodes in the tree based on the HTTP method and the parameter names.</p>
 <p>This means that the following requests will all end up having different tree nodes:</p>
@@ -199,7 +199,7 @@ For example the following URLs could all represent the same functionality if the
 <li><code>https://www.example.com/app/company2/aaa?ddd=fff</code></li>
 <li><code>https://www.example.com/app/company3/aaa?ddd=ggg</code></li>
 </ul>
-<p>In this case all 3 URLs will end up in unique nodes and ZAP will attack each of them even though it doesn't really need to. This probably is not a big problem if there are just 3 instances, but in most cases this data will be coming from a database so there could be a huge number of such nodes.</p>
+<p>In this case all 3 URLs will end up in unique nodes and ZAP will attack each of them even though it doesn&rsquo;t really need to. This probably is not a big problem if there are just 3 instances, but in most cases this data will be coming from a database so there could be a huge number of such nodes.</p>
 <p>The solution to this is to define the relevant path element as <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a> which means path elements that really contain data rather than represent part of the app structure. Once you have done that (and revisited the URLs) then they will all be represented as just 1 node and ZAP will only attack them once.</p>
 <p>You will need to define both Structural Parameters and Data Driven Nodes manually - ZAP does not currently have the capability to automatically detect these situations.</p>
 <h2 id="custom-data-formats">Custom Data Formats</h2>
@@ -236,7 +236,7 @@ While we do our best to make sure that ZAP can always understand the structure o
 <p>Input Vector scripts can change Site Tree node names and/or node paths, which gives complete control over how URLs are represented in the Sites Tree.</p>
 <p>In addition to this in 2.10.0 the underlying <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/Variant.java">Variant.java</a> class will become plugable, meaning that ZAP add-ons will be able to dynamically add (and remove) classes which can identify input vectors to attack and change how URLs are represented in the Sites Tree.</p>
 <p>These 2 changes will allow ZAP to handle any custom data formats and ensure that ZAP can then effectively attack the applications that use them.</p>
-<p>This functionality will be showcased by the <a href="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/">GraphQL add-on</a> implemented as part of this year's Google Summer of Code and which is still being enhanced.</p>
+<p>This functionality will be showcased by the <a href="/blog/2020-08-28-introducing-the-graphql-add-on-for-zap/">GraphQL add-on</a> implemented as part of this year&rsquo;s Google Summer of Code and which is still being enhanced.</p>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
@@ -361,7 +361,7 @@ While we do our best to make sure that ZAP can always understand the structure o
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

@@ -15,10 +15,10 @@
     <meta property="og:title" content="Out-of-band Application Security Testing with OWASP ZAP" />
 <meta property="og:description" content="Introducing the OAST add-on for ZAP" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2021-08-23-oast-with-owasp-zap/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2021-08-23-oast-with-owasp-zap/images/zap-oast-graphic.png" />
+<meta property="og:url" content="/blog/2021-08-23-oast-with-owasp-zap/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2021-08-23-oast-with-owasp-zap/images/zap-oast-graphic.png" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2021-08-23T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-08-23T00:00:00+00:00" />
+
 
   
   <title>OWASP ZAP &ndash; Out-of-band Application Security Testing with OWASP ZAP</title>
@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -155,8 +155,8 @@
               Posted <span class="post-date">Monday August 23, 2021</span>
               <span class="word-count fl-r"> 897 Words </span>
             </section>
-            <p>The OAST add-on for ZAP enables it to communicate with services like <a href="https://github.com/marcoagner/boast">BOAST</a>, <a href="https://github.com/ArturSS7/TukTuk">TukTuk</a>, and <a href="https://github.com/projectdiscovery/interactsh">interactsh</a> (given that they are supported by the add-on), thereby providing functionality similar to <a href="https://portswigger.net/burp/documentation/collaborator">PortSwigger's Burp Collaborator</a>. The add-on is available for download right now from the ZAP marketplace.</p>
-<p>This blog post is going to go over the features of the OAST add-on and demonstrate how you can leverage ZAP's scripting features to write scripts that exploit out-of-band vulnerabilities. It assumes you already have the add-on installed.</p>
+            <p>The OAST add-on for ZAP enables it to communicate with services like <a href="https://github.com/marcoagner/boast">BOAST</a>, <a href="https://github.com/ArturSS7/TukTuk">TukTuk</a>, and <a href="https://github.com/projectdiscovery/interactsh">interactsh</a> (given that they are supported by the add-on), thereby providing functionality similar to <a href="https://portswigger.net/burp/documentation/collaborator">PortSwigger&rsquo;s Burp Collaborator</a>. The add-on is available for download right now from the ZAP marketplace.</p>
+<p>This blog post is going to go over the features of the OAST add-on and demonstrate how you can leverage ZAP&rsquo;s scripting features to write scripts that exploit out-of-band vulnerabilities. It assumes you already have the add-on installed.</p>
 <p>The OAST add-on currently supports two services: BOAST and Callbacks. Callbacks have been a part of the ZAP core since 2017. However, the Callback service has been made available as part of the OAST add-on now and will be deprecated in the core soon.</p>
 <p>The blog post titled <a href="/blog/2020-03-09-zap-ssrf-setup/">&ldquo;ZAP SSRF Setup&rdquo;</a> is a good explainer on how ZAP Callbacks can be configured to perform out-of-band attacks like SSRF. This post will focus on working with BOAST.</p>
 <h2 id="registering-a-boast-server">Registering a BOAST Server</h2>
@@ -196,26 +196,26 @@
 </ol>
 <h3 id="from-a-script">From a script</h3>
 <p>The following code snippet registers a new BOAST server:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Control</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.parosproxy.paros.control.Control&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Control</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.parosproxy.paros.control.Control&#34;</span>)
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">extOast</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Control</span>.<span style="color:#a6e22e">getSingleton</span>().<span style="color:#a6e22e">getExtensionLoader</span>().<span style="color:#a6e22e">getExtension</span>(<span style="color:#e6db74">&#34;ExtensionOast&#34;</span>)
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">boast</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extOast</span>.<span style="color:#a6e22e">getBoastService</span>()
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">server</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">register</span>(<span style="color:#e6db74">&#34;https://odiss.eu:1337/events&#34;</span>)
 </code></pre></div><p>And this is how you can get the details of the registered server:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Server URI: &#34;</span>, <span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">getUri</span>())
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Server URI: &#34;</span>, <span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">getUri</span>())
 <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;ID: &#34;</span>, <span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">getId</span>())
 <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Payload: &#34;</span>, <span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">getPayload</span>())
 <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Canary: &#34;</span>, <span style="color:#a6e22e">server</span>.<span style="color:#a6e22e">getCanary</span>())
 </code></pre></div><p>To poll all registered servers:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">poll</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">poll</span>()
 </code></pre></div><p>To change the automatic polling frequency (in seconds):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">getParam</span>().<span style="color:#a6e22e">setPollingFrequency</span>(<span style="color:#ae81ff">30</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">getParam</span>().<span style="color:#a6e22e">setPollingFrequency</span>(<span style="color:#ae81ff">30</span>)
 </code></pre></div><p>You can get an array of all the registered servers with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">registeredServers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">getRegisteredServers</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">registeredServers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">getRegisteredServers</span>()
 <span style="color:#a6e22e">registeredServer</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">s</span> =&gt; <span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">getPayload</span>()))
 </code></pre></div><p>This information should allow you to write scripts that can register a BOAST server, get its payload and use that in attacks. However, one crucial step is being able to perform an action when ZAP actually discovers an out-of-band message received by BOAST. For that, we can register a request handler as illustrated in the following section.</p>
 <h2 id="registering-a-request-handler">Registering a Request Handler</h2>
 <p>You can register a request handler from a script or a scan rule.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">requestHandler</span>(<span style="color:#a6e22e">request</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">requestHandler</span>(<span style="color:#a6e22e">request</span>) {
     <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Source: &#34;</span>, <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">getSource</span>())
     <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Referer: &#34;</span>, <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">getReferer</span>())
     <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Handler: &#34;</span>, <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">getHandler</span>())
@@ -231,7 +231,7 @@
 <li>Raise an alert (e.g. if a payload URI is accessed)</li>
 </ul>
 <p>One thing that should be noted is that adding a request handler is not an idempotent operation. That is, if you add the same request handler multiple times then the action will also be performed multiple times.</p>
-<h2 id="whats-next-for-oast">What's next for OAST?</h2>
+<h2 id="whats-next-for-oast">What&rsquo;s next for OAST?</h2>
 <ul>
 <li>Scan rules! Update existing active scan rules like XXE, ExternalRedirect, RemoteFileInclude, ServerSideInclude, etc. and make them use out-of-band payloads. Introduce new scan rules like OutOfBandXSS, SuperBlindSQLInjection, BlindSSRF, etc.</li>
 <li>Support the API and the Automation Framework.</li>
@@ -333,7 +333,7 @@
       </ul>
     </li>
     <li><a href="#registering-a-request-handler">Registering a Request Handler</a></li>
-    <li><a href="#whats-next-for-oast">What's next for OAST?</a></li>
+    <li><a href="#whats-next-for-oast">What&rsquo;s next for OAST?</a></li>
     <li><a href="#list-of-oast-prs">List of OAST PRs</a></li>
   </ul>
 </nav>
@@ -420,7 +420,7 @@
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

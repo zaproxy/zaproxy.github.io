@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -150,7 +150,7 @@ The script, zap-api-scan.py is included in the <a href="https://hub.docker.com/r
 <a href="https://hub.docker.com/r/owasp/zap2docker-live/">Live</a> ZAP Docker images, it will also be included in the next
 <a href="https://hub.docker.com/r/owasp/zap2docker-stable/">Stable</a> image.</p>
 <p>To use the API scanning script you just need to use the commands:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-weekly  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-weekly  
 docker run -t owasp/zap2docker-weekly zap-api-scan.py -t <span style="color:#ae81ff">\ </span> 
     https://www.example.com/openapi.json -f openapi  
 </code></pre></div><p>By default the script:</p>
@@ -165,7 +165,7 @@ also test the applications that use the API as data returned via the API could s
 escape data that has been originally entered via a user.</p>
 <h3 id="command-line-options">Command Line Options</h3>
 <p>The script has a number of command line options that allow it to be tuned to your requirements:</p>
-<pre><code>Usage: zap-api-scan.py -t &lt;target&gt; -f &lt;format&gt; [options]  
+<pre tabindex="0"><code>Usage: zap-api-scan.py -t &lt;target&gt; -f &lt;format&gt; [options]  
     -t target         target API definition, OpenAPI or SOAP, local file or URL, e.g. https://www.example.com/openapi.json  
     -f format         either openapi or soap  
 Options:  
@@ -204,7 +204,7 @@ therefore will not exercise enough of the code. For example a username of “tes
 email address.<br>
 For APIs defined using OpenAPI/Swagger you can specify the values you want ZAP to use via ZAP command line options.<br>
 For example the options:</p>
-<pre><code>  -config formhandler.fields.field\\(0\\).fieldId=username \  
+<pre tabindex="0"><code>  -config formhandler.fields.field\\(0\\).fieldId=username \  
   -config formhandler.fields.field\\(0\\).value=test@example.com \  
   -config formhandler.fields.field\\(0\\).enabled=true \  
   -config formhandler.fields.field\\(1\\).fieldId=phone \  
@@ -218,7 +218,7 @@ we will do our best to prioritize this.</p>
 <p>Note that as these are ZAP command line options you will need to specify them to the script using the -z script option.<br>
 If you need to specify lots of options then you can put them all in a property file, e.g. called options.prop<br>
 You can then run the API scan using a command like:</p>
-<pre><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py \  
+<pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py \  
     -t https://www.example.com/openapi.json -f openapi \  
     -z &quot;-configfile /zap/wrk/options.prop&quot;  
 </code></pre><p>The <code>&quot;-v $(pwd):/zap/wrk/:rw&quot;</code> is a Docker option which maps the current working directory to a folder called /zap/wrk in the Docker instance.</p>
@@ -227,7 +227,7 @@ You can then run the API scan using a command like:</p>
 For mechanisms that use header values we recommend that you obtain suitable tokens for your application using whatever means are appropriate and
 then tell ZAP to use them via another set of command line options.<br>
 For example the options:</p>
-<pre><code>  -config replacer.full_list\\(0\\).description=auth1 \  
+<pre tabindex="0"><code>  -config replacer.full_list\\(0\\).description=auth1 \  
   -config replacer.full_list\\(0\\).enabled=true \  
   -config replacer.full_list\\(0\\).matchtype=REQ_HEADER \  
   -config replacer.full_list\\(0\\).matchstr=Authorization \  
@@ -378,7 +378,7 @@ It can be used ‘out of the box’ or quickly tuned to meet your requirements v
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

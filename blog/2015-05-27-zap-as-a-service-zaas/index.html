@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -150,16 +150,16 @@ for ZaaS have already been made.<br>
 However I decided to announce this as a future direction in order to stimulate discussions and hopefully encourage people to get involved.</p>
 <p>And I want to stress that it is <em>not</em> a replacement for ‘desktop’ ZAP (as I’ve started calling it).<br>
 Desktop ZAP is an important focus for us, and it is the way we expect most people to use ZAP for the foreseeable future.<br>
-Instead it's just a different way of running ZAP - there's going to be a lot of common code between desktop ZAP and ZaaS.</p>
+Instead it&rsquo;s just a different way of running ZAP - there&rsquo;s going to be a lot of common code between desktop ZAP and ZaaS.</p>
 <p>So how will ZaaS differ from desktop ZAP?</p>
 <h3 id="database">Database</h3>
-<p>The current HSQLDB is good for a desktop application as it requires no installation, but it's not suitable for ZaaS.<br>
+<p>The current HSQLDB is good for a desktop application as it requires no installation, but it&rsquo;s not suitable for ZaaS.<br>
 In 2.4.0 we introduced a database independence layer so that alternative implementations can be supported, although the only implementation was
 the current hard coded HSQLDB option.<br>
-In the <code>main</code> branch there's now a generic SQL implementation, in which all of the SQL statements have been extracted into property files.<br>
+In the <code>main</code> branch there&rsquo;s now a generic SQL implementation, in which all of the SQL statements have been extracted into property files.<br>
 In theory any SQL db should be supportable, and working implementations of both HSQLDB and MySQL are provided.<br>
-Although MySQL is intended for daemon or ZaaS modes there's no reason why it can't also be used for the desktop, and in fact that's one of the
-options that's been tested.<br>
+Although MySQL is intended for daemon or ZaaS modes there&rsquo;s no reason why it can&rsquo;t also be used for the desktop, and in fact that&rsquo;s one of the
+options that&rsquo;s been tested.<br>
 Details of how to configure ZAP to use MySQL will be posted on the ZAP Developer Group soon.<br>
 One important aspect that has not been implemented yet is the ability to support multiple database instances in order to better segregate data.</p>
 <h3 id="data-structures">Data Structures</h3>
@@ -167,7 +167,7 @@ One important aspect that has not been implemented yet is the ability to support
 quickly to user events, such as scrolling through a long list.<br>
 Structures like the Sites tree and History table are held in memory and will constantly grow.<br>
 This is no good for a long running service, which is why we have introduced a ‘low memory’ option. When this option is used ZAP components that
-support it will not build up any significant data structures in memory, and those that don't support it will not be enabled.<br>
+support it will not build up any significant data structures in memory, and those that don&rsquo;t support it will not be enabled.<br>
 This has been implemented for most of the core, but some of the add-ons (including some key active scan rules) still need to be changed.<br>
 Again, details of how to configure ZAP to use the low memory option will be posted on the ZAP Developer Group soon.</p>
 <h3 id="processes-and-deployment">Processes and deployment</h3>
@@ -199,14 +199,14 @@ ZAP. I actually started ZAP as a way to learn how to make the services I was wor
 Desktop ZAP is typically run on a single machine and only accessible from that machine.<br>
 ZaaS will have a remotely accessible HTML5 interface, and this significantly increases the attack service area.<br>
 As it will also contain details of the vulnerabilities of other services, it will be a very tempting target for attackers even if it is
-restricted to a company's internal network.<br>
+restricted to a company&rsquo;s internal network.<br>
 We will be considering security at all stages of ZaaS development and will ensure that it is thoroughly pentested by experienced security
 professionals not directly connected with the project.</p>
 <h3 id="license">License</h3>
 <p>One key thing that will not change between Desktop ZAP and ZaaS is the license.<br>
 ZaaS with be released under Apache V2, which means that anyone can use it for anything they like.<br>
 You will be able to set up a ZaaS instance for your company, and if you want to you could even set up ZaaS as an online service and charge money
-for it - that's completely permissible!</p>
+for it - that&rsquo;s completely permissible!</p>
 <h3 id="development-process">Development process</h3>
 <p>Although we have already implement features required for ZaaS there is still much work to do.<br>
 As mentioned at the start of this post, this announcement is to stimulate discussions and hopefully encourage people to get involved.<br>
@@ -339,7 +339,7 @@ join in!</p>
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

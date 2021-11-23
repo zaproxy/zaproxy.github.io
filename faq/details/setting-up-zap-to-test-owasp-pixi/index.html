@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -140,12 +140,12 @@
 <ul>
 <li>This FAQ is a work in progress as of 2018-June-1</li>
 <li>This FAQ contains spoilers: <code>&lt;details&gt;</code> tags have been used to make them expandable and not immediately visible (which should work in most modern browsers).</li>
-<li>These instructions assume you've created a user: <code>test@example.com</code> with password: <code>testExample</code> (via http://localhost:8000/register).</li>
+<li>These instructions assume you&rsquo;ve created a user: <code>test@example.com</code> with password: <code>testExample</code> (via http://localhost:8000/register).</li>
 </ul>
 <p>The following the steps are based on spider/scan of Pixi at <code>http://localhost:8000/</code> using ZAP 2.7.0.</p>
 <ul>
 <li>Access Pixi (http://localhost:8000/) while proxying through ZAP.</li>
-<li>Register a user (then logout if you're automatically logged in). Login with that user. Logout.</li>
+<li>Register a user (then logout if you&rsquo;re automatically logged in). Login with that user. Logout.</li>
 <li>Create &ldquo;pixi&rdquo; context (or edit the &ldquo;Default Context&rdquo;):
 <ul>
 <li>&ldquo;Include in Context&rdquo;: <code>http://localhost:8000.*</code></li>
@@ -171,7 +171,7 @@
 </li>
 </ul>
 </li>
-<li>Back in the Sites tree, right click &ldquo;http://localhost:8000&rdquo; select &ldquo;Attack&rdquo; then &ldquo;Spider&hellip;&quot;.
+<li>Back in the Sites tree, right click &ldquo;http://localhost:8000&rdquo; select &ldquo;Attack&rdquo; then &ldquo;Spider&hellip;&rdquo;.
 <ul>
 <li>In the Spider dialog select <code>test</code> from the &ldquo;User&rdquo; dropdown menu.</li>
 <li>Click &ldquo;Start Scan&rdquo;.</li>
@@ -179,7 +179,7 @@
 </li>
 <li>In your browser access &ldquo;My Profile&rdquo; and note the URL. (It should be something like <code>http://localhost:8000/profile/45</code>.) Find the URL in the Sites tree (ex: <code>GET:45</code> in the &ldquo;profile&rdquo; folder) right click and exclude it from the Context (or just the Scanner). [This is done to prevent the scanner from changing the password of the user account being used to scan.]</li>
 <li>Optionally run the Ajax spider (using the context and configured user).</li>
-<li>At this point you should login as the admin user. Hopefully you've already figured out the vulnerability to get those details.</li>
+<li>At this point you should login as the admin user. Hopefully you&rsquo;ve already figured out the vulnerability to get those details.</li>
 </ul>
 <details>
     <summary>Spoiler: Getting the Admin user details</summary>
@@ -258,7 +258,7 @@
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

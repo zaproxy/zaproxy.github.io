@@ -15,10 +15,10 @@
     <meta property="og:title" content="Customize Alert Details" />
 <meta property="og:description" content="ZAP functionality that let&#39;s you customize Alert details" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-05-11-alert-overrides-youdontknowzap/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-05-11-alert-overrides-youdontknowzap/images/zapbot.png" />
+<meta property="og:url" content="/blog/2020-05-11-alert-overrides-youdontknowzap/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2020-05-11-alert-overrides-youdontknowzap/images/zapbot.png" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2020-05-11T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-05-11T00:00:00+00:00" />
+
 
   
   <title>OWASP ZAP &ndash; Customize Alert Details</title>
@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -166,24 +166,24 @@ convenience by pre-pending <code>#</code> on the line, ex: <code># 2 - Private I
 <p>The format of entries in the file is:</p>
 <p><code>&lt;alertid&gt;.&lt;property&gt; = [ + | - ] &lt;your information&gt;</code></p>
 <p>With the following properties supported: <code>name</code>, <code>description</code>, <code>solution</code>, <code>otherInfo</code>, and <code>reference</code>. Alert details can be added, replaced, or removed:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">If the value starts with a ‘+’ then it is appended to the existing information.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">If the value starts with a ‘+’ then it is appended to the existing information.
 If it starts with a ‘-’ then it is prepended to the existing information.
 If it does not start with a ‘+’ or ‘-’ then it replaces the existing information.
 </code></pre></div><p>For example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># 40012 = Reflected XSS
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># 40012 = Reflected XSS
 40012.solution = Follow our company specific guidelines at http://internet.example.com/xss.html
 </code></pre></div><h2 id="example-usage">Example Usage</h2>
-<p>Let's say you work for Juice Shop corporation, and the organization is particular sensitive to disclosure of internal IP addresses, etc. After an initial scan with ZAP
+<p>Let&rsquo;s say you work for Juice Shop corporation, and the organization is particular sensitive to disclosure of internal IP addresses, etc. After an initial scan with ZAP
 you decide that your developers and security team should have some additional information when reading reports and addressing certain issues.</p>
 <p><img src="images/initial_results.png" alt="Initial Results"></p>
 <p>So you establish an overrides files such as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># 2 - Private IP Disclosure
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># 2 - Private IP Disclosure
 2.reference = +\nhttp://intranet.owasp-juice.shop/devdocs/internal-ip/
 # 10096 - Timestamp Disclosure
 10096.solution = If this timestamp evaluates to a date before 2014-10-04 (First release) then the finding is almost definitely a false positive.
 </code></pre></div><p>This file can be leveraged by:</p>
 <ul>
-<li>Specifying its use (location) in ZAP's Options dialog.</li>
+<li>Specifying its use (location) in ZAP&rsquo;s Options dialog.</li>
 <li>Via the <a href="/docs/desktop/start/features/api/">API</a></li>
 <li>From the command line: <code>-config alert.overridesFilename=/path/to/filename</code></li>
 </ul>
@@ -316,7 +316,7 @@ you decide that your developers and security team should have some additional in
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

@@ -15,10 +15,10 @@
     <meta property="og:title" content="Dynamic Application Security Testing with ZAP and GitHub Actions" />
 <meta property="og:description" content="How ZAP full scan and GitHub actions can help to automate the security testing" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-05-15-dynamic-application-security-testing-with-zap-and-github-actions/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-05-15-dynamic-application-security-testing-with-zap-and-github-actions/images/zap-action.png" />
+<meta property="og:url" content="/blog/2020-05-15-dynamic-application-security-testing-with-zap-and-github-actions/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2020-05-15-dynamic-application-security-testing-with-zap-and-github-actions/images/zap-action.png" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2020-05-15T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-05-15T00:00:00+00:00" />
+
 
   
   <title>OWASP ZAP &ndash; Dynamic Application Security Testing with ZAP and GitHub Actions</title>
@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -187,20 +187,20 @@ rules file to ignore false positives which occur during the ZAP scan. Please che
 <p>The following YAML config shows how to configure the action to scan a publicly accessible web application.
 In order to start scanning, create a file called <code>zap_scan.yaml</code> inside the <code>.github/workflows</code>
 folder in your repository.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">on:
-  schedule:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">on</span>:
+  <span style="color:#f92672">schedule</span>:
     <span style="color:#75715e"># Runs every day At 01:00.</span>
-    - cron:  <span style="color:#e6db74">&#39;0 1 * * *&#39;</span>
+    - <span style="color:#f92672">cron</span>:  <span style="color:#e6db74">&#39;0 1 * * *&#39;</span>
 
-jobs:
-  zap_scan:
-    runs-on: ubuntu-latest
-    name: Scan ZAP website
-    steps:
-      - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0<span style="color:#ae81ff">.1</span><span style="color:#ae81ff">.0</span>
-        with:
-          target: <span style="color:#e6db74">&#39;https://www.zaproxy.org/&#39;</span>
+<span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">zap_scan</span>:
+    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Scan ZAP website</span>
+    <span style="color:#f92672">steps</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">ZAP Scan</span>
+        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">zaproxy/action-full-scan@v0.1.0</span>
+        <span style="color:#f92672">with</span>:
+          <span style="color:#f92672">target</span>: <span style="color:#e6db74">&#39;https://www.zaproxy.org/&#39;</span>
 </code></pre></div><p>Also, you can view the scan logs by navigating to the ZAP <a href="https://github.com/zaproxy/zaproxy-website/runs/629858267?check_suite_focus=true">scan job</a>.</p>
 <p><a href="https://github.com/zaproxy/zaproxy-website/runs/629858267?check_suite_focus=true"><img src="./images/scan-job.png" alt="scan-job"></a></p>
 <p>We are excited to hear your thoughts and feedback for the ZAP full scan action. If you find the action useful please star
@@ -322,7 +322,7 @@ please feel free to create an issue in the <a href="https://github.com/zaproxy/a
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

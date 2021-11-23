@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -139,13 +139,13 @@
 <h1 id="details">Details</h1>
 <h2 id="install-instructions">Install Instructions</h2>
 <p>For the stable release:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-stable
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-stable
 </code></pre></div><p>For the latest weekly release:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-weekly
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-weekly
 </code></pre></div><p>For the live release (built whenever the <a href="https://github.com/zaproxy/zaproxy">zaproxy</a> project is changed):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-live
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-live
 </code></pre></div><p>For the bare release (a very small Docker image, contains only the necessary required dependencies to run ZAP, ideal for CI environments):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-bare
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-bare
 </code></pre></div><p>The Dockerfiles can be found <a href="https://github.com/zaproxy/zaproxy/tree/main/docker">here</a>.</p>
 <h3 id="healthcheck">Healthcheck</h3>
 <p>The docker file now supports <a href="https://docs.docker.com/engine/reference/builder/#healthcheck">healthcheck</a>. The check uses the <code>zap-cli status</code> to check that ZAP completed loading. If you are running ZAP with port other than the default <code>8080</code>, you need to set the <code>ZAP_PORT</code> environment variable. Otherwise, the healthcheck will fail.</p>
@@ -183,50 +183,50 @@
 It is under active development and will in time exceed the capabilities of the packaged scans and become the recommended option
 for people who want more control over ZAP. The packaged scans will not be removed but are being migrated to use the Automation Framework.</p>
 <p>You can run the Automation Framework in docker using the zap.yaml file in the current directory using:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/zap.yaml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap.sh -cmd -autorun /zap/wrk/zap.yaml
 </code></pre></div><p>If you want to make sure that ZAP is up to date before running the yaml file then the recommended approach is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable bash -c <span style="color:#e6db74">&#34;zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable bash -c <span style="color:#e6db74">&#34;zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml&#34;</span>
 </code></pre></div><p>The latest version of the Automation Framework will set the ZAP exit value based on the result of the plan, in order to have access to this you need to use a command like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker container run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-weekly zap.sh -cmd -autorun /zap/wrk/zap.yaml
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker container run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-weekly zap.sh -cmd -autorun /zap/wrk/zap.yaml
 </code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
 <h3 id="zap-gui-in-a-browser">ZAP GUI in a Browser</h3>
 <p>Yes, you can run the ZAP Desktop GUI in a browser. You can use it in just the same way as the Swing UI and can even proxy via it.<!-- raw HTML omitted -->
 See the <a href="../webswing/">Webswing</a> page for details.</p>
 <h3 id="zap-headless">ZAP Headless</h3>
 <p>You can also start the ZAP in headless mode with following command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port <span style="color:#ae81ff">8080</span> -config api.addrs.addr.name<span style="color:#f92672">=</span>.* -config api.addrs.addr.regex<span style="color:#f92672">=</span>true -config api.key<span style="color:#f92672">=</span>&lt;api-key&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port <span style="color:#ae81ff">8080</span> -config api.addrs.addr.name<span style="color:#f92672">=</span>.* -config api.addrs.addr.regex<span style="color:#f92672">=</span>true -config api.key<span style="color:#f92672">=</span>&lt;api-key&gt;
 </code></pre></div><p><!-- raw HTML omitted --><strong>Note</strong>: <code>-config api.addrs.addr.name=.*</code> opens the API up for connections from any other host, it is prudent to configure this more specifically for your network/setup.<!-- raw HTML omitted --></p>
 <h3 id="zap-headless-with-xvfb">ZAP Headless with xvfb</h3>
 <p>You can start the ZAP in headless mode with xvfb following command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap-x.sh -daemon -host 0.0.0.0 -port <span style="color:#ae81ff">8080</span> -config api.addrs.addr.name<span style="color:#f92672">=</span>.* -config api.addrs.addr.regex<span style="color:#f92672">=</span>true
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -u zap -p 8080:8080 -i owasp/zap2docker-stable zap-x.sh -daemon -host 0.0.0.0 -port <span style="color:#ae81ff">8080</span> -config api.addrs.addr.name<span style="color:#f92672">=</span>.* -config api.addrs.addr.regex<span style="color:#f92672">=</span>true
 </code></pre></div><p><!-- raw HTML omitted --><strong>Note</strong>: <code>-config api.addrs.addr.name=.*</code> opens the API up for connections from any other host, it is prudent to configure this more specifically for your network/setup.<!-- raw HTML omitted --></p>
 <p>This first starts xvfb (X virtual frame buffer) which allows add-ons that use Selenium (like the Ajax Spider and DOM XSS scanner) to run in a headless environment. Firefox is also installed so can be used with these add-ons.
 Note that by default add-ons which use Selenium will default to using headless browsers when running in docker so this option is not usually required.</p>
 <h3 id="zap-cli">ZAP CLI</h3>
 <p><a href="https://github.com/Grunny/zap-cli">ZAP CLI</a> is a 3rd party ZAP wrapper written in Python (not supported by the ZAP core team). It provides a way to perform scanning from the command line:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i owasp/zap2docker-stable zap-cli quick-scan --self-contained <span style="color:#ae81ff">\
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -i owasp/zap2docker-stable zap-cli quick-scan --self-contained <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    --start-options <span style="color:#e6db74">&#39;-config api.disablekey=true&#39;</span> http://target
 </code></pre></div><h3 id="accessing-the-api-from-outside-of-the-docker-container">Accessing the API from outside of the Docker container</h3>
 <p>Docker appears to assign &lsquo;random&rsquo; IP addresses, so an approach that appears to work is:</p>
 <p>Run ZAP as a daemon listening on &ldquo;0.0.0.0&rdquo;:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -p 8090:8090 -i owasp/zap2docker-stable zap.sh -daemon -port <span style="color:#ae81ff">8090</span> -host 0.0.0.0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -p 8090:8090 -i owasp/zap2docker-stable zap.sh -daemon -port <span style="color:#ae81ff">8090</span> -host 0.0.0.0
 </code></pre></div><p>Find out the container id:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker ps
 </code></pre></div><p>Find out which address has been assigned to it:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker inspect &lt;CONTAINER ID&gt; | grep IPAddress
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker inspect &lt;CONTAINER ID&gt; | grep IPAddress
 </code></pre></div><p>You should be then able to point your browser at the specified host/port and access the ZAP API, eg http://172.17.0.8:8090/</p>
 <p>Note that on Macs the IP will be the IP of the Docker VM host.  This is accessible with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-machine ip &lt;host&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker-machine ip &lt;host&gt;
 </code></pre></div><h3 id="scanning-an-app-running-on-the-host-os">Scanning an app running on the host OS</h3>
 <p>IP addresses like localhost and 127.0.0.1 cannot be used to access an app running on the host OS from within a docker container.
 To get around this you can use the following code to get an IP address that will work:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>ip -f inet -o addr show docker0 | awk <span style="color:#e6db74">&#39;{print $4}&#39;</span> | cut -d <span style="color:#e6db74">&#39;/&#39;</span> -f 1<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">$(</span>ip -f inet -o addr show docker0 | awk <span style="color:#e6db74">&#39;{print $4}&#39;</span> | cut -d <span style="color:#e6db74">&#39;/&#39;</span> -f 1<span style="color:#66d9ef">)</span>
 </code></pre></div><p>For example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -t owasp/zap2docker-weekly zap-baseline.py -t http://<span style="color:#66d9ef">$(</span>ip -f inet -o addr show docker0 | awk <span style="color:#e6db74">&#39;{print $4}&#39;</span> | cut -d <span style="color:#e6db74">&#39;/&#39;</span> -f 1<span style="color:#66d9ef">)</span>:10080
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker run -t owasp/zap2docker-weekly zap-baseline.py -t http://<span style="color:#66d9ef">$(</span>ip -f inet -o addr show docker0 | awk <span style="color:#e6db74">&#39;{print $4}&#39;</span> | cut -d <span style="color:#e6db74">&#39;/&#39;</span> -f 1<span style="color:#66d9ef">)</span>:10080
 </code></pre></div><h3 id="scanning-an-app-running-in-another-docker-container">Scanning an app running in another Docker container</h3>
 <p>By default Docker does not allow apps running in one container to access an app running in another container.
 To get around this restriction create a Docker network using:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker network create zapnet
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker network create zapnet
 </code></pre></div><p>And then include the Docker option <code>--net zapnet</code> when starting both your target app and the ZAP packaged scan.</p>
 
           </main>
@@ -296,7 +296,7 @@ To get around this restriction create a Docker network using:</p>
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

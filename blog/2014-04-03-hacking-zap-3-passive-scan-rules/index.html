@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -148,7 +148,7 @@ Passive scan rules are used to warn the user of potential vulnerabilities that c
 requests or manipulate the requests or responses in any way.<br>
 They typically run against all of the requests and responses that flow through ZAP.<br>
 Passive rules run in separate background thread so that they have as little effect on performance as possible.</p>
-<p>You can write passive scan rules dynamically using scripts, as we will see later in this series, but even then it's very useful to understand
+<p>You can write passive scan rules dynamically using scripts, as we will see later in this series, but even then it&rsquo;s very useful to understand
 some of the concepts and the underlying classes available to you.</p>
 <h2 id="where-to-start">Where to start</h2>
 <p>The easiest way to get started is to rip off an existing rule. The passive scan rules can be found in 3 add-ons in the
@@ -195,7 +195,7 @@ potential vulnerabilities. It supports the following fields:</p>
 <li><code>name</code>              The summary displayed to the user</li>
 <li><code>risk</code>              An indication of how serious the issue is:
 <ul>
-<li><code>Alert.RISK_INFO</code>             Informational (it's not really a vulnerability)</li>
+<li><code>Alert.RISK_INFO</code>             Informational (it&rsquo;s not really a vulnerability)</li>
 <li><code>Alert.RISK_LOW</code>               A low risk vulnerability</li>
 <li><code>Alert.RISK_MEDIUM</code>         A medium risk vulnerability</li>
 <li><code>Alert.RISK_HIGH</code>             A high risk vulnerability</li>
@@ -214,7 +214,7 @@ potential vulnerabilities. It supports the following fields:</p>
 <li><code>uri</code>                   The URI affected</li>
 <li><code>param</code>               The name of the vulnerable parameter, if relevant</li>
 <li><code>attack</code>             The attack string used (not relevant for passive vulnerabilities)</li>
-<li><code>otherInfo</code>       Information that doesn't readily fit into any of the other fields</li>
+<li><code>otherInfo</code>       Information that doesn&rsquo;t readily fit into any of the other fields</li>
 <li><code>solution</code>         Information about how to prevent the vulnerability</li>
 <li><code>reference</code>       A list of URLs giving more information about this type of vulnerability (separated by newline characters)</li>
 <li><code>evidence</code>         A string present in the request or response which can be used as evidence of the vulnerability - this will be highlighted when the related request or response is displayed</li>
@@ -223,7 +223,7 @@ potential vulnerabilities. It supports the following fields:</p>
 </ul>
 <h2 id="simple-example">Simple example</h2>
 <p>The <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleSimplePassiveScanRule.java"><code>ExampleSimplePassiveScanRule</code></a> class implements a very simple passive
-scan rule. As you will see, it just raises an alert randomly, so it isn't of any practical use. However it does demonstrate a couple of useful
+scan rule. As you will see, it just raises an alert randomly, so it isn&rsquo;t of any practical use. However it does demonstrate a couple of useful
 features:</p>
 <p>It uses the <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/model/Vulnerabilities.java"><code>Vulnerabilities</code></a> class to get the
 name, description, solution and references. This class loads vulnerability details from the
@@ -254,7 +254,7 @@ vulnerabilities. The threshold returned can be one of:</p>
 <li><code>HIGH</code>:       This indicates you should report fewer potential vulnerabilities, which might mean more false negatives</li>
 </ul>
 <p>You do not have to use the threshold - especially as it might not be relevant for the vulnerability you are testing for, but it is also a useful
-way for the user to tune how the rules work and so it's worth using if you can.</p>
+way for the user to tune how the rules work and so it&rsquo;s worth using if you can.</p>
 <h2 id="building-and-deploying">Building and deploying</h2>
 <p>The alpha passive active scan rules add-on build file is <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts">addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts</a>. All you need to do is run the Gradle task <code>:addOns:pscanrulesAlpha:copyZapAddOn</code> in the <code>zap-extensions</code> project and the relevant add-on will be built and copied to the correct location, assuming you have a ZAP core project called <code>zaproxy</code>. If you want to deploy to a different location then you can use the command line argument <code>--into=/path/to/copy/into/</code>.</p>
 <h2 id="updating-the-help">Updating the help</h2>
@@ -386,7 +386,7 @@ This is not really necessary unless you want to publish your rules.</p>
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>
