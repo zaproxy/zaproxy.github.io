@@ -15,10 +15,10 @@
     <meta property="og:title" content="ZAP 2.10 Features" />
 <meta property="og:description" content="A summary of the major features in ZAP release 2.10.0" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2021-03-29-zap-2-10-0-features/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2021-03-29-zap-2-10-0-features/images/zapbot.png" />
+<meta property="og:url" content="/blog/2021-03-29-zap-2-10-0-features/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2021-03-29-zap-2-10-0-features/images/zapbot.png" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2021-03-29T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-03-29T00:00:00+00:00" />
+
 
   
   <title>OWASP ZAP &ndash; ZAP 2.10 Features</title>
@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -170,12 +170,12 @@ The control appears just below the Main Toolbar and is aligned directly above th
 <p><img src="images/rr-max.png" alt="Request/Response pane maximized"></p>
 <p>Similarly, clicking the &gt; arrow will expand the Sites Tree, Scripts Tree, etc. (hiding the Request/Response and other work panels).</p>
 <h2 id="custom-pages">Custom Pages</h2>
-<p>One of ZAP's <a href="https://github.com/zaproxy/zaproxy/issues/9">oldest issues</a> and a piece of development work that was 3 years in the making came to fruition in 2.10.0.</p>
+<p>One of ZAP&rsquo;s <a href="https://github.com/zaproxy/zaproxy/issues/9">oldest issues</a> and a piece of development work that was 3 years in the making came to fruition in 2.10.0.</p>
 <p>Have you ever encountered an application that returned a <code>200 - Ok</code> instead of a proper <code>404 - File Not Found</code> or <code>500 - Server Error</code> (or other non-standard handling)? Users can now define custom pages for their Context(s). These will be considered by scan rules whenever a URL is considered to be part of a defined and enabled Context.</p>
 <p>This new functionality gives much more specificity and control in properly modeling and therefore assessing targets. There are a few ways this can impact scanning:</p>
 <ol>
 <li>If the scan rule considers the initial condition of the request/response. (Some scan rules skip testing requests that are in an error state to start with.)</li>
-<li>If the scan rule considers the state of the response as part of it's analysis. (Some scan rules will not raise alerts when the response is an error state.)</li>
+<li>If the scan rule considers the state of the response as part of it&rsquo;s analysis. (Some scan rules will not raise alerts when the response is an error state.)</li>
 </ol>
 <p>The configurations currently supported by this new functionality are:</p>
 <ol>
@@ -263,7 +263,7 @@ The control appears just below the Main Toolbar and is aligned directly above th
 </tbody>
 </table>
 <p>Along with allowing users to create their own scripted transforms. For example say you wanted to be able to double space a string, you could add a JavaScript script such as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">EncodeDecodeResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.zaproxy.addon.encoder.processors.EncodeDecodeResult&#34;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">EncodeDecodeResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.zaproxy.addon.encoder.processors.EncodeDecodeResult&#34;</span>);
 
 <span style="color:#75715e">/**
 </span><span style="color:#75715e"> * Process the input value and return the encoded/decoded/hashed etc. value
@@ -287,7 +287,7 @@ The control appears just below the Main Toolbar and is aligned directly above th
 <ul>
 <li><code>ZAP_AUTH_HEADER_VALUE</code> → if this is defined then its value will be added as a header to all of the requests.</li>
 <li><code>ZAP_AUTH_HEADER</code> → if this is defined then its value will be used as the header name - if it is not defined then the standard Authorization header will be used.</li>
-<li><code>ZAP_AUTH_HEADER_SITE</code> → if this is defined then header will only be included in sites who's name includes its value.</li>
+<li><code>ZAP_AUTH_HEADER_SITE</code> → if this is defined then header will only be included in sites who&rsquo;s name includes its value.</li>
 </ul>
 <p>You can learn a bit about auth header environment variables <a href="https://www.youtube.com/watch?v=rrVr-_-y6Xo&amp;t=1107s">here</a>.</p>
 <h2 id="site-tree-control">Site Tree Control</h2>
@@ -427,7 +427,7 @@ The control appears just below the Main Toolbar and is aligned directly above th
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

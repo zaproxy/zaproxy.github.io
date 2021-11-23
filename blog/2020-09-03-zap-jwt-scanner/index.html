@@ -15,10 +15,10 @@
     <meta property="og:title" content="ZAP JWT Support Add-on" />
 <meta property="og:description" content="How to scan and fuzz JWT&#39;s using OWASP ZAP" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2020-09-03-zap-jwt-scanner/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png" />
+<meta property="og:url" content="/blog/2020-09-03-zap-jwt-scanner/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/images/jwt-options-panel.png" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2020-09-03T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-09-03T00:00:00+00:00" />
+
 
   
   <title>OWASP ZAP &ndash; ZAP JWT Support Add-on</title>
@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -158,7 +158,7 @@
             <p>With the popularity of JSON Web Tokens (JWTs) there comes the need to secure their use so that they are not misused because of bad configuration, older libraries, or buggy implementations. So the JWT Support add-on is used to find such vulnerabilities and this blog explains on how to use it.</p>
 <h2 id="configuration">Configuration</h2>
 <p>As the JWT add-on includes a rule for the Active Scanner as well as Fuzzer functionality, there are configuration details which are specific for the JWT add-on.
-Under ZAP's Options dialog you will find a JWT section as shown below:
+Under ZAP&rsquo;s Options dialog you will find a JWT section as shown below:
 <img src="./images/jwt-options-panel.png" alt="JWT"></p>
 <h3 id="explanation">Explanation</h3>
 <h4 id="scanner-configuration">Scanner Configuration:</h4>
@@ -167,7 +167,7 @@ Under ZAP's Options dialog you will find a JWT section as shown below:
 <h4 id="fuzzer-configuration">Fuzzer Configuration:</h4>
 <p>Since JWT is a signed token; fuzzing field values requires resigning the JWT therefore the fuzzer requires an HMac secret key or RSA private key as per the algorithm header field of the JWT. So that the Fuzzer configuration corresponds to the same.</p>
 <h3 id="scanner-vulnerability-coverage">Scanner Vulnerability Coverage</h3>
-<p>The JWT add-on's scan rule attempts to identified vulnerabilities in both Client/Browser and Server/Library implementations.</p>
+<p>The JWT add-on&rsquo;s scan rule attempts to identified vulnerabilities in both Client/Browser and Server/Library implementations.</p>
 <p>For the Client-side it covers most of the vulnerabilities mentioned in the <a href="https://cheatsheetseries.owasp.org/cheatsheets/JSON_Web_Token_for_Java_Cheat_Sheet.html#token-storage-on-client-side">OWASP JWT CheatSheet</a>.</p>
 <p>For Server-side it mainly covers following vulnerabilities:</p>
 <ol>
@@ -178,7 +178,7 @@ Under ZAP's Options dialog you will find a JWT section as shown below:
 <li>Null Byte Injection attack</li>
 </ol>
 <h3 id="fuzzer-view">Fuzzer View</h3>
-<p>JWT Fuzzer view is different from HTTP Fuzzer view as JWT's need to be parsed, then JWT field values can be fuzzed. The following is the Fuzzer view:
+<p>JWT Fuzzer view is different from HTTP Fuzzer view as JWT&rsquo;s need to be parsed, then JWT field values can be fuzzed. The following is the Fuzzer view:
 <img src="./images/fuzzer-view.png" alt="Fuzzer View"></p>
 <p>The <strong>Signature Operation</strong> drop down is used to control the operations on the Signature field of JWT.</p>
 <ol>
@@ -319,7 +319,7 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

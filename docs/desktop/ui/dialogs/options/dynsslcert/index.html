@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -916,91 +916,7 @@
         
     <li data-depth="1" class="">
                 <a href="/docs/desktop/releases/">Releases</a>
-        <ul class="tree-branch">  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.0.0/">Release 1.0.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.1.0/">Release 1.1.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.2.0/">Release 1.2.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.3.0/">Release 1.3.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.3.1/">Release 1.3.1</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.3.2/">Release 1.3.2</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.3.3/">Release 1.3.3</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.3.4/">Release 1.3.4</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.4.0/">Release 1.4.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/1.4.1/">Release 1.4.1</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.0.0/">Release 2.0.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.1.0/">Release 2.1.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.10.0/">Release 2.10.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.11.0/">Release 2.11.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.2.1/">Release 2.2.1</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.2.2/">Release 2.2.2</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.3.0/">Release 2.3.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.3.1/">Release 2.3.1</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.4.0/">Release 2.4.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.4.1/">Release 2.4.1</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.4.2/">Release 2.4.2</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.4.3/">Release 2.4.3</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.5.0/">Release 2.5.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.6.0/">Release 2.6.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.7.0/">Release 2.7.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.8.0/">Release 2.8.0</a>
-                        </li>  
-                        <li> 
-                            <a href="/docs/desktop/releases/2.9.0/">Release 2.9.0</a>
-                        </li>
+        <ul class="tree-branch">
         </ul>
     </li>
 
@@ -1419,21 +1335,21 @@
 For doing so, ZAP has to encrypt each request before sending
 to the server and decrypt each response, which comes back.
 But, this is already done by the browser.
-That's why, the only way to decrypt or intercept the transmission,
+That&rsquo;s why, the only way to decrypt or intercept the transmission,
 is to do a &lsquo;manipulator in the middle&rsquo; approach.</p>
 <h2 id="overview">Overview</h2>
 <p><img src="/docs/desktop/images/manipulatorinthemiddle.png" alt="manipulator in the middle"></p>
 <p>In short words, every data send to and received from the server
-is encrypted/decrypted by using the original server's certificate
+is encrypted/decrypted by using the original server&rsquo;s certificate
 inside ZAP. This way, ZAP knows the plain text.
 To establish a SSL protected session from you (your browser),
-ZAP is using it's own certificate. This is the one you can create.
+ZAP is using it&rsquo;s own certificate. This is the one you can create.
 Every certificate created by ZAP will be signed for the same
 server name. In the example above, ZAP will create a certificate
-for the server's name <code>www.example.com</code>. This way, your browser
+for the server&rsquo;s name <code>www.example.com</code>. This way, your browser
 will do regular SSL encryption.</p>
 <h2 id="zap-root-ca-certificate">ZAP Root CA certificate</h2>
-<p>Imagine you're visiting multiple SSL protected sites. Every time your
+<p>Imagine you&rsquo;re visiting multiple SSL protected sites. Every time your
 browser connects such a site, a new SSL certificate is created.
 But, these certificates are not trusted by anyone (because self created by ZAP).
 In other words, your browser will not accept such certificates in the first place.
@@ -1444,8 +1360,8 @@ from the &ldquo;ZAP Root CA&rdquo; certificate.
 (For more details about chain of trust, use your favorite search engine ;-) )
 This means, you (your browser) only have to trust the ZAP Root CA once,
 and any further certificates are automatically trusted. In other words,
-once you've added the ZAP Root CA certificate to your list of trusted
-Root CAs, your browser doesn't recognize the man in the middle.</p>
+once you&rsquo;ve added the ZAP Root CA certificate to your list of trusted
+Root CAs, your browser doesn&rsquo;t recognize the man in the middle.</p>
 <p><strong>Note:</strong></p>
 <blockquote>
 <p>On iOS 10.3 and onwards, you also need to enable full trust for the root certificate: Go to Settings &gt; General &gt; About &gt; Certificate Trust Settings. Under “Enable full trust for root certificates”, turn on trust for the certificate.</p>
@@ -1460,18 +1376,18 @@ to create a new one.<br>
 Every generated Root CA certificate is 2048 bit strong (RSA with SHA1).<br>
 Every generated Root CA certificate starts with serial number &ldquo;1&rdquo;.
 Every generated Root CA certificate consists of the following identifiers:</p>
-<p><code>CN = OWASP Zed Attack Proxy Root CA</code><br>
-<code>L = 87b77fe834b0a301</code><br>
-<code>O = OWASP Root CA</code><br>
-<code>OU = OWASP ZAP Root CA</code><br>
-<code>C = XX</code><br>
-<code></code></p>
-<p>As you can see, there's a Location identifier (L) which is only a hexadecimal number.
-This number is constructed out of two 32bit hash codes: user's name and user's home directory.
+<p><code> CN = OWASP Zed Attack Proxy Root CA</code><br>
+<code> L = 87b77fe834b0a301</code><br>
+<code> O = OWASP Root CA</code><br>
+<code> OU = OWASP ZAP Root CA</code><br>
+<code> C = XX</code><br>
+<code> </code></p>
+<p>As you can see, there&rsquo;s a Location identifier (L) which is only a hexadecimal number.
+This number is constructed out of two 32bit hash codes: user&rsquo;s name and user&rsquo;s home directory.
 This way you can identify your own certificate when using multiple installations.
-But there's no way, that anyone can figure out your name from this hash code.</p>
+But there&rsquo;s no way, that anyone can figure out your name from this hash code.</p>
 <h3 id="import">Import</h3>
-<p>When you're using multiple ZAP installation and you want to use the same
+<p>When you&rsquo;re using multiple ZAP installation and you want to use the same
 Root CA certificate, so you can import it. Simply use one installation of OWASP ZAP
 to generate one Root CA certificate.<br>
 Copy the file &lsquo;OWASP ZAP/config.xml&rsquo; from your users home directory to
@@ -1483,54 +1399,54 @@ the PC, where you want to use the same certificate and press &lsquo;import&rsquo
 </ul>
 <p>You can also import certificates stored in pem files as long as they include both
 the certificate and the unencrypted private key in the following format:</p>
-<p><code>-----BEGIN CERTIFICATE-----</code><br>
-<code>MIIC9TCCAl6gAwIBAgIJANL8E4epRNznMA0GCSqGSIb3DQEBBQUAMFsxGDAWBgNV</code><br>
-<code>BAoTD1N1cGVyZmlzaCwgSW5jLjELMAkGA1UEBxMCU0YxCzAJBgNVBAgTAkNBMQsw</code><br>
-<code>CQYDVQQGEwJVUzEYMBYGA1UEAxMPU3VwZXJmaXNoLCBJbmMuMB4XDTE0MDUxMjE2</code><br>
-<code>MjUyNloXDTM0MDUwNzE2MjUyNlowWzEYMBYGA1UEChMPU3VwZXJmaXNoLCBJbmMu</code><br>
-<code>MQswCQYDVQQHEwJTRjELMAkGA1UECBMCQ0ExCzAJBgNVBAYTAlVTMRgwFgYDVQQD</code><br>
-<code>Ew9TdXBlcmZpc2gsIEluYy4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAOjz</code><br>
-<code>Shh2Xxk/sc9Y6X9DBwmVgDXFD/5xMSeBmRImIKXfj2r8QlU57gk4idngNsSsAYJb</code><br>
-<code>1Tnm+Y8HiN/+7vahFM6pdEXY/fAXVyqC4XouEpNarIrXFWPRt5tVgA9YvBxJ7SBi</code><br>
-<code>3bZMpTrrHD2g/3pxptMQeDOuS8Ic/ZJKocPnQaQtAgMBAAGjgcAwgb0wDAYDVR0T</code><br>
-<code>BAUwAwEB/zAdBgNVHQ4EFgQU+5izU38URC7o7tUJml4OVoaoNYgwgY0GA1UdIwSB</code><br>
-<code>hTCBgoAU+5izU38URC7o7tUJml4OVoaoNYihX6RdMFsxGDAWBgNVBAoTD1N1cGVy</code><br>
-<code>ZmlzaCwgSW5jLjELMAkGA1UEBxMCU0YxCzAJBgNVBAgTAkNBMQswCQYDVQQGEwJV</code><br>
-<code>UzEYMBYGA1UEAxMPU3VwZXJmaXNoLCBJbmMuggkA0vwTh6lE3OcwDQYJKoZIhvcN</code><br>
-<code>AQEFBQADgYEApHyg7ApKx3DEcWjzOyLi3JyN0JL+c35yK1VEmxu0Qusfr76645Oj</code><br>
-<code>1IsYwpTws6a9ZTRMzST4GQvFFQra81eLqYbPbMPuhC+FCxkUF5i0DNSWi+kczJXJ</code><br>
-<code>TtCqSwGl9t9JEoFqvtW+znZ9TqyLiOMw7TGEUI+88VAqW0qmXnwPcfo=</code><br>
-<code>-----END CERTIFICATE-----</code><br>
-<code>-----BEGIN PRIVATE KEY-----</code><br>
-<code>MIICXgIBAAKBgQDo80oYdl8ZP7HPWOl/QwcJlYA1xQ/+cTEngZkSJiCl349q/EJV</code><br>
-<code>Oe4JOInZ4DbErAGCW9U55vmPB4jf/u72oRTOqXRF2P3wF1cqguF6LhKTWqyK1xVj</code><br>
-<code>0bebVYAPWLwcSe0gYt22TKU66xw9oP96cabTEHgzrkvCHP2SSqHD50GkLQIDAQAB</code><br>
-<code>AoGBAKepW14J7F5e0ppa8wvOcUU7neCVafKHA4rcoxBF8t+P7UhiMVfn7uQiFk2D</code><br>
-<code>K8gXyKpLcEdRb7K7CI+3i8RkoXTRDEZU5XPMJnZsE5LWgNQ+pi3HwMEdR0vD2Iyv</code><br>
-<code>vIH3tq6mNKgDu+vozm8DWsEP96jrhVbo1U1rzyEtX46afo79AkEA/VXanGaqj4ua</code><br>
-<code>EsqfY6n/7+MTm4iPOM7qfoyI4EppJXZklc/FbcV2lAjY2Jl9U6X7WnqCPn+/zg44</code><br>
-<code>6lKWTnhAawJBAOtmi6nw8WjY6uyXZosE/0r4SkSSo20EJbBCJcgdofKT+VCGB4hp</code><br>
-<code>h6XwGdls0ca+qa5ZE1a196dpwwVre0hm88cCQQDrUm3QbHmw/39uRzOJs6dfYPKc</code><br>
-<code>vlwz69jdFpQqrFRBjVlf4/FDx3IfjpxHj0RgiEUUxcnoXmh/8qwh1fdzCrbjAkB4</code><br>
-<code>afg/chTLQUrKw5ecvW2p9+Blu20Fsv1kcDHLb/0LjU4XNrhbuz+8TlmqstOMCrPZ</code><br>
-<code>j48o5+RLKvqrpxNlMeS5AkEA6qIdW/yp5N8b1j2OxYZ9u5O//BvspwRITGM60Cps</code><br>
-<code>yemZE/ua8wm34SKvDHf5uxcmofShW17PLICrsLJ7P35y/A== </code><br>
-<code>-----END PRIVATE KEY-----</code><br>
-<code></code><br>
+<p><code> -----BEGIN CERTIFICATE-----</code><br>
+<code> MIIC9TCCAl6gAwIBAgIJANL8E4epRNznMA0GCSqGSIb3DQEBBQUAMFsxGDAWBgNV</code><br>
+<code> BAoTD1N1cGVyZmlzaCwgSW5jLjELMAkGA1UEBxMCU0YxCzAJBgNVBAgTAkNBMQsw</code><br>
+<code> CQYDVQQGEwJVUzEYMBYGA1UEAxMPU3VwZXJmaXNoLCBJbmMuMB4XDTE0MDUxMjE2</code><br>
+<code> MjUyNloXDTM0MDUwNzE2MjUyNlowWzEYMBYGA1UEChMPU3VwZXJmaXNoLCBJbmMu</code><br>
+<code> MQswCQYDVQQHEwJTRjELMAkGA1UECBMCQ0ExCzAJBgNVBAYTAlVTMRgwFgYDVQQD</code><br>
+<code> Ew9TdXBlcmZpc2gsIEluYy4wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAOjz</code><br>
+<code> Shh2Xxk/sc9Y6X9DBwmVgDXFD/5xMSeBmRImIKXfj2r8QlU57gk4idngNsSsAYJb</code><br>
+<code> 1Tnm+Y8HiN/+7vahFM6pdEXY/fAXVyqC4XouEpNarIrXFWPRt5tVgA9YvBxJ7SBi</code><br>
+<code> 3bZMpTrrHD2g/3pxptMQeDOuS8Ic/ZJKocPnQaQtAgMBAAGjgcAwgb0wDAYDVR0T</code><br>
+<code> BAUwAwEB/zAdBgNVHQ4EFgQU+5izU38URC7o7tUJml4OVoaoNYgwgY0GA1UdIwSB</code><br>
+<code> hTCBgoAU+5izU38URC7o7tUJml4OVoaoNYihX6RdMFsxGDAWBgNVBAoTD1N1cGVy</code><br>
+<code> ZmlzaCwgSW5jLjELMAkGA1UEBxMCU0YxCzAJBgNVBAgTAkNBMQswCQYDVQQGEwJV</code><br>
+<code> UzEYMBYGA1UEAxMPU3VwZXJmaXNoLCBJbmMuggkA0vwTh6lE3OcwDQYJKoZIhvcN</code><br>
+<code> AQEFBQADgYEApHyg7ApKx3DEcWjzOyLi3JyN0JL+c35yK1VEmxu0Qusfr76645Oj</code><br>
+<code> 1IsYwpTws6a9ZTRMzST4GQvFFQra81eLqYbPbMPuhC+FCxkUF5i0DNSWi+kczJXJ</code><br>
+<code> TtCqSwGl9t9JEoFqvtW+znZ9TqyLiOMw7TGEUI+88VAqW0qmXnwPcfo=</code><br>
+<code> -----END CERTIFICATE-----</code><br>
+<code> -----BEGIN PRIVATE KEY-----</code><br>
+<code> MIICXgIBAAKBgQDo80oYdl8ZP7HPWOl/QwcJlYA1xQ/+cTEngZkSJiCl349q/EJV</code><br>
+<code> Oe4JOInZ4DbErAGCW9U55vmPB4jf/u72oRTOqXRF2P3wF1cqguF6LhKTWqyK1xVj</code><br>
+<code> 0bebVYAPWLwcSe0gYt22TKU66xw9oP96cabTEHgzrkvCHP2SSqHD50GkLQIDAQAB</code><br>
+<code> AoGBAKepW14J7F5e0ppa8wvOcUU7neCVafKHA4rcoxBF8t+P7UhiMVfn7uQiFk2D</code><br>
+<code> K8gXyKpLcEdRb7K7CI+3i8RkoXTRDEZU5XPMJnZsE5LWgNQ+pi3HwMEdR0vD2Iyv</code><br>
+<code> vIH3tq6mNKgDu+vozm8DWsEP96jrhVbo1U1rzyEtX46afo79AkEA/VXanGaqj4ua</code><br>
+<code> EsqfY6n/7+MTm4iPOM7qfoyI4EppJXZklc/FbcV2lAjY2Jl9U6X7WnqCPn+/zg44</code><br>
+<code> 6lKWTnhAawJBAOtmi6nw8WjY6uyXZosE/0r4SkSSo20EJbBCJcgdofKT+VCGB4hp</code><br>
+<code> h6XwGdls0ca+qa5ZE1a196dpwwVre0hm88cCQQDrUm3QbHmw/39uRzOJs6dfYPKc</code><br>
+<code> vlwz69jdFpQqrFRBjVlf4/FDx3IfjpxHj0RgiEUUxcnoXmh/8qwh1fdzCrbjAkB4</code><br>
+<code> afg/chTLQUrKw5ecvW2p9+Blu20Fsv1kcDHLb/0LjU4XNrhbuz+8TlmqstOMCrPZ</code><br>
+<code> j48o5+RLKvqrpxNlMeS5AkEA6qIdW/yp5N8b1j2OxYZ9u5O//BvspwRITGM60Cps</code><br>
+<code>yemZE/ua8wm34SKvDHf5uxcmofShW17PLICrsLJ7P35y/A==</code><br>
+<code> -----END PRIVATE KEY-----</code><br>
+<code> </code><br>
 And yes, that example will work - its the Superfish certificate!</p>
 <h3 id="view">View</h3>
-<p>In the options dialog of ZAP you're seeing the raw bytes (hexa-decimal encoded)
-of the certificate. The option &ldquo;view&rdquo; tries to use your system's default
+<p>In the options dialog of ZAP you&rsquo;re seeing the raw bytes (hexa-decimal encoded)
+of the certificate. The option &ldquo;view&rdquo; tries to use your system&rsquo;s default
 viewing tool for &ldquo;.CER&rdquo; files. On Windows, this is typically the same,
 when exporting the certificate and double clicking on it.</p>
 <h3 id="saveexport">Save/Export</h3>
-<p>In the options dialog of ZAP you're seeing the raw bytes (hexa-decimal encoded)
+<p>In the options dialog of ZAP you&rsquo;re seeing the raw bytes (hexa-decimal encoded)
 of the certificate. Many programs are using this simple format for import/export
 functions. When clicking &lsquo;export&rsquo;, these bytes are saved to disk.
 This is equal to selecting all and doing CTRL+C (copy to clipboard) and
 save it into a new .CER file (which is simple text as you see in the dialog).</p>
 <h2 id="dynamic_certificates">Dynamic certificates</h2>
-<p>Each ZAP instance is using it's own root certificate. Of course, you can
+<p>Each ZAP instance is using it&rsquo;s own root certificate. Of course, you can
 import root certificates, to use them on multiple machines.
 When running, there will be sub-certificated created, each time a HTTPS
 resource is requested.
@@ -1539,19 +1455,19 @@ That means, the Root CA certificate is used as an issuer.</p>
 Every dynamically generated certificate is 2048 bit strong (RSA with SHA1).<br>
 Every dynamically generated certificate has a random serial number.
 Every dynamically generated certificate consists of the following identifiers:</p>
-<p><code>CN = www.example.com</code><br>
-<code>E = owasp-zed-attack-proxy@lists.owasp.org</code><br>
-<code>C = XX</code><br>
-<code>O = OWASP</code><br>
-<code>OU = Zed Attack Proxy Project</code><br>
-<code></code></p>
+<p><code> CN = www.example.com</code><br>
+<code> E = owasp-zed-attack-proxy@lists.owasp.org</code><br>
+<code> C = XX</code><br>
+<code> O = OWASP</code><br>
+<code> OU = Zed Attack Proxy Project</code><br>
+<code> </code></p>
 <p><em>Side note:
 Each time you start ZAP, internally a random serial number offset is generated.
 Every dynamically generated certificate will use this offset plus an
 increasing counter. For example, first dynamically certificate has
 serial number 2314, the second one 2315, the third one 2316 and so on.
 The reason for this is simple: browsers are also caching certificates.
-When you restart ZAP but don't restart your browser, it could happen,
+When you restart ZAP but don&rsquo;t restart your browser, it could happen,
 that the browser sees the same certificate but with different serial number.
 In the end, the browser would complain about and reject the certificate.
 By using the random offset (internally 48bit random number), the chances
@@ -1562,7 +1478,7 @@ a broken serial number within the certificate, just restart your browser ;-)</em
 <h2 id="install">Install ZAP Root CA certificate</h2>
 <p>Any HTTPS client you want to use, has to know the OWASP Root CA certificate
 as &lsquo;trusted root certificate&rsquo;. Typically you have to install manually the
-ZAP certificate into your browser's list of trusted root certificates.</p>
+ZAP certificate into your browser&rsquo;s list of trusted root certificates.</p>
 <h3 id="windows--internet-explorer">Windows / Internet Explorer</h3>
 <p>The easiest way is to click on <a href="#view">view</a> and choose
 &lsquo;Install certificate&rsquo;. Alternatively, you can save/export your generated
@@ -1581,8 +1497,8 @@ Choose &lsquo;trusted root certificates&rsquo; as store and finalize the wizard.
 <li>The OWASP ZAP Root CA should be there</li>
 </ol>
 <h3 id="mozilla-firefox">Mozilla Firefox</h3>
-<p>Firefox is using it's own certificate store. Thats why you have to
-import it twice, when you're using both browser on windows.
+<p>Firefox is using it&rsquo;s own certificate store. Thats why you have to
+import it twice, when you&rsquo;re using both browser on windows.
 Installation and late on validation is done in the same preferences dialog:</p>
 <ol>
 <li>Go to Preferences</li>
@@ -1599,8 +1515,8 @@ Installation and late on validation is done in the same preferences dialog:</p>
 When adding self generated Root CA certificates to your list of trusted
 root certificates, everyone with the root certificate can smuggle data
 into your system (browser).
-In other words when you're not testing in a safe environment, but on
-productive machines, be aware that you're opening an additional attack
+In other words when you&rsquo;re not testing in a safe environment, but on
+productive machines, be aware that you&rsquo;re opening an additional attack
 vector to your system.</p>
 <h2 id="see-also">See also</h2>
 <table>
@@ -1680,7 +1596,7 @@ vector to your system.</p>
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

@@ -15,10 +15,10 @@
     <meta property="og:title" content="ZAP FileUpload Add-on" />
 <meta property="og:description" content="How to use ZAP FileUpload Add-on for finding Vulnerabilities in file upload functionality" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2021-08-20-zap-fileupload-addon/" />
-<meta property="og:image" content="https://www.zaproxy.org/blog/2021-08-20-zap-fileupload-addon/images/fileupload-options-panel.png" />
+<meta property="og:url" content="/blog/2021-08-20-zap-fileupload-addon/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2021-08-20-zap-fileupload-addon/images/fileupload-options-panel.png" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2021-08-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-08-20T00:00:00+00:00" />
+
 
   
   <title>OWASP ZAP &ndash; ZAP FileUpload Add-on</title>
@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -159,18 +159,18 @@
 <p>File upload is becoming a more and more essential part of any application, where the user is able to upload their photo, their CV, or a video showcasing a project they are working on. The application should be able to fend off bogus and malicious files in a way to keep the application and the users safe. Generally file upload functionality is quite complex to automate and has huge attack surface hence there is a need to automate the process and also secure it. So the FileUpload add-on has scan rule which is used to find vulnerabilities in file upload functionality and this blog explains on how to use it.</p>
 <h2 id="configuration">Configuration</h2>
 <p>File upload functionality generally has 2 endpoints, one from where file is uploaded and one from where file is retrieved. It is necessary to know both these endpoints. While Active Scanning an application, file upload endpoint is already known but retrieval endpoint is not known to the scan rule hence there are configuration details specific to the retrieval endpoint.</p>
-<p>Under ZAP's Options dialog you will find the File Upload screen as shown below:</p>
+<p>Under ZAP&rsquo;s Options dialog you will find the File Upload screen as shown below:</p>
 <p><img src="./images/fileupload-options-panel.png" alt="FileUpload"></p>
 <h3 id="explanation">Explanation</h3>
 <p>For finding the URL to retrieve/view the uploaded file, here are some options:</p>
 <ol>
-<li>In some applications, the URL to retrieve the uploaded file is <strong>static</strong> and doesn't change or only the file name is changed. For handling this type of configuration, options panel has <strong>Static Location Configuration</strong> where static URL is added into URI Regex field. URI Regex field also supports the dynamic file name by <strong>${fileName}</strong> parameter, for e.g. <code>http://&lt;baseurl&gt;/${fileName}</code>.</li>
-<li>In some applications the URL to retrieve the uploaded file is present in the <strong>file upload request's response</strong>. For handling this type of configuration, options panel has <strong>Parse HTTP Response Configuration</strong> which has 2 parameters <strong>Start Identifier</strong> and <strong>End Identifier</strong>. These identifiers are used to locate the URL within the response.</li>
+<li>In some applications, the URL to retrieve the uploaded file is <strong>static</strong> and doesn&rsquo;t change or only the file name is changed. For handling this type of configuration, options panel has <strong>Static Location Configuration</strong> where static URL is added into URI Regex field. URI Regex field also supports the dynamic file name by <strong>${fileName}</strong> parameter, for e.g. <code>http://&lt;baseurl&gt;/${fileName}</code>.</li>
+<li>In some applications the URL to retrieve the uploaded file is present in the <strong>file upload request&rsquo;s response</strong>. For handling this type of configuration, options panel has <strong>Parse HTTP Response Configuration</strong> which has 2 parameters <strong>Start Identifier</strong> and <strong>End Identifier</strong>. These identifiers are used to locate the URL within the response.</li>
 <li>In some applications the URL to retrieve the uploaded file is present in the <strong>response of a different URL</strong> which is called a <strong>preflight request</strong>. E.g. Profile picture URL is part of profile page and hence we need to parse the response of the profile page to find the URL of the profile picture. For handling this type of configuration, the options panel has <strong>Dynamic Location Configuration</strong> which has a <strong>URI Regex</strong> and <strong>Parse HTTP Response Configuration</strong> which has <strong>Start Identifier</strong>, and <strong>End Identifier</strong>. So the FileUpload add-on will invoke the URI mentioned in URI Regex and then parse the response using Start Identifier and End Identifier. URI Regex field also supports the dynamic file name by <strong>${fileName}</strong>.</li>
 </ol>
-<p>As FileUpload add-on's scan rule will execute as part of OWASP ZAP Active Scan, so after filling these configuration details, run the active scan in order to find the vulnerabilities in file upload functionality.</p>
+<p>As FileUpload add-on&rsquo;s scan rule will execute as part of OWASP ZAP Active Scan, so after filling these configuration details, run the active scan in order to find the vulnerabilities in file upload functionality.</p>
 <h2 id="vulnerability-coverage">Vulnerability Coverage</h2>
-<p>The FileUpload add-on's scan rule attempts to upload various types of files with payloads and then tries to retrieve them to identify vulnerabilities present in the file upload functionality.</p>
+<p>The FileUpload add-on&rsquo;s scan rule attempts to upload various types of files with payloads and then tries to retrieve them to identify vulnerabilities present in the file upload functionality.</p>
 <p>FileUpload add-on uploads following types of files:</p>
 <ul>
 <li>HTML and its variants</li>
@@ -185,7 +185,7 @@
 <li>Remote Code Execution by uploading JSP and its variants</li>
 <li>No virus scan.</li>
 </ul>
-<p>The FileUpload add-on is currently only available for dev versions of ZAP such as weekly releases or built from source, as it depends on an up-to-date version of ZAP's core.
+<p>The FileUpload add-on is currently only available for dev versions of ZAP such as weekly releases or built from source, as it depends on an up-to-date version of ZAP&rsquo;s core.
 For more information please visit <a href="https://github.com/SasanLabs/owasp-zap-fileupload-addon">FileUpload addon</a></p>
 <p>For detailed information on FileUpload add-on configuration see the following video: <div class='embed-youtube'>
   <iframe src='https://www.youtube.com/embed/3bHjrpbLQmA' frameborder='0' allowfullscreen></iframe>
@@ -322,7 +322,7 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

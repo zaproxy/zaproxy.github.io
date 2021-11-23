@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -144,7 +144,7 @@
 The previous post in this series is: <a href="/blog/2014-04-03-hacking-zap-3-passive-scan-rules/">Hacking ZAP #3 - Passive scan rules</a></p>
 <p>Active scan rules are another relatively simple way to enhance ZAP. Active scan rules attack the server, and therefore are only run when
 explicitly invoked by the user. You should only use active scan rules against applications that you have permission to attack.<br>
-You can also write active scan rules dynamically using scripts, as we will see later in this series, but even then it's very useful to understand
+You can also write active scan rules dynamically using scripts, as we will see later in this series, but even then it&rsquo;s very useful to understand
 some of the concepts underlying classes available to you.</p>
 <h2 id="where-to-start">Where to start</h2>
 <p>As with passive rules, the easiest way to get started is to rip off an existing rule.  The (main) active scan rules can be found in 3 add-ons in the
@@ -183,7 +183,7 @@ Like passive scan rules, active scan rules support <code>AlertThreshold</code>s 
 vulnerabilities.</p>
 <h2 id="simple-example">Simple example</h2>
 <p>The <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/ExampleSimpleActiveScanRule.java"><code>ExampleSimpleActiveScanRule</code></a> class implements a very simple active scan
-rule. As you will see, it just raises an alert randomly, so it isn't of any practical use. Like the simple example passive scanner introduced in
+rule. As you will see, it just raises an alert randomly, so it isn&rsquo;t of any practical use. Like the simple example passive scanner introduced in
 the previous post it uses the <code>Vulnerabilities</code> class for the documentation associated with the vulnerability. Most of the methods should be self
 explanatory, but there are 2 that are worth explaining. The <code>getCategory()</code> method is used to group related rules in the UI. And the <code>getRisk()</code>
 method affects the order the rules are run - the rules which report higher risks are run before those that report lower risks.</p>
@@ -191,13 +191,13 @@ method affects the order the rules are run - the rules which report higher risks
 <p>The <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/ExampleFileActiveScanRule.java"><code>ExampleFileActiveScanRule</code></a> class implements a slightly more complex
 active scan rule which is equivalent to the example file passive scan rule introduced in the previous post. This class introduces another
 feature, the attack strength, which allows the user to adjust the number of attacks each rule performs. If you are implementing a rule just for
-your own use then you don't need to worry about this. However if you plan to publish it for others to use then you should consider supporting it.<br>
+your own use then you don&rsquo;t need to worry about this. However if you plan to publish it for others to use then you should consider supporting it.<br>
 The <code>getAttackStrength()</code> method returns an <code>AttackStrength</code> which can be one of:</p>
 <ul>
 <li><code>LOW</code>:         Limit to around 6 requests per scan call</li>
 <li><code>MEDIUM</code>:   Limit to around 12 requests</li>
 <li><code>HIGH</code>:       Limit to around 24 requests</li>
-<li><code>INSANE</code>:   No limit, although 1000s wouldn't be a good idea</li>
+<li><code>INSANE</code>:   No limit, although 1000s wouldn&rsquo;t be a good idea</li>
 </ul>
 <p>You should periodically check to see if the <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractPlugin.java#L596"><code>AbstractPlugin.isStop()</code></a> method
 returns true - this indicates that the user has stopped the scan so your code should immediately return. The infrastructure will check this
@@ -211,7 +211,7 @@ empty <code>scan(HttpMessage msg, String param, String value)</code> method. The
 <h2 id="building-and-deploying">Building and deploying</h2>
 <p>The alpha active scan rules add-on build file is <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/ascanrulesAlpha.gradle.kts">addOns/ascanrulesAlpha/ascanrulesAlpha.gradle.kts</a>. All you need to do is run the Gradle task <code>:addOns:ascanrulesAlpha:copyZapAddOn</code> in the <code>zap-extensions</code> project and the relevant add-on will be built and copied to the correct location, assuming you have a ZAP core project called <code>zaproxy</code>. If you want to deploy to a different location then you can use the command line argument <code>--into=/path/to/copy/into/</code>.</p>
 <h2 id="updating-the-help">Updating the help</h2>
-<p>As with passive scan rules it's good to add a short description of the rule to the help file: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/javahelp/org/zaproxy/zap/extension/ascanrulesAlpha/resources/help/contents/ascanalpha.html"><code>ascanalpha.html</code></a>.</p>
+<p>As with passive scan rules it&rsquo;s good to add a short description of the rule to the help file: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/javahelp/org/zaproxy/zap/extension/ascanrulesAlpha/resources/help/contents/ascanalpha.html"><code>ascanalpha.html</code></a>.</p>
 <p>The next post in this series will be: Hacking ZAP #5: Extensions</p>
 
           </main>
@@ -343,7 +343,7 @@ empty <code>scan(HttpMessage msg, String param, String value)</code> method. The
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -140,7 +140,7 @@
 <ul>
 <li>Create a new authentication JavaScript/ECMAScript script [1] and replace/set the script contents with the following:</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">authenticate</span>(<span style="color:#a6e22e">helper</span>, <span style="color:#a6e22e">paramsValues</span>, <span style="color:#a6e22e">credentials</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">authenticate</span>(<span style="color:#a6e22e">helper</span>, <span style="color:#a6e22e">paramsValues</span>, <span style="color:#a6e22e">credentials</span>) {
     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">loginUrl</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">paramsValues</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;Login URL&#34;</span>);
     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">csrfTokenName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">paramsValues</span>.<span style="color:#a6e22e">get</span>(<span style="color:#e6db74">&#34;CSRF Field&#34;</span>);
     <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">csrfTokenValue</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">extractInputFieldValue</span>(<span style="color:#a6e22e">getPageContent</span>(<span style="color:#a6e22e">helper</span>, <span style="color:#a6e22e">loginUrl</span>), <span style="color:#a6e22e">csrfTokenName</span>);
@@ -241,13 +241,13 @@ Password: <code>password</code></li>
 </ul>
 </li>
 </ul>
-<p>With the context and authentication set up, it's possible to spider/scan as user.</p>
+<p>With the context and authentication set up, it&rsquo;s possible to spider/scan as user.</p>
 <ul>
 <li>
 <p>Spider:</p>
 <ul>
 <li>Select &ldquo;Spider&rdquo; tab and click the button &ldquo;New Scan&rdquo;;</li>
-<li>Click &ldquo;Select&hellip;&quot;, choose the context (e.g. &ldquo;DVWAv1.9&rdquo;) and click OK;</li>
+<li>Click &ldquo;Select&hellip;&rdquo;, choose the context (e.g. &ldquo;DVWAv1.9&rdquo;) and click OK;</li>
 <li>Select the user &ldquo;Administrator&rdquo; and click &ldquo;Start Scan&rdquo;;</li>
 <li>Spider should start and spider as user &ldquo;Administrator&rdquo;. The spider can be run a second time to ensure that all URLs are found.</li>
 </ul>
@@ -256,7 +256,7 @@ Password: <code>password</code></li>
 <p>Active Scan:</p>
 <ul>
 <li>Select &ldquo;Active Scan&rdquo; tab and click the button &ldquo;New Scan&rdquo;;</li>
-<li>Click &ldquo;Select&hellip;&quot;, choose the context (e.g. &ldquo;DVWAv1.9&rdquo;) and click OK;</li>
+<li>Click &ldquo;Select&hellip;&rdquo;, choose the context (e.g. &ldquo;DVWAv1.9&rdquo;) and click OK;</li>
 <li>Select the user &ldquo;Administrator&rdquo; and click &ldquo;Start Scan&rdquo;;</li>
 <li>Active scanner should start and scan as user &ldquo;Administrator&rdquo;.</li>
 </ul>
@@ -281,7 +281,7 @@ Password: <code>password</code></li>
 <li>The constants defined in the beginning of the file might need to be changed (e.g. SOURCE_URL to match the target server/webapp).</li>
 <li>The script assumes that the message being fuzzed has a valid DVWA session.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">SOURCE_URL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost/DVWA/vulnerabilities/brute/&#34;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">SOURCE_URL</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost/DVWA/vulnerabilities/brute/&#34;</span>;
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">CSRF_TOKEN_NAME</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;user_token&#34;</span>;
 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">REQUEST_URI</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">apache</span>.<span style="color:#a6e22e">commons</span>.<span style="color:#a6e22e">httpclient</span>.<span style="color:#a6e22e">URI</span>(<span style="color:#a6e22e">SOURCE_URL</span>, <span style="color:#66d9ef">true</span>);
 
@@ -400,7 +400,7 @@ Password: <code>password</code></li>
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>

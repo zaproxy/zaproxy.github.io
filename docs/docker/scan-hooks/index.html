@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.3e3c1.css" rel="stylesheet">
+    <link href="/main.8b35b.css" rel="stylesheet">
   
 </head>
 <body>
@@ -156,17 +156,17 @@ tests you want to run.</p>
 <p>You define all the hooks you want to integrate with using python methods that
 correspond with the name of the hook. By default, ZAP scans will load hooks defined in
 <code>~/.zap_hooks.py</code>, the CWD (post 2.9.0) or you may specify the hooks location using a command line flag <code>--hook=my-hooks.py</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># vim my-hooks.py</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># vim my-hooks.py</span>
 <span style="color:#75715e"># Change the zap_ajax_spider target to hit dashboard hash </span>
 <span style="color:#75715e"># Change the crawl_depth to 2</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">zap_ajax_spider</span>(zap, target, max_time):
   zap<span style="color:#f92672">.</span>ajaxSpider<span style="color:#f92672">.</span>set_option_max_crawl_depth(<span style="color:#ae81ff">2</span>)
-  <span style="color:#66d9ef">return</span> zap, target <span style="color:#f92672">+</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">#/dashboard</span><span style="color:#e6db74">&#39;</span>, max_time
+  <span style="color:#66d9ef">return</span> zap, target <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;#/dashboard&#39;</span>, max_time
 </code></pre></div><h4 id="run-scan-with-hook-flag">Run scan with hook flag</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Run baseline directly</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Run baseline directly</span>
 zap-baseline.py -t https://example.com --hook<span style="color:#f92672">=</span>my-hooks.py
 
-<span style="color:#75715e"># or using Docker</span> 
+<span style="color:#75715e"># or using Docker </span>
 docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>    -t https://www.example.com -g gen.conf -r testreport.html --hook<span style="color:#f92672">=</span>/zap/wrk/my-hooks.py
 </code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
@@ -268,7 +268,7 @@ docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef
 
   
   
-    <script src="/main.3e3c1.js"></script>
+    <script src="/main.8b35b.js"></script>
   
 </div>
 </body>
