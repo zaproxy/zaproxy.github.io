@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
+  
+  <title>OWASP ZAP &ndash; The Eval Villain Add-on</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.ae84e.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler">
+              <img height="20" width="20" src="/img/search.svg" />
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">The Eval Villain Add-on</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday December 1, 2021</span>
+              <span class="word-count fl-r"> 1560 Words </span>
+            </section>
+            <p>Eval Villain was recently added to the ZAP Marketplace - this add-on installs the
+<a href="https://addons.mozilla.org/en-GB/firefox/addon/eval-villain/">Eval Villain web extension</a> when you
+<a href="/blog/2021-11-26-launching-browsers-with-extensions/">launch Firefox</a>.</p>
+<p>This extension allows the inspection of arguments to arbitrary native JavaScript functions. This tool has similar use cases to DOM Invader in Burp— but Eval Villain has a <em>lot</em> more configuration options. As the author of Eval Villain, I was invited to do this guest blog post and explain how to get the most out of the tool.</p>
+<h2 id="eval-villain-quick-start">Eval Villain Quick Start</h2>
+<p>To get started with Eval Villain launch Firefox from ZAP, select the Eval Villain icon on the top right hand side of Firefox, click the enable switch and reload the current web page. Now open the Firefox developer tools and go to the console there you should see a message at the top like &ldquo;[EV] Functions hooked for &laquo;url&raquo;&rdquo;. This means Eval Villain is loaded and is working for the current URL. If there are DOM interactions you may see more in the page, and if you see other messages in red you may have already found DOM XSS!</p>
+<p>More likely that&rsquo;s not the case, so let&rsquo;s fake an interaction just to see what it’s like. For the sake of example, let&rsquo;s put something into <code>eval</code> and see if Eval Villain can catch it. You can quickly experiment with Eval Villain by typing into the console.</p>
+<p>Imagine the website uses <code>eval</code> to pop an alert box and welcome you to the site. Try typing this into the console: <code>eval(‘alert(&quot;welcome to the website&quot;))</code>. You’ll see the alert box work, but you’ll also get a notification from Eval Villain. If you expand all the console groups, you should see something like this:</p>
+<p><img src="images/ev_first.png" alt="Eval Villain start"></p>
+<p>Eval Villain notified you that the hooked function <code>eval</code> was used. You can see the argument passed to eval was <code>alert(&quot;Welcome to the website!&quot;)</code>, and a stack trace shows where the function was called. The top two functions in the stack trace are actually a part of Eval Villain—but they are left in to make everything transparent and debuggable.</p>
+<p>The above result is not considered <em>interesting</em> by Eval Villain because the argument to <code>eval</code> did not contain a <em>needle</em> or something from a common DOM XSS source. Let&rsquo;s make it <em>interesting</em> by including a <em>needle</em>. A <em>needle</em> is similar to canaries in DOM Invader but with Eval Villain you can watch for multiple <em>needles</em> at once. They can also include regular expressions, which can help overcome encoding (e.g. <code>/needle(&lt;|&amp;gt;|%3c)/gi</code>). Any time a hooked function receives input containing a <em>needle</em>, Eval Villain will mark it <em>interesting</em> and highlight it. Eval Villain comes pre-configured with the <em>needle</em> &ldquo;asdf&rdquo;, so you can try out the <em>needle search</em> by typing into the console <code>eval('alert(&quot;Welcome Back User: asdf&quot;);');</code>. You should see something like this:</p>
+<p><img src="images/ev_quick_interesting2.png" alt="Eval Villain interesting asdf result"></p>
+<p>Because Eval Villain considers this result to be <em>interesting</em> it highlights the group in red, auto-opens the group and adds the <em>needle</em> field. The <em>needle</em> field is also auto-opened and contains the argument to <code>eval</code> with our needle highlighted. How Eval Villain formats output and what it auto-opens can be quickly modified in the configuration page.</p>
+<h2 id="interesting-sources-and-encodings">Interesting Sources and Encodings</h2>
+<p>Having a <em>needle</em> is nice, but it can be tedious to inject <em>needles</em> into all DOM XSS sinks. What if a website just puts all its variables into a single base64 encoded JSON string inside a URL parameter? Eval Villain takes care of this case by default—no needle is necessary.</p>
+<p>As an example, let&rsquo;s do the same experiment as above but this time the username won’t contain a <em>needle</em>. Instead we will make it a nightmare of encoding that lives inside a URL parameter. Let&rsquo;s hide the username &ldquo;admin&rdquo; inside of this encoding (we’ll let the console do the work):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript">window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#39;?url_param=&#39;</span> <span style="color:#f92672">+</span> encodeURI(<span style="color:#a6e22e">btoa</span>(encodeURIComponent(encodeURI(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({<span style="color:#a6e22e">stuff</span><span style="color:#f92672">:</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,{<span style="color:#e6db74">&#34;morestuff&#34;</span><span style="color:#f92672">:</span>[<span style="color:#66d9ef">false</span>,{<span style="color:#a6e22e">username</span><span style="color:#f92672">:</span><span style="color:#a6e22e">btoa</span>(<span style="color:#e6db74">&#34;admin&#34;</span>)}]}]})))))
+</code></pre></div><p>Now let&rsquo;s pretend the website parsed this new ugly string and welcomed the contained &ldquo;admin&rdquo; user with: <code>eval('alert(&quot;Welcome back admin&quot;)')</code>.</p>
+<p><img src="images/ev_encoded1.png" alt="Eval Villain interesting asdf result"></p>
+<p>Eval Villain figured it out! Although the &ldquo;admin&rdquo; string was not a <em>needle</em>, Eval VIllain decoded it from the <code>url_param</code> query parameter. So when &ldquo;admin&rdquo; was seen hitting a hooked function, it considered that call <em>interesting</em>. If this was a real test, the next step would be to replace &ldquo;admin&rdquo; with our own payload and try to get XSS; which means reproducing the encoding ourselves. Thankfully, Eval Villain can help with this too!</p>
+<p>Expand the &ldquo;Encoder function&rdquo; console group and you should see something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#a6e22e">encoder</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">y</span>) =&gt; {
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">btoa</span>(<span style="color:#a6e22e">x</span>);
+    {
+        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_</span> <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;stuff&#34;</span><span style="color:#f92672">:</span>[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,{<span style="color:#e6db74">&#34;morestuff&#34;</span><span style="color:#f92672">:</span>[<span style="color:#66d9ef">false</span>,{<span style="color:#e6db74">&#34;username&#34;</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#34;YWRtaW4=&#34;</span>}]}]};
+        <span style="color:#a6e22e">_</span>[<span style="color:#e6db74">&#34;stuff&#34;</span>][<span style="color:#ae81ff">3</span>][<span style="color:#e6db74">&#34;morestuff&#34;</span>][<span style="color:#ae81ff">1</span>][<span style="color:#e6db74">&#34;username&#34;</span>]<span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>;
+        <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">_</span>);
+    }
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> encodeURIComponent(<span style="color:#a6e22e">x</span>);
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> encodeURIComponent(<span style="color:#a6e22e">x</span>);
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">btoa</span>(<span style="color:#a6e22e">x</span>);
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URL</span>(window.<span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>);
+    <span style="color:#75715e">// next line might need some changes
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">searchParams</span>.<span style="color:#a6e22e">set</span>(<span style="color:#e6db74">&#39;url_param&#39;</span>, decodeURIComponent(<span style="color:#a6e22e">x</span>));
+    <span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">href</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">_</span>.<span style="color:#a6e22e">href</span>, <span style="color:#a6e22e">param</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">x</span>};
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">y</span>) window.<span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">x</span>.<span style="color:#a6e22e">href</span>;
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">x</span>;
+}<span style="color:#75715e">//
+</span></code></pre></div><p>This is a guess by Eval Villain as to how the website is encoding the URL parameter. You can see Eval Villain was able to guess the encoding quite well. It wasn’t perfect—it got <code>encodeURIComponent</code> and <code>encodeURI</code> confused—but it’s likely close enough to pass. Using this function you can quickly encode and prototype XSS payloads, then use Eval Villain output to see how those characters were encoded/filtered.</p>
+<h2 id="dom-xss-sources">DOM XSS Sources</h2>
+<p>We have seen Eval Villain detect <em>needles</em> and URL parameters inside of DOM XSS sinks. It also looks for <em>interesting</em> strings in the URL fragment, window name, local storage and document cookie. The last two might seem a bit strange, as they are typically only thought of as being self-XSS. So Eval Villain uses a different coloring theme for those findings, the default being yellow. I decided to include them because these self-XSS vectors are often left unpatched and can function as a reflected XSS upgrade. I like to think of them as XSS batteries.</p>
+<p>For example, during one audit I received two notifications from Eval Villain. One turned out to be DOM XSS via the window name of an iframe hosted on the website. The name was heavily encoded but Eval Villain provided the encoder function to quickly dev a proof of concept and verify the finding. The second finding was for a DOM XSS via local storage. Again the provided encoder function allowed me to verify this self-XSS was valid. Of course, Self-XSS by itself is worthless, nor is the iframe XSS very exciting on its own—it runs only once. But by combining them I had a <strong>persistent</strong> DOM XSS vulnerability that was completely invisible to server logs, IDS and web application firewalls. Never is the local storage entry or window name sent to the server; everything happened in the victim’s browser. So keeping an eye on local storage and document cookies can help you upgrade the severity of an XSS finding — and maybe get you a bigger bounty payout.</p>
+<p>Currently Eval Villain does not keep an eye on window postmessage as a source. It&rsquo;s possible to hook this API and monitor it in Eval Villain — just be judicious about enabling normal results, as this will cause some websites to slow to a crawl.</p>
+<h2 id="inner-workings">Inner Workings</h2>
+<p>Knowing just a bit about how Eval Villain works goes a long way toward understanding its advantages and limitations. Eval Villain is built around the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contentScripts/register">contentscripts.register</a> API.
+This Firefox-only API allows Eval Villain to register a content script <strong>with</strong> the user
+<a href="https://github.com/swoops/eval_villain/blob/master/src/js/background.js#L349-L357">configuration included</a>.
+In essence, Eval Villain is building the user configuration into a JavaScript string and forcing it into a web page before the web page has had a chance to run its own JavaScript. Since there is no race with the web page, Eval Villain will even hook functions before inline JavaScript has a chance to run on a local &ldquo;file://&rdquo; scheme.</p>
+<p><img src="images/ev_inline.png" alt="Eval Villain interesting asdf result"></p>
+<p>Since DOM Invader works on Chrome which lacks <code>contentscripts.register</code>, the browser must be restarted when a user configuration change is made. With Eval Villain, it&rsquo;s just a matter of refreshing the page. This is also the reason Eval Villain works exclusively on Firefox.</p>
+<p>The flexibility afforded by not requiring a restart allows Eval Villain to handle a large set of configuration options without becoming too cumbersome to use. You can see the detailed configuration options by clicking the Eval Villain icon and then clicking &ldquo;configuration&rdquo;. This is where you can add/delete functions, needles or targets. You can even set arbitrary CSS on the <code>console</code> output to theme it any way you like. The options I find myself using the most have been added into the icon menu itself.</p>
+<p>Easy config changing means you can adapt quickly to websites. For example, many websites abuse <code>eval</code>’s crazy scoping logic. So when DOM Invader or Eval Villain hook <code>eval</code>, changing it from <a href="https://github.com/swoops/eval_villain/issues/2">&ldquo;direct eval&rdquo; to &ldquo;indirect eval&rdquo;</a>, the website breaks. If you suspect this is the case, try disabling <code>eval</code> in the icon menu. In these situations, unfortunately <code>eval</code> will have to be audited manually, but Eval Villain will still be hooking <code>Range.createContextualFragment</code>, <code>.innerHTML</code> and whatever else you configured.</p>
+<h2 id="thanks">Thanks</h2>
+<p>Version 1.0 of Eval Villain was published on Aug 2, 2018. I&rsquo;d found it quite useful in my own work and was excited to share it with the world. But I don’t get out into the world too much, so Eval Villain has gone largely unnoticed. My thanks to the ZAP team for keeping an eye out for neat but little-known tools like this and for reaching out to me to have it included in their own neat tool.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2021-11-26-launching-browsers-with-extensions/"> Launching Browsers with Extensions</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/bemodtwz_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Dennis Goodlett
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/bemodtwz">@bemodtwz</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#eval-villain-quick-start">Eval Villain Quick Start</a></li>
+    <li><a href="#interesting-sources-and-encodings">Interesting Sources and Encodings</a></li>
+    <li><a href="#dom-xss-sources">DOM XSS Sources</a></li>
+    <li><a href="#inner-workings">Inner Workings</a></li>
+    <li><a href="#thanks">Thanks</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/browser/">browser</a> </li>
+           
+           <li> <a href="/tags/firefox/">firefox</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2021-12-01-the-eval-villain-add-on/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2021 the ZAP Dev Team</br>
+      OWASP is a registered trademark of the OWASP Foundation, Inc.
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ae84e.js"></script>
+  
+</div>
+</body>
+</html>
