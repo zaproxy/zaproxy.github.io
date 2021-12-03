@@ -186,6 +186,16 @@ A valid URI will include at least the scheme and the host. The host must be runn
     </item>
     
     <item>
+      <title>Network API</title>
+      <link>/docs/desktop/addons/network/api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/network/api/</guid>
+      <description>Network API The following operations are added to the API:
+Actions  generateRootCaCert: Generates a new Root CA certificate, used to issue server certificates. importRootCaCert (filePath*): Imports a Root CA certificate to be used to issue server certificates.  filePath: The file system path to the PEM file, containing the certificate and private key.</description>
+    </item>
+    
+    <item>
       <title>OAST Tab</title>
       <link>/docs/desktop/addons/oast-support/tab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -380,6 +390,17 @@ It is made up of:
     </item>
     
     <item>
+      <title>Server Certificates</title>
+      <link>/docs/desktop/addons/network/options/servercertificates/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/network/options/servercertificates/</guid>
+      <description>Server Certificates Note: This feature is only available in weekly releases and versions after 2.11.
+This screens allows to manage and configure the root CA certificate and issued certificates.
+OWASP ZAP allows you to transparently decrypt SSL connections. For doing so, ZAP has to encrypt each request before sending to the server and decrypt each response, which comes back.</description>
+    </item>
+    
+    <item>
       <title>Server-Sent Events tab</title>
       <link>/docs/desktop/addons/server-sent-events/tab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -485,6 +506,17 @@ Starting Point The URL which the AJAX spider will start crawling from, or a cont
       <description>Automation Framework - Environment This section of the YAML configuration file defines the applications which the rest of the jobs can act on.
 The Automation Framework supports a subset of the authentication mechanisms supported by ZAP.
 env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: method: # String, one of &#39;manual&#39;, &#39;http&#39; - in time will cover all methods supported by ZAP parameters: hostname: # String, only for &#39;http&#39; method port: # Int, only for &#39;http&#39; method realm: # String, only for &#39;http&#39; method verification: method: # String, one of &#39;response&#39;, &#39;request&#39;, &#39;both&#39;, &#39;poll&#39; loggedInRegex: # String, regex pattern for determining if logged in loggedOutRegex: # String, regex pattern for determining if logged out pollFrequency: # Int, the poll frequency, only for &#39;poll&#39; verification pollUnits: # String, the poll units, one of &#39;requests&#39;, &#39;seconds&#39;, only for &#39;poll&#39; verification pollUrl: # String, the URL to poll, only for &#39;poll&#39; verification pollPostData: # String, post dat to include in the poll, only for &#39;poll&#39; verification pollAdditionalHeaders: # List of additional headers for poll request, only for &#39;poll&#39; verification - header: # The header name value: # The header value sessionManagement: method: # String, one of &#39;cookie&#39;, &#39;http&#39;, &#39;script&#39; script: # String, path to script, only for &#39;script&#39; session management scriptEngine: # String, the name of the script engine to use, only for &#39;script&#39; session management users: # List of one or more users to use for authentication - name: # String, the name to be used by the jobs username: # String, the username to use when authenticating, vars supported password: # String, the password to use when authenticating, vars supported vars: # List of 0 or more custom variables to be used throughout the config file myVarOne: CustomConfigVarOne # Can be used as ${myVarOne} anywhere throughout the config myVarTwo: ${myVarOne}.</description>
+    </item>
+    
+    <item>
+      <title>Command Line</title>
+      <link>/docs/desktop/addons/network/cmdline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/network/cmdline/</guid>
+      <description>Command Line Note: This feature is only available in weekly releases and versions after 2.11.
+The Network add-on supports the following command line options:
+           -certload Loads the Root CA certificate from the specified file.    -certpubdump Dumps the Root CA certificate into the specified file, this is suitable for importing into browsers.</description>
     </item>
     
     <item>
