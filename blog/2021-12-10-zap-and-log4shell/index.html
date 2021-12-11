@@ -8,10 +8,10 @@
   
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="ZAP and Log4Shell"/>
-<meta name="twitter:description" content="ZAP appears to be impacted by the Log4Shell vulnerability - CVE-2021-44228. This blog post details our initial advice and the ongoing investigations we are making."/>
+<meta name="twitter:description" content="ZAP appears to be impacted by the Log4Shell vulnerability - CVE-2021-44228. We have released ZAP 2.11.1 which fixes the problem, this blog post gives more information and the impact on older versions of ZAP."/>
 
     <meta property="og:title" content="ZAP and Log4Shell" />
-<meta property="og:description" content="ZAP appears to be impacted by the Log4Shell vulnerability - CVE-2021-44228. This blog post details our initial advice and the ongoing investigations we are making." />
+<meta property="og:description" content="ZAP appears to be impacted by the Log4Shell vulnerability - CVE-2021-44228. We have released ZAP 2.11.1 which fixes the problem, this blog post gives more information and the impact on older versions of ZAP." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/blog/2021-12-10-zap-and-log4shell/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2021-12-10T00:00:00+00:00" />
@@ -36,7 +36,7 @@
   
   
   
-    <link href="/main.7c3fb.css" rel="stylesheet">
+    <link href="/main.02aad.css" rel="stylesheet">
   
 </head>
 <body>
@@ -151,21 +151,25 @@
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
               Posted <span class="post-date">Friday December 10, 2021</span>
-              <span class="word-count fl-r"> 307 Words </span>
+              <span class="word-count fl-r"> 276 Words </span>
             </section>
             <h2 id="overview">Overview</h2>
 <p>A vulnerability has been found in Log4j which can result in Remote Code Execution (RCE):
 <a href="https://www.lunasec.io/docs/blog/log4j-zero-day/">CVE-2021-44228</a> also known as <a href="https://www.randori.com/blog/cve-2021-44228/">Log4Shell</a>.</p>
 <p>ZAP 2.11.0 and the previous weekly and dev versions of ZAP use Log4j 2.14.1 which is known to be vulnerable.</p>
-<p>This blog post details our initial advice and the ongoing investigations we are making.</p>
-<h2 id="initial-advice">Initial Advice</h2>
+<h2 id="zap-2111">ZAP 2.11.1</h2>
+<p>ZAP 2.11.1 has been released. This upgrades to use a non-vulnerable version of the Log4J library.</p>
+<p>We strongly recommend that all users <a href="/download/">upgrade</a> to this release ASAP.</p>
+<p>All of the packages maintained by the core team have been updated and we have notified all of the
+<a href="/3rd-party-package-maintenance/">3rd Party Package Maintainers</a> that we are aware of.</p>
+<h2 id="updated-advice-for-older-versions">Updated Advice for Older Versions</h2>
 <p>First the good news - ZAP does <strong>not</strong> typically log strings that could be used to exploit this vulnerability out of the box,
 so the exposure to this vulnerability should be limited.</p>
 <p>If you have not changed the default ZAP Log4j settings and have not exposed the ZAP API to untrusted addresses (which we do not advise)
 then at this stage we believe that you will not be vulnerable.</p>
 <p>In particular if you are running ZAP in a container like Docker and have not exposed the ZAP API outside of the container then you
 should be fine.</p>
-<p>However we do recommend that you:</p>
+<p>If you cannot update to 2.11.1 right now then we do recommend that you:</p>
 <ul>
 <li>Do not expose the ZAP API to untrusted addresses</li>
 <li>Do not run ZAP with debug logging on, unless you are only testing trusted websites</li>
@@ -178,14 +182,7 @@ and change all logging levels to &ldquo;off&rdquo; e.g.</p>
 logger.paros.level = off
 
 logger.zap.level = off
-</code></pre><h2 id="patching">Patching</h2>
-<p>We are working on patching and releasing new versions of ZAP and will update this blog as soon as those versions are available.</p>
-<p>The ZAP core has been <a href="https://github.com/zaproxy/zaproxy/pull/6965">patched</a> and we can confirm that it is not vulnerable to this vulnerability.</p>
-<p>The Live and Weekly docker releases have also now been updated.</p>
-<p>We are in the process of generating and releasing ZAP 2.11.1.</p>
-<h2 id="ongoing-investigations">Ongoing Investigations</h2>
-<p>We are continuing our investigations and will update this blog as soon as we have more information to share.</p>
-
+</code></pre>
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
@@ -222,9 +219,8 @@ logger.zap.level = off
           <nav id="TableOfContents">
   <ul>
     <li><a href="#overview">Overview</a></li>
-    <li><a href="#initial-advice">Initial Advice</a></li>
-    <li><a href="#patching">Patching</a></li>
-    <li><a href="#ongoing-investigations">Ongoing Investigations</a></li>
+    <li><a href="#zap-2111">ZAP 2.11.1</a></li>
+    <li><a href="#updated-advice-for-older-versions">Updated Advice for Older Versions</a></li>
   </ul>
 </nav>
 
@@ -306,7 +302,7 @@ logger.zap.level = off
 
   
   
-    <script src="/main.7c3fb.js"></script>
+    <script src="/main.02aad.js"></script>
   
 </div>
 </body>
