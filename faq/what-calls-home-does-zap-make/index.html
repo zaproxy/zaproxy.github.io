@@ -191,8 +191,12 @@ GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/file
 <p>From late 2021 (for those users who update add-ons) this request is made to <a href="https://news.zaproxy.org">https://news.zaproxy.org</a> - the same information will be supplied as
 for the Check for Updates service.</p>
 <h3 id="telemetry">Telemetry</h3>
-<p>We plan to add support for a new Telemetry Service as per the <a href="/blog/2021-10-25-zap-telemetry-plans/">ZAP Telemetry Plans</a> blog post.</p>
-<p>This FAQ will be updated when the service is in use.</p>
+<p>From late 2021 (for those users who update add-ons) the <a href="/docs/desktop/addons/call-home/">Call Home</a> add-on will by default send data to the Telemetry Service as per the <a href="/blog/2021-10-25-zap-telemetry-plans/">ZAP Telemetry Plans</a> blog post.</p>
+<p>One call will be made when ZAP starts up, reporting environmental data and the add-ons installed, and then one call will be made when the
+ZAP session changes, reporting selected statistics.</p>
+<p>The last set of data sent is shown in the <a href="/docs/desktop/addons/call-home/">Call Home</a> Options panel.</p>
+<p>The telemetry calls can be disabled via the <a href="/docs/desktop/addons/call-home/">Call Home</a> Options panel or by using the <code>-silent</code>
+<a href="/docs/desktop/cmdline/">command line option</a> also detailed below.</p>
 <h3 id="browser-launch-start-page---discontinued">Browser Launch Start Page - Discontinued</h3>
 <p>By default the Quick Start add-on makes one request to see if there is a new
 Quick Start page - this is the HTML shown by default when a browser is
@@ -201,9 +205,9 @@ launched from ZAP.</p>
 GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/files/launch/2.7.html">2.7.html</a></p>
 <p>This was discontinued from ZAP 2.8.0</p>
 <h2 id="silent-mode">Silent Mode</h2>
-<p>Starting from ZAP 2.8.0 the &lsquo;-silent&rsquo; command line option can be used to prevent ZAP from making any &lsquo;calls home&rsquo;.
+<p>Starting from ZAP 2.8.0 the <code>-silent</code> command line option can be used to prevent ZAP from making any &lsquo;calls home&rsquo;.
 If you explicitly ask ZAP to check for updates then it will still call the Check for Updates service.</p>
-<p>Note that some third party add-ons may not obey the &lsquo;-silent&rsquo; option.</p>
+<p>Note that some third party add-ons may not obey the <code>-silent</code> option.</p>
 <p>This FAQ will be updated to detail any of the add-ons in the <a href="/addons/">ZAP Marketplace</a>
 that fall into this category.</p>
 
