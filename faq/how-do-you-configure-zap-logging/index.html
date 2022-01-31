@@ -182,18 +182,18 @@ logger.zap.level = debug
 </code></pre>
 <p>Logging can be selectively enabled using a <a href="/docs/desktop/addons/script-console/#script-types">Stand Alone script</a> while ZAP is
 running (the example below is a JavaScript script):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Level</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.apache.logging.log4j.Level&#34;</span>)
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">LoggerContext</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.apache.logging.log4j.core.LoggerContext&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Configurator</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.apache.logging.log4j.core.config.Configurator&#34;</span>);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Level</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.apache.logging.log4j.Level&#34;</span>);
 
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LoggerContext</span>.<span style="color:#a6e22e">getContext</span>()
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">config</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">getConfiguration</span>()
-
-<span style="color:#75715e">// The following will enable DEBUG logging for the API
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">getLoggerConfig</span>(<span style="color:#e6db74">&#34;org.zaproxy.zap.extension.api.API&#34;</span>).<span style="color:#a6e22e">setLevel</span>(<span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>)
-<span style="color:#75715e">// The following will enable DEBUG logging for the Session Fixation scan rule
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">config</span>.<span style="color:#a6e22e">getLoggerConfig</span>(<span style="color:#e6db74">&#34;org.zaproxy.zap.extension.ascanrulesBeta.SessionFixationScanRule&#34;</span>).<span style="color:#a6e22e">setLevel</span>(<span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>)
-
-<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">updateLoggers</span>()
+<span style="color:#75715e">// https://logging.apache.org/log4j/2.x/javadoc.html
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Configurator</span>.<span style="color:#a6e22e">setLevel</span>({
+  <span style="color:#75715e">// The following will enable DEBUG logging for the API
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#34;org.zaproxy.zap.extension.api.API&#34;</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>,
+  <span style="color:#75715e">// The following will enable DEBUG logging for the Session Fixation scan rule
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#34;org.zaproxy.zap.extension.ascanrulesBeta.SessionFixationScanRule&#34;</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>,
+  <span style="color:#75715e">// The following will enable DEBUG logging for the spider add-on
+</span><span style="color:#75715e"></span>  <span style="color:#e6db74">&#34;org.zaproxy.addon.spider&#34;</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">Level</span>.<span style="color:#a6e22e">DEBUG</span>,
+});
 </code></pre></div>
           </main>
       </article>
