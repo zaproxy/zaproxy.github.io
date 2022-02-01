@@ -1394,8 +1394,7 @@
 </ol>
           <h1 id="automation-framework---environment">Automation Framework - Environment</h1>
 <p>This section of the YAML configuration file defines the applications which the rest of the jobs can act on.</p>
-<p>The Automation Framework supports all of the <a href="/docs/desktop/addons/automation-framework/authentication/">authentication</a> mechanisms supported by ZAP
-with the exception of scripts, which will be coming soon.</p>
+<p>The Automation Framework supports all of the <a href="/docs/desktop/addons/automation-framework/authentication/">authentication</a> mechanisms supported by ZAP.</p>
 <pre tabindex="0"><code>env:                                   # The environment, mandatory
   contexts :                           # List of 1 or more contexts, mandatory
     - name: context 1                  # Name to be used to refer to this context in other jobs, mandatory
@@ -1403,14 +1402,16 @@ with the exception of scripts, which will be coming soon.</p>
       includePaths:                    # An optional list of regexes to include
       excludePaths:                    # An optional list of regexes to exclude
       authentication:
-        method:                        # String, one of 'manual', 'http', 'form' or 'json' - script support is planned as well
-        parameters:                    # All of the parameters support vars except for the port 
-          hostname:                    # String, only for 'http' method
-          port:                        # Int, only for 'http' method
-          realm:                       # String, only for 'http' method
-          loginPageUrl:                # String, the login page URL to read prior to making the request, only for 'form' or 'json' methods
-          loginRequestUrl:             # String, the login URL to request, only for 'form' or 'json' methods
-          loginRequestBody:            # String, the login request body - if not supplied a GET request will be used, only for 'form' or 'json' methods
+        method:                        # String, one of 'manual', 'http', 'form', 'json' or 'script'
+        parameters:                    # May include any required for scripts. All of the parameters support vars except for the port 
+          hostname:                    # String, only for 'http' authentication
+          port:                        # Int, only for 'http' authentication
+          realm:                       # String, only for 'http' authentication
+          loginPageUrl:                # String, the login page URL to read prior to making the request, only for 'form' or 'json' authentication
+          loginRequestUrl:             # String, the login URL to request, only for 'form' or 'json' authentication
+          loginRequestBody:            # String, the login request body - if not supplied a GET request will be used, only for 'form' or 'json' authentication
+          script:                      # String, path to script, only for 'script' authentication
+          scriptEngine:                # String, the name of the script engine to use, only for 'script' authentication
         verification:
           method:                      # String, one of 'response', 'request', 'both', 'poll'
           loggedInRegex:               # String, regex pattern for determining if logged in
@@ -1424,12 +1425,14 @@ with the exception of scripts, which will be coming soon.</p>
             value:                     # The header value
       sessionManagement:
         method:                        # String, one of 'cookie', 'http', 'script'
-        script:                        # String, path to script, only for 'script' session management
-        scriptEngine:                  # String, the name of the script engine to use, only for 'script' session management
-      users:                           # List of one or more users to use for authentication
+        parameters:                    # List of 0 or more parameters - may include any required for scripts
+          script:                      # String, path to script, only for 'script' session management
+          scriptEngine:                # String, the name of the script engine to use, only for 'script' session management
+      users:                           # List of one or more users available to use for authentication
       - name:                          # String, the name to be used by the jobs
-        username:                      # String, the username to use when authenticating, vars supported
-        password:                      # String, the password to use when authenticating, vars supported
+        credentials:                   # List of user credentials - may include any required for scripts
+          username:                    # String, the username to use when authenticating, vars supported
+          password:                    # String, the password to use when authenticating, vars supported
   vars:                                # List of 0 or more custom variables to be used throughout the config file
     myVarOne: CustomConfigVarOne       # Can be used as ${myVarOne} anywhere throughout the config
     myVarTwo: ${myVarOne}.VarTwo       # Can refer other vars    
@@ -1438,6 +1441,10 @@ with the exception of scripts, which will be coming soon.</p>
     failOnWarning: false               # If set exit on a warning
     progressToStdout: true             # If set will write job progress to stdout
 </code></pre><p>System environment variables can also be used in the config in the same manner as above. In case there are two variables with the same name, the value of the system variable would be preferred.</p>
+<h3 id="format-changes">Format Changes</h3>
+<p>Originally the &lsquo;engine&rsquo; and &lsquo;scriptEngine&rsquo; fields were directly under the &lsquo;sessionManagement&rsquo; element - this is still supported when reading plans but they will now always be output under the &lsquo;parameters&rsquo; element.</p>
+<p>Originally the &lsquo;username&rsquo; and &lsquo;password&rsquo; fields were directly under the user element - this is still supported when reading plans but they
+will now always be output under the &lsquo;credentials&rsquo; element.</p>
 
         </div>
       </div>
