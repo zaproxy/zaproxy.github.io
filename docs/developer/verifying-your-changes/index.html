@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <title>OWASP ZAP &ndash; Development Rules and Guidelines</title>
+  <title>OWASP ZAP &ndash; Verifying Your Changes</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -148,7 +148,7 @@
 
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Development Rules and Guidelines</h1>
+      <h1 class="text--white">Verifying Your Changes</h1>
   </div>
 </section>
 <section class="wrapper flex py-70 on-sm-stack" data-kind="page">
@@ -165,58 +165,34 @@
     </li>
 
     <li>
-        <a href='/docs/developer/dev-rules-and-guidelines/'>Development Rules and Guidelines</a>
+        <a href='/docs/developer/verifying-your-changes/'>Verifying Your Changes</a>
     </li>
 
 
 </ol>
-    <main><p>This may look like a long list of rules but hopefully many of them are just good development practice.</p>
-<p>If you are just getting started with ZAP development then do not worry to much about them,
-but if you plan to make bigger contributions then you should check them before making too many changes that you might need to rework.</p>
-<h3 id="general-guidelines">General Guidelines</h3>
+    <main><h3 id="code-formatting">Code Formatting</h3>
+<p>The ZAP code must conform to standard formatting rules - if any changes do not conform then they will fail the build.</p>
+<p>Fortunately you do not have to worry about these too much - just run the task: <code>./gradlew spotlessApply</code>.</p>
+<h3 id="linting">Linting</h3>
+<p>While not currently mandatory, we do recommend running <a href="https://www.sonarlint.org/">SonarLint</a> against any changes you make and fixing anything that it reports. SonarLint has plugins for the most popular IDEs.</p>
+<p>PRs submitted to the ZAP repos will automatically be scanned by <a href="https://lgtm.com/">lgtm</a> and any problems reported will need to be fixed before the PR can be merged.</p>
+<h3 id="existing-unit-tests">Existing Unit Tests</h3>
+<p>The existing ZAP Unit Tests can be run using the task: <code>./gradlew test</code>.</p>
+<p>These tests are also run when a PR is submitted and all of them will need to pass before a PR can be merged.</p>
+<h3 id="new-unit-tests">New Unit Tests</h3>
+<p>Where possible all developments should include regression tests.</p>
+<p>Function names should be descriptive, and use standard camelCaps (camelCase). Examples:</p>
 <ul>
-<li>Ease of use is key. New functionality is great too, but it should not make ZAP more complicated to use.</li>
-<li>Only check in a consistent set of changes. They dont have to fully implement new functionality, but they must not break existing functionality.</li>
-<li>All significant new code should be under the <a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/org/zaproxy/zap">org.zaproxy.zap</a> package.</li>
-<li>All code under the <a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/org/zaproxy/zap">org.zaproxy.zap</a> package should compile without any warnings.</li>
-<li>ZAP and ZAP add-ons should not depend on an internet connection to work, so all resources required should be bundled with ZAP or the add-on</li>
-<li>Add-ons should not make unsolicited external requests except for the purposes of checking for updates to resources, and even then only if explicitly approved by the user</li>
-<li>Please create <a href="https://github.com/zaproxy/zaproxy/issues">Issues</a> for all significant changes and post messages to the <a href="https://groups.google.com/group/zaproxy-develop">development group</a> so that everyone knows whats going on</li>
-<li>All functionality should be fully documented in the <a href="https://github.com/zaproxy/zap-core-help/tree/master/addOns/help/">help pages</a>. However the documentation can be added after the code has been checked in as long as this is done before the next release. Note that the wiki help pages must not be changed manually - these reflect the last release, and are generated from the help pages using a script.</li>
+<li><code>shouldRaiseAlertIfPasswordFieldAndFormHasNoAutocomplete()</code></li>
+<li><code>shouldSetValuesToFieldsWithNoValueWhenParsingGetForm()</code></li>
+<li><code>shouldAppendSessionFiletypeAndRetrieveSessionFileFromRelativePath()</code>.</li>
 </ul>
-<h3 id="licensing-guidelines">Licensing Guidelines</h3>
+<p>Comments should be used to aide in increasing readability and classifying/tagging portions of Unit Test functions, such as: <code>//Given</code>, <code>//When</code>, <code>//Then</code>. Example:</p>
 <ul>
-<li>Any changes to the Paros classes (under the <a href="https://github.com/zaproxy/zaproxy/tree/develop/zap/src/main/java/org/parosproxy/paros">org.parosproxy.paros</a> packages) must be commented at the beginning of the class (This is a requirement of the Paros licence), and the comments should start with <code>// ZAP: YYYY/MM/DD</code></li>
-<li>Make sure that any 3rd party code and libraries you introduce is licensed in a compatible way with the Apache v2 license. GPL code and libraries <em>can</em> be used but only with the explicit consent of the original authors. Ask on the <a href="https://groups.google.com/group/zaproxy-develop">Dev group</a> if you are unsure.</li>
-<li>If you copy code (having checked the license as above) you should always acknowledge the original author and if possible include a link to the original version</li>
+<li><a href="https://github.com/zaproxy/zaproxy/blob/4741552cebc0d860b0bb2cc605b0dcffe42ece83/zap/src/test/java/org/zaproxy/zap/model/SessionUtilsUnitTest.java#L45">1 - SessionUtilsUnitTest.java</a></li>
 </ul>
-<h3 id="ui-guidelines">UI Guidelines</h3>
-<ul>
-<li>All strings that are displayed on the UI must be internationalized.</li>
-<li>The UI should be consistent, so all controls should look similar and act in the same way. We can change the UI look and feel, but see the above point.</li>
-<li>Any significant changes (as opposed to additions) to the UI should initially be checked in as a non default option. Once everyone else has had a chance to try the changes out we can come to a collective decision as to which option should be the new default (old options can also be completely dropped).</li>
-<li>There should be a clean split between the functionality and the UI. OK, so thats not true of a lot of the existing code, but new code should have that split, and hopefully over time we&rsquo;ll be able to update all of the old code as well. This will make it much easier to create regression tests and make more of the functionality accessible in headless mode.</li>
-<li>Extensions should not expose graphical elements, such as Panels. Instead public methods should provide full access to as much of the functionality the extension provides via non graphical classes.</li>
-<li>There should be a clean split between the functionality and the UI. OK, so thats not true of a lot of the existing code, but new code should have that split, and hopefully over time we&rsquo;ll be able to update all of the old code as well. This will make it much easier to create regression tests and make more of the functionality accessible in headless mode.</li>
-<li>Extensions should not expose graphical elements, such as Panels. Instead public methods should provide full access to as much of the functionality the extension provides via non graphical classes.</li>
-</ul>
-<h3 id="code-guidelines">Code Guidelines</h3>
-<ul>
-<li>If it is possible avoid introducing <a href="https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html">un/boxings</a> in new code.</li>
-<li>The @Override annotation should precede all the method declarations that are intended to implement or override another method declaration.
-<!-- raw HTML omitted --><!-- raw HTML omitted --></li>
-<li>Check in code that is cleaner than you checked out, aka <a href="http://www.cleancoders.com/">&lsquo;Clean Code&rsquo;</a></li>
-<li>Do not add &ldquo;(non-Javadoc)&rdquo; comments to overriding methods (the default comment automatically added when overriding a method).</li>
-<li>Scan rule classes should be named with the suffix <code>ScanRule</code> for consistency. There is no need for a prefix such as <code>Test</code> or <code>Scan</code>, and acronyms within class names should follow camelCase (not be full caps).</li>
-</ul>
-<h3 id="unit-test-specific-guidelines">Unit Test Specific Guidelines</h3>
-<p>These have been moved to <a href="../verifying-your-changes">Verifying Your Changes</a>.</p>
-<h3 id="style-guidelines">Style Guidelines</h3>
-<p>The following guidelines apply to ZAP&rsquo;s text elements as represented in English (en-GB, en-US, and en-CA).</p>
-<h5 id="zaps-name">ZAP&rsquo;s Name</h5>
-<p>The name <code>ZAP</code> should be used in the majority of cases. If the article or context is more formal then <code>Zed Attack Proxy</code>. In general <code>Zaproxy</code> shouldn&rsquo;t be used, it has been used as an identifier various places when ZAP (zap) wasn&rsquo;t available or applicable (too short, etc). If <code>Zaproxy</code> must be used please be aware that it should be said (or read) as &ldquo;Zed-Ay-proxy&rdquo;.</p>
-<h4 id="text-titles-menu-items-and-options">Text: Titles, Menu Items, and Options</h4>
-<p>Titles, menu items, and options text should be represented using Title Capitalization as defined by the &lsquo;Chicago Manual of Style&rsquo;. For quick reference you can use this online tool: <a href="https://capitalizemytitle.com/#Chicago">https://capitalizemytitle.com/#Chicago</a> (make sure you select the &ldquo;Chicago&rdquo; tab). The only exception here would be for strings that form full sentences (ending with proper punctuation).</p>
+<p>Unit Tests should cover at least all the main functionality of the item under test.</p>
+<p>The main exception to this is desktop Swing code - at the moment we do not have a good way to automatically test this.</p>
 </main>
   </article>
 </section>
@@ -258,7 +234,7 @@ but if you plan to make bigger contributions then you should check them before m
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/developer/dev-rules-and-guidelines.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/developer/verifying-your-changes.md">Edit on GitHub</a>
   </div>
 
     </div>
