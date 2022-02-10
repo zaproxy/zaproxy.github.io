@@ -6,8 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/tags/competition/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; competition</title>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2022-02-10-new-zap-networking-layer/images/zap-networking.png"/>
+
+<meta name="twitter:title" content="New ZAP Networking Layer"/>
+<meta name="twitter:description" content="The ZAP Weekly and Live releases have an all new networking layer."/>
+
+    <meta property="og:title" content="New ZAP Networking Layer" />
+<meta property="og:description" content="The ZAP Weekly and Live releases have an all new networking layer." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2022-02-10-new-zap-networking-layer/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2022-02-10-new-zap-networking-layer/images/zap-networking.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-02-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-02-10T00:00:00+00:00" />
+
+
+  
+  <title>OWASP ZAP &ndash; New ZAP Networking Layer</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -146,131 +160,110 @@
 </header>
 
   
+
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">Tag: competition</h1>
+    <h1 class="text--white">New ZAP Networking Layer</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
-      <div class="flex latest-versions">
-        <div class="col-2-3 pr-30">
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Thursday February 10, 2022</span>
+              <span class="word-count fl-r"> 427 Words </span>
+            </section>
+            <h2 id="all-new-networking">All New Networking</h2>
+<p>The latest Weekly and Live ZAP releases (generated today, Feb 10th) are now using a completely different networking stack.</p>
+<p>Previously, ZAP used code written for Paros Proxy on top of an old and out of date version of the Apache Commons HttpClient library.</p>
+<p>The networking code has now been moved out of the core and into a new <a href="/docs/desktop/addons/network/">network add-on</a>. All client-side comms (e.g. browser to ZAP) use the <a href="https://netty.io/">Netty</a> library while server-side comms still use HttpClient.</p>
+<p>Not surprisingly, the ZAP code base makes very heavy use of networking and so this has been a very significant change.</p>
+<h2 id="what-will-you-see-that-is-different">What will you see that is different?</h2>
+<p>Hopefully not much!</p>
+<p>ZAP should work in the same way as before. All of your previous networking related configurations should be maintained.</p>
+<p>There are however a few changes you may notice:</p>
+<ul>
+<li>The Options / Local Proxies screen has been replaced by an Options / Network / Local Servers/Proxies screen.</li>
+<li>The Options / Dynamic SSL Certificates screen has been replaced by an Options / Network / Server Certificates screen.</li>
+<li>The Options / Network / Local Servers/Proxies screen has a new tab - “Pass-through” - this allows you to configure the authorities (domain/address and port) that will pass-through ZAP, thus sending the data without being decrypted/encrypted. This is useful when a client has certificate pinning for certain hosts or the domain/data is irrelevant to the target being tested.</li>
+</ul>
+<p>That should be all the differences that you see.</p>
+<h2 id="why-replace-the-networking">Why Replace the Networking?</h2>
+<p>Why spent a very significant amount of time and effort replacing the whole networking layer?</p>
+<p>Because there&rsquo;s more to come :)</p>
+<p>Now we are using a modern maintained networking layer we can build on top of it and support new protocols like HTTP/2 and HTTP/3.</p>
+<p>We will also be able to handle some of the edge cases that we previously could not support including manipulating the Host header.</p>
+<p>We expect the new implementation to consume less resources than the previous stack and this will hopefully make requests quicker as well.</p>
+<p>Last, but definitely not least, as the networking code is in an add-on we will be able to update it whenever we need to rather than having to wait until the next full release.</p>
+<p>There is currently no ETA for these changes but they are a priority for us.</p>
+<h2 id="feedback-please">Feedback Please</h2>
+<p>In the meantime please <a href="/download/">download</a> the Weekly or Live releases, give them a go and let us know if you have any problems or spot any differences in the network handling.</p>
+<p>Many thanks to <a href="https://www.stackhawk.com/">StackHawk</a> who sponsored this work.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2021-12-17-zapcon-2022-call-for-papers/"> ZAPCon 2022 Call - for Papers</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
             
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2021-03-12-report-competition/">ZAP Report Competition</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Friday March 12, 2021</span>
-                  <span class="word-count fl-r"> 1068 Words </span>
-                </section>
-                <section class="summary">Help us add modern, useful and stylish reports to ZAP - the competition is now open until October 1st 2021.</section>
-            </article>
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
           
-        </div>
 
-        <div class="col-1-3 ml-20">
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#all-new-networking">All New Networking</a></li>
+    <li><a href="#what-will-you-see-that-is-different">What will you see that is different?</a></li>
+    <li><a href="#why-replace-the-networking">Why Replace the Networking?</a></li>
+    <li><a href="#feedback-please">Feedback Please</a></li>
+  </ul>
+</nav>
+
           
-<section class="p-20">
-    <h3>Tags</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/tags/advisory/">advisory</a></li>
-    
-        <li><a href="/tags/api/">api</a></li>
-    
-        <li><a href="/tags/asvs/">asvs</a></li>
-    
-        <li><a href="/tags/authentication/">authentication</a></li>
-    
-        <li><a href="/tags/award/">award</a></li>
-    
-        <li><a href="/tags/blog/">blog</a></li>
-    
-        <li><a href="/tags/browser/">browser</a></li>
-    
-        <li><a href="/tags/cfp/">cfp</a></li>
-    
-        <li><a href="/tags/competition/">competition</a></li>
-    
-        <li><a href="/tags/docker/">docker</a></li>
-    
-        <li><a href="/tags/fileupload/">fileupload</a></li>
-    
-        <li><a href="/tags/firefox/">firefox</a></li>
-    
-        <li><a href="/tags/graphql/">graphql</a></li>
-    
-        <li><a href="/tags/gsoc/">gsoc</a></li>
-    
-        <li><a href="/tags/guide/">guide</a></li>
-    
-        <li><a href="/tags/hacking/">hacking</a></li>
-    
-        <li><a href="/tags/log4shell/">log4shell</a></li>
-    
-        <li><a href="/tags/networking/">networking</a></li>
-    
-        <li><a href="/tags/oast/">oast</a></li>
-    
-        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
-    
-        <li><a href="/tags/questionnaire/">questionnaire</a></li>
-    
-        <li><a href="/tags/release/">release</a></li>
-    
-        <li><a href="/tags/reporting/">reporting</a></li>
-    
-        <li><a href="/tags/retest/">retest</a></li>
-    
-        <li><a href="/tags/soap/">soap</a></li>
-    
-        <li><a href="/tags/statistics/">statistics</a></li>
-    
-        <li><a href="/tags/top10/">top10</a></li>
-    
-        <li><a href="/tags/tutorial/">tutorial</a></li>
-    
-        <li><a href="/tags/waspy/">waspy</a></li>
-    
-        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
-    
-        <li><a href="/tags/zapcon/">zapcon</a></li>
-    
-    </ul>
-</section>
-
-<section class="p-20">
-    <h3>Authors</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/authors/akshath/">akshath</a></li>
-    
-        <li><a href="/authors/alberto/">alberto</a></li>
-    
-        <li><a href="/authors/bemodtwz/">bemodtwz</a></li>
-    
-        <li><a href="/authors/blazingwind/">blazingwind</a></li>
-    
-        <li><a href="/authors/diogo/">diogo</a></li>
-    
-        <li><a href="/authors/jordan/">jordan</a></li>
-    
-        <li><a href="/authors/nirojan/">nirojan</a></li>
-    
-        <li><a href="/authors/pranavsaxena/">pranavsaxena</a></li>
-    
-        <li><a href="/authors/preetkaran20/">preetkaran20</a></li>
-    
-        <li><a href="/authors/simon/">simon</a></li>
-    
-        <li><a href="/authors/thorin/">thorin</a></li>
-    
-    </ul>
-</section>
-
-        </div>
-      </div>
-  </div>
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/networking/">networking</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -305,6 +298,13 @@
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-02-10-new-zap-networking-layer/index.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
