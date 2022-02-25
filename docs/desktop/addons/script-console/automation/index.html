@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/docs/desktop/addons/directory-list-v2.3-lc/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; Directory List v2.3 LC</title>
+  <title>OWASP ZAP &ndash; Scripts Automation Framework Support</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -380,7 +379,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="tree-active tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/directory-list-v2.3-lc/">Directory List v2.3 LC</a>
         <ul class="tree-branch">
         </ul>
@@ -860,10 +859,10 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/script-console/">Script Console</a>
         <ul class="tree-branch">  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/script-console/automation/">Scripts Automation Framework Support</a>
                         </li>  
                         <li> 
@@ -1423,15 +1422,50 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/directory-list-v2.3-lc/'>Directory List v2.3 LC</a>
+        <a href='/docs/desktop/addons/script-console/'>Script Console</a>
+    </li>
+
+    <li>
+        <a href='/docs/desktop/addons/script-console/automation/'>Scripts Automation Framework Support</a>
     </li>
 
 
 </ol>
-          <h1 id="directory-list-v23-lc">Directory List v2.3 LC</h1>
-<p>Provides files with lower case directory names to be used with Forced Browse or Fuzzer add-on.</p>
-<p>The lists were compiled by DirBuster authors.</p>
-
+          <h1 id="scripts-automation-framework-support">Scripts Automation Framework Support</h1>
+<p>This add-on supports the Automation Framework.</p>
+<h2 id="job-script">Job: script</h2>
+<p>The script job allows you to execute various actions with scripts:</p>
+<h2 id="action-add">Action: add</h2>
+<p>Adds the specified script to ZAP. Scripts are enabled but not configured to be loaded when ZAP restarts.</p>
+<p>By default the default script engine for the file extension (if any) will be used - this may be overridden using the &lsquo;engine&rsquo; parameter.</p>
+<ul>
+<li>type: mandatory, can be any of the script types supported by ZAP</li>
+<li>engine: optional, can be used to override the default engine for the file extension</li>
+<li>name: optional, defaults to the file name, can be used to specify the script in another job</li>
+<li>file: mandatory, the full file path, must be a readable text file</li>
+</ul>
+<h2 id="action-remove">Action: remove</h2>
+<p>Removes the specified script from ZAP.</p>
+<ul>
+<li>name: mandatory, the name of the script in ZAP</li>
+</ul>
+<h2 id="action-run">Action: run</h2>
+<p>Runs the specified standalone script to ZAP. The script must already be available in ZAP, for example added using the &lsquo;add&rsquo; action.</p>
+<ul>
+<li>type: mandatory, must be &lsquo;standalone&rsquo;</li>
+<li>name: mandatory, the name of the script in ZAP</li>
+</ul>
+<h2 id="yaml-definition">YAML definition</h2>
+<p>Not all of the parameters are valid for all of the actions, see above for details.</p>
+<pre tabindex="0"><code>  - type: script
+    parameters:
+      action:                    # String: The executed action - available actions: add, remove, run
+      type:                      # String: The type of the script
+      engine:                    # String: The script engine to use - can be used to override the default engine for the file extension
+      name:                      # String: The name of the script, defaults to the file name
+      file:                      # String: The full file path, must be readable
+	
+</code></pre>
         </div>
       </div>
   </div>
