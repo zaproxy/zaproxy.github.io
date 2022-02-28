@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -197,24 +197,24 @@
 Newer JDK versions might not work.</p>
 <h2 id="clone-the-repo-locally">Clone the Repo Locally</h2>
 <p>Create a new directory on your system and run the following commands in that directory to clone the main ZAP repositories.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/zaproxy/zaproxy.git
-git clone https://github.com/zaproxy/zap-extensions.git
-</code></pre></div><h2 id="installing-zap-add-ons">Installing ZAP Add-ons</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/zaproxy/zaproxy.git
+</span></span><span style="display:flex;"><span>git clone https://github.com/zaproxy/zap-extensions.git
+</span></span></code></pre></div><h2 id="installing-zap-add-ons">Installing ZAP Add-ons</h2>
 <p>As the name suggests, ZAP add-ons are a way to enhance ZAP functionality. There are several add-ons that allow you to do many different things. Some add-ons which are required by ZAP to work properly are called mandatory add-ons. These add-ons need to be installed first to be able to run ZAP from source.</p>
 <p>The <em>zap-extensions</em> repository contains the source code for the add-ons maintained by the core team, including the mandatory add-ons.</p>
 <p>ZAP uses the <a href="https://docs.gradle.org/current/userguide/gradle_wrapper.html">Gradle Wrapper</a> that downloads all the dependencies for the projects.</p>
 <p>Navigate to the <em>zap-extensions</em> folder that you cloned earlier, and run (replace <code>./gradlew</code> with <code>gradlew.bat</code> if you are a Windows user)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew tasks
-</code></pre></div><p>to see a list of the available tasks. You can see many tasks in the output, but this is the one we&rsquo;re interested in:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew tasks
+</span></span></code></pre></div><p>to see a list of the available tasks. You can see many tasks in the output, but this is the one we&rsquo;re interested in:</p>
 <pre tabindex="0"><code>copyMandatoryAddOns - Copies the mandatory add-ons to zaproxy project.
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew copyMandatoryAddOns
-</code></pre></div><p>For this command to work as expected, you need to have your local clones of <em>zaproxy</em> and <em>zap-extensions</em> in the same directory. If you run this command while ZAP is running, you must restart ZAP to see the newer add-ons.</p>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew copyMandatoryAddOns
+</span></span></code></pre></div><p>For this command to work as expected, you need to have your local clones of <em>zaproxy</em> and <em>zap-extensions</em> in the same directory. If you run this command while ZAP is running, you must restart ZAP to see the newer add-ons.</p>
 <p>You can also install other add-ons with the task</p>
-<pre tabindex="0"><code>copyZapAddOn - Copies the add-on to zaproxy project (defaults to &quot;$rootDir/../zaproxy/zap/src/main/dist/plugin/&quot;).
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew copyZapAddOn
-</code></pre></div><p>Note that this task installs ALL the ZAP add-ons in <em>zap-extensions</em>. To install a specific add-on, run the following command</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew addOns:IDENTIFIER:copyZapAddOn
-</code></pre></div><p>where <code>IDENTIFIER</code> is the name of the add-on you want to install. You can find the identifier by looking at the structure of the <em>zap-extensions</em> repository:</p>
+<pre tabindex="0"><code>copyZapAddOn - Copies the add-on to zaproxy project (defaults to &#34;$rootDir/../zaproxy/zap/src/main/dist/plugin/&#34;).
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew copyZapAddOn
+</span></span></code></pre></div><p>Note that this task installs ALL the ZAP add-ons in <em>zap-extensions</em>. To install a specific add-on, run the following command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew addOns:IDENTIFIER:copyZapAddOn
+</span></span></code></pre></div><p>where <code>IDENTIFIER</code> is the name of the add-on you want to install. You can find the identifier by looking at the structure of the <em>zap-extensions</em> repository:</p>
 <pre tabindex="0"><code>├── zap-extensions
 	├── addOns 
 	│   ├── accessControl 
@@ -224,30 +224,30 @@ git clone https://github.com/zaproxy/zap-extensions.git
 	│   ├── amf 
 	│   ├── ascanrules
 </code></pre><p>So, for instance, if you want to install the <em>Release</em> status Active and Passive scan rules, you would run:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew addOns:ascanrules:copyZapAddOn
-./gradlew addOns:pscanrules:copyZapAddOn
-</code></pre></div><p>or if you&rsquo;re in a hurry,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew aO:ascanrules:cZAO
-./gradlew aO:pscanrules:cZAO
-</code></pre></div><p>The process of installing the ZAP HUD and the help is identical:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew addOns:ascanrules:copyZapAddOn
+</span></span><span style="display:flex;"><span>./gradlew addOns:pscanrules:copyZapAddOn
+</span></span></code></pre></div><p>or if you&rsquo;re in a hurry,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew aO:ascanrules:cZAO
+</span></span><span style="display:flex;"><span>./gradlew aO:pscanrules:cZAO
+</span></span></code></pre></div><p>The process of installing the ZAP HUD and the help is identical:</p>
 <ol>
 <li>Clone their repositories in the same folder as the other two.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/zaproxy/zap-hud.git
-git clone https://github.com/zaproxy/zap-core-help.git
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/zaproxy/zap-hud.git
+</span></span><span style="display:flex;"><span>git clone https://github.com/zaproxy/zap-core-help.git
+</span></span></code></pre></div></li>
 <li>Navigate to the cloned folders and run
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew copyZapAddOn
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew copyZapAddOn
+</span></span></code></pre></div></li>
 </ol>
 <p>Another useful task you will find when you run <code>./gradlew tasks</code> in the <em>zaproxy</em> folder is:</p>
 <pre tabindex="0"><code>copyWeeklyAddOns - Copies the weekly add-ons into plugin dir, built from local repos.
-</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew copyWeeklyAddOns
-</code></pre></div><p>In essence, this task is the same as running <code>./gradlew copyZapAddOn</code> for each of the add-ons included in the weekly release (see <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/weekly-add-ons.json"><code>zaproxy/zap/src/main/weekly-add-ons.json</code></a>).</p>
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew copyWeeklyAddOns
+</span></span></code></pre></div><p>In essence, this task is the same as running <code>./gradlew copyZapAddOn</code> for each of the add-ons included in the weekly release (see <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/weekly-add-ons.json"><code>zaproxy/zap/src/main/weekly-add-ons.json</code></a>).</p>
 <p>For a better understanding of Gradle tasks you can check out the <a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle user manual</a>.</p>
 <h2 id="running-zap-from-source">Running ZAP from Source</h2>
 <p>Ensuring that the mandatory add-ons are installed, navigate to the cloned <em>zaproxy</em> folder and run the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./gradlew run
-</code></pre></div><p>That’s it! You’re now running ZAP from source! You can confirm this if you see “Dev Build” in the loading window.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew run
+</span></span></code></pre></div><p>That’s it! You’re now running ZAP from source! You can confirm this if you see “Dev Build” in the loading window.</p>
 <p><img src="/img/docs/developer/zap-dev-build.png" alt="ZAP Dev Build Loading Window"></p>
 <p>If you didn&rsquo;t install the mandatory add-ons an error will be shown:</p>
 <p><img src="/img/docs/developer/zap-mandatory-addon.png" alt="ZAP Error Missing Mandatory Add-on"></p>
@@ -282,16 +282,16 @@ git clone https://github.com/zaproxy/zap-core-help.git
 <li>Add and point the remote <em>upstream</em> to the main repository.</li>
 </ol>
 <p>Here are the commands for two repositories; the procedure for others is identical. Replace <code>USERNAME</code> with your GitHub username.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd zaproxy
-git remote set-url origin https://github.com/USERNAME/zaproxy.git
-git remote add upstream https://github.com/zaproxy/zaproxy.git
-cd ..
-
-cd zap-extensions
-git remote set-url origin https://github.com/USERNAME/zap-extensions.git
-git remote add upstream https://github.com/zaproxy/zap-extensions.git
-cd ..
-</code></pre></div><h3 id="make-changes-and-submit-a-pr">Make Changes and Submit a PR!</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd zaproxy
+</span></span><span style="display:flex;"><span>git remote set-url origin https://github.com/USERNAME/zaproxy.git
+</span></span><span style="display:flex;"><span>git remote add upstream https://github.com/zaproxy/zaproxy.git
+</span></span><span style="display:flex;"><span>cd ..
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cd zap-extensions
+</span></span><span style="display:flex;"><span>git remote set-url origin https://github.com/USERNAME/zap-extensions.git
+</span></span><span style="display:flex;"><span>git remote add upstream https://github.com/zaproxy/zap-extensions.git
+</span></span><span style="display:flex;"><span>cd ..
+</span></span></code></pre></div><h3 id="make-changes-and-submit-a-pr">Make Changes and Submit a PR!</h3>
 <p>If you have any questions related to ZAP development, reach out on the <a href="https://groups.google.com/g/zaproxy-develop">ZAP Developer group</a> or the <a href="https://web.libera.chat/#zaproxy">IRC channel</a>.</p>
 </main>
   </article>

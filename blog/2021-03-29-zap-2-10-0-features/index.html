@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -287,22 +287,22 @@ The control appears just below the Main Toolbar and is aligned directly above th
 </tbody>
 </table>
 <p>Along with allowing users to create their own scripted transforms. For example say you wanted to be able to double space a string, you could add a JavaScript script such as:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">EncodeDecodeResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.zaproxy.addon.encoder.processors.EncodeDecodeResult&#34;</span>);
-
-<span style="color:#75715e">/**
-</span><span style="color:#75715e"> * Process the input value and return the encoded/decoded/hashed etc. value
-</span><span style="color:#75715e"> *
-</span><span style="color:#75715e"> * Use EncodeDecodeResult.withError(&#34;Error Description&#34;) to provide an error description
-</span><span style="color:#75715e"> * inside the result view
-</span><span style="color:#75715e"> *
-</span><span style="color:#75715e"> * @param {String} value - The input value
-</span><span style="color:#75715e"> * @returns {EncodeDecodeResult} - The value that was encoded/decoded/hashed etc.
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">process</span>(<span style="color:#a6e22e">value</span>){
-    <span style="color:#75715e">// Replace any character (except last) with the character and a space
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">EncodeDecodeResult</span>(<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">replaceAll</span>(<span style="color:#e6db74">&#34;.(?=.)&#34;</span>, <span style="color:#e6db74">&#34;$0 &#34;</span>).<span style="color:#a6e22e">trim</span>());
-}
-</code></pre></div><p><img src="images/dbl-space.png" alt="Double Space encoder example"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">EncodeDecodeResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.zaproxy.addon.encoder.processors.EncodeDecodeResult&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Process the input value and return the encoded/decoded/hashed etc. value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Use EncodeDecodeResult.withError(&#34;Error Description&#34;) to provide an error description
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * inside the result view
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {String} value - The input value
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @returns {EncodeDecodeResult} - The value that was encoded/decoded/hashed etc.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">process</span>(<span style="color:#a6e22e">value</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Replace any character (except last) with the character and a space
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">EncodeDecodeResult</span>(<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">replaceAll</span>(<span style="color:#e6db74">&#34;.(?=.)&#34;</span>, <span style="color:#e6db74">&#34;$0 &#34;</span>).<span style="color:#a6e22e">trim</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="images/dbl-space.png" alt="Double Space encoder example"></p>
 <h2 id="authentication-polling">Authentication Polling</h2>
 <p>The concept of <a href="https://www.zaproxy.org/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a> has been introduced which allows ZAP to handle a wider range of authentication mechanisms including the option to poll a specified page for the authentication status of a user.</p>
 <p>Checkout this video summary of <a href="https://www.youtube.com/watch?v=rrVr-_-y6Xo&amp;t=377s">auth polling</a>.</p>

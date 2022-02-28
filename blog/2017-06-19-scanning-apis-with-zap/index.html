@@ -40,7 +40,7 @@ This allows you to easily automate the scanning of your APIs." />
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -191,10 +191,10 @@ The script, zap-api-scan.py is included in the <a href="https://hub.docker.com/r
 <a href="https://hub.docker.com/r/owasp/zap2docker-live/">Live</a> ZAP Docker images, it will also be included in the next
 <a href="https://hub.docker.com/r/owasp/zap2docker-stable/">Stable</a> image.</p>
 <p>To use the API scanning script you just need to use the commands:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">docker pull owasp/zap2docker-weekly  
-docker run -t owasp/zap2docker-weekly zap-api-scan.py -t <span style="color:#ae81ff">\ </span> 
-    https://www.example.com/openapi.json -f openapi  
-</code></pre></div><p>By default the script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker pull owasp/zap2docker-weekly  
+</span></span><span style="display:flex;"><span>docker run -t owasp/zap2docker-weekly zap-api-scan.py -t <span style="color:#ae81ff">\ </span> 
+</span></span><span style="display:flex;"><span>    https://www.example.com/openapi.json -f openapi  
+</span></span></code></pre></div><p>By default the script:</p>
 <ol>
 <li>Imports the API definition supplied</li>
 <li>Actively scans the API using a custom scan profile tuned for APIs</li>
@@ -224,8 +224,8 @@ Options:
     -l level          minimum level to show: PASS, IGNORE, INFO, WARN or FAIL, use with -s to hide example URLs  
     -n context_file   context file which will be loaded prior to scanning the target  
     -p progress_file  progress file which specifies issues that are being addressed  
-    -s                short output format - don't show PASSes or example URLs  
-    -z zap_options ZAP command line options e.g. -z &quot;-config aaa=bbb -config ccc=ddd&quot;  
+    -s                short output format - don&#39;t show PASSes or example URLs  
+    -z zap_options ZAP command line options e.g. -z &#34;-config aaa=bbb -config ccc=ddd&#34;  
 </code></pre><h3 id="scan-rules">Scan Rules</h3>
 <p>By default the script will use a <a href="/docs/desktop/start/features/scanpolicy/">Scan Policy</a> tuned for APIs.<br>
 This disables rules that are focused on client side (e.g. browser) issues, such as the ones for detecting Cross Site Scripting, and also adds 2
@@ -261,7 +261,7 @@ If you need to specify lots of options then you can put them all in a property f
 You can then run the API scan using a command like:</p>
 <pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-weekly zap-api-scan.py \  
     -t https://www.example.com/openapi.json -f openapi \  
-    -z &quot;-configfile /zap/wrk/options.prop&quot;  
+    -z &#34;-configfile /zap/wrk/options.prop&#34;  
 </code></pre><p>The <code>&quot;-v $(pwd):/zap/wrk/:rw&quot;</code> is a Docker option which maps the current working directory to a folder called /zap/wrk in the Docker instance.</p>
 <h3 id="authentication">Authentication</h3>
 <p>Some of your APIs may be protected using authentication mechanisms.<br>
