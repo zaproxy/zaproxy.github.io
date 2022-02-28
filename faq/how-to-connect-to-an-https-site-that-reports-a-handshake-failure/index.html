@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -182,15 +182,15 @@ to start ZAP with an installed JRE from the command line, or you can edit
 <code>zap.sh</code> located under <code>/Applications/OWASP ZAP.app/Contents/Java</code> and comment
 out the statement shown below(as of version 2.5.0), the script will launch
 automatically using the JRE from the system:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#if [ &#34;$OS&#34; = &#34;Darwin&#34; ]; then</span>
-<span style="color:#75715e">#  if [ -e ../PlugIns/jre*/Contents/Home/bin/java ]; then</span>
-<span style="color:#75715e">#    pushd ../PlugIns/jre*/Contents/Home/bin &gt; /dev/null</span>
-<span style="color:#75715e">#    JAVA_PATH=`pwd -P`</span>
-<span style="color:#75715e">#    PATH=&#34;$JAVA_PATH:$PATH&#34;</span>
-<span style="color:#75715e">#    popd &gt; /dev/null</span>
-<span style="color:#75715e">#  fi</span>
-<span style="color:#75715e">#fi</span>
-</code></pre></div><p>Java 8 users note you may encounter SSLHandshakeException, on sites that
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#if [ &#34;$OS&#34; = &#34;Darwin&#34; ]; then</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  if [ -e ../PlugIns/jre*/Contents/Home/bin/java ]; then</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    pushd ../PlugIns/jre*/Contents/Home/bin &gt; /dev/null</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    JAVA_PATH=`pwd -P`</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    PATH=&#34;$JAVA_PATH:$PATH&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    popd &gt; /dev/null</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#  fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#fi</span>
+</span></span></code></pre></div><p>Java 8 users note you may encounter SSLHandshakeException, on sites that
 support RC4 ciphers. More info
 <a href="https://github.com/zaproxy/zaproxy/issues/1892#issuecomment-139906996">here</a>,
 and <a href="https://stackoverflow.com/questions/32009083/javax-net-ssl-sslhandshakeexception-handshake-failure-when-using-jmeter-with-ss">here</a>.

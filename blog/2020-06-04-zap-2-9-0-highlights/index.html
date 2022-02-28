@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -227,63 +227,63 @@ accommodate technologies such as JWT, bearer tokens, etc. With 2.9 comes the con
 authenticated sessions for more modern applications.</p>
 <p>ZAP now ships with a JavaScript template for scripted session management, as well as an <a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a> example script.
 It is the Juice Shop example that we will discuss here.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-JavaScript" data-lang="JavaScript"><span style="color:#75715e">/*
-</span><span style="color:#75715e"> * Session Management script for OWASP Juice Shop
-</span><span style="color:#75715e"> * 
-</span><span style="color:#75715e"> * For Authentication select:
-</span><span style="color:#75715e"> * 		Authentication method:		JSON-based authentication
-</span><span style="color:#75715e"> * 		Login FORM target URL:		http://localhost:3000/rest/user/login
-</span><span style="color:#75715e"> * 		URL to GET Login Page:		http://localhost:3000/
-</span><span style="color:#75715e"> * 		Login Request POST data:	{&#34;email&#34;:&#34;test@test.com&#34;,&#34;password&#34;:&#34;test1&#34;}
-</span><span style="color:#75715e"> * 		Username Parameter:			email
-</span><span style="color:#75715e"> * 		Password Parameter:			password
-</span><span style="color:#75715e"> * 		Logged out regex:			\Q{&#34;user&#34;:{}}\E
-</span><span style="color:#75715e"> * 
-</span><span style="color:#75715e"> * Obviously update with any local changes as necessary.
-</span><span style="color:#75715e"> */</span>
-
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">COOKIE_TYPE</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">parosproxy</span>.<span style="color:#a6e22e">paros</span>.<span style="color:#a6e22e">network</span>.<span style="color:#a6e22e">HtmlParameter</span>.<span style="color:#a6e22e">Type</span>.<span style="color:#a6e22e">cookie</span>;
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">HtmlParameter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;org.parosproxy.paros.network.HtmlParameter&#39;</span>)
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ScriptVars</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;org.zaproxy.zap.extension.script.ScriptVars&#39;</span>);
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extractWebSession</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
-	<span style="color:#75715e">// parse the authentication response
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">json</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>().<span style="color:#a6e22e">getResponseBody</span>().<span style="color:#a6e22e">toString</span>());
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">authentication</span>.<span style="color:#a6e22e">token</span>;
-	<span style="color:#75715e">// save the authentication token
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getSession</span>().<span style="color:#a6e22e">setValue</span>(<span style="color:#e6db74">&#34;token&#34;</span>, <span style="color:#a6e22e">token</span>);
-	<span style="color:#a6e22e">ScriptVars</span>.<span style="color:#a6e22e">setGlobalVar</span>(<span style="color:#e6db74">&#34;juiceshop.token&#34;</span>, <span style="color:#a6e22e">token</span>);
-}
-    	
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">clearWebSessionIdentifiers</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">headers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>().<span style="color:#a6e22e">getRequestHeader</span>();
-	<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#66d9ef">null</span>);
-	<span style="color:#a6e22e">ScriptVars</span>.<span style="color:#a6e22e">setGlobalVar</span>(<span style="color:#e6db74">&#34;juiceshop.token&#34;</span>, <span style="color:#66d9ef">null</span>);
-}
-    	
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processMessageToMatchSession</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getSession</span>().<span style="color:#a6e22e">getValue</span>(<span style="color:#e6db74">&#34;token&#34;</span>);
-	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">token</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
-		<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#39;JS mgmt script: no token&#39;</span>);
-		<span style="color:#66d9ef">return</span>;
-	}
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlParameter</span>(<span style="color:#a6e22e">COOKIE_TYPE</span>, <span style="color:#e6db74">&#34;token&#34;</span>, <span style="color:#a6e22e">token</span>);
-	<span style="color:#75715e">// add the saved authentication token as an Authentication header and a cookie
-</span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>();
-	<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#e6db74">&#34;Bearer &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">token</span>);
-	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookies</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">getCookieParams</span>();
-	<span style="color:#a6e22e">cookies</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">cookie</span>);
-	<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">setCookieParams</span>(<span style="color:#a6e22e">cookies</span>);
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getRequiredParamsNames</span>() {
-	<span style="color:#66d9ef">return</span> []; 
-}
-
-<span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getOptionalParamsNames</span>() {
-	<span style="color:#66d9ef">return</span> [];
-}
-</code></pre></div><p>The example starts out with a documentation block explaining the assumptions for the Context setup and user being authenticated. The next few lines define the
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-JavaScript" data-lang="JavaScript"><span style="display:flex;"><span><span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Session Management script for OWASP Juice Shop
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * For Authentication select:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		Authentication method:		JSON-based authentication
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		Login FORM target URL:		http://localhost:3000/rest/user/login
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		URL to GET Login Page:		http://localhost:3000/
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		Login Request POST data:	{&#34;email&#34;:&#34;test@test.com&#34;,&#34;password&#34;:&#34;test1&#34;}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		Username Parameter:			email
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		Password Parameter:			password
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 		Logged out regex:			\Q{&#34;user&#34;:{}}\E
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Obviously update with any local changes as necessary.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">COOKIE_TYPE</span>   <span style="color:#f92672">=</span> <span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">parosproxy</span>.<span style="color:#a6e22e">paros</span>.<span style="color:#a6e22e">network</span>.<span style="color:#a6e22e">HtmlParameter</span>.<span style="color:#a6e22e">Type</span>.<span style="color:#a6e22e">cookie</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">HtmlParameter</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;org.parosproxy.paros.network.HtmlParameter&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">ScriptVars</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#39;org.zaproxy.zap.extension.script.ScriptVars&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extractWebSession</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// parse the authentication response
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">json</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>().<span style="color:#a6e22e">getResponseBody</span>().<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">authentication</span>.<span style="color:#a6e22e">token</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// save the authentication token
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getSession</span>().<span style="color:#a6e22e">setValue</span>(<span style="color:#e6db74">&#34;token&#34;</span>, <span style="color:#a6e22e">token</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ScriptVars</span>.<span style="color:#a6e22e">setGlobalVar</span>(<span style="color:#e6db74">&#34;juiceshop.token&#34;</span>, <span style="color:#a6e22e">token</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    	
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">clearWebSessionIdentifiers</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">headers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>().<span style="color:#a6e22e">getRequestHeader</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">headers</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">ScriptVars</span>.<span style="color:#a6e22e">setGlobalVar</span>(<span style="color:#e6db74">&#34;juiceshop.token&#34;</span>, <span style="color:#66d9ef">null</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>    	
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processMessageToMatchSession</span>(<span style="color:#a6e22e">sessionWrapper</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">token</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getSession</span>().<span style="color:#a6e22e">getValue</span>(<span style="color:#e6db74">&#34;token&#34;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">token</span> <span style="color:#f92672">===</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#39;JS mgmt script: no token&#39;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookie</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HtmlParameter</span>(<span style="color:#a6e22e">COOKIE_TYPE</span>, <span style="color:#e6db74">&#34;token&#34;</span>, <span style="color:#a6e22e">token</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add the saved authentication token as an Authentication header and a cookie
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sessionWrapper</span>.<span style="color:#a6e22e">getHttpMessage</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Authorization&#34;</span>, <span style="color:#e6db74">&#34;Bearer &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">token</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">cookies</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">getCookieParams</span>();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">cookies</span>.<span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">cookie</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">setCookieParams</span>(<span style="color:#a6e22e">cookies</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getRequiredParamsNames</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> []; 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getOptionalParamsNames</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> [];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The example starts out with a documentation block explaining the assumptions for the Context setup and user being authenticated. The next few lines define the
 imports/types that will be used by the script. Then we get to the business part of the script.</p>
 <p>The <code>extractWebSession</code> function extracts the token value and saves it into a Global variable where it can later be retrieved by other scripts/functions, as well as saving it into the session (which is used internally when processing messages).</p>
 <p>The next function <code>clearWebSessionIdentifiers</code> is setup to remove or invalidate a token from within ZAP.</p>

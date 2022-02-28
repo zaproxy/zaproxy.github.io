@@ -53,7 +53,7 @@ If the starting point is in one or more Contexts then you will be able to choose
       <guid>/docs/desktop/addons/ajax-spider/automation/</guid>
       <description>Ajax Spider Automation Framework Support This add-on supports the Automation Framework.
 Job: spiderAjax The spiderAjax job allows you to run the Ajax Spider - it is slower than the traditional spider but handles modern web applications well.
- - type: spiderAjax # The ajax spider - slower than the spider but handles modern apps well parameters: context: # String: Name of the context to spider, default: first context url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the ajax spider will be allowed to run for, default: 0 unlimited maxCrawlDepth: # Int: The max depth that the crawler can reach, default: 10, 0 is unlimited numberOfBrowsers: # Int: The number of browsers the spider will use, more will be faster but will use up more memory, default: 1 browserId: # String: Browser Id to use, default: firefox-headless clickDefaultElems: # Bool: When enabled only click the default element: &#39;a&#39;, &#39;button&#39; and input, default: true clickElemsOnce: # Bool: When enabled only click each element once, default: true eventWait: # Int: The time in millseconds to wait after a client side event is fired, default: 1000 maxCrawlStates: # Int: The maximum number of crawl states the crawler should crawl, default: 0 unlimited randomInputs: # Bool: When enabled random values will be entered into input element, default: true reloadWait: # Int: The time in millseconds to wait after the URL is loaded, default: 1000 tests: - name: &#39;At least 100 URLs found&#39; # String: Name of the test, default: statistic + operator + value type: &#39;stats&#39; # String: Type of test, only &#39;stats&#39; is supported for now statistic: &#39;spiderAjax.</description>
+ - type: spiderAjax # The ajax spider - slower than the spider but handles modern apps well parameters: context: # String: Name of the context to spider, default: first context url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the ajax spider will be allowed to run for, default: 0 unlimited maxCrawlDepth: # Int: The max depth that the crawler can reach, default: 10, 0 is unlimited numberOfBrowsers: # Int: The number of browsers the spider will use, more will be faster but will use up more memory, default: 1 browserId: # String: Browser Id to use, default: firefox-headless clickDefaultElems: # Bool: When enabled only click the default element: &amp;#39;a&amp;#39;, &amp;#39;button&amp;#39; and input, default: true clickElemsOnce: # Bool: When enabled only click each element once, default: true eventWait: # Int: The time in millseconds to wait after a client side event is fired, default: 1000 maxCrawlStates: # Int: The maximum number of crawl states the crawler should crawl, default: 0 unlimited randomInputs: # Bool: When enabled random values will be entered into input element, default: true reloadWait: # Int: The time in millseconds to wait after the URL is loaded, default: 1000 tests: - name: &amp;#39;At least 100 URLs found&amp;#39; # String: Name of the test, default: statistic + operator + value type: &amp;#39;stats&amp;#39; # String: Type of test, only &amp;#39;stats&amp;#39; is supported for now statistic: &amp;#39;spiderAjax.</description>
     </item>
     
     <item>
@@ -117,7 +117,7 @@ In previous versions the ZAP API was used for this purpose, but from 2.6.0 onwar
       
       <guid>/docs/desktop/start/proxies/</guid>
       <description>Configuring Proxies You will need to configure your browser to use ZAP as a proxy.
-By default ZAP uses an Address of &amp;lsquo;localhost&amp;rsquo; and a Port of &amp;lsquo;8080&amp;rsquo;, but these can be changed via the Options Local Proxies screen. Instructions for the latest versions of the most commonly used browsers:</description>
+By default ZAP uses an Address of &amp;rsquo;localhost&amp;rsquo; and a Port of &amp;lsquo;8080&amp;rsquo;, but these can be changed via the Options Local Proxies screen. Instructions for the latest versions of the most commonly used browsers:</description>
     </item>
     
     <item>
@@ -387,7 +387,7 @@ The category screens allow you to define the levels for every individual rule.</
       <description>Scripts Automation Framework Support This add-on supports the Automation Framework.
 Job: script The script job allows you to execute various actions with scripts:
 Action: add Adds the specified script to ZAP. Scripts are enabled but not configured to be loaded when ZAP restarts.
-By default the default script engine for the file extension (if any) will be used - this may be overridden using the &amp;lsquo;engine&amp;rsquo; parameter.</description>
+By default the default script engine for the file extension (if any) will be used - this may be overridden using the &amp;rsquo;engine&amp;rsquo; parameter.</description>
     </item>
     
     <item>
@@ -516,7 +516,7 @@ Starting Point The URL which the AJAX spider will start crawling from, or a cont
       <guid>/docs/desktop/addons/automation-framework/environment/</guid>
       <description>Automation Framework - Environment This section of the YAML configuration file defines the applications which the rest of the jobs can act on.
 The Automation Framework supports all of the authentication mechanisms supported by ZAP.
-env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: method: # String, one of &#39;manual&#39;, &#39;http&#39;, &#39;form&#39;, &#39;json&#39; or &#39;script&#39; parameters: # May include any required for scripts.</description>
+env: # The environment, mandatory contexts : # List of 1 or more contexts, mandatory - name: context 1 # Name to be used to refer to this context in other jobs, mandatory urls: # A mandatory list of top level urls, everything under each url will be included includePaths: # An optional list of regexes to include excludePaths: # An optional list of regexes to exclude authentication: method: # String, one of &amp;#39;manual&amp;#39;, &amp;#39;http&amp;#39;, &amp;#39;form&amp;#39;, &amp;#39;json&amp;#39; or &amp;#39;script&amp;#39; parameters: # May include any required for scripts.</description>
     </item>
     
     <item>
@@ -828,7 +828,7 @@ A breakpoint is defined by the following fields:
       <guid>/docs/desktop/addons/alert-filters/automation/</guid>
       <description>Alert Filter Automation Framework Support This add-on supports the Automation Framework.
 Job: alertFilter The alertFilter job allows you to define global and context specific alert filters.
- - type: alertFilter # Used to change the risk levels of alerts parameters: deleteGlobalAlerts: true # Boolean, if true then will delete all existing global alerts, default false alertFilters: # A list of alertFilters to be applied - ruleId: # Int: Mandatory alert rule id newRisk: # String: Mandatory new risk level, one of &#39;False Positive&#39;, &#39;Info&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39; context: # String: Optional context name, if empty then a global alert filter will be created url: # String: Optional string to match against the alert, supports environment vars urlRegex: # Boolean: Optional, if true then the url is a regex parameter: # String: Optional string to match against the alert parameter field parameterRegex: # Boolean: Optional, if true then the parameter is a regex, supports environment vars attack: # String: Optional string to match against the alert attack field attackRegex: # Boolean: Optional, if true then the attack is a regex evidence: # String: Optional string to match against the alert evidence field evidenceRegex: # Boolean: Optional, if true then the evidence is a regex </description>
+ - type: alertFilter # Used to change the risk levels of alerts parameters: deleteGlobalAlerts: true # Boolean, if true then will delete all existing global alerts, default false alertFilters: # A list of alertFilters to be applied - ruleId: # Int: Mandatory alert rule id newRisk: # String: Mandatory new risk level, one of &amp;#39;False Positive&amp;#39;, &amp;#39;Info&amp;#39;, &amp;#39;Low&amp;#39;, &amp;#39;Medium&amp;#39;, &amp;#39;High&amp;#39; context: # String: Optional context name, if empty then a global alert filter will be created url: # String: Optional string to match against the alert, supports environment vars urlRegex: # Boolean: Optional, if true then the url is a regex parameter: # String: Optional string to match against the alert parameter field parameterRegex: # Boolean: Optional, if true then the parameter is a regex, supports environment vars attack: # String: Optional string to match against the alert attack field attackRegex: # Boolean: Optional, if true then the attack is a regex evidence: # String: Optional string to match against the alert evidence field evidenceRegex: # Boolean: Optional, if true then the evidence is a regex </description>
     </item>
     
     <item>
@@ -1800,7 +1800,7 @@ We have added a significant number of new API endpoints, working towards our goa
       
       <guid>/faq/details/setting-up-zap-to-test-dvwa/</guid>
       <description>Following the steps used to spider/scan DVWA v1.9 at http://localhost/DVWA using ZAP 2.4.3:
- Create a new authentication JavaScript/ECMAScript script [1] and replace/set the script contents with the following:  function authenticate(helper, paramsValues, credentials) { var loginUrl = paramsValues.get(&amp;#34;Login URL&amp;#34;); var csrfTokenName = paramsValues.get(&amp;#34;CSRF Field&amp;#34;); var csrfTokenValue = extractInputFieldValue(getPageContent(helper, loginUrl), csrfTokenName); var postData = paramsValues.</description>
+ Create a new authentication JavaScript/ECMAScript script [1] and replace/set the script contents with the following:  function authenticate(helper, paramsValues, credentials) {  var loginUrl = paramsValues.get(&amp;#34;Login URL&amp;#34;);  var csrfTokenName = paramsValues.get(&amp;#34;CSRF Field&amp;#34;);  var csrfTokenValue = extractInputFieldValue(getPageContent(helper, loginUrl), csrfTokenName);  var postData = paramsValues.</description>
     </item>
     
     <item>
@@ -1873,7 +1873,7 @@ If you experience any problems running ZAP then please report them to us.</descr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/faq/why-am-i-getting-blank-zap-windows-on-linux/</guid>
-      <description>Java has problems with &amp;lsquo;non standard&amp;rsquo; window managers.
+      <description>Java has problems with &amp;rsquo;non standard&amp;rsquo; window managers.
 If you have changed from one of the main window managers and are seeing blank windows when you use ZAP then see https://wiki.haskell.org/Xmonad/Frequently_asked_questions#Problems_with_Java_applications.2C_Applet_java_console for potential solutions.</description>
     </item>
     
@@ -1978,8 +1978,8 @@ Check for Updates on startup If selected then ZAP will automatically check for u
       <guid>/docs/desktop/releases/2.5.0/</guid>
       <description>Release 2.5.0 The following changes were made in this release:
 ZAP API Changes: VIEW authorization / getAuthorizationDetectionMethod Now returns data wrapped in an object called authorizationDetectionMethod For example:
-{&amp;quot;authorizationDetectionMethod&amp;quot;:{&amp;quot;statusCode&amp;quot;:&amp;quot;-1&amp;quot;...&amp;quot;headerRegex&amp;quot;:&amp;quot;&amp;quot;}} instead of:
-{&amp;quot;statusCode&amp;quot;:&amp;quot;-1&amp;quot;...&amp;quot;headerRegex&amp;quot;:&amp;quot;&amp;quot;} VIEW context / context + technologyList Both now return data wrapped in an object called &amp;ldquo;context&amp;rdquo; For example:</description>
+{&amp;#34;authorizationDetectionMethod&amp;#34;:{&amp;#34;statusCode&amp;#34;:&amp;#34;-1&amp;#34;...&amp;#34;headerRegex&amp;#34;:&amp;#34;&amp;#34;}} instead of:
+{&amp;#34;statusCode&amp;#34;:&amp;#34;-1&amp;#34;...&amp;#34;headerRegex&amp;#34;:&amp;#34;&amp;#34;} VIEW context / context + technologyList Both now return data wrapped in an object called &amp;ldquo;context&amp;rdquo; For example:</description>
     </item>
     
     <item>
@@ -2042,7 +2042,7 @@ Default User Agent The user agent that ZAP should use when creating HTTP message
       
       <guid>/docs/desktop/releases/2.4.3/</guid>
       <description>Release 2.4.3 The following changes were made in this release:
-Enhancements:  Issue 1576 : Define URL path elements as &amp;lsquo;non structural&amp;rsquo; Issue 1711 : Feature request: Option to specify number of token to be generated. Issue 1768 : Update to use a more recent user-agent Issue 1894 : ZAP only scans &amp;ldquo;User-Agent&amp;rdquo;, &amp;ldquo;Referer&amp;rdquo;, and &amp;ldquo;Host&amp;rdquo; request headers Issue 1911 : Search AJAX spider requests Issue 1913 : Pass all params across to zap.</description>
+Enhancements:  Issue 1576 : Define URL path elements as &amp;rsquo;non structural&#39; Issue 1711 : Feature request: Option to specify number of token to be generated. Issue 1768 : Update to use a more recent user-agent Issue 1894 : ZAP only scans &amp;ldquo;User-Agent&amp;rdquo;, &amp;ldquo;Referer&amp;rdquo;, and &amp;ldquo;Host&amp;rdquo; request headers Issue 1911 : Search AJAX spider requests Issue 1913 : Pass all params across to zap.</description>
     </item>
     
     <item>
@@ -2170,7 +2170,7 @@ The API Key can be found in the API Options screen</description>
       
       <guid>/docs/desktop/start/features/ddc/</guid>
       <description>Data Driven Content Data driven content is type of Structural Modifier which identifies URL paths that represent data.
-In &amp;lsquo;traditional&amp;rsquo; web applications the structure of the application is typically defined by the URL paths and the data is contained in the URL parameters and POST data.
+In &amp;rsquo;traditional&amp;rsquo; web applications the structure of the application is typically defined by the URL paths and the data is contained in the URL parameters and POST data.
 URLs like:</description>
     </item>
     
@@ -2254,7 +2254,7 @@ Copy This will copy the selected string to the clipboard.</description>
       
       <guid>/docs/desktop/releases/2.3.1/</guid>
       <description>Release 2.3.1 The following changes were made in this release:
- Issue 81 : ZAP changes request data (while switching views) Issue 377 : Unfulfilled dependencies hang the active scan Issue 1073 : Cant remove scripts marked as &amp;lsquo;load on start&amp;rsquo; Issue 1114 : core.newSession doesn&amp;rsquo;t clear Sites Issue 1155 : Historical Request Tab Doesn&amp;rsquo;t allow formatting changes Issue 1156 : Proxy gzip decoder doesn&amp;rsquo;t update content length in response headers Issue 1163 : Unable to set a home directory with a space on the command line Issue 1166 : Redundant indexes in zapdb.</description>
+ Issue 81 : ZAP changes request data (while switching views) Issue 377 : Unfulfilled dependencies hang the active scan Issue 1073 : Cant remove scripts marked as &amp;rsquo;load on start&#39; Issue 1114 : core.newSession doesn&amp;rsquo;t clear Sites Issue 1155 : Historical Request Tab Doesn&amp;rsquo;t allow formatting changes Issue 1156 : Proxy gzip decoder doesn&amp;rsquo;t update content length in response headers Issue 1163 : Unable to set a home directory with a space on the command line Issue 1166 : Redundant indexes in zapdb.</description>
     </item>
     
     <item>
@@ -2753,7 +2753,7 @@ The new Brute Force tab shows the files and directories found.</description>
       
       <guid>/docs/desktop/start/features/structparams/</guid>
       <description>Structural Parameters Structural parameters are a type of Structural Modifier which identify parameters that represent application structure instead of user data.
-In &amp;lsquo;traditional&amp;rsquo; web applications the structure of the application is typically defined by the URL paths and the data is contained in the URL parameters and POST data.</description>
+In &amp;rsquo;traditional&amp;rsquo; web applications the structure of the application is typically defined by the URL paths and the data is contained in the URL parameters and POST data.</description>
     </item>
     
     <item>
@@ -2785,7 +2785,7 @@ They can also be automatically added via Passive scanning - this allows you to a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/desktop/start/features/users/</guid>
-      <description>Users Users are the ZAP representations of websites/webapps&#39; users. They allow certain actions to be performed from the point of view of an user of the webapps. For each Context, a set of Users can be defined, which can then be used in actions related to the context. Most commonly, during various scans the request messages can be sent from the point of view of a User.</description>
+      <description>Users Users are the ZAP representations of websites/webapps&amp;rsquo; users. They allow certain actions to be performed from the point of view of an user of the webapps. For each Context, a set of Users can be defined, which can then be used in actions related to the context. Most commonly, during various scans the request messages can be sent from the point of view of a User.</description>
     </item>
     
     <item>
@@ -3833,7 +3833,7 @@ Website Pages The source for the main website pages is under https://github.</de
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/contribute/forums/</guid>
-      <description>Join the discussions - and remember you don&amp;rsquo;t have to be a ZAP &amp;lsquo;expert&amp;rsquo; in order to answer questions about ZAP.</description>
+      <description>Join the discussions - and remember you don&amp;rsquo;t have to be a ZAP &amp;rsquo;expert&amp;rsquo; in order to answer questions about ZAP.</description>
     </item>
     
     <item>
@@ -5226,7 +5226,7 @@ Show All Tabs This allows you to show all tabs.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/desktop/addons/report-generation/report-traditional-json/</guid>
-      <description>Traditional JSON Report Sample { &amp;quot;@version&amp;quot;: &amp;quot;Dev Build&amp;quot;, &amp;quot;@generated&amp;quot;: &amp;quot;Fri, 4 Feb 2022 13:04:51&amp;quot;, &amp;quot;site&amp;quot;:[ { &amp;quot;@name&amp;quot;: &amp;quot;http://localhost:8080&amp;quot;, &amp;quot;@host&amp;quot;: &amp;quot;localhost&amp;quot;, &amp;quot;@port&amp;quot;: &amp;quot;8080&amp;quot;, &amp;quot;@ssl&amp;quot;: &amp;quot;false&amp;quot;, &amp;quot;alerts&amp;quot;: [ { &amp;quot;pluginid&amp;quot;: &amp;quot;40012&amp;quot;, &amp;quot;alertRef&amp;quot;: &amp;quot;40012&amp;quot;, &amp;quot;alert&amp;quot;: &amp;quot;Cross Site Scripting (Reflected)&amp;quot;, &amp;quot;name&amp;quot;: &amp;quot;Cross Site Scripting (Reflected)&amp;quot;, &amp;quot;riskcode&amp;quot;: &amp;quot;3&amp;quot;, &amp;quot;confidence&amp;quot;: &amp;quot;2&amp;quot;, &amp;quot;riskdesc&amp;quot;: &amp;quot;High (Medium)&amp;quot;, &amp;quot;desc&amp;quot;: &amp;quot;&amp;lt;p&amp;gt;Cross-site Scripting (XSS) is an attack technique that involves .</description>
+      <description>Traditional JSON Report Sample { &amp;#34;@version&amp;#34;: &amp;#34;Dev Build&amp;#34;, &amp;#34;@generated&amp;#34;: &amp;#34;Fri, 4 Feb 2022 13:04:51&amp;#34;, &amp;#34;site&amp;#34;:[ { &amp;#34;@name&amp;#34;: &amp;#34;http://localhost:8080&amp;#34;, &amp;#34;@host&amp;#34;: &amp;#34;localhost&amp;#34;, &amp;#34;@port&amp;#34;: &amp;#34;8080&amp;#34;, &amp;#34;@ssl&amp;#34;: &amp;#34;false&amp;#34;, &amp;#34;alerts&amp;#34;: [ { &amp;#34;pluginid&amp;#34;: &amp;#34;40012&amp;#34;, &amp;#34;alertRef&amp;#34;: &amp;#34;40012&amp;#34;, &amp;#34;alert&amp;#34;: &amp;#34;Cross Site Scripting (Reflected)&amp;#34;, &amp;#34;name&amp;#34;: &amp;#34;Cross Site Scripting (Reflected)&amp;#34;, &amp;#34;riskcode&amp;#34;: &amp;#34;3&amp;#34;, &amp;#34;confidence&amp;#34;: &amp;#34;2&amp;#34;, &amp;#34;riskdesc&amp;#34;: &amp;#34;High (Medium)&amp;#34;, &amp;#34;desc&amp;#34;: &amp;#34;&amp;lt;p&amp;gt;Cross-site Scripting (XSS) is an attack technique that involves .</description>
     </item>
     
     <item>
@@ -5235,7 +5235,7 @@ Show All Tabs This allows you to show all tabs.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/desktop/addons/report-generation/report-traditional-json-plus/</guid>
-      <description>Traditional JSON Report with Requests and Responses Sample { &amp;quot;@version&amp;quot;: &amp;quot;Dev Build&amp;quot;, &amp;quot;@generated&amp;quot;: &amp;quot;Fri, 4 Feb 2022 13:04:51&amp;quot;, &amp;quot;site&amp;quot;:[ { &amp;quot;@name&amp;quot;: &amp;quot;http://localhost:8080&amp;quot;, &amp;quot;@host&amp;quot;: &amp;quot;localhost&amp;quot;, &amp;quot;@port&amp;quot;: &amp;quot;8080&amp;quot;, &amp;quot;@ssl&amp;quot;: &amp;quot;false&amp;quot;, &amp;quot;alerts&amp;quot;: [ { &amp;quot;pluginid&amp;quot;: &amp;quot;40012&amp;quot;, &amp;quot;alertRef&amp;quot;: &amp;quot;40012&amp;quot;, &amp;quot;alert&amp;quot;: &amp;quot;Cross Site Scripting (Reflected)&amp;quot;, &amp;quot;name&amp;quot;: &amp;quot;Cross Site Scripting (Reflected)&amp;quot;, &amp;quot;riskcode&amp;quot;: &amp;quot;3&amp;quot;, &amp;quot;confidence&amp;quot;: &amp;quot;2&amp;quot;, &amp;quot;riskdesc&amp;quot;: &amp;quot;High (Medium)&amp;quot;, &amp;quot;desc&amp;quot;: &amp;quot;&amp;lt;p&amp;gt;Cross-site Scripting (XSS) is an attack technique that involves .</description>
+      <description>Traditional JSON Report with Requests and Responses Sample { &amp;#34;@version&amp;#34;: &amp;#34;Dev Build&amp;#34;, &amp;#34;@generated&amp;#34;: &amp;#34;Fri, 4 Feb 2022 13:04:51&amp;#34;, &amp;#34;site&amp;#34;:[ { &amp;#34;@name&amp;#34;: &amp;#34;http://localhost:8080&amp;#34;, &amp;#34;@host&amp;#34;: &amp;#34;localhost&amp;#34;, &amp;#34;@port&amp;#34;: &amp;#34;8080&amp;#34;, &amp;#34;@ssl&amp;#34;: &amp;#34;false&amp;#34;, &amp;#34;alerts&amp;#34;: [ { &amp;#34;pluginid&amp;#34;: &amp;#34;40012&amp;#34;, &amp;#34;alertRef&amp;#34;: &amp;#34;40012&amp;#34;, &amp;#34;alert&amp;#34;: &amp;#34;Cross Site Scripting (Reflected)&amp;#34;, &amp;#34;name&amp;#34;: &amp;#34;Cross Site Scripting (Reflected)&amp;#34;, &amp;#34;riskcode&amp;#34;: &amp;#34;3&amp;#34;, &amp;#34;confidence&amp;#34;: &amp;#34;2&amp;#34;, &amp;#34;riskdesc&amp;#34;: &amp;#34;High (Medium)&amp;#34;, &amp;#34;desc&amp;#34;: &amp;#34;&amp;lt;p&amp;gt;Cross-site Scripting (XSS) is an attack technique that involves .</description>
     </item>
     
     <item>
@@ -5262,7 +5262,7 @@ Show All Tabs This allows you to show all tabs.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/desktop/addons/report-generation/report-traditional-xml/</guid>
-      <description>Traditional XML Report Sample &amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt; &amp;lt;OWASPZAPReport version=&amp;quot;Dev Build&amp;quot; generated=&amp;quot;Fri, 4 Feb 2022 17:42:18&amp;quot;&amp;gt; &amp;lt;site name=&amp;quot;http://localhost:8080&amp;quot; host=&amp;quot;localhost&amp;quot; port=&amp;quot;8080&amp;quot; ssl=&amp;quot;false&amp;quot;&amp;gt; &amp;lt;alerts&amp;gt; &amp;lt;alertitem&amp;gt; &amp;lt;pluginid&amp;gt;20012&amp;lt;/pluginid&amp;gt; &amp;lt;alertRef&amp;gt;20012&amp;lt;/alertRef&amp;gt; &amp;lt;alert&amp;gt;Anti-CSRF Tokens Check&amp;lt;/alert&amp;gt; &amp;lt;name&amp;gt;Anti-CSRF Tokens Check&amp;lt;/name&amp;gt; &amp;lt;riskcode&amp;gt;3&amp;lt;/riskcode&amp;gt; &amp;lt;confidence&amp;gt;2&amp;lt;/confidence&amp;gt; &amp;lt;riskdesc&amp;gt;High (Medium)&amp;lt;/riskdesc&amp;gt; &amp;lt;confidencedesc&amp;gt;Medium&amp;lt;/confidencedesc&amp;gt; &amp;lt;desc&amp;gt;&amp;lt;p&amp;gt;A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge.</description>
+      <description>Traditional XML Report Sample &amp;lt;?xml version=&amp;#34;1.0&amp;#34;?&amp;gt; &amp;lt;OWASPZAPReport version=&amp;#34;Dev Build&amp;#34; generated=&amp;#34;Fri, 4 Feb 2022 17:42:18&amp;#34;&amp;gt; &amp;lt;site name=&amp;#34;http://localhost:8080&amp;#34; host=&amp;#34;localhost&amp;#34; port=&amp;#34;8080&amp;#34; ssl=&amp;#34;false&amp;#34;&amp;gt; &amp;lt;alerts&amp;gt; &amp;lt;alertitem&amp;gt; &amp;lt;pluginid&amp;gt;20012&amp;lt;/pluginid&amp;gt; &amp;lt;alertRef&amp;gt;20012&amp;lt;/alertRef&amp;gt; &amp;lt;alert&amp;gt;Anti-CSRF Tokens Check&amp;lt;/alert&amp;gt; &amp;lt;name&amp;gt;Anti-CSRF Tokens Check&amp;lt;/name&amp;gt; &amp;lt;riskcode&amp;gt;3&amp;lt;/riskcode&amp;gt; &amp;lt;confidence&amp;gt;2&amp;lt;/confidence&amp;gt; &amp;lt;riskdesc&amp;gt;High (Medium)&amp;lt;/riskdesc&amp;gt; &amp;lt;confidencedesc&amp;gt;Medium&amp;lt;/confidencedesc&amp;gt; &amp;lt;desc&amp;gt;&amp;lt;p&amp;gt;A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge.</description>
     </item>
     
     <item>
@@ -5453,7 +5453,7 @@ The following views are included by default:
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/alerts/10021/</guid>
-      <description>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &amp;lsquo;nosniff&amp;rsquo;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</description>
+      <description>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &amp;rsquo;nosniff&amp;rsquo;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</description>
     </item>
     
     <item>

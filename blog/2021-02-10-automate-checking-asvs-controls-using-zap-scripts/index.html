@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -241,7 +241,7 @@ v4.0.2-14.4.1, for which I have written a script which is available
 <a href="https://github.com/BlazingWind/OWASP-ASVS-4.0-testing-guide/blob/main/ZAP-scripts/14-4-1-Charset.py">here</a>.</p>
 <p><em>&ldquo;Verify that every HTTP response contains a Content-Type header.
 text/*, /+xml and application/xml content types should also specify a
-safe character set (e.g., UTF-8, ISO-8859-1).&quot;</em></p>
+safe character set (e.g., UTF-8, ISO-8859-1).&rdquo;</em></p>
 <p>The control is easy to check manually, but a manual control does not
 give as good coverage as a ZAP script with a crawler. Additionally, the
 script can be reused for doing periodical controls on an application
@@ -251,35 +251,35 @@ request, but only passively scan the passing traffic. There already
 exists <a href="https://www.zaproxy.org/docs/alerts/10019/">a rule</a> in
 ZAP that checks if the Content-Type header is missing, but it does not
 check the charset, hence I have written this script.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> re
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scan</span>(ps, msg, src):
-
-  alertTitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;14.4.1 Verify that every HTTP response contains a content type header specifying a safe character set (e.g., UTF-8, ISO 8859-1).&#34;</span>
-  alertDescription <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The header Content-Type denotes what the content is encoded in. Declaring it hinders XSS attacks leveraging different encodings than the server expects.&#34;</span>
-  alertRisk <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-  alertReliability <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-  header <span style="color:#f92672">=</span> str(msg<span style="color:#f92672">.</span>getResponseHeader()<span style="color:#f92672">.</span>getHeader(<span style="color:#e6db74">&#34;Content-Type&#34;</span>))
-  alertSolution <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Ensure that Content-Type is included in the response.&#34;</span>,<span style="color:#e6db74">&#34;Ensure that Content-Type header with text/*, /+xml and application/xml content types specifies a safe character set (e.g., UTF-8, ISO-8859-1).&#34;</span>]
-  alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Content-Type header&#34;</span>
-  alertInfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Control failure&#34;</span>
-  cweID <span style="color:#f92672">=</span> <span style="color:#ae81ff">173</span>
-  wascID <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-
-  patternType <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;text/.*|.*\+xml.*|application/xml.*&#34;</span>)
-  patternCharset <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;(?i).*UTF-8.*|.*ISO-8859-1.*&#34;</span>)
-
-  <span style="color:#66d9ef">if</span> (header <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;None&#34;</span>):
-    ps<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
-      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
-      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], header, cweID, wascID, msg);
-  <span style="color:#66d9ef">elif</span> (re<span style="color:#f92672">.</span>search(patternType,header)):
-    charsets <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(patternCharset,header)
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> charsets:
-      ps<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
-        msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
-        alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">1</span>], header, cweID, wascID, msg);
-</code></pre></div><p>Breaking down the above script, the flow is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scan</span>(ps, msg, src):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  alertTitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;14.4.1 Verify that every HTTP response contains a content type header specifying a safe character set (e.g., UTF-8, ISO 8859-1).&#34;</span>
+</span></span><span style="display:flex;"><span>  alertDescription <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;The header Content-Type denotes what the content is encoded in. Declaring it hinders XSS attacks leveraging different encodings than the server expects.&#34;</span>
+</span></span><span style="display:flex;"><span>  alertRisk <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  alertReliability <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  header <span style="color:#f92672">=</span> str(msg<span style="color:#f92672">.</span>getResponseHeader()<span style="color:#f92672">.</span>getHeader(<span style="color:#e6db74">&#34;Content-Type&#34;</span>))
+</span></span><span style="display:flex;"><span>  alertSolution <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Ensure that Content-Type is included in the response.&#34;</span>,<span style="color:#e6db74">&#34;Ensure that Content-Type header with text/*, /+xml and application/xml content types specifies a safe character set (e.g., UTF-8, ISO-8859-1).&#34;</span>]
+</span></span><span style="display:flex;"><span>  alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Content-Type header&#34;</span>
+</span></span><span style="display:flex;"><span>  alertInfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Control failure&#34;</span>
+</span></span><span style="display:flex;"><span>  cweID <span style="color:#f92672">=</span> <span style="color:#ae81ff">173</span>
+</span></span><span style="display:flex;"><span>  wascID <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  patternType <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;text/.*|.*\+xml.*|application/xml.*&#34;</span>)
+</span></span><span style="display:flex;"><span>  patternCharset <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>compile(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;(?i).*UTF-8.*|.*ISO-8859-1.*&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (header <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;None&#34;</span>):
+</span></span><span style="display:flex;"><span>    ps<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
+</span></span><span style="display:flex;"><span>      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
+</span></span><span style="display:flex;"><span>      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], header, cweID, wascID, msg);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> (re<span style="color:#f92672">.</span>search(patternType,header)):
+</span></span><span style="display:flex;"><span>    charsets <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>search(patternCharset,header)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> charsets:
+</span></span><span style="display:flex;"><span>      ps<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
+</span></span><span style="display:flex;"><span>        msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
+</span></span><span style="display:flex;"><span>        alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">1</span>], header, cweID, wascID, msg);
+</span></span></code></pre></div><p>Breaking down the above script, the flow is as follows:</p>
 <ol>
 <li>
 <p>first the script checks that each HTTP response contains a Content-Type header</p>
@@ -300,7 +300,7 @@ available
 <a href="https://github.com/BlazingWind/OWASP-ASVS-4.0-testing-guide/blob/main/ZAP-scripts/14-5-3-CORS-header.py">here</a>.</p>
 <p><em>&lsquo;Verify that the cross-domain resource sharing (CORS)
 Access-Control-Allow-Origin header uses a strict allowlist of trusted
-domains to match against and does not support the &quot;null&quot; origin.'</em></p>
+domains to match against and does not support the &quot;null&quot; origin.&rsquo;</em></p>
 <p>Cross-Origin Resource Sharing (CORS) is a mechanism that uses additional
 HTTP headers to tell browsers to give a web application running at one
 origin, access to selected resources from a different origin. A web
@@ -311,49 +311,49 @@ from. It is set automatically by the user agent to describe the security
 contexts that caused the user agent to initiate an HTTP request. For
 more information on CORS, consult the guide under control 14.5.3 Origin
 header.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Python" data-lang="Python"><span style="color:#f92672">import</span> re
-
-alertTitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;14.5.3 Verify that the cross-domain resource sharing (CORS) Access-Control-Allow-Origin header uses a strict white-list of trusted domains to match against and does not support the &#34;null&#34; origin.&#39;</span>
-alertDescription <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;This controls checks if CORS policy is properly configured.&#34;</span>
-alertRisk <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-alertReliability <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-alertSolution <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Use a strict whitelist of sites allowed to request resources of your domain&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>]
-alertInfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Control failure&#34;</span>
-cweID <span style="color:#f92672">=</span> <span style="color:#ae81ff">346</span>
-wascID <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-
-origin <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;exampletestsite.com&#34;</span>
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scanNode</span>(sas, msg):
-  origMsg <span style="color:#f92672">=</span> msg;
-  <span style="color:#75715e"># Copy requests before reusing them</span>
-  msg <span style="color:#f92672">=</span> origMsg<span style="color:#f92672">.</span>cloneRequest();
-  
-  <span style="color:#75715e"># GET resource that doesn&#39;t exist</span>
-  msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>setHeader(<span style="color:#e6db74">&#34;Origin&#34;</span>, origin)
-
-  <span style="color:#75715e"># sendAndReceive(msg, followRedirect, handleAntiCSRFtoken) </span>
-  <span style="color:#66d9ef">if</span> (sas<span style="color:#f92672">.</span>isStop()):
-    <span style="color:#66d9ef">return</span>
-  sas<span style="color:#f92672">.</span>sendAndReceive(msg, <span style="color:#66d9ef">True</span>, <span style="color:#66d9ef">False</span>);
-
-  header <span style="color:#f92672">=</span> str(msg<span style="color:#f92672">.</span>getResponseHeader()<span style="color:#f92672">.</span>getHeader(<span style="color:#e6db74">&#34;Access-Control-Allow-Origin&#34;</span>))
-  <span style="color:#66d9ef">if</span> (header <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;*&#34;</span>):
-    alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wildcard directive in Access-Control-Allow-Origin&#34;</span>
-    sas<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
-      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
-      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;&#34;</span>, cweID, wascID, msg);
-  <span style="color:#66d9ef">elif</span> (header <span style="color:#f92672">==</span> origin):
-    alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Access-Control-Allow-Origin reflects Origin header&#34;</span>
-    sas<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
-      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
-      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;&#34;</span>, cweID, wascID, msg);
-  <span style="color:#66d9ef">elif</span> (header <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;null&#34;</span>):
-    alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Access-Control-Allow-Origin is null&#34;</span>
-    sas<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
-      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
-      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;&#34;</span>, cweID, wascID, msg);
-</code></pre></div><p>The above script checks for misconfiguration of CORS and the flow is as
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alertTitle <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;14.5.3 Verify that the cross-domain resource sharing (CORS) Access-Control-Allow-Origin header uses a strict white-list of trusted domains to match against and does not support the &#34;null&#34; origin.&#39;</span>
+</span></span><span style="display:flex;"><span>alertDescription <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;This controls checks if CORS policy is properly configured.&#34;</span>
+</span></span><span style="display:flex;"><span>alertRisk <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>alertReliability <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>alertSolution <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Use a strict whitelist of sites allowed to request resources of your domain&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>]
+</span></span><span style="display:flex;"><span>alertInfo <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Control failure&#34;</span>
+</span></span><span style="display:flex;"><span>cweID <span style="color:#f92672">=</span> <span style="color:#ae81ff">346</span>
+</span></span><span style="display:flex;"><span>wascID <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>origin <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;exampletestsite.com&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">scanNode</span>(sas, msg):
+</span></span><span style="display:flex;"><span>  origMsg <span style="color:#f92672">=</span> msg;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Copy requests before reusing them</span>
+</span></span><span style="display:flex;"><span>  msg <span style="color:#f92672">=</span> origMsg<span style="color:#f92672">.</span>cloneRequest();
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># GET resource that doesn&#39;t exist</span>
+</span></span><span style="display:flex;"><span>  msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>setHeader(<span style="color:#e6db74">&#34;Origin&#34;</span>, origin)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># sendAndReceive(msg, followRedirect, handleAntiCSRFtoken) </span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (sas<span style="color:#f92672">.</span>isStop()):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>  sas<span style="color:#f92672">.</span>sendAndReceive(msg, <span style="color:#66d9ef">True</span>, <span style="color:#66d9ef">False</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  header <span style="color:#f92672">=</span> str(msg<span style="color:#f92672">.</span>getResponseHeader()<span style="color:#f92672">.</span>getHeader(<span style="color:#e6db74">&#34;Access-Control-Allow-Origin&#34;</span>))
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (header <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;*&#34;</span>):
+</span></span><span style="display:flex;"><span>    alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wildcard directive in Access-Control-Allow-Origin&#34;</span>
+</span></span><span style="display:flex;"><span>    sas<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
+</span></span><span style="display:flex;"><span>      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
+</span></span><span style="display:flex;"><span>      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;&#34;</span>, cweID, wascID, msg);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> (header <span style="color:#f92672">==</span> origin):
+</span></span><span style="display:flex;"><span>    alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Access-Control-Allow-Origin reflects Origin header&#34;</span>
+</span></span><span style="display:flex;"><span>    sas<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
+</span></span><span style="display:flex;"><span>      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
+</span></span><span style="display:flex;"><span>      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;&#34;</span>, cweID, wascID, msg);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> (header <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;null&#34;</span>):
+</span></span><span style="display:flex;"><span>    alertParam <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Access-Control-Allow-Origin is null&#34;</span>
+</span></span><span style="display:flex;"><span>    sas<span style="color:#f92672">.</span>raiseAlert(alertRisk, alertReliability, alertTitle, alertDescription, 
+</span></span><span style="display:flex;"><span>      msg<span style="color:#f92672">.</span>getRequestHeader()<span style="color:#f92672">.</span>getURI()<span style="color:#f92672">.</span>toString(), 
+</span></span><span style="display:flex;"><span>      alertParam, <span style="color:#e6db74">&#34;&#34;</span>, alertInfo, alertSolution[<span style="color:#ae81ff">0</span>], <span style="color:#e6db74">&#34;&#34;</span>, cweID, wascID, msg);
+</span></span></code></pre></div><p>The above script checks for misconfiguration of CORS and the flow is as
 follows:</p>
 <ol>
 <li>

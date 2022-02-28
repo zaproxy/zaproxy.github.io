@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -173,14 +173,14 @@
 <ul>
 <li>You can create your own PAC (Proxy Auto-Config) file and dynamically set proxying as you need, then point your browser at it on your harddrive using the <code>file:///</code> scheme. For example:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">FindProxyForURL</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">host</span>) {
-    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">shExpMatch</span>(<span style="color:#a6e22e">host</span>, <span style="color:#e6db74">&#34;*.example.org&#34;</span>)) {
-        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PROXY localhost:8080&#34;</span>; <span style="color:#75715e">//Use ZAP for *.example.org
-</span><span style="color:#75715e"></span>    }
-    <span style="color:#75715e">// Go directly to the WWW for everything else
-</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;DIRECT&#34;</span>;
-}
-</code></pre></div><p><img src="/img/faq/firefox_pac.png" alt="Firefox PAC example"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">FindProxyForURL</span>(<span style="color:#a6e22e">url</span>, <span style="color:#a6e22e">host</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">shExpMatch</span>(<span style="color:#a6e22e">host</span>, <span style="color:#e6db74">&#34;*.example.org&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;PROXY localhost:8080&#34;</span>; <span style="color:#75715e">//Use ZAP for *.example.org
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Go directly to the WWW for everything else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;DIRECT&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><img src="/img/faq/firefox_pac.png" alt="Firefox PAC example"></p>
 <h4 id="4---set-no-proxy-for-in-your-browser">4 - Set &ldquo;No Proxy For&rdquo; in Your Browser</h4>
 <ul>
 <li>Most modern browsers allow users to specify domains or networks for which the traffic should not be proxied.<br>

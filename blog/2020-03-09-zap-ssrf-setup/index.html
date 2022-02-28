@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -191,8 +191,8 @@
 	<figcaption></figcaption>
 </figure></li>
 <li>Forward requests received on the server to the local ZAP with SSH port forwarding:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
+</span></span></code></pre></div></li>
 </ol>
 <h3 id="my-setup">My Setup:</h3>
 <p>For this setup you will need a DNS name and a server with a public address. If you don’t have a DNS name and you don’t want to spend money you can create one for free on <a href="https://duckdns.org">https://duckdns.org</a> (or numerous other free services). The options I use on ZAP are the ones on the TLDR image.</p>
@@ -208,12 +208,12 @@
 </li>
 <li>
 <p>If a vulnerability exists the server will make a request to <a href="http://something.mydomain.org:38193/callback/XXESD215F">http://something.mydomain.org:38193/callback/XXESD215F</a>. This request will be made to my cloud server because it is the location my DNS is pointing to. To receive this request on ZAP you need to somehow redirect the request to your local machine. One way that doesn’t require a public address on your machine is to use <a href="https://www.ssh.com/ssh/tunneling/example">SSH port forwarding</a>. What it does is to connect to your server through SSH, listen to a port on the server and send all the traffic received on that port to a port on your machine. The command I use is:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ssh -N -R 38193:localhost:38193 myUser@something.mydomain.org
+</span></span></code></pre></div></li>
 </ol>
 <p>If you want to have a valid HTTPS certificate you can run some reverse proxy on your server (as Nginx) with a certificate, proxy the requests to other port, for instance 9999, and change the port forwarding to that address:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ssh -N -R 9999:localhost:38193 myUser@something.mydomain.org
-</code></pre></div><h3 id="troubleshoot">Troubleshoot:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>ssh -N -R 9999:localhost:38193 myUser@something.mydomain.org
+</span></span></code></pre></div><h3 id="troubleshoot">Troubleshoot:</h3>
 <ul>
 <li>open the ports on the firewall</li>
 <li>make sure you allow port forwarding on the server ssh config <code>/etc/ssh/sshd_config</code>:

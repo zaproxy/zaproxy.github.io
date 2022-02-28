@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -167,9 +167,9 @@
 <p>You may need to look at the source of various components to make sure the spider can effectively navigate your app.</p>
 <p>For example use the Firefox &lsquo;right click&rsquo; &lsquo;Inspect Element&rsquo; for this, but you can also use the ZAP Response tab or the View Source in your browser of choice.
 The login button is defined as:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button v-widget primary v-button-primary&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">tabindex</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>&gt;
-&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button-wrap&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button-caption&#34;</span>&gt;Sign In&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
-</code></pre></div><p>So it&rsquo;s a div. Great. Why use HTML conventions when you can do anything you like? ;)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button v-widget primary v-button-primary&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;button&#34;</span> <span style="color:#a6e22e">tabindex</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button-wrap&#34;</span>&gt;&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;v-button-caption&#34;</span>&gt;Sign In&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>So it&rsquo;s a div. Great. Why use HTML conventions when you can do anything you like? ;)
 Anyway, this means that the default elements (a, button, input) won&rsquo;t be enough, so in Options / AJAX Spider uncheck &lsquo;Click default elements only (a, button, input)&rsquo;. This might actually be enough to make it all work.
 However for me the loading time looked like it was over 1 second, so I increased the Options / AJAX Spider &lsquo;Event&rsquo; and &lsquo;Reload&rsquo; wait times.</p>
 <p>This then meant that crawling from <a href="https://demo.vaadin.com/dashboard">https://demo.vaadin.com/dashboard</a> with the Ajax Spider worked - initially it just keeps reloading the login page but eventually it did get to the real content. It takes time because it now has to click on every div as it can&rsquo;t know which will do things and which won&rsquo;t.</p>

