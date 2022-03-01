@@ -180,7 +180,8 @@
 <p><img src="/img/docs/docker/ZAP-webswing.png" alt=""></p>
 <p>The ZAP UI acts in just the same way as it does when running &rsquo;natively'.</p>
 <p>The performance is surprisingly good, although a little bit slower. You can still move and resize the windows and some (but not all) of the keyboard shortcuts will work.</p>
-<h2 id="proxying-through-zap">Proxying through ZAP</h2>
+
+<h2 id="proxying-through-zap">Proxying through ZAP <a class="header-link" href="#proxying-through-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You can even proxy your browser through ZAP, via the URL <a href="http://localhost:8090">http://localhost:8090</a></p>
 <p>However it is not possible to launch browsers via ZAP started via Webswing so in order to proxy https based sites you need to start the docker container with a local drive mapped to <code>/zap/wrk</code> e.g. using:</p>
 <ul>
@@ -197,7 +198,8 @@ and <a href="/docs/desktop/ui/dialogs/options/dynsslcert/#install">import the pu
 <p>If you restart the docker container using the same mapped drive then ZAP will automatically import the private ZAP Root CA certificate
 so you will not need to import it into your browser again.</p>
 <p>Note that you will need to visit http://localhost:8080/zap <em>before</em> you can use ZAP as a proxy - ZAP will only start to run when you visit that URL.</p>
-<h2 id="zap-command-line-options">ZAP Command Line Options</h2>
+
+<h2 id="zap-command-line-options">ZAP Command Line Options <a class="header-link" href="#zap-command-line-options"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>When you run ZAP using Webswing then the following ZAP Command Line Options will be used:</p>
 <ul>
 <li>If there is a <code>ZAP_WEBSWING_OPTS</code> environmental variable set then its value will be used</li>
@@ -209,7 +211,8 @@ so you will not need to import it into your browser again.</p>
 <ul>
 <li><code>docker run -v $(pwd):/zap/wrk/:rw -e ZAP_WEBSWING_OPTS=&quot;-host 0.0.0.0 -port 9090&quot; -u zap -p 8080:8080 -p 9090:9090 -i owasp/zap2docker-stable zap-webswing.sh</code></li>
 </ul>
-<h2 id="blog-post">Blog post</h2>
+
+<h2 id="blog-post">Blog post <a class="header-link" href="#blog-post"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>For more details see the Blog post: <a href="/blog/2021-02-03-run-zap-without-java-using-docker-and-webswing/">Run ZAP without Java using Docker and Webswing</a></p>
 
           </main>

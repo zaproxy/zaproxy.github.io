@@ -192,7 +192,8 @@ However many APIs are described using technologies such as:</p>
 <li><a href="https://www.openapis.org/">OpenAPI / Swagger</a></li>
 </ul>
 <p>These standards define the API endpoints and can be imported into ZAP using 2 optional add-ons.</p>
-<h2 id="installing-the-add-ons">Installing the add-ons</h2>
+
+<h2 id="installing-the-add-ons">Installing the add-ons <a class="header-link" href="#installing-the-add-ons"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>In order to import the API definitions you will need to add the relevant add-ons from the ZAP Marketplace.</p>
 <p>To do this via the UI:</p>
 
@@ -216,7 +217,8 @@ However many APIs are described using technologies such as:</p>
 <p>To install them via the command line is even easier - just start ZAP with the command line flags: “-addoninstall soap -addoninstall openapi”<br>
 e.g.:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>./zap.sh -addoninstall soap -addoninstall openapi
-</span></span></code></pre></div><h2 id="importing-via-the-ui">Importing via the UI</h2>
+</span></span></code></pre></div>
+<h2 id="importing-via-the-ui">Importing via the UI <a class="header-link" href="#importing-via-the-ui"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>These add-ons add the following items under the ‘Tools’ menu:</p>
 <ul>
 <li>Import a WSDL file from local file system</li>
@@ -236,7 +238,8 @@ These menu items will open new dialogs which will allow you to specify the relev
 	<img src="/blog/2017-04-03-exploring-apis-with-zap/images/Openapi-import.png" alt="" />
 	<figcaption></figcaption>
 </figure>
-<h2 id="importing-via-the-api">Importing via the API</h2>
+
+<h2 id="importing-via-the-api">Importing via the API <a class="header-link" href="#importing-via-the-api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Both add-ons support importing API definitions from URLs and local files.<br>
 You can try these out via the API Web UI:</p>
 <p>
@@ -285,11 +288,13 @@ calls like:</p>
 </span></span><span style="display:flex;"><span>print zap<span style="color:#f92672">.</span>_request(  
 </span></span><span style="display:flex;"><span>  zap<span style="color:#f92672">.</span>base <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;soap/action/importUrl/&#39;</span>,  
 </span></span><span style="display:flex;"><span>  {<span style="color:#e6db74">&#39;url&#39;</span>:<span style="color:#e6db74">&#39;https://localhost/soap.xml&#39;</span>})
-</span></span></code></pre></div><h2 id="spidering">Spidering</h2>
+</span></span></code></pre></div>
+<h2 id="spidering">Spidering <a class="header-link" href="#spidering"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Both of the add-ons automatically detect the relevant API definition file while spidering and will explore the definitions as long as they are
 in scope.<br>
 This means that you can explore an API by spidering from the URL of the definition as long as it is on the same domain as the API.</p>
-<h2 id="next-steps">Next steps</h2>
+
+<h2 id="next-steps">Next steps <a class="header-link" href="#next-steps"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Once you have added your API to the Sites tree using any of the above options you can then use any of the other ZAP components on the API,
 including the active scanner and fuzzer.</p>
 <p>Note that the SOAP Scanner add-on also adds 2 additional scan rules that specifically target SOAP and XML URLs:</p>

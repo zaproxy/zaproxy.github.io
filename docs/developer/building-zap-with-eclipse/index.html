@@ -171,15 +171,18 @@
 
 </ol>
     <main><p>If you want to make changes to ZAP using the Eclipse IDE then you are in the right place.</p>
-<h2 id="preparation">Preparation</h2>
+
+<h2 id="preparation">Preparation <a class="header-link" href="#preparation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You will need to have followed the <a href="../quick-start-build/">Quick Start Guide to Building ZAP</a> and installed a version of <a href="https://www.eclipse.org/">Eclipse</a> suitable for Java development. We would suggest the &ldquo;Eclipse IDE for Java Developers&rdquo; <a href="https://www.eclipse.org/downloads/packages/">package</a>.</p>
-<h2 id="import-the-zap-repositories">Import the ZAP Repositories</h2>
+
+<h2 id="import-the-zap-repositories">Import the ZAP Repositories <a class="header-link" href="#import-the-zap-repositories"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>In Eclipse select the &lsquo;File&rsquo; menu, then &lsquo;Import&hellip;&rsquo;, and then &lsquo;Gradle&rsquo; → &lsquo;Existing Gradle Project&rsquo;:</p>
 <p><img src="/img/docs/developer/eclipse-import.png" alt="Eclipse Gradle Import"></p>
 <p>In the following dialog, enter the full directory path for one of the ZAP repositories you cloned before and click on &lsquo;Finish&rsquo;.</p>
 <p>Repeat this process until you have imported all of the ZAP repositories.</p>
 <p>It is worth noting that some of the <em>zap-extensions</em> add-ons may fail to compile if you do not have the required environment for them. This is to be expected and is not a problem unless you want to work on those add-ons, in which case see their READMEs for more details.</p>
-<h2 id="running-zap">Running ZAP</h2>
+
+<h2 id="running-zap">Running ZAP <a class="header-link" href="#running-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>In the Eclipse Project Explorer navigate to:</p>
 <ul>
 <li>zaproxy / zap / src / main / java / org / zaproxy / zap</li>
@@ -190,11 +193,13 @@
 <p>Select the &lsquo;Arguments&rsquo; tab, change the &lsquo;Working directory&rsquo; from &lsquo;Default&rsquo; to &lsquo;Other&rsquo; and enter: <code>${workspace_loc:zaproxy/zap/src/main/dist/}</code></p>
 <p><img src="/img/docs/developer/eclipse-config-run.png" alt="Eclipse Run Configuration"></p>
 <p>Run this configuration and ZAP should now start with all of the add-ons correctly configured.</p>
-<h2 id="running-gradle-tasks">Running Gradle Tasks</h2>
+
+<h2 id="running-gradle-tasks">Running Gradle Tasks <a class="header-link" href="#running-gradle-tasks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You can run the ZAP Gradle tasks from the command line or from within Eclipse, the end result will be the same.</p>
 <p>Eclipse has a &lsquo;Gradle Tasks&rsquo; tab that lists all of the tasks available to you ordered by project.
 Note that the add-ons in <em>zap-extensions</em> all have their own set of tasks in addition to the top level ones.</p>
-<h2 id="debugging-add-ons">Debugging Add-ons</h2>
+
+<h2 id="debugging-add-ons">Debugging Add-ons <a class="header-link" href="#debugging-add-ons"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You can debug code in the <em>zaproxy</em> repository without making any changes, but you will need to tweak your configuration in order to debug add-ons.</p>
 <p>Select the ZAP runtime configuration as before, switch to the &lsquo;Source&rsquo; tab and click on the &lsquo;Add&hellip;&rsquo; button.</p>
 <p>Select &lsquo;Java Project&rsquo;, click on &lsquo;OK&rsquo;, and then select the add-ons which you want to be able to debug before proceeding.</p>
@@ -202,15 +207,19 @@ Note that the add-ons in <em>zap-extensions</em> all have their own set of tasks
 <p>You will now be able to break on code in the relevant ZAP add-ons - in this case in the ExtensionQuickStart constructor in the quickstart add-on.</p>
 <p><img src="/img/docs/developer/eclipse-debug.png" alt="Eclipse Debugging"></p>
 <p>For details of setting breakpoint in Eclipse see the relevant Eclipse documentation.</p>
-<h2 id="tips-and-tricks">Tips and Tricks</h2>
-<h3 id="refresh-gradle-project">Refresh Gradle Project</h3>
+
+<h2 id="tips-and-tricks">Tips and Tricks <a class="header-link" href="#tips-and-tricks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="refresh-gradle-project">Refresh Gradle Project <a class="header-link" href="#refresh-gradle-project"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Sometimes Eclipse will unexpectedly fail to compile ZAP code. This can occur if you switch between git branches which have different dependencies.</p>
 <p>If this happens to you then right click the relevant project in the Eclipse Project Explorer and select &lsquo;Gradle&rsquo; → &lsquo;Refresh Gradle Project&rsquo;</p>
-<h3 id="package-presentation">Package Presentation</h3>
+
+<h3 id="package-presentation">Package Presentation <a class="header-link" href="#package-presentation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The default way in which Eclipse displays the package hierarchy does not work very well for ZAP, at least in our opinion.</p>
 <p>To change this click on the buttton with 3 vertical dots at the top of the Package Explorer, select &lsquo;Package Presentation&rsquo; → &lsquo;Hierarchical&rsquo;.</p>
 <p><img src="/img/docs/developer/eclipse-package.png" alt="Eclipse Gradle Package Presentation"></p>
-<h3 id="other-tips-and-tricks">Other Tips and Tricks</h3>
+
+<h3 id="other-tips-and-tricks">Other Tips and Tricks <a class="header-link" href="#other-tips-and-tricks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Do you have any other Tips and Tricks for working on ZAP using Eclipse? If so then send a PR to update this page - you can use the &lsquo;Edit on GitHub&rsquo; link in the footer.</p>
 </main>
   </article>

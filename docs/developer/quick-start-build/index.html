@@ -192,14 +192,17 @@
 </div>
 
 <p>Let’s jump right into it!</p>
-<h2 id="preparation">Preparation</h2>
+
+<h2 id="preparation">Preparation <a class="header-link" href="#preparation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>All you need is a working local installation of <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> and <a href="https://adoptium.net/">JDK 8 or 11</a>.
 Newer JDK versions might not work.</p>
-<h2 id="clone-the-repo-locally">Clone the Repo Locally</h2>
+
+<h2 id="clone-the-repo-locally">Clone the Repo Locally <a class="header-link" href="#clone-the-repo-locally"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Create a new directory on your system and run the following commands in that directory to clone the main ZAP repositories.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/zaproxy/zaproxy.git
 </span></span><span style="display:flex;"><span>git clone https://github.com/zaproxy/zap-extensions.git
-</span></span></code></pre></div><h2 id="installing-zap-add-ons">Installing ZAP Add-ons</h2>
+</span></span></code></pre></div>
+<h2 id="installing-zap-add-ons">Installing ZAP Add-ons <a class="header-link" href="#installing-zap-add-ons"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>As the name suggests, ZAP add-ons are a way to enhance ZAP functionality. There are several add-ons that allow you to do many different things. Some add-ons which are required by ZAP to work properly are called mandatory add-ons. These add-ons need to be installed first to be able to run ZAP from source.</p>
 <p>The <em>zap-extensions</em> repository contains the source code for the add-ons maintained by the core team, including the mandatory add-ons.</p>
 <p>ZAP uses the <a href="https://docs.gradle.org/current/userguide/gradle_wrapper.html">Gradle Wrapper</a> that downloads all the dependencies for the projects.</p>
@@ -244,7 +247,8 @@ Newer JDK versions might not work.</p>
 </code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew copyWeeklyAddOns
 </span></span></code></pre></div><p>In essence, this task is the same as running <code>./gradlew copyZapAddOn</code> for each of the add-ons included in the weekly release (see <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/weekly-add-ons.json"><code>zaproxy/zap/src/main/weekly-add-ons.json</code></a>).</p>
 <p>For a better understanding of Gradle tasks you can check out the <a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle user manual</a>.</p>
-<h2 id="running-zap-from-source">Running ZAP from Source</h2>
+
+<h2 id="running-zap-from-source">Running ZAP from Source <a class="header-link" href="#running-zap-from-source"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Ensuring that the mandatory add-ons are installed, navigate to the cloned <em>zaproxy</em> folder and run the following command:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew run
 </span></span></code></pre></div><p>That’s it! You’re now running ZAP from source! You can confirm this if you see “Dev Build” in the loading window.</p>
@@ -256,7 +260,8 @@ Newer JDK versions might not work.</p>
 </code></pre><p>It is possible that you might be greeted with the following prompt if you already have some other application that is using port 8080.</p>
 <p><img src="/img/docs/developer/zap-proxy-port.png" alt="ZAP Proxy Port in Use"></p>
 <p>In this case, ZAP suggests a different port that is free and starts listening on that port when you click on <em>Yes</em>.</p>
-<h2 id="for-prospective-zap-contributors">For Prospective ZAP Contributors</h2>
+
+<h2 id="for-prospective-zap-contributors">For Prospective ZAP Contributors <a class="header-link" href="#for-prospective-zap-contributors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>If you feel that some part of ZAP can be improved, enhanced or updated in any way, go ahead and open a <a href="https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-requests">pull request</a>! Here are the steps you need to follow before you can do that:</p>
 <ol>
 <li>Clone the main repositories as illustrated above.</li>
@@ -265,7 +270,8 @@ Newer JDK versions might not work.</p>
 <li>Update the tracked (remote) repositories.</li>
 <li>Make changes and submit a PR!</li>
 </ol>
-<h3 id="fork-the-repos-on-github">Fork the Repos on GitHub</h3>
+
+<h3 id="fork-the-repos-on-github">Fork the Repos on GitHub <a class="header-link" href="#fork-the-repos-on-github"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Go to the GitHub page of each repository you cloned and <a href="https://guides.github.com/activities/forking/">fork it</a> to your account (the button is towards the top right of the screen).</p>
 <p><img src="/img/docs/developer/github-fork.png" alt="The fork button on GitHub"></p>
 <ul>
@@ -274,7 +280,8 @@ Newer JDK versions might not work.</p>
 <li><a href="https://github.com/zaproxy/zap-hud">https://github.com/zaproxy/zap-hud</a></li>
 <li><a href="https://github.com/zaproxy/zap-core-help">https://github.com/zaproxy/zap-core-help</a></li>
 </ul>
-<h3 id="update-your-remotes">Update your Remotes</h3>
+
+<h3 id="update-your-remotes">Update your Remotes <a class="header-link" href="#update-your-remotes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Next, update the remotes for the repositories you cloned on your system.</p>
 <ol>
 <li>Navigate to the cloned repository.</li>
@@ -291,7 +298,8 @@ Newer JDK versions might not work.</p>
 </span></span><span style="display:flex;"><span>git remote set-url origin https://github.com/USERNAME/zap-extensions.git
 </span></span><span style="display:flex;"><span>git remote add upstream https://github.com/zaproxy/zap-extensions.git
 </span></span><span style="display:flex;"><span>cd ..
-</span></span></code></pre></div><h3 id="make-changes-and-submit-a-pr">Make Changes and Submit a PR!</h3>
+</span></span></code></pre></div>
+<h3 id="make-changes-and-submit-a-pr">Make Changes and Submit a PR! <a class="header-link" href="#make-changes-and-submit-a-pr"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>If you have any questions related to ZAP development, reach out on the <a href="https://groups.google.com/g/zaproxy-develop">ZAP Developer group</a> or the <a href="https://web.libera.chat/#zaproxy">IRC channel</a>.</p>
 </main>
   </article>

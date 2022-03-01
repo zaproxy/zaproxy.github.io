@@ -1428,19 +1428,22 @@
 
 
 </ol>
-          <h1 id="openapi-support">OpenAPI Support</h1>
+          
+<h1 id="openapi-support">OpenAPI Support</h1>
 <p>This add-on allows you to spider and import OpenAPI (Swagger) definitions, versions 1.2, 2.0, and 3.0.<br>
 <strong>Note:</strong> Generation of XML content is currently not supported.</p>
 <p>The add-on will automatically detect any OpenAPI definitions and spider them as long as they are in scope.</p>
 <p>It also supports the <a href="/docs/desktop/addons/openapi-support/automation/">Automation Framework</a>.</p>
-<h2 id="ui">UI</h2>
+
+<h2 id="ui">UI <a class="header-link" href="#ui"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>2 menu items are added to the Import menu:</p>
 <ul>
 <li>Import an OpenAPI definition from the local file system</li>
 <li>Import an OpenAPI definition from a URL</li>
 </ul>
 <p>Both dialogues allow to override the server URL present in the OpenAPI definition (or specify one if not present) through the Target URL field.</p>
-<h3 id="target-url-format">Target URL Format</h3>
+
+<h3 id="target-url-format">Target URL Format <a class="header-link" href="#target-url-format"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The Target URL has the following format:<br>
 <code>scheme://authority/path</code><br>
 with all URI components optional. Note: while all URI components are optional the scheme and authority become mandatory when not importing from URL and the definition does not specify them (for example, it has no servers or schemes).<br>
@@ -1451,14 +1454,16 @@ Following some examples, overriding:</p>
 <li>Just the authority: <code>qa.example.com:9090</code></li>
 <li>Just the path: <code>/dev/v3/</code></li>
 </ul>
-<h2 id="api">API</h2>
+
+<h2 id="api">API <a class="header-link" href="#api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following operations are added to the API:</p>
 <ul>
 <li>ACTION importFile (file, target)</li>
 <li>ACTION importUrl (url, hostOverride)</li>
 </ul>
 <p>Both <code>target</code> and <code>hostOverride</code> support the <code>Target URL</code> format explained earlier. The definitions will be imported synchronously and any warnings will be returned.</p>
-<h3 id="data-driven-nodes">Data Driven Nodes</h3>
+
+<h3 id="data-driven-nodes">Data Driven Nodes <a class="header-link" href="#data-driven-nodes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>When the OpenAPI schema contains path params the plugin will automatically generate data driven nodes in either the default context or for the context from the provided <code>contextId</code>. For example, the following OpenAPI definition will result in at least one data driven node. <strong>openapi.yml</strong> `
 &hellip;
 /users/v1/{username}/email:
@@ -1477,7 +1482,8 @@ DDN0: (/)(.+?)(/.<em>)
 DDN1: (/users/v1/)(.+?)(/.</em>)
 `</li>
 </ul>
-<h2 id="command-line">Command Line</h2>
+
+<h2 id="command-line">Command Line <a class="header-link" href="#command-line"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following Command Line options are added:</p>
 <ul>
 <li>-openapifile &lt;filename&gt; : Imports an OpenAPI definition from the specified file name</li>
@@ -1485,12 +1491,14 @@ DDN1: (/users/v1/)(.+?)(/.</em>)
 <li>-openapitargeturl &lt;url&gt; : The Target URL, to override the server URL present in the OpenAPI definition</li>
 </ul>
 <p>The definitions will be imported synchronously and any warnings will be displayed on the command line.</p>
-<h2 id="user-specified-values">User Specified Values</h2>
+
+<h2 id="user-specified-values">User Specified Values <a class="header-link" href="#user-specified-values"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Default values are used when importing OpenAPI definitions.<br>
 These can be overridden using the Form Handler add-on which allows you to specify your own values.<br>
 In most cases these will be simple values (like strings and integers) but in some cases you may need to specify structured values, e.g.</p>
 <pre tabindex="0"><code>{ &#34;id&#34;: 0, &#34;name&#34;: &#34;Freda&#34; }
-</code></pre><h2 id="statistics">Statistics</h2>
+</code></pre>
+<h2 id="statistics">Statistics <a class="header-link" href="#statistics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The add-on maintains the following statistics:</p>
 <ul>
 <li>openapi.urls.added : The total number of URLs added when importing OpenAPI definitions</li>

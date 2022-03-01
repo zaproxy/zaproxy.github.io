@@ -195,7 +195,8 @@ However I decided to announce this as a future direction in order to stimulate d
 Desktop ZAP is an important focus for us, and it is the way we expect most people to use ZAP for the foreseeable future.<br>
 Instead it&rsquo;s just a different way of running ZAP - there&rsquo;s going to be a lot of common code between desktop ZAP and ZaaS.</p>
 <p>So how will ZaaS differ from desktop ZAP?</p>
-<h3 id="database">Database</h3>
+
+<h3 id="database">Database <a class="header-link" href="#database"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The current HSQLDB is good for a desktop application as it requires no installation, but it&rsquo;s not suitable for ZaaS.<br>
 In 2.4.0 we introduced a database independence layer so that alternative implementations can be supported, although the only implementation was
 the current hard coded HSQLDB option.<br>
@@ -205,7 +206,8 @@ Although MySQL is intended for daemon or ZaaS modes there&rsquo;s no reason why 
 options that&rsquo;s been tested.<br>
 Details of how to configure ZAP to use MySQL will be posted on the ZAP Developer Group soon.<br>
 One important aspect that has not been implemented yet is the ability to support multiple database instances in order to better segregate data.</p>
-<h3 id="data-structures">Data Structures</h3>
+
+<h3 id="data-structures">Data Structures <a class="header-link" href="#data-structures"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>While desktop ZAP uses the database very heavily, it still builds up some big data structures in memory. This is so that the Swing UI can react
 quickly to user events, such as scrolling through a long list.<br>
 Structures like the Sites tree and History table are held in memory and will constantly grow.<br>
@@ -213,22 +215,26 @@ This is no good for a long running service, which is why we have introduced a �
 support it will not build up any significant data structures in memory, and those that don&rsquo;t support it will not be enabled.<br>
 This has been implemented for most of the core, but some of the add-ons (including some key active scan rules) still need to be changed.<br>
 Again, details of how to configure ZAP to use the low memory option will be posted on the ZAP Developer Group soon.</p>
-<h3 id="processes-and-deployment">Processes and deployment</h3>
+
+<h3 id="processes-and-deployment">Processes and deployment <a class="header-link" href="#processes-and-deployment"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>We will be restructuring the code so that it will be possible to run multiple ZAP processes across multiple machines.<br>
 Desktop ZAP will still be just one process, but we will add the option to run ZAP as multiple distributed processes which are likely to provide
 specific functionality.<br>
 For example we may well have ZAP ‘worker’ processes for long running tasks such as the spider and active scanner.<br>
 This work has not been started.</p>
-<h3 id="users-and-roles">Users and roles</h3>
+
+<h3 id="users-and-roles">Users and roles <a class="header-link" href="#users-and-roles"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>ZaaS will need to support multiple users with different roles. We want to be able to support a hierarchy of users, teams and companies all with
 access to their own data.<br>
 This work has not been started.</p>
-<h3 id="access">Access</h3>
+
+<h3 id="access">Access <a class="header-link" href="#access"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>In addition to the API we will need to implement a modern HTML5 interface for ZAP.<br>
 This is a very big task, and so we’ll need to initially target it at some very specific use cases before gradually expanding it to handle all of
 the ZAP functionality.<br>
 This work has not been started.</p>
-<h3 id="application-lifetime">Application Lifetime</h3>
+
+<h3 id="application-lifetime">Application Lifetime <a class="header-link" href="#application-lifetime"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The target is for ZaaS to be capable of running in a five nines environment.<br>
 Achieving that level of uptime is not just a software problem, but even so ensuring that ZaaS can operate at that level is a huge challenge,
 especially for a product that at the moment typically only runs for a matter of hours.<br>
@@ -237,7 +243,8 @@ are no single points of failure and supporting rolling upgrades.<br>
 This is probably going to be the most challenging aspect of ZaaS, and one that several people have questioned.<br>
 However designing, implementing and in some cases even running highly available services is exactly what I was doing before I started working on
 ZAP. I actually started ZAP as a way to learn how to make the services I was working on as secure as possible!</p>
-<h3 id="security">Security</h3>
+
+<h3 id="security">Security <a class="header-link" href="#security"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>We take the security of Desktop ZAP very seriously, but the security of ZaaS will be even more critical.<br>
 Desktop ZAP is typically run on a single machine and only accessible from that machine.<br>
 ZaaS will have a remotely accessible HTML5 interface, and this significantly increases the attack service area.<br>
@@ -245,12 +252,14 @@ As it will also contain details of the vulnerabilities of other services, it wil
 restricted to a company&rsquo;s internal network.<br>
 We will be considering security at all stages of ZaaS development and will ensure that it is thoroughly pentested by experienced security
 professionals not directly connected with the project.</p>
-<h3 id="license">License</h3>
+
+<h3 id="license">License <a class="header-link" href="#license"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>One key thing that will not change between Desktop ZAP and ZaaS is the license.<br>
 ZaaS with be released under Apache V2, which means that anyone can use it for anything they like.<br>
 You will be able to set up a ZaaS instance for your company, and if you want to you could even set up ZaaS as an online service and charge money
 for it - that&rsquo;s completely permissible!</p>
-<h3 id="development-process">Development process</h3>
+
+<h3 id="development-process">Development process <a class="header-link" href="#development-process"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Although we have already implement features required for ZaaS there is still much work to do.<br>
 As mentioned at the start of this post, this announcement is to stimulate discussions and hopefully encourage people to get involved.<br>
 We are not able to give any idea of a possible release date for ZaaS at this stage, however we will aim to implement features in a way that

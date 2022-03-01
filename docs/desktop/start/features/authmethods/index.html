@@ -1431,7 +1431,8 @@
 
 
 </ol>
-          <h1 id="authentication-methods">Authentication Methods</h1>
+          
+<h1 id="authentication-methods">Authentication Methods</h1>
 <p>ZAP handles multiple types of authentication (called <strong>Authentication
 Methods</strong> ) that can be used for websites / webapps. Each <strong><a href="/docs/desktop/start/features/contexts/">Context</a></strong> has an Authentication Method
 defined which dictates how authentication is handled. The
@@ -1447,7 +1448,8 @@ ZAP. Some of the examples include:</p>
 <p>Multiple authentication methods have been implemented and the
 system supports easy addition of new methods, according to user needs.
 They main ones are described below.</p>
-<h2 id="manual">Manual Authentication</h2>
+
+<h2 id="manual">Manual Authentication <a class="header-link" href="#manual"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This method allows users to perform the authentication manually
 (e.g. authenticate in the browser while proxy-ing through ZAP) and
 then select the corresponding HTTP session. As the actual
@@ -1457,7 +1459,8 @@ However if you do define an <a href="/docs/desktop/start/features/authstrategies
 then ZAP will maintain the authentication <a href="/docs/desktop/start/features/stats/">statistics</a>.</p>
 <p>When using this authentication method, configuring a User for the context
 require choosing an authenticated HTTP session.</p>
-<h2 id="formBased">Form-Based Authentication</h2>
+
+<h2 id="formBased">Form-Based Authentication <a class="header-link" href="#formBased"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This method is used for websites / webapps where authentication is
 done by submitting a form or performing a GET request to a &rsquo;login url'
 using a &lsquo;username/password&rsquo; pair of authentication credentials.
@@ -1470,7 +1473,8 @@ authentication.</p>
 <p>If the application requires submitting the anti-CSRF token presented in the login page, ZAP will
 handle it automatically. Make sure the token
 name is configured in <a href="/docs/desktop/ui/dialogs/options/anticsrf/">Options Anti CSRF screen</a>.</p>
-<h2 id="jsonBased">JSON-Based Authentication</h2>
+
+<h2 id="jsonBased">JSON-Based Authentication <a class="header-link" href="#jsonBased"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This method is used for websites / webapps where authentication is
 done by submitting a JSON object to a &rsquo;login url&rsquo; using a &lsquo;username/password&rsquo;
 pair of authentication credentials.
@@ -1480,7 +1484,8 @@ JSON-Based Authentication Login Request</em>.</p>
 <p>When using this authentication method, configuring a User for the context requires
 setting up the <em>username/password</em> pair of credentials that are used for the
 authentication.</p>
-<h2 id="httpAuth">HTTP/NTLM Authentication</h2>
+
+<h2 id="httpAuth">HTTP/NTLM Authentication <a class="header-link" href="#httpAuth"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This method is used for websites / webapps where authentication is
 enforced using the HTTP or NTLM Authentication mechanisms employing HTTP message headers.
 Three authentication schemes are supported: Basic, Digest and NTLM.
@@ -1489,7 +1494,8 @@ request. Configuration can be done using the <a href="/docs/desktop/ui/dialogs/s
 Contexts Authentication screen</a>.</p>
 <p>When using this authentication method, configuring a User for the context requires
 setting up the <em>username/password</em> pair of credentials that are used for the HTTP/NTLM authentication.</p>
-<h2 id="scriptBased">Script-Based Authentication</h2>
+
+<h2 id="scriptBased">Script-Based Authentication <a class="header-link" href="#scriptBased"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This method is useful for websites / webapps where the authentication is a more complex one and some custom
 scripts that handle the authentication process are beneficial. To use this method, you must first define an Authentication
 <a href="/docs/desktop/start/features/scripts/">script</a> which sends messages or performs other actions as needed by your web-application.
@@ -1498,7 +1504,8 @@ and it is called whenever an authentication is performed. Re-authentication is p
 Configuration can be done using the <a href="/docs/desktop/ui/dialogs/session/context-auth/">Session Contexts Authentication screen</a>.</p>
 <p>When using this authentication method, configuring a User for the context requires
 setting up the a set of parameters defined in the script. For more details, see the provided Authentication Script examples.</p>
-<h2 id="configured-via">Configured via</h2>
+
+<h2 id="configured-via">Configured via <a class="header-link" href="#configured-via"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>
@@ -1515,7 +1522,8 @@ setting up the a set of parameters defined in the script. For more details, see 
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

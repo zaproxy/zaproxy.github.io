@@ -1435,14 +1435,16 @@
 
 
 </ol>
-          <h1 id="option-dynamic-ssl-certificates">Option Dynamic SSL Certificates</h1>
+          
+<h1 id="option-dynamic-ssl-certificates">Option Dynamic SSL Certificates</h1>
 <p>OWASP ZAP allows you to transparently decrypt SSL connections.
 For doing so, ZAP has to encrypt each request before sending
 to the server and decrypt each response, which comes back.
 But, this is already done by the browser.
 That&rsquo;s why, the only way to decrypt or intercept the transmission,
 is to do a &lsquo;manipulator in the middle&rsquo; approach.</p>
-<h2 id="overview">Overview</h2>
+
+<h2 id="overview">Overview <a class="header-link" href="#overview"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p><img src="/docs/desktop/images/manipulatorinthemiddle.png" alt="manipulator in the middle"></p>
 <p>In short words, every data send to and received from the server
 is encrypted/decrypted by using the original server&rsquo;s certificate
@@ -1453,7 +1455,8 @@ Every certificate created by ZAP will be signed for the same
 server name. In the example above, ZAP will create a certificate
 for the server&rsquo;s name <code>www.example.com</code>. This way, your browser
 will do regular SSL encryption.</p>
-<h2 id="zap-root-ca-certificate">ZAP Root CA certificate</h2>
+
+<h2 id="zap-root-ca-certificate">ZAP Root CA certificate <a class="header-link" href="#zap-root-ca-certificate"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Imagine you&rsquo;re visiting multiple SSL protected sites. Every time your
 browser connects such a site, a new SSL certificate is created.
 But, these certificates are not trusted by anyone (because self created by ZAP).
@@ -1471,7 +1474,8 @@ Root CAs, your browser doesn&rsquo;t recognize the man in the middle.</p>
 <blockquote>
 <p>On iOS 10.3 and onwards, you also need to enable full trust for the root certificate: Go to Settings &gt; General &gt; About &gt; Certificate Trust Settings. Under “Enable full trust for root certificates”, turn on trust for the certificate.</p>
 </blockquote>
-<h3 id="generate">Generate</h3>
+
+<h3 id="generate">Generate <a class="header-link" href="#generate"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>When you are running ZAP for the first time then it will generate a Root CA certificate just for you.
 If you do not use the &lsquo;browser launch&rsquo; feature then you have to install it within your browser
 or HTTP client application. See section <a href="#install">installation</a>
@@ -1491,7 +1495,8 @@ Every generated Root CA certificate consists of the following identifiers:</p>
 This number is constructed out of two 32bit hash codes: user&rsquo;s name and user&rsquo;s home directory.
 This way you can identify your own certificate when using multiple installations.
 But there&rsquo;s no way, that anyone can figure out your name from this hash code.</p>
-<h3 id="import">Import</h3>
+
+<h3 id="import">Import <a class="header-link" href="#import"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>When you&rsquo;re using multiple ZAP installation and you want to use the same
 Root CA certificate, so you can import it. Simply use one installation of OWASP ZAP
 to generate one Root CA certificate.<br>
@@ -1539,18 +1544,21 @@ the certificate and the unencrypted private key in the following format:</p>
 <code> -----END PRIVATE KEY-----</code><br>
 <code> </code><br>
 And yes, that example will work - its the Superfish certificate!</p>
-<h3 id="view">View</h3>
+
+<h3 id="view">View <a class="header-link" href="#view"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>In the options dialog of ZAP you&rsquo;re seeing the raw bytes (hexa-decimal encoded)
 of the certificate. The option &ldquo;view&rdquo; tries to use your system&rsquo;s default
 viewing tool for &ldquo;.CER&rdquo; files. On Windows, this is typically the same,
 when exporting the certificate and double clicking on it.</p>
-<h3 id="saveexport">Save/Export</h3>
+
+<h3 id="saveexport">Save/Export <a class="header-link" href="#saveexport"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>In the options dialog of ZAP you&rsquo;re seeing the raw bytes (hexa-decimal encoded)
 of the certificate. Many programs are using this simple format for import/export
 functions. When clicking &rsquo;export&rsquo;, these bytes are saved to disk.
 This is equal to selecting all and doing CTRL+C (copy to clipboard) and
 save it into a new .CER file (which is simple text as you see in the dialog).</p>
-<h2 id="dynamic_certificates">Dynamic certificates</h2>
+
+<h2 id="dynamic_certificates">Dynamic certificates <a class="header-link" href="#dynamic_certificates"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Each ZAP instance is using it&rsquo;s own root certificate. Of course, you can
 import root certificates, to use them on multiple machines.
 When running, there will be sub-certificated created, each time a HTTPS
@@ -1580,11 +1588,13 @@ are 1 to 281.474.976.710.656 that when restarting ZAP, the serial number
 offset is a different one.
 So in the rare case, you are discovering that you browser complains about
 a broken serial number within the certificate, just restart your browser ;-)</em>.</p>
-<h2 id="install">Install ZAP Root CA certificate</h2>
+
+<h2 id="install">Install ZAP Root CA certificate <a class="header-link" href="#install"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Any HTTPS client you want to use, has to know the OWASP Root CA certificate
 as &rsquo;trusted root certificate&rsquo;. Typically you have to install manually the
 ZAP certificate into your browser&rsquo;s list of trusted root certificates.</p>
-<h3 id="windows--internet-explorer">Windows / Internet Explorer</h3>
+
+<h3 id="windows--internet-explorer">Windows / Internet Explorer <a class="header-link" href="#windows--internet-explorer"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The easiest way is to click on <a href="#view">view</a> and choose
 &lsquo;Install certificate&rsquo;. Alternatively, you can save/export your generated
 certificate (copy it to you target computer) and double click the .CER file.
@@ -1601,7 +1611,8 @@ Choose &rsquo;trusted root certificates&rsquo; as store and finalize the wizard.
 <li>Click tab trusted root certificates</li>
 <li>The OWASP ZAP Root CA should be there</li>
 </ol>
-<h3 id="mozilla-firefox">Mozilla Firefox</h3>
+
+<h3 id="mozilla-firefox">Mozilla Firefox <a class="header-link" href="#mozilla-firefox"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Firefox is using it&rsquo;s own certificate store. Thats why you have to
 import it twice, when you&rsquo;re using both browser on windows.
 Installation and late on validation is done in the same preferences dialog:</p>
@@ -1615,7 +1626,8 @@ Installation and late on validation is done in the same preferences dialog:</p>
 <li>In the wizard choose to trust this certificate to identify web sites (check on the boxes)</li>
 <li>Finalize the wizard</li>
 </ol>
-<h2 id="risks">Risks</h2>
+
+<h2 id="risks">Risks <a class="header-link" href="#risks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p><strong>Attention, there are risks!</strong><br>
 When adding self generated Root CA certificates to your list of trusted
 root certificates, everyone with the root certificate can smuggle data
@@ -1623,7 +1635,8 @@ into your system (browser).
 In other words when you&rsquo;re not testing in a safe environment, but on
 productive machines, be aware that you&rsquo;re opening an additional attack
 vector to your system.</p>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

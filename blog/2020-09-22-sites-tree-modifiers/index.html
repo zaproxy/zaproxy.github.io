@@ -179,17 +179,20 @@
               Posted <span class="post-date">Tuesday September 22, 2020</span>
               <span class="word-count fl-r"> 1169 Words </span>
             </section>
-            <h2 id="the-sites-tree">The Sites Tree</h2>
+            
+<h2 id="the-sites-tree">The Sites Tree <a class="header-link" href="#the-sites-tree"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p><img src="./images/sites_tree_mod.png" alt="Site Tree Modification"></p>
 <p>The Sites Tree is a key component of ZAP, and one whose purpose is often misunderstood.</p>
 <p>This blog post will explain why the Sites Tree is so important, how you can change it now and how you will be able to change it in the next ZAP release.</p>
-<h2 id="why-do-we-have-the-sites-tree">Why do we have the Sites Tree?</h2>
+
+<h2 id="why-do-we-have-the-sites-tree">Why do we have the Sites Tree? <a class="header-link" href="#why-do-we-have-the-sites-tree"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>In ZAP we separate exploring an app from attacking it. This gives us much more flexibility to handle different scenarios.</p>
 <p>So let&rsquo;s take the case where we are proxying unit tests through ZAP.</p>
 <p>Unit tests are there to test functionality not to minimise HTTP(S) calls, so it is likely that the same URL will be called many times, potentially hundreds or thousands of times.</p>
 <p>One of the big drawbacks of Dynamic Application Security Testing (DAST) is the length of time it takes. The number of requests a scanner makes directly impacts the time taken, so it&rsquo;s important to try to minimise the number of requests while maximising their effectiveness. As always it&rsquo;s a balancing act.</p>
 <p>If we only had the History table available then we would end up attacking that URL as many times as it occurs. There are currently 18 release quality active scan rules and at medium strength each of those can make around 12 requests per parameter per page. So if you have 3 parameters on that repeated URL then we will attack the same URL 18 x 12 x 3 = 648 times each time we come across it in the History table. That would make the scan way longer than it needs to be.</p>
-<h2 id="what-does-the-sites-tree-represent">What does the Sites Tree Represent?</h2>
+
+<h2 id="what-does-the-sites-tree-represent">What does the Sites Tree Represent? <a class="header-link" href="#what-does-the-sites-tree-represent"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Sites Tree essentially removes the duplicates from the History table, but also does much more.
 It is ZAP&rsquo;s internal representation of the app and if it does not accurately reflect the app then ZAP will not be able to attack it effectively.
 Each node in the tree represents a different piece of functionality in the app.
@@ -207,7 +210,8 @@ By default ZAP will create unique nodes in the tree based on the HTTP method and
 <li><code>GET https://www.example.com?a=e&amp;c=f</code></li>
 </ul>
 <p>This works pretty well in lots of cases - different HTTP methods and parameter names typically mean different actions while the parameter values usually don’t change the outcome.</p>
-<h2 id="exceptions-to-the-rule">Exceptions to the Rule</h2>
+
+<h2 id="exceptions-to-the-rule">Exceptions to the Rule <a class="header-link" href="#exceptions-to-the-rule"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>There are always exceptions.</p>
 <p>Take the case where the action to be taken is actually defined in a parameter value:</p>
 <ul>
@@ -226,11 +230,13 @@ For example the following URLs could all represent the same functionality if the
 <p>In this case all 3 URLs will end up in unique nodes and ZAP will attack each of them even though it doesn&rsquo;t really need to. This probably is not a big problem if there are just 3 instances, but in most cases this data will be coming from a database so there could be a huge number of such nodes.</p>
 <p>The solution to this is to define the relevant path element as <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a> which means path elements that really contain data rather than represent part of the app structure. Once you have done that (and revisited the URLs) then they will all be represented as just 1 node and ZAP will only attack them once.</p>
 <p>You will need to define both Structural Parameters and Data Driven Nodes manually - ZAP does not currently have the capability to automatically detect these situations.</p>
-<h2 id="custom-data-formats">Custom Data Formats</h2>
+
+<h2 id="custom-data-formats">Custom Data Formats <a class="header-link" href="#custom-data-formats"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>We have yet another problem, and one that ZAP 2.9.0 cannot effectively solve.</p>
 <p>The above techniques only work if ZAP understands the structure of the data.
 While we do our best to make sure that ZAP can always understand the structure of the most common data formats there will always be custom formats that we never get to hear about or new formats that are introduced after a ZAP release.</p>
 <p>ZAP 2.9.0 does allow you to attack these custom formats as it provides <a href="https://github.com/zaproxy/community-scripts/tree/main/variant">Input Vector Scripts</a> which allow anyone to write ZAP scripts to handle these formats. However these scripts cannot change how URLs are represented in the Sites Tree which means that we end up with the same problems as before.</p>
+
 <h1 id="the-solution">The Solution</h1>
 <p>This will be solved in the next version of ZAP (2.10.0) which extends the definition of Input Vector Scripts to allow them to change the way URLs are represented in the Sites Tree. This means that anyone can write a script which will allow their app to be correctly represented in the Sites Tree and therefore be attacked effectively.</p>
 <p>The changes have already been made and are available in the latest weekly release for you to try out now.</p>

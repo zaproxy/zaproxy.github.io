@@ -1431,7 +1431,8 @@
 
 
 </ol>
-          <h1 id="creating-reports">Creating Reports</h1>
+          
+<h1 id="creating-reports">Creating Reports</h1>
 <p>You can easily create your own reports.</p>
 <p>The add-on uses the <a href="https://www.thymeleaf.org/">Thymeleaf</a>
 templating engine, so see their documentation for details of the
@@ -1442,7 +1443,8 @@ directory</a>. Each report is in its own subdirectory. The easiest way to
 create a new report is to copy and existing one into a new directory
 at the same level.</p>
 <p>Each report subdirectory must include:</p>
-<h3 id="templateyaml">template.yaml</h3>
+
+<h3 id="templateyaml">template.yaml <a class="header-link" href="#templateyaml"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>A file containing:</p>
 <pre tabindex="0"><code>name:        # The display name for the report
 format:      # The format, eg one of HTML, XML, MD, JSON, PDF - this is used internally but not currently exposed in ZAP
@@ -1450,25 +1452,30 @@ mode:        # The Thymeleaf template mode, one of HTML, RAW, TEXT, HTML
 extension:   # The extension to use when generating the report
 sections:    # An optional list of sections - parts of the report which may be included or excluded
 themes:      # An optional list of themes - different colours and styles which apply to the same content
-</code></pre><h3 id="reportext">report.<em>ext</em></h3>
+</code></pre>
+<h3 id="reportext">report.<em>ext</em> <a class="header-link" href="#reportext"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The Thymeleaf report template.<br>
 This should have the same extension that is specified in the template.yaml file (e.g. &lsquo;report.md&rsquo;) except if it is a PDF report, in which case &ldquo;html&rdquo; should be used (see below).</p>
-<h3 id="messagesproperties">Messages.properties</h3>
+
+<h3 id="messagesproperties">Messages.properties <a class="header-link" href="#messagesproperties"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The report subdirectory may also include a &ldquo;Messages.properties&rdquo; language file for template specific strings localised to English as well as &ldquo;Message_ <em>locale</em> .property&rdquo; files for localising the strings into other languages.<br>
 The template specific strings should all start with &rsquo; <code>report.template.</code> &rsquo;<br>
 If the report included sections then they must be defined in this file - the keys will automatically be prefixed by <code>report.template.section.</code> . Section names in the template.yaml file must just be alphanumeric strings and not start with an integer.<br>
 If a report includes themes then they must be defined in this file - the keys will automatically be prefixed by <code>report.template.theme.</code> . Theme names in the template.yaml file must just be alphanumeric strings and not start with an integer.<br>
 The language files may also override the default translations built into the reports add-on.</p>
-<h3 id="resources">Resources</h3>
+
+<h3 id="resources">Resources <a class="header-link" href="#resources"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The report subdirectory may also include a &ldquo;resources&rdquo; directory. If this is present then when a report is generated a subdirectory will be created based on the report name and all of the files in the resources directory will be copied into it.<br>
 You should reference the files in the &ldquo;resources&rdquo; subdirectory in the following way so that they can be accessed both via the template and by the report when the subdirectory is created:</p>
 <pre tabindex="0"><code>   &lt;script th:src=&#34;${resources + &#39;/script.js&#39;}&#34; src=&#34;resources/script.js&#34;&gt;&lt;/script&gt;
    &lt;link rel=&#34;stylesheet&#34; th:href=&#34;${resources + &#39;/style.css&#39;}&#34; href=&#34;resources/style.css&#34;&gt;
    &lt;img th:src=&#34;${resources + &#39;/image.png&#39;}&#34; src=&#34;resources/image.png&#34;&gt;
 </code></pre><p>The &rsquo;traditional-html-plus&rsquo; template includes examples of JavaScript, CSS and image resources.</p>
-<h2 id="data-available">Data Available</h2>
+
+<h2 id="data-available">Data Available <a class="header-link" href="#data-available"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following data items are available to all reports. These can be accessed via the Thymeleaf Standard Dialect, e.g. <code>${reportTitle}</code></p>
-<h3 id="alerttree">alertTree</h3>
+
+<h3 id="alerttree">alertTree <a class="header-link" href="#alerttree"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>A tree containing all of the alerts that should be included in the report. This is a copy of the standard ZAP alert tree shown in the Desktop &lsquo;Alerts&rsquo; tab but pruned to remove any alerts that do not match the criteria selected.</p>
 <p>Every node in the tree is an <a href="https://javadoc.io/static/org.zaproxy/zap/2.10.0/org/zaproxy/zap/extension/alert/AlertNode.html">AlertNode</a>.</p>
 <p>The top level node does not include any useful data.</p>
@@ -1479,11 +1486,14 @@ request and response.</p>
 <p>The 3rd and final level contains the alert instances - these are
 all the same type as their parent node and give access to the alert
 details in the same way.</p>
-<h3 id="reporttitle">reportTitle</h3>
+
+<h3 id="reporttitle">reportTitle <a class="header-link" href="#reporttitle"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The title of the report set by the user.</p>
-<h3 id="description">description</h3>
+
+<h3 id="description">description <a class="header-link" href="#description"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The description of the report set by the user.</p>
-<h3 id="helper">helper</h3>
+
+<h3 id="helper">helper <a class="header-link" href="#helper"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>An instance of the <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/reports/src/main/java/org/zaproxy/addon/reports/ReportHelper.java">ReportHelper</a> class that provides useful methods, including:</p>
 <ul>
 <li><code>getConfidenceString(int confidence)</code> Returns an internationalised string for the associated confidence code</li>
@@ -1496,22 +1506,29 @@ details in the same way.</p>
 <li><code>getSiteStats(String site, String prefix)</code> Returns a Map of the statistics for the given site starting with the (optional) prefix</li>
 <li><code>hasSiteStats(String site, String prefix)</code> Returns true if the given site has any statistics starting with the (optional) prefix</li>
 </ul>
-<h3 id="alertcounts">alertCounts</h3>
+
+<h3 id="alertcounts">alertCounts <a class="header-link" href="#alertcounts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>A Map of risk levels to the number of unique alerts. This can be used by reports, for example, to generate a summary table.</p>
-<h3 id="alertcountsbyrule">alertCountsByRule</h3>
+
+<h3 id="alertcountsbyrule">alertCountsByRule <a class="header-link" href="#alertcountsbyrule"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>A Map of scan rule IDs to the number of instances.</p>
-<h3 id="reportdata">reportData</h3>
+
+<h3 id="reportdata">reportData <a class="header-link" href="#reportdata"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>An instance of the <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/reports/src/main/java/org/zaproxy/addon/reports/ReportData.java">ReportData</a> class that defines the data to be included in the report. This can be used, for example, to tell if there were no level alerts of a specific level or if they were deliberately excluded.</p>
 <p>Automation jobs can make additional data available to the
 reports, in many cases even if the automation framework was not used.
 See the help pages for the relevant jobs for more details.</p>
-<h3 id="reportdata--paramsdata">reportData : paramsData</h3>
+
+<h3 id="reportdata--paramsdata">reportData : paramsData <a class="header-link" href="#reportdata--paramsdata"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>An instance of the <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation/src/main/java/org/zaproxy/addon/automation/jobs/ParamsJobResultData.java">ParamsJobResultData</a> class that provides methods for querying the parameters used by sites. This is included in the Automation add-on as a &ldquo;data job&rdquo; that does not provide any additional functionality.</p>
-<h3 id="stats">stats</h3>
+
+<h3 id="stats">stats <a class="header-link" href="#stats"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>A Map of the global statistics. The site based statistics are available via the helper.</p>
-<h2 id="testing-reports">Testing Reports</h2>
+
+<h2 id="testing-reports">Testing Reports <a class="header-link" href="#testing-reports"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>ZAP does not cache the report templates, so it rereads them every time you generate a report. This makes it much easier to test them. Just make sure that the &lsquo;Template Directory&rsquo; parameter is set to the top level directory you are using for your reports, then when you create a new report it will use the latest version of the template that you have saved. You will not need to restart ZAP in order to pick up any changes to existing reports that you have made.</p>
-<h2 id="pdf-reports">PDF Reports</h2>
+
+<h2 id="pdf-reports">PDF Reports <a class="header-link" href="#pdf-reports"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>PDF reports are generated using the <a href="https://github.com/flyingsaucerproject/flyingsaucer">Flying
 Saucer</a> library which converts HTML documents into PDF format. In order to create a PDF report you need to design it in HTML, call the template &ldquo;report.html&rdquo; but specify the format as &ldquo;PDF&rdquo;.</p>
 <p>Note that Flying Saucer requires that the HTML is well-formed

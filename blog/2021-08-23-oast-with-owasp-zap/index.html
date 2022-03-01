@@ -183,8 +183,10 @@
 <p>This blog post is going to go over the features of the OAST add-on and demonstrate how you can leverage ZAP&rsquo;s scripting features to write scripts that exploit out-of-band vulnerabilities. It assumes you already have the add-on installed.</p>
 <p>The OAST add-on currently supports two services: BOAST and Callbacks. Callbacks have been a part of the ZAP core since 2017. However, the Callback service has been made available as part of the OAST add-on now and will be deprecated in the core soon.</p>
 <p>The blog post titled <a href="/blog/2020-03-09-zap-ssrf-setup/">&ldquo;ZAP SSRF Setup&rdquo;</a> is a good explainer on how ZAP Callbacks can be configured to perform out-of-band attacks like SSRF. This post will focus on working with BOAST.</p>
-<h2 id="registering-a-boast-server">Registering a BOAST Server</h2>
-<h3 id="from-the-gui">From the GUI</h3>
+
+<h2 id="registering-a-boast-server">Registering a BOAST Server <a class="header-link" href="#registering-a-boast-server"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="from-the-gui">From the GUI <a class="header-link" href="#from-the-gui"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <ol>
 <li>
 <p>Go to the Options window in ZAP. To do so you could either</p>
@@ -218,7 +220,8 @@
 <p><img src="images/zap-oast-tab.png" alt="The OAST Tab"></p>
 </li>
 </ol>
-<h3 id="from-a-script">From a script</h3>
+
+<h3 id="from-a-script">From a script <a class="header-link" href="#from-a-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The following code snippet registers a new BOAST server:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Control</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.parosproxy.paros.control.Control&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">extOast</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Control</span>.<span style="color:#a6e22e">getSingleton</span>().<span style="color:#a6e22e">getExtensionLoader</span>().<span style="color:#a6e22e">getExtension</span>(<span style="color:#e6db74">&#34;ExtensionOast&#34;</span>)
@@ -237,7 +240,8 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">registeredServers</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">boast</span>.<span style="color:#a6e22e">getRegisteredServers</span>()
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">registeredServer</span>.<span style="color:#a6e22e">forEach</span>(<span style="color:#a6e22e">s</span> =&gt; <span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">getPayload</span>()))
 </span></span></code></pre></div><p>This information should allow you to write scripts that can register a BOAST server, get its payload and use that in attacks. However, one crucial step is being able to perform an action when ZAP actually discovers an out-of-band message received by BOAST. For that, we can register a request handler as illustrated in the following section.</p>
-<h2 id="registering-a-request-handler">Registering a Request Handler</h2>
+
+<h2 id="registering-a-request-handler">Registering a Request Handler <a class="header-link" href="#registering-a-request-handler"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You can register a request handler from a script or a scan rule.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">requestHandler</span>(<span style="color:#a6e22e">request</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Source: &#34;</span>, <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">getSource</span>())
@@ -255,7 +259,8 @@
 <li>Raise an alert (e.g. if a payload URI is accessed)</li>
 </ul>
 <p>One thing that should be noted is that adding a request handler is not an idempotent operation. That is, if you add the same request handler multiple times then the action will also be performed multiple times.</p>
-<h2 id="whats-next-for-oast">What&rsquo;s next for OAST?</h2>
+
+<h2 id="whats-next-for-oast">What&rsquo;s next for OAST? <a class="header-link" href="#whats-next-for-oast"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
 <li>Scan rules! Update existing active scan rules like XXE, ExternalRedirect, RemoteFileInclude, ServerSideInclude, etc. and make them use out-of-band payloads. Introduce new scan rules like OutOfBandXSS, SuperBlindSQLInjection, BlindSSRF, etc.</li>
 <li>Support the API and the Automation Framework.</li>
@@ -264,7 +269,8 @@
 </ul>
 <p>Keep an eye out for updates! Visit the <a href="https://www.zaproxy.org/community/">Community page</a> to learn how you can get in touch. Check out the <a href="https://ricekot.com/projects/zap-oast/">project blog</a> for blog posts related to the development of OAST.</p>
 <p>I developed this add-on as a participant of Google Summer of Code 2021. I am deeply grateful to the program organizers and my mentors.</p>
-<h2 id="list-of-oast-prs">List of OAST PRs</h2>
+
+<h2 id="list-of-oast-prs">List of OAST PRs <a class="header-link" href="#list-of-oast-prs"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This is a list of all pull requests (excluding those related to releases) that were created for the OAST add-on.</p>
 <table>
 <thead>

@@ -179,21 +179,25 @@
               Posted <span class="post-date">Monday March 29, 2021</span>
               <span class="word-count fl-r"> 938 Words </span>
             </section>
-            <h1 id="zap-2100">ZAP 2.10.0</h1>
+            
+<h1 id="zap-2100">ZAP 2.10.0</h1>
 <p>2.10.0 was released in <a href="https://www.zaproxy.org/blog/2020-12-21-zap-2-10-0-the-10-year-anniversary-release/">December 2020</a>. This article digs into the details of some of the new and exciting features.</p>
 <p>For full details see the <a href="/docs/desktop/releases/2.10.0/">2.10.0 release notes</a>.</p>
-<h2 id="dark-mode">Dark Mode</h2>
+
+<h2 id="dark-mode">Dark Mode <a class="header-link" href="#dark-mode"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>ZAP now supports various different UI themes, including a selection of Dark modes and a modern default Light theme. The look and feel can be set dynamically by clicking on the <img src="images/ui-color-picker-switch.png" alt="UI Color Picker Switch button"> button in the main toolbar and then selecting the theme you want to use in the dropdown menu. The new default is <code>Flat Light</code>.</p>
 <p><img src="images/flat-light.png" alt="Flat Light look and feel">
 <img src="images/flat-dark.png" alt="Flat Dark look and feel"></p>
-<h2 id="expandablecollapseable-top-panes">Expandable/Collapseable Top Panes</h2>
+
+<h2 id="expandablecollapseable-top-panes">Expandable/Collapseable Top Panes <a class="header-link" href="#expandablecollapseable-top-panes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>In order to facilitate a greater number of usage models the top panels now support a left/right expand and collapse control. For example, this is a handy way to hide the Sites Tree (on the left) when you want more real estate to deal with reviewing Request/Response details.
 The control appears just below the Main Toolbar and is aligned directly above the left/right split pane divider:</p>
 <p><img src="images/lr-control.png" alt="Left/Right expand and collapse control"></p>
 <p>Clicking the &lt; arrow will expand the Request/Response pane (hiding the Sites Tree):</p>
 <p><img src="images/rr-max.png" alt="Request/Response pane maximized"></p>
 <p>Similarly, clicking the &gt; arrow will expand the Sites Tree, Scripts Tree, etc. (hiding the Request/Response and other work panels).</p>
-<h2 id="custom-pages">Custom Pages</h2>
+
+<h2 id="custom-pages">Custom Pages <a class="header-link" href="#custom-pages"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>One of ZAP&rsquo;s <a href="https://github.com/zaproxy/zaproxy/issues/9">oldest issues</a> and a piece of development work that was 3 years in the making came to fruition in 2.10.0.</p>
 <p>Have you ever encountered an application that returned a <code>200 - Ok</code> instead of a proper <code>404 - File Not Found</code> or <code>500 - Server Error</code> (or other non-standard handling)? Users can now define custom pages for their Context(s). These will be considered by scan rules whenever a URL is considered to be part of a defined and enabled Context.</p>
 <p>This new functionality gives much more specificity and control in properly modeling and therefore assessing targets. There are a few ways this can impact scanning:</p>
@@ -217,7 +221,8 @@ The control appears just below the Main Toolbar and is aligned directly above th
 <p><!-- raw HTML omitted -->*<!-- raw HTML omitted --> Obviously a complex regex pattern may impact scan performance.</p>
 <p><img src="images/custom-page-defn.png" alt="Custom Page definition dialogs"></p>
 <p>You can find a video introduction to the functionality <a href="http://www.youtube.com/watch?v=rrVr-_-y6Xo&amp;t=1m57s">here</a>.</p>
-<h2 id="scriptable-encodedecodehash">Scriptable Encode/Decode/Hash</h2>
+
+<h2 id="scriptable-encodedecodehash">Scriptable Encode/Decode/Hash <a class="header-link" href="#scriptable-encodedecodehash"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Encode/Decode/Hash functionality provided by ZAP is now scriptable and is now provided via an add-on, so it can be updated between main releases.</p>
 <p>It still supports a lot of default transformations:</p>
 <table>
@@ -303,10 +308,12 @@ The control appears just below the Main Toolbar and is aligned directly above th
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">EncodeDecodeResult</span>(<span style="color:#a6e22e">value</span>.<span style="color:#a6e22e">replaceAll</span>(<span style="color:#e6db74">&#34;.(?=.)&#34;</span>, <span style="color:#e6db74">&#34;$0 &#34;</span>).<span style="color:#a6e22e">trim</span>());
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p><img src="images/dbl-space.png" alt="Double Space encoder example"></p>
-<h2 id="authentication-polling">Authentication Polling</h2>
+
+<h2 id="authentication-polling">Authentication Polling <a class="header-link" href="#authentication-polling"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The concept of <a href="https://www.zaproxy.org/docs/desktop/start/features/authstrategies/">Authentication Verification Strategies</a> has been introduced which allows ZAP to handle a wider range of authentication mechanisms including the option to poll a specified page for the authentication status of a user.</p>
 <p>Checkout this video summary of <a href="https://www.youtube.com/watch?v=rrVr-_-y6Xo&amp;t=377s">auth polling</a>.</p>
-<h2 id="authentication-header-via-env-vars">Authentication Header via ENV Vars</h2>
+
+<h2 id="authentication-header-via-env-vars">Authentication Header via ENV Vars <a class="header-link" href="#authentication-header-via-env-vars"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>To help simplify automated testing usage, CI/CD, etc. A new set of environmental variables are available which allow you to easily add an authentication header to all of the requests that are proxied through ZAP or initiated by the ZAP tools, including the spiders and active scanner.</p>
 <ul>
 <li><code>ZAP_AUTH_HEADER_VALUE</code> → if this is defined then its value will be added as a header to all of the requests.</li>
@@ -314,10 +321,12 @@ The control appears just below the Main Toolbar and is aligned directly above th
 <li><code>ZAP_AUTH_HEADER_SITE</code> → if this is defined then header will only be included in sites who&rsquo;s name includes its value.</li>
 </ul>
 <p>You can learn a bit about auth header environment variables <a href="https://www.youtube.com/watch?v=rrVr-_-y6Xo&amp;t=1107s">here</a>.</p>
-<h2 id="site-tree-control">Site Tree Control</h2>
+
+<h2 id="site-tree-control">Site Tree Control <a class="header-link" href="#site-tree-control"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Scripts and add-ons now have full access to how nodes are represented in the <a href="https://www.zaproxy.org/docs/desktop/start/features/sitestree/">Sites Tree</a>. Both <a href="https://github.com/zaproxy/community-scripts/tree/main/variant">Input Vector Scripts</a> and add-ons which include implementations of the <a href="https://static.javadoc.io/org.zaproxy/zap/2.10.0/org/parosproxy/paros/core/scanner/Variant.html">Variant class</a> can change both the tree structure and names used for new nodes.</p>
 <p>For more details see the <a href="https://www.zaproxy.org/blog/2020-09-22-sites-tree-modifiers/">Site Tree Modifiers</a> Blog post, and this <a href="https://www.youtube.com/watch?v=rrVr-_-y6Xo&amp;t=697s">video</a>.</p>
-<h2 id="conclusion">Conclusion</h2>
+
+<h2 id="conclusion">Conclusion <a class="header-link" href="#conclusion"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This blog post delved into specific of some of the features that were new to ZAP in 2.10.0. ZAP is constantly being improved by a Global community of volunteers. Watch for more of these posts in the future.</p>
 <p>For further details see the <a href="/docs/desktop/releases/2.10.0/">2.10.0 release notes</a>.</p>
 

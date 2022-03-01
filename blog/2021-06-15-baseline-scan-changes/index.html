@@ -189,7 +189,8 @@
 <li><a href="https://hub.docker.com/r/owasp/zap2docker-weekly/">weekly</a> docker image - AF used only if <strong>explicitly enabled</strong></li>
 <li><a href="https://hub.docker.com/r/owasp/zap2docker-stable/">stable</a> docker image - AF will <strong>not</strong> be used (this will only be changed at the next full release)</li>
 </ul>
-<h2 id="change-summary">Change Summary</h2>
+
+<h2 id="change-summary">Change Summary <a class="header-link" href="#change-summary"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Depending on which options you choose the baseline scan may now use the new <a href="/docs/automate/automation-framework/">Automation Framework</a> (AF) instead of controlling ZAP via the API. This is part of an ongoing development to migrate all of the packaged scans to use the AF.</p>
 <p>Initially the AF has to be explicitly enabled using the <code>--auto</code> baseline scan option.
 We would encourage everyone who uses the baseline scan to try this out and <a href="https://github.com/zaproxy/zaproxy/issues">report any issues</a> to us.</p>
@@ -198,7 +199,8 @@ However you will be able to use the new <code>--autooff</code> flag to disable i
 <p>Not all of the baseline options are currently supported by the AF which is why it will depend on the options you use - if you use any options not supported by the AF then the baseline will work as before, even if <code>--auto</code> is specified.</p>
 <p>We are continually enhancing the AF so more baseline options will become supported in the coming weeks - this is an ongoing process and will therefore not warrant further blog posts :)</p>
 <p>To see exactly which parameters are supported see the source code <a href="https://github.com/zaproxy/zaproxy/blob/main/docker/zap-baseline.py">https://github.com/zaproxy/zaproxy/blob/main/docker/zap-baseline.py</a></p>
-<h2 id="output-differences">Output Differences</h2>
+
+<h2 id="output-differences">Output Differences <a class="header-link" href="#output-differences"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>If the AF is used for the baseline scan then the following line will be included in the output:</p>
 <pre tabindex="0"><code>Using the Automation Framework
 </code></pre><p>If you use the <code>-d</code> option to output diagnostic messages then these will differ significantly as the underlying mechanisms have changed.</p>
@@ -267,7 +269,8 @@ However you will be able to use the new <code>--autooff</code> flag to disable i
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">summaryFile</span>: <span style="color:#ae81ff">/zap/zap_out.json</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">outputSummary</span>
 </span></span></code></pre></div><p>Note that we will not be getting rid of the packaged scans, but the AF will provide more features and flexibility.</p>
-<h3 id="scanning-examplecom-with-the-af">Scanning example.com with the AF</h3>
+
+<h3 id="scanning-examplecom-with-the-af">Scanning example.com with the AF <a class="header-link" href="#scanning-examplecom-with-the-af"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <div class="window">
     <div class="titlebar">
       docker run -t owasp/zap2docker-weekly zap-baseline.py -t https://www.example.com/ --auto
@@ -500,7 +503,8 @@ However you will be able to use the new <code>--autooff</code> flag to disable i
       </ul>
     </div>
 </div>
-<h3 id="scanning-examplecom-without-the-af">Scanning example.com without the AF</h3>
+
+<h3 id="scanning-examplecom-without-the-af">Scanning example.com without the AF <a class="header-link" href="#scanning-examplecom-without-the-af"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <div class="window">
     <div class="titlebar">
       docker run -t owasp/zap2docker-weekly zap-baseline.py -t https://www.example.com/ --autooff
@@ -719,7 +723,8 @@ However you will be able to use the new <code>--autooff</code> flag to disable i
     </div>
 </div>
 <p>As you will see, in this case the AF reports one more issue than the non-AF case.</p>
-<h2 id="reverting-to-the-original-baseline">Reverting to the Original Baseline</h2>
+
+<h2 id="reverting-to-the-original-baseline">Reverting to the Original Baseline <a class="header-link" href="#reverting-to-the-original-baseline"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>If you experience any problems with the AF then please let us know asap.
 While we are resolving them then you can use the new <code>--autooff</code> option which will disable the AF.</p>
 <p>Please note that this is a temporary option that will only be available while we are in the process of migrating the scripts. At some point this option will be removed so you must tell us if you experience any problems.</p>

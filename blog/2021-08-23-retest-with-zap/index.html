@@ -182,31 +182,37 @@
             <p>ZAP is a great tool to detect vulnerabilities of different kinds in web applications and generate alerts accordingly. However, it currently lacks a user-friendly mechanism to revalidate or retest the identified weaknesses.</p>
 <p>Whenever any reported vulnerability is claimed to have been fixed by the developer, a tester using ZAP has to set up all the original scan settings used to detect the vulnerability once again, which is a tiresome and time-consuming process.</p>
 <p>The add-on aims to simplify this process, by generating a &ldquo;Retest Plan&rdquo; corresponding to the alerts selected for retesting, which could then be run in ZAP via the use of the Automation Framework.</p>
-<h2 id="generating-a-plan">Generating a Plan</h2>
+
+<h2 id="generating-a-plan">Generating a Plan <a class="header-link" href="#generating-a-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p><img src="images/dialog.png" alt="Retest Dialog"></p>
 <p>The user can select any number of alerts that they wish to retest in the Alerts tab. Then they can right-click, and choose the &ldquo;Retest&hellip;&rdquo; option, which would open up the Retest Dialog. The dialog can also be opened via using the <code>Tools</code> → <code>Retest...</code> option.
 Here, they can add further alerts to be included in the plan by selecting them in the alerts tree on the left and clicking on the &lsquo;+&rsquo; button. They can also remove alerts by selecting them in the panel on the right and clicking on the &lsquo;-&rsquo; button.
 All selected alerts can also be edited using the &lsquo;Edit&rsquo; button, which allows the users to (optionally) specify regexes for various fields against which to match any alerts which are generated.</p>
-<h2 id="verifying-and-running-a-plan">Verifying and Running a Plan</h2>
+
+<h2 id="verifying-and-running-a-plan">Verifying and Running a Plan <a class="header-link" href="#verifying-and-running-a-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p><img src="images/panel.png" alt="Automation Panel"></p>
 <p>The dialog has a &lsquo;Verify&rsquo; button, which checks whether the alerts which have been selected to be included in the plan, are actually present at that moment. This ensures that the user is faced with no surprises when they use the plan somewhat later down the line.
 Each selected alert has a status column in the table, which displays the current status of the alert, which is one out of &lsquo;Not Verified&rsquo;, &lsquo;Present&rsquo; and &lsquo;Absent&rsquo;.</p>
 <p>The user can click on the &lsquo;Create&rsquo; button, which creates the plan and loads it in the automation panel. From here, the user can reorder/modify the jobs as required and also run the plan. More information on how the Automation Framework GUI works is given <a href="https://www.zaproxy.org/docs/desktop/addons/automation-framework/gui/">here</a>
 Since a retest plan can be run from the command line too, it is also easy to integrate it within a CI/CD pipeline.</p>
-<h2 id="retest-result">Retest Result</h2>
+
+<h2 id="retest-result">Retest Result <a class="header-link" href="#retest-result"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p><img src="images/result.png" alt="Output Tab"></p>
 <p>The user can see the result of running the retest plan in the Output tab of the automation panel. The &lsquo;Pass&rsquo;/&lsquo;Failed&rsquo; status for an alert test depends on whether that alert was being checked for its absence or for its presence. This value can be configured by changing the &lsquo;Action&rsquo; field
 of an alert via the Edit alert functionality described above.</p>
-<h2 id="the-retest-api">The Retest API</h2>
+
+<h2 id="the-retest-api">The Retest API <a class="header-link" href="#the-retest-api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The add-on also has an API, which currently supports only one &lsquo;retest&rsquo; action. The user can supply a list of comma separated alert IDs for retesting, and would receive a response containing the &lsquo;Present&rsquo;/&lsquo;Absent&rsquo; status of an alert along with the values of all the fields describing that alert.</p>
-<h2 id="future-plans">Future Plans</h2>
+
+<h2 id="future-plans">Future Plans <a class="header-link" href="#future-plans"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The add-on is still currently in its early stages, so feel free to report any issues you face at the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a> or raise a GitHub <a href="https://github.com/zaproxy/zaproxy/issues">issue</a> for bugs.
 One major enhancement that the add-on definitely needs is the ability to retest authenticated alerts. I definitely plan to add this soon, as retesting alerts without having to deal with authentication, was one of the main reasons which lead people to request for this functionality.
 Currently, all the information required to retest any authenticated alert is not persisted to a ZAP session. Once authentication is in place, I also plan to implement this, as it would allow users to create a plan from a previously saved session.</p>
 <p>There are other UI enhancements which I plan to implement in the future, such as adding tests grouped by their alert ID, adding a flag icon on the right-hand pane for tests with the risk set (thus allowing users to ID the most important tests) etc.</p>
 <p>I implemented this add-on as a part of my Google Summer of Code 2021 project, and this would not have been possible without the constant guidance and help I received from my mentors Simon, Ricardo and Rick.
 Their feedback was instrumental in helping me finish what initially seemed like a gigantic task. I also learned a lot from them during the course of the project, and I am grateful to them for the same.</p>
-<h2 id="list-of-retest-prs">List of Retest PRs</h2>
+
+<h2 id="list-of-retest-prs">List of Retest PRs <a class="header-link" href="#list-of-retest-prs"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This is a list of all pull requests (excluding those related to releases) that were created for the retest add-on.</p>
 <table>
 <thead>

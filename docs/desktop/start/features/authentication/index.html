@@ -1431,7 +1431,8 @@
 
 
 </ol>
-          <h1 id="authentication">Authentication</h1>
+          
+<h1 id="authentication">Authentication</h1>
 <p>ZAP can handle a wide range of authentication mechanisms.<br>
 Each <a href="/docs/desktop/start/features/contexts/">Context</a> has:</p>
 <ul>
@@ -1453,7 +1454,8 @@ are the following:</p>
 <li>Configure the <a href="/docs/desktop/start/features/authstrategies/">Authentication Verification Strategy</a> for your application, specifying at least one of the <em>Logged In Indicator</em> or the <em>Logged out indicator</em></li>
 <li>Configure one or more <a href="/docs/desktop/start/features/users/">Users</a> for the context that directly correspond to the authentication method for the context</li>
 </ol>
-<h2 id="configuration-example">Configuration example</h2>
+
+<h2 id="configuration-example">Configuration example <a class="header-link" href="#configuration-example"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>A configuration example showing how to fully configure a webapp that uses <em>form-based authentication</em> ,
 <em>cookie-based session management</em> and returns full HTML pages (including an indication of whether the user is logged in) is seen below:</p>
 <ol>
@@ -1478,14 +1480,16 @@ are the following:</p>
 </ol>
 <p>After configuring authentication, various actions are available in ZAP. For example, you can now select the user in the <a href="/docs/desktop/ui/dialogs/spider/">Spider dialogue</a>. Or, using the Forced User Mode, you can force all the interactions that go through ZAP for a given Context to be from the perspective of a User. The Forced User Mode is enabled via a button in the toolbar (the one with the user and the lock) and is configured via Session Properties -&gt; Forced User Mode.<br>
 Most of the steps above apply as well for other authentication methods. The only things that change when trying to configure authentication using a different method is step 6. Instead of that, select the authentication method required from the drop-down list and configure it as needed. More details about configuring each type of authentication can be found in the <a href="/docs/desktop/start/features/authmethods/">Authentication Methods</a> page and in the <a href="/docs/desktop/ui/dialogs/session/contexts/">Context Session screens</a>.</p>
-<h2 id="envvars">Authentication Header Environmental Variables</h2>
+
+<h2 id="envvars">Authentication Header Environmental Variables <a class="header-link" href="#envvars"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>A set of environmental variables are available which allow you to easily add an authentication header to all of the requests that are proxied through ZAP or initiated by the ZAP tools, including the spiders and active scanner:</p>
 <ul>
 <li>ZAP_AUTH_HEADER_VALUE - if this is defined then its value will be added as a header to all of the requests</li>
 <li>ZAP_AUTH_HEADER - if this is defined then its value will be used as the header name - if it is not defined then the standard <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Authorization">Authorization</a> header will be used</li>
 <li>ZAP_AUTH_HEADER_SITE - if this is defined then header will only be included in sites who&rsquo;s name includes its value</li>
 </ul>
-<h2 id="configured-via">Configured via</h2>
+
+<h2 id="configured-via">Configured via <a class="header-link" href="#configured-via"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>
@@ -1502,7 +1506,8 @@ Most of the steps above apply as well for other authentication methods. The only
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>
@@ -1544,7 +1549,8 @@ Most of the steps above apply as well for other authentication methods. The only
 </tr>
 </tbody>
 </table>
-<h2 id="official-videos">Official Videos</h2>
+
+<h2 id="official-videos">Official Videos <a class="header-link" href="#official-videos"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>
