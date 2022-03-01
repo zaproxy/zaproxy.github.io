@@ -179,13 +179,16 @@
               Posted <span class="post-date">Friday August 20, 2021</span>
               <span class="word-count fl-r"> 610 Words </span>
             </section>
-            <h2 id="overview">Overview</h2>
+            
+<h2 id="overview">Overview <a class="header-link" href="#overview"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>File upload is becoming a more and more essential part of any application, where the user is able to upload their photo, their CV, or a video showcasing a project they are working on. The application should be able to fend off bogus and malicious files in a way to keep the application and the users safe. Generally file upload functionality is quite complex to automate and has huge attack surface hence there is a need to automate the process and also secure it. So the FileUpload add-on has scan rule which is used to find vulnerabilities in file upload functionality and this blog explains on how to use it.</p>
-<h2 id="configuration">Configuration</h2>
+
+<h2 id="configuration">Configuration <a class="header-link" href="#configuration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>File upload functionality generally has 2 endpoints, one from where file is uploaded and one from where file is retrieved. It is necessary to know both these endpoints. While Active Scanning an application, file upload endpoint is already known but retrieval endpoint is not known to the scan rule hence there are configuration details specific to the retrieval endpoint.</p>
 <p>Under ZAP&rsquo;s Options dialog you will find the File Upload screen as shown below:</p>
 <p><img src="./images/fileupload-options-panel.png" alt="FileUpload"></p>
-<h3 id="explanation">Explanation</h3>
+
+<h3 id="explanation">Explanation <a class="header-link" href="#explanation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>For finding the URL to retrieve/view the uploaded file, here are some options:</p>
 <ol>
 <li>In some applications, the URL to retrieve the uploaded file is <strong>static</strong> and doesn&rsquo;t change or only the file name is changed. For handling this type of configuration, options panel has <strong>Static Location Configuration</strong> where static URL is added into URI Regex field. URI Regex field also supports the dynamic file name by <strong>${fileName}</strong> parameter, for e.g. <code>http://&lt;baseurl&gt;/${fileName}</code>.</li>
@@ -193,7 +196,8 @@
 <li>In some applications the URL to retrieve the uploaded file is present in the <strong>response of a different URL</strong> which is called a <strong>preflight request</strong>. E.g. Profile picture URL is part of profile page and hence we need to parse the response of the profile page to find the URL of the profile picture. For handling this type of configuration, the options panel has <strong>Dynamic Location Configuration</strong> which has a <strong>URI Regex</strong> and <strong>Parse HTTP Response Configuration</strong> which has <strong>Start Identifier</strong>, and <strong>End Identifier</strong>. So the FileUpload add-on will invoke the URI mentioned in URI Regex and then parse the response using Start Identifier and End Identifier. URI Regex field also supports the dynamic file name by <strong>${fileName}</strong>.</li>
 </ol>
 <p>As FileUpload add-on&rsquo;s scan rule will execute as part of OWASP ZAP Active Scan, so after filling these configuration details, run the active scan in order to find the vulnerabilities in file upload functionality.</p>
-<h2 id="vulnerability-coverage">Vulnerability Coverage</h2>
+
+<h2 id="vulnerability-coverage">Vulnerability Coverage <a class="header-link" href="#vulnerability-coverage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The FileUpload add-on&rsquo;s scan rule attempts to upload various types of files with payloads and then tries to retrieve them to identify vulnerabilities present in the file upload functionality.</p>
 <p>FileUpload add-on uploads following types of files:</p>
 <ul>
@@ -216,7 +220,8 @@ For more information please visit <a href="https://github.com/SasanLabs/owasp-za
   <iframe src='https://www.youtube.com/embed/3bHjrpbLQmA' frameborder='0' allowfullscreen></iframe>
 </div>
 </p>
-<h2 id="special-thanks">Special Thanks</h2>
+
+<h2 id="special-thanks">Special Thanks <a class="header-link" href="#special-thanks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This addon is highly inspired from <a href="https://github.com/portswigger/upload-scanner">Upload-Scanner</a> and uses many concepts from Upload-Scanner extension.</p>
 
           </main>

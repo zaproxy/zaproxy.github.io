@@ -193,7 +193,8 @@ They typically run against all of the requests and responses that flow through Z
 Passive rules run in separate background thread so that they have as little effect on performance as possible.</p>
 <p>You can write passive scan rules dynamically using scripts, as we will see later in this series, but even then it&rsquo;s very useful to understand
 some of the concepts and the underlying classes available to you.</p>
-<h2 id="where-to-start">Where to start</h2>
+
+<h2 id="where-to-start">Where to start <a class="header-link" href="#where-to-start"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The easiest way to get started is to rip off an existing rule. The passive scan rules can be found in 3 add-ons in the
 <a href="https://github.com/zaproxy/zap-extensions/">zap-extensions</a> project, depending on their status:</p>
 <ul>
@@ -202,7 +203,8 @@ some of the concepts and the underlying classes available to you.</p>
 <li>Alpha quality:     <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha">addOns/pscanrulesAlpha</a></li>
 </ul>
 <p>There are also some simple examples that we will examine in more detail. These are all in the <code>pscanrulesAlpha</code> add-on.</p>
-<h2 id="the-main-classes">The main classes</h2>
+
+<h2 id="the-main-classes">The main classes <a class="header-link" href="#the-main-classes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following classes are key to implementing passive scan rules.</p>
 <p><a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PluginPassiveScanner.java"><code>PluginPassiveScanner</code></a> - this is
 the class that all passive rules must extend. There are 2 key methods that you will need to implement:</p>
@@ -264,7 +266,8 @@ potential vulnerabilities. It supports the following fields:</p>
 <li><code>cweId</code>               The <a href="https://cwe.mitre.org/">CWE</a> id</li>
 <li><code>wascId</code>             The <a href="http://www.webappsec.org/projects/threat/">WASC Threat Classification</a> id</li>
 </ul>
-<h2 id="simple-example">Simple example</h2>
+
+<h2 id="simple-example">Simple example <a class="header-link" href="#simple-example"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleSimplePassiveScanRule.java"><code>ExampleSimplePassiveScanRule</code></a> class implements a very simple passive
 scan rule. As you will see, it just raises an alert randomly, so it isn&rsquo;t of any practical use. However it does demonstrate a couple of useful
 features:</p>
@@ -278,7 +281,8 @@ long as the relevant vulnerability is included in that file.</p>
 messages.</p>
 <p>Note that the <code>pluginId</code> needs to be unique across all active and passive scan rules. The master list of ids is in the
 <a href="https://github.com/zaproxy/zaproxy/blob/main/docs/scanners.md">scanners.md</a> file.</p>
-<h2 id="file-based-example">File based example</h2>
+
+<h2 id="file-based-example">File based example <a class="header-link" href="#file-based-example"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/ExampleFilePassiveScanRule.java"><code>ExampleFilePassiveScanRule</code></a> class implements a
 slightly more complex passive scan rule. In this case it reads in a set of strings from a <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/zapHomeFiles/txt/example-pscan-file.txt">configuration file</a> and checks for their presence in
 the response. It could also use hardcoded strings, but the advantage of the approach taken is that a knowledgeable user could manually edit the
@@ -298,9 +302,11 @@ vulnerabilities. The threshold returned can be one of:</p>
 </ul>
 <p>You do not have to use the threshold - especially as it might not be relevant for the vulnerability you are testing for, but it is also a useful
 way for the user to tune how the rules work and so it&rsquo;s worth using if you can.</p>
-<h2 id="building-and-deploying">Building and deploying</h2>
+
+<h2 id="building-and-deploying">Building and deploying <a class="header-link" href="#building-and-deploying"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The alpha passive active scan rules add-on build file is <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts">addOns/pscanrulesAlpha/pscanrulesAlpha.gradle.kts</a>. All you need to do is run the Gradle task <code>:addOns:pscanrulesAlpha:copyZapAddOn</code> in the <code>zap-extensions</code> project and the relevant add-on will be built and copied to the correct location, assuming you have a ZAP core project called <code>zaproxy</code>. If you want to deploy to a different location then you can use the command line argument <code>--into=/path/to/copy/into/</code>.</p>
-<h2 id="updating-the-help">Updating the help</h2>
+
+<h2 id="updating-the-help">Updating the help <a class="header-link" href="#updating-the-help"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>To finish off a new rule you should add a short description of the rule to the help file: <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/pscanrulesAlpha/src/main/javahelp/org/zaproxy/zap/extension/pscanrulesAlpha/resources/help/contents/pscanalpha.html">pscanalpha.html</a><br>
 This is not really necessary unless you want to publish your rules.</p>
 <p>A future post will cover how to contribute your code back to the ZAP community and progress it from alpha to beta and then release status.</p>

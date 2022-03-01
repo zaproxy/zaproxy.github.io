@@ -1431,10 +1431,12 @@
 
 
 </ol>
-          <h1 id="automation-framework---activescan-job">Automation Framework - activeScan Job</h1>
+          
+<h1 id="automation-framework---activescan-job">Automation Framework - activeScan Job</h1>
 <p>This job runs the active scanner. This actively attacks your applications and should therefore only be used against applications that you have permission to test.</p>
 <p>By default this job will actively scan the first context defined in the <a href="/docs/desktop/addons/automation-framework/environment/">environment</a> and so none of the parameters are mandatory.</p>
-<h2 id="yaml">YAML</h2>
+
+<h2 id="yaml">YAML <a class="header-link" href="#yaml"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <pre tabindex="0"><code>  - type: activeScan                   # The active scanner - this actively attacks the target so should only be used with permission
     parameters:
       context:                         # String: Name of the context to attack, default: first context
@@ -1457,7 +1459,8 @@
         name:                          # String: The name of the rule for documentation purposes - this is not required or actually used
         strength:                      # String: The Attack Strength for this rule, one of Low, Medium, High, Insane, default: Medium
         threshold:                     # String: The Alert Threshold for this rule, one of Off, Low, Medium, High, default: Medium
-</code></pre><h2 id="job-data">Job Data</h2>
+</code></pre>
+<h2 id="job-data">Job Data <a class="header-link" href="#job-data"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following class will be made available to add-ons that provide access to the Job Data such as the Reporting add-on. Note that in this case the data is from the last Active Scan, regardless of whether it was started by the Automation Framework, the UI, or the API.</p>
 <ul>
 <li>Key: <code>activeScanData</code></li>

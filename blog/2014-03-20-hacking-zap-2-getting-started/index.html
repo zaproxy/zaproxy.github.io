@@ -11,13 +11,13 @@
 <meta name="twitter:description" content="Welcome to a series of blog posts aimed at helping you “hack the ZAP source code”.
 The previous post in this series is: Hacking ZAP #1 - Why should you?
 In order to change the ZAP source code you will need to set up a development environment.
-Requirements The following software is used/required to obtain and build ZAP (core) and the add-ons:"/>
+Requirements  The following software is used/required to obtain and build ZAP (core) and the add-ons:"/>
 
     <meta property="og:title" content="Hacking ZAP #2 - Getting Started" />
 <meta property="og:description" content="Welcome to a series of blog posts aimed at helping you “hack the ZAP source code”.
 The previous post in this series is: Hacking ZAP #1 - Why should you?
 In order to change the ZAP source code you will need to set up a development environment.
-Requirements The following software is used/required to obtain and build ZAP (core) and the add-ons:" />
+Requirements  The following software is used/required to obtain and build ZAP (core) and the add-ons:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/blog/2014-03-20-hacking-zap-2-getting-started/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2014-03-20T00:00:00+00:00" />
@@ -187,17 +187,20 @@ Requirements The following software is used/required to obtain and build ZAP (co
 helping you “hack the ZAP source code”.<br>
 The previous post in this series is: <a href="/blog/2014-03-10-hacking-zap-1-why-should-you/">Hacking ZAP #1 - Why should you?</a></p>
 <p>In order to change the ZAP source code you will need to set up a development environment.</p>
-<h2 id="requirements">Requirements</h2>
+
+<h2 id="requirements">Requirements <a class="header-link" href="#requirements"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following software is used/required to obtain and build ZAP (core) and the add-ons:</p>
 <ul>
 <li>A JDK (minimum version 8), for example, <a href="https://www.azul.com/downloads/zulu-community/">Zulu JDK</a> or <a href="https://adoptopenjdk.net/">AdoptOpenJDK</a>;</li>
 <li><a href="https://git-scm.com/downloads">Git</a>, to obtain the source code;</li>
 <li><a href="https://gradle.org/">Gradle</a>, to build the source code. It&rsquo;s recommend to use the <a href="https://docs.gradle.org/current/userguide/gradle_wrapper.html">Gradle Wrapper</a> provided in the corresponding projects.</li>
 </ul>
-<h2 id="projects">Projects</h2>
+
+<h2 id="projects">Projects <a class="header-link" href="#projects"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The ZAP projects are located in GitHub under the <a href="https://github.com/zaproxy/">zaproxy organization</a>.</p>
 <p>The main projects are <a href="https://github.com/zaproxy/zaproxy/"><code>zaproxy</code></a> and <a href="https://github.com/zaproxy/zap-extensions/"><code>zap-extensions</code></a>.</p>
-<h2 id="the-zap-core">The ZAP core</h2>
+
+<h2 id="the-zap-core">The ZAP core <a class="header-link" href="#the-zap-core"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The <code>zaproxy</code> project is often called “the core”.</p>
 <p>The project follows the typical directory structure for Java projects, with main code under
 <a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/java/">src/main/java</a> and tests under
@@ -226,7 +229,8 @@ We have a standard format for these comments</p>
 </blockquote>
 <p>e.g. see <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/CommandLine.java#L21">CommandLine.java</a></p>
 <p>The <code>zaproxy</code> project uses a single branch that means if you make changes to the core then you typically just need to make them out of the <code>main</code> branch.</p>
-<h2 id="add-ons-extensions-and-rules">Add-ons, Extensions and Rules</h2>
+
+<h2 id="add-ons-extensions-and-rules">Add-ons, Extensions and Rules <a class="header-link" href="#add-ons-extensions-and-rules"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>There are many ways to extend ZAP programmatically.<br>
 Some of the main ways include:</p>
 <ul>

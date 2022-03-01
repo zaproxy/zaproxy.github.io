@@ -1431,13 +1431,16 @@
 
 
 </ol>
-          <h1 id="automation-framework---authentication">Automation Framework - authentication</h1>
+          
+<h1 id="automation-framework---authentication">Automation Framework - authentication</h1>
 <p>The Automation Framework supports all of the authentication mechanisms supported by ZAP.</p>
-<h2 id="environmental-variables">Environmental Variables</h2>
+
+<h2 id="environmental-variables">Environmental Variables <a class="header-link" href="#environmental-variables"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>ZAP supports a set of Authentication Header Environmental Variables - these will be applied by ZAP if they are defined however ZAP is run, including via the Automation Framework.</p>
 <p>These environmental variables must be defined at the system level - if they are defined in the <a href="/docs/desktop/addons/automation-framework/environment/">environment</a>
 env section then they will be ignored.</p>
-<h2 id="context-based-authentication">Context Based Authentication</h2>
+
+<h2 id="context-based-authentication">Context Based Authentication <a class="header-link" href="#context-based-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Automation Framework supports the following methods of authentication supported by ZAP:</p>
 <ul>
 <li>Manual (use this if you are using the Authentication Header Environmental Variable)</li>
@@ -1446,12 +1449,14 @@ env section then they will be ignored.</p>
 <li>JSON-based</li>
 <li>Script</li>
 </ul>
-<h2 id="authentication-statistics">Authentication Statistics</h2>
+
+<h2 id="authentication-statistics">Authentication Statistics <a class="header-link" href="#authentication-statistics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>ZAP maintains authentication statistics - search for &lsquo;auth&rsquo; in the key field on the <a href="/docs/internal-statistics/">ZAP Internal Statistics</a> website page. These are ideal to use in <a href="/docs/desktop/addons/automation-framework/tests/">tests</a> to make sure the authentication is working as you expect.</p>
 <p>The authentication statistics are maintained for all supported authentication methods (including &lsquo;manual&rsquo;)
 but only if you have configured all of the authentication elements correctly.<br>
 You are strongly advised to test this via the ZAP desktop GUI.</p>
-<h2 id="configuring-authentication">Configuring Authentication</h2>
+
+<h2 id="configuring-authentication">Configuring Authentication <a class="header-link" href="#configuring-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The recommended way to configure authentication is to do so via the ZAP desktop GUI - this gives you complete control over all aspects and allows you to test it in place.<br>
 Then you can create a new Authentication Framework job using the context(s) you have tested - the authentication elements will be correctly initialised for all aspects supported.</p>
 <p>It is worth noting that the authentication elements cannot be edited via the Automation Framework <a href="/docs/desktop/addons/automation-framework/gui/">GUI</a>,

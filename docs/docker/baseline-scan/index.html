@@ -163,7 +163,8 @@
 <p>This means that the script doesn&rsquo;t perform any actual &lsquo;attacks&rsquo; and will run for a relatively short period of time (a few minutes at most).</p>
 <p>By default it reports all alerts as WARNings but you can specify a config file which can change any rules to FAIL or IGNORE.</p>
 <p>This script is intended to be ideal to run in a CI/CD environment, even against production sites.</p>
-<h3 id="usage">Usage</h3>
+
+<h3 id="usage">Usage <a class="header-link" href="#usage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <pre tabindex="0"><code>Usage: zap-baseline.py -t &lt;target&gt; [options]
     -t target         target URL including the protocol, eg https://www.example.com
 Options:
@@ -199,7 +200,8 @@ Options:
 <pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py \
     -t https://www.example.com -g gen.conf -r testreport.html
 </code></pre><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
-<h3 id="example-output">Example Output</h3>
+
+<h3 id="example-output">Example Output <a class="header-link" href="#example-output"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <pre tabindex="0"><code>docker run -t owasp/zap2docker-stable zap-baseline.py -t https://www.example.com
 May 17, 2016 1:24:32 PM java.util.prefs.FileSystemPreferences$1 run
 INFO: Created user preferences directory.
@@ -243,7 +245,8 @@ WARN: X-Content-Type-Options Header Missing [10021] x 3
 	https://www.example.com/robots.txt
 	https://www.example.com/sitemap.xml
 FAIL: 0	WARN: 4	IGNORE: 0	PASS: 22
-</code></pre><h3 id="configuration-file">Configuration File</h3>
+</code></pre>
+<h3 id="configuration-file">Configuration File <a class="header-link" href="#configuration-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>You can configure how the baseline scan runs with a configuration file. A default configuration file can be created using the &lsquo;-g&rsquo; parameter.</p>
 <pre tabindex="0"><code># zap-baseline rule configuration file
 # Change WARN to IGNORE to ignore rule or FAIL to fail if rule matches
@@ -284,7 +287,8 @@ For example:</p>
 10012    OUTOFSCOPE    https://www.example.com/test.html
 # Ignore all URLS containing ‘.js’ for all scan rules
 *    OUTOFSCOPE    .*\.js
-</code></pre><h3 id="progress-file">Progress File</h3>
+</code></pre>
+<h3 id="progress-file">Progress File <a class="header-link" href="#progress-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>You can specify a progress file to flag issues that are already known about and are being addressed:</p>
 <pre tabindex="0"><code>{
 	&#34;site&#34; : &#34;www.example.com&#34;,
@@ -304,18 +308,23 @@ For example:</p>
 	]
 }
 </code></pre><p>These issues will then be flagged as being &lsquo;IN-PROGRESS&rsquo; which makes it much easier to identify new issues.</p>
-<h3 id="zap-parameters">ZAP Parameters</h3>
+
+<h3 id="zap-parameters">ZAP Parameters <a class="header-link" href="#zap-parameters"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>You can pass parameters onto ZAP using the baseline <code>-z</code> parameter. This means you can fine tune ZAP, for example by specifying any of the parameters that are stored in the ZAP config file via the <code>-config key=value</code> parameter.
 The weekly version of ZAP supports scan rule configuration. One particular configuration option allows you to define the IDs of HTML forms which you want to ignore when it comes to anti-CSRF tokens. So if you run the baseline scan with: <code>-z -config rules.csrf.ignorelist=search,login</code> then ZAP will not fail the scan if forms with an ID of &ldquo;search&rdquo; or &ldquo;login&rdquo; do not have anti CSRF tokens.</p>
-<h3 id="mass-baseline">Mass Baseline</h3>
+
+<h3 id="mass-baseline">Mass Baseline <a class="header-link" href="#mass-baseline"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>If you would like to run the baseline against a number of sites then you can use the <a href="https://github.com/zaproxy/community-scripts/tree/main/api/mass-baseline">mass baseline scripts</a> on the ZAP Community Scripts repo.
 These generate a <a href="https://github.com/zaproxy/community-scripts/wiki/Baseline-Summary">dashboard</a> which will show you a summary of the results on one wiki page.</p>
-<h3 id="scan-hooks">Scan Hooks</h3>
+
+<h3 id="scan-hooks">Scan Hooks <a class="header-link" href="#scan-hooks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This script supports <a href="../scan-hooks/">scan hooks</a> which allow you to override or modify behaviour of the script components instead of having to write a new script.</p>
-<h3 id="automation-framework-migration">Automation Framework Migration</h3>
+
+<h3 id="automation-framework-migration">Automation Framework Migration <a class="header-link" href="#automation-framework-migration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The baseline scan is in the process of being migrated to use the <a href="/docs/automate/automation-framework/">Automation Framework</a>.
 For more details see the blog post: <a href="/blog/2021-06-15-baseline-scan-changes/">Baseline Scan Changes</a></p>
-<h3 id="source-code">Source Code</h3>
+
+<h3 id="source-code">Source Code <a class="header-link" href="#source-code"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The source code for this script is in <a href="https://github.com/zaproxy/zaproxy/tree/main/docker">https://github.com/zaproxy/zaproxy/tree/main/docker</a>.</p>
 
           </main>

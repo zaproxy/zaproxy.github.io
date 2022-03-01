@@ -182,7 +182,8 @@
             <p>This blog post will show you how you can collect and publish statistics on your open source projects using free resources and open source scripts, based on the setup we have for ZAP.</p>
 <p><img src="images/check-for-updates.png" alt="ZAP Check for Updates Chart"></p>
 <p>We’re not doing anything particularly sophisticated and all of the scripts should be easy to understand.</p>
-<h2 id="why-collect-statistics">Why Collect Statistics?</h2>
+
+<h2 id="why-collect-statistics">Why Collect Statistics? <a class="header-link" href="#why-collect-statistics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>I released ZAP on <a href="/blog/2020-09-06-zap-is-ten-years-old/">6th September 2010</a>.
 At some point in December it was accepted as an OWASP project and by 1st January 2011 downloads had jumped from virtually none to 433. Is my memory that good?
 No, it was significant enough for me to record that number and I’ve been recording the ZAP download counts at the start of every month in a Google Spreadsheet ever since.</p>
@@ -195,9 +196,11 @@ Maintaining an open source project for many years can be a thankless task, but s
 We were able to back that claim up with <a href="/blog/2020-04-02-is-zap-the-worlds-most-popular-web-scanner/">our statistics</a>
 and made sure that our open source and commercial competitors were well aware of it.
 None of them have chosen to contest the claim so it must be true 😁</p>
-<h2 id="what-to-collect">What to Collect</h2>
+
+<h2 id="what-to-collect">What to Collect <a class="header-link" href="#what-to-collect"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Which statistics you collect will depend on your project and what&rsquo;s available to you, but these are some of the ones we collect for ZAP.</p>
-<h3 id="downloads">Downloads</h3>
+
+<h3 id="downloads">Downloads <a class="header-link" href="#downloads"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>How often is your app downloaded? This doesn’t tell us how many people actually use it but it is still good to know how the number of downloads changes over time.</p>
 <p>This was initially all I recorded. When we had to move our downloads then a key requirement was that whatever platform we chose gave us download stats.
 All of the ZAP downloads are hosted on GitHub so we can use their public APIs to access them. GitHub does not provide any history so recording these stats regularly is important.</p>
@@ -205,12 +208,14 @@ All of the ZAP downloads are hosted on GitHub so we can use their public APIs to
 <a href="https://formulae.brew.sh/cask/owasp-zap">Homebrew</a>, <a href="https://snapcraft.io/zaproxy">Snapcraft</a>, <a href="https://flathub.org/apps/details/org.zaproxy.ZAP">Flathub</a>
 and bundled in <a href="https://tools.kali.org/web-applications/zaproxy">Kali</a>.
 Very few of these options provide any stats so we do not really know how many people use ZAP in these ways.</p>
-<h3 id="docker-pulls">Docker Pulls</h3>
+
+<h3 id="docker-pulls">Docker Pulls <a class="header-link" href="#docker-pulls"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Another key metric for us, especially as the <a href="/docs/docker/about/">ZAP Docker images</a> have proved so popular.
 Docker also provides public APIs which we can use. Again there is no history so it is important to record these regularly.</p>
 <p>Some people have started asking us to make the ZAP Docker images available via Amazon ECR but so far I have not found out if it is possible to get usage stats for the pulls.
 If that is not possible then I’ll resist these calls - statistics are that important to us.</p>
-<h3 id="check-for-update-requests">Check for Update Requests</h3>
+
+<h3 id="check-for-update-requests">Check for Update Requests <a class="header-link" href="#check-for-update-requests"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>ZAP makes various “<a href="/faq/what-calls-home-does-zap-make/">calls home</a>” -
 these are all via <a href="https://bitly.com/">Bitly</a> URLs which means we get to find out how many calls were made.
 We create new Bitly URLs for each release so we can see which versions of ZAP people are using, and since 2.9.0 whether they are using ZAP in daemon or desktop mode.</p>
@@ -218,14 +223,16 @@ We create new Bitly URLs for each release so we can see which versions of ZAP pe
 <p>These statistics are really useful for us as they give us an indication of the number of people who are actually using ZAP.
 We know that this is not the full picture - we are very public about what we collect and provide a <a href="/docs/desktop/cmdline/">command line</a> option which will prevent any of these calls being made.
 We also know that many users use ZAP in environments where either all outgoing calls are blocked or just those to services like Bitly.</p>
-<h3 id="user-interactions">User Interactions</h3>
+
+<h3 id="user-interactions">User Interactions <a class="header-link" href="#user-interactions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Users can interact with us in a <a href="/community/">large number of ways</a>, including a set of GitHub issues, Google Groups, Slack channels, Discord, IRC, email, StackOverflow … the list goes on and on.</p>
 <p>We try to push most discussions to the ZAP User Group and so we collect statistics for this group as well.
 Google Groups are actually a pain - there is no API for it and no easy way to collect statistics.
 Right now I manually run a simple <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/group_count.gs">script</a> against my GMail inbox once a month -
 I don’t delete any emails from this group so it should be accurate.
 It is not pretty but it works!</p>
-<h2 id="the-framework">The Framework</h2>
+
+<h2 id="the-framework">The Framework <a class="header-link" href="#the-framework"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>For ZAP we follow a simple framework which is based on one I introduced when I was working in the Mozilla Web Security team.
 It worked well there so I simplified it even further and changed it to only use free services and resources (well, mostly).</p>
 <p>At a high level all we do is:</p>
@@ -236,12 +243,14 @@ It worked well there so I simplified it even further and changed it to only use 
 <li>Process</li>
 <li>Display</li>
 </ol>
-<h3 id="schedule">Schedule</h3>
+
+<h3 id="schedule">Schedule <a class="header-link" href="#schedule"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>You should collect your stats at regular intervals. When I was doing this manually I did it once a month but now it’s all automated we record them daily.
 At Mozilla we used a Jenkins service for the scheduling as we were already using that for other jobs, but for ZAP we use GitHub Actions.
 We have a separate set of “zapbot” accounts we use for many of the ZAP admin tasks and so the GitHub action we use is in the zapbot/zap-mgmt-scripts repo :
 <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/.github/workflows/record-stats-v2.yml">record-stats-v2.yml</a></p>
-<h3 id="collect">Collect</h3>
+
+<h3 id="collect">Collect <a class="header-link" href="#collect"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The GitHub action calls a simple <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/stats.py">stats.py</a> script passing in the ‘collect’ parameter.
 This in turn calls the collect method of subordinate scripts:</p>
 <ul>
@@ -251,7 +260,8 @@ This in turn calls the collect method of subordinate scripts:</p>
 <li><a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/groups.py">groups.py</a></li>
 </ul>
 <p>Each of these scripts is responsible for handling the statistics for a service. They call the relevant APIs to retrieve the data we want.</p>
-<h3 id="store">Store</h3>
+
+<h3 id="store">Store <a class="header-link" href="#store"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>We store the raw and processed data in flat text files.
 It doesn&rsquo;t really matter where you store them, for many years the Mozilla security stats were stored in a private GitHub repo. However we were collecting a lot of stats and over time the repo became very large so we switched to putting them in S3 buckets.
 We do the same for ZAP stats - it’s not strictly speaking a free solution but as a flagship OWASP project we get access to various AWS services including S3 so that’s what we use.</p>
@@ -291,7 +301,8 @@ We do the same for ZAP stats - it’s not strictly speaking a free solution but 
 <p>When downloaded the statistics are stored in the relevant “raw” directory in a filename with the format YYYY-MM-DD-<em>statistic</em>.json
 We store the full response from the relevant API, this means that we will be able to extract more data from these responses in the future if we decide we need to.
 The “<em>statistic</em>” part will relate to the relevant statistic, for example for downloads this will be the version number.</p>
-<h3 id="process">Process</h3>
+
+<h3 id="process">Process <a class="header-link" href="#process"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The same <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/.github/workflows/record-stats-v2.yml">record-stats-v2.yml</a> GitHub action calls the same
 <a href="https://github.com/zapbot/zap-mgmt-scripts/blob/master/stats/stats.py">stats.py</a> script but this time passing in the ‘daily’ parameter.
 The sub-scripts then process any of the raw files that have not been processed, extracts only what we are interested in and outputs that into a new file in the relevant “daily” directory. These files contain all of the stats for that day and are all named YYYY-MM-DD.csv</p>
@@ -299,7 +310,8 @@ The sub-scripts then process any of the raw files that have not been processed, 
 <p>When I created the infrastructure for the Mozilla web security stats we actually fed these into AWS Athena. Athena supports complex data structures so it is possible to skip this processing step if you use it or something with a similar option. However I found the configuration confusing and difficult to maintain. I’m a developer and understand code so even then I processed the stats with a script and created simple CSV files. These can be easily used by a wide range of technologies and services.</p>
 <p>If you are able to use a service like Redash, Athena, Quicksight or Data Studio then you probably do not need to maintain separate ‘monthly’ files. We do as it makes the generation of our monthly charts much easier and because of the monthly stats that I used to collect manually - I’ve added some of these to S3 so can go back much further with the monthly stats than we can with the daily ones.</p>
 <p>Finally the GitHub Action pushes any newly created files back into S3.</p>
-<h3 id="display">Display</h3>
+
+<h3 id="display">Display <a class="header-link" href="#display"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>At Mozilla we used Redash, AWS Quicksight and Google Data Studio.</p>
 <p>As the ZAP data is already in S3 I tried out Quicksight again. Unfortunately I found it didn’t meet my requirements, especially because I couldn’t share dashboards publicly.</p>
 <p>So in the end I chose a simpler option - creating charts directly on this static website: <a href="https://www.zaproxy.org">https://www.zaproxy.org</a>.</p>
@@ -309,7 +321,8 @@ The sub-scripts process the monthly files and generate data files for our websit
 This is implemented using Hugo and I implemented a simple Hugo shortcode <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/layouts/shortcodes/chart.html">chart.html</a> which creates a chart using <a href="https://developers.google.com/chart">Google Charts</a> and the data file supplied.
 The action then submits a pull request which we need to manually approve before it will be applied to the site. We do this for all of the other data that we update on this site.</p>
 <p>And that is it! You can see all of the ZAP public stats on <a href="/statistics/">https://www.zaproxy.org/statistics/</a></p>
-<h2 id="the-future">The Future</h2>
+
+<h2 id="the-future">The Future <a class="header-link" href="#the-future"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Am I happy with the statistics that we collect for ZAP?</p>
 <p>No - I want to know a lot more! I want to know which ZAP features people actually use.</p>
 <p>My plan is to add telemetry to ZAP. However ZAP is a security tool and it therefore deals with very sensitive data. We have no need or desire to collect any information that may make our users nervous.

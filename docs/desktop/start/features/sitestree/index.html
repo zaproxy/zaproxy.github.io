@@ -1431,7 +1431,8 @@
 
 
 </ol>
-          <h1 id="sites-tree">Sites Tree</h1>
+          
+<h1 id="sites-tree">Sites Tree</h1>
 <p>The Sites Tree is ZAP&rsquo;s internal representation of the sites that you access and is displayed in the <a href="/docs/desktop/ui/tabs/sites/">Sites tab</a>.
 If it does not accurately reflect the sites then ZAP will not be able to attack them effectively.
 Each node in the tree represents a different piece of functionality in a site.
@@ -1449,9 +1450,11 @@ By default ZAP will create unique nodes in the tree based on the HTTP method and
 <li>GET <a href="https://www.example.com?a=e">https://www.example.com?a=e</a>&amp;c=f</li>
 </ul>
 <p>This works pretty well in lots of cases - different HTTP methods and parameter names typically mean different actions while the parameter values usually don’t change the outcome.</p>
-<h2 id="exceptions">Exceptions</h2>
+
+<h2 id="exceptions">Exceptions <a class="header-link" href="#exceptions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>There are always exceptions.</p>
-<h3 id="structural-parameters">Structural Parameters</h3>
+
+<h3 id="structural-parameters">Structural Parameters <a class="header-link" href="#structural-parameters"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Take the case where the action to be taken is actually defined in a parameter value:</p>
 <ul>
 <li>GET <a href="https://www.example.com?a=b">https://www.example.com?a=b</a>&amp;action=add</li>
@@ -1461,7 +1464,8 @@ By default ZAP will create unique nodes in the tree based on the HTTP method and
 <p>In ZAP the solution to this is to define the ‘action’ parameter as a <a href="/docs/desktop/start/features/structparams/">Structural Parameter</a>,
 in other words a parameter whose value actually affects the structure of a site.
 Once you have done that (and revisited the URLs) then they will appear as 2 different nodes and ZAP will attack them separately.</p>
-<h3 id="data-driven-nodes">Data Driven Nodes</h3>
+
+<h3 id="data-driven-nodes">Data Driven Nodes <a class="header-link" href="#data-driven-nodes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Conversely we have the case where a URL path element is actually part of the data and not part of the structure of the site. For example the following URLs could all represent the same functionality if the second path element (companyX) is actually data:</p>
 <ul>
 <li><a href="https://www.example.com/app/company1/aaa?ddd=eee">https://www.example.com/app/company1/aaa?ddd=eee</a></li>
@@ -1472,10 +1476,12 @@ Once you have done that (and revisited the URLs) then they will appear as 2 diff
 <p>The solution to this is to define the relevant path element as <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a> which means path elements that really contain data rather than represent part of the site structure.
 Once you have done that (and revisited the URLs) then they will all be represented as just 1 node and ZAP will only attack them once.</p>
 <p>You will need to define both Structural Parameters and Data Driven Nodes manually - ZAP does not currently have the capability to automatically detect these situations.</p>
-<h3 id="custom-parameters">Custom Parameters</h3>
+
+<h3 id="custom-parameters">Custom Parameters <a class="header-link" href="#custom-parameters"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Finally there are cases where sites define custom parameters which ZAP does not natively understand. As a result ZAP may not be able to correctly split requests into suitable nodes.</p>
 <p>In these cases you can use Input Vector <a href="/docs/desktop/start/features/scripts/">Scripts</a> which can represent request in the Sites Tree in any way you want.</p>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>
@@ -1497,7 +1503,8 @@ Once you have done that (and revisited the URLs) then they will all be represent
 </tr>
 </tbody>
 </table>
-<h2 id="external-links">External links</h2>
+
+<h2 id="external-links">External links <a class="header-link" href="#external-links"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

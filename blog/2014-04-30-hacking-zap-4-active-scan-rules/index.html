@@ -187,7 +187,8 @@ The previous post in this series is: <a href="/blog/2014-04-03-hacking-zap-3-pas
 explicitly invoked by the user. You should only use active scan rules against applications that you have permission to attack.<br>
 You can also write active scan rules dynamically using scripts, as we will see later in this series, but even then it&rsquo;s very useful to understand
 some of the concepts underlying classes available to you.</p>
-<h2 id="where-to-start">Where to start</h2>
+
+<h2 id="where-to-start">Where to start <a class="header-link" href="#where-to-start"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>As with passive rules, the easiest way to get started is to rip off an existing rule.  The (main) active scan rules can be found in 3 add-ons in the
 <a href="https://github.com/zaproxy/zap-extensions/">zap-extensions</a> project, depending on their status:</p>
 <ul>
@@ -196,7 +197,8 @@ some of the concepts underlying classes available to you.</p>
 <li>Alpha quality:     <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha">addOns/ascanrulesAlpha</a></li>
 </ul>
 <p>There are also some simple examples that we will examine in more detail. These are all in the <code>ascanrulesAlpha</code> add-on.</p>
-<h2 id="the-main-classes">The main classes</h2>
+
+<h2 id="the-main-classes">The main classes <a class="header-link" href="#the-main-classes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Unlike passive scan rules there are different classes that you should extend depending on the type of rule you want to implement.<br>
 <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractPlugin.java"><code>AbstractPlugin</code></a> - you typically
 will not extend this class directly, but it provides key methods that you will need to use and abstract methods that will need to be
@@ -212,7 +214,8 @@ existing parameters, such as trying new debug flags. The key method you’ll nee
 <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractAppParamPlugin.java"><code>AbstractAppParamPlugin</code></a> - extend this class if you want your code to run against every parameter in every node being scanned. This is ideal for scanning existing
 parameters. The key method you’ll need to implement is <code>scan(HttpMessage msg, String param, String value)</code> - this is where you attack the
 specified parameter.</p>
-<h3 id="performing-attacks">Performing attacks</h3>
+
+<h3 id="performing-attacks">Performing attacks <a class="header-link" href="#performing-attacks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Unlike passive scan rules, active scan rules are expected to make requests to the server.</p>
 <p>You should use the <code>AbstractPlugin.getNewMsg()</code> method to get hold of a new <code>HttpMessage</code> that you can use for your attack. If you make multiple
 requests then call <code>getNewMsg()</code> for each request. The message will be a copy of the original request but with an empty response. You can access
@@ -222,13 +225,15 @@ code should handle redirects and/or anti-CSRF tokens.  The <code>sendAndReceive<
 specified user. When you find potential issues you can raise them via one of the <code>AbstractPlugin.bingo(…)</code> methods.<br>
 Like passive scan rules, active scan rules support <code>AlertThreshold</code>s which allow the user to indicate how strictly you should check for
 vulnerabilities.</p>
-<h2 id="simple-example">Simple example</h2>
+
+<h2 id="simple-example">Simple example <a class="header-link" href="#simple-example"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/ExampleSimpleActiveScanRule.java"><code>ExampleSimpleActiveScanRule</code></a> class implements a very simple active scan
 rule. As you will see, it just raises an alert randomly, so it isn&rsquo;t of any practical use. Like the simple example passive scanner introduced in
 the previous post it uses the <code>Vulnerabilities</code> class for the documentation associated with the vulnerability. Most of the methods should be self
 explanatory, but there are 2 that are worth explaining. The <code>getCategory()</code> method is used to group related rules in the UI. And the <code>getRisk()</code>
 method affects the order the rules are run - the rules which report higher risks are run before those that report lower risks.</p>
-<h2 id="file-based-example">File based example</h2>
+
+<h2 id="file-based-example">File based example <a class="header-link" href="#file-based-example"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/ExampleFileActiveScanRule.java"><code>ExampleFileActiveScanRule</code></a> class implements a slightly more complex
 active scan rule which is equivalent to the example file passive scan rule introduced in the previous post. This class introduces another
 feature, the attack strength, which allows the user to adjust the number of attacks each rule performs. If you are implementing a rule just for
@@ -243,15 +248,18 @@ The <code>getAttackStrength()</code> method returns an <code>AttackStrength</cod
 <p>You should periodically check to see if the <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractPlugin.java#L596"><code>AbstractPlugin.isStop()</code></a> method
 returns true - this indicates that the user has stopped the scan so your code should immediately return. The infrastructure will check this
 before invoking your code to scan a new target (e.g. page or parameter).</p>
-<h2 id="advanced-features">Advanced features</h2>
+
+<h2 id="advanced-features">Advanced features <a class="header-link" href="#advanced-features"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>If your rule depends on another rule having been run then you need to specify that via the <code>getDependency()</code> method.<br>
 The persistent XSS rules do this, e.g. in <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/TestPersistentXSSSpider.java"><code>TestPersistentXSSSpider</code></a> and <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/TestPersistentXSSAttack.java"><code>TestPersistentXSSAttack</code></a>.<br>
 If you need to know the exact type of parameter you are scanning, for example to ignore some types that are not relevant, then you can override
 the <a href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/parosproxy/paros/core/scanner/AbstractAppParamPlugin.java#L284"><code>AbstractAppParamPlugin.scan(HttpMessage msg, NameValuePair originalParam)</code></a> method and provide an
 empty <code>scan(HttpMessage msg, String param, String value)</code> method. The <code>NameValuePair</code> class includes the parameter type.</p>
-<h2 id="building-and-deploying">Building and deploying</h2>
+
+<h2 id="building-and-deploying">Building and deploying <a class="header-link" href="#building-and-deploying"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The alpha active scan rules add-on build file is <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/ascanrulesAlpha.gradle.kts">addOns/ascanrulesAlpha/ascanrulesAlpha.gradle.kts</a>. All you need to do is run the Gradle task <code>:addOns:ascanrulesAlpha:copyZapAddOn</code> in the <code>zap-extensions</code> project and the relevant add-on will be built and copied to the correct location, assuming you have a ZAP core project called <code>zaproxy</code>. If you want to deploy to a different location then you can use the command line argument <code>--into=/path/to/copy/into/</code>.</p>
-<h2 id="updating-the-help">Updating the help</h2>
+
+<h2 id="updating-the-help">Updating the help <a class="header-link" href="#updating-the-help"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>As with passive scan rules it&rsquo;s good to add a short description of the rule to the help file: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/javahelp/org/zaproxy/zap/extension/ascanrulesAlpha/resources/help/contents/ascanalpha.html"><code>ascanalpha.html</code></a>.</p>
 <p>The next post in this series will be: Hacking ZAP #5: Extensions</p>
 

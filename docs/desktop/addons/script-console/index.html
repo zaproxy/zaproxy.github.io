@@ -1428,7 +1428,8 @@
 
 
 </ol>
-          <h1 id="script-console">Script Console</h1>
+          
+<h1 id="script-console">Script Console</h1>
 <p>The Script Console add-on allows you to run scripts that can be embedded within ZAP and can access internal ZAP data structures.<br>
 It supports any scripting language that supports JSR 223 (<a href="http://www.jcp.org/en/jsr/detail?id=223">http://www.jcp.org/en/jsr/detail?id=223</a>) , including:</p>
 <ul>
@@ -1440,7 +1441,8 @@ It supports any scripting language that supports JSR 223 (<a href="http://www.jc
 <li>and many more&hellip;</li>
 </ul>
 <p><strong>WARNING - scripts run with the same permissions as ZAP, so do not run any scripts that you do not trust!</strong></p>
-<h2 id="script-types">Script Types</h2>
+
+<h2 id="script-types">Script Types <a class="header-link" href="#script-types"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Different types of scripts are supported:</p>
 <ul>
 <li>Stand Alone - scripts that are self contained and are only run when your start them manually</li>
@@ -1462,13 +1464,15 @@ Targeted scripts can be invoked by right clicking on a record in the Sites or Hi
 <p>All scripting languages can be used for all script types, but only those languages that have been downloaded from the ZAP Marketplace
 will typically have templates. However you may well be able to adapt a template for another language.<br>
 If your favourite language is not available on the Marketplace then please raise a new issue via the &ldquo;Online/Report an issue&rdquo; menu item.</p>
-<h2 id="global-variables">Global Variables</h2>
+
+<h2 id="global-variables">Global Variables <a class="header-link" href="#global-variables"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Variables can be shared between all scripts via the class org.zaproxy.zap.extension.script.ScriptVars.<br>
 For example in JavaScript you can use this class as follows:</p>
 <p><code> org.zaproxy.zap.extension.script.ScriptVars.setGlobalVar(&quot;var.name&quot;,&quot;value&quot;)</code><br>
 <code> org.zaproxy.zap.extension.script.ScriptVars.getGlobalVar(&quot;var.name&quot;)</code><br>
 <code> </code></p>
-<h2 id="script-variables">Script Variables</h2>
+
+<h2 id="script-variables">Script Variables <a class="header-link" href="#script-variables"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Variables can be shared between separate invocations of the same script via the same org.zaproxy.zap.extension.script.ScriptVars class.<br>
 For example in JavaScript you can use this class as follows:</p>
 <p><code> org.zaproxy.zap.extension.script.ScriptVars.setScriptVar(this.context, &quot;var.name&quot;,&quot;value&quot;)</code><br>
@@ -1478,11 +1482,13 @@ Note that these methods are only usable from scripting languages that provide ac
 <p><code> org.zaproxy.zap.extension.script.ScriptVars.setScriptVar(&quot;ScriptName&quot;, &quot;var.name&quot;,&quot;value&quot;)</code><br>
 <code> org.zaproxy.zap.extension.script.ScriptVars.getScriptVar(&quot;ScriptName&quot;, &quot;var.name&quot;)</code><br>
 <code> </code></p>
-<h2 id="custom-globalscript-variables">Custom Global/Script Variables</h2>
+
+<h2 id="custom-globalscript-variables">Custom Global/Script Variables <a class="header-link" href="#custom-globalscript-variables"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Newer versions of ZAP (after 2.8.0) allow to set custom global/script variables, which can be of any type not just strings, for example, lists, maps.<br>
 In JavaScript they are accessed/set as follows:</p>
 <p><code>var ScriptVars = Java.type(&quot;org.zaproxy.zap.extension.script.ScriptVars&quot;) ScriptVars.setScriptCustomVar(this.context, &quot;var.name&quot;, {x: 1, y: 3}) print(ScriptVars.getScriptCustomVar(this.context, &quot;var.name&quot;).y) // Prints 3 ScriptVars.setGlobalCustomVar(&quot;var.name&quot;, [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]) print(ScriptVars.getGlobalCustomVar(&quot;var.name&quot;)[2]) // Prints C</code></p>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>
@@ -1504,7 +1510,8 @@ In JavaScript they are accessed/set as follows:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="external-links">External links</h2>
+
+<h2 id="external-links">External links <a class="header-link" href="#external-links"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

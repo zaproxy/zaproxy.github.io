@@ -186,7 +186,8 @@ URL, parameter, values, etc. While generic details include things like a descrip
 company or organization. This is accomplished by creating and using an &lsquo;alerts overrides&rsquo; configuration file.</p>
 <p>An alert override config file is a UTF-8 property file containing the information you would like to change. The file may contain comments for
 convenience by pre-pending <code>#</code> on the line, ex: <code># 2 - Private IP Disclosure</code>. Such comments will be ignored when ZAP uses the file.</p>
-<h2 id="how-to">How-to</h2>
+
+<h2 id="how-to">How-to <a class="header-link" href="#how-to"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The format of entries in the file is:</p>
 <p><code>&lt;alertid&gt;.&lt;property&gt; = [ + | - ] &lt;your information&gt;</code></p>
 <p>With the following properties supported: <code>name</code>, <code>description</code>, <code>solution</code>, <code>otherInfo</code>, and <code>reference</code>. Alert details can be added, replaced, or removed:</p>
@@ -196,7 +197,8 @@ convenience by pre-pending <code>#</code> on the line, ex: <code># 2 - Private I
 </span></span></code></pre></div><p>For example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span># 40012 = Reflected XSS
 </span></span><span style="display:flex;"><span>40012.solution = Follow our company specific guidelines at http://internet.example.com/xss.html
-</span></span></code></pre></div><h2 id="example-usage">Example Usage</h2>
+</span></span></code></pre></div>
+<h2 id="example-usage">Example Usage <a class="header-link" href="#example-usage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Let&rsquo;s say you work for Juice Shop corporation, and the organization is particular sensitive to disclosure of internal IP addresses, etc. After an initial scan with ZAP
 you decide that your developers and security team should have some additional information when reading reports and addressing certain issues.</p>
 <p><img src="images/initial_results.png" alt="Initial Results"></p>

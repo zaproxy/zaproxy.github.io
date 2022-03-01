@@ -1426,12 +1426,14 @@
 
 
 </ol>
-          <h1 id="release-260">Release 2.6.0</h1>
+          
+<h1 id="release-260">Release 2.6.0</h1>
 <p>This release contains a large number of changes, in particular to the ZAP API.<br>
 We have added a significant number of new API endpoints, working towards our goal of making ZAP completely controllable via the API. We have also changed some of the existing endpoints and in all cases these changes are backwards compatible.</p>
 <p>The full release also includes a new JxBrowser add-on as well as platform specific webdrivers to make it even easier to
 interact with ZAP through a wide variety of browsers.</p>
-<h2 id="api-security-changes">API Security Changes</h2>
+
+<h2 id="api-security-changes">API Security Changes <a class="header-link" href="#api-security-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>We have changed the API security in response to issues reported to us via our <a href="https://bugcrowd.com/owaspzap">bug bounty program</a>. Details of the vulnerabilities are given below.<br>
 The security changes are by necessity not backwards compatible, although we have include options for disabling them if you use ZAP in a safe environment.</p>
 <p>By default all API calls now require either the API key or a nonce.
@@ -1448,7 +1450,8 @@ For full details see the <a href="/docs/desktop/ui/dialogs/options/api/">Options
 </ul>
 <p>All ZAP options can be specified via the command line when you start ZAP - see <a href="/faq/why-is-an-api-key-required-by-default/">https://www.zaproxy.org/faq/why-is-an-api-key-required-by-default/</a> for full details.<br>
 We have also added even more security headers to the API including a strong Content Security Policy.</p>
-<h2 id="enhancements">Enhancements</h2>
+
+<h2 id="enhancements">Enhancements <a class="header-link" href="#enhancements"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
 <li>Issue 368 : API - report URLS just found by spider</li>
 <li>Issue 689 : Improve Scope management</li>
@@ -1522,7 +1525,8 @@ We have also added even more security headers to the API including a strong Cont
 <li>Issue 3296 : Create script directories when initialising the home dir</li>
 <li>Issue 3297 : Start local proxy after processing command line arguments when in daemon mode</li>
 </ul>
-<h2 id="bug-fixes">Bug fixes</h2>
+
+<h2 id="bug-fixes">Bug fixes <a class="header-link" href="#bug-fixes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
 <li>Issue 1107 : Additional Commentary needed for Script Templates/Examples</li>
 <li>Issue 1152 : Passive CSRF Sensor Reports Missing CSRF Tokens for all Forms, not just POST Requests Missing Anti-CSRF Tokens</li>
@@ -1581,87 +1585,123 @@ We have also added even more security headers to the API including a strong Cont
 <li>Issue 3320 : Correct creation of Git/SVN spider seeds</li>
 <li>Issue 3330 : Apply config arguments in the order specified</li>
 </ul>
-<h2 id="zap-api-changed-endpoints">ZAP API Changed Endpoints:</h2>
-<h3 id="action-ascan--scan">ACTION ascan / scan</h3>
+
+<h2 id="zap-api-changed-endpoints">ZAP API Changed Endpoints: <a class="header-link" href="#zap-api-changed-endpoints"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="action-ascan--scan">ACTION ascan / scan <a class="header-link" href="#action-ascan--scan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The url parameter is now optional and an optional contextId parameter has been added. You must supply one of these.</p>
-<h3 id="action-ascan--scanasuser">ACTION ascan / scanAsUser</h3>
+
+<h3 id="action-ascan--scanasuser">ACTION ascan / scanAsUser <a class="header-link" href="#action-ascan--scanasuser"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The url and contextId parameters are now optional. You must supply one of these.</p>
-<h3 id="action-ascan--addscanpolicy">ACTION ascan / addScanPolicy</h3>
+
+<h3 id="action-ascan--addscanpolicy">ACTION ascan / addScanPolicy <a class="header-link" href="#action-ascan--addscanpolicy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Added optional alertThreshold and attackStrength parameters.</p>
-<h2 id="zap-api-new-endpoints">ZAP API New Endpoints:</h2>
-<h3 id="view-ascan--optionmaxruledurationinmins">VIEW ascan / optionMaxRuleDurationInMins</h3>
+
+<h2 id="zap-api-new-endpoints">ZAP API New Endpoints: <a class="header-link" href="#zap-api-new-endpoints"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="view-ascan--optionmaxruledurationinmins">VIEW ascan / optionMaxRuleDurationInMins <a class="header-link" href="#view-ascan--optionmaxruledurationinmins"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Returns the maximum time in minutes that a scan rule can run for, zero is unlimited.</p>
-<h3 id="view-ascan--optionmaxscandurationinmins">VIEW ascan / optionMaxScanDurationInMins</h3>
+
+<h3 id="view-ascan--optionmaxscandurationinmins">VIEW ascan / optionMaxScanDurationInMins <a class="header-link" href="#view-ascan--optionmaxscandurationinmins"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Returns the maximum time in minutes that a full scan can run for, zero is unlimited.</p>
-<h3 id="action-ascan--setoptionmaxruledurationinmins">ACTION ascan / setOptionMaxRuleDurationInMins</h3>
+
+<h3 id="action-ascan--setoptionmaxruledurationinmins">ACTION ascan / setOptionMaxRuleDurationInMins <a class="header-link" href="#action-ascan--setoptionmaxruledurationinmins"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Sets the maximum time in minutes that a scan rule can run for, zero is unlimited.</p>
-<h3 id="action-ascan--setoptionmaxscandurationinmins">ACTION ascan / setOptionMaxScanDurationInMins</h3>
+
+<h3 id="action-ascan--setoptionmaxscandurationinmins">ACTION ascan / setOptionMaxScanDurationInMins <a class="header-link" href="#action-ascan--setoptionmaxscandurationinmins"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Sets the maximum time in minutes that a full scan can run for, zero is unlimited.</p>
-<h3 id="action-ascan--updatescanpolicy">ACTION ascan / updateScanPolicy</h3>
+
+<h3 id="action-ascan--updatescanpolicy">ACTION ascan / updateScanPolicy <a class="header-link" href="#action-ascan--updatescanpolicy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Updates the specified scan policy with the specified alertThreshold or attackStrength.</p>
-<h3 id="view-break--isbreakall">VIEW break / isBreakAll</h3>
+
+<h3 id="view-break--isbreakall">VIEW break / isBreakAll <a class="header-link" href="#view-break--isbreakall"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Returns True if ZAP will break on both requests and responses.</p>
-<h3 id="view-break--isbreakrequest">VIEW break / isBreakRequest</h3>
+
+<h3 id="view-break--isbreakrequest">VIEW break / isBreakRequest <a class="header-link" href="#view-break--isbreakrequest"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Returns True if ZAP will break on requests.</p>
-<h3 id="view-break--isbreakresponse">VIEW break / isBreakResponse</h3>
+
+<h3 id="view-break--isbreakresponse">VIEW break / isBreakResponse <a class="header-link" href="#view-break--isbreakresponse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Returns True if ZAP will break on responses.</p>
-<h3 id="view-break--httpmessage">VIEW break / httpMessage</h3>
+
+<h3 id="view-break--httpmessage">VIEW break / httpMessage <a class="header-link" href="#view-break--httpmessage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Returns the HTTP message currently intercepted (if any).</p>
-<h3 id="action-break--break">ACTION break / break</h3>
+
+<h3 id="action-break--break">ACTION break / break <a class="header-link" href="#action-break--break"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Controls the global break functionality. The type may be one of: http-all, http-request or http-response. The state may be true (for turning break on for the specified type) or false (for turning break off). Scope is not currently used.</p>
-<h3 id="action-break--sethttpmessage">ACTION break / setHttpMessage</h3>
+
+<h3 id="action-break--sethttpmessage">ACTION break / setHttpMessage <a class="header-link" href="#action-break--sethttpmessage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Overwrites the currently intercepted message with the data provided.</p>
-<h3 id="action-break--continue">ACTION break / continue</h3>
+
+<h3 id="action-break--continue">ACTION break / continue <a class="header-link" href="#action-break--continue"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Submits the currently intercepted message and unsets the global request/response breakpoints.</p>
-<h3 id="action-break--step">ACTION break / step</h3>
+
+<h3 id="action-break--step">ACTION break / step <a class="header-link" href="#action-break--step"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Submits the currently intercepted message, the next request or response will automatically be intercepted.</p>
-<h3 id="action-break--drop">ACTION break / drop</h3>
+
+<h3 id="action-break--drop">ACTION break / drop <a class="header-link" href="#action-break--drop"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Drops the currently intercepted message.</p>
-<h3 id="view-core--optiondnsttlsuccessfulqueries">VIEW core / optionDnsTtlSuccessfulQueries</h3>
+
+<h3 id="view-core--optiondnsttlsuccessfulqueries">VIEW core / optionDnsTtlSuccessfulQueries <a class="header-link" href="#view-core--optiondnsttlsuccessfulqueries"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets the TTL (in seconds) of successful DNS queries.</p>
-<h3 id="action-core--sendrequest">ACTION core / sendRequest</h3>
+
+<h3 id="action-core--sendrequest">ACTION core / sendRequest <a class="header-link" href="#action-core--sendrequest"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Sends the HTTP request, optionally following redirections. Returns the request sent and response received and followed redirections, if any. The Mode is enforced when sending the request (and following redirections), custom manual requests are not allowed in &lsquo;Safe&rsquo; mode nor in &lsquo;Protected&rsquo; mode if out of scope.</p>
-<h3 id="action-core--setoptiondnsttlsuccessfulqueries">ACTION core / setOptionDnsTtlSuccessfulQueries</h3>
+
+<h3 id="action-core--setoptiondnsttlsuccessfulqueries">ACTION core / setOptionDnsTtlSuccessfulQueries <a class="header-link" href="#action-core--setoptiondnsttlsuccessfulqueries"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Sets the TTL (in seconds) of successful DNS queries (applies after ZAP restart).</p>
-<h3 id="other-core--mdreport">OTHER core / mdreport</h3>
+
+<h3 id="other-core--mdreport">OTHER core / mdreport <a class="header-link" href="#other-core--mdreport"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Generates a report in Markdown format.</p>
-<h3 id="view-httpsessions--sites">VIEW httpSessions / sites</h3>
+
+<h3 id="view-httpsessions--sites">VIEW httpSessions / sites <a class="header-link" href="#view-httpsessions--sites"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets all of the sites that have sessions.</p>
-<h3 id="view-pscan--scanonlyinscope">VIEW pscan / scanOnlyInScope</h3>
+
+<h3 id="view-pscan--scanonlyinscope">VIEW pscan / scanOnlyInScope <a class="header-link" href="#view-pscan--scanonlyinscope"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Tells whether or not the passive scan should be performed only on messages that are in scope.</p>
-<h3 id="action-pscan--setscanonlyinscope">ACTION pscan / setScanOnlyInScope</h3>
+
+<h3 id="action-pscan--setscanonlyinscope">ACTION pscan / setScanOnlyInScope <a class="header-link" href="#action-pscan--setscanonlyinscope"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Sets whether or not the passive scan should be performed only on messages that are in scope.</p>
-<h3 id="view-spider--allurls">VIEW spider / allUrls</h3>
+
+<h3 id="view-spider--allurls">VIEW spider / allUrls <a class="header-link" href="#view-spider--allurls"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Returns a list of unique URLs from the history table based on HTTP messages added by the Spider.</p>
-<h3 id="view-spider--optionmaxchildren">VIEW spider / optionMaxChildren</h3>
+
+<h3 id="view-spider--optionmaxchildren">VIEW spider / optionMaxChildren <a class="header-link" href="#view-spider--optionmaxchildren"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets the maximum number of child nodes (per node) that can be crawled, 0 means no limit.</p>
-<h3 id="action-spider--setoptionmaxchildren">ACTION spider / setOptionMaxChildren</h3>
+
+<h3 id="action-spider--setoptionmaxchildren">ACTION spider / setOptionMaxChildren <a class="header-link" href="#action-spider--setoptionmaxchildren"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Sets the maximum number of child nodes (per node) that can be crawled, 0 means no limit.</p>
-<h2 id="vulnerability-details">Vulnerability Details</h2>
+
+<h2 id="vulnerability-details">Vulnerability Details <a class="header-link" href="#vulnerability-details"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following vulnerabilities have been reported in previous versions of ZAP. Other less serious issues have been also been fixed as a matter of course.<br>
 Many thanks to all of the researchers who have ethically reported these issues to us via our <a href="https://bugcrowd.com/owaspzap">bug bounty program</a>. If you need more details about any of these vulnerabilities then please contact us.</p>
-<h3 id="rce-via-anti-csrf-test-form-and-api-key-disclosure">RCE via Anti CSRF Test Form and API Key Disclosure</h3>
+
+<h3 id="rce-via-anti-csrf-test-form-and-api-key-disclosure">RCE via Anti CSRF Test Form and API Key Disclosure <a class="header-link" href="#rce-via-anti-csrf-test-form-and-api-key-disclosure"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>If the user used the Anti CSRF Test Form against a specifically crafted HTML page then the API key was leaked to that site. The site could then access the ZAP API and perform any action, including uploading ZAP scripts. Scripts can only be uploaded from ‘local’ filesystems but if the user is running ZAP on Windows then the attacker can make a malicious script available via a public SMB share. This appears to ZAP to be a local file and the script is therefore uploaded and can be run via the API.<br>
 The requirement for the API key or nonce on all API operations are a direct result of this vulnerability, as are changing add-ons to use nonces to reduce the risk of leaking the API key.</p>
 <p><strong>Credit: Artemy Bogdanov (@Abr1k0s)</strong><br>
 Artemy was awarded a $1000 bug bounty as a result of this submission. This is the first bug bounty we have paid out - congratulations Artemy!</p>
-<h3 id="windows-installer-vulnerable-to-dll-hijacking">Windows Installer Vulnerable to DLL Hijacking</h3>
+
+<h3 id="windows-installer-vulnerable-to-dll-hijacking">Windows Installer Vulnerable to DLL Hijacking <a class="header-link" href="#windows-installer-vulnerable-to-dll-hijacking"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The ZAP Windows Installer for all versions up to and including 2.5.0 are vulnerable to DLL Hijacking on Windows 7 (and earlier versions). This is a vulnerability in the in 3rd party installer InnoSetup. The 2.6.0 Installers (on all platforms) are now generated using Install4J.</p>
 <p>If for some reason you do need to install previous versions of ZAP on Windows 7 or earlier then we recommend that you move the installer to a clean directory before running it.</p>
 <p>Note that Burp Suite also use Install4J so future vulnerabilities in Install4j-generated installers may be eligible for the Burp Suite bug bounty program: <a href="https://hackerone.com/portswigger">https://hackerone.com/portswigger</a></p>
 <p><strong>Credit: James Kettle (Burp Suite)</strong></p>
-<h3 id="arbitrary-code-execution-via-invoke-applications-parameter-injection">Arbitrary Code Execution via Invoke Applications Parameter Injection</h3>
+
+<h3 id="arbitrary-code-execution-via-invoke-applications-parameter-injection">Arbitrary Code Execution via Invoke Applications Parameter Injection <a class="header-link" href="#arbitrary-code-execution-via-invoke-applications-parameter-injection"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>HTML parameters could be specifically crafted to cause arbitrary code execution, if the user choose to invoke the targeted application with a request containing that parameter from within ZAP.<br>
 The Invoke Applications add-on has been updated to fix this issue - all ZAP users should install this new version before continuing to use the add-on.</p>
 <p><strong>Credit: Artemy Bogdanov (@Abr1k0s)</strong></p>
-<h3 id="xss-via-anti-csrf-test-form">XSS via Anti CSRF Test Form</h3>
+
+<h3 id="xss-via-anti-csrf-test-form">XSS via Anti CSRF Test Form <a class="header-link" href="#xss-via-anti-csrf-test-form"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The Anti CSRF Test Form was vulnerable to XSS attacks if run against a specifically crafted HTML page.<br>
 The API now uses a strong Content Security Policy to prevent such issues</p>
 <p><strong>Credit: g_sato - <a href="https://bugcrowd.com/g_sato">https://bugcrowd.com/g_sato</a></strong></p>
-<h3 id="api-vulnerable-to-dns-rebinding">API Vulnerable to DNS Rebinding</h3>
+
+<h3 id="api-vulnerable-to-dns-rebinding">API Vulnerable to DNS Rebinding <a class="header-link" href="#api-vulnerable-to-dns-rebinding"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The API was vulnerable to DNS Rebinding attacks. It now checks the host header and rejects any requests from unexpected hosts.</p>
 <p><strong>Credit: Artemy Bogdanov (@Abr1k0s)</strong></p>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

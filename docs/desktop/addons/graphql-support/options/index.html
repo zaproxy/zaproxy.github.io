@@ -1431,40 +1431,50 @@
 
 
 </ol>
-          <h1 id="graphql-options">GraphQL Options</h1>
+          
+<h1 id="graphql-options">GraphQL Options</h1>
 <p>In this document, a &lsquo;Query&rsquo; may refer to a GraphQL query, subscription or mutation.</p>
-<h2 id="maximum-query-depth">Maximum Query Depth</h2>
+
+<h2 id="maximum-query-depth">Maximum Query Depth <a class="header-link" href="#maximum-query-depth"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The maximum depth of a generated query.</p>
-<h2 id="lenient-maximum-query-depth">Lenient Maximum Query Depth</h2>
+
+<h2 id="lenient-maximum-query-depth">Lenient Maximum Query Depth <a class="header-link" href="#lenient-maximum-query-depth"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>If enabled, this option prevents invalid queries by allowing additional depth for fields with no leaf types. If disabled, Maximum Query Depth is enforced strictly, even if it means generating an invalid query.</p>
-<h2 id="additional-query-depth">Additional Query Depth</h2>
+
+<h2 id="additional-query-depth">Additional Query Depth <a class="header-link" href="#additional-query-depth"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The value for this option is used only if the &ldquo;Lenient Maximum Query Depth&rdquo; option is enabled. The maximum additional depth used to search for leaf-type fields. If a leaf type is not found, the generated query may be invalid and a message is logged.</p>
-<h2 id="maximum-arguments-depth">Maximum Arguments Depth</h2>
+
+<h2 id="maximum-arguments-depth">Maximum Arguments Depth <a class="header-link" href="#maximum-arguments-depth"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The maximum depth of specified arguments. This is useful when a field has an input object as an argument.</p>
-<h2 id="specify-optional-arguments">Specify Optional Arguments</h2>
+
+<h2 id="specify-optional-arguments">Specify Optional Arguments <a class="header-link" href="#specify-optional-arguments"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>If this option is selected then optional (nullable) arguments will be specified too.</p>
-<h2 id="specify-arguments">Specify Arguments</h2>
+
+<h2 id="specify-arguments">Specify Arguments <a class="header-link" href="#specify-arguments"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Choose how the field arguments should be added in the generated query,</p>
 <ul>
 <li>Inline</li>
 <li>Using Variables</li>
 <li>Both - each query will be sent twice, once with inline arguments and once with variables</li>
 </ul>
-<h2 id="generate-query-for">Generate Query For</h2>
+
+<h2 id="generate-query-for">Generate Query For <a class="header-link" href="#generate-query-for"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>A separate query may be generated for either of the following in the provided schema,</p>
 <ul>
 <li>each Leaf, that is, each scalar or enum;</li>
 <li>each field under a root operation type (Query, Mutation or Subscription); or</li>
 <li>each root operation type.</li>
 </ul>
-<h2 id="request-method">Request Method</h2>
+
+<h2 id="request-method">Request Method <a class="header-link" href="#request-method"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The requests made to the endpoint can be of the following types:</p>
 <ul>
 <li>A POST request with a JSON body (Content-Type: application/json)</li>
 <li>A POST request with a GraphQL query in the body (Content-Type: application/graphql)</li>
 <li>A GET request with the query appended to it in a query string</li>
 </ul>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

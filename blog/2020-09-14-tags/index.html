@@ -179,7 +179,8 @@
               Posted <span class="post-date">Monday September 14, 2020</span>
               <span class="word-count fl-r"> 282 Words </span>
             </section>
-            <h2 id="basics">Basics</h2>
+            
+<h2 id="basics">Basics <a class="header-link" href="#basics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>A bit of functionality that ZAP has had since early days is the ability to apply a tag to a message that passes through the proxy. They allow for quick and simple summaries that highlight key aspects of requests or responses.</p>
 <p><img src="./images/history_tags.png" alt="History panel showing tags"></p>
 <p>The tags are defined in and controlled by ZAP&rsquo;s options:</p>
@@ -190,20 +191,23 @@
 <p>Tags can also be used to filter History entries. For example, if you wanted to see only those messages that had Hidden fields:</p>
 <p><img src="./images/filter_tags.png" alt="History Filter dialog"></p>
 <p><img src="./images/filtered_history.png" alt="Filtered History"></p>
-<h2 id="interpolation">Interpolation</h2>
+
+<h2 id="interpolation">Interpolation <a class="header-link" href="#interpolation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>A lesser known feature that was added in <a href="/docs/desktop/releases/2.8.0/">version 2.8.0</a> is Tag Interpolation. This may sound like an advanced or daunting technology. But really it boils down to allowing the value returned  by a Regex capturing group to be used in the Tag text. For example a user could configure a Tag to identify the ID or name of a product:</p>
 <p><img src="./images/product_tag.png" alt="Product Tag configuration"></p>
 <p>This Tag is setup such that the value of the first (and only) <code>$1</code> capturing group <code>([\d]+)</code>is returned as part of the tag value: <code>Product-$1</code>.</p>
 <p><img src="./images/history_product_tag.png" alt="Product Tag example"></p>
 <p>This could also be used for things like extracting usernames from responses (attributing logged in user), etc.</p>
-<h2 id="neonmarker">Neonmarker</h2>
+
+<h2 id="neonmarker">Neonmarker <a class="header-link" href="#neonmarker"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>There is an add-on for ZAP which allows colouring of history items (rows) based on tags. The add-on is called Neonmarker and is available via <a href="/addons/">ZAP&rsquo;s Marketplace</a>.</p>
 <p><img src="./images/neonmarker_online.png" alt="Neonmarker online marketplace"></p>
 <p><img src="./images/zap-screenshot-browse-addons.png" alt="ZAP toolbar, marketplace button"></p>
 <p><img src="./images/marketplace.png" alt="Marketplace dialog, Neonmarker"></p>
 <p>For example if you wanted all the messages with <code>Hidden</code> fields to be purple:
 <img src="./images/neonmarker_hidden_tag.png" alt="Neonmarker example"></p>
-<h2 id="conclusion">Conclusion</h2>
+
+<h2 id="conclusion">Conclusion <a class="header-link" href="#conclusion"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>By reading this post you&rsquo;ve learned:</p>
 <ul>
 <li>Generally about ZAP&rsquo;s Passive Scan Tag functionality.</li>

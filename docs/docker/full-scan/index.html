@@ -163,7 +163,8 @@
 <p>This means that the script does perform actual &lsquo;attacks&rsquo; and can potentially run for a long period of time.</p>
 <p>By default it reports all alerts as WARNings but you can specify a config file which can change any rules to FAIL or IGNORE.
 The configuration works in a very similar way as the <a href="../baseline-scan/">Baseline Scan</a> so see the Baseline page for more details.</p>
-<h3 id="usage">Usage</h3>
+
+<h3 id="usage">Usage <a class="header-link" href="#usage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <pre tabindex="0"><code>Usage: zap-full-scan.py -t &lt;target&gt; [options]
     -t target         target URL including the protocol, eg https://www.example.com
 Options:
@@ -197,9 +198,11 @@ Options:
 <pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py \
     -t https://www.example.com -g gen.conf -r testreport.html
 </code></pre><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
-<h3 id="scan-hooks">Scan Hooks</h3>
+
+<h3 id="scan-hooks">Scan Hooks <a class="header-link" href="#scan-hooks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This script supports <a href="../scan-hooks/">scan hooks</a> which allow you to override or modify behaviour of the script components instead of having to write a new script.</p>
-<h3 id="source-code">Source Code</h3>
+
+<h3 id="source-code">Source Code <a class="header-link" href="#source-code"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The source code for this script is in <a href="https://github.com/zaproxy/zaproxy/tree/main/docker">https://github.com/zaproxy/zaproxy/tree/main/docker</a>.</p>
 
           </main>

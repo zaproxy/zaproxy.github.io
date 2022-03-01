@@ -179,12 +179,14 @@
               Posted <span class="post-date">Thursday February 10, 2022</span>
               <span class="word-count fl-r"> 427 Words </span>
             </section>
-            <h2 id="all-new-networking">All New Networking</h2>
+            
+<h2 id="all-new-networking">All New Networking <a class="header-link" href="#all-new-networking"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The latest Weekly and Live ZAP releases (generated today, Feb 10th) are now using a completely different networking stack.</p>
 <p>Previously, ZAP used code written for Paros Proxy on top of an old and out of date version of the Apache Commons HttpClient library.</p>
 <p>The networking code has now been moved out of the core and into a new <a href="/docs/desktop/addons/network/">network add-on</a>. All client-side comms (e.g. browser to ZAP) use the <a href="https://netty.io/">Netty</a> library while server-side comms still use HttpClient.</p>
 <p>Not surprisingly, the ZAP code base makes very heavy use of networking and so this has been a very significant change.</p>
-<h2 id="what-will-you-see-that-is-different">What will you see that is different?</h2>
+
+<h2 id="what-will-you-see-that-is-different">What will you see that is different? <a class="header-link" href="#what-will-you-see-that-is-different"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Hopefully not much!</p>
 <p>ZAP should work in the same way as before. All of your previous networking related configurations should be maintained.</p>
 <p>There are however a few changes you may notice:</p>
@@ -194,7 +196,8 @@
 <li>The Options / Network / Local Servers/Proxies screen has a new tab - “Pass-through” - this allows you to configure the authorities (domain/address and port) that will pass-through ZAP, thus sending the data without being decrypted/encrypted. This is useful when a client has certificate pinning for certain hosts or the domain/data is irrelevant to the target being tested.</li>
 </ul>
 <p>That should be all the differences that you see.</p>
-<h2 id="why-replace-the-networking">Why Replace the Networking?</h2>
+
+<h2 id="why-replace-the-networking">Why Replace the Networking? <a class="header-link" href="#why-replace-the-networking"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Why spent a very significant amount of time and effort replacing the whole networking layer?</p>
 <p>Because there&rsquo;s more to come :)</p>
 <p>Now we are using a modern maintained networking layer we can build on top of it and support new protocols like HTTP/2 and HTTP/3.</p>
@@ -202,7 +205,8 @@
 <p>We expect the new implementation to consume less resources than the previous stack and this will hopefully make requests quicker as well.</p>
 <p>Last, but definitely not least, as the networking code is in an add-on we will be able to update it whenever we need to rather than having to wait until the next full release.</p>
 <p>There is currently no ETA for these changes but they are a priority for us.</p>
-<h2 id="feedback-please">Feedback Please</h2>
+
+<h2 id="feedback-please">Feedback Please <a class="header-link" href="#feedback-please"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>In the meantime please <a href="/download/">download</a> the Weekly or Live releases, give them a go and let us know if you have any problems or spot any differences in the network handling.</p>
 <p>Many thanks to <a href="https://www.stackhawk.com/">StackHawk</a> who sponsored this work.</p>
 

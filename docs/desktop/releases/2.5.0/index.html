@@ -1426,25 +1426,32 @@
 
 
 </ol>
-          <h1 id="release-250">Release 2.5.0</h1>
+          
+<h1 id="release-250">Release 2.5.0</h1>
 <p>The following changes were made in this release:</p>
-<h2 id="zap-api-changes">ZAP API Changes:</h2>
-<h3 id="view-authorization--getauthorizationdetectionmethod">VIEW authorization / getAuthorizationDetectionMethod</h3>
+
+<h2 id="zap-api-changes">ZAP API Changes: <a class="header-link" href="#zap-api-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="view-authorization--getauthorizationdetectionmethod">VIEW authorization / getAuthorizationDetectionMethod <a class="header-link" href="#view-authorization--getauthorizationdetectionmethod"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Now returns data wrapped in an object called authorizationDetectionMethod For example:</p>
 <pre tabindex="0"><code>{&#34;authorizationDetectionMethod&#34;:{&#34;statusCode&#34;:&#34;-1&#34;...&#34;headerRegex&#34;:&#34;&#34;}}
 </code></pre><p>instead of:</p>
 <pre tabindex="0"><code>{&#34;statusCode&#34;:&#34;-1&#34;...&#34;headerRegex&#34;:&#34;&#34;}
-</code></pre><h3 id="view-context--context--technologylist">VIEW context / context + technologyList</h3>
+</code></pre>
+<h3 id="view-context--context--technologylist">VIEW context / context + technologyList <a class="header-link" href="#view-context--context--technologylist"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Both now return data wrapped in an object called &ldquo;context&rdquo; For example:</p>
 <pre tabindex="0"><code>{&#34;context&#34;:{&#34;id&#34;:&#34;1&#34;, ..., &#34;inScope&#34;:&#34;true&#34;,&#34;loggedOutPattern&#34;:&#34;&#34;}}
 </code></pre><p>instead of:</p>
 <pre tabindex="0"><code>{&#34;id&#34;:&#34;1&#34;, ..., &#34;inScope&#34;:&#34;true&#34;,&#34;loggedOutPattern&#34;:&#34;&#34;}
-</code></pre><h3 id="action-spider--scan--scanasuser">ACTION spider / scan + scanAsUser</h3>
+</code></pre>
+<h3 id="action-spider--scan--scanasuser">ACTION spider / scan + scanAsUser <a class="header-link" href="#action-spider--scan--scanasuser"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Both now support a new optional &lsquo;subtreeOnly&rsquo; parameter which limits the spider to the specified subtree. The &lsquo;url&rsquo; parameter is also now optional, as long as a valid &lsquo;context&rsquo; parameter is supplied</p>
-<h3 id="new-stats-component">New &lsquo;stats&rsquo; component</h3>
+
+<h3 id="new-stats-component">New &lsquo;stats&rsquo; component <a class="header-link" href="#new-stats-component"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The new &lsquo;stats&rsquo; API component provides access to the <a href="/docs/desktop/start/features/stats/">stats</a> now maintained by ZAP.</p>
 <p>Note that some existing components will also have new operations, see the <a href="/docs/desktop/start/features/api/">API Web UI</a> for more details.</p>
-<h2 id="enhancements">Enhancements:</h2>
+
+<h2 id="enhancements">Enhancements: <a class="header-link" href="#enhancements"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
 <li>Issue 266 : Add auto tagging for setting cookies, json</li>
 <li>Issue 646 : Password outgoing proxy in plain text on screen</li>
@@ -1503,7 +1510,8 @@
 <li>Issue 2512 : Update HSQLDB library to version 2.3.4</li>
 <li>Issue 2519 : Enable menu/button when help add-on is installed</li>
 </ul>
-<h2 id="bug-fixes">Bug fixes:</h2>
+
+<h2 id="bug-fixes">Bug fixes: <a class="header-link" href="#bug-fixes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
 <li>Issue 1529 : TestExternalRedirect Missing Use Case plus Performance and FP Improvements</li>
 <li>Issue 1597 : Java 8 - Mac OS/X package</li>
@@ -1570,7 +1578,8 @@
 <li>Issue 2487 : Wrong charset used in HTTP body</li>
 <li>Issue 2516 : Add auth and spider task types to temporary types</li>
 </ul>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

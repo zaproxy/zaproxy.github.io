@@ -1426,14 +1426,17 @@
 
 
 </ol>
-          <h1 id="release-290">Release 2.9.0</h1>
+          
+<h1 id="release-290">Release 2.9.0</h1>
 <p>This is a bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.</p>
 <p>These release notes do not include all of the changes included in add-ons updated since 2.8.0.</p>
 <p>Some of the more significant enhancements include:</p>
-<h2 id="session-management-scripts">Session Management Scripts</h2>
+
+<h2 id="session-management-scripts">Session Management Scripts <a class="header-link" href="#session-management-scripts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>It&rsquo;s now possible to define scripts which handle non standard or more complex session management.<br>
 Session Management scripts have full access to the authentication request and response and can define custom mandatory and optional parameters. An example session management script for OWASP Juice shop is provided.</p>
-<h2 id="active-scan-filter">Active Scan Filter</h2>
+
+<h2 id="active-scan-filter">Active Scan Filter <a class="header-link" href="#active-scan-filter"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>It&rsquo;s now possible to filter requests in Active Scan. Below are the supported criteria&rsquo;s:</p>
 <ul>
 <li>HTTP method</li>
@@ -1441,7 +1444,8 @@ Session Management scripts have full access to the authentication request and re
 <li>Tags</li>
 <li>URL pattern</li>
 </ul>
-<h2 id="custom-globalscript-variables">Custom Global/Script Variables</h2>
+
+<h2 id="custom-globalscript-variables">Custom Global/Script Variables <a class="header-link" href="#custom-globalscript-variables"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>It&rsquo;s now possible for scripts to share custom global/script variables, which can be of any type not just strings, for example, lists, maps, GUI models.<br>
 In JavaScript they are accessed/set as follows:</p>
 <blockquote>
@@ -1454,9 +1458,11 @@ ScriptVars.setGlobalCustomVar(&quot;var.name&quot;, [&quot;A&quot;, &quot;B&quot
 print(ScriptVars.getGlobalCustomVar(&quot;var.name&quot;)[2]) // Prints C
 </code></pre>
 </blockquote>
-<h2 id="scan-rule-promotions">Scan Rule Promotions</h2>
+
+<h2 id="scan-rule-promotions">Scan Rule Promotions <a class="header-link" href="#scan-rule-promotions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following scan rules have been promoted:</p>
-<h3 id="passive-scan-rules---release">Passive Scan Rules - Release</h3>
+
+<h3 id="passive-scan-rules---release">Passive Scan Rules - Release <a class="header-link" href="#passive-scan-rules---release"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <ul>
 <li>Cookie Without SameSite Attribute</li>
 <li>Cross Domain Misconfiguration</li>
@@ -1469,9 +1475,11 @@ print(ScriptVars.getGlobalCustomVar(&quot;var.name&quot;)[2]) // Prints C
 <li>X-AspNet-Version Response Header Scanner</li>
 <li>X-Debug-Token Information</li>
 </ul>
-<h2 id="filters-classes-removal">Filters Classes Removal</h2>
+
+<h2 id="filters-classes-removal">Filters Classes Removal <a class="header-link" href="#filters-classes-removal"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The classes/code for Filters functionality, deprecated since ZAP 2.4.0, has been removed. Add-ons that still use that will stop working.</p>
-<h2 id="changes-in-bundled-libraries">Changes in Bundled Libraries</h2>
+
+<h2 id="changes-in-bundled-libraries">Changes in Bundled Libraries <a class="header-link" href="#changes-in-bundled-libraries"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following libraries were removed:</p>
 <ul>
 <li>JDOM</li>
@@ -1489,7 +1497,8 @@ print(ScriptVars.getGlobalCustomVar(&quot;var.name&quot;)[2]) // Prints C
 <li>RSyntaxTextArea, 3.0.3 → 3.0.4</li>
 <li>SQLite JDBC, 3.27.2.1 → 3.28.0</li>
 </ul>
-<h2 id="enhancements">Enhancements</h2>
+
+<h2 id="enhancements">Enhancements <a class="header-link" href="#enhancements"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
 <li>Issue 2016 : Choose a unique port in the GUI if theres a clash</li>
 <li>Issue 2619 : Allow add-ons to declare/bundle its dependencies</li>
@@ -1523,7 +1532,8 @@ print(ScriptVars.getGlobalCustomVar(&quot;var.name&quot;)[2]) // Prints C
 <li>Issue 5785 : Add tooltip listing all proxies to the footer Primary Proxy label</li>
 <li>Issue 5795 : Handle quoted URL in meta refresh</li>
 </ul>
-<h2 id="bug-fixes">Bug fixes</h2>
+
+<h2 id="bug-fixes">Bug fixes <a class="header-link" href="#bug-fixes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
 <li>Issue 1164 : Manual &ldquo;Resend&rdquo; sets cookies on response</li>
 <li>Issue 4003 : Issues when using &rsquo;low memory&rsquo; mode.</li>
@@ -1550,28 +1560,40 @@ print(ScriptVars.getGlobalCustomVar(&quot;var.name&quot;)[2]) // Prints C
 <li>Issue 5794 : Correct MailTo pattern for RegexAutoTagScanner</li>
 <li>Issue 5803 : Do not require the user password through the API</li>
 </ul>
-<h2 id="zap-api-new-endpoints">ZAP API New Endpoints:</h2>
-<h3 id="view-script--globalcustomvar">VIEW script / globalCustomVar</h3>
+
+<h2 id="zap-api-new-endpoints">ZAP API New Endpoints: <a class="header-link" href="#zap-api-new-endpoints"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="view-script--globalcustomvar">VIEW script / globalCustomVar <a class="header-link" href="#view-script--globalcustomvar"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets the value (string representation) of a global custom variable. Returns an API error (DOES_NOT_EXIST) if no value was previously set.</p>
-<h3 id="view-script--globalcustomvars">VIEW script / globalCustomVars</h3>
+
+<h3 id="view-script--globalcustomvars">VIEW script / globalCustomVars <a class="header-link" href="#view-script--globalcustomvars"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets all the global custom variables (key/value pairs, the value is the string representation).</p>
-<h3 id="view-script--scriptcustomvar">VIEW script / scriptCustomVar</h3>
+
+<h3 id="view-script--scriptcustomvar">VIEW script / scriptCustomVar <a class="header-link" href="#view-script--scriptcustomvar"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets the value (string representation) of a custom variable. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists or if no value was previously set.</p>
-<h3 id="view-script--scriptcustomvars">VIEW script / scriptCustomVars</h3>
+
+<h3 id="view-script--scriptcustomvars">VIEW script / scriptCustomVars <a class="header-link" href="#view-script--scriptcustomvars"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets all the custom variables (key/value pairs, the value is the string representation) of a script. Returns an API error (DOES_NOT_EXIST) if no script with the given name exists.</p>
-<h3 id="action-alert--addalert">ACTION alert / addAlert</h3>
+
+<h3 id="action-alert--addalert">ACTION alert / addAlert <a class="header-link" href="#action-alert--addalert"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Add an alert associated with the given message ID, with the provided details. (The ID of the created alert is returned.)</p>
-<h3 id="action-alert--updatealert">ACTION alert / updateAlert</h3>
+
+<h3 id="action-alert--updatealert">ACTION alert / updateAlert <a class="header-link" href="#action-alert--updatealert"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Update the alert with the given ID, with the provided details.</p>
-<h3 id="action-pscan--disablealltags">ACTION pscan / disableAllTags</h3>
+
+<h3 id="action-pscan--disablealltags">ACTION pscan / disableAllTags <a class="header-link" href="#action-pscan--disablealltags"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Disables all passive scan tags.</p>
-<h3 id="action-pscan--enablealltags">ACTION pscan / enableAllTags</h3>
+
+<h3 id="action-pscan--enablealltags">ACTION pscan / enableAllTags <a class="header-link" href="#action-pscan--enablealltags"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Enables all passive scan tags.</p>
-<h3 id="action-script--clearglobalcustomvar">ACTION script / clearGlobalCustomVar</h3>
+
+<h3 id="action-script--clearglobalcustomvar">ACTION script / clearGlobalCustomVar <a class="header-link" href="#action-script--clearglobalcustomvar"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Clears a global custom variable.</p>
-<h3 id="action-script--clearscriptcustomvar">ACTION script / clearScriptCustomVar</h3>
+
+<h3 id="action-script--clearscriptcustomvar">ACTION script / clearScriptCustomVar <a class="header-link" href="#action-script--clearscriptcustomvar"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Clears a script custom variable.</p>
-<h2 id="see-also">See also</h2>
+
+<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
 <thead>
 <tr>

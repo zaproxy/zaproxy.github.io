@@ -1428,36 +1428,50 @@
 
 
 </ol>
-          <h1 id="replacer">Replacer</h1>
+          
+<h1 id="replacer">Replacer</h1>
 <p>The replacer is an easy way to replace strings in requests and responses.</p>
 <p>It is accessible via the Options and by default it can be quickly accessed via the &lsquo;&lt;ctrl&gt; R&rsquo; hotkey.</p>
 <p>The Replacer Options panel allows you to define as many replacement rules as you need.<br>
 Each rule is defined by the following fields:</p>
-<h3 id="description">Description</h3>
+
+<h3 id="description">Description <a class="header-link" href="#description"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>A description that allows you to identify the rule.</p>
-<h3 id="match-type">Match Type</h3>
+
+<h3 id="match-type">Match Type <a class="header-link" href="#match-type"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>May be one of:</p>
-<h4 id="request-header-will-add-if-not-present">Request Header (will add if not present)</h4>
+
+<h4 id="request-header-will-add-if-not-present">Request Header (will add if not present) <a class="header-link" href="#request-header-will-add-if-not-present"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>In this case the &lsquo;Match String&rsquo; will be treated as a header name. If the header is present then its value will be replaced by the replacement text. If the replacement text is empty then the header will be removed (if present). If the header is not present and the replacement text is not empty then the header will be added.</p>
-<h4 id="request-header-string">Request Header String</h4>
+
+<h4 id="request-header-string">Request Header String <a class="header-link" href="#request-header-string"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>In this case the &lsquo;Match String&rsquo; will be treated as a string or regex expression. If it is present in the request header then it will be replaced by the replacement text.</p>
-<h4 id="request-body-string">Request Body String</h4>
+
+<h4 id="request-body-string">Request Body String <a class="header-link" href="#request-body-string"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>In this case the &lsquo;Match String&rsquo; will be treated as a string or regex expression. If it is present in the request body then it will be replaced by the replacement text.</p>
-<h4 id="response-header-will-add-if-not-present">Response Header (will add if not present)</h4>
+
+<h4 id="response-header-will-add-if-not-present">Response Header (will add if not present) <a class="header-link" href="#response-header-will-add-if-not-present"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>In this case the &lsquo;Match String&rsquo; will be treated as a header name. If the header is present then its value will be replaced by the replacement text. If the replacement text is empty then the header will be removed (if present). If the header is not present and the replacement text is not empty then the header will be added.</p>
-<h4 id="response-header-string">Response Header String</h4>
+
+<h4 id="response-header-string">Response Header String <a class="header-link" href="#response-header-string"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>In this case the &lsquo;Match String&rsquo; will be treated as a string or regex expression. If it is present in the response header then it will be replaced by the replacement text.</p>
-<h4 id="response-body-string">Response Body String</h4>
+
+<h4 id="response-body-string">Response Body String <a class="header-link" href="#response-body-string"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>In this case the &lsquo;Match String&rsquo; will be treated as a string or regex expression. If it is present in the response body then it will be replaced by the replacement text.</p>
-<h3 id="match-string">Match String</h3>
+
+<h3 id="match-string">Match String <a class="header-link" href="#match-string"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The string that will be used to identify what should be replaced - see Match Type for details.</p>
-<h3 id="match-regex">Match Regex</h3>
+
+<h3 id="match-regex">Match Regex <a class="header-link" href="#match-regex"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>If set then the Match String will be treated as a regex expression. This option is disabled when matching actual headers. Hexadecimal bytes are represented with &ldquo;\x00 - \xFF&rdquo; (for example &ldquo;abc\x01\x02\x03def&rdquo;).</p>
-<h3 id="replacement-string">Replacement String</h3>
+
+<h3 id="replacement-string">Replacement String <a class="header-link" href="#replacement-string"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The new string that will replace the specified selection. Hexadecimal bytes are represented with &ldquo;\x00 - \xFF&rdquo;. The literal string &ldquo;\x00&rdquo; can be kept with &ldquo;\\x00&rdquo;.</p>
-<h3 id="enable">Enable</h3>
+
+<h3 id="enable">Enable <a class="header-link" href="#enable"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>If not set then the rule will not apply.</p>
-<h3 id="initiators-tab">Initiators tab</h3>
+
+<h3 id="initiators-tab">Initiators tab <a class="header-link" href="#initiators-tab"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Allows you to specify which &lsquo;initiators&rsquo; the rule should apply to. Each ZAP component which can send and receive messages is a separate initiator, so this gives you a very fine grain control over exactly when the rule should apply.</p>
 <p>If you need even more control over when and how text should be replaced then you can use the ZAP Script Console which
 gives you complete control over the ZAP messages.</p>

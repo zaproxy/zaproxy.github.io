@@ -177,10 +177,12 @@ You should use this repository if you are planning on contributing your add-on t
 but please talk to the ZAP Core team about this first via the <a href="https://groups.google.com/g/zaproxy-develop">ZAP Developer Group</a>.
 If you are planning on maintaining your add-on yourself then you should create it in another repository.</p>
 <p>This guide will explain how you can quickly create a brand new add-on in this repository that you can then customise as you want.</p>
-<h2 id="preparation">Preparation</h2>
+
+<h2 id="preparation">Preparation <a class="header-link" href="#preparation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You will need to have followed the <a href="../quick-start-build/">Quick Start Guide to Building ZAP</a> and have imported the ZAP code into your favourite IDE.</p>
 <p>For the command line instructions given below you should be in the <code>zap-extensions</code> directory.</p>
-<h2 id="copy-the-simple-example-add-on">Copy the Simple Example Add-on</h2>
+
+<h2 id="copy-the-simple-example-add-on">Copy the Simple Example Add-on <a class="header-link" href="#copy-the-simple-example-add-on"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Simple Example is just what it sounds like, a simple example of a ZAP add-on.</p>
 <p>Copy this add-on into a new directory, for example called <code>myaddon</code>.
 If you choose a different name then make sure that you use the name you have chosen in all of the commands below.</p>
@@ -188,8 +190,10 @@ If you choose a different name then make sure that you use the name you have cho
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cp -R addOns/simpleexample addOns/myaddon
 </span></span></code></pre></div><p>On Windows this can be done from the command line using:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xcopy addOns<span style="color:#ae81ff">\s</span>impleexample addOns<span style="color:#ae81ff">\m</span>yaddon<span style="color:#ae81ff">\ </span>/E/H
-</span></span></code></pre></div><h2 id="update-the-project-files">Update the Project Files</h2>
-<h3 id="simpleexamplegradlekts">simpleexample.gradle.kts</h3>
+</span></span></code></pre></div>
+<h2 id="update-the-project-files">Update the Project Files <a class="header-link" href="#update-the-project-files"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="simpleexamplegradlekts">simpleexample.gradle.kts <a class="header-link" href="#simpleexamplegradlekts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Rename the file <code>simpleexample.gradle.kts</code> to be <code>myaddon.gradle.kts</code>.
 On Linux and MacOS:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mv addOns/myaddon/simpleexample.gradle.kts addOns/myaddon/myaddon.gradle.kts
@@ -207,12 +211,15 @@ zapAddOn {
         author.set(&#34;ZAP Dev Team&#34;)
     }
 }
-</code></pre><h3 id="settingsgradlekts">settings.gradle.kts</h3>
+</code></pre>
+<h3 id="settingsgradlekts">settings.gradle.kts <a class="header-link" href="#settingsgradlekts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Edit the file <code>settings.gradle.kts</code> and add <code>myaddon</code> into the <code>addOns</code> list.</p>
 <p>Refresh the Gradle project in your IDE.</p>
-<h2 id="update-the-source-code">Update the Source Code</h2>
+
+<h2 id="update-the-source-code">Update the Source Code <a class="header-link" href="#update-the-source-code"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>These are the minimum changes needed to get your new add-on working.</p>
-<h3 id="messageproperties">Message.properties</h3>
+
+<h3 id="messageproperties">Message.properties <a class="header-link" href="#messageproperties"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Edit the file <code>addOns/myaddon/src/main/resources/org/zaproxy/addon/simpleexample/resources/Messages.properties</code>
 and change all of the instances of <code>simpleexample</code> in the keys to <code>myaddon</code> as well as changing the <code>Simple Example</code> strings to something like <code>My Add-on</code>.</p>
 <pre tabindex="0"><code># An example ZAP extension which adds a top level menu item. 
@@ -228,7 +235,8 @@ myaddon.popup.msg = Example right click menu invoked for:\n {0}
 myaddon.popup.title = My Add-on: Example right click menu
 myaddon.topmenu.tools.msg = My Add-on: Example message
 myaddon.topmenu.tools.title = My Add-on: Example top menu
-</code></pre><h3 id="extensionsimpleexamplejava">ExtensionSimpleExample.java</h3>
+</code></pre>
+<h3 id="extensionsimpleexamplejava">ExtensionSimpleExample.java <a class="header-link" href="#extensionsimpleexamplejava"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Edit the file <code>addOns/myaddon/src/main/java/org/zaproxy/addon/simpleexample/ExtensionSimpleExample.java</code> and change the NAME and PREFIX strings:</p>
 <pre tabindex="0"><code>    // The name is public so that other extensions can access it
     public static final String NAME = &#34;ExtensionMyAddOn&#34;;
@@ -236,21 +244,26 @@ myaddon.topmenu.tools.title = My Add-on: Example top menu
     // The i18n prefix, by default the package name - defined in one place to make it easier
     // to copy and change this example
     protected static final String PREFIX = &#34;myaddon&#34;;
-</code></pre><h2 id="deploy-your-add-on">Deploy your Add-on</h2>
+</code></pre>
+<h2 id="deploy-your-add-on">Deploy your Add-on <a class="header-link" href="#deploy-your-add-on"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Deploy your add-on via the Gradle task:</p>
 <p>On Linux and MacOS:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./gradlew addOns:myaddon:copyZapAddOn
 </span></span></code></pre></div><p>On Windows this can be done from the command line using:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gradlew.bat addOns:myaddon:copyZapAddOn
-</span></span></code></pre></div><h2 id="restart-zap">Restart ZAP</h2>
+</span></span></code></pre></div>
+<h2 id="restart-zap">Restart ZAP <a class="header-link" href="#restart-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Your new add-on should now be available in ZAP. It will add a new menu item and a new tab in the bottom window - you will need to click on the green plus to see it.</p>
 <p><img src="/img/docs/developer/myaddon.png" alt="ZAP Screenshot with My Add-on"></p>
-<h2 id="next-steps">Next Steps</h2>
+
+<h2 id="next-steps">Next Steps <a class="header-link" href="#next-steps"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You should update the following files before you make too many other changes:</p>
-<h3 id="package-name">Package Name</h3>
+
+<h3 id="package-name">Package Name <a class="header-link" href="#package-name"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Change the package from <code>org/zaproxy/addon/simpleexample</code> to something like <code>org/zaproxy/addon/myaddon/</code>
 You can change the package name (and class names in the following section) by just editing the files but in general your IDE is likely to make this easier.</p>
-<h3 id="class-names">Class Names</h3>
+
+<h3 id="class-names">Class Names <a class="header-link" href="#class-names"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Change the class names to something more appropriate for your add-on.</p>
 </main>
   </article>
