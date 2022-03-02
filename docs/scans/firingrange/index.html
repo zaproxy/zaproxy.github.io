@@ -1,0 +1,1399 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
+  
+  <title>OWASP ZAP &ndash; ZAP vs Firing Range</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.82c075.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="zapcon-banner">
+        <div class="zapcon-banner-container">
+            <div class="zapcon-banner-col-brand">
+                <div class="sir-zapalot">
+                    <img src="/img/zapcon/sir-zapalot.svg" alt="sir zapalot">
+                </div>
+                <div class="zapcon-2022-logo">
+                    <a href="https://zapcon.io/" target="_blank" rel="noopener noreferrer"><img src="/img/zapcon/ZAPCon-logo.svg" alt="ZapCon Logo 2022"></a>
+                </div>
+            </div>
+            <div class="zapcon-banner-col-date">
+                <div class="zapcon-banner-date">
+                    <img src="/img/zapcon//08 March 2022.svg" alt="08 March 2022">
+                </div>
+                <div class="zapcon-banner-cta">
+                    <a href="https://hopin.com/events/zapcon/registration" target="_blank" rel="noopener noreferrer">
+                        <img src="/img/zapcon/button.svg" alt="Register">
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler">
+              <img height="20" width="20" src="/img/search.svg" />
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+    <div class="wrapper py-20">
+      <h1 class="text--white">ZAP vs Firing Range</h1>
+  </div>
+</section>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+  <ol class="breadcrumbs">
+
+
+    <li>
+        <a href='/docs/'>Documentation</a>
+    </li>
+
+    <li>
+        <a href='/docs/scans/'>ZAP Scans</a>
+    </li>
+
+    <li>
+        <a href='/docs/scans/firingrange/'>ZAP vs Firing Range</a>
+    </li>
+
+
+</ol>
+    <main><p>Google Firing Range is a test bed for automated web application security scanners.</p>
+<p>It is available online at <a href="https://public-firing-range.appspot.com/">https://public-firing-range.appspot.com/</a> and the GitHub repo is <a href="https://github.com/google/firing-range">https://github.com/google/firing-range</a></p>
+<p>It does not appear to be being actively maintained and some of the tests no longer appear to work with modern browsers.</p>
+<p>Click on the Sections to see the full set of results, which also link to the online test page and the scan rule which should find the vulnerability.</p>
+<div>
+
+<script type="text/javascript">
+    function showHide(name) {
+        for (let e of document.getElementsByClassName(name)) {
+	        if (e.style.display === "none") {
+	            e.style.display = "";
+	        } else {
+	            e.style.display = "none";
+	        }
+	    }
+    }
+</script>
+
+  <table class="scanResultsTable" style="resize: none">
+    <colgroup>
+      <col width="70%" />
+      <col width="10%" />
+      <col width="10%" />
+      <col width="10%" />
+    </colgroup>
+    <tr>
+      <th>Section</th>
+      <th></th>
+      <th></th>
+      <th>Score</th>
+    </tr>
+
+    
+
+    
+  
+  
+
+    <tr>
+      <td><h5><a href="#section-escape" onclick="showHide('scan-escape')" id="section-escape">Escaped XSS</a></h5></td>
+      <td></td>
+      <td></td>
+      <td><h5>24%</h5></td>
+    </tr>
+    <tr class="scan-escape" style="display: none">
+      <th style="width: 70%">Individual Tests</th>
+      <th>Rule</th>
+      <th>Pass</th>
+      <th>Fail</th>
+    </tr>
+    <tr class="scan-escape" style="display: none">
+      <td>Top Level: <a href="https://public-firing-range.appspot.com/escape/" id="section-escape">https://public-firing-range.appspot.com/escape</a></td>
+      <td> </td>
+      <td align="center">11</td>
+      <td align="center">34</td>
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/js/encodeURIComponent">/js/encodeURIComponent</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/js/escape">/js/escape</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/js/html_escape">/js/html_escape</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/attribute_name">/serverside/encodeUrl/attribute_name</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/attribute_quoted">/serverside/encodeUrl/attribute_quoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/attribute_script">/serverside/encodeUrl/attribute_script</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/attribute_singlequoted">/serverside/encodeUrl/attribute_singlequoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/attribute_unquoted">/serverside/encodeUrl/attribute_unquoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/body">/serverside/encodeUrl/body</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/body_comment">/serverside/encodeUrl/body_comment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/css_import">/serverside/encodeUrl/css_import</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/css_style">/serverside/encodeUrl/css_style</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/css_style_font_value">/serverside/encodeUrl/css_style_font_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/css_style_value">/serverside/encodeUrl/css_style_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/head">/serverside/encodeUrl/head</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/href">/serverside/encodeUrl/href</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/js_assignment">/serverside/encodeUrl/js_assignment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/js_comment">/serverside/encodeUrl/js_comment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/js_eval">/serverside/encodeUrl/js_eval</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/js_quoted_string">/serverside/encodeUrl/js_quoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/js_singlequoted_string">/serverside/encodeUrl/js_singlequoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/js_slashquoted_string">/serverside/encodeUrl/js_slashquoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/tagname">/serverside/encodeUrl/tagname</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/encodeUrl/textarea">/serverside/encodeUrl/textarea</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/attribute_name">/serverside/escapeHtml/attribute_name</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/attribute_quoted">/serverside/escapeHtml/attribute_quoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/attribute_script">/serverside/escapeHtml/attribute_script</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/attribute_singlequoted">/serverside/escapeHtml/attribute_singlequoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/attribute_unquoted">/serverside/escapeHtml/attribute_unquoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/body">/serverside/escapeHtml/body</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/body_comment">/serverside/escapeHtml/body_comment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/css_import">/serverside/escapeHtml/css_import</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/css_style">/serverside/escapeHtml/css_style</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/css_style_font_value">/serverside/escapeHtml/css_style_font_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/css_style_value">/serverside/escapeHtml/css_style_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/head">/serverside/escapeHtml/head</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/href">/serverside/escapeHtml/href</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/js_assignment">/serverside/escapeHtml/js_assignment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/js_comment">/serverside/escapeHtml/js_comment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/js_eval">/serverside/escapeHtml/js_eval</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/js_quoted_string">/serverside/escapeHtml/js_quoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/js_singlequoted_string">/serverside/escapeHtml/js_singlequoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/js_slashquoted_string">/serverside/escapeHtml/js_slashquoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/tagname">/serverside/escapeHtml/tagname</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-escape" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/escape/serverside/escapeHtml/textarea">/serverside/escapeHtml/textarea</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+    
+
+
+    
+  
+  
+
+    <tr>
+      <td><h5><a href="#section-mixedcontent" onclick="showHide('scan-mixedcontent')" id="section-mixedcontent">Mixed content</a></h5></td>
+      <td></td>
+      <td></td>
+      <td><h5>100%</h5></td>
+    </tr>
+    <tr class="scan-mixedcontent" style="display: none">
+      <th style="width: 70%">Individual Tests</th>
+      <th>Rule</th>
+      <th>Pass</th>
+      <th>Fail</th>
+    </tr>
+    <tr class="scan-mixedcontent" style="display: none">
+      <td>Top Level: <a href="https://public-firing-range.appspot.com/mixedcontent/" id="section-mixedcontent">https://public-firing-range.appspot.com/mixedcontent</a></td>
+      <td> </td>
+      <td align="center">1</td>
+      <td align="center">0</td>
+    </tr>
+     
+    <tr class="scan-mixedcontent" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/mixedcontent/">/</a></td>
+      <td><a href="/docs/alerts/10040/">10040</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+    
+
+
+    
+  
+  
+
+    <tr>
+      <td><h5><a href="#section-reflected" onclick="showHide('scan-reflected')" id="section-reflected">Reflected XSS</a></h5></td>
+      <td></td>
+      <td></td>
+      <td><h5>98%</h5></td>
+    </tr>
+    <tr class="scan-reflected" style="display: none">
+      <th style="width: 70%">Individual Tests</th>
+      <th>Rule</th>
+      <th>Pass</th>
+      <th>Fail</th>
+    </tr>
+    <tr class="scan-reflected" style="display: none">
+      <td>Top Level: <a href="https://public-firing-range.appspot.com/reflected/" id="section-reflected">https://public-firing-range.appspot.com/reflected</a></td>
+      <td> </td>
+      <td align="center">46</td>
+      <td align="center">1</td>
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/contentsniffing/json">/contentsniffing/json</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/contentsniffing/plaintext">/contentsniffing/plaintext</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/escapedparameter/js_eventhandler_quoted/DOUBLE_QUOTED_ATTRIBUTE">/escapedparameter/js_eventhandler_quoted/DOUBLE_QUOTED_ATTRIBUTE</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/escapedparameter/js_eventhandler_singlequoted/SINGLE_QUOTED_ATTRIBUTE">/escapedparameter/js_eventhandler_singlequoted/SINGLE_QUOTED_ATTRIBUTE</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/escapedparameter/js_eventhandler_unquoted/UNQUOTED_ATTRIBUTE">/escapedparameter/js_eventhandler_unquoted/UNQUOTED_ATTRIBUTE</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/filteredcharsets/attribute_unquoted/DoubleQuoteSinglequote">/filteredcharsets/attribute_unquoted/DoubleQuoteSinglequote</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/filteredcharsets/body/SpaceDoubleQuoteSlashEquals">/filteredcharsets/body/SpaceDoubleQuoteSlashEquals</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/filteredstrings/body/caseInsensitive/script">/filteredstrings/body/caseInsensitive/script</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/filteredstrings/body/caseSensitive/SCRIPT">/filteredstrings/body/caseSensitive/SCRIPT</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/filteredstrings/body/caseSensitive/script">/filteredstrings/body/caseSensitive/script</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/attribute_name">/parameter/attribute_name</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/attribute_quoted">/parameter/attribute_quoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/attribute_script">/parameter/attribute_script</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/attribute_singlequoted">/parameter/attribute_singlequoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/attribute_unquoted">/parameter/attribute_unquoted</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/body/400">/parameter/body/400</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/body/401">/parameter/body/401</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/body/403">/parameter/body/403</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/body/404">/parameter/body/404</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/body/500">/parameter/body/500</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/body">/parameter/body</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/body_comment">/parameter/body_comment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/css_style">/parameter/css_style</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/css_style_font_value">/parameter/css_style_font_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/css_style_value">/parameter/css_style_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/form%28%29">/parameter/form()</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/head">/parameter/head</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/iframe_attribute_value">/parameter/iframe_attribute_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/iframe_srcdoc">/parameter/iframe_srcdoc</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/js_assignment">/parameter/js_assignment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/js_comment">/parameter/js_comment</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/js_eval">/parameter/js_eval</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/js_quoted_string">/parameter/js_quoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/js_singlequoted_string">/parameter/js_singlequoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/js_slashquoted_string">/parameter/js_slashquoted_string</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/json">/parameter/json</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/noscript">/parameter/noscript</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/style_attribute_value">/parameter/style_attribute_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/tagname">/parameter/tagname</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/textarea">/parameter/textarea</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/textarea_attribute_value">/parameter/textarea_attribute_value</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/parameter/title">/parameter/title</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/url/css_import">/url/css_import</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/url/href">/url/href</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/url/object_data">/url/object_data</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/url/object_param">/url/object_param</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-reflected" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reflected/url/script_src">/url/script_src</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+    
+
+
+    
+  
+  
+
+    <tr>
+      <td><h5><a href="#section-remoteinclude" onclick="showHide('scan-remoteinclude')" id="section-remoteinclude">Remote Inclusion XSS</a></h5></td>
+      <td></td>
+      <td></td>
+      <td><h5>80%</h5></td>
+    </tr>
+    <tr class="scan-remoteinclude" style="display: none">
+      <th style="width: 70%">Individual Tests</th>
+      <th>Rule</th>
+      <th>Pass</th>
+      <th>Fail</th>
+    </tr>
+    <tr class="scan-remoteinclude" style="display: none">
+      <td>Top Level: <a href="https://public-firing-range.appspot.com/remoteinclude/" id="section-remoteinclude">https://public-firing-range.appspot.com/remoteinclude</a></td>
+      <td> </td>
+      <td align="center">4</td>
+      <td align="center">1</td>
+    </tr>
+     
+    <tr class="scan-remoteinclude" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/remoteinclude/object_hash.html">/object_hash.html</a></td>
+      <td><a href="/docs/alerts/40026/">40026</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-remoteinclude" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/remoteinclude/parameter/object/application_x-shockwave-flash">/parameter/object/application_x-shockwave-flash</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-remoteinclude" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/remoteinclude/parameter/object_raw">/parameter/object_raw</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-remoteinclude" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/remoteinclude/parameter/script">/parameter/script</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-remoteinclude" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/remoteinclude/script_hash.html">/script_hash.html</a></td>
+      <td><a href="/docs/alerts/40012/">40012</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+    
+
+
+    
+  
+  
+
+    <tr>
+      <td><h5><a href="#section-reverseclickjacking" onclick="showHide('scan-reverseclickjacking')" id="section-reverseclickjacking">Reverse ClickJacking</a></h5></td>
+      <td></td>
+      <td></td>
+      <td><h5>67%</h5></td>
+    </tr>
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <th style="width: 70%">Individual Tests</th>
+      <th>Rule</th>
+      <th>Pass</th>
+      <th>Fail</th>
+    </tr>
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td>Top Level: <a href="https://public-firing-range.appspot.com/reverseclickjacking/" id="section-reverseclickjacking">https://public-firing-range.appspot.com/reverseclickjacking</a></td>
+      <td> </td>
+      <td align="center">8</td>
+      <td align="center">4</td>
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInFragment/InCallback/WithoutXFO/">/multipage/ParameterInFragment/InCallback/WithoutXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInFragment/InCallback/WithXFO/">/multipage/ParameterInFragment/InCallback/WithXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInFragment/OtherParameter/WithoutXFO/">/multipage/ParameterInFragment/OtherParameter/WithoutXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInFragment/OtherParameter/WithXFO/">/multipage/ParameterInFragment/OtherParameter/WithXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInQuery/InCallback/WithoutXFO/">/multipage/ParameterInQuery/InCallback/WithoutXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInQuery/InCallback/WithXFO/">/multipage/ParameterInQuery/InCallback/WithXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInQuery/OtherParameter/WithoutXFO/">/multipage/ParameterInQuery/OtherParameter/WithoutXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/multipage/ParameterInQuery/OtherParameter/WithXFO/">/multipage/ParameterInQuery/OtherParameter/WithXFO/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+      
+        <td></td>
+        <td><div class="scan-result-fail">&#10060; FAIL </div></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/singlepage/ParameterInFragment/InCallback/">/singlepage/ParameterInFragment/InCallback/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/singlepage/ParameterInFragment/OtherParameter/">/singlepage/ParameterInFragment/OtherParameter/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/singlepage/ParameterInQuery/InCallback/">/singlepage/ParameterInQuery/InCallback/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+     
+    <tr class="scan-reverseclickjacking" style="display: none">
+      <td><a href="https://public-firing-range.appspot.com/reverseclickjacking/singlepage/ParameterInQuery/OtherParameter/">/singlepage/ParameterInQuery/OtherParameter/</a></td>
+      <td><a href="/docs/alerts/10020/">10020</a></td>
+       
+        <td><div class="scan-result-pass">&#10003; Pass </div></td>
+        <td></td>
+       
+    </tr>
+    
+
+
+
+    
+  </table>
+
+</div>
+
+</main>
+  </article>
+</section>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/scans/firingrange.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2022 the ZAP Dev Team</br>
+      OWASP is a registered trademark of the OWASP Foundation, Inc.
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.08cf90.js"></script>
+  
+</div>
+</body>
+</html>
