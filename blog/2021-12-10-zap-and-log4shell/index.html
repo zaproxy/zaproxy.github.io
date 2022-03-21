@@ -175,13 +175,13 @@
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
               Posted <span class="post-date">Friday December 10, 2021</span>
-              <span class="word-count fl-r"> 276 Words </span>
+              <span class="word-count fl-r"> 300 Words </span>
             </section>
             
 <h2 id="overview">Overview <a class="header-link" href="#overview"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>A vulnerability has been found in Log4j which can result in Remote Code Execution (RCE):
 <a href="https://www.lunasec.io/docs/blog/log4j-zero-day/">CVE-2021-44228</a> also known as <a href="https://www.randori.com/blog/cve-2021-44228/">Log4Shell</a>.</p>
-<p>ZAP 2.11.0 and the previous weekly and dev versions of ZAP use Log4j 2.14.1 which is known to be vulnerable.</p>
+<p>ZAP 2.11.0 and the previous weekly and dev versions of ZAP use Log4j 2.14.1 which is known to be vulnerable. There may well be ways to abuse ZAP versions &lt;=2.11.0 that we have not yet discovered or anticipated, please upgrade at your earliest opportunity.</p>
 
 <h2 id="zap-2111">ZAP 2.11.1 <a class="header-link" href="#zap-2111"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>ZAP 2.11.1 has been released. This upgrades to use a non-vulnerable version of the Log4J library.</p>
@@ -190,8 +190,8 @@
 <a href="/3rd-party-package-maintenance/">3rd Party Package Maintainers</a> that we are aware of.</p>
 
 <h2 id="updated-advice-for-older-versions">Updated Advice for Older Versions <a class="header-link" href="#updated-advice-for-older-versions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>First the good news - ZAP does <strong>not</strong> typically log strings that could be used to exploit this vulnerability out of the box,
-so the exposure to this vulnerability should be limited.</p>
+<p>First the good news - ZAP does <strong>not typically</strong> log strings that could be used to exploit this vulnerability out of the box,
+so the exposure to this vulnerability <strong>should</strong> be limited.</p>
 <p>If you have not changed the default ZAP Log4j settings and have not exposed the ZAP API to untrusted addresses (which we do not advise)
 then at this stage we believe that you will not be vulnerable.</p>
 <p>In particular if you are running ZAP in a container like Docker and have not exposed the ZAP API outside of the container then you
@@ -204,12 +204,12 @@ should be fine.</p>
 </ul>
 <p>To turn ZAP logging off see the FAQ: <a href="https://www.zaproxy.org/faq/how-do-you-configure-zap-logging/">How do you configure ZAP logging?</a>
 and change all logging levels to &ldquo;off&rdquo; e.g.</p>
-<pre tabindex="0"><code>rootLogger.level = off
-
-logger.paros.level = off
-
-logger.zap.level = off
-</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>rootLogger.level = off
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>logger.paros.level = off
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>logger.zap.level = off
+</span></span></code></pre></div>
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
