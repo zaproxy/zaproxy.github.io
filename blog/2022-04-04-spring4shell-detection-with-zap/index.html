@@ -6,8 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/tags/retest/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; retest</title>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2022-04-04-spring4shell-detection-with-zap/images/spring4shell.png"/>
+
+<meta name="twitter:title" content="Spring4Shell Detection with ZAP"/>
+<meta name="twitter:description" content="How to detect Spring4Shell with the new Spring4Shell Alpha Active Scan Rule."/>
+
+    <meta property="og:title" content="Spring4Shell Detection with ZAP" />
+<meta property="og:description" content="How to detect Spring4Shell with the new Spring4Shell Alpha Active Scan Rule." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2022-04-04-spring4shell-detection-with-zap/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2022-04-04-spring4shell-detection-with-zap/images/spring4shell.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-04-04T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-04T00:00:00+00:00" />
+
+
+  
+  <title>OWASP ZAP &ndash; Spring4Shell Detection with ZAP</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -122,139 +136,91 @@
 </header>
 
   
+
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">Tag: retest</h1>
+    <h1 class="text--white">Spring4Shell Detection with ZAP</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
-      <div class="flex latest-versions">
-        <div class="col-2-3 pr-30">
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday April 4, 2022</span>
+              <span class="word-count fl-r"> 163 Words </span>
+            </section>
+            <p>As you are probably all too aware, there is yet another Remote Code Execution (RCE) vulnerability in a
+<a href="https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement#vulnerability">popular framework</a>.</p>
+<p>So we&rsquo;ve created a new Alpha Active Scan rule, not surprisingly called Spring4Shell.</p>
+<p><img src="images/spring4shell.png" alt="Spring4Shell Alert"></p>
+<p>Unlike <a href="/blog/2021-12-14-log4shell-detection-with-zap/">Log4Shell</a> this rule is easier to use, just install the latest
+<a href="/docs/desktop/addons/active-scan-rules-alpha/">alpha active scan rules</a> add-on and make sure the Spring4Shell rule is enabled when
+you active scan your apps.</p>
+<p>The rule uses a payload of <code>class.module.classLoader.DefaultAssertionStatus=nonsense</code>
+(inspired by <a href="https://twitter.com/RandoriAttack/status/1509298490106593283">this twitter thread</a>)
+on all nodes and raises an alert if this payload results in a 400 response.
+It will not raise an alert if a similar but safe payload also results in a 400 response.</p>
+<p>Like to know more? The relevant code is all in <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/Spring4ShellScanRule.java">Spring4ShellScanRule.java</a>.</p>
+<p>We&rsquo;ve tested it against a selection of apps which are deliberately vulnerable to Spring4Shell and it appears to work well.</p>
+<p>However, as always we would like your feedback - try it out against your apps and let us know how well it works.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2022-03-29-portswigger-lab-brute-force-password-change/"> PortSwigger Labs: Password Brute-force via Password Change with ZAP</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
             
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2021-08-23-retest-with-zap/">Retesting alerts with OWASP ZAP</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Monday August 23, 2021</span>
-                  <span class="word-count fl-r"> 788 Words </span>
-                </section>
-                <section class="summary">An overview of the features of the Retest add-on for OWASP ZAP. This add-on allows you to retest for previously generated alerts.</section>
-            </article>
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
           
-        </div>
 
-        <div class="col-1-3 ml-20">
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents"></nav>
+
           
-<section class="p-20">
-    <h3>Tags</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/tags/advisory/">advisory</a></li>
-    
-        <li><a href="/tags/api/">api</a></li>
-    
-        <li><a href="/tags/asvs/">asvs</a></li>
-    
-        <li><a href="/tags/authentication/">authentication</a></li>
-    
-        <li><a href="/tags/award/">award</a></li>
-    
-        <li><a href="/tags/blog/">blog</a></li>
-    
-        <li><a href="/tags/browser/">browser</a></li>
-    
-        <li><a href="/tags/cfp/">cfp</a></li>
-    
-        <li><a href="/tags/competition/">competition</a></li>
-    
-        <li><a href="/tags/docker/">docker</a></li>
-    
-        <li><a href="/tags/fileupload/">fileupload</a></li>
-    
-        <li><a href="/tags/firefox/">firefox</a></li>
-    
-        <li><a href="/tags/fuzzer/">fuzzer</a></li>
-    
-        <li><a href="/tags/graphql/">graphql</a></li>
-    
-        <li><a href="/tags/gsoc/">gsoc</a></li>
-    
-        <li><a href="/tags/guide/">guide</a></li>
-    
-        <li><a href="/tags/hacking/">hacking</a></li>
-    
-        <li><a href="/tags/log4shell/">log4shell</a></li>
-    
-        <li><a href="/tags/networking/">networking</a></li>
-    
-        <li><a href="/tags/oast/">oast</a></li>
-    
-        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
-    
-        <li><a href="/tags/portswigger-lab/">portswigger-lab</a></li>
-    
-        <li><a href="/tags/questionnaire/">questionnaire</a></li>
-    
-        <li><a href="/tags/release/">release</a></li>
-    
-        <li><a href="/tags/reporting/">reporting</a></li>
-    
-        <li><a href="/tags/retest/">retest</a></li>
-    
-        <li><a href="/tags/scanrules/">scanrules</a></li>
-    
-        <li><a href="/tags/soap/">soap</a></li>
-    
-        <li><a href="/tags/statistics/">statistics</a></li>
-    
-        <li><a href="/tags/top10/">top10</a></li>
-    
-        <li><a href="/tags/tutorial/">tutorial</a></li>
-    
-        <li><a href="/tags/waspy/">waspy</a></li>
-    
-        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
-    
-        <li><a href="/tags/zapcon/">zapcon</a></li>
-    
-    </ul>
-</section>
-
-<section class="p-20">
-    <h3>Authors</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/authors/akshath/">akshath</a></li>
-    
-        <li><a href="/authors/alberto/">alberto</a></li>
-    
-        <li><a href="/authors/bemodtwz/">bemodtwz</a></li>
-    
-        <li><a href="/authors/blazingwind/">blazingwind</a></li>
-    
-        <li><a href="/authors/diogo/">diogo</a></li>
-    
-        <li><a href="/authors/jan/">jan</a></li>
-    
-        <li><a href="/authors/jordan/">jordan</a></li>
-    
-        <li><a href="/authors/nirojan/">nirojan</a></li>
-    
-        <li><a href="/authors/pranavsaxena/">pranavsaxena</a></li>
-    
-        <li><a href="/authors/preetkaran20/">preetkaran20</a></li>
-    
-        <li><a href="/authors/simon/">simon</a></li>
-    
-        <li><a href="/authors/thorin/">thorin</a></li>
-    
-    </ul>
-</section>
-
-        </div>
-      </div>
-  </div>
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/scanrules/">scanrules</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -289,6 +255,13 @@
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-04-04-spring4shell-detection-with-zap/index.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
