@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <title>OWASP ZAP &ndash; Re-examine Cache-control Directives</title>
+  <title>OWASP ZAP &ndash; Spring4Shell</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -123,7 +123,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Re-examine Cache-control Directives</h1>
+      <h1 class="text--white">Spring4Shell</h1>
   </div>
 </section>
 
@@ -147,34 +147,34 @@
               <td>
                 <strong>Alert Id</strong>
               </td>
-              <td>10015</td>
+              <td>40045</td>
             </tr>
             <tr> 
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Passive</td>
+              <td>Active</td>
             </tr>
             <tr> 
               <td>
                 <strong>Status</strong>
               </td>
-              <td>release</td>
+              <td>alpha</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td>Informational</td>
+              <td>High</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/525.html">
-                  525
+                <a href="https://cwe.mitre.org/data/definitions/78.html">
+                  78
                 </a>
               </td>
             </tr>
@@ -182,7 +182,7 @@
               <td>
                 <strong>WASC</strong>
               </td>
-              <td>13</td>
+              <td>20</td>
             </tr>
             <tr> 
               <td>
@@ -190,7 +190,15 @@
               </td>
               <td>
               
-              	<a href="/alerttags/wstg-v42-athn-06">WSTG-V42-ATHN-06</a><br>
+              	<a href="/alerttags/owasp_2017_a01">OWASP_2017_A01</a><br>
+              
+              	<a href="/alerttags/owasp_2017_a09">OWASP_2017_A09</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a03">OWASP_2021_A03</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a06">OWASP_2021_A06</a><br>
+              
+              	<a href="/alerttags/wstg-v42-inpv-12">WSTG-V42-INPV-12</a><br>
               
               </td>
             </tr>
@@ -201,31 +209,37 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>
+          <p>The application appears to be vulnerable to CVE-2022-22965 (otherwise known as Spring4Shell) - remote code execution (RCE) via data binding.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          For secure content, ensure the cache-control HTTP header is set with &#39;no-cache, no-store, must-revalidate&#39;. If an asset should be cached consider setting the directives &#39;public, max-age, immutable&#39;.
+          Upgrade Spring Framework to versions 5.3.18, 5.2.20, or newer.
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching">https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</a>
+              <a href="https://www.rapid7.com/blog/post/2022/03/30/spring4shell-zero-day-vulnerability-in-spring-framework/">https://www.rapid7.com/blog/post/2022/03/30/spring4shell-zero-day-vulnerability-in-spring-framework/</a>
             
           </li>
         
           <li>
             
-              <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</a>
+              <a href="https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement#vulnerability">https://spring.io/blog/2022/03/31/spring-framework-rce-early-announcement#vulnerability</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://tanzu.vmware.com/security/cve-2022-22965">https://tanzu.vmware.com/security/cve-2022-22965</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CacheControlScanRule.java'>org/zaproxy/zap/extension/pscanrules/CacheControlScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/Spring4ShellScanRule.java'>org/zaproxy/zap/extension/ascanrulesAlpha/Spring4ShellScanRule.java</a>
       </section>
   </main>
 </div>
