@@ -6,8 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <link rel="alternate" type="application/rss+xml" href="/tags/fuzzer/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; fuzzer</title>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2022-04-06-portswigger-lab-2fa-broken-logic/images/add-expand-processor.png"/>
+
+<meta name="twitter:title" content="PortSwigger Labs: 2FA Broken Logic"/>
+<meta name="twitter:description" content="How to solve the PortSwigger Lab: 2FA Broken Logic using ZAP."/>
+
+    <meta property="og:title" content="PortSwigger Labs: 2FA Broken Logic" />
+<meta property="og:description" content="How to solve the PortSwigger Lab: 2FA Broken Logic using ZAP." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2022-04-06-portswigger-lab-2fa-broken-logic/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2022-04-06-portswigger-lab-2fa-broken-logic/images/add-expand-processor.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-04-06T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-06T00:00:00+00:00" />
+
+
+  
+  <title>OWASP ZAP &ndash; PortSwigger Labs: 2FA Broken Logic</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -122,150 +136,138 @@
 </header>
 
   
+
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">Tag: fuzzer</h1>
+    <h1 class="text--white">PortSwigger Labs: 2FA Broken Logic</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
-      <div class="flex latest-versions">
-        <div class="col-2-3 pr-30">
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday April 6, 2022</span>
+              <span class="word-count fl-r"> 368 Words </span>
+            </section>
             
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2022-04-06-portswigger-lab-2fa-broken-logic/">PortSwigger Labs: 2FA Broken Logic</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Wednesday April 6, 2022</span>
-                  <span class="word-count fl-r"> 368 Words </span>
-                </section>
-                <section class="summary">How to solve the PortSwigger Lab: 2FA Broken Logic using ZAP.</section>
-            </article>
-          
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2022-03-29-portswigger-lab-brute-force-password-change/">PortSwigger Labs: Password Brute-force via Password Change with ZAP</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Tuesday March 29, 2022</span>
-                  <span class="word-count fl-r"> 399 Words </span>
-                </section>
-                <section class="summary">How to solve the PortSwigger Lab: Password Brute-force via Password Change using ZAP.</section>
-            </article>
-          
-        </div>
+<h3 id="the-portswigger-websecurity-academy">The PortSwigger WebSecurity Academy <a class="header-link" href="#the-portswigger-websecurity-academy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="https://portswigger.net/web-security">PortSwigger WebSecurity Academy</a> is a great way to learn more about web security,
+but not too surprisingly it is also intended as a showcase for Burp Suite.</p>
+<p>However you can of course use ZAP instead of Burp, and in this series of ZAP Blog posts I will show you how.</p>
+<p>The second lab has the tag PRACTITIONER and you can find it <a href="https://portswigger.net/web-security/authentication/multi-factor/lab-2fa-broken-logic">here</a>.
+I want to show you how to solve this lab using ZAP and specifically the <a href="/docs/desktop/addons/fuzzer/">Fuzzer</a> tool.</p>
 
-        <div class="col-1-3 ml-20">
+<h3 id="lab-instructions">Lab Instructions <a class="header-link" href="#lab-instructions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This lab&rsquo;s two-factor authentication is vulnerable due to its flawed logic. To solve the lab, access Carlos&rsquo; account page.</p>
+<ul>
+<li>Your credentials: wiener:peter</li>
+<li>Victim&rsquo;s username: carlos</li>
+</ul>
+<p>You also have access to the email server to receive your 2FA verification code.</p>
+
+<h3 id="manual-testing">Manual Testing <a class="header-link" href="#manual-testing"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>After logging into our account and using verification code, we closely explore <strong>POST /login2</strong> request and we can see that the <code>verify</code> parameter is used to determine which user&rsquo;s account is being accessed.</p>
+<p><img src="images/login-requests.png" alt="Login Requests"></p>
+<p>If we try to login to this account multiple times, we see that the verification code is always a 4 digit number.</p>
+<p>Log out from your account.</p>
+
+<h3 id="attacking-with-zap">Attacking with ZAP <a class="header-link" href="#attacking-with-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ol>
+<li>First we need to resend the <strong>GET:login2</strong> request to force the system to generate a verification code for Carlos.
+<strong>Sites -&gt; GET:login2 -&gt; right click -&gt; Open/Resend with Request Editor…</strong></li>
+<li>Change &ldquo;verify&rdquo; to &ldquo;carlos&rdquo; and click <strong>Send</strong>
+<img src="images/verify-carlos.png" alt="Verify Carlos"></li>
+<li>We need to resend <strong>POST:login2()(mfa-code)</strong> with a different value for &ldquo;verify&rdquo;.
+<strong>Sites -&gt; Right Click -&gt; Open/Resend with Request Editor…</strong></li>
+<li>Change &ldquo;verify&rdquo; to &ldquo;carlos&rdquo; and click <strong>Send</strong>
+<img src="images/verify-carlos-mfa.png" alt="Verify Carlos MFA"></li>
+<li>Now we need to send <strong>POST:login2()(mfa-code)</strong> to the Fuzzer.
+<strong>Sites -&gt; Right Click -&gt;  Attack -&gt; Fuzz…</strong></li>
+<li>Highlight the value of mfa-code</li>
+<li>Now we need to add the payloads: <strong>Add -&gt; Add -&gt;</strong> select <strong>Type: Numberzz</strong> and add these values:
+<img src="images/select-numberzz.png" alt="Select Numberzz"></li>
+<li>Click <strong>Add</strong></li>
+<li>Now we need to expand our payloads to be 4 digits: Select the first row in the <strong>Payloads</strong> window and click <strong>Processors&hellip; -&gt; Add</strong> and add these values:
+<img src="images/add-expand-processor.png" alt="Add Expand Processor"></li>
+<li>Click <strong>Add</strong></li>
+<li>Click &ldquo;Start Fuzzer&rdquo;</li>
+</ol>
+<p>We are looking for different HTTP Code. In this example, it’s 302.</p>
+<p><img src="images/fuzz-results.png" alt="Fuzz Results"></p>
+<p>If we open the response from this request we can see that we solved the lab and in this example, the mfa-code is 1056.</p>
+<p><img src="images/mfa-code.png" alt="MFA code"></p>
+<p>ZAP rocks!</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2022-04-04-spring4shell-detection-with-zap/"> Spring4Shell Detection with ZAP</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
           
-<section class="p-20">
-    <h3>Tags</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/tags/advisory/">advisory</a></li>
-    
-        <li><a href="/tags/api/">api</a></li>
-    
-        <li><a href="/tags/asvs/">asvs</a></li>
-    
-        <li><a href="/tags/authentication/">authentication</a></li>
-    
-        <li><a href="/tags/award/">award</a></li>
-    
-        <li><a href="/tags/blog/">blog</a></li>
-    
-        <li><a href="/tags/browser/">browser</a></li>
-    
-        <li><a href="/tags/cfp/">cfp</a></li>
-    
-        <li><a href="/tags/competition/">competition</a></li>
-    
-        <li><a href="/tags/docker/">docker</a></li>
-    
-        <li><a href="/tags/fileupload/">fileupload</a></li>
-    
-        <li><a href="/tags/firefox/">firefox</a></li>
-    
-        <li><a href="/tags/fuzzer/">fuzzer</a></li>
-    
-        <li><a href="/tags/graphql/">graphql</a></li>
-    
-        <li><a href="/tags/gsoc/">gsoc</a></li>
-    
-        <li><a href="/tags/guide/">guide</a></li>
-    
-        <li><a href="/tags/hacking/">hacking</a></li>
-    
-        <li><a href="/tags/log4shell/">log4shell</a></li>
-    
-        <li><a href="/tags/networking/">networking</a></li>
-    
-        <li><a href="/tags/oast/">oast</a></li>
-    
-        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
-    
-        <li><a href="/tags/portswigger-lab/">portswigger-lab</a></li>
-    
-        <li><a href="/tags/questionnaire/">questionnaire</a></li>
-    
-        <li><a href="/tags/release/">release</a></li>
-    
-        <li><a href="/tags/reporting/">reporting</a></li>
-    
-        <li><a href="/tags/retest/">retest</a></li>
-    
-        <li><a href="/tags/scanrules/">scanrules</a></li>
-    
-        <li><a href="/tags/soap/">soap</a></li>
-    
-        <li><a href="/tags/statistics/">statistics</a></li>
-    
-        <li><a href="/tags/top10/">top10</a></li>
-    
-        <li><a href="/tags/tutorial/">tutorial</a></li>
-    
-        <li><a href="/tags/waspy/">waspy</a></li>
-    
-        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
-    
-        <li><a href="/tags/zapcon/">zapcon</a></li>
-    
-    </ul>
-</section>
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/jan-ambroz_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Ján Ambroz
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/jan_ambroz_jr">@jan_ambroz_jr</a>
+                  
+                </div>
+              </section>
+          
 
-<section class="p-20">
-    <h3>Authors</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/authors/akshath/">akshath</a></li>
-    
-        <li><a href="/authors/alberto/">alberto</a></li>
-    
-        <li><a href="/authors/bemodtwz/">bemodtwz</a></li>
-    
-        <li><a href="/authors/blazingwind/">blazingwind</a></li>
-    
-        <li><a href="/authors/diogo/">diogo</a></li>
-    
-        <li><a href="/authors/jan/">jan</a></li>
-    
-        <li><a href="/authors/jordan/">jordan</a></li>
-    
-        <li><a href="/authors/nirojan/">nirojan</a></li>
-    
-        <li><a href="/authors/pranavsaxena/">pranavsaxena</a></li>
-    
-        <li><a href="/authors/preetkaran20/">preetkaran20</a></li>
-    
-        <li><a href="/authors/simon/">simon</a></li>
-    
-        <li><a href="/authors/thorin/">thorin</a></li>
-    
-    </ul>
-</section>
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-portswigger-websecurity-academy">The PortSwigger WebSecurity Academy</a></li>
+        <li><a href="#lab-instructions">Lab Instructions</a></li>
+        <li><a href="#manual-testing">Manual Testing</a></li>
+        <li><a href="#attacking-with-zap">Attacking with ZAP</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
-        </div>
-      </div>
-  </div>
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/fuzzer/">fuzzer</a> </li>
+           
+           <li> <a href="/tags/portswigger-lab/">portswigger-lab</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -300,6 +302,13 @@
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-04-06-portswigger-lab-2fa-broken-logic/index.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
