@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <title>OWASP ZAP &ndash; Release 2.3.1</title>
+  <title>OWASP ZAP &ndash; Local Servers/Proxies</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -133,7 +133,7 @@
     
     
         
-    <li data-depth="1" class="">
+    <li data-depth="1" class="tree-branch-active">
                 <a href="/docs/desktop/addons/">Add-ons</a>
         <ul class="tree-branch">
     <li data-depth="2" class="">
@@ -571,7 +571,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/network/">Network Add-on</a>
         <ul class="tree-branch">  
                         <li> 
@@ -580,10 +580,10 @@
                         <li> 
                             <a href="/docs/desktop/addons/network/cmdline/">Command Line</a>
                         </li>
-    <li data-depth="3" class="">
+    <li data-depth="3" class="tree-branch-active">
                 <a href="/docs/desktop/addons/network/options/">Options</a>
         <ul class="tree-branch">  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/network/options/localservers/">Local Servers/Proxies</a>
                         </li>  
                         <li> 
@@ -1001,7 +1001,7 @@
     
     
         
-    <li data-depth="1" class="tree-branch-active">
+    <li data-depth="1" class="">
                 <a href="/docs/desktop/releases/">Releases</a>
         <ul class="tree-branch">
         </ul>
@@ -1400,40 +1400,91 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/releases/'>Releases</a>
+        <a href='/docs/desktop/addons/'>Add-ons</a>
     </li>
 
     <li>
+        <a href='/docs/desktop/addons/network/'>Network Add-on</a>
+    </li>
+
+    <li>
+        <a href='/docs/desktop/addons/network/options/'>Options</a>
+    </li>
+
+    <li>
+        <a href='/docs/desktop/addons/network/options/localservers/'>Local Servers/Proxies</a>
     </li>
 
 
 </ol>
           
-<h1 id="release-231">Release 2.3.1</h1>
-<p>The following changes were made in this release:</p>
-<ul>
-<li>Issue 81 : ZAP changes request data (while switching views)</li>
-<li>Issue 377 : Unfulfilled dependencies hang the active scan</li>
-<li>Issue 1073 : Cant remove scripts marked as &rsquo;load on start'</li>
-<li>Issue 1114 : core.newSession doesn&rsquo;t clear Sites</li>
-<li>Issue 1155 : Historical Request Tab Doesn&rsquo;t allow formatting changes</li>
-<li>Issue 1156 : Proxy gzip decoder doesn&rsquo;t update content length in response headers</li>
-<li>Issue 1163 : Unable to set a home directory with a space on the command line</li>
-<li>Issue 1166 : Redundant indexes in zapdb.script</li>
-<li>Issue 1168 : Add proxy support for &ldquo;deflate&rdquo; content encoding</li>
-<li>Issue 1170 : Spider Context/User pop up menus no longer shown</li>
-<li>Issue 1179 : Unable to select 2 requests in fuzz results (Ctrl + click)</li>
-<li>Issue 1181 : Vulnerable pages active scanned only once</li>
-<li>Issue 1182 : Alerts of same type for different parameters of same vulnerable page shown only once in &ldquo;Alerts&rdquo; tree</li>
-<li>Issue 1183 : NullPointerException while selecting a node in the &ldquo;Alerts&rdquo; tab after deleting a message</li>
-<li>Issue 1191 : Cmdline session params have no effect</li>
-<li>Issue 1193 : Scan URL path elements - turn off by default</li>
-<li>Issue 1194 : Command line arguments are not passed to extensions when starting ZAP in daemon mode</li>
-<li>Issue 1196 : AbstractPlugin.bingo incorrectly sets evidence to attack</li>
-<li>Issue 1202 : Issue with loading addons that did not initialize correctly</li>
-<li>Issue 1203 : Wordpress Authentication Script</li>
-<li>Issue 1206 : &ldquo;History&rdquo; tab is not cleared when a new session is created through the API with ZAP in GUI mode</li>
-</ul>
+<h1 id="local-serversproxies">Local Servers/Proxies</h1>
+<p><strong>Note:</strong> This feature is only available in weekly releases and versions after 2.11.</p>
+
+<h2 id="local-serversproxies-1">Local Servers/Proxies <a class="header-link" href="#local-serversproxies-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This tab allows you to configure the addresses and ports on which ZAP accepts incoming connections.</p>
+
+<h3 id="main-proxy">Main Proxy <a class="header-link" href="#main-proxy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>By default ZAP will listen on one local address and port, and usually these should be the address and port that you must configure your browser to use as a proxy.</p>
+
+<h3 id="additional-serversproxies">Additional Servers/Proxies <a class="header-link" href="#additional-serversproxies"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>You can add as many additional addresses and ports for ZAP to listen on as you like.<br>
+This can be useful when testing mobile applications - you can proxy the mobile application via a Wi-Fi interface at the same time as using the backend site directly using a browser proxying through ZAP emulating a mobile user agent.</p>
+
+<h3 id="serverproxy-properties">Server/Proxy Properties <a class="header-link" href="#serverproxy-properties"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Both the Main Proxy and the additional servers/proxies allow to configure the following properties.</p>
+
+<h4 id="address">Address <a class="header-link" href="#address"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The local address to bound to. All of the available addresses are automatically identified.</p>
+
+<h4 id="port">Port <a class="header-link" href="#port"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The port on which the server/proxy will listen.</p>
+
+<h4 id="security-protocols">Security Protocols <a class="header-link" href="#security-protocols"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Allows to choose the SSL/TLS versions enabled for incoming connections (for example, from browsers). At least one version must be enabled, versions unsupported by the JRE will be unselected and disabled.<br>
+The option SSLv2Hello must be selected in conjunction with at least one SSL/TLS version.</p>
+
+<h4 id="mode">Mode <a class="header-link" href="#mode"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Allows to specify if the API should be exposed or if it should be allowed to proxy requests. For example, one can configure a server exposing just the the API to external addresses (i.e. remote control) while having a proxy for local addresses only.</p>
+
+<h4 id="behind-nat">Behind NAT <a class="header-link" href="#behind-nat"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Indicates that the server/proxy (ZAP) is behind NAT. When selected ZAP will attempt to determine the public IP address, to properly detect and handle requests with the public IP address (for example, to be served by the ZAP API). Alternatively you can manually add the IP address as an Alias (refer to Aliases section).</p>
+<p><strong>Note:</strong> This option is only supported when ZAP is running in an AWS EC2 instance.
+ZAP will obtain the public IP address from
+<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#working-with-ip-addresses">AWS EC2
+instance&rsquo;s metadata</a>.<br>
+ZAP should be started with this option enabled if access to the API, through the public IP address, is required:</p>
+<blockquote>
+<p>zap.sh -daemon -port 8080 -host 0.0.0.0 -config network.localServers.mainProxy.behindNat=true
+Also, the API needs to be configured to accept external IP addresses (i.e. the IP address from where ZAP is being accessed).</p>
+</blockquote>
+
+<h4 id="remove-accept-encoding-request-header">Remove Accept-Encoding Request Header <a class="header-link" href="#remove-accept-encoding-request-header"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Allows the proxy to remove the &ldquo;Accept-Encoding&rdquo; request-header field, so no (unsupported) encoding transformations are done to the response.<br>
+This option should be always enabled unless when testing the encoding transformations.<br>
+The messages encoded with unsupported encodings will not be correctly scanned (either by passive and active scanners).</p>
+
+<h4 id="decode-response">Decode Response <a class="header-link" href="#decode-response"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Allows the proxy to automatically decode (i.e. gzip, deflate) the response. This option is needed for applications that ignore the &ldquo;Accept-Encoding&rdquo; request-header field.</p>
+
+<h3 id="interceptingtransparent-proxy">Intercepting/Transparent Proxy <a class="header-link" href="#interceptingtransparent-proxy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The local proxies can be used as intercepting/transparent proxies for both HTTP and HTTPS. For HTTPS the client applications (e.g. browser) need to use the TLS extension <a href="https://tools.ietf.org/html/rfc6066#section-3">Server Name Indication</a>. This allows you to set up a testing LANs (or VMs) where all HTTP and HTTPS traffic is proxied regardless of software settings.</p>
+<p>For example, if you have a Linux machine you use for testing, you can do something like the following to forward all HTTP and
+HTTPS traffic to a local proxy listening on <code>192.168.0.14:8080</code>:</p>
+<pre><code>iptables -t nat -A OUTPUT -p tcp --dport 443 -j DNAT --to-destination 192.168.0.14:8080
+	iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination 192.168.0.14:8080
+</code></pre>
+
+<h2 id="aliases">Aliases <a class="header-link" href="#aliases"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Allows to identify the local servers/proxies with other names (domain or address). For example, to access the ZAP API with a public IP address.</p>
+
+<h2 id="pass-through">Pass-through <a class="header-link" href="#pass-through"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Allows to configure the authorities (domain/address and port) that will pass-through ZAP, thus sending the data without being decrypted/encrypted. This is useful when a client has certificate pinning for certain hosts or the domain/data is irrelevant to the target being tested.</p>
+<p>Requires that the client sends a CONNECT request with the required authority. The <code>authority</code> is interpreted as a regular expression and
+needs to be present in the requested authority.</p>
+<p>For example, to pass-through all connections to <code>example.org</code> it can be specified just <code>example.org</code>, therefore matching any port.</p>
+<p>Using pass-through is more efficient than using excludes (e.g. Exclude from Proxy, Global Exclude URL) when all the traffic for the host is not relevant
+to the tests.</p>
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
@@ -1447,18 +1498,8 @@
 <tbody>
 <tr>
 <td></td>
-<td><a href="/docs/desktop/">Introduction</a></td>
-<td>the introduction to ZAP</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/releases/">Releases</a></td>
-<td>the full set of releases</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/credits/">Credits</a></td>
-<td>the people and groups who have made this release possible</td>
+<td><a href="/docs/desktop/addons/network/">Network</a></td>
+<td>the introduction to Network add-on</td>
 </tr>
 </tbody>
 </table>
