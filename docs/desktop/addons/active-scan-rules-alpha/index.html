@@ -1463,6 +1463,14 @@ For more details see: <a href="/blog/2014-04-30-hacking-zap-4-active-scan-rules/
 <p>This rule attempts to discover the Spring4Shell (<a href="https://tanzu.vmware.com/security/cve-2022-22965">CVE-2022-22965</a> vulnerability. It uses a payload of <code>class.module.classLoader.DefaultAssertionStatus=nonsense</code> on all nodes and raises an alert if this payload results in a 400 response. It will not raise an alert if a similar but safe payload also results in a 400 response.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/Spring4ShellScanRule.java">Spring4ShellScanRule.java</a></p>
 
+<h2 id="server-side-template-injection">Server Side Template Injection <a class="header-link" href="#server-side-template-injection"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This rule attempts to detect situations in which user input might be interpreted as part of the template and processed on the server, versus the user input simply being used as an argument to the template/engine.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/SstiScanRule.java">SstiScanRule.java</a></p>
+
+<h2 id="server-side-template-injection-blind">Server Side Template Injection (Blind) <a class="header-link" href="#server-side-template-injection-blind"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This rule goes one step further than the SSTI scan rule and attempts to find places where the impact of the user input is not immediately obvious, such as when used by an admin panel, report output, invoice, etc.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/SstiBlindScanRule.java">SstiBlindScanRule.java</a></p>
+
         </div>
       </div>
   </div>
