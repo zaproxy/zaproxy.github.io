@@ -206,6 +206,33 @@ Once that has completed you will be able to access the ZAP log file.</p>
 </ol>
 <p>All of the requests and responses made by or proxied through ZAP will be written to the <code>req-resp-log.txt</code> file in your CWD as above.</p>
 
+<h3 id="automation-framework">Automation Framework <a class="header-link" href="#automation-framework"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If you are using the Automation Framework then you will need to:</p>
+<ol>
+<li>Copy the following file to your CWD
+<ul>
+<li><a href="https://github.com/zaproxy/community-scripts/blob/main/httpsender/LogMessages.js">LogMessages.js</a></li>
+</ul>
+</li>
+<li>Modify your YAML plan file to add the script, e.g.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>jobs:
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>- parameters:
+</span></span><span style="display:flex;"><span>    action: <span style="color:#e6db74">&#34;add&#34;</span>
+</span></span><span style="display:flex;"><span>    type: <span style="color:#e6db74">&#34;httpsender&#34;</span>
+</span></span><span style="display:flex;"><span>    engine: <span style="color:#e6db74">&#34;Oracle Nashorn&#34;</span>
+</span></span><span style="display:flex;"><span>    name: <span style="color:#e6db74">&#34;LogMessages.js&#34;</span>
+</span></span><span style="display:flex;"><span>    file: <span style="color:#e6db74">&#34;/zap/wrk/LogMessages.js&#34;</span>
+</span></span><span style="display:flex;"><span>  name: <span style="color:#e6db74">&#34;script&#34;</span>
+</span></span><span style="display:flex;"><span>  type: <span style="color:#e6db74">&#34;script&#34;</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div></li>
+<li>Run your plan, making sure that your environment maps the CWD to <code>/zap/wrk/</code>, e.g.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> ./zap.sh -cmd -autorun zap.yaml
+</span></span></code></pre></div></li>
+</ol>
+<p>All of the requests and responses made by or proxied through ZAP will be written to the <code>req-resp-log.txt</code> file in your CWD as above.</p>
+
           </main>
       </article>
 </div>
