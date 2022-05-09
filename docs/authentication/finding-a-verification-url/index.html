@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <title>OWASP ZAP &ndash; Authentication - Session Handling</title>
+  <title>OWASP ZAP &ndash; Finding a Verification URL</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -124,7 +124,7 @@
 
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Authentication - Session Handling</h1>
+      <h1 class="text--white">Finding a Verification URL</h1>
   </div>
 </section>
 <section class="wrapper flex py-70 on-sm-stack" data-kind="page">
@@ -141,66 +141,32 @@
     </li>
 
     <li>
-        <a href='/docs/authentication/session-handling/'>Authentication - Session Handling</a>
+        <a href='/docs/authentication/finding-a-verification-url/'>Finding a Verification URL</a>
     </li>
 
 
 </ol>
-    <main><p><script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
-
-If ZAP is handling authentication then it needs to handle sessions as well - logging in is of no use if ZAP does not maintain the session as the target app will just treat ZAP as being unauthenticated.</p>
-<p><a href="/docs/desktop/start/features/sessionmanagement/">Session management</a> configuration is part of a ZAP context.</p>
+    <main><p>If you need to set up ZAP to handle authentication then you really need to find a suitable verification URL in your app.</p>
+<p>The verification URL will be one that you can request from the <a href="/docs/desktop/ui/dialogs/man_req/">Manual Request Editor dialog</a> and which will send a response that allows you to work out whether you are logged in or not. What that looks like will entirely depend on your app, but could be something like:</p>
 <ul>
-<li>In the ZAP desktop it is configured via the Context <a href="/docs/desktop/ui/dialogs/session/contexts/">Session Management</a> screen.</li>
-<li>In the <a href="https://www.zaproxy.org/docs/automate/automation-framework/">Authentication Framework</a> it is part of a context defined in the <a href="/docs/desktop/addons/automation-framework/environment/">environment</a>.</li>
-<li>In the API it is configured via endpoints underneath the <a href="/docs/api/#zap-api-sessionmanagement">sessionManagement</a> component.</li>
+<li>Any page or API endpoint which returns the authenticated user&rsquo;s Id</li>
+<li>A user details page or API endpoint</li>
+<li>A user preferences page or API endpoint</li>
+<li>A page containing a login link</li>
+<li>A page containing a logout link</li>
 </ul>
-<p>ZAP supports Cookie and HTTP Authentication Session Management out of the box.</p>
-<p>If your app uses another mechanism then you can handle that using a custom <a href="https://github.com/zaproxy/community-scripts/tree/main/session">session management script</a>.</p>
-<p>Applications may implement session handling server-side, client-side or on both sides.</p>
-<p>Session Management is difficult to test in isolation so you will typically need to also configure ZAP to handle authentication before you can test it.</p>
-
-<h3 id="server-side-session-management">Server-side Session Management <a class="header-link" href="#server-side-session-management"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Server-side Session Management is nearly always handled by HTTP headers and is typically straightforward to configure - getting hold of the authentication tokens to put in the headers may well be harder.</p>
-<p>If you do not know what type of session management your application uses then authenticate manually to your app while proxying through ZAP and look at the responses from the app.</p>
-
-<h4 id="cookie-based-session-management">Cookie-based Session Management <a class="header-link" href="#cookie-based-session-management"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>If you can see any <code>Set-Cookie</code> headers being returned then it is likely that your app is using cookie-based session management.</p>
-<p>Make a request to your <a href="../finding-a-verification-url/">verification URL</a> while authenticated and then open that request in the <a href="/docs/desktop/ui/dialogs/man_req/">Manual Request Editor dialog</a>.</p>
-<p>Check that there is a <code>Cookie</code> header in the request and that when you <code>Send</code> the request then it indicates you are logged in.</p>
-<p>If that is the case then remove the <code>Cookie</code> header from the request and <code>Send</code> again - if the response indicates you are no longer logged in then your app uses Cookie-based session management.</p>
-<p>Configure your context to use this - you do not need any other configuration, such as which cookies to use.</p>
-
-<h4 id="http-authentication-session-management">HTTP Authentication Session Management <a class="header-link" href="#http-authentication-session-management"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>If you see a <code>WWW-Authenticate</code> response header and then a <code>Authorization</code> header then your app is using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication">HTTP Authentication</a>.</p>
-<p>As above, make a request to your <a href="../finding-a-verification-url/">verification URL</a> while authenticated and then open that request in the <a href="/docs/desktop/ui/dialogs/man_req/">Manual Request Editor dialog</a>.</p>
-<p>Check that there is an <code>Authorization</code> header in the request and that when you <code>Send</code> the request then it indicates you are logged in.</p>
-<p>If that is the case then remove the <code>Authorization</code> header from the request and <code>Send</code> again - if the response indicates you are no longer logged in then your app uses HTTP Authentication session management.</p>
-<p>Configure your context to use this - you do not need any other configuration.</p>
-
-<h3 id="client-side-session-management">Client-side Session Management <a class="header-link" href="#client-side-session-management"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Client-side Session Management is handled in the browser. It cannot be handle by ZAP automatically and is typically harder to configure.
-However you will need to configure ZAP to handle it if you need to use the <a href="/docs/desktop/addons/ajax-spider/">Ajax Spider</a> or the <a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS Scanner rule</a> while authenticated.</p>
-<p>You will typically need to inject authentication tokens into the browser using ZAP <a href="https://github.com/zaproxy/community-scripts/tree/main/selenium">selenium</a> scripts.</p>
-<p>This video explains and demonstrates how to set ZAP up to handle both server-side and client-side session management with
-<a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a>:</p>
-<div>
- <img
-   style='width: 100%; margin: auto; display: block;'
-   class='vidyard-player-embed'
-   src='https://play.vidyard.com/igf3A8UdZ6QAGiFjEpLH86.jpg'
-   data-uuid='igf3A8UdZ6QAGiFjEpLH86'
-   data-v='4'
-   data-type='inline'
- />
-</div>
-
+<p>For traditional apps this may be easy to find - all HTML responses may give you enough information.</p>
+<p>Modern Single Page Apps may take more time to find a suitable URL.</p>
+<p>Explore your app manually with a browser proxied through ZAP while authenticated and examine all of the responses from the app.
+Look for anything in the browser which indicated you are logged in, then <a href="/docs/desktop/ui/tabs/search/">search</a> for that string in the responses returned to ZAP.
+Once you have identified a potential URL then logout and make sure that the response is different.</p>
+<p>If your app supports authentication then you will be able to find a verification URL like this - if the app responds exactly the same to all authenticated and unauthenticated requests then there would be no point in supporting authentication.</p>
 <div class="next-content bg--blue-lightest p-10">
     
-      Previous <a class="previous" href='../finding-a-verification-url/'> Finding a verification URL</a>
+      Previous <a class="previous" href='../handling-auth-yourself/'> Handling authentication yourself</a>
     
     
-      Next Authentication methods (coming soon)
+      Next <a class="next" href='../session-handling/'> Session handling</a>
     
 </div>
 
@@ -245,7 +211,7 @@ However you will need to configure ZAP to handle it if you need to use the <a hr
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/authentication/session-handling.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/authentication/finding-a-verification-url.md">Edit on GitHub</a>
   </div>
 
     </div>
