@@ -7,21 +7,21 @@
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2022-04-14-portswigger-lab-username-enumeration-with-zap-scripts/images/zest-script.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2022-05-10-the-requester-addon/images/requester.png"/>
 
-<meta name="twitter:title" content="PortSwigger Labs: Username Enumeration with ZAP Scripts"/>
-<meta name="twitter:description" content="How to solve the PortSwigger Lab: Username enumeration via account lock using ZAP scripts."/>
+<meta name="twitter:title" content="The Requester Add-on"/>
+<meta name="twitter:description" content="An add-on aimed squarely at the pentesters."/>
 
-    <meta property="og:title" content="PortSwigger Labs: Username Enumeration with ZAP Scripts" />
-<meta property="og:description" content="How to solve the PortSwigger Lab: Username enumeration via account lock using ZAP scripts." />
+    <meta property="og:title" content="The Requester Add-on" />
+<meta property="og:description" content="An add-on aimed squarely at the pentesters." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2022-04-14-portswigger-lab-username-enumeration-with-zap-scripts/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2022-04-14-portswigger-lab-username-enumeration-with-zap-scripts/images/zest-script.png" /><meta property="article:section" content="blog" />
-<meta property="article:published_time" content="2022-04-14T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-04-14T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2022-05-10-the-requester-addon/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2022-05-10-the-requester-addon/images/requester.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-05-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-10T00:00:00+00:00" />
 
 
   
-  <title>OWASP ZAP &ndash; PortSwigger Labs: Username Enumeration with ZAP Scripts</title>
+  <title>OWASP ZAP &ndash; The Requester Add-on</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -139,7 +139,7 @@
 
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">PortSwigger Labs: Username Enumeration with ZAP Scripts</h1>
+    <h1 class="text--white">The Requester Add-on</h1>
   </div>
 </section>
 
@@ -152,95 +152,26 @@
 
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Thursday April 14, 2022</span>
-              <span class="word-count fl-r"> 618 Words </span>
+              Posted <span class="post-date">Tuesday May 10, 2022</span>
+              <span class="word-count fl-r"> 196 Words </span>
             </section>
-            <p>In this post we will see how to use <a href="/docs/desktop/addons/zest/">Zest</a> scripts which are a really powerful and big part of ZAP, and then we will use the Fuzzer for brute-forcing the password of an account.</p>
-<p>Note that if you know Burp but are new to ZAP you may wish to checkout the <a href="/docs/burp-to-zap-feature-map/">Burp to ZAP Feature Map</a> page now available.</p>
-
-<h3 id="lab-instructions">Lab Instructions <a class="header-link" href="#lab-instructions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>This time we will try solve this <a href="https://portswigger.net/web-security/authentication/password-based/lab-username-enumeration-via-account-lock">lab</a>, here’s the description:</p>
-<p>This lab is vulnerable to username enumeration. It uses account locking, but this contains a logic flaw. To solve the lab, enumerate a valid username, brute-force this user&rsquo;s password, then access their account page.</p>
-<ul>
-<li><a href="https://portswigger.net/web-security/authentication/auth-lab-usernames">Candidate usernames</a></li>
-<li><a href="https://portswigger.net/web-security/authentication/auth-lab-passwords">Candidate passwords</a></li>
-</ul>
-
-<h3 id="finding-the-username">Finding the Username <a class="header-link" href="#finding-the-username"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>For enumerating usernames, and finding the one we need, we will use Zest scripts. We will surround the POST request with a File loop and repeat this POST 5 times. If we hit the right username the account will be locked and we can see it in the response body.</p>
-<ol>
-<li>
-<p>We need to open ZAP and launch the Browser with the lab URL and make an attempt to login, we will see in our <strong>POST:login()(password, username)</strong> in the <strong>Sites</strong> tree</p>
-<p><img src="images/sites-tree.png" alt="Sites Tree"></p>
-</li>
-<li>
-<p>We then need to resend the <strong>GET:login2</strong> request to force the system to generate a verification code for Carlos.
-<strong>Sites -&gt; GET:login2 -&gt; right click -&gt; Open/Resend with Request Editor…</strong></p>
-</li>
-<li>
-<p><strong>Right click</strong> on the <strong>POST</strong>, select <strong>Add to Zest Script -&gt; New Zest Script…</strong> and choose a name for your script</p>
-<p><img src="images/add-zest-script.png" alt="Add Zest Script"></p>
-<p>This is how the new script should look:
-<img src="images/zest-script.png" alt="Zest Script"></p>
-</li>
-<li>
-<p>Expand the <strong>POST</strong>, <strong>Double Click</strong> on <strong>Assert - Length…</strong> and set the length to <strong>3011</strong>, which is the Response body size for an incorrect password or username.</p>
-<p><img src="images/edit-assertion.png" alt="Edit Assertion"></p>
-</li>
-<li>
-<p>Now we will set the File loop around the POST. <strong>Right Click</strong> on the <strong>POST</strong>, select <strong>Surround with … -&gt; Loop File</strong>.
-You will need to set a Variable Name (in my case it is “fuzz”) and File Locations with the file in which you saved the <a href="https://portswigger.net/web-security/authentication/auth-lab-usernames">usernames</a>.</p>
-<p><img src="images/add-zest-loop.png" alt="Add Zest Loop"></p>
-</li>
-<li>
-<p>Now we need to set this variable name (“fuzz”) in our post, so the script can replace the username in the POST request with our username from the file.  To set this variable, <strong>double click</strong> on our <strong>POST</strong> and add &ldquo;<strong>{{variable_name}}</strong>&rdquo; after <strong>username=</strong></p>
-<p><img src="images/edit-zest-request.png" alt="Edit Zest Request"></p>
-<p>Now, If we run our script it will make one request per username from our file. We’ll need to make the same request 5 times.</p>
-</li>
-<li>
-<p>To do this, we can just copy and paste the <strong>POST</strong> 4 times (we could also do this in another inner loop)</p>
-<p><img src="images/duplicate-requests.png" alt="Duplicate Requests"></p>
-</li>
-<li>
-<p>Now we can Run our script and we are looking for differences in Size Resp. Body:</p>
-<p><img src="images/check-body-sizes.png" alt="Check body sizes"></p>
-</li>
-<li>
-<p>If we open this request (or also select another request and compare the response bodies) we can see that the response is “You have made too many incorrect attempts. Please try again in 1 minute(s).”</p>
-<p><img src="images/diff-body.png" alt="Diff body"></p>
-<p>This indicates to us that this username exists! We can open the response and see our username:</p>
-<p><img src="images/manual-request-editor.png" alt="Manual Request Editor"></p>
-<p>In this example, it’s “accounting” but when you try, it will likely be a different one.</p>
-</li>
-</ol>
-
-<h3 id="brute-forcing-the-password">Brute-forcing the Password <a class="header-link" href="#brute-forcing-the-password"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>So now we have a username and all we need to do is brute-force the password of this account with the <a href="/docs/desktop/addons/fuzzer/">Fuzzer</a>.</p>
-<ol>
-<li>
-<p>Go back to <strong>Sites</strong> tree and <strong>Right Click</strong> on our <strong>POST:login()(password, username)</strong> select <strong>Attack -&gt; Fuzz…</strong> and set the username to the one we just found and highlight value for the password:</p>
-<p><img src="images/fuzzer.png" alt="Fuzzer"></p>
-</li>
-<li>
-<p>Add our passwords to Fuzzer, <strong>Add… -&gt; Add</strong> Select Type: <strong>Strings</strong> and paste all passwords and click <strong>Add</strong></p>
-<p><img src="images/add-payload.png" alt="Add Payload"></p>
-</li>
-<li>
-<p>Click <strong>Start Fuzzer</strong></p>
-<p><img src="images/start-fuzzer.png" alt="Start Fuzzer"></p>
-</li>
-</ol>
-<p>In the example, it is a super strong password 😉 “1234567” and if we open the response of this request we can see the lab was successfully solved and we are logged in as “accounting”!</p>
-<p><img src="images/manual-request-editor-result.png" alt="Manual Request Editor Result"></p>
-<p>ZAP rocks! 🤘</p>
+            <p>ZAP has a lot of features aimed at developers but the Requester add-on is one that is really aimed at pentesters.</p>
+<p>It is not installed by default so you will need install it from the <a href="/addons/">Marketplace</a> from within ZAP.</p>
+<p>Once you have it installed you will see a new Requester tab next to the standard Request and Response tabs:</p>
+<p><img src="images/requester.png" alt="Requester Tab"></p>
+<p>The new tab is like the built in <a href="/docs/desktop/ui/dialogs/man_req/">Manual Request Editor</a> dialog but it also supports any number of Request/Response tabs.</p>
+<p>While you can create requests from scratch you will find it much easier to right click on existing requests in any of the other ZAP tabs and select &ldquo;Open in Requester Tab&hellip;&rdquo; - the request will then open in a new Requester tab.
+You can also use the Control / Command + &ldquo;W&rdquo; key to do the same thing via the keyboard.</p>
+<p><img src="images/right-click.png" alt="Right click option Tab"></p>
+<p>By default the tabs are given incrementing integer names, but you can double click on any of the tabs to be given the option to rename them to something more meaningful to you.</p>
+<p><img src="images/rename.png" alt="Rename"></p>
+<p>Have a play with this add-on and if you can think of anything it could do better then <a href="https://groups.google.com/group/zaproxy-users">get in touch</a>!</p>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2022-04-06-portswigger-lab-2fa-broken-logic/"> PortSwigger Labs: 2FA Broken Logic</a>
+                Previous <a class="previous" href="/blog/2022-04-14-portswigger-lab-username-enumeration-with-zap-scripts/"> PortSwigger Labs: Username Enumeration with ZAP Scripts</a>
               
-              
-                Next <a class="next" href="/blog/2022-05-10-the-requester-addon/"> The Requester Add-on</a>
               
           </div>
       </article>
@@ -254,44 +185,28 @@ You will need to set a Variable Name (in my case it is “fuzz”) and File Loca
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/jan-ambroz_400x400.jpg" />
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
                   
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Ján Ambroz
+                    Simon Bennetts
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/jan_ambroz_jr">@jan_ambroz_jr</a>
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
                   
                 </div>
               </section>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#lab-instructions">Lab Instructions</a></li>
-        <li><a href="#finding-the-username">Finding the Username</a></li>
-        <li><a href="#brute-forcing-the-password">Brute-forcing the Password</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+          <nav id="TableOfContents"></nav>
 
           
           <h4>Tags</h4>
           <ul id="tags">
            
            <li> <a href="/tags/blog/">blog</a> </li>
-           
-           <li> <a href="/tags/fuzzer/">fuzzer</a> </li>
-           
-           <li> <a href="/tags/portswigger-lab/">portswigger-lab</a> </li>
-           
-           <li> <a href="/tags/zest/">zest</a> </li>
            
           </ul>
           
@@ -339,7 +254,7 @@ You will need to set a Variable Name (in my case it is “fuzz”) and File Loca
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-04-14-portswigger-lab-username-enumeration-with-zap-scripts/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-05-10-the-requester-addon/index.md">Edit on GitHub</a>
   </div>
 
     </div>
