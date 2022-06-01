@@ -13,9 +13,9 @@
       
       <guid>/docs/desktop/addons/automation-framework/gui/</guid>
       <description>Automation Framework - GUI The Automation Framework has a GUI that is in the process of being developed.
-Automation Tab  This tab allows you to create, load, edit and run automation jobs. It has 2 sub tabs.
+Automation Tab This tab allows you to create, load, edit and run automation jobs. It has 2 sub tabs.
 A toolbar provides the following buttons:
- New Plan&amp;hellip; - this launches the New Plan dialog Load Plan&amp;hellip; - this allows you to load a plan from a yaml file Save Plan&amp;hellip; - this saves the current plan to a yaml file Run Plan&amp;hellip; - this runs the current plan Add Job&amp;hellip; - this launches the Add Job dialog to add a job to the current plan Remove Job&amp;hellip; - this removes the selected job from the current plan Move Job Up - this moves the selected job up one place in the current plan Move Job Down - this moves the selected job down one place in the current plan Add Test&amp;hellip; - this launches the Add Test dialog to add a test to the current job Remove Test&amp;hellip; - this removes the selected test from the current job  Plan sub-tab  A graphical representation of the plan which also shows the state of the plan when it is run.</description>
+New Plan&amp;hellip; - this launches the New Plan dialog Load Plan&amp;hellip; - this allows you to load a plan from a yaml file Save Plan&amp;hellip; - this saves the current plan to a yaml file Run Plan&amp;hellip; - this runs the current plan Add Job&amp;hellip; - this launches the Add Job dialog to add a job to the current plan Remove Job&amp;hellip; - this removes the selected job from the current plan Move Job Up - this moves the selected job up one place in the current plan Move Job Down - this moves the selected job down one place in the current plan Add Test&amp;hellip; - this launches the Add Test dialog to add a test to the current job Remove Test&amp;hellip; - this removes the selected test from the current job Plan sub-tab A graphical representation of the plan which also shows the state of the plan when it is run.</description>
     </item>
     
     <item>
@@ -36,7 +36,7 @@ env: # The environment, mandatory contexts : # List of 1 or more contexts, manda
       
       <guid>/docs/desktop/addons/automation-framework/authentication/</guid>
       <description>Automation Framework - authentication The Automation Framework supports all of the authentication mechanisms supported by ZAP.
-Environmental Variables  ZAP supports a set of Authentication Header Environmental Variables - these will be applied by ZAP if they are defined however ZAP is run, including via the Automation Framework.</description>
+Environmental Variables ZAP supports a set of Authentication Header Environmental Variables - these will be applied by ZAP if they are defined however ZAP is run, including via the Automation Framework.</description>
     </item>
     
     <item>
@@ -47,7 +47,7 @@ Environmental Variables  ZAP supports a set of Authentication Header Environment
       <guid>/docs/desktop/addons/automation-framework/job-addons/</guid>
       <description> Automation Framework - addOns Job This job allows you to manage the ZAP add-ons.
 The add-on identifiers to use in the &amp;lsquo;install&amp;rsquo; and &amp;lsquo;uninstall&amp;rsquo; lists are shown in the ZAP Desktop &amp;lsquo;Manage Add-ons&amp;rsquo; dialog or can be found on the ZAP Marketplace page.
-YAML   - type: addOns # Add-on management parameters: updateAddOns: false # Currently disabled due to problems updating the framework and jobs while they are running install: # A list of non standard add-ons to install from the ZAP Marketplace uninstall: # A list of standard add-ons to uninstall </description>
+YAML - type: addOns # Add-on management parameters: updateAddOns: false # Currently disabled due to problems updating the framework and jobs while they are running install: # A list of non standard add-ons to install from the ZAP Marketplace uninstall: # A list of standard add-ons to uninstall </description>
     </item>
     
     <item>
@@ -77,7 +77,7 @@ The passive scanner runs against all requests and responses that are generated b
       <guid>/docs/desktop/addons/automation-framework/job-spider/</guid>
       <description>Automation Framework - spider Job This job runs the traditional spider. This is fast but does not handle modern applications as effectively.
 By default this job will spider the first context defined in the environment and so none of the parameters are mandatory.
-YAML   - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context user: # String: An optional user to use for authentication, must be defined in the env url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
+YAML - type: spider # The traditional spider - fast but doesnt handle modern apps so well parameters: context: # String: Name of the context to spider, default: first context user: # String: An optional user to use for authentication, must be defined in the env url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the spider will be allowed to run for, default: 0 unlimited maxDepth: # Int: The maximum tree depth to explore, default 5 maxChildren: # Int: The maximum number of children to add to each node in the tree acceptCookies: # Bool: Whether the spider will accept cookies, default: true handleODataParametersVisited: # Bool: Whether the spider will handle OData responses, default: false handleParameters: # Enum [ignore_completely, ignore_value, use_all]: How query string parameters are used when checking if a URI has already been visited, default: use_all maxParseSizeBytes: # Int: The max size of a response that will be parsed, default: 2621440 - 2.</description>
     </item>
     
     <item>
@@ -97,7 +97,7 @@ By default this job will actively scan the first context defined in the environm
       
       <guid>/docs/desktop/addons/automation-framework/tests/</guid>
       <description>Automation Framework - Job Outcome Tests The automation framework supports testing the job outcomes based on conditions that you can set in the YAML file. Currently, tests of type &amp;lsquo;stats&amp;rsquo; and &amp;lsquo;alert&amp;rsquo; are available. More types will be added in the future.
-Statistics  Statistics-based tests are supported by all add-ons that have an automation job.</description>
+Statistics Statistics-based tests are supported by all add-ons that have an automation job.</description>
     </item>
     
     <item>
@@ -106,8 +106,8 @@ Statistics  Statistics-based tests are supported by all add-ons that have an aut
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/desktop/addons/automation-framework/about/</guid>
-      <description>Automation Framework - About Source Code  https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
-Authors  ZAP Dev Team</description>
+      <description>Automation Framework - About Source Code https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
+Authors ZAP Dev Team</description>
     </item>
     
     <item>
