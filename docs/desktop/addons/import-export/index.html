@@ -1423,11 +1423,14 @@
 
 </ol>
           
+<h1 id="copy-urls-to-clipboard">&gt;Copy URLs to Clipboard</h1>
+<p>A context menu item to Copy URLs to the system clipboard.</p>
+
 <h1 id="save-selected-entries-as-har-http-archive-file">Save Selected Entries as HAR (HTTP Archive File)</h1>
 <p>A context menu item to save the selected HTTP messages in HAR format.</p>
 
 <h1 id="save-raw-message">Save Raw Message</h1>
-<p>Provides a context menu to save content of HTTP messages as binary.</p>
+<p>Provides a context menu to save content of HTTP messages as binary. (While the files will probably open in a simple editor it may have null characters or malformed bytes.)</p>
 
 <h1 id="save-xml-message">Save XML Message</h1>
 <p>Provides a context menu to save content of HTTP messages as XML.</p>
@@ -1441,6 +1444,26 @@
 <h1 id="import-urls">Import URLs</h1>
 <p>An option to import a file of URLs is available via the &lsquo;Import&rsquo; menu (&lsquo;Import a File Containing URLs&rsquo;). The file must be plain text with one URL per line. Blank lines and lines starting with # will be ignored.</p>
 <p>It also supports the <a href="/docs/desktop/addons/import-export/automation/">Automation Framework</a>.</p>
+
+<h1 id="export">Export</h1>
+<p>The add-on also adds a top level &ldquo;Export&rdquo; menu, providing the following functionality.</p>
+
+<h2 id="export-messages-to-file">Export Messages to File&hellip; <a class="header-link" href="#export-messages-to-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This allows you to save requests and responses to a text file.<br>
+Select the messages to save in the History tab (including multi-select).</p>
+
+<h2 id="export-response-to-file-this-allows-you-to-save-a-specific-responses-to-a-file">Export Response to File&hellip; This allows you to save a specific responses to a file. <a class="header-link" href="#export-response-to-file-this-allows-you-to-save-a-specific-responses-to-a-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Select the relevant message in the History tab - note that binary responses (such as images) can be saved as well as text responses.</p>
+
+<h2 id="export-all-urls-to-file">Export All URLs to File&hellip; <a class="header-link" href="#export-all-urls-to-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This allows you to save all of the URLs accessed to a text or HTML file.<br>
+This can be used, amongst other things, to compare the URLs available to users with different roles or permissions on the same system. (Also consider leveraging the Access Control Testing add-on.) This functionality is also available via the right-click context menu.</p>
+
+<h2 id="export-selected-urls-to-file">Export Selected URLs to File&hellip; <a class="header-link" href="#export-selected-urls-to-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Based on the selection (including multi-select) in the Sites tree all URLs and child URLs of selected nodes are exported. This functionality is also available via the right-click context menu.</p>
+
+<h2 id="export-urls-for-context">Export URLs for Context <a class="header-link" href="#export-urls-for-context"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>All URLs in the Sites tree that fall within the selected context are exported. This functionality is also available from the right-click menu when used on a Context node in the Sites tree panel.</p>
 
 <h1 id="zap-api">ZAP API</h1>
 <p>This add-on also exposes various ZAP API endpoints to facilitate programmatic use of the functionality.</p>
