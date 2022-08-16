@@ -1448,7 +1448,8 @@ Post 2.5.0 you can change the length of time used for the blind injection attack
 It then performs a series of attacks specifically targeted at the location in which each of the instances occurs, including tag attributes, URL attributes, attributes in tags which support src attributes, html comments etc.<br>
 Note:<br>
 This rule only scans HTTP PUT requests at LOW threshold.<br>
-If an XSS injection is located in a JSON response a LOW risk and LOW confidence alert is raised.</p>
+If the alert threshold is set to LOW, XSS injection located in a JSON response results in a LOW risk and LOW confidence alert is raised. For other response content-types a LOW confidence alert is raised.<br>
+If the alert threshold is set to either MEDIUM or HIGH, XSS injection located in non-HTML responses do not generate alerts.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/CrossSiteScriptingScanRule.java">CrossSiteScriptingScanRule.java</a></p>
 
 <h2 id="cross-site-scripting-persistent">Cross Site Scripting (persistent) <a class="header-link" href="#cross-site-scripting-persistent"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
