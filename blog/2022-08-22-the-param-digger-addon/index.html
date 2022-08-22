@@ -6,20 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Help Needed: Fund ZAP Development"/>
-<meta name="twitter:description" content="Has ZAP helped you? Now it is your turn to help ZAP."/>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2022-08-22-the-param-digger-addon/images/mascot.png"/>
 
-    <meta property="og:title" content="Help Needed: Fund ZAP Development" />
-<meta property="og:description" content="Has ZAP helped you? Now it is your turn to help ZAP." />
+<meta name="twitter:title" content="The Param Digger Add-on GSOC 2022"/>
+<meta name="twitter:description" content="The parameter discovery add-on for ZAP."/>
+
+    <meta property="og:title" content="The Param Digger Add-on GSOC 2022" />
+<meta property="og:description" content="The parameter discovery add-on for ZAP." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2022-06-17-help-needed-fund-zap-development/" /><meta property="article:section" content="blog" />
-<meta property="article:published_time" content="2022-06-17T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-06-17T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2022-08-22-the-param-digger-addon/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2022-08-22-the-param-digger-addon/images/mascot.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2022-08-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-08-22T00:00:00+00:00" />
 
 
   
-  <title>OWASP ZAP &ndash; Help Needed: Fund ZAP Development</title>
+  <title>OWASP ZAP &ndash; The Param Digger Add-on GSOC 2022</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -137,7 +139,7 @@
 
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">Help Needed: Fund ZAP Development</h1>
+    <h1 class="text--white">The Param Digger Add-on GSOC 2022</h1>
   </div>
 </section>
 
@@ -150,31 +152,39 @@
 
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Friday June 17, 2022</span>
-              <span class="word-count fl-r"> 224 Words </span>
+              Posted <span class="post-date">Monday August 22, 2022</span>
+              <span class="word-count fl-r"> 705 Words </span>
             </section>
-            <p>Funding development on a large and complex open source project like OWASP ZAP is always challenging.
-Until recently I was sponsored by a company to work full time on ZAP, but that is no longer the case.</p>
-<p>Since I released ZAP in 2010 it has become the world&rsquo;s most popular web security scanner used
-<a href="/docs/statistics/bar-charts/">millions of times per month</a>.
-It is used by companies and individuals all over the world and is the basis for a growing number of commercial offerings.</p>
-<p>ZAP has world leading automation and scripting capabilities and has introduced industry leading innovations such as the Ajax Spider, Web Sockets support, and the Heads Up Display.</p>
-<p>There is still a huge amount to do and I have loads of ideas for improvements, both big and small.</p>
-<p>But I also need to pay the bills.</p>
-<p>Ideally I would like to carry on working full time on ZAP to make it better for everyone.
-For that reason I’m going to try to see if I can get enough sponsorship and/or ZAP related contract / support / training work in order to allow me to do this.</p>
-<p>You can sponsor me directly via my <a href="https://github.com/sponsors/psiinon/">GitHub Sponsors page</a> or you can get in contact with me directly via
-<a href="mailto:psiinon@gmail.com">email</a> or <a href="https://twitter.com/psiinon">Twitter DM</a>.</p>
-<p>ZAP will of course remain completely free and open source whatever happens.</p>
-<p>Simon Bennetts</p>
+            <p>Parameter discovery is the process of finding unlinked, unreferenced, or hidden parameters that can be used by the user to control or influence the behaviour of the application. Resulting in successful attack scenarios like <a href="https://www.zaproxy.org/docs/alerts/40018/">SQL injection</a>, <a href="https://www.zaproxy.org/docs/alerts/40012/">XSS</a>, SSRF, Web Cache Poisoning based attacks and much more. Often times such uncovered parameters are properly configured and can be a suitable entry point for further manipulation. These are real hidden treasures which can be very crucial in the recon process to develop a successful exploit.</p>
+<p><a href="/docs/desktop/addons/parameter-digger/">Param Digger</a> is a new add-on for ZAP that allows you to discover and analyse parameters in web applications, that might not be visible to the user. The main idea behind Param Digger is to increase the attack surface of the website by identifying these parameters. It&rsquo;s inspired by the <a href="https://portswigger.net/bappstore/17d2949a985c4b7ca092728dba871943">Param Miner</a> extension for Burp Suite. This a part of my GSoC 2022 project <a href="https://summerofcode.withgoogle.com/programs/2022/projects/XDtc6Ero">link</a>.</p>
+<p>The add-on is still in its early stage, so the range of functionality is limited. I&rsquo;ll be adding more functionality over the next few days and in the long term I hope to add it to the Automation Framework in ZAP.</p>
+
+<h2 id="how-to-use-the-param-digger-add-on">How to use the Param Digger add-on <a class="header-link" href="#how-to-use-the-param-digger-add-on"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>To begin with, you will need install it from the <a href="/addons/">Marketplace</a> from within ZAP as it&rsquo;s not installed by default. Once you have it installed, you can access the Param Digger from three locations: the add-on menu which appears after clicking the plus green icon, the right click menu under the Attack option, and from the tools menu.
+<img src="images/right-click-menu-example.png" alt="Right click menu"></p>
+<p>This is how the Param Digger panel in the information window looks like:
+<img src="images/param-digger.png" alt="Param Digger Tab"></p>
+<p>Whether you choose to start a new scan by clicking the &ldquo;New Scan&rdquo; button on the Param Digger tab or start a new scan from the attack menu or the tools menu, you will be greeted with the Param Digger dialog. This dialog allows you to select the parameters you want to discover, the methods you want to use, the word lists you want to use, and other options.<br>
+<img src="images/param-digger-dialog.png" alt="Param Digger Dialog"></p>
+<p>Currently the Param Digger only supports the &ldquo;URL Guess&rdquo;, which uses a list of URL parameters. So it is the one which is selected by default. The screenshot of the default &ldquo;URL Guess&rdquo; tab is given below. You can use the predefined word list provided by the add-on or you can create your own and import it after selecting the &ldquo;Custom&rdquo; option from the Wordlist pull down. Selecting &ldquo;Custom&rdquo; would also enable the File Location field for you where you can supply the appropriate file path after browsing. You can also use both the word lists provided by the add-on and your own by selecting the &ldquo;Both&rdquo; option.</p>
+<p>After selection of the word list, you have to select the methods. By default it&rsquo;s GET. You can select as many methods as you want using Ctrl + Click (For Mac or other related platforms use Cmd + Click).</p>
+<p><img src="images/url-guess-tab.png" alt="URL Guess Tab"></p>
+
+<h2 id="future-work">Future Work <a class="header-link" href="#future-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>While the foundation of the add-on has been laid out, the Param Digger is still in its early stage. There is a lot more work left to do. I will be adding more functionality such as: A starter string for the JSON method in the URL Guesser, adding a new method for XML, and other guessing methods in the main dialog. I will also be adding &ldquo;Parameter Mining&rdquo; using &ldquo;FAT GET&rdquo; requests and other techniques as suggested in <a href="https://portswigger.net/research/practical-web-cache-poisoning">Practical Web Cache Posinoning</a> and <a href="https://portswigger.net/research/web-cache-entanglement">Web Cache Entanglement</a> which can be enabled or disabled based on users&rsquo; choice, having the name &ldquo;web cache poisoning&rdquo; or other such related term.</p>
+<p>I would also like to work on the add-on&rsquo;s integration with the ZAP Automation Framework. This would help users to find parameters on every URL in the website by using the Spider and launch active or passive scans against the results.</p>
+<p>Have a play with this add-on and if you can think of anything it could do better then get in touch or open issues on GitHub!<br>
+<a href="https://groups.google.com/group/zaproxy-users">User Group</a>
+<a href="https://web.libera.chat/#zaproxy">IRC</a></p>
+
+<h3 id="note">Note <a class="header-link" href="#note"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>An earlier version of this add-on was published on the ZAP Marketplace as &ldquo;Param Miner&rdquo;. If you installed this add-on you will need to remove it manually - the name was changed to prevent it being confused with the Burp Suite add-on.</p>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2022-05-10-the-requester-addon/"> The Requester Add-on</a>
+                Previous <a class="previous" href="/blog/2022-06-17-help-needed-fund-zap-development/"> Help Needed: Fund ZAP Development</a>
               
-              
-                Next <a class="next" href="/blog/2022-08-22-the-param-digger-addon/"> The Param Digger Add-on GSOC 2022</a>
               
           </div>
       </article>
@@ -188,28 +198,37 @@ For that reason I’m going to try to see if I can get enough sponsorship and/or
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
-                  
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Simon Bennetts
+                    Arkaprabha Chakraborty
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  <a class="author-twitter" href="https://twitter.com/FValkyrie_17">@FValkyrie_17</a>
                   
                 </div>
               </section>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents"></nav>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-to-use-the-param-digger-add-on">How to use the Param Digger add-on</a></li>
+    <li><a href="#future-work">Future Work</a>
+      <ul>
+        <li><a href="#note">Note</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
           
           <h4>Tags</h4>
           <ul id="tags">
            
            <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/gsoc/">gsoc</a> </li>
            
           </ul>
           
@@ -257,7 +276,7 @@ For that reason I’m going to try to see if I can get enough sponsorship and/or
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-06-17-help-needed-fund-zap-development/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-08-22-the-param-digger-addon/index.md">Edit on GitHub</a>
   </div>
 
     </div>
