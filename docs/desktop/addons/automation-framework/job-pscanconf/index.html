@@ -266,6 +266,21 @@
                             <a href="/docs/desktop/addons/automation-framework/job-spider/">Automation Framework - spider Job</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/automation-framework/options/">Automation Framework - Options</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-alert/">Automation Framework - Alert Job Test</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-monitor/">Automation Framework - Monitor Job Test</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-stats/">Automation Framework - Statistics Job Test</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-url/">Automation Framework - URL Presence Job Tests</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/automation-framework/tests/">Automation Framework - Job Tests</a>
                         </li>
         </ul>
@@ -1458,7 +1473,9 @@ However you can run this job later, or multiple times, if you want different job
     - id:                              # Int: The rule id as per https://www.zaproxy.org/docs/alerts/
       name:                            # String: The name of the rule for documentation purposes - this is not required or actually used
       threshold:                       # String: The Alert Threshold for this rule, one of Off, Low, Medium, High, default: Medium
-</code></pre>
+</code></pre><p>The job saves the current passive scan configuration when a plan starts and resets it when the plan ends. This is primarily to ensure the scanOnlyInScope setting is not changed - the default is &rsquo;true&rsquo; for the job but &lsquo;false&rsquo; in the GUI.<br>
+In versions up to and including 0.16.0 running this job with the default settings would change scanOnlyInScope to &rsquo;true&rsquo; in the GUI. This has proved confusing as many users use the GUI without setting a scope - when scanOnlyInScope is set to &rsquo;true&rsquo; and no scope is defined then no passive scan alerts are raised.</p>
+
         </div>
       </div>
   </div>
