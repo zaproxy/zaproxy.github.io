@@ -265,6 +265,21 @@
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-spider/">Automation Framework - spider Job</a>
                         </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/options/">Automation Framework - Options</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-alert/">Automation Framework - Alert Job Test</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-monitor/">Automation Framework - Monitor Job Test</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-stats/">Automation Framework - Statistics Job Test</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/test-url/">Automation Framework - URL Presence Job Tests</a>
+                        </li>  
                         <li class="tree-active"> 
                             <a href="/docs/desktop/addons/automation-framework/tests/">Automation Framework - Job Tests</a>
                         </li>
@@ -1442,76 +1457,15 @@
 </ol>
           
 <h1 id="automation-framework---job-outcome-tests">Automation Framework - Job Outcome Tests</h1>
-<p>The automation framework supports testing the job outcomes based on conditions that you can set in the YAML file. Currently, tests of type &lsquo;stats&rsquo; and &lsquo;alert&rsquo; are available. More types will be added in the future.</p>
+<p>The automation framework supports testing the job outcomes based on conditions that you can set in the YAML file.</p>
+<p>The currently supported tests are:</p>
+<ul>
+<li><a href="/docs/desktop/addons/automation-framework/test-alert/">alert</a> - Alert tests - validate the presence or absence of specified alerts</li>
+<li><a href="/docs/desktop/addons/automation-framework/test-monitor/">monitor</a> - Monitor tests - allow you to stop long running jobs based on statistic thresholds</li>
+<li><a href="/docs/desktop/addons/automation-framework/test-stats/">stats</a> - Statistics tests - test any of the statistics maintained by ZAP</li>
+<li><a href="/docs/desktop/addons/automation-framework/test-url/">url</a> - URL tests - validate the presence/absence of a URL and it’s specific expressions in the HTTP response/request</li>
+</ul>
 
-<h2 id="statistics">Statistics <a class="header-link" href="#statistics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>Statistics-based tests are supported by all add-ons that have an automation job. If there is a relevant statistic used by an add-on, a test can be created for it.<br>
-An up to date list of the statistics ZAP maintains can be found at <a href="/docs/internal-statistics/">https://www.zaproxy.org/docs/internal-statistics/</a>.</p>
-<p>A job can have tests for multiple statistics and multiple tests can be created for the same statistic.</p>
-<p>Note that statistics-based tests will function correctly only if in memory statistics have been
-<a href="/docs/desktop/ui/dialogs/options/stats/#in-memory-statistics-enabled">enabled</a>.</p>
-
-<h2 id="yaml">YAML <a class="header-link" href="#yaml"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<pre tabindex="0"><code>  jobs:
-  - type: example
-    parameters:
-      jobSpecificParam: &#39;value&#39;
-    tests:
-      - name: &#39;test one&#39;                      # Name of the test, optional
-        type: stats                           # Specifies that the test is of type &#39;stats&#39;
-        statistic: &#39;stats.addon.something&#39;    # Name of an integer / long statistic
-        site:                                 # Name of the site for site specific tests, supports vars
-        operator: &#39;&gt;=&#39;                        # One of &#39;==&#39;, &#39;!=&#39;, &#39;&gt;=&#39;, &#39;&gt;&#39;, &#39;&lt;&#39;, &#39;&lt;=&#39;
-        value: 10                             # Value to compare statistic against
-        onFail: &#39;info&#39;                        # String: One of &#39;warn&#39;, &#39;error&#39;, &#39;info&#39;, mandatory
-</code></pre>
-<h2 id="alert">Alert <a class="header-link" href="#alert"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>Alert tests are supported by the activeScan and passiveScan-wait jobs. These tests can be used to validate the presence/absence of specific alerts in the active/passive scan. It is mandatory for the alerts specified in the plan to have a scanRuleId, against which the generated alerts will always be matched. All other fields describing an alert are optional regexes, and will be matched against only if they are specified.</p>
-<p>A job can have tests for multiple alerts, and multiple tests can be created for alerts having the same scanRuleId.</p>
-
-<h2 id="yaml-1">YAML <a class="header-link" href="#yaml-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<pre tabindex="0"><code>  jobs:
-  - type: activeScan                   # The active scanner - this actively attacks the target so should only be used with permission
-    parameters:
-      context:                         # String: Name of the context to attack, default: first context
-      policy:                          # String: Name of the scan policy to be used, default: Default Policy
-      maxRuleDurationInMins:           # Int: The max time in minutes any individual rule will be allowed to run for, default: 0 unlimited
-      maxScanDurationInMins:           # Int: The max time in minutes the active scanner will be allowed to run for, default: 0 unlimited
-    tests:
-      - name: &#39;test one&#39;                       # Name of the test, optional
-        type: alert                            # Specifies that the test is of type &#39;alert&#39;
-        action: passIfPresent/passIfAbsent     # String: The condition (presence/absence) of the alert, default: passIfAbsent  
-        scanRuleId:                            # Integer: The id of the scanRule which generates the alert, mandatory  
-        alertName:                             # String: The name of the alert generated, optional
-        url: http://www.example.com/path       # String: The url of the request corresponding to the alert generated, optional
-        method:                                # String: The method of the request corresponding to the alert generated, optional
-        attack:                                # String: The actual attack which generated the alert, optional
-        param:                                 # String: The parameter which was modified to generate the alert, optional
-        evidence:                              # String: The evidence corresponding to the alert generated, optional
-        confidence:                            # String: The confidence of the alert, one of &#39;False Positive&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;, &#39;Confirmed&#39;, optional
-        risk:                                  # String: The risk of the alert, one of &#39;Informational&#39;, &#39;Low&#39;, &#39;Medium&#39;, &#39;High&#39;, optional
-        otherInfo:                             # String: Additional information corresponding to the alert, optional
-        onFail: &#39;info&#39;                         # String: One of &#39;warn&#39;, &#39;error&#39;, &#39;info&#39;, mandatory
-  
-</code></pre>
-<h2 id="url-presence">URL Presence <a class="header-link" href="#url-presence"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>Presence tests are supported by all the jobs. These tests can be used to validate the presence/absence of a URL and it&rsquo;s specific expressions in the Http response/request. The expressions are specified in the YAML file as regular expressions. The test will pass if the URL or the specified expression is found in the response/request depending upon the operator selection.</p>
-<p>A job can have tests for multiple expressions, and multiple tests can be created for expressions having the same URL.</p>
-
-<h2 id="yaml-2">YAML <a class="header-link" href="#yaml-2"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<pre tabindex="0"><code>  jobs:
-  - type: something
-    tests:
-      - name: &#39;test one&#39;                      # Name of the test, optional
-        type: url                             # Specifies that the test is of type &#39;url&#39;
-        url: http://www.example.com/path      # String: The URL to be tested.
-        operator: &#39;and&#39;                       # One of &#39;and&#39;, &#39;or&#39;, default is &#39;or&#39;
-        requestHeaderRegex:                   # String: The regular expression to be matched in the request header, optional
-        requestBodyRegex:                     # String: The regular expression to be matched in the request body, optional
-        responseHeaderRegex:                  # String: The regular expression to be matched in the response header, optional
-        responseBodyRegex:                    # String: The regular expression to be matched in the response body, optional
-        onFail: &#39;info&#39;                        # String: One of &#39;warn&#39;, &#39;error&#39;, &#39;info&#39;, mandatory
-</code></pre>
         </div>
       </div>
   </div>
