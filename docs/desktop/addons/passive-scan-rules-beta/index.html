@@ -1454,6 +1454,15 @@
 </ol>
           
 <h1 id="passive-scan-rules---beta">Passive Scan Rules - Beta</h1>
+
+<h2 id="general-configuration">General Configuration <a class="header-link" href="#general-configuration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="trusted-domains">Trusted Domains <a class="header-link" href="#trusted-domains"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>You can specify a comma separated list of URL regex patterns using the <code>rules.domains.trusted</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any link URL that matches one of these patterns will be considered to be in a trusted domain and will therefore not be reported. Following rules supports <strong>Trusted Domains</strong> :</p>
+<ul>
+<li>Reverse Tabnabbing</li>
+</ul>
+<hr>
 <p>The following beta status passive scan rules are included in this add-on:</p>
 
 <h2 id="big-redirect-detected-potential-sensitive-information-leak">Big Redirect Detected (Potential Sensitive Information Leak) <a class="header-link" href="#big-redirect-detected-potential-sensitive-information-leak"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
@@ -1516,7 +1525,7 @@ See: <a href="https://github.com/iannuttall/binlist-data">binlist-data</a> for m
 <p>This checks to see if any links use a target attribute using &ldquo;opener&rdquo; keyword in the &ldquo;rel&rdquo; attribute, as this may allow target pages to take over the page that opens them.<br>
 By default this rule will ignore all links that are in the same context as the page. At the LOW threshold it will only ignore links that are on the same host.<br>
 At HIGH threshold it will only report links that use the &ldquo;_blank&rdquo; target.<br>
-You can specify a comma separated list of URL regex patterns using the <code>rules.domains.trusted</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any link URL that matches one of these patterns will be considered to be in a trusted domain and will therefore not be reported.</p>
+This rule supports <strong>Trusted Domains</strong> , check &ldquo;General Configuration&rdquo; for more information.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/LinkTargetScanRule.java">LinkTargetScanRule.java</a></p>
 
 <h2 id="servlet-parameter-pollution">Servlet Parameter Pollution <a class="header-link" href="#servlet-parameter-pollution"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
