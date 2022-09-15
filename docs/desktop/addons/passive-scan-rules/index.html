@@ -1510,11 +1510,12 @@ At LOW threshold all responses are considered including errors and redirects.</p
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CharsetMismatchScanRule.java">CharsetMismatchScanRule.java</a></p>
 
 <h2 id="content-security-policy-csp-header-not-set">Content Security Policy (CSP) Header Not Set <a class="header-link" href="#content-security-policy-csp-header-not-set"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>This checks HTML response headers for the presence of a Content Security Policy header.<br>
+<p>This checks HTML response headers for the presence of a Content Security Policy header, or the response body for CSP specified via META tag.<br>
 By default this rule checks for the presence of the &ldquo;Content-Security-Policy&rdquo; header, and at the Low threshold also checks for the &ldquo;X-Content-Security-Policy&rdquo; and &ldquo;X-WebKit-CSP&rdquo; headers.<br>
-Redirects and non HTML responses are ignored except at the Low threshold.</p>
+Redirects and non-HTML responses are ignored except at the Low threshold.</p>
 <p>If a &ldquo;Content-Security-Policy-Report-Only&rdquo; header is found on a response an INFO alert is raised. This may represent an enforcement effort
 that is actively being refined or developed, or one which is only partially implemented.</p>
+<p>Note: This rule does not perform any actual analysis of the specified policy, for that please ensure the CSP scan rule is enabled.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyMissingScanRule.java">ContentSecurityPolicyMissingScanRule.java</a></p>
 
 <h2 id="content-type-missing">Content Type Missing <a class="header-link" href="#content-type-missing"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
@@ -1618,7 +1619,9 @@ repeated scans the &ldquo;Context Alert Filters&rdquo; add-on could be leveraged
 
 <h2 id="timestamp-disclosure">Timestamp Disclosure <a class="header-link" href="#timestamp-disclosure"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>A timestamp was disclosed by the application/web server.<br>
-At HIGH threshold this rule does not alert on potential timestamps that are not within a range of plus or minus one year.</p>
+At HIGH threshold this rule does not alert on potential timestamps that are not within a range of plus or minus one year.<br>
+At MEDIUM threshold this rule does not alert on potential timestamps beyond 10 years.<br>
+At all thresholds, this rule will not alert on timestamps beyond the Y2038 epoch edge.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/TimestampDisclosureScanRule.java">TimestampDisclosureScanRule.java</a></p>
 
 <h2 id="username-hash-found">Username Hash Found <a class="header-link" href="#username-hash-found"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
