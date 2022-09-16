@@ -4,10 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
+  <meta name="description" content="This guide goes over the details of ZAP&#39;s session database.">
   
-  <link rel="alternate" type="application/rss+xml" href="/tags/tutorial/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; tutorial</title>
+  <title>OWASP ZAP &ndash; ZAP Session Database</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -122,212 +121,97 @@
 </header>
 
   
+
 <section class="bolt-header">
-  <div class="wrapper py-20">
-    <h1 class="text--white">Tag: tutorial</h1>
+    <div class="wrapper py-20">
+      <h1 class="text--white">ZAP Session Database</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
-      <div class="flex latest-versions">
-        <div class="col-2-3 pr-30">
-            
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/docs/developer/zap-session-db/">ZAP Session Database</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Wednesday September 15, 2021</span>
-                  <span class="word-count fl-r"> 229 Words </span>
-                </section>
-                <section class="summary">ZAP stores its session data in an HSQLDB file database. There is also experimental support for other database engines.
-Connecting to a Session Database Since ZAP locks its session file, it is only possible to view or modify the database when ZAP doesn&rsquo;t have the session open. Session files are usually stored under session/ in the default directory.</section>
-            </article>
-          
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/docs/developer/building-zap-with-intellij-idea/">Building ZAP with IntelliJ IDEA</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Monday March 22, 2021</span>
-                  <span class="word-count fl-r"> 667 Words </span>
-                </section>
-                <section class="summary">This guide explains how to make changes to ZAP using IntelliJ IDEA.
-Preparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of IntelliJ IDEA.
-Gradle Resources Working with ZAP in IntelliJ IDEA may need a bit more Java resources for the Gradle actions.</section>
-            </article>
-          
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/docs/developer/creating-new-addon-in-zap-extensions/">Creating a New Add-on in zap-extensions</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Monday March 22, 2021</span>
-                  <span class="word-count fl-r"> 650 Words </span>
-                </section>
-                <section class="summary">ZAP has a plugin architecture and new functionality is implemented via add-ons.
-Add-ons can be defined in any repository but most of the ones that the ZAP core team maintains live in zap-extensions. You should use this repository if you are planning on contributing your add-on to the ZAP project, but please talk to the ZAP Core team about this first via the ZAP Developer Group.</section>
-            </article>
-          
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/docs/developer/building-zap-with-eclipse/">Building ZAP with Eclipse</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Thursday March 18, 2021</span>
-                  <span class="word-count fl-r"> 564 Words </span>
-                </section>
-                <section class="summary">If you want to make changes to ZAP using the Eclipse IDE then you are in the right place.
-Preparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of Eclipse suitable for Java development. We would suggest the &ldquo;Eclipse IDE for Java Developers&rdquo; package.</section>
-            </article>
-          
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/docs/developer/quick-start-build/">A Quick Start Guide to Building ZAP</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Friday December 4, 2020</span>
-                  <span class="word-count fl-r"> 896 Words </span>
-                </section>
-                <section class="summary">Have you ever wanted to play around with the ZAP codebase but felt it was too overwhelming? This guide will walk you through building ZAP from the command line regardless of the operating system and IDE you&rsquo;re using.
-You can also follow along with Simon as he sets the ZAP development environment in this Deep Dive video:</section>
-            </article>
-          
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/getting-started/">Getting Started</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Monday January 1, 0001</span>
-                  <span class="word-count fl-r"> 2785 Words </span>
-                </section>
-                <section class="summary">Overview This guide is intended to serve as a basic introduction for using ZAP to perform security testing, even if you don’t have a background in security testing. To that end, some security testing concepts and terminology is included but this document is not intended to be a comprehensive guide to either ZAP or security testing.</section>
-            </article>
-          
-        </div>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+  <ol class="breadcrumbs">
 
-        <div class="col-1-3 ml-20">
-          
-<section class="p-20">
-    <h3>Tags</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/tags/advisory/">advisory</a></li>
-    
-        <li><a href="/tags/api/">api</a></li>
-    
-        <li><a href="/tags/asvs/">asvs</a></li>
-    
-        <li><a href="/tags/authentication/">authentication</a></li>
-    
-        <li><a href="/tags/award/">award</a></li>
-    
-        <li><a href="/tags/blog/">blog</a></li>
-    
-        <li><a href="/tags/browser/">browser</a></li>
-    
-        <li><a href="/tags/cfp/">cfp</a></li>
-    
-        <li><a href="/tags/competition/">competition</a></li>
-    
-        <li><a href="/tags/docker/">docker</a></li>
-    
-        <li><a href="/tags/fileupload/">fileupload</a></li>
-    
-        <li><a href="/tags/firefox/">firefox</a></li>
-    
-        <li><a href="/tags/fuzzer/">fuzzer</a></li>
-    
-        <li><a href="/tags/graphql/">graphql</a></li>
-    
-        <li><a href="/tags/gsoc/">gsoc</a></li>
-    
-        <li><a href="/tags/guide/">guide</a></li>
-    
-        <li><a href="/tags/hacking/">hacking</a></li>
-    
-        <li><a href="/tags/history/">history</a></li>
-    
-        <li><a href="/tags/log4shell/">log4shell</a></li>
-    
-        <li><a href="/tags/networking/">networking</a></li>
-    
-        <li><a href="/tags/oast/">oast</a></li>
-    
-        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
-    
-        <li><a href="/tags/portswigger-lab/">portswigger-lab</a></li>
-    
-        <li><a href="/tags/questionnaire/">questionnaire</a></li>
-    
-        <li><a href="/tags/release/">release</a></li>
-    
-        <li><a href="/tags/reporting/">reporting</a></li>
-    
-        <li><a href="/tags/retest/">retest</a></li>
-    
-        <li><a href="/tags/scanrules/">scanrules</a></li>
-    
-        <li><a href="/tags/scripts/">scripts</a></li>
-    
-        <li><a href="/tags/soap/">soap</a></li>
-    
-        <li><a href="/tags/statistics/">statistics</a></li>
-    
-        <li><a href="/tags/top10/">top10</a></li>
-    
-        <li><a href="/tags/tutorial/">tutorial</a></li>
-    
-        <li><a href="/tags/update/">update</a></li>
-    
-        <li><a href="/tags/waspy/">waspy</a></li>
-    
-        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
-    
-        <li><a href="/tags/zapcon/">zapcon</a></li>
-    
-        <li><a href="/tags/zest/">zest</a></li>
-    
-    </ul>
+
+    <li>
+        <a href='/docs/'>Documentation</a>
+    </li>
+
+    <li>
+        <a href='/docs/developer/'>ZAP Developer Guide</a>
+    </li>
+
+    <li>
+        <a href='/docs/developer/zap-session-db/'>ZAP Session Database</a>
+    </li>
+
+
+</ol>
+    <main><p>ZAP stores its session data in an <a href="https://hsqldb.org/">HSQLDB</a> file database.
+There is also experimental support for <a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/dist/db">other database engines</a>.</p>
+
+<h2 id="connecting-to-a-session-database">Connecting to a Session Database <a class="header-link" href="#connecting-to-a-session-database"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Since ZAP locks its session file, it is only possible to view or modify the database when ZAP doesn&rsquo;t have the session open.
+Session files are usually stored under <code>session/</code> in the <a href="/faq/what-is-the-default-directory-that-zap-uses/">default directory</a>.</p>
+<p>You may use the following details to connect to a session database.
+The following example assumes that your session file is called <code>test.session</code> and it is saved under <code>~/.ZAP_D/session/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Connection Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>URL</td>
+<td><code>jdbc:hsqldb:file:~/.ZAP_D/session/test.session;ifexists=true</code></td>
+</tr>
+<tr>
+<td>Username</td>
+<td><code>sa</code></td>
+</tr>
+</tbody>
+</table>
+<p> <br>
+There is no password required for the connection.
+The <code>ifexists=true</code> property in the URL prevents a new database from being created if one doesn&rsquo;t exist already.</p>
+
+<h2 id="implementation-details">Implementation Details <a class="header-link" href="#implementation-details"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The database is initialized using an SQL script called <a href="https://github.com/zaproxy/zaproxy/blob/da5422097306d5bbc1a648a90d0846090af1504f/zap/src/main/resources/org/zaproxy/zap/resources/zapdb.script"><code>zapdb.script</code></a>.</p>
+
+<h3 id="core-tables">Core Tables <a class="header-link" href="#core-tables"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>In the <a href="https://github.com/zaproxy/zaproxy/blob/da5422097306d5bbc1a648a90d0846090af1504f/zap/src/main/java/org/parosproxy/paros/db/paros/ParosDatabase.java"><code>org.parosproxy.paros.db.paros.ParosDatabase</code></a> class, multiple <code>Table*</code> instances are added as database listeners.
+The <code>Table*</code> classes create new tables in the database when a new connection is set up.</p>
+<p>You can find some example tables in <a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/java/org/parosproxy/paros/db">src/main/java/org/parosproxy/paros/db</a>.
+New core tables must be added to <a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/java/org/zaproxy/zap/db">src/main/java/org/zaproxy/zap/db</a></p>
+
+<h3 id="add-on-tables">Add-on Tables <a class="header-link" href="#add-on-tables"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Add-ons may add tables to the session database as well.
+To do so, they can override <a href="https://github.com/zaproxy/zaproxy/blob/da5422097306d5bbc1a648a90d0846090af1504f/zap/src/main/java/org/parosproxy/paros/extension/ExtensionAdaptor.java#L307">org.parosproxy.paros.extension.ExtensionAdaptor#databaseOpen</a> to register database listeners.</p>
+<p>For example, the SOAP add-on adds a table called <code>soap_wsdl</code> which is used to store SOAP actions that are used in attacks.</p>
+<ul>
+<li><a href="https://github.com/zaproxy/zap-extensions/blob/cc83cdcee269174be3ba42ccbc5bc10bd1203c4a/addOns/soap/src/main/java/org/zaproxy/zap/extension/soap/ExtensionImportWSDL.java#L133">org.zaproxy.zap.extension.soap.ExtensionImportWSDL#databaseOpen</a></li>
+<li><a href="https://github.com/zaproxy/zap-extensions/blob/cc83cdcee269174be3ba42ccbc5bc10bd1203c4a/addOns/soap/src/main/java/org/zaproxy/zap/extension/soap/TableWsdl.java">org.zaproxy.zap.extension.soap.TableWsdl</a></li>
+</ul>
+
+<h2 id="references">References <a class="header-link" href="#references"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HSQLDB Properties</td>
+<td><a href="https://hsqldb.org/doc/2.0/guide/dbproperties-chapt.html">https://hsqldb.org/doc/2.0/guide/dbproperties-chapt.html</a></td>
+</tr>
+</tbody>
+</table>
+</main>
+  </article>
 </section>
-
-<section class="p-20">
-    <h3>Authors</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/authors/akshath/">akshath</a></li>
-    
-        <li><a href="/authors/alberto/">alberto</a></li>
-    
-        <li><a href="/authors/arkaprabha/">arkaprabha</a></li>
-    
-        <li><a href="/authors/bemodtwz/">bemodtwz</a></li>
-    
-        <li><a href="/authors/blazingwind/">blazingwind</a></li>
-    
-        <li><a href="/authors/diogo/">diogo</a></li>
-    
-        <li><a href="/authors/eingengraou/">eingengraou</a></li>
-    
-        <li><a href="/authors/jan/">jan</a></li>
-    
-        <li><a href="/authors/jordan/">jordan</a></li>
-    
-        <li><a href="/authors/nirojan/">nirojan</a></li>
-    
-        <li><a href="/authors/pranavsaxena/">pranavsaxena</a></li>
-    
-        <li><a href="/authors/preetkaran20/">preetkaran20</a></li>
-    
-        <li><a href="/authors/simon/">simon</a></li>
-    
-        <li><a href="/authors/thorin/">thorin</a></li>
-    
-    </ul>
-</section>
-
-        </div>
-      </div>
-  </div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -362,6 +246,13 @@ You can also follow along with Simon as he sets the ZAP development environment 
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/developer/zap-session-db.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
