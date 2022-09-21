@@ -1467,6 +1467,14 @@
 </ul>
 <p>Both dialogues allow to override the server URL present in the OpenAPI definition (or specify one if not present) through the Target URL field. The import progress is shown in the progress tab.</p>
 
+<h3 id="context-for-adding-ddns">Context for Adding DDNs <a class="header-link" href="#context-for-adding-ddns"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The dialogues also allow selecting a Context, optionally. If a context is selected,</p>
+<ul>
+<li>the target URL used for importing is added to the context</li>
+<li>the imported spec is saved to the session database</li>
+<li>data driven nodes are generated for endpoints with path parameters</li>
+</ul>
+
 <h3 id="target-url-format">Target URL Format <a class="header-link" href="#target-url-format"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The Target URL has the following format:<br>
 <code>scheme://authority/path</code><br>
@@ -1482,30 +1490,32 @@ Following some examples, overriding:</p>
 <h2 id="api">API <a class="header-link" href="#api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following operations are added to the API:</p>
 <ul>
-<li>ACTION importFile (file, target)</li>
-<li>ACTION importUrl (url, hostOverride)</li>
+<li>ACTION importFile (file, target, contextId)</li>
+<li>ACTION importUrl (url, hostOverride, contextId)</li>
 </ul>
 <p>Both <code>target</code> and <code>hostOverride</code> support the <code>Target URL</code> format explained earlier. The definitions will be imported synchronously and any warnings will be returned.</p>
 
-<h3 id="data-driven-nodes">Data Driven Nodes <a class="header-link" href="#data-driven-nodes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>When the OpenAPI schema contains path params the plugin will automatically generate data driven nodes in either the default context or for the context from the provided <code>contextId</code>. For example, the following OpenAPI definition will result in at least one data driven node. <strong>openapi.yml</strong> `
-&hellip;
-/users/v1/{username}/email:
-&hellip;
-parameters:</p>
-<ul>
-<li>name: username
-in: path
-description: username to update email
-required: true
-schema:
-type: string
-&hellip;
-<code>**Default Context \&gt; Structure \&gt; Structural Modifiers**</code>
-DDN0: (/)(.+?)(/.<em>)
-DDN1: (/users/v1/)(.+?)(/.</em>)
-`</li>
-</ul>
+<h2 id="data-driven-nodes">Data Driven Nodes <a class="header-link" href="#data-driven-nodes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>When the OpenAPI definition contains path parameters, and a context is specified during importing, the add-on will automatically generate data driven nodes. If no context is specified, no data driven nodes are generated. For example, the following OpenAPI definition will result in at least one data driven node.</p>
+<pre tabindex="0"><code>    ...
+    /users/v1/{username}/email:
+      ...
+      parameters:
+        - name: username
+          in: path
+          description: username to update email
+          required: true
+          schema:
+            type: string
+    ...
+</code></pre><p>The following nodes are added to the Sites Tree for the above endpoint:</p>
+<pre tabindex="0"><code>Sites
+└── http://example.com
+    └── users
+        └── v1
+            └── «username»
+                └── email
+</code></pre><p>The imported OpenAPI definition is persisted to the session database. When the session is reloaded, the definition is used to generate the data driven nodes and mark them for future requests.</p>
 
 <h2 id="command-line">Command Line <a class="header-link" href="#command-line"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following Command Line options are added:</p>
