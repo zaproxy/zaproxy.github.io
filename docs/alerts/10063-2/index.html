@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <title>OWASP ZAP &ndash; SOAP XML Injection</title>
+  <title>OWASP ZAP &ndash; Deprecated Feature Policy Header Set</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -123,7 +123,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">SOAP XML Injection</h1>
+      <h1 class="text--white">Deprecated Feature Policy Header Set</h1>
   </div>
 </section>
 
@@ -147,34 +147,34 @@
               <td>
                 <strong>Alert Id</strong>
               </td>
-              <td>90029</td>
+              <td>10063-2</td>
             </tr>
             <tr> 
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Active</td>
+              <td>Passive</td>
             </tr>
             <tr> 
               <td>
                 <strong>Status</strong>
               </td>
-              <td>beta</td>
+              <td>alpha</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td>High</td>
+              <td>Low</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/.html">
-                  
+                <a href="https://cwe.mitre.org/data/definitions/16.html">
+                  16
                 </a>
               </td>
             </tr>
@@ -182,7 +182,7 @@
               <td>
                 <strong>WASC</strong>
               </td>
-              <td></td>
+              <td>15</td>
             </tr>
             <tr> 
               <td>
@@ -190,9 +190,9 @@
               </td>
               <td>
               
-              	<a href="/alerttags/owasp_2017_a01">OWASP_2017_A01</a><br>
+              	<a href="/alerttags/owasp_2017_a05">OWASP_2017_A05</a><br>
               
-              	<a href="/alerttags/owasp_2021_a03">OWASP_2021_A03</a><br>
+              	<a href="/alerttags/owasp_2021_a01">OWASP_2021_A01</a><br>
               
               </td>
             </tr>
@@ -203,25 +203,31 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>Some XML injected code has been interpreted by the server.</p>
+          <p>The header has now been renamed to Permissions-Policy.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Use a detailed description of SOAP attributes in the WSDL file.
+          Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header instead of the Feature-Policy header.
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="http://www.ws-attacks.org/index.php/XML_Injection">http://www.ws-attacks.org/index.php/XML_Injection</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/">https://scotthelme.co.uk/goodbye-feature-policy-and-hello-permissions-policy/</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/soap/src/main/java/org/zaproxy/zap/extension/soap/SOAPXMLInjectionActiveScanRule.java'>org/zaproxy/zap/extension/soap/SOAPXMLInjectionActiveScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/PermissionsPolicyScanRule.java'>org/zaproxy/zap/extension/pscanrulesAlpha/PermissionsPolicyScanRule.java</a>
       </section>
   </main>
 </div>
