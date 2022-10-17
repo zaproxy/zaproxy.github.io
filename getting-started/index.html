@@ -183,12 +183,19 @@
 <p>As with most open source projects, donations are welcome to help with costs for the projects. You can find a donate button on the owasp.org page for ZAP at <a href="https://owasp.org/www-project-zap/">https://owasp.org/www-project-zap/</a>.</p>
 
 <h3 id="install-and-configure-zap">Install and Configure ZAP <a class="header-link" href="#install-and-configure-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>ZAP has installers for Windows, Linux, and Mac OS/X. There are also Docker images available on the download site listed below.</p>
+<p>ZAP has installers for Windows, Linux, and macOS. There are also Docker images available on the download site listed below.</p>
 
 <h5 id="install-zap">Install ZAP</h5>
 <p>The first thing to do is install ZAP on the system you intend to perform pentesting on. Download the appropriate installer from the <a href="/download/">Download</a> page.</p>
-<p>Note that ZAP requires Java 8+ in order to run. The Mac OS/X installer includes an appropriate version of Java but you must install Java 8+ separately for Windows, Linux, and Cross-Platform versions. The Docker versions do not require you to install Java.</p>
+<p>Note that ZAP requires Java 11+ in order to run. The macOS installer includes an appropriate version of Java but you must install Java 11+ separately for Windows, Linux, and Cross-Platform versions. The Docker versions do not require you to install Java.</p>
 <p>Once the installation is complete, launch ZAP and read the license terms. Click <strong>Agree</strong> if you accept the terms, and ZAP will finish installing, then ZAP will automatically start.</p>
+
+<h6 id="macos">macOS</h6>
+<p>OWASP ZAP is currently not a verified developer with Apple. On macOS, you will see a message like:</p>
+<blockquote>
+<p>“OWASP ZAP.app” cannot be opened because the developer cannot be verified.</p>
+</blockquote>
+<p>To circumvent this warning, you would need to go to <strong>System Preferences</strong> &gt; <strong>Security &amp; Privacy</strong> at the bottom of the dialog. You will see a message saying that &ldquo;OWASP ZAP&rdquo; was blocked. Next to it, if you trust the downloaded installer, you can click <strong>Open anyway</strong>.</p>
 
 <h5 id="persisting-a-session">Persisting a Session</h5>
 <p>When you first start ZAP, you will be asked if you want to persist the ZAP session. By default, ZAP sessions are always recorded to disk in a HSQLDB database with a default name and location. If you do not persist the session, those files are deleted when you exit ZAP.</p>
