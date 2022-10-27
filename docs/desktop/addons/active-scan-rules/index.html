@@ -612,6 +612,12 @@
                 <a href="/docs/desktop/addons/network/options/">Options</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/network/options/clientcertificates/">Client Certificates</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/network/options/connection/">Connection</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/network/options/localservers/">Local Servers/Proxies</a>
                         </li>  
                         <li> 
@@ -819,6 +825,9 @@
                             <a href="/docs/desktop/addons/report-generation/report-traditional-pdf/">Traditional PDF</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/report-generation/report-traditional-xml-plus/">Traditional XML Report with Requests and Responses</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/report-generation/report-traditional-xml/">Traditional XML Report</a>
                         </li>  
                         <li> 
@@ -828,8 +837,20 @@
     </li>
 
     <li data-depth="2" class="">
-                <a href="/docs/desktop/addons/requester/">Requester</a>
+                <a href="/docs/desktop/addons/requester/">Requester Add-on</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/requester/dialogs/">Manual Request Editor dialog</a>
+                        </li>
+    <li data-depth="3" class="">
+                <a href="/docs/desktop/addons/requester/options/">Requester Options</a>
         <ul class="tree-branch">
+        </ul>
+    </li>
+  
+                        <li> 
+                            <a href="/docs/desktop/addons/requester/tab/">Requester Tab</a>
+                        </li>
         </ul>
     </li>
 
@@ -931,6 +952,24 @@
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/soap-support/automation/">SOAP Automation Framework Support</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+                <a href="/docs/desktop/addons/spider/">Spider</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/automation/">Spider Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/dialog/">Spider dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/options/">Options Spider screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/tab/">Spider tab</a>
                         </li>
         </ul>
     </li>
@@ -1160,7 +1199,7 @@
     </li>
   
                         <li> 
-                            <a href="/docs/desktop/start/pentest/">A basic penetration test</a>
+                            <a href="/docs/desktop/start/pentest/">A Basic Penetration Test</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/proxies/">Configuring Proxies</a>
@@ -1456,6 +1495,11 @@
 <h1 id="active-scan-rules">Active Scan Rules</h1>
 <p>The following release status active scan rules are included in this add-on:</p>
 
+<h2 id="env-information-leak">.env Information Leak <a class="header-link" href="#env-information-leak"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Checks for web accessible .env files which may leak sensitive information (such as usernames, passwords, API or APP keys, etc.). Environment files come in many flavors but mostly they are KEY=VALUE formatted.<br>
+This rule checks for how servers deliver them by default; NGINX returns them as binary/octet-stream content-type Apache just returns the text with no content-type. This rule also check for content length over 500 characters to try and exclude larger, possibly intentional, files.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/EnvFileScanRule.java">EnvFileScanRule.java</a></p>
+
 <h2 id="htaccess-information-leak">.htaccess Information Leak <a class="header-link" href="#htaccess-information-leak"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Checks for web accessible .htaccess files which may leak sensitive information (such as usernames, error handling, redirects, directory listing settings, etc.).</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/HtAccessScanRule.java">HtAccessScanRule.java</a></p>
@@ -1463,6 +1507,11 @@
 <h2 id="buffer-overflow">Buffer Overflow <a class="header-link" href="#buffer-overflow"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Looks for indicators of buffer overflows in compiled code. It does this by putting out large strings of input text and look for code crash and abnormal session closure.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/BufferOverflowScanRule.java">BufferOverflowScanRule.java</a></p>
+
+<h2 id="cloud-metadata-attack">Cloud Metadata Attack <a class="header-link" href="#cloud-metadata-attack"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Attempts to abuse a misconfigured NGINX server in order to access the instance metadata maintained by cloud service providers such as AWS, GCP, Azure, and Alibaba.<br>
+Most of these services provide metadata via an internal unroutable IP address &lsquo;169.254.169.254&rsquo; (&lsquo;100.100.100.200&rsquo; for Alibaba) - this can be exposed by incorrectly configured NGINX servers and accessed by using this IP address in the Host header field.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/CloudMetadataScanRule.java">CloudMetadataScanRule.java</a></p>
 
 <h2 id="code-injection">Code Injection <a class="header-link" href="#code-injection"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This rule submits PHP and ASP attack strings as values for URL parameters in a request and examines the response to see if those values have been evaluated by the server. First, requests are constructed and sent containing injected PHP instructions to print a token. In the event of a match between the token and the content of the response body, the scanner raises an alert and returns immediately. If there aren&rsquo;t any matches, the scanner will construct requests with several injected ASP strings that instruct the server to write the product of two randomly generated integers in the response. If the body of the response matches the product, an alert is raised.</p>
@@ -1514,6 +1563,48 @@ Files are only reported if they contain the text &ldquo;Error Log for&rdquo; unl
 <p>Looks for indicators of format string handling errors in compiled code. It does this by putting out strings of input text based upon characters compiled C code anticipates to produce formatted output and look for code crash and abnormal session closures.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/FormatStringScanRule.java">FormatStringScanRule.java</a></p>
 
+<h2 id="get-for-post">GET for POST <a class="header-link" href="#get-for-post"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This scan rule takes <code>application/x-www-form-urlencoded</code> POST requests, changes the parameters from POST to GET and resubmits the request. If the GET response is the same as the original POST response then an alert is raised. While this does not necessarily represent a security weakness unto itself it may indicate that other attacks or weaknesses can be expanded or simplified. (Such as a POST based Cross-Site Scripting (XSS) attack being changed to GET.)</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/GetForPostScanRule.java">GetForPostScanRule.java</a></p>
+
+<h2 id="heartbleed-openssl-vulnerability">Heartbleed OpenSSL Vulnerability <a class="header-link" href="#heartbleed-openssl-vulnerability"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Detects if the web server is vulnerable to the Heartbleed OpenSSL Vulnerability, by exploiting it. For further details refer to CVE-2014-0160.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/HeartBleedActiveScanRule.java">HeartBleedActiveScanRule.java</a></p>
+
+<h2 id="hidden-file-finder">Hidden File Finder <a class="header-link" href="#hidden-file-finder"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This scan rule checks for various web accessible files which may leak administrative, configuration, or credential information. The original included set of payloads were based on <a href="https://github.com/hannob/snallygaster">Snallygaster</a> by Hanno Böck. Such payloads are verified by checking response code, and content. If the response code is 200 (Ok) then additional content checks are performed to increase alert confidence. If the response code is 401 (Unauthorized) or 403 (Forbidden) or the content checks are un-successful then an alert is raised with lower confidence (at HIGH Threshold). <strong>Note:</strong> If the Custom Payloads addon is installed you can add your own hidden file paths (payloads) in the Custom Payloads options panel. For custom payloads only the response status code is checked. If there is a requirement to include a content check then it is also possible to add payloads to the <code>json/hidden_files.json</code> file in ZAP&rsquo;s user directory (in which case they will be treated as included payloads).</p>
+<p>The following describes the fields of the JSON entries.</p>
+<pre><code>{
+  &quot;path&quot;:&quot;some/path/without/leading/slash.ext&quot;,
+  &quot;content&quot;:[&quot;content you want to find in responses&quot;],
+  &quot;not_content&quot;:[&quot;content you do not want the response to have&quot;],
+  &quot;binary&quot;:&quot;\\x01\\x00&quot;,
+  &quot;links&quot;:[&quot;https://example.com/relevant/reference.html,&quot;https://other.example.org/&quot;],
+  &quot;type&quot;:&quot;short_identifier&quot;,
+  &quot;source&quot;:&quot;attribution_not_used_by_output_or_checks&quot;
+}
+</code></pre>
+<p>Details worth noting:</p>
+<ul>
+<li>The only field that is required is path.</li>
+<li>The fields content, not_content, and links can have multiple quoted, comma separated values (arrays of strings).</li>
+<li>Checks of binary content are based on starting position 0 (ex: startsWith not contains).</li>
+</ul>
+<p>The following is an example JSON entry:</p>
+<pre><code>{
+  &quot;path&quot;:&quot;CVS/root&quot;,
+  &quot;content&quot;:[&quot;:&quot;],
+  &quot;not_content&quot;:[&quot;&lt;&quot;],
+  &quot;type&quot;:&quot;cvs_dir&quot;,
+  &quot;source&quot;:&quot;snallygaster&quot;
+}
+</code></pre>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/HiddenFilesScanRule.java">HiddenFilesScanRule.java</a></p>
+
+<h2 id="padding-oracle">Padding Oracle <a class="header-link" href="#padding-oracle"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This rule attempts to manipulate the padding of encrypted strings to trigger an error response indicating a likely padding oracle vulnerability. Such a vulnerability can affect any application or framework that uses encryption improperly, such as some versions of ASP.net, Java Server Faces, and Mono.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/PaddingOracleScanRule.java">PaddingOracleScanRule.java</a></p>
+
 <h2 id="parameter-tampering">Parameter Tampering <a class="header-link" href="#parameter-tampering"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This rule submits requests with parameter values known to cause errors to be displayed to the user if handled improperly. Responses are checked to make sure that they return a server error status code, then compared with a normal HTTP response to make sure it does not raise an alert if the bad parameter has no effect on output. Finally, the content of the reponse body is compared against various patterns that may be found in Java servlet, Microsoft VBScript, OLE DB, JET, PHP and Tomcat errors. If a match is found, an alert is raised and the scanner returns immediately.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/ParameterTamperScanRule.java">ParameterTamperScanRule.java</a></p>
@@ -1523,6 +1614,10 @@ Files are only reported if they contain the text &ldquo;Error Log for&rdquo; unl
 <p>Note: This scan rule has one check that is excluded at High Alert Threshold.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/PathTraversalScanRule.java">PathTraversalScanRule.java</a></p>
 
+<h2 id="remote-code-execution---cve-2012-1823">Remote Code Execution - CVE-2012-1823 <a class="header-link" href="#remote-code-execution---cve-2012-1823"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Detect CVE-2012-1823 to perform Remote Code Execution on a PHP-CGI based web server.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/RemoteCodeExecutionCve20121823ScanRule.java">RemoteCodeExecutionCve20121823ScanRule.java</a></p>
+
 <h2 id="remote-file-include">Remote File Include <a class="header-link" href="#remote-file-include"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This rule submits a series of requests with external URLs as parameter values and looks for a match between the response body and the title of the page hosted at those URLs. If there is a match between the expected string and the response body, and the header returned a status code of 200, an alert is raised and the scanner returns immediately.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/RemoteFileIncludeScanRule.java">RemoteFileIncludeScanRule.java</a></p>
@@ -1530,6 +1625,12 @@ Files are only reported if they contain the text &ldquo;Error Log for&rdquo; unl
 <h2 id="server-side-include">Server Side Include <a class="header-link" href="#server-side-include"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>This rule checks to see what OS the server is running on, then sends requests with a corresponding HTML SSI directive as a parameter value. If the response body matches a pattern indicating the SSI was successful, an alert is raised and the scanner returns immediately.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/ServerSideIncludeScanRule.java">ServerSideIncludeScanRule.java</a></p>
+
+<h2 id="source-code-disclosure---cve-2012-1823">Source Code Disclosure - CVE-2012-1823 <a class="header-link" href="#source-code-disclosure---cve-2012-1823"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Exploit CVE-2012-1823 to disclose server-side PHP source code on a PHP-CGI based web server.<br>
+Only analyzes responses that are text based (HTML, JSON, XML, etc.), in order to avoid false positives which may occur with image or other binary content.<br>
+JavaScript responses are only anaylzed when a LOW alert threshold is set.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SourceCodeDisclosureCve20121823ScanRule.java">SourceCodeDisclosureCve20121823ScanRule.java</a></p>
 
 <h2 id="source-code-disclosure---web-inf">Source Code Disclosure - /WEB-INF <a class="header-link" href="#source-code-disclosure---web-inf"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Exploit the presence of an unprotected /WEB-INF folder to download and decompile Java classes, to disclose Java source code.</p>
@@ -1540,6 +1641,70 @@ Files are only reported if they contain the text &ldquo;Error Log for&rdquo; unl
 This scanner may be able to fingerprint the RDBMS if the application throws a known RDBMS specific SQL error message.<br>
 This scanner does not exploit any RDBMS specific techniques, and so is the best SQL injection scanner to use as a starting point.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionScanRule.java">SqlInjectionScanRule.java</a></p>
+
+<h2 id="sql-injection---hypersonic-time-based">SQL Injection - Hypersonic (Time Based) <a class="header-link" href="#sql-injection---hypersonic-time-based"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This rule uses Hypersonic-specific SQL syntax to attempt to induce time delays in the SQL statement called by the page.<br>
+If the unmodified query is not affected by a time delay, and the modified query&rsquo;s delay can be controlled, it is indicative of a time-based SQL Injection vulnerability in a Hypersonic SQL database.<br>
+This rule is time sensitive, and should only be used in an attempt to find stubborn and un-obvious SQL injection vulnerabilities in a suspected Hypersonic database.<br>
+For this reason, the number of active scan threads should be set to the minimum when using this scan rule, to minimise load on the web server, application server, and database, in order to avoid false positives caused by load delays rather than by SQL injection delays.<br>
+The rule tests only for time-based SQL injection vulnerabilities.</p>
+<p>Post 2.5.0 you can change the length of time used for the attack by changing the <code>rules.common.sleep</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionHypersonicScanRule.java">SqlInjectionHypersonicScanRule.java</a></p>
+
+<h2 id="sql-injection---mssql">SQL Injection - MsSQL <a class="header-link" href="#sql-injection---mssql"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This active scan rule attempts to inject MsSQL specific sleep commands into parameter values and analyzes the server&rsquo;s response time to see if the sleep is effectively executed on the server (indicating a successful SQL injection attack).</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionMsSqlScanRule.java">SqlInjectionMsSqlScanRule.java</a></p>
+
+<h2 id="sql-injection---mysql-time-based">SQL Injection - MySQL (Time Based) <a class="header-link" href="#sql-injection---mysql-time-based"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This rule uses MySQL-specific SQL syntax to attempt to induce time delays in the SQL statement called by the page.<br>
+If the unmodified query is not affected by a time delay, and the modified query&rsquo;s delay can be controlled, it is indicative of a time-based SQL Injection vulnerability in a MySQL database.<br>
+This rule is time sensitive, and should only be used in an attempt to find stubborn and un-obvious SQL injection vulnerabilities in a suspected MySQL database.<br>
+For this reason, the number of active scan threads should be set to the minimum when using this scan rule, to minimise load on the web server, application server, and database, in order to avoid false positives caused by load delays rather than by SQL injection delays.<br>
+The rule tests only for time-based SQL injection vulnerabilities.</p>
+<p>Post 2.5.0 you can change the length of time used for the attack by changing the <code>rules.common.sleep</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionMySqlScanRule.java">SqlInjectionMySqlScanRule.java</a></p>
+
+<h2 id="sql-injection---oracle-time-based">SQL Injection - Oracle (Time Based) <a class="header-link" href="#sql-injection---oracle-time-based"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This scan rule uses Oracle-specific SQL syntax to attempt to induce time delays in the SQL statement called by the page.<br>
+If the unmodified query is not affected by a time delay, and the modified query&rsquo;s delay can be controlled, it is indicative of a time-based SQL Injection vulnerability in a Oracle SQL database.<br>
+This rule is time sensitive, and should only be used in an attempt to find stubborn and un-obvious SQL injection vulnerabilities in a suspected Oracle database.<br>
+For this reason, the number of active scan threads should be set to the minimum when using this rule, to minimise load on the web server, application server, and database, in order to avoid false positives caused by load delays rather than by SQL injection delays.<br>
+The scan rule tests only for time-based SQL injection vulnerabilities.</p>
+<p>Note that this rule does not currently allow you to change the length of time used for the timing attacks due to the way the delay is caused.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionOracleScanRule.java">SqlInjectionOracleScanRule.java</a></p>
+
+<h2 id="sql-injection---postgresql-time-based">SQL Injection - PostgreSQL (Time Based) <a class="header-link" href="#sql-injection---postgresql-time-based"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This rule uses PostgreSQL-specific SQL syntax to attempt to induce time delays in the SQL statement called by the page.<br>
+If the unmodified query is not affected by a time delay, and the modified query&rsquo;s delay can be controlled, it is indicative of a time-based SQL Injection vulnerability in a PostgreSQL database.<br>
+This scan rule is time sensitive, and should only be used in an attempt to find stubborn and un-obvious SQL injection vulnerabilities in a suspected PostgreSQL database.<br>
+For this reason, the number of active scan threads should be set to the minimum when using this scan rule, to minimise load on the web server, application server, and database, in order to avoid false positives caused by load delays rather than by SQL injection delays.<br>
+The rule tests only for time-based SQL injection vulnerabilities.</p>
+<p>Post 2.5.0 you can change the length of time used for the attack by changing the <code>rules.common.sleep</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionPostgreScanRule.java">SqlInjectionPostgreScanRule.java</a></p>
+
+<h2 id="sql-injection---sqlite">SQL Injection - SQLite <a class="header-link" href="#sql-injection---sqlite"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This active scan rule attempts to inject SQLite specific commands into parameter values and analyzes the server&rsquo;s responses to see if the commands were effectively executed on the server (indicating a successful SQL injection attack).</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionSqLiteScanRule.java">SqlInjectionSqLiteScanRule.java</a></p>
+
+<h2 id="traceaxd-information-leak">Trace.axd Information Leak <a class="header-link" href="#traceaxd-information-leak"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Tests to see if Trace Viewer (trace.axd) is available. Although this component is convenient for developers and other stakeholders it can leak a significant amount of information which a security analyst or malicious individual may be interested in.</p>
+<p>The trace.axd scan rule targets Microsoft based technologies: IIS, Windows, ASP, and MSSQL.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/TraceAxdScanRule.java">TraceAxdScanRule.java</a></p>
+
+<h2 id="user-agent-fuzzer">User Agent Fuzzer <a class="header-link" href="#user-agent-fuzzer"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This active scan rule checks for differences in response based on fuzzed User Agent (eg. mobile sites, access as a Search Engine Crawler). The rule compares the response statuscode and the hashcode of the response body with the original response.<br>
+<strong>Note:</strong> If the Custom Payloads addon is installed you can add your own User Agent strings (payloads) in the Custom Payloads options panel.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/UserAgentScanRule.java">UserAgentScanRule.java</a></p>
+
+<h2 id="xslt-injection">XSLT Injection <a class="header-link" href="#xslt-injection"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This scan rule checks for certain responses induced by injecting XSL transformations.<br>
+It attempts to obtain those responses with payloads which may induce: error responses, disclosure of library/framework vendor name, remote port scanning, or command execution.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/XsltInjectionScanRule.java">XsltInjectionScanRule.java</a></p>
+
+<h2 id="xxe">XXE <a class="header-link" href="#xxe"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This component attempts to identify applications which are subject to XML eXternal Entity (XXE) attacks. Applications which parse XML input may be subject to XXE when weakly or poorly configured parsers handle XML input containing reference to an external entity such as a local file, HTTP requests to internal or tertiary systems, etc. The number of tags which are tested individually depends on the strength of the rule.</p>
+<p>This scan rule will only run if the OAST add-on is installed and available. It is also recommended that you test that the Callbacks service in the OAST add-on is correctly configured for your target site. If the target system cannot connect to the Callback Address then some XXE vulnerabilities will not be detected.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/XxeScanRule.java">XxeScanRule.java</a></p>
 
         </div>
       </div>

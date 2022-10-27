@@ -611,6 +611,12 @@
                 <a href="/docs/desktop/addons/network/options/">Options</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/network/options/clientcertificates/">Client Certificates</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/network/options/connection/">Connection</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/network/options/localservers/">Local Servers/Proxies</a>
                         </li>  
                         <li> 
@@ -818,6 +824,9 @@
                             <a href="/docs/desktop/addons/report-generation/report-traditional-pdf/">Traditional PDF</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/report-generation/report-traditional-xml-plus/">Traditional XML Report with Requests and Responses</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/report-generation/report-traditional-xml/">Traditional XML Report</a>
                         </li>  
                         <li> 
@@ -827,8 +836,20 @@
     </li>
 
     <li data-depth="2" class="">
-                <a href="/docs/desktop/addons/requester/">Requester</a>
+                <a href="/docs/desktop/addons/requester/">Requester Add-on</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/requester/dialogs/">Manual Request Editor dialog</a>
+                        </li>
+    <li data-depth="3" class="">
+                <a href="/docs/desktop/addons/requester/options/">Requester Options</a>
         <ul class="tree-branch">
+        </ul>
+    </li>
+  
+                        <li> 
+                            <a href="/docs/desktop/addons/requester/tab/">Requester Tab</a>
+                        </li>
         </ul>
     </li>
 
@@ -930,6 +951,24 @@
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/soap-support/automation/">SOAP Automation Framework Support</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+                <a href="/docs/desktop/addons/spider/">Spider</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/automation/">Spider Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/dialog/">Spider dialog</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/options/">Options Spider screen</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/spider/tab/">Spider tab</a>
                         </li>
         </ul>
     </li>
@@ -1159,7 +1198,7 @@
     </li>
   
                         <li> 
-                            <a href="/docs/desktop/start/pentest/">A basic penetration test</a>
+                            <a href="/docs/desktop/start/pentest/">A Basic Penetration Test</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/start/proxies/">Configuring Proxies</a>
@@ -1461,18 +1500,40 @@
 
 <h3 id="actions">Actions <a class="header-link" href="#actions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <ul>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-addAlias (name* enabled): Adds an alias for the local servers/proxies.
+<li>addAlias (name* enabled): Adds an alias for the local servers/proxies.
 <ul>
 <li>name: The name of the alias.</li>
 <li>enabled: The enabled state, true or false.</li>
 </ul>
 </li>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-addPassThrough (authority* enabled): Adds an authority to pass-through the local proxies.
+<li>addHttpProxyExclusion (host* enabled): Adds a host to be excluded from the HTTP proxy.
+<ul>
+<li>host: The value of the host, a regular expression.</li>
+<li>enabled: The enabled state, true or false.</li>
+</ul>
+</li>
+<li>addLocalServer (address* port* api proxy behindNat decodeResponse removeAcceptEncoding): Adds a local server/proxy.
+<ul>
+<li>address: The address of the local server/proxy.</li>
+<li>port: The port of the local server/proxy.</li>
+<li>api: If the ZAP API is available, true or false.</li>
+<li>proxy: If the local server should proxy, true or false.</li>
+<li>behindNat: If the local server is behind NAT, true or false.</li>
+<li>decodeResponse: If the response should be decoded, true or false.</li>
+<li>removeAcceptEncoding: If the request header Accept-Encoding should be removed, true or false.</li>
+</ul>
+</li>
+<li>addPassThrough (authority* enabled): Adds an authority to pass-through the local proxies.
 <ul>
 <li>authority: The value of the authority, can be a regular expression.</li>
 <li>enabled: The enabled state, true or false.</li>
+</ul>
+</li>
+<li>addPkcs12ClientCertificate (filePath* password* index): Adds a client certificate contained in a PKCS#12 file, the certificate is automatically set as active and used.
+<ul>
+<li>filePath: The file path.</li>
+<li>password: The password for the file.</li>
+<li>index: The index of the certificate in the file, defaults to 0.</li>
 </ul>
 </li>
 <li>generateRootCaCert: Generates a new Root CA certificate, used to issue server certificates.</li>
@@ -1481,58 +1542,154 @@ addPassThrough (authority* enabled): Adds an authority to pass-through the local
 <li>filePath: The file system path to the PEM file, containing the certificate and private key.</li>
 </ul>
 </li>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-removeAlias (name*): Removes an alias.
+<li>removeAlias (name*): Removes an alias.
 <ul>
 <li>name: The name of the alias.</li>
 </ul>
 </li>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-removePassThrough (authority*): Removes a pass-through.
+<li>removeHttpProxyExclusion (host*): Removes a HTTP proxy exclusion.
+<ul>
+<li>host: The value of the host.</li>
+</ul>
+</li>
+<li>removeLocalServer (address* port*): Removes a local server/proxy.
+<ul>
+<li>address: The address of the local server/proxy.</li>
+<li>port: The port of the local server/proxy.</li>
+</ul>
+</li>
+<li>removePassThrough (authority*): Removes a pass-through.
 <ul>
 <li>authority: The value of the authority.</li>
 </ul>
 </li>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-setAliasEnabled (name* enabled): Sets whether or not an alias is enabled.
+<li>setAliasEnabled (name* enabled): Sets whether or not an alias is enabled.
 <ul>
 <li>name: The name of the alias.</li>
 <li>enabled: The enabled state, true or false.</li>
 </ul>
 </li>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-setPassThroughEnabled (authority* enabled): Sets whether or not a pass-through is enabled.
+<li>setConnectionTimeout (timeout*): Sets the timeout, for reads and connects.
+<ul>
+<li>timeout: The timeout, in seconds.</li>
+</ul>
+</li>
+<li>setDefaultUserAgent (userAgent*): Sets the default user-agent.
+<ul>
+<li>userAgent: The default user-agent.</li>
+</ul>
+</li>
+<li>setDnsTtlSuccessfulQueries (ttl*): Sets the TTL of successful DNS queries.
+<ul>
+<li>ttl: The TTL, in seconds. Negative number, cache forever. Zero, disables caching. Positive number, the number of seconds the successful DNS queries will be cached.</li>
+</ul>
+</li>
+<li>setHttpProxy (host* port* realm username password): Sets the HTTP proxy configuration.
+<ul>
+<li>host: The host, name or address.</li>
+<li>port: The port.</li>
+<li>realm: The authentication realm.</li>
+<li>username: The user name.</li>
+<li>password: The password.</li>
+</ul>
+</li>
+<li>setHttpProxyAuthEnabled (enabled*): Sets whether or not the HTTP proxy authentication is enabled.
+<ul>
+<li>enabled: The enabled state, true or false.</li>
+</ul>
+</li>
+<li>setHttpProxyEnabled (enabled*): Sets whether or not the HTTP proxy is enabled.
+<ul>
+<li>enabled: The enabled state, true or false.</li>
+</ul>
+</li>
+<li>setHttpProxyExclusionEnabled (host* enabled*): Sets whether or not a HTTP proxy exclusion is enabled.
+<ul>
+<li>host: The value of the host.</li>
+<li>enabled: The enabled state, true or false.</li>
+</ul>
+</li>
+<li>setPassThroughEnabled (authority* enabled): Sets whether or not a pass-through is enabled.
 <ul>
 <li>authority: The value of the authority.</li>
 <li>enabled: The enabled state, true or false.</li>
 </ul>
 </li>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-setRootCaCertValidity (validity*): Sets the Root CA certificate validity. Used when generating a new Root CA certificate.
+<li>setRootCaCertValidity (validity*): Sets the Root CA certificate validity. Used when generating a new Root CA certificate.
 <ul>
 <li>validity: The number of days that the generated Root CA certificate will be valid for.</li>
 </ul>
 </li>
-<li><strong>Note:</strong> This endpoint is only available in weekly releases and versions after 2.11.<br>
-setServerCertValidity (validity*): Sets the server certificate validity. Used when generating server certificates.
+<li>setServerCertValidity (validity*): Sets the server certificate validity. Used when generating server certificates.
 <ul>
 <li>validity: The number of days that the generated server certificates will be valid for.</li>
+</ul>
+</li>
+<li>setSocksProxy (host* port* version useDns username password): Sets the SOCKS proxy configuration.
+<ul>
+<li>host: The host, name or address.</li>
+<li>port: The port.</li>
+<li>version: The SOCKS version.</li>
+<li>useDns: If the names should be resolved by the SOCKS proxy, true or false.</li>
+<li>username: The user name.</li>
+<li>password: The password.</li>
+</ul>
+</li>
+<li>setSocksProxyEnabled (enabled*): Sets whether or not the SOCKS proxy is enabled.
+<ul>
+<li>enabled: The enabled state, true or false.</li>
+</ul>
+</li>
+<li>setUseClientCertificate (use*): Sets whether or not to use the active client certificate.
+<ul>
+<li>use: The use state, true or false.</li>
+</ul>
+</li>
+<li>setUseGlobalHttpState (use*): Sets whether or not to use the global HTTP state.
+<ul>
+<li>use: The use state, true or false.</li>
 </ul>
 </li>
 </ul>
 
 <h3 id="views">Views <a class="header-link" href="#views"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p><strong>Note:</strong> These endpoints are only available in weekly releases and versions after 2.11.</p>
 <ul>
 <li>getAliases: Gets the aliases used to identify the local servers/proxies.</li>
+<li>getConnectionTimeout: Gets the connection timeout, in seconds.</li>
+<li>getDefaultUserAgent: Gets the default user-agent.</li>
+<li>getDnsTtlSuccessfulQueries: Gets the TTL (in seconds) of successful DNS queries.</li>
+<li>getHttpProxy: Gets the HTTP proxy.</li>
+<li>getHttpProxyExclusions: Gets the HTTP proxy exclusions.</li>
+<li>getLocalServers: Gets the local servers/proxies.</li>
 <li>getPassThroughs: Gets the authorities that will pass-through the local proxies.</li>
 <li>getRootCaCertValidity: Gets the Root CA certificate validity, in days. Used when generating a new Root CA certificate.</li>
 <li>getServerCertValidity: Gets the server certificate validity, in days. Used when generating server certificates.</li>
+<li>getSocksProxy: Gets the SOCKS proxy.</li>
+<li>isHttpProxyAuthEnabled: Tells whether or not the HTTP proxy authentication is enabled.</li>
+<li>isHttpProxyEnabled: Tells whether or not the HTTP proxy is enabled.</li>
+<li>isSocksProxyEnabled: Tells whether or not the SOCKS proxy is enabled.</li>
+<li>isUseGlobalHttpState: Tells whether or not to use global HTTP state.</li>
 </ul>
 
 <h3 id="other">Other <a class="header-link" href="#other"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <ul>
+<li>proxy.pac: Provides a PAC file, proxying through the main proxy.</li>
 <li>rootCaCert: Gets the Root CA certificate used to issue server certificates. Suitable to import into client applications (e.g. browsers).</li>
+<li>setProxy (proxy*): Sets the HTTP proxy configuration.
+<ul>
+<li>proxy: The JSON object containing the HTTP proxy configuration.</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="shortcuts">Shortcuts <a class="header-link" href="#shortcuts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ul>
+<li>proxy.pac: Provides a PAC file, proxying through the main proxy.</li>
+<li>setproxy: Sets the HTTP proxy configuration.
+<ul>
+<li>Request body: The JSON object containing the HTTP proxy configuration.</li>
+</ul>
+</li>
 </ul>
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>

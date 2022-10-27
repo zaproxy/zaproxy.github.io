@@ -58,8 +58,8 @@ Partial Matches Defines if the form POST parameter names should be treated as an
       
       <guid>/docs/desktop/ui/dialogs/options/api/</guid>
       <description>Options API screen This screen allows you to configure the API options:
-Enabled If enabled then the API is available to all machines that are able to use ZAP as a proxy.
-Web UI Enabled If enabled then the API Web UI is available to all machines that are able to use ZAP as a proxy.</description>
+Enabled If enabled then the API is available to all machines that are able to access ZAP&amp;rsquo;s proxies that expose the API.
+Web UI Enabled If enabled then the API Web UI is available to all machines that are able to access ZAP&amp;rsquo;s proxies that expose the API.</description>
     </item>
     
     <item>
@@ -85,16 +85,6 @@ In previous versions the ZAP API was used for this purpose, but from 2.6.0 onwar
     </item>
     
     <item>
-      <title>Options Client Certificate screen</title>
-      <link>/docs/desktop/ui/dialogs/options/certificate/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/ui/dialogs/options/certificate/</guid>
-      <description>Options Client Certificate screen The Client Certificate screen allows you to add a client certificate for ZAP to use when testing applications protected using mutual SSL. Currently supported ways to utilize certificates are PKCS12 and PKCS11.
-Using PKCS12 It is possible to set the Client Certificate from the command line with the following switches:</description>
-    </item>
-    
-    <item>
       <title>Options Check for Updates screen</title>
       <link>/docs/desktop/ui/dialogs/options/checkforupdates/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -105,14 +95,13 @@ Check for Updates on startup If selected then ZAP will automatically check for u
     </item>
     
     <item>
-      <title>Options Connection screen</title>
-      <link>/docs/desktop/ui/dialogs/options/connection/</link>
+      <title>Options Client Certificate screen</title>
+      <link>/docs/desktop/ui/dialogs/options/certificate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/ui/dialogs/options/connection/</guid>
-      <description>Options Connection screen The Options Connection screen allows you to configure the ZAP connection options:
-Timeout (in seconds) This makes is easier to test slow applications.
-Default User Agent The user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).</description>
+      <guid>/docs/desktop/ui/dialogs/options/certificate/</guid>
+      <description>Options Client Certificate screen The Client Certificate screen allows you to add a client certificate for ZAP to use when testing applications protected using mutual SSL. Currently supported ways to utilize certificates are PKCS12 and PKCS11.
+Using PKCS12 It is possible to set the Client Certificate from the command line with the following switches:</description>
     </item>
     
     <item>
@@ -127,6 +116,17 @@ Recovery Log Controls whether or not database&amp;rsquo;s recovery log is enable
     </item>
     
     <item>
+      <title>Options Connection screen</title>
+      <link>/docs/desktop/ui/dialogs/options/connection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/ui/dialogs/options/connection/</guid>
+      <description>Options Connection screen The Options Connection screen allows you to configure the ZAP connection options:
+Timeout (in seconds) This makes is easier to test slow applications.
+Default User Agent The user agent that ZAP should use when creating HTTP messages (for example, spider messages or CONNECT requests to outgoing proxy).</description>
+    </item>
+    
+    <item>
       <title>Options Display screen</title>
       <link>/docs/desktop/ui/dialogs/options/view/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -134,16 +134,7 @@ Recovery Log Controls whether or not database&amp;rsquo;s recovery log is enable
       <guid>/docs/desktop/ui/dialogs/options/view/</guid>
       <description>Options Display screen The Display screen allows you to configure:
 Images If ZAP processes images.
-Show (local) CONNECT requests If the HTTP CONNECT requests received by the Local Proxies should be persisted in the current session and shown in the History tab. The default is to not show those requests, they happen frequently (in preparation for TLS/SSL, WebSocket&amp;hellip; connections) and, unless inspecting the behaviour of the client application, are not (usually) of much interest.</description>
-    </item>
-    
-    <item>
-      <title>Dynamic SSL Certificates</title>
-      <link>/docs/desktop/ui/dialogs/options/dynsslcert/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/ui/dialogs/options/dynsslcert/</guid>
-      <description>Option Dynamic SSL Certificates OWASP ZAP allows you to transparently decrypt SSL connections. For doing so, ZAP has to encrypt each request before sending to the server and decrypt each response, which comes back. But, this is already done by the browser. That&amp;rsquo;s why, the only way to decrypt or intercept the transmission, is to do a &amp;lsquo;manipulator in the middle&amp;rsquo; approach.</description>
+Show (local) CONNECT requests If the HTTP CONNECT requests received by ZAP&amp;rsquo;s proxies should be persisted in the current session and shown in the History tab. The default is to not show those requests, they happen frequently (in preparation for TLS/SSL, WebSocket&amp;hellip; connections) and, unless inspecting the behaviour of the client application, are not (usually) of much interest.</description>
     </item>
     
     <item>
@@ -166,6 +157,15 @@ Core Extensions Core extensions are extensions that if disabled will impair ZAP&
       <description>Options Global Exclude URL screen This screen allows you to configure the Global Exclude URL regexs in ZAP:
 Regex A regex of the URL that ZAP will ignore. Click the buttons Add, Modify, or Remove to edit each regex.
 Enabled If the box is checked, then this regex URL will be ignored by ZAP.</description>
+    </item>
+    
+    <item>
+      <title>Dynamic SSL Certificates</title>
+      <link>/docs/desktop/ui/dialogs/options/dynsslcert/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/ui/dialogs/options/dynsslcert/</guid>
+      <description>Option Dynamic SSL Certificates OWASP ZAP allows you to transparently decrypt SSL connections. For doing so, ZAP has to encrypt each request before sending to the server and decrypt each response, which comes back. But, this is already done by the browser. That&amp;rsquo;s why, the only way to decrypt or intercept the transmission, is to do a &amp;lsquo;manipulator in the middle&amp;rsquo; approach.</description>
     </item>
     
     <item>
@@ -213,16 +213,6 @@ Check the ZAP download page for the latest language pack available.</description
     </item>
     
     <item>
-      <title>Options Local Proxies screen</title>
-      <link>/docs/desktop/ui/dialogs/options/localproxy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/ui/dialogs/options/localproxy/</guid>
-      <description>Options Local Proxies screen This screen allows you to configure the addresses and ports on which ZAP accepts incoming connections.
-Local Proxy By default ZAP will listen on one local address and port, and these are the address and port that you must configure your browser to use as a proxy.</description>
-    </item>
-    
-    <item>
       <title>Options Passive Scan Rules Screen</title>
       <link>/docs/desktop/ui/dialogs/options/pscanrules/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -230,7 +220,7 @@ Local Proxy By default ZAP will listen on one local address and port, and these 
       <guid>/docs/desktop/ui/dialogs/options/pscanrules/</guid>
       <description>Options Passive Scan Rules Screen This screen allows you to configure the passive scan rules.
 Threshold This controls how likely ZAP is to report potential vulnerabilities.
-If you select Off then the scanner won&amp;rsquo;t run. If you select Low then more potential issues will be raised which may increase the number of false positives.</description>
+If you select Off then the scan rule won&amp;rsquo;t run. If you select Low then more potential issues will be raised which may increase the number of false positives.</description>
     </item>
     
     <item>
@@ -251,6 +241,16 @@ Tag Interpolation In order to allow some flexibility in Tag creation and content
       <guid>/docs/desktop/ui/dialogs/options/pscanner/</guid>
       <description>Options Passive Scanner screen This screen allows you to configure the passive scanner.
 Configuration Options Field Details Default Config File Only scan messages in scope Sets whether or not the passive scan should be performed only on messages that are in scope. Deselected Key: pscans.scanOnlyInScope Values: true or false Include traffic from the Fuzzer when passive scanning Sets whether or not the passive scanning should be performed on messages generated by the Fuzzer.</description>
+    </item>
+    
+    <item>
+      <title>Options Local Proxies screen</title>
+      <link>/docs/desktop/ui/dialogs/options/localproxy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/ui/dialogs/options/localproxy/</guid>
+      <description>Options Local Proxies screen This screen allows you to configure the addresses and ports on which ZAP accepts incoming connections.
+Local Proxy By default ZAP will listen on one local address and port, and these are the address and port that you must configure your browser to use as a proxy.</description>
     </item>
     
     <item>
@@ -287,17 +287,6 @@ See also UI Overview for an overview of the user interface Options dialogs for d
     </item>
     
     <item>
-      <title>Options Spider screen</title>
-      <link>/docs/desktop/ui/dialogs/options/spider/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/ui/dialogs/options/spider/</guid>
-      <description>Options Spider screen This screen allows you to configure the spider options.
-It should be noted that modifying most of these options also affects the running Spider.
-Maximum depth to crawl The parameter defines the maximum depth in the crawling process where a page must be found in order for it to be processed.</description>
-    </item>
-    
-    <item>
       <title>Options Statistics screen</title>
       <link>/docs/desktop/ui/dialogs/options/stats/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -306,6 +295,17 @@ Maximum depth to crawl The parameter defines the maximum depth in the crawling p
       <description>Options Statistics screen This screen allows you to configure the statistics that ZAP maintains.
 In Memory Statistics Enabled By default ZAP maintains the statistics in memory. To disable the in memory statistics uncheck this box.
 Statsd Server Enabled Check this box in order to configure the address of a Statsd server that ZAP will send its statistics to.</description>
+    </item>
+    
+    <item>
+      <title>Options Spider screen</title>
+      <link>/docs/desktop/ui/dialogs/options/spider/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/ui/dialogs/options/spider/</guid>
+      <description>Options Spider screen This screen allows you to configure the spider options.
+It should be noted that modifying most of these options also affects the running Spider.
+Maximum depth to crawl The parameter defines the maximum depth in the crawling process where a page must be found in order for it to be processed.</description>
     </item>
     
   </channel>
