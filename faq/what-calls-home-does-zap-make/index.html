@@ -136,22 +136,15 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <p>ZAP makes a limited set of &lsquo;calls home&rsquo;, historically via bitly.com URLs.</p>
-<p>Bitly was used so that we could get a very limited form of telemetry data without
-getting access to any sensitive data such as your IP address.</p>
-<p>ZAP can be freely downloaded and we get very little feedback from most users -
-this at least tells us if ZAP is getting more or less popular :)</p>
-<p>From late 2021 and finishing in 2.12.0 we will migrate from bitly to our own services using the zaproxy.org domain.</p>
+            <p>From 2.12.0 all ZAP &lsquo;calls home&rsquo; are made to the zaproxy.org domain.</p>
 
 <h3 id="check-for-updates">Check for Updates <a class="header-link" href="#check-for-updates"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>ZAP makes one request to see if ZAP or any of the add-ons are up to date.</p>
-<p>The Bitly URL resolves to the relevant version file in the zap-admin github
-repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/ZapVersions-2.8.xml">ZapVersions-2.8.xml</a></p>
-<p>This check will be done at most once per day and can be disabled via the
+<p>ZAP makes one request to <a href="https://cfu.zaproxy.org">https://cfu.zaproxy.org</a> to see if ZAP or any of the add-ons are up to date.</p>
+<p>The update data is retrieved from the relevant version file in the zap-admin github
+repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/ZapVersions-2.12.xml">ZapVersions-2.12.xml</a></p>
+<p>This check is done at most once per day and can be disabled via the
 Desktop UI <a href="/docs/desktop/ui/dialogs/options/checkforupdates/">Check for Updates Options</a> screen.</p>
-<p>Since ZAP 2.9.0 the check for updates is also done when running in daemon mode.</p>
-<p>From 2.12.0 (and in development) this request will be made to <a href="https://cfu.zaproxy.org">https://cfu.zaproxy.org</a></p>
-<p>The following information will be supplied:</p>
+<p>The following information is supplied:</p>
 <ul>
 <li>ZAP version</li>
 <li>ZAP runtime type (commandline, daemon or desktop)</li>
@@ -159,34 +152,27 @@ Desktop UI <a href="/docs/desktop/ui/dialogs/options/checkforupdates/">Check for
 <li>Java version</li>
 <li>If ZAP is running in a known container (such as docker)</li>
 </ul>
-<p>The IP addresses of requests will be recorded but the least significant part will be zeroed to maintain anonymity.</p>
+<p>The IP addresses of requests is recorded but the least significant part is zeroed to maintain anonymity.</p>
 
 <h3 id="zap-news">ZAP News <a class="header-link" href="#zap-news"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Starting from ZAP 2.8.0 the Quick Start add-on makes one request to see if
-there is any new ZAP news.</p>
-<p>The Bitly URL resolves to the relevant quick start file in the zap-admin
-GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/files/news/2_8.xml">2.8.xml</a></p>
-<p>From late 2021 (for those users who update add-ons) this request is made to <a href="https://news.zaproxy.org">https://news.zaproxy.org</a> - the same information will be supplied as
-for the Check for Updates service.</p>
+<p>The Quick Start add-on makes one request to <a href="https://news.zaproxy.org">https://news.zaproxy.org</a> to see if there is any new ZAP news.</p>
+<p>The data is retrieved from the relevant quick start file in the zap-admin
+GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/files/news/2_12.xml">2.12.xml</a></p>
 
 <h3 id="telemetry">Telemetry <a class="header-link" href="#telemetry"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>From late 2021 (for those users who update add-ons) the <a href="/docs/desktop/addons/call-home/">Call Home</a> add-on will by default send data to the Telemetry Service as per the <a href="/blog/2021-10-25-zap-telemetry-plans/">ZAP Telemetry Plans</a> blog post.</p>
-<p>One call will be made when ZAP starts up, reporting environmental data and the add-ons installed, and then one call will be made when the
+<p>The <a href="/docs/desktop/addons/call-home/">Call Home</a> add-on by default sends data to the Telemetry Service as per the <a href="/blog/2021-10-25-zap-telemetry-plans/">ZAP Telemetry Plans</a> blog post.</p>
+<p>One call will is made when ZAP starts up, reporting environmental data and the add-ons installed, and then one call is be made when the
 ZAP session changes, reporting selected statistics.</p>
 <p>The last set of data sent is shown in the <a href="/docs/desktop/addons/call-home/">Call Home</a> Options panel.</p>
 <p>The telemetry calls can be disabled via the <a href="/docs/desktop/addons/call-home/">Call Home</a> Options panel or by using the <code>-silent</code>
 <a href="/docs/desktop/cmdline/">command line option</a> also detailed below.</p>
 
-<h3 id="browser-launch-start-page---discontinued">Browser Launch Start Page - Discontinued <a class="header-link" href="#browser-launch-start-page---discontinued"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>By default the Quick Start add-on makes one request to see if there is a new
-Quick Start page - this is the HTML shown by default when a browser is
-launched from ZAP.</p>
-<p>The Bitly URL resolves to the relevant quick start file in the zap-admin
-GitHub repo, e.g. <a href="https://github.com/zaproxy/zap-admin/blob/master/files/launch/2.7.html">2.7.html</a></p>
-<p>This was discontinued from ZAP 2.8.0</p>
+<h3 id="bitly-calls---discontinued">Bit.ly Calls - Discontinued <a class="header-link" href="#bitly-calls---discontinued"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Historically ZAP made a limited set of &lsquo;calls home&rsquo; via bitly.com URLs.</p>
+<p>These were all discontinued from ZAP 2.12.0.</p>
 
 <h2 id="silent-mode">Silent Mode <a class="header-link" href="#silent-mode"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>Starting from ZAP 2.8.0 the <code>-silent</code> command line option can be used to prevent ZAP from making any &lsquo;calls home&rsquo;.
+<p>The <code>-silent</code> command line option can be used to prevent ZAP from making any &lsquo;calls home&rsquo;.
 If you explicitly ask ZAP to check for updates then it will still call the Check for Updates service.</p>
 <p>Note that some third party add-ons may not obey the <code>-silent</code> option.</p>
 <p>This FAQ will be updated to detail any of the add-ons in the <a href="/addons/">ZAP Marketplace</a>
