@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <title>OWASP ZAP &ndash; Strict-Transport-Security Header</title>
+  <title>OWASP ZAP &ndash; Storable and Cacheable Content</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -123,7 +123,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Strict-Transport-Security Header</h1>
+      <h1 class="text--white">Storable and Cacheable Content</h1>
   </div>
 </section>
 
@@ -147,7 +147,7 @@
               <td>
                 <strong>Alert Id</strong>
               </td>
-              <td>10035</td>
+              <td>10049-3</td>
             </tr>
             <tr> 
               <td>
@@ -159,22 +159,22 @@
               <td>
                 <strong>Status</strong>
               </td>
-              <td>release</td>
+              <td>beta</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td></td>
+              <td>Informational</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/.html">
-                  
+                <a href="https://cwe.mitre.org/data/definitions/524.html">
+                  524
                 </a>
               </td>
             </tr>
@@ -182,7 +182,7 @@
               <td>
                 <strong>WASC</strong>
               </td>
-              <td></td>
+              <td>13</td>
             </tr>
             <tr> 
               <td>
@@ -190,9 +190,7 @@
               </td>
               <td>
               
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
+              	<a href="/alerttags/wstg-v42-athn-06">WSTG-V42-ATHN-06</a><br>
               
               </td>
             </tr>
@@ -203,49 +201,37 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>
+          <p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where &ldquo;shared&rdquo; caching servers such as &ldquo;proxy&rdquo; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.
+          Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user: Cache-Control: no-cache, no-store, must-revalidate, private Pragma: no-cache Expires: 0 This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. 
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</a>
+              <a href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org/html/rfc7234</a>
             
           </li>
         
           <li>
             
-              <a href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a>
+              <a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>
             
           </li>
         
           <li>
             
-              <a href="http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="http://caniuse.com/stricttransportsecurity">http://caniuse.com/stricttransportsecurity</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="http://tools.ietf.org/html/rfc6797">http://tools.ietf.org/html/rfc6797</a>
+              <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html%20%28obsoleted%20by%20rfc7234%29">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java'>org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/CacheableScanRule.java'>org/zaproxy/zap/extension/pscanrulesBeta/CacheableScanRule.java</a>
       </section>
   </main>
 </div>
