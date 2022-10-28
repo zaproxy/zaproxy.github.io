@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers.">
   
-  <title>OWASP ZAP &ndash; Strict-Transport-Security Header</title>
+  <title>OWASP ZAP &ndash; Non-Storable Content</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -123,7 +123,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Strict-Transport-Security Header</h1>
+      <h1 class="text--white">Non-Storable Content</h1>
   </div>
 </section>
 
@@ -147,7 +147,7 @@
               <td>
                 <strong>Alert Id</strong>
               </td>
-              <td>10035</td>
+              <td>10049-1</td>
             </tr>
             <tr> 
               <td>
@@ -159,22 +159,22 @@
               <td>
                 <strong>Status</strong>
               </td>
-              <td>release</td>
+              <td>beta</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td></td>
+              <td>Informational</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/.html">
-                  
+                <a href="https://cwe.mitre.org/data/definitions/524.html">
+                  524
                 </a>
               </td>
             </tr>
@@ -182,7 +182,7 @@
               <td>
                 <strong>WASC</strong>
               </td>
-              <td></td>
+              <td>13</td>
             </tr>
             <tr> 
               <td>
@@ -190,9 +190,7 @@
               </td>
               <td>
               
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
+              	<a href="/alerttags/wstg-v42-athn-06">WSTG-V42-ATHN-06</a><br>
               
               </td>
             </tr>
@@ -203,49 +201,37 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>
+          <p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.
+          The content may be marked as storable by ensuring that the following conditions are satisfied: The request method must be understood by the cache and defined as being cacheable (&#39;GET&#39;, &#39;HEAD&#39;, and &#39;POST&#39; are currently defined as cacheable) The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood) The &#39;no-store&#39; cache directive must not appear in the request or response header fields For caching by &#39;shared&#39; caches such as &#39;proxy&#39; caches, the &#39;private&#39; response directive must not appear in the response For caching by &#39;shared&#39; caches such as &#39;proxy&#39; caches, the &#39;Authorization&#39; header field must not appear in the request, unless the response explicitly allows it (using one of the &#39;must-revalidate&#39;, &#39;public&#39;, or &#39;s-maxage&#39; Cache-Control response directives) In addition to the conditions above, at least one of the following conditions must also be satisfied by the response: It must contain an &#39;Expires&#39; header field It must contain a &#39;max-age&#39; response directive For &#39;shared&#39; caches such as &#39;proxy&#39; caches, it must contain a &#39;s-maxage&#39; response directive It must contain a &#39;Cache Control Extension&#39; that allows it to be cached It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</a>
+              <a href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org/html/rfc7234</a>
             
           </li>
         
           <li>
             
-              <a href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a>
+              <a href="https://tools.ietf.org/html/rfc7231">https://tools.ietf.org/html/rfc7231</a>
             
           </li>
         
           <li>
             
-              <a href="http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="http://caniuse.com/stricttransportsecurity">http://caniuse.com/stricttransportsecurity</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="http://tools.ietf.org/html/rfc6797">http://tools.ietf.org/html/rfc6797</a>
+              <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html%20%28obsoleted%20by%20rfc7234%29">http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java'>org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/CacheableScanRule.java'>org/zaproxy/zap/extension/pscanrulesBeta/CacheableScanRule.java</a>
       </section>
   </main>
 </div>
