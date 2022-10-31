@@ -1504,61 +1504,7 @@
 
 
 </ol>
-          
-<h1 id="options-client-certificate-screen">Options Client Certificate screen</h1>
-<p>The Client Certificate screen allows you to add a client certificate for ZAP to use when testing applications
-protected using mutual SSL. Currently supported ways to utilize certificates are PKCS12 and PKCS11.</p>
-
-<h2 id="using-pkcs12">Using PKCS12 <a class="header-link" href="#using-pkcs12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>It is possible to set the Client Certificate from the command line with the following switches:</p>
-<pre tabindex="0"><code>-config certificate.use=true
--config certificate.pkcs12.path=/path/to/file.p12
--config certificate.pkcs12.password=WhateverThePasswordIs
--config certificate.pkcs12.index=1
--config certificate.persist=true
-</code></pre><p><code>-config certificate.pkcs12.index</code> is only necessary if the file contains multiple certificates
-and you wish to use one other than the first. Index values start at zero (0) which is the first certificate
-in the file.</p>
-<p><code>-config certificate.persist=true</code> is only necessary if you would like the settings persisted in ZAP&rsquo;s regular
-configuration file (so that they apply for subsequent ZAP use).</p>
-
-<h2 id="using-pkcs11">Using PKCS11 <a class="header-link" href="#using-pkcs11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>PKCS11 is one of the Public-Key Cryptography Standards. Usually PKCS11 is used with Hardware Tokens (mostly USB style)
-that store the cryptographic material in a secure way. Thus usually a driver is needed. The drivers are most commonly provided
-by the Issuer of the Certificate stored on the token or the provider of the token. Certain tokens (especially if running
-under Linux) are supported by opensc/libccid combination.</p>
-<p>It is possible to set the Client Certificate from the command line with the following switches:</p>
-<pre tabindex="0"><code>-config certificate.use=true
--config certificate.experimentalSlotListIndex=true
-</code></pre><p>Setting PKCS11 Driver, Pin, and active certificate is not possible from the command line for the moment. Using <code>certificate.experimentalSlotListIndex=true</code> is only required for some cards. If without does not work try adding it.</p>
-
-<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/">UI Overview</a></td>
-<td>for an overview of the user interface</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/dialogs/options/">Options dialogs</a></td>
-<td>for details of the other Options dialog screens</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/cmdline/">Command Line</a></td>
-<td>for details of the Command Line</td>
-</tr>
-</tbody>
-</table>
+          <p>This page was <a href="/docs/desktop/addons/network/options/clientcertificates/">moved</a>.</p>
 
         </div>
       </div>
