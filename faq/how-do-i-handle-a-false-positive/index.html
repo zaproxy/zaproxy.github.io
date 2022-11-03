@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.92a7ab.css" rel="stylesheet">
+    <link href="/main.eae27c.css" rel="stylesheet">
   
 </head>
 <body>
@@ -141,7 +141,9 @@ You should make sure that you understand the potential vulnerability being repor
 <p>Please <a href="https://github.com/zaproxy/zaproxy/issues/new?labels=bug&amp;template=Bug_report.md">report</a> any false positives that you identify supplying as much information as you can, while obfuscating any sensitive information. New issues should just cover one scan rule and should include enough information for us to reproduce the problem. This will help us improve ZAP.</p>
 <p>Many scan rules support <a href="/docs/desktop/ui/dialogs/scanpolicy/#threshold">Alert Thresholds</a> and specific <a href="/docs/desktop/ui/dialogs/options/ruleconfig/">Rule Configuration options</a> which allow you to configure some of the conditions under which alerts are reported. Check the help for the relevant rule - this is included with ZAP and is also available <a href="/docs/desktop/addons/">online</a>.</p>
 <p>If you are using ZAP manually then you can double click alerts in the desktop UI and change the confidence level to False Positive.</p>
-<p>If you are automating ZAP and the relevant scan rule does not support a suitable threshold level then you can use <a href="/docs/desktop/addons/alert-filters/">Alert Filters</a> to change alerts that match specific criteria to have a confidence level of False Positive.</p>
+<p>If you are automating ZAP and the relevant scan rule does not support a suitable threshold level then you can use <a href="/docs/desktop/addons/alert-filters/">Alert Filters</a> to change alerts that match specific criteria to have a confidence level of False Positive.
+Configuring Alert Filters in this way actually helps the whole ZAP community (if you have not turned off Telemetry)
+as it allows us to measure which rules have the <a href="/docs/statistics/highest-false-positives-last-month/">highest false positive rate</a>.</p>
 <p>The <a href="/docs/docker/">packaged scans</a> also support regex expressions in the <a href="/docs/docker/api-scan/#configuration-file">configuration file</a> which allow you to ignore alerts for the URLs you specify.</p>
 <p>The reports do not include false positives by default, however you can choose to filter the included alerts by Risk or Confidence.</p>
 <p>If you wish to adjust risk or confidence via the API check the following endpoints:</p>
@@ -217,7 +219,7 @@ You should make sure that you understand the potential vulnerability being repor
 
   
   
-    <script src="/main.366b4c.js"></script>
+    <script src="/main.966e90.js"></script>
   
 </div>
 </body>
