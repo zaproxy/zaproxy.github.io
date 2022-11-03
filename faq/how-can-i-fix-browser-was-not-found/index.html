@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>OWASP ZAP &ndash; What is the default directory that ZAP uses?</title>
+  <title>OWASP ZAP &ndash; How can I fix &#39;browser was not found&#39;?</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -130,29 +130,55 @@
 <div class="wrapper py-20" data-kind="page">
     <div class="breadcrumbs">
         <a href="/faq/">FAQ</a> &gt;
-        <a href="/faq/#cat-general-questions">General Questions</a>
+        <a href="/faq/#cat-howtos">Howtos</a>
     </div>
-    <h2>What is the default directory that ZAP uses?</h2>
+    <h2>How can I fix &#39;browser was not found&#39;?</h2>
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <p>The default directory that ZAP uses depends on the OS.</p>
-<p>You can open the ZAP Home directory in your OS&rsquo;s file explorer in ZAP via <code>Help</code> &gt; <code>Support Info ...</code> and by clicking on the <code>Open ZAP Home</code> button.</p>
-<p>It can be overridden using the <code>-dir</code> <a href="/docs/desktop/cmdline/">command line</a> option.</p>
-<p>The default or home directory contains ZAP files added or modified at runtime. Including (but not limited to): config files, add-ons, input files, logs, etc. It is also the save location, for: scripts, active scan policy files, exported contexts, etc.</p>
-<p>Note: ZAP&rsquo;s home is not the same as the user&rsquo;s home directory, which is also OS dependent, and is the initial save location for sessions, reports, exported URLs, etc.</p>
+            <p>If you want to manually explore your target app then the easiest way is to launch your favourite browser
+from ZAP. ZAP will automatically configure it to proxy via ZAP and to ignore the certificate warnings
+you would otherwise get from the ZAP root CA certificate.</p>
+<p>But what can you do if ZAP fails to launch your browser?</p>
 
-<h2 id="windows-7--8--10">Windows 7 / 8 / 10 <a class="header-link" href="#windows-7--8--10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p><code>C:\Users\&lt;username&gt;\OWASP ZAP</code></p>
+<h3 id="check-for-updates">Check for Updates <a class="header-link" href="#check-for-updates"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The first thing to do is to &lsquo;Check for Updates&rsquo; and install any add-ons which are out of date,
+in particular the webdriver and <a href="/docs/desktop/addons/selenium/">Selenium</a> ones.
+Browsers are updated very frequently and the updates often require corresponding changes to the webdrivers.
+If you dont have the right webdrivers then ZAP will not be able to launch the browsers.</p>
+<p>If you are on Windows then you may also need to restart ZAP.
+Windows will refuse to allow ZAP to copy the webdrivers to the correct location if they are currently being used.</p>
+<p>To make sure the webdrivers are correctly updated on Windows we recommend:</p>
+<ol>
+<li>In ZAP go to <code>Help</code> &gt; <code>Support Info ...</code></li>
+<li>Click on the <code>Open ZAP Home</code> button</li>
+<li>Close ZAP (the Explorer directory should stay open)</li>
+<li>Delete the whole <code>webdriver</code> directory</li>
+<li>Restart ZAP</li>
+</ol>
+<p>ZAP will recreate the webdriver directory with the right webdrivers in it.</p>
 
-<h2 id="linux">Linux <a class="header-link" href="#linux"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p><code>~/.ZAP</code></p>
+<h3 id="make-sure-your-browser-has-finished-updating">Make sure your browser has finished updating <a class="header-link" href="#make-sure-your-browser-has-finished-updating"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Browsers can act &ldquo;strangely&rdquo; if they are in the process of updating.
+Close all instances of the relevant browser, then open it outside of ZAP and check if it is updating.
+If it is then wait until it has finished, close the instance and try again.</p>
 
-<h2 id="mac-os">Mac OS <a class="header-link" href="#mac-os"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p><code>~/Library/Application Support/ZAP</code></p>
+<h3 id="make-sure-zap-can-find-your-browser">Make sure ZAP can find your browser <a class="header-link" href="#make-sure-zap-can-find-your-browser"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If that does not solve your problem then check that your browser is on your path -
+if it is not then ZAP may not be able to find it.</p>
+<p>You can configure the locations of both Chrome and Firefox via the <a href="/docs/desktop/addons/selenium/options/">Selenium Options</a> screen.</p>
 
-<h2 id="weekly-releases-and-development-builds">Weekly releases and development builds <a class="header-link" href="#weekly-releases-and-development-builds"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>Note that for both weekly releases and dev builds <code>_D</code> is appended to the above mentioned directory name. For example on Linux the home directory is <code>~/.ZAP_D/</code>.</p>
+<h3 id="check-the-zaplog-file">Check the zap.log file <a class="header-link" href="#check-the-zaplog-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If that does not help then <a href="/faq/somethings-not-working-what-should-i-do/#check-the-log-file">check the zap.log file</a>
+for any relevant errors.</p>
+<p>One possibility is that we have updated the webdrivers to the latest versions, but you are (for some reason)
+using an older version of the browser. This should be apparent from the error messages.
+If this is the case then either update your browser or download the compatible webdriver and configure ZAP to use it -
+you can do that via the <a href="/docs/desktop/addons/selenium/options/">Selenium Options</a> screen as well.</p>
+
+<h3 id="ask-on-the-user-group">Ask on the User Group <a class="header-link" href="#ask-on-the-user-group"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If all fails then ask on the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a>, but make sure you mention you have checked this FAQ otherwise
+you will just be redirected back to here!</p>
 
           </main>
       </article>
@@ -196,7 +222,7 @@
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/faq/what-is-the-default-directory-that-zap-uses.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/faq/how-can-i-fix-browser-was-not-found.md">Edit on GitHub</a>
   </div>
 
     </div>
