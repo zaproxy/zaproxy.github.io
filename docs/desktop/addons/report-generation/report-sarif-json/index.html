@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>OWASP ZAP &ndash; Plug-n-Hack Clients tab</title>
+  <title>OWASP ZAP &ndash; SARIF JSON Report</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -727,10 +727,10 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/plug-n-hack/">Plug-n-Hack</a>
         <ul class="tree-branch">  
-                        <li class="tree-active"> 
+                        <li> 
                             <a href="/docs/desktop/addons/plug-n-hack/clientstab/">Plug-n-Hack Clients tab</a>
                         </li>
         </ul>
@@ -787,7 +787,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/report-generation/">Report Generation</a>
         <ul class="tree-branch">  
                         <li> 
@@ -811,7 +811,7 @@
                         <li> 
                             <a href="/docs/desktop/addons/report-generation/report-risk-confidence/">Risk and Confidence HTML</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/report-generation/report-sarif-json/">SARIF JSON Report</a>
                         </li>  
                         <li> 
@@ -1494,42 +1494,179 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/plug-n-hack/'>Plug-n-Hack</a>
+        <a href='/docs/desktop/addons/report-generation/'>Report Generation</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/plug-n-hack/clientstab/'>Plug-n-Hack Clients tab</a>
+        <a href='/docs/desktop/addons/report-generation/report-sarif-json/'>SARIF JSON Report</a>
     </li>
 
 
 </ol>
           
-<h1 id="plug-n-hack-clients-tab">Plug-n-Hack Clients tab</h1>
-<p>Plug-n-Hack allows you to monitor client (browser) events in order to help test HTML5 applications.<br>
-In order to support as wide a range of modern browsers as possible this is implemented by injecting javascript
-into the response returned to the browser.<br>
-As it means changing the response this functionality has to be manually enabled.</p>
-<p>To receive client events:</p>
-<ul>
-<li>Access the pages you want to monitor while proxying through ZAP</li>
-<li>Right click in the relevant node(s) in the Sites tree and select &lsquo;Monitor clients -&gt; Include subtree&rsquo;</li>
-<li>Force your browser to reload those pages</li>
-<li>Client events (such as postMessage, click, mouseover, etc.) will then be listed in this tab - select them to see the full details.</li>
-</ul>
-<p>The injected javascript sends a heartbeat to ZAP, so ZAP can display all of the &lsquo;active&rsquo; clients in this tab.<br>
-In this case &lsquo;active&rsquo; clients are pages that are currently open in a browser tab.<br>
-You can edit and resend any event via a right click menu item as long as the original client is active.</p>
-<p>You can also intercept and change postMessages on the fly.<br>
-Client messages are intercepted if the ‘break on all requests’ button is selected on the top level toolbar.<br>
-You can also set custom client breakpoints via a button on the Clients tab.</p>
-<p>You can fuzz postMessages in the same way as any other message - highlight the string you want to fuzz in the Request tab, right click and select “Fuzz”.<br>
-This option will only be available if the relevant browser still has that page open,as PnH sends the payloads to the browser.<br>
-Standard ‘XSS’ payloads can be used to detect DOM XSS vulnerabilities, but you will need to manually monitor the UI to see if any of them are successful.</p>
-<p>PnH also adds a Custom fuzzing file called “PlugnHack DOM XSS Oracle”.<br>
-This file is based on the OWASP XSS cheatsheet and invokes an ‘xss’ JavaScript method that is injected into the page.<br>
-This method invokes the ZAP API which in turn flags the relevant attack in the UI - these are confirmed DOM XSS vulnerabilities,
-although (as always) you should check that they can really be exploited in the application you are testing without a tool like ZAP.</p>
+<h1 id="sarif-json-report">SARIF JSON Report</h1>
 
+<h3 id="sample">Sample <a class="header-link" href="#sample"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<pre tabindex="0"><code>{
+   &#34;runs&#34;: [
+      {
+         &#34;results&#34;: [ 
+            {
+               &#34;level&#34;: &#34;error&#34;,
+               &#34;locations&#34;: [
+                  {
+                     &#34;physicalLocation&#34;: {
+                        &#34;artifactLocation&#34;: {
+                           &#34;uri&#34;: &#34;https://127.0.0.1:8080/greeting?name=%3C%2Fp%3E%3Cscript%3Ealert%281%29%3B%3C%2Fscript%3E%3Cp%3E&#34;
+                        },
+                        &#34;region&#34;: {
+                           &#34;startLine&#34;: 10, 
+                           &#34;snippet&#34;: {
+                               &#34;text&#34;: &#34;&lt;\/p&gt;&lt;script&gt;alert(1);&lt;\/script&gt;&lt;p&gt;&#34;
+                           }
+                        }
+                     },
+                     &#34;properties&#34;: {
+                         &#34;attack&#34;: &#34;&lt;\/p&gt;&lt;script&gt;alert(1);&lt;\/script&gt;&lt;p&gt;&#34;
+                     }
+                  }
+               ],
+               &#34;message&#34;: {
+                  &#34;text&#34;: &#34;Some other additional information which shall appear inside the message&#34;
+               },
+               &#34;ruleId&#34;: &#34;40012&#34;,
+               &#34;webRequest&#34;: {
+                   &#34;protocol&#34;: &#34;HTTP&#34;,
+                   &#34;version&#34;: &#34;1.1&#34;,
+                   &#34;target&#34;: &#34;https://127.0.0.1:8080/greeting?name=%3C%2Fp%3E%3Cscript%3Ealert%281%29%3B%3C%2Fscript%3E%3Cp%3E&#34;,
+                   &#34;method&#34;: &#34;GET&#34;,
+                   &#34;headers&#34;: {
+                       &#34;Cache-Control&#34; : &#34;no-cache&#34;,
+                       &#34;Content-Length&#34; : &#34;0&#34;,
+                       &#34;Cookie&#34; : &#34;JSESSIONID=38AA1F7A61982DF1073D7F43A3707798; locale=de&#34;,
+                       &#34;Host&#34; : &#34;127.0.0.1:8080&#34;,
+                       &#34;Pragma&#34; : &#34;no-cache&#34;,
+                       &#34;Referer&#34; : &#34;https:\/\/127.0.0.1:8080\/hello&#34;,
+                       &#34;User-Agent&#34; : &#34;Mozilla\/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko\/20100101 Firefox\/92.0&#34;
+                   },
+                   &#34;body&#34;: {
+                       
+                   }
+               },
+               &#34;webResponse&#34;: {
+                   &#34;statusCode&#34;: 200,
+                   &#34;reasonPhrase&#34;: &#34;&#34;,
+                   &#34;protocol&#34;: &#34;HTTP&#34;,
+                   &#34;version&#34;: &#34;1.1&#34;,
+                   &#34;headers&#34;: {
+                       &#34;Cache-Control&#34; : &#34;no-cache, no-store, max-age=0, must-revalidate&#34;,
+                       &#34;Content-Language&#34; : &#34;en-US&#34;,
+                       &#34;Content-Security-Policy&#34; : &#34;script-src &#39;self&#39;&#34;,
+                       &#34;Content-Type&#34; : &#34;text\/html;charset=UTF-8&#34;,
+                       &#34;Date&#34; : &#34;Thu, 11 Nov 2021 09:56:20 GMT&#34;,
+                       &#34;Expires&#34; : &#34;0&#34;,
+                       &#34;Pragma&#34; : &#34;no-cache&#34;,
+                       &#34;Referrer-Policy&#34; : &#34;no-referrer&#34;,
+                       &#34;Set-Cookie&#34; : &#34;locale=de; HttpOnly; SameSite=strict&#34;,
+                       &#34;Strict-Transport-Security&#34; : &#34;max-age=31536000 ; includeSubDomains&#34;,
+                       &#34;X-Content-Type-Options&#34; : &#34;nosniff&#34;,
+                       &#34;X-Frame-Options&#34; : &#34;DENY&#34;,
+                       &#34;X-XSS-Protection&#34; : &#34;1; mode=block&#34;
+                   },
+                   &#34;body&#34;: {
+                       &#34;text&#34;: &#34;&lt;!DOCTYPE HTML&gt;\n&lt;html&gt;\n&lt;head&gt;\n    &lt;title&gt;Getting Started: Serving Web Content&lt;\/title&gt;\n    &lt;meta http-equiv=\&#34;Content-Type\&#34; content=\&#34;text\/html; charset=UTF-8\&#34; \/&gt;\n&lt;\/head&gt;\n&lt;body&gt;\n    &lt;!-- unsecure text used (th:utext instead th:text)- to create vulnerability (XSS) --&gt;\n    &lt;!-- simple usage: http:\/\/localhost:8080\/greeting?name=Test2&lt;\/p&gt;&lt;script&gt;;alert(\&#34;hallo\&#34;)&lt;\/script&gt; --&gt;\n    &lt;p &gt;XSS attackable parameter output: &lt;\/p&gt;&lt;script&gt;alert(1);&lt;\/script&gt;&lt;p&gt;!&lt;\/p&gt;\n&lt;\/body&gt;\n&lt;\/html&gt;&#34;
+                   },
+                   &#34;noResponseReceived&#34;: false
+               }
+            }
+         ],
+         &#34;taxonomies&#34;: [
+            {
+               &#34;downloadUri&#34;: &#34;https://cwe.mitre.org/data/xml/cwec_v4.8.xml.zip&#34;,
+               &#34;guid&#34;:  &#34;b000a760-3e52-3565-a35c-f61369da53b7&#34;,
+               &#34;informationUri&#34;: &#34;https://cwe.mitre.org/data/published/cwe_v4.8.pdf/&#34;,
+               &#34;isComprehensive&#34;: true,
+               &#34;language&#34;: &#34;en&#34;,
+               &#34;minimumRequiredLocalizedDataSemanticVersion&#34;: &#34;4.8&#34;,
+               &#34;name&#34;:  &#34;CWE&#34;,
+               &#34;organization&#34;: &#34;MITRE&#34;,
+               &#34;releaseDateUtc&#34;: &#34;2022-06-28&#34;,
+               &#34;shortDescription&#34;: {
+                  &#34;text&#34;: &#34;The MITRE Common Weakness Enumeration&#34;
+               },
+               &#34;taxa&#34;: [
+                  {
+                     &#34;guid&#34;: &#34;5dd429c8-e5e3-37a8-bf40-f7b2d72a9085&#34;,
+                     &#34;helpUri&#34;: &#34;https://cwe.mitre.org/data/definitions/79.html&#34;,
+                     &#34;id&#34;: &#34;79&#34;
+                  }
+               ],
+               &#34;version&#34;: &#34;4.4&#34;
+            }
+         ],
+         &#34;tool&#34;: {
+            &#34;driver&#34;: {
+               &#34;guid&#34;: &#34;840570e4-2388-38c0-8afe-ed426f2f5199&#34;,
+               &#34;informationUri&#34;: &#34;https://www.zaproxy.org/&#34;,
+               &#34;name&#34;: &#34;OWASP ZAP&#34;,
+               &#34;rules&#34;: [ 
+                  {
+                     &#34;id&#34;: &#34;40012&#34;,
+                     &#34;defaultConfiguration&#34;: {
+                        &#34;level&#34;: &#34;error&#34;
+                     },
+                     &#34;fullDescription&#34;: {
+                        &#34;text&#34;: &#34;CSS Description\nMultiple lines\n\nEnd&#34;
+                     },
+                     &#34;name&#34;: &#34;Cross Site Scripting&#34;,
+                     &#34;properties&#34;: {
+                            &#34;references&#34;: [
+                                &#34;http://projects.webappsec.org/Cross-Site-Scripting&#34;,
+                                &#34;http://cwe.mitre.org/data/definitions/79.html&#34;
+                            ],
+                            &#34;solution&#34;: {
+                                &#34;text&#34;: &#34;Phase: 1\n\nDo ....&#34;
+                            },
+                            &#34;confidence&#34;: &#34;medium&#34;
+                     },
+                     &#34;relationships&#34;: [ 
+                        {
+                           &#34;kinds&#34;: [
+                              &#34;superset&#34;
+                           ],
+                           &#34;target&#34;: {
+                              &#34;guid&#34;:&#34;5dd429c8-e5e3-37a8-bf40-f7b2d72a9085&#34;,
+                              &#34;id&#34;: &#34;79&#34;,
+                              &#34;toolComponent&#34;: {
+                                 &#34;guid&#34;: &#34;b000a760-3e52-3565-a35c-f61369da53b7&#34;,
+                                 &#34;name&#34;: &#34;CWE&#34;
+                              }
+                           }
+                        }
+                        
+                     ],
+                     &#34;shortDescription&#34;: {
+                        &#34;text&#34;: &#34;Cross Site Scripting&#34;
+                     }
+                  }
+                  
+               ],
+               &#34;semanticVersion&#34;: &#34;Dev Build&#34;,
+               &#34;supportedTaxonomies&#34;: [ 
+                  {
+                     &#34;guid&#34;: &#34;b000a760-3e52-3565-a35c-f61369da53b7&#34;,
+                     &#34;name&#34;: &#34;CWE&#34;
+                  }
+               ],
+               &#34;version&#34;: &#34;Dev Build&#34;
+            }
+         }
+      }
+   ],
+   &#34;$schema&#34;: &#34;https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json&#34;,
+   &#34;version&#34;: &#34;2.1.0&#34;
+}
+</code></pre>
         </div>
       </div>
   </div>
