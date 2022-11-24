@@ -145,7 +145,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert Id</strong>
+                <strong>Scan Rule Id</strong>
               </td>
               <td>3</td>
             </tr>
@@ -161,69 +161,31 @@
               </td>
               <td>release</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>Medium</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/200.html">
-                  200
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>13</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a03">OWASP_2017_A03</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a01">OWASP_2021_A01</a><br>
-              
-              	<a href="/alerttags/wstg-v42-sess-04">WSTG-V42-SESS-04</a><br>
-              
-              </td>
-            </tr>
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>URL rewrite is used to track user session ID. The session ID may be disclosed via cross-site referer header. In addition, the session ID might be stored in browser history or server logs.</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          For secure content, put session ID in a cookie. To be even more secure consider using a combination of cookie and URL rewrite.
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
         
           <li>
-            
-              <a href="http://seclists.org/lists/webappsec/2002/Oct-Dec/0111.html">http://seclists.org/lists/webappsec/2002/Oct-Dec/0111.html</a>
-            
+            <a href="/docs/alerts/3-1">3-1</a> Session ID in URL Rewrite
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/3-2">3-2</a> Session ID in URL Rewrite
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/3-3">3-3</a> Referer Exposes Session ID
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InfoSessionIdUrlScanRule.java'>org/zaproxy/zap/extension/pscanrules/InfoSessionIdUrlScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InfoSessionIdUrlScanRule.java'>
+            org/zaproxy/zap/extension/pscanrules/InfoSessionIdUrlScanRule.java
+          </a>
       </section>
   </main>
 </div>
