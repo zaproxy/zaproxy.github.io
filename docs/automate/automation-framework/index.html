@@ -138,18 +138,7 @@ The framework is plugable and many of the existing add-ons have been enhanced to
 <h3 id="updating-add-ons">Updating Add-ons <a class="header-link" href="#updating-add-ons"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The <a href="/docs/desktop/addons/automation-framework/job-addons/">addOns</a> job has been found to cause
 problems when updating add-ons which are defined in the current plan. This job has been depreciated and no longer does anything.</p>
-
-<h4 id="in-zap-211">In ZAP 2.11 <a class="header-link" href="#in-zap-211"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p><strong>Important:</strong>  if you run the framework using ZAP 2.11.x from the command line you should <strong>not</strong> use the <code>-addonupdate</code> option -
-again this has been found to cause similar problems.</p>
-<p>The recommended approach is to run ZAP inline once to update all of the add-ons and then again to run the plan, e.g.:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./zap.sh -cmd -addonupdate
-</span></span><span style="display:flex;"><span>./zap.sh -cmd -autorun zap.yaml &lt;any other ZAP options&gt;
-</span></span></code></pre></div><p>If you are using the framework in the ZAP stable <a href="/docs/docker/about/">docker</a> image then the recommended approach is to run ZAP in this way:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable bash -c <span style="color:#e6db74">&#34;zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml&#34;</span>
-</span></span></code></pre></div>
-<h4 id="weekly-live-and-post-211">Weekly, Live, and Post 2.11 <a class="header-link" href="#weekly-live-and-post-211"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>With the weekly and live releases and docker images you can use the standard ZAP <a href="/docs/desktop/cmdline/">command line</a>
+<p>From 2.12 you can use the standard ZAP <a href="/docs/desktop/cmdline/">command line</a>
 options with the AF <code>-autorun</code> option:</p>
 <ul>
 <li><code>-addoninstall &lt;addOnId&gt;</code> to install an add-on</li>
