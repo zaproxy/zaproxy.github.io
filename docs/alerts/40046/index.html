@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>OWASP ZAP &ndash; CSP</title>
+  <title>OWASP ZAP &ndash; Server Side Request Forgery</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -123,7 +123,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">CSP</h1>
+      <h1 class="text--white">Server Side Request Forgery</h1>
   </div>
 </section>
 
@@ -145,75 +145,95 @@
           <tbody>
             <tr>
               <td>
-                <strong>Scan Rule Id</strong>
+                <strong>Alert Id</strong>
               </td>
-              <td>10055</td>
+              <td>40046</td>
             </tr>
             <tr> 
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Passive</td>
+              <td>Active</td>
             </tr>
             <tr> 
               <td>
                 <strong>Status</strong>
               </td>
-              <td>release</td>
+              <td>alpha</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/918.html">
+                  918
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>20</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Technologies Targeted</strong>
+              </td>
+              <td>
+              
+                All
+              
+	          </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Tags</strong>
+              </td>
+              <td>
+              
+              	<a href="/alerttags/out_of_band">OUT_OF_BAND</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a10">OWASP_2021_A10</a><br>
+              
+              	<a href="/alerttags/wstg-v42-inpv-19">WSTG-V42-INPV-19</a><br>
+              
+              </td>
             </tr>
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <h3 class="mb-10">Alerts</h3>
-        <ul data-attr="alerts">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>The web server receives a remote address and retrieves the contents of this URL, but it does not sufficiently ensure that the request is being sent to the expected destination.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Do not accept remote addresses as request parameters, and if you must, ensure that they are validated against an allow-list of expected values.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
         
           <li>
-            <a href="/docs/alerts/10055-1">10055-1</a> CSP: X-Content-Security-Policy
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-10">10055-10</a> CSP: script-src unsafe-eval
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-2">10055-2</a> CSP: X-WebKit-CSP
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-3">10055-3</a> CSP: Notices
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-4">10055-4</a> CSP: Wildcard Directive
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-5">10055-5</a> CSP: script-src unsafe-inline
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-6">10055-6</a> CSP: style-src unsafe-inline
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-7">10055-7</a> CSP: script-src unsafe-hashes
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-8">10055-8</a> CSP: style-src unsafe-hashes
-          </li>
-        
-          <li>
-            <a href="/docs/alerts/10055-9">10055-9</a> CSP: Malformed Policy (Non-ASCII)
+            
+              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html</a>
+            
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyScanRule.java'>
-            org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyScanRule.java
-          </a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/SsrfScanRule.java'>org/zaproxy/zap/extension/ascanrulesAlpha/SsrfScanRule.java</a>
       </section>
   </main>
 </div>
