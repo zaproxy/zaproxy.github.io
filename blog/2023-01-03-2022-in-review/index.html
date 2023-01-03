@@ -7,20 +7,20 @@
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
     <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://www.zaproxy.org/blog/2022-12-24-12-days-of-zapmas/images/aa_zapmas_01.png"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2023-01-03-2022-in-review/images/2022-review.png"/>
 
-<meta name="twitter:title" content="The Twelve Days of ZAPmas"/>
-<meta name="twitter:description" content="A reply to an excellent blog series from Secure Ideas: Twelve Days of ZAPmas - ZAP impressions from a Burp user."/>
+<meta name="twitter:title" content="2022 in Review"/>
+<meta name="twitter:description" content="A summary of everything ZAP related that happened in 2022."/>
 
-    <meta property="og:title" content="The Twelve Days of ZAPmas" />
-<meta property="og:description" content="A reply to an excellent blog series from Secure Ideas: Twelve Days of ZAPmas - ZAP impressions from a Burp user." />
+    <meta property="og:title" content="2022 in Review" />
+<meta property="og:description" content="A summary of everything ZAP related that happened in 2022." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/blog/2022-12-24-12-days-of-zapmas/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2022-12-24-12-days-of-zapmas/images/aa_zapmas_01.png" /><meta property="article:section" content="blog" />
-<meta property="article:published_time" content="2022-12-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-24T00:00:00+00:00" />
+<meta property="og:url" content="/blog/2023-01-03-2022-in-review/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2023-01-03-2022-in-review/images/2022-review.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-01-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-03T00:00:00+00:00" />
 
   
-  <title>OWASP ZAP &ndash; The Twelve Days of ZAPmas</title>
+  <title>OWASP ZAP &ndash; 2022 in Review</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -138,7 +138,7 @@
 
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">The Twelve Days of ZAPmas</h1>
+    <h1 class="text--white">2022 in Review</h1>
   </div>
 </section>
 
@@ -151,60 +151,94 @@
 
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Saturday December 24, 2022</span>
-              <span class="word-count fl-r"> 598 Words </span>
+              Posted <span class="post-date">Tuesday January 3, 2023</span>
+              <span class="word-count fl-r"> 565 Words </span>
             </section>
-            <p>Sometimes Christmas comes early, and in this case for me it was the publication of the <a href="https://www.secureideas.com/blog/twelve-days-of-zapmas-day-1-setting-up-zap">Twelve Days of ZAPmas</a> blog posts by <a href="https://twitter.com/mic_wg">Mic Whitehorn-Gillam</a>.</p>
-<p><img src="images/aa_zapmas_01.png" alt="Twelve Days of ZAPmas"></p>
-<p>If you have not read them yet then please do - they are a great introduction to ZAP and provide what I think is a very fair and balanced comparison to Burp Suite.</p>
-<p>The blog posts raise some very valid points but are also missing a couple of important things, but happily <a href="https://www.secureideas.com/">Secure Ideas</a> have allowed me to write a <a href="https://www.secureideas.com/blog/zapmas-feedback">guest blog post</a> which we&rsquo;re cross posting here as well to address them 😀</p>
+            <p>2022 was an eventful year for ZAP, and mostly a very successful one.</p>
+<p>We:</p>
+<ul>
+<li>Published 1 <a href="/blog/2022-10-27-zap-2-12-0-the-ten-thousand-star-release/">major release</a></li>
+<li>Published more than 200 <a href="https://github.com/zaproxy/zap-extensions/releases">add-on releases</a></li>
+<li>Took part in 1 <a href="/zapcon-2022/">online conference</a></li>
+<li>Reached 10,000 <a href="https://github.com/zaproxy/zaproxy/stargazers">GitHub stars</a></li>
+<li>Were confirmed as a <a href="https://twitter.com/psiinon/status/1587829073958604800">GitHub Top 1000</a> project</li>
+</ul>
+<p>According to <a href="https://www.openhub.net/p/zaproxy/">Open Hub</a>
+we had a total of <strong>2528 commits</strong> across the 4 main repos thanks to <strong>63 contributors</strong>.</p>
+<p>And based on our <a href="/faq/what-calls-home-does-zap-make/#telemetry">Telemetry</a> the
+<a href="/docs/statistics/">Headline Statistics</a> for 2022 were:</p>
+<ul>
+<li>Number of Times ZAP was Started: <strong>14 Million</strong></li>
+<li>Number of Active Scans: <strong>9 Million</strong></li>
+<li>Number of Alerts Raised: <strong>5.6 Billion</strong></li>
+<li>Number of Active Scan Messages Sent: <strong>15 Billion</strong></li>
+</ul>
 
-<h3 id="context-naming">Context Naming <a class="header-link" href="#context-naming"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>On <a href="https://www.secureideas.com/blog/twelve-days-of-zapmas-day-5-scope-and-contexts">Day 5</a> Mic mentioned that he couldn’t find a way to rename a context once created via the right click “Include in context” option.</p>
-<p>This is of course possible - just navigate to the top node in the Session Properties dialog for that context.</p>
-<p><img src="images/context-rename.png" alt="Context renaming"></p>
+<h3 id="website-changes">Website changes <a class="header-link" href="#website-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This website has seen a steady stream of new content throughout the year.</p>
+<ul>
+<li>In January we started strongly with an all new and very comprehensive <a href="/docs/contribute/">Contributing Guide</a>.</li>
+<li>In February we added the <a href="/mission-statement/">Mission Statement</a> and <a href="/docs/team/">Core Team</a> pages.</li>
+<li>In March we added many more <a href="/docs/statistics/">Statistics</a> and the <a href="/docs/scans/">Test Scans</a> page where you can see how well ZAP does against a growing set of
+vulnerable apps. To date we are not aware of any other web scanner that published this information.</li>
+<li>The <a href="/burp-to-zap-feature-map/">Burp to ZAP Feature Map</a> was added in April.</li>
+<li>July saw us add the <a href="/docs/constants/">Constants</a> page to help anyone using the ZAP <a href="/docs/api/">API</a> and scripts as
+well as the start of the ZAP <a href="/docs/history">History</a> pages.</li>
+<li>The <a href="/docs/roadmap/">Roadmap</a> was added in September, the same month we started publishing <a href="/tags/update/">monthly updates</a>.</li>
+<li>And over the year we published 21 <a href="/blog/">Blog Posts</a>.</li>
+</ul>
 
-<h3 id="openapi-import">OpenAPI Import <a class="header-link" href="#openapi-import"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>On <a href="https://www.secureideas.com/blog/twelve-days-of-zapmas-day-7-api-testing-with-postman-and-zap">Day 7</a> Mic said that on importing an OpenAPI spec ZAP “didn’t present any real UI for viewing and reissuing those requests.”</p>
-<p>All of the ZAP requests made when importing an OpenAPI spec are actually shown in both the Sites and History tab, so you can select them from either of those and then view them or open them in the Request Editor or a Requester tab.</p>
-<p><img src="images/openapi-requests.png" alt="OpenAPI requests"></p>
+<h3 id="networking-changes">Networking Changes <a class="header-link" href="#networking-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>In February we announced the new <a href="/2022-02-10-new-zap-networking-layer/">ZAP networking layer</a>.</p>
+<p>This was a major change to the ZAP networking stack but one that was necessary in order to support more modern protocols.
+Significant work continued on the networking code throughout 2022.</p>
+<p>This has culminated in full support for HTTP/2 in the latest weekly releases.</p>
 
-<h3 id="out-of-band-testing">Out of Band Testing <a class="header-link" href="#out-of-band-testing"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>On <a href="https://www.secureideas.com/blog/twelve-days-of-zapmas-day-11-zap-impressions-from-a-burp-user">Day 11</a> Mic said that “Burp has a few advantages here, a big one being Collaborator”.</p>
-<p>The good news is that ZAP does have Out of Band testing support via the <a href="/docs/desktop/addons/oast-support/">OAST add-on</a> - this supports <a href="https://github.com/marcoagner/boast">BOAST</a> and <a href="https://github.com/projectdiscovery/interactsh">Interactsh</a>. Both of these services are open source, you can use the default services they have set up or host them yourself.
-All of the scan rules which support Out of Band testing have the <a href="/alerttags/out_of_band/">OUT_OF_BAND</a> tag.
-Also make sure you have a look at the <a href="/blog/2021-08-23-oast-with-owasp-zap/">Out-of-band Application Security Testing with OWASP ZAP</a> blog post.</p>
+<h3 id="zapcon">ZAPCon <a class="header-link" href="#zapcon"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>ZAPCon was held on March 8th-9th and was very successful.
+Over 5 thousand people registered and all of the videos are available <a href="/zapcon-2022/">online</a>.</p>
+<p>It is a shame that due to subsequent events this is likely to be the last such event for the foreseeable future.</p>
 
-<h3 id="scripting">Scripting <a class="header-link" href="#scripting"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Mic was very complimentary about ZAP scripting support but did say that it was not well enough documented.</p>
-<p>That is a very fair criticism.</p>
-<p>However we do have <a href="/docs/desktop/addons/script-console/console/#auto-complete">limited code completion support</a>:</p>
-<p><img src="images/script-code-completion.png" alt="script code completion"></p>
-<p>This only works on parameters, but it will let you keep drilling down until you type something other than the list of options presented to you.</p>
-<p>It is also worth noting we have loads of examples in the <a href="https://github.com/zaproxy/community-scripts">community-scripts</a> repo.</p>
-<p>The README files in that repo also link to the JavaDocs for the parameters: eg <a href="https://github.com/zaproxy/community-scripts/tree/main/active#parameters">https://github.com/zaproxy/community-scripts/tree/main/active#parameters</a></p>
+<h3 id="sponsorship-problems">Sponsorship Problems <a class="header-link" href="#sponsorship-problems"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>In June we lost our previous Platinum sponsor and I asked the community for help
+<a href="/blog/2022-06-17-help-needed-fund-zap-development/">funding ZAP development</a>.</p>
+<p>I was blown away by the responses and was in the very fortunate position to receive a significant number of
+very generous offers of support.</p>
+<p>In the end I decided to <a href="/blog/2022-09-14-new-platinum-supporter-jit/">join Jit</a> where I can still focus on ZAP while
+helping <a href="https://jit.io">Jit</a> build a world leading security orchestration platform.</p>
 
-<h3 id="remote-api-access">Remote API Access <a class="header-link" href="#remote-api-access"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>On <a href="https://www.secureideas.com/blog/twelve-days-of-zapmas-day-11-zap-impressions-from-a-burp-user">Day 11</a> Mic also mentioned that ZAP was not practical for testing mobile apps because the ZAP API is restricted to localhost.</p>
-<p>While that is true by default it is also easy to change, as per the <a href="/faq/how-can-i-connect-to-zap-remotely/">FAQ: How can I connect to ZAP remotely</a>?</p>
-<p>You can also change ZAP to listen on 0.0.0.0 in the Network / Local Servers/Proxies Options panel, which has the same effect:</p>
-<p><img src="images/local-proxies.png" alt="script code completion"></p>
-<p>It is also worth noting that the API Options screen allows you to specify which of the addresses that ZAP listens on support the API and also allows you to turn off other ZAP security features like the API key.</p>
-<p>It should go without saying that you should only turn off security features in a safe environment, but I’ll say it anyway!</p>
-<p><img src="images/api-options.png" alt="API options"></p>
+<h3 id="google-summer-of-code">Google Summer of Code <a class="header-link" href="#google-summer-of-code"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We took part in Google Summer of Code once again, and this years student,
+<a href="/docs/team/arkaprabha/">Arkaprabha Chakraborty</a> created the new
+<a href="/blog/2022-08-22-the-param-digger-addon/">Param Digger</a> add-on based on the popular Burp extension
+<a href="https://portswigger.net/bappstore/17d2949a985c4b7ca092728dba871943">Param Miner</a>.</p>
 
-<h3 id="conclusion">Conclusion <a class="header-link" href="#conclusion"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>All in all this was a great set of blog posts.</p>
-<p>The only other thing I’d like to point out is that unlike our commercial competitors ZAP is open source, and this means anyone can get involved.</p>
-<p>If you’d like to help us make ZAP even better then please see our <a href="/docs/contribute/">Contributing Guide</a> or just get in touch with <a href="/docs/team/psiinon/">me</a> 😀</p>
+<h3 id="2120">2.12.0 <a class="header-link" href="#2120"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>ZAP 2.12.0 was released in October and was dubbed the
+<a href="/blog/2022-10-27-zap-2-12-0-the-ten-thousand-star-release/">Ten Thousand Star</a> release thanks to the main
+<a href="https://github.com/zaproxy/zaproxy">zaproxy/zaproxy</a> repo reaching 10,000 stars.</p>
+<p>This was a major release for us and included:</p>
+<ul>
+<li>The new networking add-on</li>
+<li>Migration of the standard spider to an add-on</li>
+<li>Multi-threaded Passive Scanner</li>
+<li>Bit.ly telemetry removal</li>
+<li>Scan rule promotions</li>
+<li>Dependency updates</li>
+<li>New add-ons</li>
+<li>Desktop HTML injection fix</li>
+</ul>
+
+<h3 id="future-plans">Future plans <a class="header-link" href="#future-plans"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We have only just released ZAP 2.12.0 &hellip; but we are actually planning to release ZAP 2.13.0 in the relatively near future!</p>
+<p>Stay tuned for more announcements about this surprise release soon 😁.</p>
+<p>Thank you to everyone who has contributed to ZAP in any way, and wishing you all a successful and secure 2023!</p>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2022-12-01-zap-updates-2022-november/"> ZAP Updates 2022 November</a>
+                Previous <a class="previous" href="/blog/2022-12-24-12-days-of-zapmas/"> The Twelve Days of ZAPmas</a>
               
-              
-                Next <a class="next" href="/blog/2023-01-03-2022-in-review/"> 2022 in Review</a>
               
           </div>
       </article>
@@ -237,12 +271,13 @@ Also make sure you have a look at the <a href="/blog/2021-08-23-oast-with-owasp-
   <ul>
     <li>
       <ul>
-        <li><a href="#context-naming">Context Naming</a></li>
-        <li><a href="#openapi-import">OpenAPI Import</a></li>
-        <li><a href="#out-of-band-testing">Out of Band Testing</a></li>
-        <li><a href="#scripting">Scripting</a></li>
-        <li><a href="#remote-api-access">Remote API Access</a></li>
-        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#website-changes">Website changes</a></li>
+        <li><a href="#networking-changes">Networking Changes</a></li>
+        <li><a href="#zapcon">ZAPCon</a></li>
+        <li><a href="#sponsorship-problems">Sponsorship Problems</a></li>
+        <li><a href="#google-summer-of-code">Google Summer of Code</a></li>
+        <li><a href="#2120">2.12.0</a></li>
+        <li><a href="#future-plans">Future plans</a></li>
       </ul>
     </li>
   </ul>
@@ -253,6 +288,8 @@ Also make sure you have a look at the <a href="/blog/2021-08-23-oast-with-owasp-
           <ul id="tags">
            
            <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/update/">update</a> </li>
            
           </ul>
           
@@ -300,7 +337,7 @@ Also make sure you have a look at the <a href="/blog/2021-08-23-oast-with-owasp-
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2022-12-24-12-days-of-zapmas/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2023-01-03-2022-in-review/index.md">Edit on GitHub</a>
   </div>
 
     </div>
