@@ -145,7 +145,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert Id</strong>
+                <strong>Scan Rule Id</strong>
               </td>
               <td>90019</td>
             </tr>
@@ -161,89 +161,27 @@
               </td>
               <td>release</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>High</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/94.html">
-                  94
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>20</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                
-                	<a href="/techtags/language.asp">Language / ASP</a><br>
-                
-                	<a href="/techtags/language.php">Language / PHP</a><br>
-                
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a01">OWASP_2017_A01</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a03">OWASP_2021_A03</a><br>
-              
-              	<a href="/alerttags/wstg-v42-inpv-11">WSTG-V42-INPV-11</a><br>
-              
-              </td>
-            </tr>
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>A code injection may be possible including custom code that will be evaluated by the scripting engine</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Do not trust client side input, even if there is client side validation in place. In general, type check all data on the server side and escape all data received from the client. Avoid the use of eval() functions combined with user input data.
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
         
           <li>
-            
-              <a href="http://cwe.mitre.org/data/definitions/94.html">http://cwe.mitre.org/data/definitions/94.html</a>
-            
+            <a href="/docs/alerts/90019-1">90019-1</a> Server Side Code Injection - PHP Code Injection
           </li>
         
           <li>
-            
-              <a href="https://owasp.org/www-community/attacks/Direct_Dynamic_Code_Evaluation_Eval%20Injection">https://owasp.org/www-community/attacks/Direct_Dynamic_Code_Evaluation_Eval%20Injection</a>
-            
+            <a href="/docs/alerts/90019-2">90019-2</a> Server Side Code Injection - ASP Code Injection
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/CodeInjectionScanRule.java'>org/zaproxy/zap/extension/ascanrules/CodeInjectionScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/CodeInjectionScanRule.java'>
+            org/zaproxy/zap/extension/ascanrules/CodeInjectionScanRule.java
+          </a>
       </section>
   </main>
 </div>

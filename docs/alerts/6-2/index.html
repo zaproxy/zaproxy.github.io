@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <link rel="alternate" type="application/rss+xml" href="/alerttags/owasp_2021_a01/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; OWASP_2021_A01</title>
+  <title>OWASP ZAP &ndash; Path Traversal</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -123,223 +122,140 @@
 
   
 <section class="bolt-header">
-  <div class="wrapper py-20">
-    
-      <h1 class="text--white">Alert Tag:  OWASP_2021_A01</h1>
-    
+    <div class="wrapper py-20">
+      <h1 class="text--white">Path Traversal</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
+
+<div class="wrapper py-20" data-kind="page">
     <header class="breadcrumbs">
-        <a href="/alerttags/">Alert Tags</a> &gt;
-        
-        <a href="/alerttags/owasp_2021_a01">OWASP_2021_A01</a>
-        
+        <a href="/docs/">Docs</a> &gt;
+        <a href="/docs/alerts/">Alerts</a>
     </header>
-   
-
-    
-      
-      
-        <h4><a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">https://owasp.org/Top10/A01_2021-Broken_Access_Control/</a></h4>
-      
-      All of the alerts which use this tag:
-    
-
-   <div class="flex latest-versions">
-      <table data-sort-filter>
-         <thead>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
             <tr>
-               <th>Tag</th>
-               <th>Link</th>
+              <th colspan="2">
+                Details
+              </th>
             </tr>
-         </thead>
-         <tbody>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>6-2</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Active</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>release</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/22.html">
+                  22
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>33</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Technologies Targeted</strong>
+              </td>
+              <td>
+              
+                All
+              
+	          </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Tags</strong>
+              </td>
+              <td>
+              
+              	<a href="/alerttags/owasp_2017_a05">OWASP_2017_A05</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a01">OWASP_2021_A01</a><br>
+              
+              	<a href="/alerttags/wstg-v42-athz-01">WSTG-V42-ATHZ-01</a><br>
+              
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>The Path Traversal attack technique allows an attacker access to files, directories, and commands that potentially reside outside the web document root directory. An attacker may manipulate a URL in such a way that the web site will execute or reveal the contents of arbitrary files anywhere on the web server. Any device that exposes an HTTP-based interface is potentially vulnerable to Path Traversal.</p>
+<p>Most web sites restrict user access to a specific portion of the file-system, typically called the &ldquo;web document root&rdquo; or &ldquo;CGI root&rdquo; directory. These directories contain the files intended for user access and the executable necessary to drive web application functionality. To access files or execute commands anywhere on the file-system, Path Traversal attacks will utilize the ability of special-characters sequences.</p>
+<p>The most basic Path Traversal attack uses the &ldquo;../&rdquo; special-character sequence to alter the resource location requested in the URL. Although most popular web servers will prevent this technique from escaping the web document root, alternate encodings of the &ldquo;../&rdquo; sequence may help bypass the security filters. These method variations include valid and invalid Unicode-encoding (&quot;..%u2216&quot; or &ldquo;..%c0%af&rdquo;) of the forward slash character, backslash characters (&quot;..&quot;) on Windows-based servers, URL encoded characters &ldquo;%2e%2e%2f&rdquo;), and double URL encoding (&quot;..%255c&quot;) of the backslash character.</p>
+<p>Even if the web server properly restricts Path Traversal attempts in the URL path, a web application itself may still be vulnerable due to improper handling of user-supplied input. This is a common problem of web applications that use template mechanisms or load static text from files. In variations of the attack, the original URL parameter value is substituted with the file name of one of the web application&rsquo;s dynamic scripts. Consequently, the results can reveal source code because the file is interpreted as text instead of an executable script. These techniques often employ additional special characters such as the dot (&quot;.&quot;) to reveal the listing of the current working directory, or &ldquo;%00&rdquo; NULL characters in order to bypass rudimentary file extension checks.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Assume all input is malicious. Use an &#39;accept known good&#39; input validation strategy, i.e., use an allow list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a deny list). However, deny lists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.
+When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, &#39;boat&#39; may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as &#39;red&#39; or &#39;blue.&#39;
+For filenames, use stringent allow lists that limit the character set to be used. If feasible, only allow a single &#39;.&#39; character in the filename to avoid weaknesses, and exclude directory separators such as &#39;/&#39;. Use an allow list of allowable file extensions.
+Warning: if you attempt to cleanse your data, then do so that the end result is not in the form that can be dangerous. A sanitizing mechanism can remove characters such as &#39;.&#39; and &#39;;&#39; which may be required for some exploits. An attacker can try to fool the sanitizing mechanism into &#39;cleaning&#39; data into a dangerous form. Suppose the attacker injects a &#39;.&#39; inside a filename (e.g. &#39;sensi.tiveFile&#39;) and the sanitizing mechanism removes the character resulting in the valid filename, &#39;sensitiveFile&#39;. If the input data are now assumed to be safe, then the file may be compromised.
+Inputs should be decoded and canonicalized to the application&#39;s current internal representation before being validated. Make sure that your application does not decode the same input twice. Such errors could be used to bypass allow list schemes by introducing dangerous inputs after they have been checked.
+Use a built-in path canonicalization function (such as realpath() in C) that produces the canonical version of the pathname, which effectively removes &#39;..&#39; sequences and symbolic links.
+Run your code using the lowest privileges that are required to accomplish the necessary tasks. If possible, create isolated accounts with limited privileges that are only used for a single task. That way, a successful attack will not immediately give the attacker access to the rest of the software or its environment. For example, database applications rarely need to run as the database administrator, especially in day-to-day operations.
+When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs.
+Run your code in a &#39;jail&#39; or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by your software.
+OS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows you to specify restrictions on file operations.
+This may not be a feasible solution, and it only limits the impact to the operating system; the rest of your application may still be subject to compromise.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10202/">Absence of Anti-CSRF Tokens</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="http://projects.webappsec.org/Path-Traversal">http://projects.webappsec.org/Path-Traversal</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/40038/">Bypassing 403</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </li>
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10054/">Cookie without SameSite Attribute</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="http://cwe.mitre.org/data/definitions/22.html">http://cwe.mitre.org/data/definitions/22.html</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/40040-1/">CORS Header</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/40040-2/">CORS Misconfiguration</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/40040-3/">CORS Misconfiguration</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10098/">Cross-Domain Misconfiguration</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10063-2/">Deprecated Feature Policy Header Set</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/0/">Directory Browsing</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10023/">Information Disclosure - Debug Error Messages</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10025/">Information Disclosure - Sensitive Information in HTTP Referrer Header</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10024/">Information Disclosure - Sensitive Information in URL</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10027/">Information Disclosure - Suspicious Comments</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/6-1/">Path Traversal</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/6-2/">Path Traversal</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/6-3/">Path Traversal</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/6-4/">Path Traversal</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/6-5/">Path Traversal</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10063-1/">Permissions Policy Header Not Set</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/2/">Private IP Disclosure</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/3-3/">Referer Exposes Session ID</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10037/">Server Leaks Information via &#39;X-Powered-By&#39; HTTP Response Header Field(s)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/40013/">Session Fixation</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/3-1/">Session ID in URL Rewrite</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/3-2/">Session ID in URL Rewrite</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/40042/">Spring Actuator Information Leak</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10096/">Timestamp Disclosure</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10057/">Username Hash Found</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10105/">Weak Authentication Method</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10056/">X-Debug-Token Information Leak</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-         </tbody>
-      </table>
-   </div>
-  </div>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/PathTraversalScanRule.java'>org/zaproxy/zap/extension/ascanrules/PathTraversalScanRule.java</a>
+      </section>
+  </main>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
