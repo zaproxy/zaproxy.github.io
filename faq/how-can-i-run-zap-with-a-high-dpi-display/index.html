@@ -138,21 +138,11 @@
           <main class="post-content">
             <p>If ZAP is displayed in a really tiny window then it&rsquo;s probably because you have
 a high DPI display.</p>
-<p>The solution is easy - use Java 9+</p>
-<p>If you need to have multiple versions of Java on Windows then you may find it
-difficult to specify which one should be used. However changing the last line
-of the existing <code>zap.bat</code> batch file to specify the path to the right version
-of Java should solve this problem, e.g.:</p>
-<pre><code>&quot;C:\Program Files\Java\jdk-11.0.1\bin\java&quot; %jvmopts% -jar zap-2.8.0.jar %*
-</code></pre>
-<p>If you can only use Java 8 on Windows 10 then you can set the compatibility
-settings:</p>
+<p>We believe High DPI displays and ZAP should behave properly with Windows and Java 11+.</p>
+<p>If you&rsquo;re using Windows and encounter an issue then you can set the compatibility settings:</p>
 <p><img src="/img/faq/windows-settings-high-dpi.png" alt="Windows Settings High-DPI"></p>
-<p>On Linux you can try editing the zap.sh file to include the Java command line
-option like:</p>
-<pre><code> -Dsun.java2d.uiScale=2.5
-</code></pre>
-<p>You can change the scale to which ever value works for you.</p>
+<p>There may also be benefit in setting <a href="/docs/desktop/ui/dialogs/options/jvm/">JVM Options</a> to include the Java command line
+parameter: <code>-Dsun.java2d.uiScale=2.5</code>. You can change the scale to which ever value works for you.</p>
 <p>Finally, if all else fails, you can increase the Font Size via the ZAP Options
 / Display - this will also scale all of the images as well, although some
 graphical elements such as checkboxes and tree expand/collapse controls may
