@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2023-02-01-authentication-using-selenium/images/selenium-auth.png"/>
+
+<meta name="twitter:title" content="Authenticating Using Selenium"/>
+<meta name="twitter:description" content="How to configure ZAP to handle complex authentication using Selenium."/>
+
+    <meta property="og:title" content="Authenticating Using Selenium" />
+<meta property="og:description" content="How to configure ZAP to handle complex authentication using Selenium." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2023-02-01-authenticating-using-selenium/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2023-02-01-authentication-using-selenium/images/selenium-auth.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-02-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-01T00:00:00+00:00" />
+
+  
+  <title>OWASP ZAP &ndash; Authenticating Using Selenium</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.0f72ad.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler">
+              <img height="20" width="20" src="/img/search.svg" />
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Authenticating Using Selenium</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday February 1, 2023</span>
+              <span class="word-count fl-r"> 1415 Words </span>
+            </section>
+            <p><img src="images/selenium-auth.png" alt="ZAPbot selenium authentication"></p>
+<p>If you want to use ZAP to scan an app while authenticated then you can either
+<a href="/docs/authentication/handling-auth-yourself/">handle the authentication yourself</a> (generally not recommended) or you need to configure ZAP to handle it for you.</p>
+<p>ZAP has extremely flexible support for <a href="/docs/authentication/">authentication</a>, but some use cases are much easier than others.</p>
+<p>In this blog post we are going to look at one of the hardest cases!</p>
+
+<h3 id="the-hard-use-case">The Hard Use Case <a class="header-link" href="#the-hard-use-case"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The use case we are dealing with here is where you have an app which has a complex authentication flow.
+We cannot authenticate with a single POST request.</p>
+<p>To make things harder we are also dealing with a modern web app that maintains the authentication state client side.</p>
+
+<h3 id="why-is-it-so-hard">Why is it so Hard? <a class="header-link" href="#why-is-it-so-hard"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>ZAP can launch browsers using <a href="https://www.selenium.dev/">Selenium</a> which you can control via scripting, so they should be able to handle any sort of complex authentication flow.</p>
+<p>The problems arise because we need to authenticate to the app in 2 different ways:</p>
+<ol>
+<li>Directly, for example when using the standard spider and for most of the active scan rules</li>
+<li>Via a browser, for example when using the <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a> or the <a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS scan rule</a></li>
+</ol>
+
+<h4 id="direct-requests">Direct Requests <a class="header-link" href="#direct-requests"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The first problem relates to direct requests.</p>
+<p>ZAP will only authenticate to the target app once it has made a request and checks to see that it is not authenticated. ZAP will block this first request (and any that arrive in the meantime) while it tries to login. If we use one of the built-in authentication methods then ZAP will &lsquo;know&rsquo; that the request is for authentication and make the request while we are blocking the original one.</p>
+<p>However, in this case we have to launch a browser. By default ZAP will not be able to tell that these requests are for authenticating and will also block them.</p>
+
+<h4 id="browser-requests">Browser Requests <a class="header-link" href="#browser-requests"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The second problem occurs when we launch browsers from ZAP.</p>
+<p>If we just launch the browsers and open a URL on the target app then the browser will not be logged in due to the authentication state it maintains.</p>
+<p>Depending on how the application works it <em>may</em> be possible to inject the authentication state, but in many cases it will not work.</p>
+<p>If we cannot inject the authentication state correctly then the browsers will stay unauthenticated. This means that the AJAX Spider will explore the app while unauthenticated and will miss all of the content that is only accessible while authenticated.</p>
+
+<h3 id="the-test-app">The Test App <a class="header-link" href="#the-test-app"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>For this example we are going to use <a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a>.</p>
+<p>This is a modern web app which maintains client side authentication state.</p>
+<p>We can in fact configure ZAP to authenticate to Juice Shop <em>without</em> using Selenium, but we will ignore that option here 😉.</p>
+<p>To automate ZAP we are going to use the <a href="/docs/automate/automation-framework/">Automation Framework</a> (AF) - this is a powerful and flexible framework ideally suited to this task.</p>
+
+<h3 id="the-solution">The Solution <a class="header-link" href="#the-solution"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The solution is quite complex, and requires several scripts to make it work.</p>
+<p>The full set of scripts and instructions on how to run them are available in the
+<a href="https://github.com/zaproxy/community-scripts/">Community Scripts</a> repo in the
+<a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth">af-plans/juiceshop-selenium-auth</a> directory.</p>
+<p>As you will see we plan to make this process easier, which is one reason for not giving the set-up instructions here - we will be updating the example as we add features which simplify the process.</p>
+<p>However, I will explain what the various parts are doing and why they are needed.</p>
+<p>We actually handle the 2 cases differently:</p>
+<ol>
+<li>Direct requests are managed by ZAP authentication handling.</li>
+<li>Browsers are logged in when they are launched, and are then treated as &lsquo;unauthenticated&rsquo;.</li>
+</ol>
+
+<h4 id="the-test-plan">The Test Plan <a class="header-link" href="#the-test-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p><a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/juiceshop-test.yaml">juiceshop-test.yaml</a> is an AF plan which just checks that authentication is set up correctly for a single direct request.</p>
+<p>It sets up the Juice Shop context (including the authentication) and registers all of the scripts.</p>
+<p>It makes one request to the Juice Shop front page specifying the user to use, which means ZAP will attempt to authenticate as that user.</p>
+<p>It checks the standard ZAP authentication statistics to make sure that there was at least one successful authentication request and no authentication failures.</p>
+<p>If you change the plan or scripts to break the authentication (e.g. by removing the user or using different credentials) then you should see that the plan fails at least one of these tests.</p>
+
+<h4 id="the-full-plan">The Full Plan <a class="header-link" href="#the-full-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p><a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/juiceshop-auth.yaml">juiceshop-auth.yaml</a> is an AF plan which checks that authentication is set up correctly for both the standard and AJAX Spiders.</p>
+<p>It sets up the context and scripts as per the test plan.</p>
+<p>In addition to that it runs the standard spider authenticated and the AJAX Spider unauthenticated - ZAP is not used to authenticate the AJAX Spider because the browsers are logged in when they are launched.</p>
+<p>In both cases a set of statistics are checked to make sure that authentication is really working - both standard
+<a href="/docs/internal-statistics/">ZAP stats</a> are used as are statistics maintained by the scripts below.</p>
+
+<h4 id="the-authentication-script">The Authentication Script <a class="header-link" href="#the-authentication-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopAuthentication.js">JuiceShopAuthentication.js</a> script is run when ZAP detects that a direct request is not currently authenticated.</p>
+<p>The first time it runs it creates a new proxy for the authentication requests - this is how ZAP can tell that these requests are for authentication.</p>
+<p>The proxy is stored in a <a href="/docs/desktop/addons/script-console/#global-variables">global script variable</a> so that we do not keep trying to recreate it.</p>
+<p>The script then launches a browser using the <a href="/docs/desktop/addons/selenium/">Selenium add-on</a> specifying that it should use the new proxy.</p>
+<p>It actually makes 2 requests so that we avoid the warning modals that Juice Shop uses - these are very hard to get rid of in any other way.</p>
+<p>If you need to use Selenium to authenticate to your apps then it is the commands that control the browser in this script that you will need to change to match your app.</p>
+<p>The <code>messageHandler</code> method will get invoked for every request and response which go through the proxy.
+In this case it just looks for the authentication response and tries to extract the session token from it.
+This is another place you will need to change for your apps.</p>
+
+<h4 id="the-httpsender-script">The HttpSender Script <a class="header-link" href="#the-httpsender-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopHttpSender.js">JuiceShopHttpSender.js</a> script is run for all of the requests and responses proxied through ZAP.</p>
+<p>It is needed so that we add the authentication token and cookie to the verification requests that ZAP uses to check if we are logged in.</p>
+<p>We also use it to update statistics which will help us tell if requests from the AJAX Spider are really authenticated.</p>
+
+<h4 id="the-selenium-script">The Selenium Script <a class="header-link" href="#the-selenium-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopSelenium.js">JuiceShopSelenium.js</a> script is run whenever ZAP launches a browser. This will happen when the AJAX Spider and DOM XSS rule run, but also when we launch a browser via the authentication script.</p>
+<p>The script also logs in to Juice Shop in the same way as the authentication script. This sets up the client side authentication state correctly - without this the AJAX Spider would not be able to explore authenticated content.</p>
+<p>If your apps set client side authentication state then you will need to authenticate in a similar way.</p>
+
+<h4 id="the-session-management-script">The Session Management Script <a class="header-link" href="#the-session-management-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopSession.js">JuiceShopSession.js</a> script is run when direct requests are made by ZAP.</p>
+<p>It updates the requests with the authentication token and cookie.</p>
+<p>It will not run when the AJAX Spider runs as we are running that &lsquo;unauthenticated&rsquo; as it logs in to Juice Shop when the browsers are launched.</p>
+
+<h4 id="the-reset-script">The Reset Script <a class="header-link" href="#the-reset-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopReset.js">JuiceShopReset.js</a> script is not actually used when automating ZAP. However, it is very useful when you are testing and debugging a set up like this using the ZAP desktop.</p>
+<p>The script stops the proxy started by the authentication script, clears the session tokens stored in global script variables, and resets the authentication states for all of the users.</p>
+
+<h3 id="sanity-checks">Sanity Checks <a class="header-link" href="#sanity-checks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>You have managed to configure ZAP to authenticate to your app and test it effectively.</p>
+<p>How do you know that this set up will keep working?</p>
+<p>As you will have seen the above plans use a combination of standard ZAP stats and customs ones which are maintained by the scripts.</p>
+<p>However, the AF supports more <a href="/docs/desktop/addons/automation-framework/tests/">Job Tests</a> so you can do things like stopping long running jobs early based on statistic thresholds and checking that ZAP finds specific URLs (and optionally specific content in them). You could use the latter to ensure ZAP finds URLs that it should only be able to find if authentication is working.</p>
+<p>If you can think of any other sort of tests that the AF could usefully support then <a href="https://groups.google.com/group/zaproxy-users">let us know!</a>.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2023-01-19-authentication-help/"> Authentication Help</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-hard-use-case">The Hard Use Case</a></li>
+        <li><a href="#why-is-it-so-hard">Why is it so Hard?</a></li>
+        <li><a href="#the-test-app">The Test App</a></li>
+        <li><a href="#the-solution">The Solution</a></li>
+        <li><a href="#sanity-checks">Sanity Checks</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/authentication/">authentication</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2023-02-01-authenticating-using-selenium/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2023 the ZAP Dev Team</br>
+      OWASP is a registered trademark of the OWASP Foundation, Inc.
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.7f2ab5.js"></script>
+  
+</div>
+</body>
+</html>
