@@ -145,9 +145,9 @@
           <tbody>
             <tr>
               <td>
-                <strong>Scan Rule Id</strong>
+                <strong>Alert Id</strong>
               </td>
-              <td>10038</td>
+              <td>10038-1</td>
             </tr>
             <tr> 
               <td>
@@ -161,31 +161,113 @@
               </td>
               <td>release</td>
             </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>Medium</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/693.html">
+                  693
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>15</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Technologies Targeted</strong>
+              </td>
+              <td>
+              
+                All
+              
+	          </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Tags</strong>
+              </td>
+              <td>
+              
+              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
+              
+              </td>
+            </tr>
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <h3 class="mb-10">Alerts</h3>
-        <ul data-attr="alerts">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
         
           <li>
-            <a href="/docs/alerts/10038-1">10038-1</a> Content Security Policy (CSP) Header Not Set
+            
+              <a href="https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy">https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</a>
+            
           </li>
         
           <li>
-            <a href="/docs/alerts/10038-2">10038-2</a> Obsolete Content Security Policy (CSP) Header Found
+            
+              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</a>
+            
           </li>
         
           <li>
-            <a href="/docs/alerts/10038-3">10038-3</a> Content Security Policy (CSP) Report-Only Header Found
+            
+              <a href="http://www.w3.org/TR/CSP/">http://www.w3.org/TR/CSP/</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html">http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="http://www.html5rocks.com/en/tutorials/security/content-security-policy/">http://www.html5rocks.com/en/tutorials/security/content-security-policy/</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="http://caniuse.com/#feat=contentsecuritypolicy">http://caniuse.com/#feat=contentsecuritypolicy</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="http://content-security-policy.com/">http://content-security-policy.com/</a>
+            
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyMissingScanRule.java'>
-            org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyMissingScanRule.java
-          </a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyMissingScanRule.java'>org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyMissingScanRule.java</a>
       </section>
   </main>
 </div>
