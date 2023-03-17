@@ -1579,7 +1579,26 @@
       engine:                    # String: The script engine to use - can be used to override the default engine for the file extension
       name:                      # String: The name of the script, defaults to the file name
       file:                      # String: The full or relative file path, must be readable
+      inline:                    # String: The full script (may be multi-line) - supply this or &#39;file&#39; not both
       target:                    # String: The URL to be invoked for &#34;targeted&#34; script type
+	
+</code></pre>
+<h2 id="inline-scripts">Inline Scripts <a class="header-link" href="#inline-scripts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Inline scripts are where the script contents are in the YAML plan rather that a separate file. An example of adding and running a simple standalone inline script is:</p>
+<pre tabindex="0"><code>  - type: script
+      parameters:
+        action: &#34;add&#34;
+        type: &#34;standalone&#34;
+        engine: &#34;ECMAScript : Graal.js&#34;
+        name: &#34;inline-test&#34;
+        inline: |
+          print(&#34;This is a simple example&#34;)
+          print(&#34;Of a multi-line script&#34;)
+  - type: script
+      parameters:
+        action: &#34;run&#34;
+        type: &#34;standalone&#34;
+        name: &#34;inline-test&#34;
 	
 </code></pre>
 <h2 id="interacting-with-plans">Interacting with plans <a class="header-link" href="#interacting-with-plans"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
