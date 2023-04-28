@@ -605,6 +605,15 @@ Starting Point The URL which the AJAX spider will start crawling from, or a cont
     </item>
     
     <item>
+      <title>Auto-Detect Authentication</title>
+      <link>/docs/desktop/addons/authentication-helper/autodetect-auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/autodetect-auth/</guid>
+      <description>Auto-Detect Authentication This add-on adds a new authentication type which you can use to indicate that the Authentication Request Identification passive scan rule should attempt to configure the Authentication method automatically.</description>
+    </item>
+    
+    <item>
       <title>Automation Framework - Options</title>
       <link>/docs/desktop/addons/automation-framework/options/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -613,16 +622,6 @@ Starting Point The URL which the AJAX spider will start crawling from, or a cont
       <description>Automation Framework - Options The following options are available:
 Open Last Plan on Start If selected then the Automation tab will automatically load the last plan opened when the GUI starts. This can be useful if you need to regularly use the same plan.
 This option has no effect if the desktop GUI is not used.</description>
-    </item>
-    
-    <item>
-      <title>Browser Based Authentication</title>
-      <link>/docs/desktop/addons/authentication-helper/browser-auth/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/browser-auth/</guid>
-      <description>Browser Based Authentication This add-on adds a new authentication type which uses a browser to login to the target website.
-It uses the first field with a type of &amp;ldquo;text&amp;rdquo; or &amp;ldquo;email&amp;rdquo; for the user name and the first field with a type of &amp;ldquo;password&amp;rdquo; for the password.</description>
     </item>
     
     <item>
@@ -1029,6 +1028,16 @@ Note When testing targets that operate on default ports (80 for http, 443 for ht
     </item>
     
     <item>
+      <title>Browser Based Authentication</title>
+      <link>/docs/desktop/addons/authentication-helper/browser-auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/browser-auth/</guid>
+      <description>Browser Based Authentication This add-on adds a new authentication type which uses a browser to login to the target website.
+It uses the first field with a type of &amp;ldquo;text&amp;rdquo; or &amp;ldquo;email&amp;rdquo; for the user name and the first field with a type of &amp;ldquo;password&amp;rdquo; for the password.</description>
+    </item>
+    
+    <item>
       <title>Creating Reports</title>
       <link>/docs/desktop/addons/report-generation/create/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1048,17 +1057,6 @@ The built in reports are copied into the &amp;lsquo;reports&amp;rsquo; directory
       <description>GraphQL Automation Framework Support This add-on supports the Automation Framework.
 The add-on will import GraphQL schemas using introspection if endpoints are found while spidering. However, specifying an endpoint and (optionally) a schema file or URL is recommended if they are available.
 Job: graphql The graphql job allows you to import GraphQL schemas locally or from a URL.</description>
-    </item>
-    
-    <item>
-      <title>Header Based Session Management</title>
-      <link>/docs/desktop/addons/authentication-helper/session-header/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/session-header/</guid>
-      <description>Header Based Session Management This add-on adds a new session management type which supports an arbitrary number of headers.
-The header values can include the following tokens:
-{%json:path.to.data%} JSON authentication response data {%env:env_var%} Environmental variable {%script:glob_var%} Global script variable {%header:env_var%} Authentication response header {%url:key%} Authentication URL param When adding Header Based Session Management via the API the headers parameter is a string of header:value pairs separated by newline characters: \n.</description>
     </item>
     
     <item>
@@ -1610,6 +1608,17 @@ URL Key value separators The characters that separate keys and values in URLs, b
     </item>
     
     <item>
+      <title>Session Management Identification</title>
+      <link>/docs/desktop/addons/authentication-helper/session-mgmt-id/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/session-mgmt-id/</guid>
+      <description>Session Management Identification This add-on includes a passive scan rule which attempts to identify session management methods.
+It identifies session management methods by the presence of commonly used session management identifiers and any values specified in Authorization request headers.
+The rule will not attempt to identify very unusual session management methods - automation is one of the end goals so false negatives (missing unusual session management methods) are more desirable than false positives (incorrectly identifying a session management method).</description>
+    </item>
+    
+    <item>
       <title>WebSocket Scripts</title>
       <link>/docs/desktop/addons/websockets/script/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1651,6 +1660,15 @@ If you are using one of the ZAP Docker images then be aware that using Docker wi
       <description>API ZAP provides an Application Programming Interface (API) which allows you to interact with ZAP programmatically.
 The API is available in JSON, HTML and XML formats.
 A simple web UI which allows you to explore and use the API is available via the URL http://zap/ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg http://localhost:8080/.</description>
+    </item>
+    
+    <item>
+      <title>Auto-Detect Session Management</title>
+      <link>/docs/desktop/addons/authentication-helper/autodetect-session/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/autodetect-session/</guid>
+      <description>Auto-Detect Session Management This add-on adds a new Session Management type which you can use to indicate that the Session Management Request Identification passive scan rule should attempt to configure the Session Management method automatically.</description>
     </item>
     
     <item>
@@ -1780,6 +1798,17 @@ The passive scanner runs against all requests and responses that are generated b
       <description> Footer This footer displays counts of the High, Medium, Low and Informational alerts and counts of the currently active active and spider scans.
 It can also contain counters for other tools or provided by add-ons.
 See also UI Overview for an overview of the user interface </description>
+    </item>
+    
+    <item>
+      <title>Header Based Session Management</title>
+      <link>/docs/desktop/addons/authentication-helper/session-header/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/session-header/</guid>
+      <description>Header Based Session Management This add-on adds a new session management type which supports an arbitrary number of headers.
+The header values can include the following tokens:
+{%json:path.to.data%} JSON authentication response data {%env:env_var%} Environmental variable {%script:glob_var%} Global script variable {%header:env_var%} Authentication response header {%url:key%} Authentication URL param When adding Header Based Session Management via the API the headers parameter is a string of header:value pairs separated by newline characters: \n.</description>
     </item>
     
     <item>
@@ -2108,6 +2137,17 @@ This FAQ is a work in progress as of 2018-June-1 This FAQ contains spoilers: &am
       <description>The information in this FAQ is based on details from: This user group thread
 The Vaadin framework makes heavy use of JavaScript, so it seems the Ajax Spider is the way to go.
 As you work to figure things out and get them configured correctly it makes sense to starting by proxying your browser through ZAP, identifying the http session and then flagging it as the &amp;lsquo;active session&amp;rsquo; before starting the Ajax Spider.</description>
+    </item>
+    
+    <item>
+      <title>Verification Request Identification</title>
+      <link>/docs/desktop/addons/authentication-helper/verification-id/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/verification-id/</guid>
+      <description>Verification Request Identification This add-on includes a passive scan rule which attempts to identify Verification requests.
+Verification requests are the requests that ZAP uses to tell if a session is still valid.
+Unlike the other identification scan rules in this add-on, this rule will only raise alerts if you have indicated that you want to use verification auto-detection for a specific context.</description>
     </item>
     
     <item>
@@ -6389,7 +6429,7 @@ Any third party can sponsor anyone to work on ZAP Third parties can promote thei
       <guid>/docs/statistics/top-addons-last-month/</guid>
       <description>These were the most frequently installed optional add-ons last month.
 Note that this does not mean they were the most used add-ons - that is harder to quantify.
-Position Add-On Status Id Last Updated 1 Import/Export beta exim 2023-04-04 2 Requester beta requester 2023-03-23 3 Database alpha database 2022-10-27 4 Spider release spider 2023-02-23 5 Passive scanner rules (beta) beta pscanrulesBeta 2023-03-03 6 Active scanner rules (beta) beta ascanrulesBeta 2023-03-03 7 Access Control Testing alpha accessControl 2022-10-28 8 Port Scanner beta portscan 2022-10-27 9 Sequence alpha sequence 2021-10-07 10 Plug-n-Hack Configuration beta plugnhack 2022-10-27 11 Passive scanner rules (alpha) alpha pscanrulesAlpha 2023-03-03 12 Authentication Helper alpha authhelper 2023-03-13 13 Custom Payloads alpha custompayloads 2022-09-23 14 Active scanner rules (alpha) alpha ascanrulesAlpha 2022-12-13 15 Advanced SQLInjection Scanner beta sqliplugin 2021-10-20 16 Wappalyzer - Technology Detection release wappalyzer 2023-04-04 17 FuzzDB Files release fuzzdb 2022-09-23 18 Python Scripting beta jython 2021-10-07 19 Directory List v2.</description>
+Position Add-On Status Id Last Updated 1 Import/Export beta exim 2023-04-04 2 Requester beta requester 2023-03-23 3 Database alpha database 2022-10-27 4 Spider release spider 2023-02-23 5 Passive scanner rules (beta) beta pscanrulesBeta 2023-03-03 6 Active scanner rules (beta) beta ascanrulesBeta 2023-03-03 7 Access Control Testing alpha accessControl 2022-10-28 8 Port Scanner beta portscan 2022-10-27 9 Sequence alpha sequence 2021-10-07 10 Plug-n-Hack Configuration beta plugnhack 2022-10-27 11 Passive scanner rules (alpha) alpha pscanrulesAlpha 2023-03-03 12 Authentication Helper alpha authhelper 2023-04-28 13 Custom Payloads alpha custompayloads 2022-09-23 14 Active scanner rules (alpha) alpha ascanrulesAlpha 2022-12-13 15 Advanced SQLInjection Scanner beta sqliplugin 2021-10-20 16 Wappalyzer - Technology Detection release wappalyzer 2023-04-04 17 FuzzDB Files release fuzzdb 2022-09-23 18 Python Scripting beta jython 2021-10-07 19 Directory List v2.</description>
     </item>
     
     <item>
