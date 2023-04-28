@@ -238,10 +238,22 @@
                             <a href="/docs/desktop/addons/authentication-helper/auth-req-id/">Authentication Request Identification</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/authentication-helper/autodetect-auth/">Auto-Detect Authentication</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/authentication-helper/autodetect-session/">Auto-Detect Session Management</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based Authentication</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/authentication-helper/session-header/">Header Based Session Management</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/authentication-helper/session-mgmt-id/">Session Management Identification</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/authentication-helper/verification-id/">Verification Request Identification</a>
                         </li>
         </ul>
     </li>
@@ -1537,10 +1549,10 @@
 <p>This <a href="/docs/desktop/addons/authentication-helper/">add-on</a> includes a passive scan rule which attempts to identify authentication requests.<br>
 It identifies authentication requests by the presence of commonly used username and password field names. It also uses commonly used URL segments to identify more likely authentication requests, and uses commonly used registration URL segments to ignore registration requests.</p>
 <p>The rule will not attempt to identify very unusual authentication requests - automation is one of the end goals so false negatives
-(missing unusual authentication requests) is more desirable than false positives (incorrectly identifying an authentication request).</p>
-<p>If this rule identifies an authentication request that is part of the context you have defined then an informational alert will be raised and the
-authentication method should be correctly set in the context you have created.<br>
-If an authentication request is not identified then check to make sure it is made to a site which is included in the context.<br>
+(missing unusual authentication requests) are more desirable than false positives (incorrectly identifying an authentication request).</p>
+<p>If this rule identifies an authentication request that is part of the context that you have set to use the
+<a href="/docs/desktop/addons/authentication-helper/autodetect-auth/">Auto-Detect Authentication Method</a> then this rule will update the context to use the authentication method identified.</p>
+<p>If an authentication request is not identified then check to make sure it is made to a site which is included in the context.<br>
 If it is not then add the site to the context and authenticate again via your browser.</p>
 <p>The &lsquo;Other Info&rsquo; field is used to report a set of key-value pairs which can be easily parsed. The current keys supported are:</p>
 <ul>
