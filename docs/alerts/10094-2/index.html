@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <link rel="alternate" type="application/rss+xml" href="/alerttags/owasp_2021_a04/index.xml" title="OWASP ZAP" />
-  <title>OWASP ZAP &ndash; OWASP_2021_A04</title>
+  <title>OWASP ZAP &ndash; ASP.NET ViewState Integrity</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -131,187 +130,125 @@
 
   
 <section class="bolt-header">
-  <div class="wrapper py-20">
-    
-      <h1 class="text--white">Alert Tag:  OWASP_2021_A04</h1>
-    
+    <div class="wrapper py-20">
+      <h1 class="text--white">ASP.NET ViewState Integrity</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
+
+<div class="wrapper py-20" data-kind="page">
     <header class="breadcrumbs">
-        <a href="/alerttags/">Alert Tags</a> &gt;
-        
-        <a href="/alerttags/owasp_2021_a04">OWASP_2021_A04</a>
-        
+        <a href="/docs/">Docs</a> &gt;
+        <a href="/docs/alerts/">Alerts</a>
     </header>
-   
-
-    
-      
-      
-        <h4><a href="https://owasp.org/Top10/A04_2021-Insecure_Design/">https://owasp.org/Top10/A04_2021-Insecure_Design/</a></h4>
-      
-      All of the alerts which use this tag:
-    
-
-   <div class="flex latest-versions">
-      <table data-sort-filter>
-         <thead>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
             <tr>
-               <th>Tag</th>
-               <th>Link</th>
+              <th colspan="2">
+                Details
+              </th>
             </tr>
-         </thead>
-         <tbody>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert Id</strong>
+              </td>
+              <td>10094-2</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Passive</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>alpha</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/642.html">
+                  642
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>13</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Technologies Targeted</strong>
+              </td>
+              <td>
+              
+                All
+              
+	          </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Tags</strong>
+              </td>
+              <td>
+              
+              	<a href="/alerttags/owasp_2017_a03">OWASP_2017_A03</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a04">OWASP_2021_A04</a><br>
+              
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>The application does not use a Message Authentication Code (MAC) to protect the integrity of the ASP.NET ViewState, which can be tampered with by a malicious client</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Ensure that all ASP.NET ViewStates are protected from tampering, by using a MAC, generated using a secure algorithm, and a secret key on the server side. This is the default configuration on modern ASP.NET installation, by may be over-ridden programmatically, or via the ASP.NET configuration.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10094-1/">ASP.NET ViewState Disclosure</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="http://msdn.microsoft.com/en-us/library/bb386448.aspx">http://msdn.microsoft.com/en-us/library/bb386448.aspx</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10094-2/">ASP.NET ViewState Integrity</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </li>
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10094-3/">Base64 Disclosure</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="https://www.jardinesoftware.net/2012/02/06/asp-net-tampering-with-event-validation-part-1/">https://www.jardinesoftware.net/2012/02/06/asp-net-tampering-with-event-validation-part-1/</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10044/">Big Redirect Detected (Potential Sensitive Information Leak)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10110/">Dangerous JS Functions</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10032-2/">Emails Found in the Viewstate</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/40044/">Exponential Entity Expansion (Billion Laughs Attack)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10058/">GET for POST</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10097/">Hash Disclosure</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10026/">HTTP Parameter Override</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90001/">Insecure JSF ViewState</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90004-1/">Insufficient Site Isolation Against Spectre Vulnerability</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90004-2/">Insufficient Site Isolation Against Spectre Vulnerability</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90004-3/">Insufficient Site Isolation Against Spectre Vulnerability</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90002/">Java Serialization Object</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10032-3/">Old Asp.Net Version in Use</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/40008/">Parameter Tampering</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10062/">PII Disclosure</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10032-1/">Potential IP Addresses Found in the Viewstate</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10108/">Reverse Tabnabbing</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10032-6/">Split Viewstate in Use</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10032-5/">Viewstate without MAC Signature (Sure)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10032-4/">Viewstate without MAC Signature (Unsure)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10052/">X-ChromeLogger-Data (XCOLD) Header Information Leak</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-         </tbody>
-      </table>
-   </div>
-  </div>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/Base64Disclosure.java'>org/zaproxy/zap/extension/pscanrulesAlpha/Base64Disclosure.java</a>
+      </section>
+  </main>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
