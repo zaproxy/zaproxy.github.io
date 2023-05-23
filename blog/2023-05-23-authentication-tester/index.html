@@ -6,7 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>OWASP ZAP &ndash; Team &ndash; Akshath Kothari</title>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2023-05-23-authentication-tester/images/blog-auth-dialog-1-test.png"/>
+
+<meta name="twitter:title" content="Authentication Tester Dialog"/>
+<meta name="twitter:description" content="There is now a really easy way to check if ZAP can handle your app&rsquo;s authentication."/>
+
+    <meta property="og:title" content="Authentication Tester Dialog" />
+<meta property="og:description" content="There is now a really easy way to check if ZAP can handle your app&rsquo;s authentication." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2023-05-23-authentication-tester/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2023-05-23-authentication-tester/images/blog-auth-dialog-1-test.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-05-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-23T00:00:00+00:00" />
+
+  
+  <title>OWASP ZAP &ndash; Authentication Tester Dialog</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -129,290 +143,132 @@
 </header>
 
   
+
 <section class="bolt-header">
-    <div class="wrapper py-20">
-      <h1 class="text--white">ZAP Team: Akshath Kothari</h1>
+  <div class="wrapper py-20">
+    <h1 class="text--white">Authentication Tester Dialog</h1>
   </div>
 </section>
 
-
-
-
-
-
-	
-
-	
-
-	
-
-	
-		
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-<div class="wrapper py-20" data-kind="page">
-    <header class="breadcrumbs">
-        <a href="/community/">Community</a> &gt;
-        <a href="/docs/team/">Team</a>
-    </header>
-    <main class="post-content flex pt-10 on-sm-stack">
-      <section class="col-1-3 mr-30 mb-30">
-        <img class="author-picture" src="/img/authors/akshath-kothari_400x400.jpg" />
-        <table class="bordered">
-          <thead>
-            <tr>
-              <th colspan="2">
-                Links
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <strong>GitHub</strong>
-              </td>
-              <td>
-                <a href="https://github.com/ricekot">
-                  https://github.com/ricekot
-                </a>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Twitter</strong>
-              </td>
-              <td>
-                <a href="https://twitter.com/ricekot_">
-                  https://twitter.com/ricekot_
-                </a>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <strong>LinkedIn</strong>
-              </td>
-              <td>
-                <a href="https://www.linkedin.com/in/ricekot/">
-                  https://www.linkedin.com/in/ricekot/
-                </a>
-              </td>
-            </tr>
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday May 23, 2023</span>
+              <span class="word-count fl-r"> 428 Words </span>
+            </section>
+            <p>ZAP can now automatically handle many types of authentication as detailed in the
+<a href="/blog/2023-05-02-authentication-auto-detection/">Authentication Auto-Detection</a> blog post.</p>
+<p>However it did mean you had to create an <a href="/docs/automate/automation-framework/">Automation Framework</a> plan via the command line, which is not ideal.</p>
+<p>It is now <em>much</em> easier to test if ZAP can handle your app&rsquo;s authentication with a brand new dialog!</p>
+
+<h2 id="authentication-tester-dialog">Authentication Tester Dialog <a class="header-link" href="#authentication-tester-dialog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The <a href="/docs/desktop/addons/authentication-helper/">Authentication Helper</a> add-on now adds a new Authentication Tester dialog which can be accessed via the Tools menu item or the key combination: <!-- raw HTML omitted --> T.</p>
+<p><img src="images/auth-dialog-1-test.png" alt="Authentication Tester Dialog - Test tab"></p>
+<p>You only need to specify the following fields:</p>
+<ul>
+<li>Login URL</li>
+<li>Username</li>
+<li>Password</li>
+</ul>
+<p>The rest can be left as their defaults.</p>
+<p>When you press the &ldquo;Test&rdquo; button then ZAP will:</p>
+<ol>
+<li>Launch the browser you have specified (by default Firefox)</li>
+<li>Load the Login URL</li>
+<li>Attempt to fill in the Login form</li>
+<li>Validate that it can detect the session handling</li>
+<li>Validate that it can find a suitable verification URL</li>
+<li>Report how far it has got</li>
+</ol>
+<p>For more details about the dialog see the <a href="/docs/desktop/addons/authentication-helper/auth-tester/">help</a> page.</p>
+
+<h2 id="what-if-it-doesnt-work">What if it Doesn&rsquo;t Work? <a class="header-link" href="#what-if-it-doesnt-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The ZAP authentication auto-detection should handle the majority of login pages, but what can you do if it cannot handle your login page?</p>
+<p>First of all it depends where it fails.</p>
+<p>If ZAP fails to connect to your website then you have a networking issue, and we have a
+<a href="/faq/why-cant-zap-connect-to-my-website/">FAQ</a> for that.</p>
+<p>If ZAP cannot identify either the Username or Password field then we&rsquo;ll need to know more details.
+Ideally you will be able to share a publicly accessible URL with us - we don&rsquo;t need to know the credentials.
+If you cannot share a URL we can access then a minimal example page would be just as good.
+Failing that please <a href="https://groups.google.com/group/zaproxy-users">get in touch</a> and we&rsquo;ll discuss what options we have.</p>
+<p>If ZAP fails to identify the session handling or find a verification URL then we have another option - the Diagnostics tab:</p>
+<p><img src="images/auth-dialog-2-diag.png" alt="Authentication Tester Dialog - Diagnostics tab"></p>
+<p>This is a sanitised summary of the requests and responses made - we just collect essential information and replace host names
+and key values with safe tokens.</p>
+<p>You can double check that this does not include anything sensitive and then share that with us.</p>
+
+<h2 id="give-us-feedback">Give Us Feedback <a class="header-link" href="#give-us-feedback"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Try it out and let us know how you get on!</p>
+<p>Obviously we&rsquo;d love to hear about the successes, but we do also want to know as many details as possible about the failures
+so that we can fix them.</p>
+
+<h2 id="sponsored-by-jit">Sponsored by Jit <a class="header-link" href="#sponsored-by-jit"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>A big thank you to our Platinum sponsor <a href="https://www.jit.io/zap?utm_source=zapproxy&amp;utm_medium=banner&amp;utm_campaign=zap-proxy-website-banner">Jit</a> who have sponsored this and all of the other recent work on ZAP authentication.</p>
+<p><a href="https://www.jit.io/zap?utm_source=zapproxy&amp;utm_medium=banner&amp;utm_campaign=zap-proxy-website-banner"><img src="/img/supporters/jit.png" alt="Sponsored by Jit" title="Sponsored by Jit"></a></p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2023-05-03-zap-updates-april-2023/"> ZAP Updates - April 2023</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
             
             
-            <tr>
-              <td>
-                <strong>Mastodon</strong>
-              </td>
-              <td>
-                <a rel="me" href="https://infosec.exchange/@ricekot">
-                  https://infosec.exchange/@ricekot
-                </a>
-              </td>
-            </tr>
-            
-            
-            <tr>
-              <td>
-                <strong>Blog Posts</strong>
-              </td>
-              <td>
-                <a href="/authors/akshath/">
-                  Author: akshath
-                </a>
-                (5)
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
 
-      </section>
-      <section class="col-2-3">
-          <h3 class="mb-10">Profile</h3>
-          <p>Akshath is the author of the <a href="/docs/desktop/addons/graphql-support/">GraphQL</a> and
-<a href="/docs/desktop/addons/oast-support/">OAST</a> add-ons for ZAP.</p>
-<p>He made his initial contributions as a Google Summer of Code student.</p>
-<p>He loves hacking on ZAP and tries to contribute in whatever way he can - be it code, documentation or user support.</p>
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#authentication-tester-dialog">Authentication Tester Dialog</a></li>
+    <li><a href="#what-if-it-doesnt-work">What if it Doesn&rsquo;t Work?</a></li>
+    <li><a href="#give-us-feedback">Give Us Feedback</a></li>
+    <li><a href="#sponsored-by-jit">Sponsored by Jit</a></li>
+  </ul>
+</nav>
 
-<h4 id="sponsor">Sponsor <a class="header-link" href="#sponsor"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>Akshath can be sponsored directly via his <a href="https://github.com/sponsors/ricekot/">GitHub Sponsors</a> page.</p>
-
-      </section>
-  </main>
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/authentication/">authentication</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
 </div>
 
  </div>
@@ -452,6 +308,13 @@
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2023-05-23-authentication-tester/index.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
