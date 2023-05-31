@@ -187,6 +187,9 @@
                             <a href="/docs/desktop/addons/ajax-spider/automation/">Ajax Spider Automation Framework Support</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/ajax-spider/context/">AJAX Spider Context</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/ajax-spider/options/">Options AJAX Spider screen</a>
                         </li>  
                         <li> 
@@ -1581,6 +1584,14 @@
       - &#34;a&#34;
       - &#34;button&#34;
       - &#34;input&#34;
+      excludedElements:                 # A list of HTML elements to exclude from click.
+        - description: &#34;Logout Button&#34;  # String: Description of the exclusion.
+          element: &#34;button&#34;             # String: Name of the element.
+          xpath:                        # String: XPath of the element, optional.
+          text:                         # String: Text of the element (exact match and case sensitive), optional.
+          attributeName: &#34;aria-label&#34;   # String: Name of the attribute, optional unless the value is provided.
+          attributeValue: &#34;Logout&#34;      # String: Value of the attribute, optional unless the name is provided.
+      
     tests:
       - name: &#39;At least 100 URLs found&#39;      # String: Name of the test, default: statistic + operator + value
         type: &#39;stats&#39;                        # String: Type of test, only &#39;stats&#39; is supported for now
