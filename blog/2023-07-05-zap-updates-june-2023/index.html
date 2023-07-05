@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2023-07-05-zap-updates-june-2023/images/zapbot-monthly-updates-social.png"/>
+
+<meta name="twitter:title" content="ZAP Updates - June 2023"/>
+<meta name="twitter:description" content="June 2023 updates and ongoing feature development statuses."/>
+
+    <meta property="og:title" content="ZAP Updates - June 2023" />
+<meta property="og:description" content="June 2023 updates and ongoing feature development statuses." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2023-07-05-zap-updates-june-2023/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2023-07-05-zap-updates-june-2023/images/zapbot-monthly-updates-social.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-07-05T00:00:00+00:00" />
+
+  
+  <title>OWASP ZAP &ndash; ZAP Updates - June 2023</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-71455536-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-71455536-1');
+  </script>
+  
+  
+  
+    <link href="/main.4f2d6a.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/sponsor/" title="Sponsor page">
+                  Sponsor
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">ZAP Updates - June 2023</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday July 5, 2023</span>
+              <span class="word-count fl-r"> 894 Words </span>
+            </section>
+            <p>Welcome to our monthly updates blog post!<br>
+There were a lot of incremental updates to ZAP in June 2023.</p>
+
+<h2 id="highlights">Highlights <a class="header-link" href="#highlights"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="browser-based-authentication-support-in-the-ajax-spider">Browser-Based Authentication Support in the AJAX Spider <a class="header-link" href="#browser-based-authentication-support-in-the-ajax-spider"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The AJAX Spider now supports crawling authenticated web pages with the browser-based authentication mode.</p>
+
+<h3 id="selenium-4">Selenium 4 <a class="header-link" href="#selenium-4"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>All ZAP add-ons are now using <a href="https://www.selenium.dev/">Selenium</a> v4.
+A nice thing about this update is that the messages written to stdout by browsers will no longer be shown in the ZAP output.
+Please test your Selenium scripts with the latest weekly release and let us know if anything does not work as expected. Read the <a href="https://groups.google.com/g/zaproxy-users/c/qtXsiOWb7cg">Dev Group post</a> for more information.</p>
+
+<h3 id="docker-images-on-ghcr">Docker images on GHCR <a class="header-link" href="#docker-images-on-ghcr"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We now publish all our Docker images on GitHub Container Registry, along with DockerHub.
+While anyone can use these images, we expect these to be useful for large organizations which may be hitting DockerHub&rsquo;s image pull limits.
+Read the <a href="/blog/2023-06-13-ghcr-docker-images">blog post</a> for more details.</p>
+
+<h3 id="community-scripts-tips-and-tricks">Community Scripts Tips (and Tricks) <a class="header-link" href="#community-scripts-tips-and-tricks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>A new section was added to the <a href="https://github.com/zaproxy/community-scripts/tree/main/other/tips">community-scripts repository</a> for people to share their ideas and usage tips for ZAP and its add-ons.</p>
+
+<h2 id="ongoing-work">Ongoing Work <a class="header-link" href="#ongoing-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="2130-release">2.13.0 Release <a class="header-link" href="#2130-release"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We are actively working on getting ZAP 2.13.0 ready for release.
+You can track the progress at <a href="https://github.com/zaproxy/zaproxy/issues/7924">zaproxy/zaproxy#7924</a>.</p>
+
+<h3 id="global-rate-limiting">Global Rate Limiting <a class="header-link" href="#global-rate-limiting"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>There is an <a href="https://github.com/zaproxy/zap-extensions/pull/4011">open pull request</a> (by a first time contributor!) to support rate-limiting all outbound HTTP requests made by ZAP.</p>
+
+<h2 id="google-summer-of-code">Google Summer of Code <a class="header-link" href="#google-summer-of-code"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Two students - <a href="https://groups.google.com/g/zaproxy-develop/c/2y3HM1zy3bI/m/9LEoWQRWAQAJ">Aryan</a> and <a href="https://groups.google.com/g/zaproxy-users/c/pArhbMJw5KA/m/bzGCsZlFBwAJ">Vitika</a> - were selected to work on ZAP this year 🎉! They&rsquo;re working on the following projects:</p>
+
+<h3 id="import-postman-definitions">Import Postman Definitions <a class="header-link" href="#import-postman-definitions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Vitika is working on allowing ZAP to import Postman definitions, which will enable ZAP to parse and attack API endpoints contained in them. <a href="https://summerofcode.withgoogle.com/programs/2023/projects/OlBxaE5X">Read more</a>.</p>
+
+<h3 id="zap-browser-recorder">ZAP Browser Recorder <a class="header-link" href="#zap-browser-recorder"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Aryan is working on the <a href="https://github.com/zaproxy/browser-extension">ZAP Browser extension</a> which will enable users to record client-side browser interactions and replay them in ZAP. <a href="https://summerofcode.withgoogle.com/programs/2023/projects/lx6XL1Rd">Read more</a>.</p>
+
+<h2 id="miscellaneous-updates">Miscellaneous Updates <a class="header-link" href="#miscellaneous-updates"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="zap-vs-owasp-juice-shop">ZAP vs. OWASP Juice Shop <a class="header-link" href="#zap-vs-owasp-juice-shop"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We now run daily ZAP scans against OWASP Juice Shop, in order to benchmark the AJAX Spider. You can view more details about the scan <a href="/docs/scans/juiceshop/">here</a>.</p>
+
+<h2 id="new-supporters">New Supporters <a class="header-link" href="#new-supporters"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>We are grateful to our new supporters for their sponsorship of ZAP development work!</p>
+<ul>
+<li>Samir Kelekar</li>
+<li>Noah Newdorf</li>
+</ul>
+<p>Please find a list of all our supporters on the <a href="/supporters/">Supporters page</a>.</p>
+
+<h2 id="new-contributors">New Contributors <a class="header-link" href="#new-contributors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>A very warm welcome to the people who started to contribute to ZAP this month!</p>
+<ul>
+<li><a href="https://github.com/ciceroff">ciceroff</a></li>
+<li>Chris Dailey (<a href="https://github.com/dailz-c">@dailz-c</a>)</li>
+<li>Thiago Gomes</li>
+</ul>
+
+<h2 id="released-add-ons---full-changelog">Released add-ons - Full Changelog <a class="header-link" href="#released-add-ons---full-changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>In June 2023, we released updated versions of 18 add-ons:</p>
+
+<h5 id="active-scanner-rules-v55">Active scanner rules (v55)</h5>
+<p>Changed</p>
+<ul>
+<li>The Parameter Tamper Scan rule now includes example alert functionality for documentation generation purposes (Issue 6119)</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Fix typo in ASP payload of Server Side Code Injection scan rule.</li>
+<li>Include complete solution of Server Side Include scan rule.</li>
+<li>Ensure Custom Payloads support can be properly unloaded.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>The Hidden File Finder scan rule now check for Blazor WASM config files.</li>
+</ul>
+
+<h5 id="ajax-spider-v23141">Ajax Spider (v23.14.1)</h5>
+<p>Fixed</p>
+<ul>
+<li>Handle job with no parameters when reading Excluded Elements (Issue 7889).</li>
+</ul>
+
+<h5 id="alert-filters-v16">Alert Filters (v16)</h5>
+<p>Added</p>
+<ul>
+<li>Allow to specify the HTTP method when filtering the alerts (Issue 5967).</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h5 id="authentication-helper-v080">Authentication Helper (v0.8.0)</h5>
+<p>Changed</p>
+<ul>
+<li>Prefer username fields with known id/name strings.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Correct example alert of Session Management Response Identified scan rule.</li>
+</ul>
+
+<h5 id="automation-framework-v0290">Automation Framework (v0.29.0)</h5>
+<p>Added</p>
+<ul>
+<li>Statistic name to test summary.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Test taking into account previous statistic values.</li>
+<li>Clear Output tab on new plan.</li>
+</ul>
+
+<h5 id="forced-browse-v13">Forced Browse (v13)</h5>
+<p>Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+<li>Default number of threads to 2 * processor count.</li>
+</ul>
+
+<h5 id="graphql-support-v0170">GraphQL Support (v0.17.0)</h5>
+<p>Added</p>
+<ul>
+<li>It is now possible to disable the query generator completely.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Dependency updates.</li>
+</ul>
+
+<h5 id="linux-webdrivers-v56">Linux WebDrivers (v56)</h5>
+<p>Changed</p>
+<ul>
+<li>Update ChromeDriver to 114.0.5735.90.</li>
+</ul>
+
+<h5 id="macos-webdrivers-v56">MacOS WebDrivers (v56)</h5>
+<p>Changed</p>
+<ul>
+<li>Update ChromeDriver to 114.0.5735.90.</li>
+</ul>
+
+<h5 id="network-v090">Network (v0.9.0)</h5>
+<p>Changed</p>
+<ul>
+<li>Use <code>TRACE</code> level (instead of <code>DEBUG</code>) to log client side HTTP traffic to avoid accidentally enabling it when debugging other add-ons.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Do not close the client connection when the server closes it, if not required, to keep the client connection in good state and be used longer.</li>
+</ul>
+
+<h5 id="openapi-support-v34">OpenAPI Support (v34)</h5>
+<p>Changed</p>
+<ul>
+<li>Dependency updates.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Fix exception when generating data for parameters without schema.</li>
+<li>An exception which might occur on large definition imports (Issue 7876).</li>
+</ul>
+
+<h5 id="parameter-digger-v020">Parameter Digger (v0.2.0)</h5>
+<p>Fixed</p>
+<ul>
+<li>NullPointerException which could occur with header guesser.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+<li>Maintenance changes.</li>
+<li>Default number of threads to 2 * processor count.</li>
+<li>Change panel designs to allow message selection.</li>
+</ul>
+
+<h5 id="passive-scanner-rules-v49">Passive scanner rules (v49)</h5>
+<p>Changed</p>
+<ul>
+<li>The X-AspNet-Version Response Header Scan Rule now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>The Information Disclosure Suspicious Comments scan rule:
+<ul>
+<li>Now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>Now has a Alert Tag with a OWASP WSTG reference.</li>
+<li>Added &lsquo;DEBUG&rsquo; to list of suspicious comments.</li>
+<li>Added custom payload support (via Custom Payloads add-on).</li>
+<li>Removed suspicious-comments.txt file in favor of payload editing via Custom Payloads add-on.</li>
+</ul>
+</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Ensure Custom Payloads support can be properly unloaded.</li>
+</ul>
+
+<h5 id="report-generation-v0210-v0220">Report Generation (v0.21.0, v0.22.0)</h5>
+<p>Added</p>
+<ul>
+<li>Add ZAP version to HTML and PDF reports.</li>
+<li>Automation job: support for sites (Issue 7858).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Validate that <code>outputSummary</code>&rsquo;s job field <code>summaryFile</code> has a parent directory.</li>
+<li>Change SARIF&rsquo;s Base64 encoder to not rely on the default character encoding.</li>
+</ul>
+
+<h5 id="retirejs-v0230">Retire.js (v0.23.0)</h5>
+<p>Changed</p>
+<ul>
+<li>Updated with upstream retire.js pattern changes.</li>
+</ul>
+
+<h5 id="value-generator-v630">Value Generator (v6.3.0)</h5>
+<p>Changed</p>
+<ul>
+<li>Renamed to &ldquo;Value Generator&rdquo; to more clearly identify to users what the add-on does.</li>
+</ul>
+
+<h5 id="wappalyzer---technology-detection-v21220">Wappalyzer - Technology Detection (v21.22.0)</h5>
+<p>Changed</p>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h5 id="windows-webdrivers-v55">Windows WebDrivers (v55)</h5>
+<p>Changed</p>
+<ul>
+<li>Update ChromeDriver to 114.0.5735.90.</li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2023-06-13-ghcr-docker-images/"> ZAP Docker Images in GitHub Container Registry</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/akshath-kothari_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Akshath Kothari
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/ricekot_">@ricekot_</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#highlights">Highlights</a>
+      <ul>
+        <li><a href="#browser-based-authentication-support-in-the-ajax-spider">Browser-Based Authentication Support in the AJAX Spider</a></li>
+        <li><a href="#selenium-4">Selenium 4</a></li>
+        <li><a href="#docker-images-on-ghcr">Docker images on GHCR</a></li>
+        <li><a href="#community-scripts-tips-and-tricks">Community Scripts Tips (and Tricks)</a></li>
+      </ul>
+    </li>
+    <li><a href="#ongoing-work">Ongoing Work</a>
+      <ul>
+        <li><a href="#2130-release">2.13.0 Release</a></li>
+        <li><a href="#global-rate-limiting">Global Rate Limiting</a></li>
+      </ul>
+    </li>
+    <li><a href="#google-summer-of-code">Google Summer of Code</a>
+      <ul>
+        <li><a href="#import-postman-definitions">Import Postman Definitions</a></li>
+        <li><a href="#zap-browser-recorder">ZAP Browser Recorder</a></li>
+      </ul>
+    </li>
+    <li><a href="#miscellaneous-updates">Miscellaneous Updates</a>
+      <ul>
+        <li><a href="#zap-vs-owasp-juice-shop">ZAP vs. OWASP Juice Shop</a></li>
+      </ul>
+    </li>
+    <li><a href="#new-supporters">New Supporters</a></li>
+    <li><a href="#new-contributors">New Contributors</a></li>
+    <li><a href="#released-add-ons---full-changelog">Released add-ons - Full Changelog</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/update/">update</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/sponsor/" title="Sponsor page">Sponsor</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2023-07-05-zap-updates-june-2023/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span>
+      ZAP is an <a href="https://owasp.org/www-project-zap/">OWASP Flagship project</a><br>
+      © Copyright 2023 the ZAP Dev Team</br>
+      OWASP is a registered trademark of the OWASP Foundation, Inc.
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.237d7f.js"></script>
+  
+</div>
+</body>
+</html>
