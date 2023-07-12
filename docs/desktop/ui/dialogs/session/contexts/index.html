@@ -676,7 +676,13 @@
                             <a href="/docs/desktop/addons/network/options/connection/">Connection</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/network/options/globalexclusions/">Global Exclusions</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/network/options/localservers/">Local Servers/Proxies</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/network/options/ratelimit/">Rate Limit</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/network/options/servercertificates/">Server Certificates</a>
@@ -1577,7 +1583,8 @@
 <h3 id="include-in-context">Include in Context <a class="header-link" href="#include-in-context"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This allows you to manage the URLs which will be included in the context.<br>
 URLs which dont match any of the regexs will not be included in the context.<br>
-<strong>Note:</strong> The regular expressions must match the whole URL.</p>
+<strong>Note:</strong> The regular expressions must match the whole URL.<br>
+<strong>Note</strong> When testing targets that operate on default ports (80 for http, 443 for https), the colon port portion of the URL should not be included. Including that portion (for example: <a href="http://example.com:80">http://example.com:80</a>) may result in an inability to crawl or test the target. If a &lsquo;default&rsquo; port is specified both browsers and ZAP treat it without the default port being included then it doesn&rsquo;t match the expectation within the Context and there&rsquo;s nothing to interact with as part of the Context.</p>
 
 <h3 id="exclude-from-context">Exclude from Context <a class="header-link" href="#exclude-from-context"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This allows you to manage the URLs which will be excluded from the context.<br>
