@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>OWASP ZAP &ndash; Source Code Disclosure - PHP</title>
+  <title>OWASP ZAP &ndash; Authentication Methods</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -129,120 +129,74 @@
 </header>
 
   
+
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Source Code Disclosure - PHP</h1>
+      <h1 class="text--white">Authentication Methods</h1>
   </div>
 </section>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+  <ol class="breadcrumbs">
 
-<div class="wrapper py-20" data-kind="page">
-    <header class="breadcrumbs">
-        <a href="/docs/">Docs</a> &gt;
-        <a href="/docs/alerts/">Alerts</a>
-    </header>
-    <main class="post-content flex pt-10 on-sm-stack">
-      <section class="col-1-3 mr-30 mb-30">
-        <table class="bordered">
-          <thead>
-            <tr>
-              <th colspan="2">
-                Details
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <strong>Alert Id</strong>
-              </td>
-              <td>10099</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Alert Type</strong>
-              </td>
-              <td>Passive</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Status</strong>
-              </td>
-              <td>beta</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>Medium</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/540.html">
-                  540
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>13</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
-              
-              </td>
-            </tr>
-          </tbody>
-        </table>
 
-      </section>
-      <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>Application Source Code was disclosed by the web server - PHP</p>
+    <li>
+        <a href='/docs/'>Documentation</a>
+    </li>
 
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server. 
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
-        
-          <li>
-            
-              <a href="http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/">http://blogs.wsj.com/cio/2013/10/08/adobe-source-code-leak-is-bad-news-for-u-s-government/</a>
-            
-          </li>
-        
-        </ul>
-        <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/SourceCodeDisclosureScanRule.java'>org/zaproxy/zap/extension/pscanrulesBeta/SourceCodeDisclosureScanRule.java</a>
-      </section>
-  </main>
+    <li>
+        <a href='/docs/authentication/'>ZAP Authentication</a>
+    </li>
+
+    <li>
+        <a href='/docs/authentication/authentication-methods/'>Authentication Methods</a>
+    </li>
+
+
+</ol>
+    <main><p>Authentication Methods are the means by which ZAP actually authenticates to a web app.</p>
+<p>The following methods are supported:</p>
+
+<h3 id="manual-authentication">Manual Authentication <a class="header-link" href="#manual-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This is the default method, and means that you are <a href="../manual-auth/">handling authentication yourself</a>.</p>
+
+<h3 id="auto-detect">Auto Detect <a class="header-link" href="#auto-detect"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p><a href="/docs/desktop/addons/authentication-helper/autodetect-auth/">Auto-Detect Authentication</a> indicates that the
+<a href="/docs/desktop/addons/authentication-helper/auth-req-id/">Authentication Request Identification</a> passive scan rule should attempt to configure the Authentication method automatically.</p>
+
+<h3 id="browser-based-authentication">Browser Based Authentication <a class="header-link" href="#browser-based-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p><a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based Authentication</a> launches a browser which will attempt
+to fill in the correct credentials for the specified user.</p>
+<p>This is often the most effective option, especially for modern apps which you need to explore using the
+<a href="/docs/desktop/addons/ajax-spider/">Ajax Spider</a>.</p>
+
+<h3 id="http--ntlm-authentication">HTTP / NTLM Authentication <a class="header-link" href="#http--ntlm-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This method handles both <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication">HTTP</a>
+and NTLM authentication.
+You will need to supply the hostname, port and realm.</p>
+
+<h3 id="form-based-authentication">Form-based Authentication <a class="header-link" href="#form-based-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p><a href="/docs/desktop/ui/dialogs/session/context-auth/#form-based-authentication">Form-based Authentication</a> handles traditional HTML FORMs with user and password fields which are submitted using a standard HTTP GET or POST.</p>
+
+<h3 id="json-based-authentication">JSON-based Authentication <a class="header-link" href="#json-based-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p><a href="/docs/desktop/ui/dialogs/session/context-auth/#json-based-authentication">SON-based Authentication</a> handles form-based authentication where the user and password fields are submitted as a JSON object using an HTTP POST.</p>
+
+<h3 id="script-based-authentication">Script-based Authentication <a class="header-link" href="#script-based-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p><a href="/docs/desktop/ui/dialogs/session/context-auth/#script-based-authentication">Script-based Authentication</a> allows you to use a script which will give you complete control over the authentication process.</p>
+<p>For examples see the <a href="https://github.com/zaproxy/community-scripts/tree/main/authentication">authentication</a> directory
+in the Community Scripts repo.</p>
+<div class="next-content bg--blue-lightest p-10">
+    
+      Previous <a class="previous" href='../session-handling/'> Session handling</a>
+    
+    
+      Next Verification Strategies (coming soon)
+    
 </div>
+
+</main>
+  </article>
+</section>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -281,6 +235,13 @@
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/docs/authentication/authentication-methods.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
