@@ -202,7 +202,7 @@ We cannot authenticate with a single POST request.</p>
 <p>The solution is quite complex, and requires several scripts to make it work.</p>
 <p>The full set of scripts and instructions on how to run them are available in the
 <a href="https://github.com/zaproxy/community-scripts/">Community Scripts</a> repo in the
-<a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth">af-plans/juiceshop-selenium-auth</a> directory.</p>
+<a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth">af-plans/juiceshop-selenium-auth</a> directory.</p>
 <p>As you will see we plan to make this process easier, which is one reason for not giving the set-up instructions here - we will be updating the example as we add features which simplify the process.</p>
 <p>However, I will explain what the various parts are doing and why they are needed.</p>
 <p>We actually handle the 2 cases differently:</p>
@@ -212,21 +212,21 @@ We cannot authenticate with a single POST request.</p>
 </ol>
 
 <h4 id="the-test-plan">The Test Plan <a class="header-link" href="#the-test-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p><a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/juiceshop-test.yaml">juiceshop-test.yaml</a> is an AF plan which just checks that authentication is set up correctly for a single direct request.</p>
+<p><a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth/juiceshop-test.yaml">juiceshop-test.yaml</a> is an AF plan which just checks that authentication is set up correctly for a single direct request.</p>
 <p>It sets up the Juice Shop context (including the authentication) and registers all of the scripts.</p>
 <p>It makes one request to the Juice Shop front page specifying the user to use, which means ZAP will attempt to authenticate as that user.</p>
 <p>It checks the standard ZAP authentication statistics to make sure that there was at least one successful authentication request and no authentication failures.</p>
 <p>If you change the plan or scripts to break the authentication (e.g. by removing the user or using different credentials) then you should see that the plan fails at least one of these tests.</p>
 
 <h4 id="the-full-plan">The Full Plan <a class="header-link" href="#the-full-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p><a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/juiceshop-auth.yaml">juiceshop-auth.yaml</a> is an AF plan which checks that authentication is set up correctly for both the standard and AJAX Spiders.</p>
+<p><a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth/juiceshop-auth.yaml">juiceshop-auth.yaml</a> is an AF plan which checks that authentication is set up correctly for both the standard and AJAX Spiders.</p>
 <p>It sets up the context and scripts as per the test plan.</p>
 <p>In addition to that it runs the standard spider authenticated and the AJAX Spider unauthenticated - ZAP is not used to authenticate the AJAX Spider because the browsers are logged in when they are launched.</p>
 <p>In both cases a set of statistics are checked to make sure that authentication is really working - both standard
 <a href="/docs/internal-statistics/">ZAP stats</a> are used as are statistics maintained by the scripts below.</p>
 
 <h4 id="the-authentication-script">The Authentication Script <a class="header-link" href="#the-authentication-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopAuthentication.js">JuiceShopAuthentication.js</a> script is run when ZAP detects that a direct request is not currently authenticated.</p>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth/JuiceShopAuthentication.js">JuiceShopAuthentication.js</a> script is run when ZAP detects that a direct request is not currently authenticated.</p>
 <p>The first time it runs it creates a new proxy for the authentication requests - this is how ZAP can tell that these requests are for authentication.</p>
 <p>The proxy is stored in a <a href="/docs/desktop/addons/script-console/#global-variables">global script variable</a> so that we do not keep trying to recreate it.</p>
 <p>The script then launches a browser using the <a href="/docs/desktop/addons/selenium/">Selenium add-on</a> specifying that it should use the new proxy.</p>
@@ -237,22 +237,22 @@ In this case it just looks for the authentication response and tries to extract 
 This is another place you will need to change for your apps.</p>
 
 <h4 id="the-httpsender-script">The HttpSender Script <a class="header-link" href="#the-httpsender-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopHttpSender.js">JuiceShopHttpSender.js</a> script is run for all of the requests and responses proxied through ZAP.</p>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth/JuiceShopHttpSender.js">JuiceShopHttpSender.js</a> script is run for all of the requests and responses proxied through ZAP.</p>
 <p>It is needed so that we add the authentication token and cookie to the verification requests that ZAP uses to check if we are logged in.</p>
 <p>We also use it to update statistics which will help us tell if requests from the AJAX Spider are really authenticated.</p>
 
 <h4 id="the-selenium-script">The Selenium Script <a class="header-link" href="#the-selenium-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopSelenium.js">JuiceShopSelenium.js</a> script is run whenever ZAP launches a browser. This will happen when the AJAX Spider and DOM XSS rule run, but also when we launch a browser via the authentication script.</p>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth/JuiceShopSelenium.js">JuiceShopSelenium.js</a> script is run whenever ZAP launches a browser. This will happen when the AJAX Spider and DOM XSS rule run, but also when we launch a browser via the authentication script.</p>
 <p>The script also logs in to Juice Shop in the same way as the authentication script. This sets up the client side authentication state correctly - without this the AJAX Spider would not be able to explore authenticated content.</p>
 <p>If your apps set client side authentication state then you will need to authenticate in a similar way.</p>
 
 <h4 id="the-session-management-script">The Session Management Script <a class="header-link" href="#the-session-management-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopSession.js">JuiceShopSession.js</a> script is run when direct requests are made by ZAP.</p>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth/JuiceShopSession.js">JuiceShopSession.js</a> script is run when direct requests are made by ZAP.</p>
 <p>It updates the requests with the authentication token and cookie.</p>
 <p>It will not run when the AJAX Spider runs as we are running that &lsquo;unauthenticated&rsquo; as it logs in to Juice Shop when the browsers are launched.</p>
 
 <h4 id="the-reset-script">The Reset Script <a class="header-link" href="#the-reset-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
-<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/af-plans/juiceshop-selenium-auth/JuiceShopReset.js">JuiceShopReset.js</a> script is not actually used when automating ZAP. However, it is very useful when you are testing and debugging a set up like this using the ZAP desktop.</p>
+<p>The <a href="https://github.com/zaproxy/community-scripts/tree/main/other/af-plans/juiceshop-selenium-auth/JuiceShopReset.js">JuiceShopReset.js</a> script is not actually used when automating ZAP. However, it is very useful when you are testing and debugging a set up like this using the ZAP desktop.</p>
 <p>The script stops the proxy started by the authentication script, clears the session tokens stored in global script variables, and resets the authentication states for all of the users.</p>
 
 <h3 id="sanity-checks">Sanity Checks <a class="header-link" href="#sanity-checks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
