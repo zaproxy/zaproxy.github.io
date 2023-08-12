@@ -177,9 +177,9 @@ Options:
     -z zap_options    ZAP command line options e.g. -z &#34;-config aaa=bbb -config ccc=ddd&#34;
     --hook            path to python file that define your custom hooks
 </code></pre><p>To run it with no &lsquo;file&rsquo; params use:</p>
-<pre tabindex="0"><code>docker run -t owasp/zap2docker-stable zap-full-scan.py -t https://www.example.com
+<pre tabindex="0"><code>docker run -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t https://www.example.com
 </code></pre><p>If you use &lsquo;file&rsquo; params then you need to mount the directory those file are in or will be generated in, eg</p>
-<pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-full-scan.py \
+<pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py \
     -t https://www.example.com -g gen.conf -r testreport.html
 </code></pre><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
 

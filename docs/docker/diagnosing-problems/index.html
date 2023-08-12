@@ -147,7 +147,7 @@
 <h2 id="zap-cannot-connect-to-the-target">ZAP Cannot Connect to the Target <a class="header-link" href="#zap-cannot-connect-to-the-target"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>If ZAP cannot connect to your target app then the first thing to do is to see if this is a &lsquo;Docker&rsquo; networking issue.</p>
 <p>To do that you can just use the <code>curl</code> command to make a request to the target. Change the Docker image name if you are not using the stable one:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -t owasp/zap2docker-stable curl https://www.example.com
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -t ghcr.io/zaproxy/zaproxy:stable curl https://www.example.com
 </span></span></code></pre></div><p>If <code>curl</code> cannot access your target app then this is a Docker networking issue rather than a problem with ZAP.</p>
 <p>If you are running your target app in another Docker container then see the ZAP Docker User Guide:
 <a href="../about/#scanning-an-app-running-in-another-docker-container">Scanning an app running in another Docker container</a>.</p>
@@ -159,7 +159,7 @@
 <p>On Windows you need to specify the full local directory name e.g. <code>-v C:\temp:/zap/wrk/:rw</code>.</p>
 <p>If you cannot see files that should be being created then first check to make sure they are created in the mapped drive.</p>
 <p>If they are then check that any file can be created - the following command should create the file <code>test.txt</code> in the CWD on Linux / MacOS.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable touch /zap/wrk/test.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable touch /zap/wrk/test.txt
 </span></span></code></pre></div><p>If this does not work then there is a permission issue in your environment - no ZAP options will be able to work around that.</p>
 
 <h2 id="zap-fails-for-another-reason">ZAP Fails for Another Reason <a class="header-link" href="#zap-fails-for-another-reason"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
@@ -168,9 +168,9 @@ This is not so easy if you are running one of the packaged scans.</p>
 <p>Instead of specifying the packaged scan when you start Docker you will need to start a bash shell and then run the packaged scan from there.
 Once that has completed you will be able to access the ZAP log file.</p>
 <p>So instead of running:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -t owasp/zap2docker-stable zap-baseline.py -t https://www.example.com
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t https://www.example.com
 </span></span></code></pre></div><p>You need to run:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -i -t owasp/zap2docker-stable bash 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -i -t ghcr.io/zaproxy/zaproxy:stable bash 
 </span></span></code></pre></div><p>From the bash prompt then your command, e.g.:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./zap-baseline.py -t https://www.example.com
 </span></span></code></pre></div><p>And when that has finished you can display the ZAP log file:</p>
@@ -192,7 +192,7 @@ Once that has completed you will be able to access the ZAP log file.</p>
 </ul>
 </li>
 <li>Run your packaged scan mapping the CWD to <code>/zap/wrk/</code> and passing in the above scan hook, e.g.
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t https://www.example.com --hook<span style="color:#f92672">=</span>LogMessagesHook.py
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t https://www.example.com --hook<span style="color:#f92672">=</span>LogMessagesHook.py
 </span></span></code></pre></div></li>
 </ol>
 <p>All of the requests and responses made by or proxied through ZAP will be written to the <code>req-resp-log.txt</code> file in your CWD.</p>

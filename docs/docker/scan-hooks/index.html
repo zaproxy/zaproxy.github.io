@@ -180,7 +180,7 @@ correspond with the name of the hook. By default, ZAP scans will load hooks defi
 </span></span><span style="display:flex;"><span>zap-baseline.py -t https://example.com --hook<span style="color:#f92672">=</span>my-hooks.py
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># or using Docker </span>
-</span></span><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py <span style="color:#ae81ff">\
+</span></span><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -t https://www.example.com -g gen.conf -r testreport.html --hook<span style="color:#f92672">=</span>/zap/wrk/my-hooks.py
 </span></span></code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
 
