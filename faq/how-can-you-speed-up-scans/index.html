@@ -144,7 +144,71 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <p>See this post on the <a href="https://blog.mozilla.org/security/2013/07/10/how-to-speed-up-owasp-zap-scans/">Mozilla Security Blog</a></p>
+            <p>ZAP finds vulnerabilities by sending lots of potentially malicious payloads at a target app and then trying to work out if
+the app is vulnerable to them.
+In order to find a wide range of vulnerabilities it has to send a lot of requests.
+This sort of scanning is going to take time.</p>
+<p>There are however some things you can do to speed up ZAP scans.</p>
+
+<h3 id="technology">Technology <a class="header-link" href="#technology"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If you know the technology that your app uses then tell ZAP.
+ZAP will then not use any attacks which target technologies that your app does not use.
+This will speed up the scan and reduce the potential for false positives.
+There is no downside to this option unless you remove a technology that is used by your app.</p>
+<p>You can do this via:</p>
+<ul>
+<li>Desktop <a href="/docs/desktop/ui/dialogs/session/contexts/#technology">Session Context / Technology</a> screen</li>
+<li>Desktop <a href="/docs/desktop/ui/dialogs/advascan/#technology">Active Scan / Technology</a> tab</li>
+<li>Automation Framework <a href="/docs/desktop/addons/automation-framework/environment/">Environment</a></li>
+<li>API
+<ul>
+<li><a href="/docs/api/#contextactionexcludecontexttechnologies">context / excludeContextTechnologies</a> action</li>
+<li><a href="/docs/api/#contextactionincludecontexttechnologies">context / includeContextTechnologies</a> action</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="thread--browser-counts">Thread / Browser Counts <a class="header-link" href="#thread--browser-counts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>A significant amount of the scan time is caused by network requests.
+Increasing the number of threads and browsers launched will speed up the scans as ZAP is able to launch more requests while
+it is waiting for the responses.
+There are limits however - using too many threads / browsers may cause problems with either the computer running ZAP or
+the target app.</p>
+<p>All of the ZAP scanners allow you to tune the resources they use via their desktop screens, Automation Framework plans, and API endpoints.</p>
+
+<h3 id="application-structure">Application Structure <a class="header-link" href="#application-structure"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If your application uses <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a> then ZAP will
+end up attacking far more endpoints than it needs to.
+Configuring ZAP to understand your app structure can significantly speed up a scan.</p>
+
+<h3 id="only-scan-changes">Only Scan Changes <a class="header-link" href="#only-scan-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>ZAP does not understand source code and so it cannot know what has changed in a PR or since the last time you scanned your app.
+If <strong>you</strong> can work out what has changed (by comparing API endpoint definitions, source code analysis, etc) then you can
+configure ZAP to only attack the endpoints that you know have changed.
+This can dramatically speed up a scan, but it does require input from other sources.</p>
+
+<h3 id="get-zap-to-do-less">Get ZAP to do Less <a class="header-link" href="#get-zap-to-do-less"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If you have done all of the above (or are unable to do some of them) then your only option to reduce scan times is to get ZAP to do less.</p>
+<p>Active Scanning will typically take the longest time.</p>
+<p>You can see which Active Scan rules take the most amount of time via:</p>
+<ul>
+<li>Desktop <a href="/docs/desktop/ui/dialogs/scanprogress/">Scan Progress Dialog</a></li>
+<li>API <a href="/docs/api/#ascanviewscanprogress">ascan / scanProgress</a> view</li>
+</ul>
+
+<h4 id="disable-unnecessary-rules">Disable Unnecessary Rules <a class="header-link" href="#disable-unnecessary-rules"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>ZAP is used by a wide variety of people, from people new to appsec right up to hard core pentesters.
+We try to configure ZAP with sensible defaults but we cannot keep everyone happy.</p>
+<p>Look at the Active Scan rules you are using and disable any you are really not interested in. This will speed up the scan
+and make your scan results more useful.</p>
+
+<h4 id="reduce-the-attack-strength">Reduce the Attack Strength <a class="header-link" href="#reduce-the-attack-strength"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Most Active Scan rules support multiple <a href="/docs/desktop/ui/dialogs/scanpolicy/#strength">strengths</a>.
+Reducing the strengths will speed up a scan, but it will also mean there are more chances of false negatives.</p>
+
+<h3 id="more-background">More Background <a class="header-link" href="#more-background"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>For more background see this post on the <a href="https://blog.mozilla.org/security/2013/07/10/how-to-speed-up-owasp-zap-scans/">Mozilla Security Blog</a>.</p>
+<p>Note that it was written many years ago and therefore does not include many of the newer options above.</p>
 
           </main>
       </article>
