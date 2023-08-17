@@ -229,6 +229,10 @@ All of these providers provide metadata via an internal unroutable IP address &l
           <h3 class="mb-10">Solution</h3>
           Do not trust any user data in NGINX configs. In this case it is probably the use of the $host variable which is set from the &#39;Host&#39; header and can be controlled by an attacker.
         </div>
+        <div data-attr="other" class="mb-20">
+          <h3 class="mb-10">Other Info</h3>
+          Based on the successful response status code cloud metadata may have been returned in the response. Check the response data to see if any cloud metadata has been returned. The meta data returned can include information that would allow an attacker to completely compromise the system.
+        </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
