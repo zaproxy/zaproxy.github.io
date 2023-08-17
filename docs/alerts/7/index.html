@@ -239,6 +239,10 @@ Phase: Implementation Assume all input is malicious. Use an &#39;accept known go
 Phases: Architecture and Design; Operation Store library, include, and utility files outside of the web document root, if possible. Otherwise, store them in a separate directory and use the web server&#39;s access control capabilities to prevent attackers from directly requesting them. One common practice is to define a fixed constant in each calling program, then check for the existence of the constant in the library/include file; if the constant does not exist, then the file was directly requested, and it can exit immediately. This significantly reduces the chance of an attacker being able to bypass any protection mechanisms that are in the base program but not in the include files. It will also reduce your attack surface.
 Phases: Architecture and Design; Implementation Understand all the potential areas where untrusted inputs can enter your software: parameters or arguments, cookies, anything read from the network, environment variables, reverse DNS lookups, query results, request headers, URL components, e-mail, files, databases, and any external systems that provide data to the application. Remember that such inputs may be obtained indirectly through API calls. Many file inclusion problems occur because the programmer assumed that certain inputs could not be modified, especially for cookies and URL components.
         </div>
+        <div data-attr="other" class="mb-20">
+          <h3 class="mb-10">Other Info</h3>
+          
+        </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
