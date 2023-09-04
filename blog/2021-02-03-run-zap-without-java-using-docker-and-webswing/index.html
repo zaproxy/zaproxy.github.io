@@ -190,13 +190,13 @@ You will also need to have Java installed, which some people are unwilling or un
 <p>Note that on Windows you will need to replace <code>$(pwd)</code> with the full current working directory.</p>
 <p>When you do this ZAP will create 2 files on your mapped drive:</p>
 <ul>
-<li><code>owasp_zap_root_ca.crt</code> - the public ZAP Root CA certificate</li>
-<li><code>owasp_zap_root_ca.key</code> - the private ZAP Root CA certificate</li>
+<li><code>zap_root_ca.crt</code> - the public ZAP Root CA certificate</li>
+<li><code>zap_root_ca.key</code> - the private ZAP Root CA certificate</li>
 </ul>
 <p>You will need to use 2 browsers / profiles - one to proxy through ZAP and one to control the ZAP Desktop that you can now access via <a href="https://www.webswing.org/">Webswing</a>.</p>
 <p>Launch the browser you want to proxy through ZAP (we recommend that you use a new browser profile e.g. in <a href="https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles">Firefox</a> or <a href="https://support.google.com/chrome/answer/2364824?co=GENIE.Platform%3DDesktop&amp;hl=en">Chrome</a>) then point it at <code>http://localhost:8080/zap</code></p>
 <p>Configure it to <a href="/docs/desktop/start/proxies/">proxy via ZAP</a>
-and <a href="/docs/desktop/ui/dialogs/options/dynsslcert/#install">import the public ZAP Root CA certificate</a> so that it is trusted to sign websites.</p>
+and <a href="/docs/desktop/addons/network/options/servercertificates/#install">import the public ZAP Root CA certificate</a> so that it is trusted to sign websites.</p>
 <p>And there you have it, a local browser proxying through ZAP which can handle https sites and another browser which has full control of the ZAP Desktop, all without having to install Java!</p>
 <p><img src="./images/zap-webswing-proxy.png" alt="Proxying through ZAP running in Webswing"></p>
 <p>Note that if you restart the docker container using the same mapped drive then ZAP will automatically import the private ZAP Root CA certificate that was exported earlier so you will not need to import it into your browser again.</p>

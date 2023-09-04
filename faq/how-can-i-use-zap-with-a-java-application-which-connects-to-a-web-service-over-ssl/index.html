@@ -144,14 +144,13 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <p>You&rsquo;ll need to <a href="/docs/desktop/ui/dialogs/options/dynsslcert/">generate a dynamic root CA
-certificate</a>.</p>
+            <p>You&rsquo;ll need to <a href="/docs/desktop/addons/network/options/servercertificates/#generate">generate a root CA certificate</a>.</p>
 <p>Export it into a file.</p>
 <p>Import it in to the JRE cacerts keystore.</p>
 <p>Assuming the Java keytool is on the system path, JAVA_HOME is set to the
-location of a JRE and the Zaproxy CA cert is exported to
-&ldquo;~/owasp_zap_root_ca.cer&rdquo;, then the command is:</p>
-<pre><code> $ keytool -importcert -keystore $JAVA_HOME/lib/security/cacerts -file ~/owasp_zap_root_ca.cer -alias owasp_zap_root_ca
+location of a JRE and the ZAP Root CA cert is exported to
+&ldquo;~/zap_root_ca.cer&rdquo;, then the command is:</p>
+<pre><code> $ keytool -importcert -keystore $JAVA_HOME/lib/security/cacerts -file ~/zap_root_ca.cer -alias owasp_zap_root_ca
 </code></pre>
 <p>When you run your application you&rsquo;ll need to make sure it&rsquo;s using ZAP as a
 proxy.</p>
