@@ -6,8 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <link rel="alternate" type="application/rss+xml" href="/tags/cfp/index.xml" title="ZAP" />
-  <title>ZAP &ndash; cfp</title>
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2023-09-25-postman-add-on/images/zapbot-postman.png"/>
+
+<meta name="twitter:title" content="Postman Add-on"/>
+<meta name="twitter:description" content="Import Postman collections with the new Postman add-on for ZAP."/>
+
+    <meta property="og:title" content="Postman Add-on" />
+<meta property="og:description" content="Import Postman collections with the new Postman add-on for ZAP." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2023-09-25-postman-add-on/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2023-09-25-postman-add-on/images/zapbot-postman.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-09-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-09-25T00:00:00+00:00" />
+
+  
+  <title>ZAP &ndash; Postman Add-on</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -130,190 +143,133 @@
 </header>
 
   
+
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">Tag: cfp</h1>
+    <h1 class="text--white">Postman Add-on</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
-      <div class="flex latest-versions">
-        <div class="col-2-3 pr-30">
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday September 25, 2023</span>
+              <span class="word-count fl-r"> 409 Words </span>
+            </section>
+            <p><img src="images/zapbot-postman.png" alt="ZAPbot-Postman Image"></p>
+<p>This extension allows us to easily import <a href="https://www.postman.com/collection/">Postman collections</a> into ZAP, and hence we can then use ZAP’s powerful security testing capabilities to identify potential vulnerabilities in our APIs developed using Postman.</p>
+
+<h2 id="installing-the-add-on">Installing the add-on <a class="header-link" href="#installing-the-add-on"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The help page of the add-on can be found <a href="/docs/desktop/addons/postman-support/">here</a> and you can install it via the <a href="/addons/">ZAP Marketplace</a>.</p>
+
+<h2 id="import-postman-collections">Import Postman Collections <a class="header-link" href="#import-postman-collections"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Firstly, to export the collection from Postman, follow these <a href="https://learning.postman.com/docs/getting-started/importing-and-exporting/exporting-data/#exporting-collections">instructions</a>.</p>
+<p>Follow the following instructions to import the collection:</p>
+<ol>
+<li>Click on &lsquo;Import&rsquo; in the menu bar.</li>
+<li>Choose &lsquo;Import a Postman Collection&rsquo; from the options.</li>
+<li>In the &lsquo;Collection File or URL&rsquo; field, you can do this in two ways:
+<ul>
+<li>Local File: If your collection JSON is on your computer, click the &lsquo;Choose File&rsquo; button and select it.</li>
+<li>URL: Alternatively, if your collection is online, paste the URL where it&rsquo;s located and the add-on will send a <code>GET</code> request to fetch the collection JSON.</li>
+</ul>
+</li>
+<li>If you&rsquo;ve used variables in the collection, enter them in the &lsquo;Variables&rsquo; field as a list of key-value pairs separated by commas in this format: <code>key1=value1,key2=value2,...</code>.</li>
+<li>Click the &lsquo;Import&rsquo; button.</li>
+</ol>
+<p>Now, your collection will be imported and you&rsquo;ll see the API endpoints in the &lsquo;Sites&rsquo; tree. If there are any issues with the collection definition, you might encounter errors during the import process. You can find details about these errors in the output panel and resolve them before reimporting.</p>
+<p>Congratulations! 🎉 You’ve successfully imported your collection. You can now proceed with testing your APIs using ZAP.</p>
+
+<h2 id="future-developments">Future Developments <a class="header-link" href="#future-developments"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Enable importing through API and command line.</li>
+<li>Enable the import of variables defined in the collection definition.</li>
+<li>Introduce automation support, and more.</li>
+</ul>
+<p>Stay tuned for these upcoming enhancements to our addon! Checkout the <a href="/community/">Community page</a> to get in touch.</p>
+
+<h2 id="my-gsoc-journey-and-thanks">My GSoC Journey and Thanks: <a class="header-link" href="#my-gsoc-journey-and-thanks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The development of this add-on was part of my <a href="https://summerofcode.withgoogle.com/">Google Summer of Code (GSoC)</a> adventure (the project page can be found <a href="https://summerofcode.withgoogle.com/archive/2023/projects/OlBxaE5X">here</a>).
+My mentors - <a href="/docs/team/psiinon/">Simon</a>, <a href="/docs/team/thc202/">Ricardo</a> and <a href="/docs/team/kingthorin/">Rick</a> were there, guiding me every step of the way. With every discussion and code review with them, there was a lot of learning for me. I am truly thankful to them. 😄</p>
+<p>Below are the pull requests I made for this project:</p>
+<ul>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4657">#4657</a> - Add Postman add-on</li>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4663">#4663</a> - Add dialogs for importing through the UI</li>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4731">#4731</a> - Implement parser</li>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4760">#4760</a> - Implement item deserialization</li>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4777">#4777</a> - Implement request deserialization</li>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4847">#4847</a> - Implement sending http requests</li>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4906">#4906</a> - Implement error reporting</li>
+<li><a href="https://github.com/zaproxy/zap-extensions/pull/4917">#4917</a> - Add variables support</li>
+</ul>
+<p>Thanks for reading! 😁</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2023-09-15-zap-chat-video-series/"> ZAP Chat Video Series</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
             
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2021-12-17-zapcon-2022-call-for-papers/">ZAPCon 2022 Call - for Papers</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Friday December 17, 2021</span>
-                  <span class="word-count fl-r"> 205 Words </span>
-                </section>
-                <section class="summary">ZAPCon is returning for its second year! The second annual ZAP user conference will take place on March 8, 2022 and the <a href="https://sessionize.com/zapcon2-cfs">Call for Papers</a> is open!.</section>
-            </article>
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/vitika-soni_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Vitika Soni
+                  
+                  
+                </div>
+              </section>
           
-            <article class="blog-post-preview pt-40 pb-40">
-                <h3 class="mb-10">
-                  <a href="/blog/2021-01-28-announcing-the-first-ever-zapcon/">1st Ever ZAPCon - Call For Papers</a>
-                </h3>
-                <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-                  Posted <span class="post-date">Thursday January 28, 2021</span>
-                  <span class="word-count fl-r"> 185 Words </span>
-                </section>
-                <section class="summary">Today we are calling for topics and speakers in the first-ever OWASP ZAP User Conference!</section>
-            </article>
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-the-add-on">Installing the add-on</a></li>
+    <li><a href="#import-postman-collections">Import Postman Collections</a></li>
+    <li><a href="#future-developments">Future Developments</a></li>
+    <li><a href="#my-gsoc-journey-and-thanks">My GSoC Journey and Thanks:</a></li>
+  </ul>
+</nav>
+
           
-        </div>
-
-        <div class="col-1-3 ml-20">
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/postman/">postman</a> </li>
+           
+           <li> <a href="/tags/gsoc/">gsoc</a> </li>
+           
+           <li> <a href="/tags/gsoc-2023/">gsoc-2023</a> </li>
+           
+          </ul>
           
-<section class="p-20">
-    <h3>Tags</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/tags/advisory/">advisory</a></li>
-    
-        <li><a href="/tags/api/">api</a></li>
-    
-        <li><a href="/tags/asvs/">asvs</a></li>
-    
-        <li><a href="/tags/authentication/">authentication</a></li>
-    
-        <li><a href="/tags/award/">award</a></li>
-    
-        <li><a href="/tags/blog/">blog</a></li>
-    
-        <li><a href="/tags/browser/">browser</a></li>
-    
-        <li><a href="/tags/browser-recorder/">browser-recorder</a></li>
-    
-        <li><a href="/tags/cfp/">cfp</a></li>
-    
-        <li><a href="/tags/client/">client</a></li>
-    
-        <li><a href="/tags/community/">community</a></li>
-    
-        <li><a href="/tags/competition/">competition</a></li>
-    
-        <li><a href="/tags/docker/">docker</a></li>
-    
-        <li><a href="/tags/fileupload/">fileupload</a></li>
-    
-        <li><a href="/tags/firefox/">firefox</a></li>
-    
-        <li><a href="/tags/funding/">funding</a></li>
-    
-        <li><a href="/tags/fuzzer/">fuzzer</a></li>
-    
-        <li><a href="/tags/graphql/">graphql</a></li>
-    
-        <li><a href="/tags/gsoc/">gsoc</a></li>
-    
-        <li><a href="/tags/gsoc-2023/">gsoc-2023</a></li>
-    
-        <li><a href="/tags/guide/">guide</a></li>
-    
-        <li><a href="/tags/hacking/">hacking</a></li>
-    
-        <li><a href="/tags/hacktoberfest/">hacktoberfest</a></li>
-    
-        <li><a href="/tags/history/">history</a></li>
-    
-        <li><a href="/tags/log4shell/">log4shell</a></li>
-    
-        <li><a href="/tags/networking/">networking</a></li>
-    
-        <li><a href="/tags/oast/">oast</a></li>
-    
-        <li><a href="/tags/packaged_scan/">packaged_scan</a></li>
-    
-        <li><a href="/tags/portswigger-lab/">portswigger-lab</a></li>
-    
-        <li><a href="/tags/postman/">postman</a></li>
-    
-        <li><a href="/tags/questionnaire/">questionnaire</a></li>
-    
-        <li><a href="/tags/recon/">recon</a></li>
-    
-        <li><a href="/tags/release/">release</a></li>
-    
-        <li><a href="/tags/reporting/">reporting</a></li>
-    
-        <li><a href="/tags/retest/">retest</a></li>
-    
-        <li><a href="/tags/scanrules/">scanrules</a></li>
-    
-        <li><a href="/tags/scripts/">scripts</a></li>
-    
-        <li><a href="/tags/soap/">soap</a></li>
-    
-        <li><a href="/tags/spider/">spider</a></li>
-    
-        <li><a href="/tags/statistics/">statistics</a></li>
-    
-        <li><a href="/tags/top10/">top10</a></li>
-    
-        <li><a href="/tags/tutorial/">tutorial</a></li>
-    
-        <li><a href="/tags/update/">update</a></li>
-    
-        <li><a href="/tags/video/">video</a></li>
-    
-        <li><a href="/tags/waspy/">waspy</a></li>
-    
-        <li><a href="/tags/windows/">windows</a></li>
-    
-        <li><a href="/tags/youdontknowzap/">youdontknowzap</a></li>
-    
-        <li><a href="/tags/zapcon/">zapcon</a></li>
-    
-        <li><a href="/tags/zest/">zest</a></li>
-    
-    </ul>
-</section>
-
-<section class="p-20">
-    <h3>Authors</h3>
-    <ul class="taxonomy-list tax-tags">
-    
-        <li><a href="/authors/akshath/">akshath</a></li>
-    
-        <li><a href="/authors/alberto/">alberto</a></li>
-    
-        <li><a href="/authors/arkaprabha/">arkaprabha</a></li>
-    
-        <li><a href="/authors/aryangupta701/">aryangupta701</a></li>
-    
-        <li><a href="/authors/bemodtwz/">bemodtwz</a></li>
-    
-        <li><a href="/authors/blazingwind/">blazingwind</a></li>
-    
-        <li><a href="/authors/diogo/">diogo</a></li>
-    
-        <li><a href="/authors/eingengraou/">eingengraou</a></li>
-    
-        <li><a href="/authors/jan/">jan</a></li>
-    
-        <li><a href="/authors/jordan/">jordan</a></li>
-    
-        <li><a href="/authors/nirojan/">nirojan</a></li>
-    
-        <li><a href="/authors/pranavsaxena/">pranavsaxena</a></li>
-    
-        <li><a href="/authors/preetkaran20/">preetkaran20</a></li>
-    
-        <li><a href="/authors/simon/">simon</a></li>
-    
-        <li><a href="/authors/skyper/">skyper</a></li>
-    
-        <li><a href="/authors/thorin/">thorin</a></li>
-    
-        <li><a href="/authors/vitikasoni/">vitikasoni</a></li>
-    
-    </ul>
-</section>
-
-        </div>
-      </div>
-  </div>
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -352,6 +308,13 @@
         </ul>
       </nav>
       
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/master/site/content/blog/2023-09-25-postman-add-on/index.md">Edit on GitHub</a>
+  </div>
+
     </div>
   </div>
 
