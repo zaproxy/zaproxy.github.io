@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Output tab</title>
+  <title>ZAP &ndash; ZAPit</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -141,7 +141,7 @@
     
     
         
-    <li data-depth="1" class="">
+    <li data-depth="1" class="tree-branch-active">
                 <a href="/docs/desktop/addons/">Add-ons</a>
         <ul class="tree-branch">
     <li data-depth="2" class="">
@@ -831,7 +831,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/quick-start/">Quick Start</a>
         <ul class="tree-branch">  
                         <li> 
@@ -840,7 +840,7 @@
                         <li> 
                             <a href="/docs/desktop/addons/quick-start/launchoptions/">Options Quick Start Launch screen</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/quick-start/zapit/">ZAPit</a>
                         </li>
         </ul>
@@ -1305,7 +1305,7 @@
     
     
         
-    <li data-depth="1" class="tree-branch-active">
+    <li data-depth="1" class="">
                 <a href="/docs/desktop/ui/">Desktop UI Overview</a>
         <ul class="tree-branch">
     <li data-depth="2" class="">
@@ -1467,7 +1467,7 @@
                         <li> 
                             <a href="/docs/desktop/ui/footer/">Footer</a>
                         </li>
-    <li data-depth="2" class="tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/ui/tabs/">The Tabs</a>
         <ul class="tree-branch">  
                         <li> 
@@ -1491,7 +1491,7 @@
                         <li> 
                             <a href="/docs/desktop/ui/tabs/httpsessions/">HTTP Sessions tab</a>
                         </li>  
-                        <li class="tree-active"> 
+                        <li> 
                             <a href="/docs/desktop/ui/tabs/output/">Output tab</a>
                         </li>  
                         <li> 
@@ -1576,30 +1576,65 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/ui/'>Desktop UI Overview</a>
+        <a href='/docs/desktop/addons/'>Add-ons</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/ui/tabs/'>The Tabs</a>
+        <a href='/docs/desktop/addons/quick-start/'>Quick Start</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/ui/tabs/output/'>Output tab</a>
+        <a href='/docs/desktop/addons/quick-start/zapit/'>ZAPit</a>
     </li>
 
 
 </ol>
           
-<h1 id="output-tab">Output tab</h1>
-<p>This show various informational messages.</p>
-<p>These can include the stack traces of unexpected exceptions - please include any stack traces
-if you report a bug.</p>
-
-<h2 id="right-click-menu">Right click menu <a class="header-link" href="#right-click-menu"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>Right clicking on a node will bring up a menu which will allow you to:</p>
-
-<h3 id="copy">Copy <a class="header-link" href="#copy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>This will copy the selected string to the clipboard.</p>
+<h1 id="zapit">ZAPit</h1>
+<p>Quick Start add-on supports the following <a href="/docs/desktop/addons/quick-start/cmdline/">Command Line</a> option to perform a quick &lsquo;reconnaissance&rsquo; scan of the URL specified.</p>
+<p>You can specify multiple URLs by specifying the option multiple times:
+* <code>-zapit https://www.example1.com -zapit http://example2.com/ -cmd</code></p>
+<p>The <code>-cmd</code> option must be specified, if it is not then the <code>-zapit</code> option will be ignored.</p>
+<p>The ZAPit Scan will start a new ZAP session before it performs a scan, so do not start ZAP with a session that you want to keep.</p>
+<p>The ZAPit scan currently:</p>
+<ol>
+<li>Makes one request to the target URL</li>
+<li>Reports any technology found by the <a href="/docs/desktop/addons/technology-detection/">Technology Detection</a> add-on (if installed)</li>
+<li>Reports a summary of the alerts found</li>
+<li>Reports some stats from the root URL</li>
+</ol>
+<p>Example output:</p>
+<pre tabindex="0"><code>ZAPit scan of https://www.example.com
+Technology:
+        Amazon ECS
+        Amazon Web Services
+        Azure
+        Azure CDN
+        Docker
+Number of alerts: 13
+        Medium: Content Security Policy (CSP) Header Not Set
+        Medium: Missing Anti-clickjacking Header : &#34;x-frame-options&#34;
+        Low: Permissions Policy Header Not Set
+        Low: Server Leaks Version Information via &#34;Server&#34; HTTP Response Header Field : &#34;ECS (dcb/7EEB)&#34;
+        Low: Strict-Transport-Security Header Not Set
+        Low: X-Content-Type-Options Header Missing : &#34;x-content-type-options&#34;
+        Informational: Re-examine Cache-control Directives : &#34;max-age=604800&#34;
+        Informational: Retrieved from Cache : &#34;HIT&#34;
+        Informational: Sec-Fetch-Dest Header is Missing : &#34;Sec-Fetch-Dest&#34;
+        Informational: Sec-Fetch-Mode Header is Missing : &#34;Sec-Fetch-Mode&#34;
+        Informational: Sec-Fetch-Site Header is Missing : &#34;Sec-Fetch-Site&#34;
+        Informational: Sec-Fetch-User Header is Missing : &#34;Sec-Fetch-User&#34;
+        Informational: Storable and Cacheable Content : &#34;max-age=604800&#34;
+Root page stats:
+        Request took 294 msec
+        Response body size 1,256 bytes
+        Content type: text/html; charset=UTF-8
+        Number of HTML tags: 24
+        Number of HTML links: 1
+        Number of HTML forms: 0
+        Number of HTML input fields: 0
+	
+</code></pre><p>This feature is at an early stage and more enhancements are planned.</p>
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
@@ -1613,8 +1648,8 @@ if you report a bug.</p>
 <tbody>
 <tr>
 <td></td>
-<td><a href="/docs/desktop/ui/">UI Overview</a></td>
-<td>for an overview of the user interface</td>
+<td><a href="/docs/desktop/addons/quick-start/">Quick Start</a></td>
+<td>the introduction to Quick Start</td>
 </tr>
 </tbody>
 </table>
