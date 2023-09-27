@@ -219,24 +219,24 @@ Instead of turning them on for all scan rules you can just perform a scan using 
 <pre tabindex="0"><code>./zap.sh -cmd -dir log4shell -addonupdate -addoninstall ascanrulesAlpha
 </code></pre><p>Create these two files on your computer:</p>
 <p><strong>log4shell.conf</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-conf" data-lang="conf"><span style="display:flex;"><span><span style="color:#75715e"># Use the public BOAST service
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>oast.boast.uri<span style="color:#f92672">=</span>https<span style="color:#960050;background-color:#1e0010">://</span>odiss.eu<span style="color:#960050;background-color:#1e0010">:</span>1337<span style="color:#960050;background-color:#1e0010">/</span>events
-</span></span><span style="display:flex;"><span>oast.activeScanService<span style="color:#f92672">=</span>BOAST
-</span></span><span style="display:flex;"><span>oast.boast.pollingFrequency<span style="color:#f92672">=</span>10
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Scan headers in all requests
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>scanner.injectable<span style="color:#f92672">=</span>11
-</span></span><span style="display:flex;"><span>scanner.scanHeadersAllRequests<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span> 
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Send the X-Api-Version header in spider requests - just required for the test app
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">replacer.full_list</span>(0).description<span style="color:#f92672">=</span>X-Api-Version
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">replacer.full_list</span>(0).enabled<span style="color:#f92672">=</span><span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">replacer.full_list</span>(0).matchtype<span style="color:#f92672">=</span>REQ_HEADER
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">replacer.full_list</span>(0).matchstr<span style="color:#f92672">=</span>X-Api-Version
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">replacer.full_list</span>(0).regex<span style="color:#f92672">=</span><span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">replacer.full_list</span>(0).replacement<span style="color:#f92672">=</span>test
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">replacer.full_list</span>(0).initiators<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">\[</span>3<span style="color:#960050;background-color:#1e0010">\]</span>
-</span></span></code></pre></div><p><strong>log4shell.yaml</strong></p>
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># Use the public BOAST service
+oast.boast.uri=https://odiss.eu:1337/events
+oast.activeScanService=BOAST
+oast.boast.pollingFrequency=10
+ 
+# Scan headers in all requests
+scanner.injectable=11
+scanner.scanHeadersAllRequests=true
+ 
+# Send the X-Api-Version header in spider requests - just required for the test app
+replacer.full_list(0).description=X-Api-Version
+replacer.full_list(0).enabled=true
+replacer.full_list(0).matchtype=REQ_HEADER
+replacer.full_list(0).matchstr=X-Api-Version
+replacer.full_list(0).regex=false
+replacer.full_list(0).replacement=test
+replacer.full_list(0).initiators=\[3\]
+</code></pre><p><strong>log4shell.yaml</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
 </span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">contexts</span>:
