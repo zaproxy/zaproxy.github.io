@@ -1595,47 +1595,51 @@
           
 <h1 id="zapit">ZAPit</h1>
 <p>Quick Start add-on supports the following <a href="/docs/desktop/addons/quick-start/cmdline/">Command Line</a> option to perform a quick &lsquo;reconnaissance&rsquo; scan of the URL specified.</p>
-<p>You can specify multiple URLs by specifying the option multiple times:
-* <code>-zapit https://www.example1.com -zapit http://example2.com/ -cmd</code></p>
+<p>You can specify multiple URLs by specifying the option multiple times:</p>
+<ul>
+<li><code>-zapit https://www.example1.com -zapit http://example2.com/ -cmd</code></li>
+</ul>
 <p>The <code>-cmd</code> option must be specified, if it is not then the <code>-zapit</code> option will be ignored.</p>
 <p>The ZAPit Scan will start a new ZAP session before it performs a scan, so do not start ZAP with a session that you want to keep.</p>
 <p>The ZAPit scan currently:</p>
 <ol>
 <li>Makes one request to the target URL</li>
+<li>Reports key details about all of the requests and responses made (e.g. due to redirects)</li>
 <li>Reports any technology found by the <a href="/docs/desktop/addons/technology-detection/">Technology Detection</a> add-on (if installed)</li>
 <li>Reports a summary of the alerts found</li>
 <li>Reports some stats from the root URL</li>
 </ol>
 <p>Example output:</p>
 <pre tabindex="0"><code>ZAPit scan of https://www.example.com
+Requests:
+	https://www.example.com
+		Request took 325 msec
+		Response code 200 (OK)
+		Response body size 1,256 bytes
+		No request cookies
+		No response cookies
 Technology:
-        Amazon ECS
-        Amazon Web Services
-        Azure
-        Azure CDN
-        Docker
-Number of alerts: 13
-        Medium: Content Security Policy (CSP) Header Not Set
-        Medium: Missing Anti-clickjacking Header : &#34;x-frame-options&#34;
-        Low: Permissions Policy Header Not Set
-        Low: Server Leaks Version Information via &#34;Server&#34; HTTP Response Header Field : &#34;ECS (dcb/7EEB)&#34;
-        Low: Strict-Transport-Security Header Not Set
-        Low: X-Content-Type-Options Header Missing : &#34;x-content-type-options&#34;
-        Informational: Re-examine Cache-control Directives : &#34;max-age=604800&#34;
-        Informational: Retrieved from Cache : &#34;HIT&#34;
-        Informational: Sec-Fetch-Dest Header is Missing : &#34;Sec-Fetch-Dest&#34;
-        Informational: Sec-Fetch-Mode Header is Missing : &#34;Sec-Fetch-Mode&#34;
-        Informational: Sec-Fetch-Site Header is Missing : &#34;Sec-Fetch-Site&#34;
-        Informational: Sec-Fetch-User Header is Missing : &#34;Sec-Fetch-User&#34;
-        Informational: Storable and Cacheable Content : &#34;max-age=604800&#34;
+	Amazon ECS
+	Amazon Web Services
+	Azure
+	Azure CDN
+	Docker
+Number of alerts: 9
+	Medium: Content Security Policy (CSP) Header Not Set : &#34;&#34;
+	Medium: Missing Anti-clickjacking Header : &#34;x-frame-options&#34;
+	Low: Permissions Policy Header Not Set : &#34;&#34;
+	Low: Server Leaks Version Information via &#34;Server&#34; HTTP Response Header Field : &#34;ECS (dcb/7EC9)&#34;
+	Low: Strict-Transport-Security Header Not Set : &#34;&#34;
+	Low: X-Content-Type-Options Header Missing : &#34;x-content-type-options&#34;
+	Informational: Re-examine Cache-control Directives : &#34;max-age=604800&#34;
+	Informational: Retrieved from Cache : &#34;HIT&#34;
+	Informational: Storable and Cacheable Content : &#34;max-age=604800&#34;
 Root page stats:
-        Request took 294 msec
-        Response body size 1,256 bytes
-        Content type: text/html; charset=UTF-8
-        Number of HTML tags: 24
-        Number of HTML links: 1
-        Number of HTML forms: 0
-        Number of HTML input fields: 0
+	Content type: text/html; charset=UTF-8
+	Number of HTML tags: 24
+	Number of HTML links: 1
+	Number of HTML forms: 0
+	Number of HTML input fields: 0
 	
 </code></pre><p>This feature is at an early stage and more enhancements are planned.</p>
 
