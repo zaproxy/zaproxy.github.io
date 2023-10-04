@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Payloads dialog</title>
+  <title>ZAP &ndash; Script Console Options</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -519,7 +519,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/fuzzer/">Fuzzing</a>
         <ul class="tree-branch">  
                         <li> 
@@ -534,7 +534,7 @@
                         <li> 
                             <a href="/docs/desktop/addons/fuzzer/options/">Options Fuzz screen</a>
                         </li>  
-                        <li class="tree-active"> 
+                        <li> 
                             <a href="/docs/desktop/addons/fuzzer/payloads/">Payloads dialog</a>
                         </li>  
                         <li> 
@@ -996,7 +996,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/script-console/">Script Console</a>
         <ul class="tree-branch">  
                         <li> 
@@ -1005,7 +1005,7 @@
                         <li> 
                             <a href="/docs/desktop/addons/script-console/console/">Script Console Tab</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/script-console/options/">Script Console Options</a>
                         </li>  
                         <li> 
@@ -1586,65 +1586,27 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/fuzzer/'>Fuzzing</a>
+        <a href='/docs/desktop/addons/script-console/'>Script Console</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/fuzzer/payloads/'>Payloads dialog</a>
+        <a href='/docs/desktop/addons/script-console/options/'>Script Console Options</a>
     </li>
 
 
 </ol>
           
-<h1 id="payloads-dialog">Payloads dialog</h1>
-<p>This allows you to select the payload generators to use when <a href="/docs/desktop/addons/fuzzer/">fuzzing</a> a request.</p>
-<p>Payload generators generate the raw values or attacks that the fuzzer submits to the target application.</p>
-<p>The following types of generators are provided by default:</p>
+<h1 id="script-console-options">Script Console Options</h1>
+
+<h2 id="when-the-script-in-the-console-changes-on-disk">When the Script in the Console Changes on Disk <a class="header-link" href="#when-the-script-in-the-console-changes-on-disk"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This setting allows you to configure the default behaviour when a script open in the Script Console changes on disk,
+for example if it was updated in another code editor. There are three options to choose from:</p>
 <ul>
-<li>Empty/Null - generates the selected payload multiple times, leaving the message without changes. This payload generator is useful to send multiple messages that are later processed, for example, with a <a href="/docs/desktop/addons/fuzzer/httpmessageprocessors/">Fuzzer HTTP Processor (Script)</a>.</li>
-<li>File - select any local file for one off attacks</li>
-<li>File Fuzzers - select any combination of the fuzzing files registered with ZAP, e.g. via add-ons like fuzzdb</li>
-<li>Numberzz - allows to easily generate a sequence of numbers, with custom increment</li>
-<li>Regex - generate attacks based on regex patterns</li>
-<li>Strings - raw strings, which can be entered manually or pasted in</li>
-<li>Script - custom scripts that can generate any payloads required</li>
-<li>Json - generate attacks by fuzzing the provided json</li>
+<li><strong>Ask Each Time</strong>: This will prompt you each time the script is changed on disk, allowing you to choose whether to keep the script in the console or replace it with the changed script.</li>
+<li><strong>Keep Script</strong>: This will always keep the script in the console, even if it is changed on disk.</li>
+<li><strong>Replace Script</strong>: This will always replace the script in the console with the changed script.
+Note that if there are unsaved changes to the script, you will always be prompted to choose which version to keep.</li>
 </ul>
-<p>You can write custom payload generator scripts - these can supply any payloads that you need.</p>
-<p>Add-ons can also define additional payload generators.</p>
-<p>The &lsquo;Processors&hellip;&rsquo; button launches the <a href="/docs/desktop/addons/fuzzer/processors/">Payload Processors dialog</a> which allows you to configure payload processors that just apply to the payload generator you have selected.</p>
-
-<h2 id="accessed-via">Accessed via <a class="header-link" href="#accessed-via"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/addons/fuzzer/dialogue/">Fuzzer dialog</a> &lsquo;Add&hellip;&rsquo; button</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/addons/fuzzer/">Fuzzer concepts</a></td>
-</tr>
-</tbody>
-</table>
 
         </div>
       </div>
