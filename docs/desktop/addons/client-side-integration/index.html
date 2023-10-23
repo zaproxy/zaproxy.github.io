@@ -368,6 +368,9 @@
                 <a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">Client Side Integration - AJAX Spider Enhancement</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/firefox-profile/">Client Side Integration - Firefox Profile</a>
                         </li>  
                         <li> 
@@ -1598,12 +1601,50 @@
           
 <h1 id="client-side-integration">Client Side Integration</h1>
 <p>This add-on adds a ZAP browser extension to both Firefox and Chrome when they are launched from ZAP.</p>
+<p>The extensions stream significant browser based events back to ZAP, giving ZAP an insight into what is going on in the browser.</p>
 <p>If you do not launch your browser(s) from ZAP then you can still install these extensions directly from the relevant stores:</p>
 <ul>
 <li>Firefox <a href="https://addons.mozilla.org/en-GB/firefox/addon/zap-browser-extension">ZAP Browser Extension</a></li>
 <li>Chrome <a href="https://chrome.google.com/webstore/detail/zap-browser-extension/cnmficmodhagepcmhogkbdakncebckho">ZAP Browser Extension</a></li>
 </ul>
 <p>Note that you may need to configure the extensions via their options pages to update the host and API key.</p>
+
+<h2 id="user-interface">User Interface <a class="header-link" href="#user-interface"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The add-on adds 3 new tabs to ZAP:</p>
+
+<h3 id="client-map">Client Map <a class="header-link" href="#client-map"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Client Map is a hierarchical representation of the sites visited, and is similar in some ways to the Sites Tree. It includes nodes which represent URLs and ones which represent browser based storage.</p>
+<p>Unlike the Sites Tree it includes <a href="https://en.wikipedia.org/wiki/URI_fragment">URI fragments</a> which ZAP cannot otherwise see.
+This means that the Client Map looks very different to the Sites tree for modern web apps, and may give you a better understanding of the
+client side structure of the sites.</p>
+<p>Any leaf nodes in the Map with a small red &lsquo;minus&rsquo; sign represent URLs which have been found in the DOM but which have not been directly accessed by ZAP.</p>
+<p>Selecting a node that has been visited by ZAP will display details about that node in the Client Details tab.</p>
+
+<h3 id="client-details">Client Details <a class="header-link" href="#client-details"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Client Details tab shows details about Client Map nodes.</p>
+<p>The types of data displayed include:</p>
+<ul>
+<li>Button: Buttons detected in the DOM</li>
+<li>Cookies: Cookies set in the browser</li>
+<li>FORM: Forms detected in the DOM</li>
+<li>Input: Input elements detected in the DOM</li>
+<li>Link: Links detected in the DOM</li>
+</ul>
+
+<h3 id="client-history">Client History <a class="header-link" href="#client-history"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Client History tab shows all of the client side events sent from the browser extension to ZAP.</p>
+<p>In addition to the data displayed in the Client Details tab it also includes:</p>
+<ul>
+<li>DOM Mutation: Browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> event</li>
+<li>Node Added: A DOM node added to the specified URL</li>
+<li>Page Load: Browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event">load</a> event</li>
+<li>Page Unload: Browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event">unload</a> event</li>
+</ul>
+
+<h2 id="ajax-spider-enhancement">AJAX Spider Enhancement <a class="header-link" href="#ajax-spider-enhancement"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This add-on provides an <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">AJAX Spider Enhancement</a> which can detect URLs referenced in the DOM which were not be accessed by the spider.</p>
+
+<h2 id="firefox-profile">Firefox Profile <a class="header-link" href="#firefox-profile"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>It also creates a <a href="/docs/desktop/addons/client-side-integration/firefox-profile/">Firefox profile</a> and sets it as the default profile that ZAP will use.</p>
 <p>For more details on how the add-on works see the <a href="/docs/desktop/addons/client-side-integration/internals/">internals</a> page.</p>
 
