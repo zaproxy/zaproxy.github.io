@@ -5,179 +5,146 @@
     <link>/docs/desktop/addons/automation-framework/</link>
     <description>Recent content in Automation Framework on ZAP</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/docs/desktop/addons/automation-framework/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <atom:link href="/docs/desktop/addons/automation-framework/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Automation Framework - GUI</title>
       <link>/docs/desktop/addons/automation-framework/gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/gui/</guid>
       <description>Automation Framework - GUI The Automation Framework has a GUI that is in the process of being developed.
 Automation Tab This tab allows you to create, load, edit and run automation jobs. It has 2 sub tabs.
 A toolbar provides the following buttons:
 New Plan&amp;hellip; - this launches the New Plan dialog Load Plan&amp;hellip; - this allows you to load a plan from a yaml file Save Plan&amp;hellip; - this saves the current plan to a yaml file Run Plan&amp;hellip; - this runs the current plan Add Job&amp;hellip; - this launches the Add Job dialog to add a job to the current plan Remove Job&amp;hellip; - this removes the selected job from the current plan Move Job Up - this moves the selected job up one place in the current plan Move Job Down - this moves the selected job down one place in the current plan Add Test&amp;hellip; - this launches the Add Test dialog to add a test to the current job Remove Test&amp;hellip; - this removes the selected test from the current job Plan sub-tab A graphical representation of the plan which also shows the state of the plan when it is run.</description>
     </item>
-    
     <item>
       <title>Automation Framework - Options</title>
       <link>/docs/desktop/addons/automation-framework/options/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/options/</guid>
       <description>Automation Framework - Options The following options are available:
 Open Last Plan on Start If selected then the Automation tab will automatically load the last plan opened when the GUI starts. This can be useful if you need to regularly use the same plan.
 This option has no effect if the desktop GUI is not used.</description>
     </item>
-    
     <item>
       <title>Automation Framework - Environment</title>
       <link>/docs/desktop/addons/automation-framework/environment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/environment/</guid>
       <description>Automation Framework - Environment This section of the YAML configuration file defines the applications which the rest of the jobs can act on.
 The Automation Framework supports all of the authentication mechanisms supported by ZAP.
 Note When testing targets that operate on default ports (80 for http, 443 for https), the colon port portion of the URL should not be included.</description>
     </item>
-    
     <item>
       <title>Automation Framework - authentication</title>
       <link>/docs/desktop/addons/automation-framework/authentication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/authentication/</guid>
       <description>Automation Framework - authentication The Automation Framework supports all of the authentication mechanisms supported by ZAP.
 Environmental Variables ZAP supports a set of Authentication Header Environmental Variables - these will be applied by ZAP if they are defined however ZAP is run, including via the Automation Framework.</description>
     </item>
-    
     <item>
       <title>Automation Framework - addOns Job</title>
       <link>/docs/desktop/addons/automation-framework/job-addons/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/job-addons/</guid>
       <description>Automation Framework - addOns Job This job has been depreciated, no longer does anything, and should no longer be used.
 Previously it allowed you to manage the ZAP add-ons. However it turns out that adding and updating add-ons when running a plan is a bad idea and does not work well.</description>
     </item>
-    
     <item>
       <title>Automation Framework - passiveScan-config Job</title>
       <link>/docs/desktop/addons/automation-framework/job-pscanconf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/job-pscanconf/</guid>
       <description>Automation Framework - passiveScan-config Job This job allows you to manage the passive scan configuration.
 The passive scanner runs against all requests and responses that are generated by ZAP or are proxied through it. If you want to configure the passive scan configuration then you should typically do so before running any other jobs.</description>
     </item>
-    
     <item>
       <title>Automation Framework - passiveScan-wait Job</title>
       <link>/docs/desktop/addons/automation-framework/job-pscanwait/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/job-pscanwait/</guid>
       <description>Automation Framework - passiveScan-wait Job This job waits for the passive scanner to finishing scanning the requests and responses in the current queue. You should typically run this job after the jobs that explore you application, such as the spider jobs or those that import API definitions. If any more requests are sent by ZAP or proxied through ZAP after this job has run then they will be processed by the passive scanner.</description>
     </item>
-    
     <item>
       <title>Automation Framework - activeScan Job</title>
       <link>/docs/desktop/addons/automation-framework/job-ascan/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/job-ascan/</guid>
       <description>Automation Framework - activeScan Job This job runs the active scanner. This actively attacks your applications and should therefore only be used against applications that you have permission to test.
 By default this job will actively scan the first context defined in the environment and so none of the parameters are mandatory.</description>
     </item>
-    
     <item>
       <title>Automation Framework - spider Job</title>
       <link>/docs/desktop/addons/automation-framework/job-spider/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/job-spider/</guid>
       <description>Automation Framework - spider Job This job runs the traditional spider. This is fast but does not handle modern applications as effectively.
 By default this job will spider the first context defined in the environment and so none of the parameters are mandatory.
 This job supports monitor tests.</description>
     </item>
-    
     <item>
       <title>Automation Framework - Job Tests</title>
       <link>/docs/desktop/addons/automation-framework/tests/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/tests/</guid>
       <description> Automation Framework - Job Outcome Tests The automation framework supports testing the job outcomes based on conditions that you can set in the YAML file.
 The currently supported tests are:
 alert - Alert tests - validate the presence or absence of specified alerts monitor - Monitor tests - allow you to stop long running jobs based on statistic thresholds stats - Statistics tests - test any of the statistics maintained by ZAP url - URL tests - validate the presence/absence of a URL and it’s specific expressions in the HTTP response/request </description>
     </item>
-    
     <item>
       <title>Automation Framework - Alert Job Test</title>
       <link>/docs/desktop/addons/automation-framework/test-alert/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/test-alert/</guid>
       <description>Automation Framework - Alert Job Test Alert tests are supported by the activeScan and passiveScan-wait jobs. These tests can be used to validate the presence/absence of specific alerts in the active/passive scan. It is mandatory for the alerts specified in the plan to have a scanRuleId, against which the generated alerts will always be matched.</description>
     </item>
-    
     <item>
       <title>Automation Framework - Monitor Job Test</title>
       <link>/docs/desktop/addons/automation-framework/test-monitor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/test-monitor/</guid>
       <description>Automation Framework - Monitor Job Test Monitor tests are supported by long running jobs, such as activeScan and spider.
 Unlike the other Job Tests, monitor tests run while a job is running. They work in a similar way to statistic tests in that they check a specified statistic, but there is no &amp;lsquo;operator&amp;rsquo; - instead the test will fail if the value of the statistic exceeds the given threshold.</description>
     </item>
-    
     <item>
       <title>Automation Framework - Statistics Job Test</title>
       <link>/docs/desktop/addons/automation-framework/test-stats/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/test-stats/</guid>
       <description>Automation Framework - Statistics Job Test Statistics-based tests are supported by all add-ons that have an automation job. If there is a relevant statistic used by an add-on, a test can be created for it.
 An up to date list of the statistics ZAP maintains can be found at https://www.</description>
     </item>
-    
     <item>
       <title>Automation Framework - URL Presence Job Tests</title>
       <link>/docs/desktop/addons/automation-framework/test-url/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/test-url/</guid>
       <description>Automation Framework - URL Presence Job Test URL Presence tests are supported by all the jobs. These tests can be used to validate the presence/absence of a URL and it&amp;rsquo;s specific expressions in the HTTP response/request. The expressions are specified in the YAML file as regular expressions. The test will pass if the URL or the specified expression is found in the response/request depending upon the operator selection.</description>
     </item>
-    
     <item>
       <title>Automation Framework - About</title>
       <link>/docs/desktop/addons/automation-framework/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/about/</guid>
       <description>Automation Framework - About Source Code https://github.com/zaproxy/zap-extensions/tree/main/addOns/automation
 Authors ZAP Dev Team</description>
     </item>
-    
     <item>
       <title>Automation Framework - delay Job</title>
       <link>/docs/desktop/addons/automation-framework/job-delay/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/job-delay/</guid>
       <description>Automation Framework - delay Job This job waits for a specified time unless one of a specific set of conditions are met.
 It can be used to wait for regression tests being proxied through ZAP in order to explore your application more thoroughly.
 The time parameter supports the formats hh:mm:ss, mm:ss and ss, so &amp;ldquo;5&amp;rdquo; is 5 seconds, &amp;ldquo;1:30&amp;rdquo; is one minute and 30 seconds and &amp;ldquo;2:20:30&amp;rdquo; is 2 hours, 20 minutes and 30 seconds.</description>
     </item>
-    
     <item>
       <title>Automation Framework - requestor Job</title>
       <link>/docs/desktop/addons/automation-framework/job-requestor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>/docs/desktop/addons/automation-framework/job-requestor/</guid>
       <description>Automation Framework - requestor Job This job sends specifically crafted requests to a target url, with a custom request method and body. The user can also specify an expected response code, against which the actual response is compared, and the user is warned in case it does not match.</description>
     </item>
-    
   </channel>
 </rss>
