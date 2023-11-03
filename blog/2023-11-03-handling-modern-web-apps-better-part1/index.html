@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2023-11-03-handling-modern-web-apps-better-part1/images/zapbot-juiceshop.png"/>
+
+<meta name="twitter:title" content="Handling Modern Web Apps Better - Part 1"/>
+<meta name="twitter:description" content="Introducing a new add-on which allows ZAP (and you) to see what is going on in the browser."/>
+
+    <meta property="og:title" content="Handling Modern Web Apps Better - Part 1" />
+<meta property="og:description" content="Introducing a new add-on which allows ZAP (and you) to see what is going on in the browser." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2023-11-03-handling-modern-web-apps-better-part1/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2023-11-03-handling-modern-web-apps-better-part1/images/zapbot-juiceshop.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-11-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-03T00:00:00+00:00" />
+
+
+  
+  <title>ZAP &ndash; Handling Modern Web Apps Better - Part 1</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.5daf5a.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/sponsor/" title="Sponsor page">
+                  Sponsor
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Handling Modern Web Apps Better - Part 1</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Friday November 3, 2023</span>
+              <span class="word-count fl-r"> 805 Words </span>
+            </section>
+            <p>Modern web apps are very prevalent these days, and by &ldquo;modern&rdquo; we mean web apps which make heavy use of JavaScript in the browser (a.k.a. the client).</p>
+<p>These apps are challenging for all security tools, including ZAP.
+Historically ZAP has been a <a href="/docs/desktop/start/features/intercept/">MitM</a> proxy which means it can see all of the communications between the browser and the target app, but it has not been able to see what is going on in the browser.</p>
+<p>ZAP can explore modern apps pretty effectively using the <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a> and can find <a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS</a> vulnerabilities by launching browsers. But we know that we could still do better, and based on our recent <a href="/blog/2023-08-29-what-should-we-focus-on/">What Should We Focus On</a> questionnaire we know it is your top priority too.</p>
+<p>So we have a brand new <a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a> add-on (also called the Client add-on for short) which helps ZAP understand what is going on inside the browser.</p>
+
+<h3 id="zap-chat-video">ZAP Chat Video <a class="header-link" href="#zap-chat-video"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<div class='embed-youtube'>
+  <iframe src='https://www.youtube.com/embed/Rq_d7OLmMfw' frameborder='0' allowfullscreen></iframe>
+</div>
+
+<p>Staring <a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a></p>
+
+<h3 id="client-visibility">Client Visibility <a class="header-link" href="#client-visibility"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/docs/desktop/addons/client-side-integration/">Client</a> add-on is not currently included in ZAP by default so you will need to add it via the <a href="/addons/">ZAP Marketplace</a>.</p>
+<p>The add-on adds 3 new tabs to ZAP which give you a lot more information about what is happening in the browser.</p>
+<p>All of this information is available via Browser dev tools, but only for the pages being displayed.
+ZAP shows you all of the essential details for the whole app, and this information is also available when automating ZAP.</p>
+
+<h4 id="client-map">Client Map <a class="header-link" href="#client-map"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="/docs/desktop/addons/client-side-integration/#client-map">Client Map</a> is a representation of the apps that the browser accesses, so superficially it looks similar to the <a href="/docs/desktop/start/features/sitestree/">Sites Tree</a>.</p>
+<p>However if you look closely you will see that it actually includes the <a href="https://en.wikipedia.org/wiki/URI_fragment">URL fragments</a> which are not sent from the browser to the target app, so ZAP doesn&rsquo;t normally see these.
+These fragments give you a much more detailed understanding of the client side structure of the app.</p>
+<p><img src="images/client-map-details.png" alt="Client Map and Details Screenshot"></p>
+<p>The Client Map includes URLs that have not yet been visited - these have a small red ‘minus’ sign to indicate URLs that have been found in the DOM but which have not been directly accessed by ZAP.</p>
+<p>The Client Map also includes storage nodes so you can see the contents of cookies, local storage, and session storage in the browser.</p>
+<p><img src="images/client-storage.png" alt="Client Storage Screenshot"></p>
+<p>It supports a set of context menu options - these can be accessed via a &ldquo;right click&rdquo; or the relevant key combination for your OS.</p>
+
+<h4 id="client-details">Client Details <a class="header-link" href="#client-details"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="/docs/desktop/addons/client-side-integration/#client-details">Client Details</a> tab (also shown above) shows details about the node selected in the Client Map.</p>
+<p>It allows you to understand much more about the functionality that this URL represents in the target app.</p>
+<p>The types of data displayed include:</p>
+<ul>
+<li>Button: Buttons detected in the DOM</li>
+<li>Cookies: Cookies set in the browser</li>
+<li>FORM: Forms detected in the DOM</li>
+<li>Input: Input elements detected in the DOM</li>
+<li>Link: Links detected in the DOM</li>
+<li>Local Storage: Data set in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">Local Storage</a> in the browser</li>
+<li>Session Storage: Data set in <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage">Session Storage</a> in the browser</li>
+</ul>
+
+<h4 id="client-history">Client History <a class="header-link" href="#client-history"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The <a href="/docs/desktop/addons/client-side-integration/#client-history">Client History</a> tab shows all of the client side events sent from the browser extension to ZAP.</p>
+<p><img src="images/client-history.png" alt="Client History Screenshot"></p>
+<p>In addition to the data displayed in the Client Details tab it also includes:</p>
+<ul>
+<li>DOM Mutation: Browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver">MutationObserver</a> event</li>
+<li>Node Added: A DOM node added to the specified URL</li>
+<li>Page Load: Browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event">load</a> event</li>
+<li>Page Unload: Browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/unload_event">unload</a> event</li>
+</ul>
+
+<h3 id="ajax-spider-enhancement">AJAX Spider Enhancement <a class="header-link" href="#ajax-spider-enhancement"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>While the AJAX Spider is an effective way to explore modern web apps we know that there are some JavaScript based controls that it struggles with.
+This add-on <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">enhances</a> the AJAX Spider and if it finds in scope URLs in the DOM that have not been accessed by the AJAX Spider then it will directly request those URLs.
+This means that ZAP may explore your modern apps more effectively.</p>
+<p>If you have a modern app and you know the AJAX Spider does not completely explore it then try it with this new add-on.</p>
+<p>We score how well the Client add-on does in the regular <a href="/docs/scans/crawlmaze/">ZAP vs Crawl Maze</a> scan.
+Note that the Client column only shows URLs found by the Client add-on but NOT the AJAX Spider.</p>
+
+<h3 id="the-browser-extension">The Browser Extension <a class="header-link" href="#the-browser-extension"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Client add-on gets all of the data from the browser via a ZAP Browser Extension which it installs in Firefox and Chrome.
+The Browser Extension is (of course) open source: <a href="https://github.com/zaproxy/browser-extension">https://github.com/zaproxy/browser-extension</a></p>
+
+<h3 id="future-plans">Future Plans <a class="header-link" href="#future-plans"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We plan to enhance the Client add-on to support things like:</p>
+<ul>
+<li>Client side passive scanning</li>
+<li>Client side active scanning</li>
+<li>Storing client data in the ZAP session</li>
+</ul>
+
+<h3 id="feedback">Feedback <a class="header-link" href="#feedback"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We would love to hear your feedback about this add-on, for example:</p>
+<ul>
+<li>Does it cause problems on any of your web apps?</li>
+<li>Does it display all of the information clearly</li>
+<li>What else would you like it to do?</li>
+</ul>
+<p>Let us know via the ZAP User Group: conversation link to be added once this blog has been published..</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2023-11-02-zap-updates-october-2023/"> ZAP Updates - October 2023</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#zap-chat-video">ZAP Chat Video</a></li>
+        <li><a href="#client-visibility">Client Visibility</a></li>
+        <li><a href="#ajax-spider-enhancement">AJAX Spider Enhancement</a></li>
+        <li><a href="#the-browser-extension">The Browser Extension</a></li>
+        <li><a href="#future-plans">Future Plans</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/browser/">browser</a> </li>
+           
+           <li> <a href="/tags/modern/">modern</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/sponsor/" title="Sponsor page">Sponsor</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2023-11-03-handling-modern-web-apps-better-part1/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      ZAP is part of <a href="https://softwaresecurityproject.org/">The Software Security Project</a><br>
+      © Copyright 2023 the ZAP Dev Team</br>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.237d7f.js"></script>
+  
+</div>
+</body>
+</html>
