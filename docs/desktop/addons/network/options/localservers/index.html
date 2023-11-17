@@ -1656,7 +1656,13 @@ ZAP should be started with this option enabled if access to the API, through the
 <h4 id="remove-accept-encoding-request-header">Remove Accept-Encoding Request Header <a class="header-link" href="#remove-accept-encoding-request-header"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>Allows the proxy to remove the &ldquo;Accept-Encoding&rdquo; request-header field, so no (unsupported) encoding transformations are done to the response.<br>
 This option should be always enabled unless when testing the encoding transformations.<br>
-The messages encoded with unsupported encodings will not be correctly scanned (either by passive and active scanners).</p>
+The messages encoded with unsupported encodings will not be correctly scanned (either by passive or active scanners).<br>
+Supported content encodings:</p>
+<ul>
+<li><code>br</code>, on Linux x64, macOS (Intel and Apple Silicon), and Windows x64</li>
+<li><code>deflate</code></li>
+<li><code>gzip</code></li>
+</ul>
 
 <h4 id="decode-response">Decode Response <a class="header-link" href="#decode-response"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>Allows the proxy to automatically decode (i.e. gzip, deflate) the response. This option is needed for applications that ignore the &ldquo;Accept-Encoding&rdquo; request-header field.</p>
