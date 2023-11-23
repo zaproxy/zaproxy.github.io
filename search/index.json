@@ -936,6 +936,14 @@
     "content": "you have options: convince one existing zap developers that they should implement someone else yourself some core paid work can us we asap then will probably quickest option obviously know code base however all very busy companies who pay expectations what deliver do lot freedom think right long list things wed really like doesnt hurt try failing developer group good place find people interested working final team our best support anyone wants contribute often spend more time helping other feature than would take ourselves because want encourage get involved its investment matter why just paying them thats fine "
     },
 {
+    "url": "/faq/how-do-i-use-chrome-with-zap-in-docker/",
+    "title": "How do I use Chrome with ZAP in Docker?",
+    "keywords": ["","chrome","do","docker?","how","i","in","use","with","zap"],
+    "tags": null,
+    "summary": "The Chrome browser is not included by default in the ZAP Docker images. This FAQ entry will walk-through the steps necessary to install and run Chrome with ZAP in a Docker container, to be used by its tools (e.g. DOM XSS Scan Rule, AJAX Spider).\nCreate a Dockerfile using one of the ZAP images and installing Chrome, e.",
+    "content": "chrome browser not included by default zap docker images faq entry will walkthrough steps necessary install run container used its tools eg dom xss scan rule ajax spider create dockerfile using one installing eg: from platformlinuxamd64 softwaresecurityprojectzapstable:latest user root aptget update wget https:dlgooglecomlinuxdirectgooglechromestablecurrentamd64deb googlechromestablecurrentamd64deb rm rf varlibaptlists build new image zapchrome platform linuxamd64 verify everything working automation framework plan called chromeyaml following contents: env: contexts: name: 34chrome headless test34 urls: 34https:demoowaspjuiceshop34 parameters: failonerror: true failonwarning: progresstostdout: jobs: maxduration: numberofbrowsers: browserid: 34chromeheadless34 tests: 34at least url found34 onfail: 34warn34 statistic: 34spiderajaxurlsadded34 site: 3434 operator: value: 20 type: 34stats34 34spiderajax34 same directory created previously 34pwd34:zapwrk:rw zapsh cmd autorun zapwrkchromeyaml should output something like: job spiderajax set numberofbrowsers maxduration browserid chromeheadless spiderajaxstatsnull name found onfail warn statistic spiderajaxurlsadded site operator value type stats adding test started 254 urls passed: finished time taken: 00:01:01 succeeded fails start because being you might need with: config seleniumchromeargsargargumentnosandbox before do read more about sandbox https:chromiumgooglesourcecomchromiumsrcrefsheadsmaindocsdesignsandboxfaqmd consider instead use rulesdomxssbrowseridchromeheadless have any issues feedback get touch through group "
+    },
+{
     "url": "/docs/desktop/addons/oast-support/options/",
     "title": "OAST Options",
     "keywords": ["","oast","options"],
