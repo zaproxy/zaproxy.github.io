@@ -1635,6 +1635,7 @@ The following conditions may result in an alert:</p>
 <h2 id="application-errors">Application Errors <a class="header-link" href="#application-errors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Check server responses for HTTP 500 - Internal Server Error type responses or those that contain a known error string.<br>
 <strong>Note:</strong> Matches made within script blocks or files are against the entire content not only comments.<br>
+Skips responses that contain ISO control characters (those which are likely binary files).<br>
 At HIGH Threshold don’t alert on HTTP 500 (but do for other error patterns). Also, such known error strings are much less likely to be relevant in static pages like JS / CSS so these files are only scanned at LOW threshold.<br>
 For Internal Server Error (HTTP 500) the Alert is set to Low risk and in other case it is set to Medium risk.</p>
 <p><strong>Note:</strong> If the Custom Payloads addon is installed you can add your own Application Error strings (payloads) in the Custom Payloads options panel.
