@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
+  
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.zaproxy.org/blog/2023-12-01-zap-updates-november-2023/images/zapbot-monthly-updates-social.png"/>
+
+<meta name="twitter:title" content="ZAP Updates - November 2023"/>
+<meta name="twitter:description" content="Improved modern web app handling and lots of videos."/>
+
+    <meta property="og:title" content="ZAP Updates - November 2023" />
+<meta property="og:description" content="Improved modern web app handling and lots of videos." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2023-12-01-zap-updates-november-2023/" /><meta property="og:image" content="https://www.zaproxy.org/blog/2023-12-01-zap-updates-november-2023/images/zapbot-monthly-updates-social.png" /><meta property="article:section" content="blog" />
+<meta property="article:published_time" content="2023-12-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-01T00:00:00+00:00" />
+
+
+  
+  <title>ZAP &ndash; ZAP Updates - November 2023</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.5daf5a.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/" title="Home page">
+                  Home
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/sponsor/" title="Sponsor page">
+                  Sponsor
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+   
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">ZAP Updates - November 2023</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Friday December 1, 2023</span>
+              <span class="word-count fl-r"> 1081 Words </span>
+            </section>
+            
+<h2 id="highlights">Highlights <a class="header-link" href="#highlights"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="modern-web-app-handling">Modern Web App Handling <a class="header-link" href="#modern-web-app-handling"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We published the blog post <a href="/blog/2023-11-03-handling-modern-web-apps-better-part1/">Handling Modern Web Apps Better - Part 1</a>
+and released a video <a href="https://www.youtube.com/watch?v=Rq_d7OLmMfw">ZAP Chat 05 Modern Apps Part 1</a>
+which show how we are starting to improve how ZAP can handle modern web apps more effectively.</p>
+<p>We also enhanced to Client add-on to support <a href="/docs/desktop/addons/client-side-integration/pscan/">passive scanning</a> which adds 3 more alerts which ZAP can report:</p>
+<ul>
+<li><a href="/docs/alerts/120000/">Information Disclosure - Information in Browser Storage</a></li>
+<li><a href="/docs/alerts/120001/">Information Disclosure - Sensitive Information in Browser Storage</a></li>
+<li><a href="/docs/alerts/120002/">Information Disclosure - JWT in Browser Storage</a></li>
+</ul>
+
+<h3 id="zap-chat-video-series">ZAP Chat Video Series <a class="header-link" href="#zap-chat-video-series"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We released 5 (!) new <a href="/zap-chat/">ZAP Chat</a> videos last month:</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Rq_d7OLmMfw">ZAP Chat 05 Modern Apps Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=PnCbIAnauD8">ZAP Chat 06 Automation Introduction</a></li>
+<li><a href="https://www.youtube.com/watch?v=19Rptj2be1Y">ZAP Chat 07 Automation Framework Part 1</a></li>
+<li><a href="https://www.youtube.com/watch?v=1fcpU54N-mA">ZAP Chat 08 Automation Framework Part 2</a></li>
+<li><a href="https://www.youtube.com/watch?v=4phnMy9iCPY">ZAP Chat 09 Automation Framework Part 3</a></li>
+</ul>
+
+<h2 id="ongoing-work">Ongoing Work <a class="header-link" href="#ongoing-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="modern-web-app-handling-1">Modern Web App Handling <a class="header-link" href="#modern-web-app-handling-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>See the highlights above!</p>
+
+<h3 id="improved-automation-capabilities">Improved Automation Capabilities <a class="header-link" href="#improved-automation-capabilities"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This month we started the <a href="/docs/getting-further/automation/">Getting Further with ZAP Automation</a> guide.</p>
+<p>We also made good progress on a new GitHub Action which will support the <a href="/docs/automate/automation-framework/">Automation Framework</a> - an early version of that will hopefully be released soon!</p>
+
+<h3 id="usability-enhancements">Usability Enhancements <a class="header-link" href="#usability-enhancements"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We have started discussions around improving the usability of the ZAP GUI and minor enhancements are already on their way.</p>
+
+<h2 id="website-updates">Website Updates <a class="header-link" href="#website-updates"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The following new pages were added to the website in November.</p>
+<ul>
+<li>Blog: <a href="/blog/2023-11-02-zap-updates-october-2023/">ZAP Updates - October 2023</a></li>
+<li>Blog: <a href="/blog/2023-11-03-handling-modern-web-apps-better-part1/">Handling Modern Web Apps Better - Part 1</a></li>
+<li>Blog: <a href="/blog/2023-11-20-technology-support/">Technology Support</a></li>
+<li>Docs: <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a></li>
+<li>Docs: <a href="/docs/getting-further/automation/">Getting Further with ZAP Automation</a>
+<ul>
+<li><a href="/docs/getting-further/automation/automation-options/">Automation Guide - Options</a></li>
+<li><a href="/docs/getting-further/automation/exploring-your-app/">Automation Guide - Exploring Your App</a></li>
+</ul>
+</li>
+<li>FAQ: <a href="/faq/how-do-i-use-chrome-with-zap-in-docker/">How do I use Chrome with ZAP in Docker?</a></li>
+</ul>
+
+<h2 id="new-contributors">New Contributors <a class="header-link" href="#new-contributors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Congratulations to:</p>
+<ul>
+<li><a href="/docs/team/yiannis/">Yiannis</a> who was added to the <a href="/docs/team/">Extended Team</a></li>
+<li><a href="https://twitter.com/hahwul">HAHWUL</a> who was added to the <a href="/evangelists/">ZAP Evangelists</a></li>
+</ul>
+<p>A very warm welcome to the people who started to contribute to ZAP this month!</p>
+<ul>
+<li><a href="https://github.com/Sebitosh">Sébastien Amelinckx</a></li>
+<li><a href="https://github.com/zuhairabid">Zuhair Abid</a></li>
+<li><a href="https://www.linkedin.com/in/adrean-boyadzhiev">Adrean Boyadzhiev</a></li>
+<li><a href="https://twitter.com/itsdivyanshjain">Divyansh Jain</a></li>
+<li><a href="https://github.com/amitpanwar789">Amit Panwar</a></li>
+</ul>
+
+<h2 id="github-pulse">GitHub Pulse <a class="header-link" href="#github-pulse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Here are some statistics for the two main ZAP repositories:</p>
+<p><a href="https://github.com/zaproxy/zaproxy/pulse/monthly">zaproxy</a><br>
+Excluding merges, 6 authors have pushed 24 commits to main and 24 commits to all branches. On main, 94 files have changed and there have been 961 additions and 236 deletions.</p>
+<p><a href="https://github.com/zaproxy/zap-extensions/pulse/monthly">zap-extensions</a><br>
+Excluding merges, 9 authors have pushed 79 commits to main and 79 commits to all branches. On main, 865 files have changed and there have been 16,117 additions and 2,653 deletions.</p>
+<p>A total of <a href="https://github.com/search?q=org%3Azaproxy+type%3Apr+-author%3Azapbot+-author%3Aapp%2Fdependabot+sort%3Aupdated-asc+closed%3A2023-11+is%3Amerged&amp;type=pullrequests">135 human PRs were merged</a> on the ZAP repos.</p>
+
+<h2 id="released-add-ons---full-changelog">Released add-ons - Full Changelog <a class="header-link" href="#released-add-ons---full-changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>In November 2023, we released updated versions of 16 add-ons:</p>
+
+<h5 id="ajax-spider">Ajax Spider</h5>
+<p><strong>v23.18.0</strong><br>
+Added</p>
+<ul>
+<li>Add context menu item to Contexts tree to show the AJAX Spider dialogue with the selected Context.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Add icon to the Tools menu item.</li>
+<li>Scale icons.</li>
+</ul>
+
+<h5 id="alert-filters">Alert Filters</h5>
+<p><strong>v19</strong><br>
+Changed</p>
+<ul>
+<li>Allow to filter by alert reference (Issue 7438).</li>
+<li>Allow to specify custom IDs through the GUI.</li>
+<li>Maintenance changes.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Do not fail to import or load a context with invalid alert filters.</li>
+<li>Incorrect warning about &lsquo;Unrecognised parameter&rsquo; for deleteGlobalAlerts.</li>
+<li>Persist context filter data.</li>
+</ul>
+
+<h5 id="automation-framework">Automation Framework</h5>
+<p><strong>v0.34.0</strong><br>
+Added</p>
+<ul>
+<li>Show column control in the Automation tab to allow to show/hide columns and auto resize them (<code>Pack All Columns</code>).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Save context.</li>
+</ul>
+
+<h5 id="call-home">Call Home</h5>
+<p><strong>v0.10.0</strong><br>
+Changed</p>
+<ul>
+<li>Add error stats to telemetry.</li>
+</ul>
+
+<h5 id="client-side-integration">Client Side Integration</h5>
+<p><strong>v0.7.0</strong><br>
+Added</p>
+<ul>
+<li>Support for base64 decoding in existing scan rules.</li>
+<li>Passive scan rule: JWT in Browser Storage.</li>
+<li>Additional input field data returned from the extension.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Updated the Firefox extension to v0.0.8.</li>
+</ul>
+<p><strong>v0.6.0</strong><br>
+Added</p>
+<ul>
+<li>Support for passive scanning</li>
+<li>Passive scan rules:
+<ul>
+<li>Information Disclosure - Information in Browser Storage</li>
+<li>Information Disclosure - Sensitive Information in Browser Storage</li>
+</ul>
+</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Dropped &ldquo;to Clipboard&rdquo; from ZAP copy menu items (Issue 8179).</li>
+<li>Changed to add back &lsquo;#&rsquo; nodes.</li>
+</ul>
+<p><strong>v0.5.0</strong><br>
+Added</p>
+<ul>
+<li>Client History and Details context menu items.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Do not use white background in Client Details and show Client Map icons properly when using Mac OS X look and feel (Issue 8175).</li>
+</ul>
+
+<h5 id="common-library">Common Library</h5>
+<p><strong>v1.19.0</strong><br>
+Added</p>
+<ul>
+<li>A generic UI component for keeping menu items sorted.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Add solution to &lsquo;Brute Forcing Credit Card Information&rsquo;, &lsquo;Content Spoofing&rsquo;, &lsquo;Credential and Session Prediction&rsquo;, &lsquo;XML Injection&rsquo; and &lsquo;XML External Entities&rsquo; vulnerabilities (Issue 8056).</li>
+</ul>
+
+<h5 id="custom-payloads">Custom Payloads</h5>
+<p><strong>v0.13.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+<li>Maintenance changes.</li>
+<li>Promoted to Beta.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Initial API support:
+<ul>
+<li>Actions
+<ul>
+<li>Enable payloads.</li>
+<li>Disable payloads.</li>
+<li>Enable payload.</li>
+<li>Disable payload.</li>
+<li>Add payload.</li>
+<li>Remove payload.</li>
+</ul>
+</li>
+<li>Views:
+<ul>
+<li>Payload categories.</li>
+<li>Payloads (optionally filtered by category).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<h5 id="graphql-support">GraphQL Support</h5>
+<p><strong>v0.21.0</strong><br>
+Changed</p>
+<ul>
+<li>Dependency updates.</li>
+<li>Maintenance changes.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>The query generator was not using lists and non-null fields to generate queries when the lenient maximum query depth
+criteria was met.</li>
+</ul>
+
+<h5 id="importexport">Import/Export</h5>
+<p><strong>v0.8.0</strong><br>
+Changed</p>
+<ul>
+<li>Keep the Export menu items sorted alphabetically.</li>
+</ul>
+
+<h5 id="network">Network</h5>
+<p><strong>v0.13.0</strong><br>
+Added</p>
+<ul>
+<li>On weekly releases and versions after 2.14, handle content encodings and add <code>br</code> content encoding on supported OSes (Issue 2198).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Handle cookies like browsers, mostly send what is received (Issues 1232 and 7874).</li>
+<li>Do not set content-length to SSE responses, which would end up being closed prematurely.</li>
+</ul>
+
+<h5 id="passive-scanner-rules">Passive scanner rules</h5>
+<p><strong>v53</strong><br>
+Changed</p>
+<ul>
+<li>The Application Error Disclosure rule no longer considers responses that contain ISO control characters (those which are likely to be binary file types).</li>
+<li>The Time Stamp Disclosure rule now includes the header field name as Parameter in alerts when a time stamp is identified in a header value (Issue 8160).</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h5 id="replacer">Replacer</h5>
+<p><strong>v16</strong><br>
+Changed</p>
+<ul>
+<li>Allow to replace (change or remove) the Host header (Issue 5475).</li>
+</ul>
+
+<h5 id="retirejs">Retire.js</h5>
+<p><strong>v0.27.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with upstream retire.js pattern changes.</li>
+</ul>
+
+<h5 id="script-console">Script Console</h5>
+<p><strong>v43</strong><br>
+Added</p>
+<ul>
+<li>Allow setting the tab size and whether to use tabs or spaces for indentation in the console.
+The old defaults were to use the tab character with a tab size of 5.
+The new defaults are to use spaces with a tab size of 4.</li>
+<li>A gear button to the console toolbar to open the Script Console options screen.</li>
+<li>An enable / disable script button to the console toolbar to toggle enabling the open script.</li>
+<li>Options to allow editing the font name and size used in the console (Issue 8065).</li>
+<li>The shortcut <code>ctrl+S</code> (<code>cmd+S</code> on macOS) to save the script in the console.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>The &ldquo;Save Script&rdquo; button was moved to the console toolbar.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Saving the script was causing the &ldquo;Keep or Replace&rdquo; dialog to show, even when no external changes were made to the script.</li>
+</ul>
+
+<h5 id="selenium">Selenium</h5>
+<p><strong>v15.16.0</strong><br>
+Changed</p>
+<ul>
+<li>Update Selenium to version 4.15.0.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Add vertical scroll bar to the options panel to prevent the options from being hidden when resizing the Options dialogue (Issue 8178).</li>
+</ul>
+
+<h5 id="wappalyzer---technology-detection">Wappalyzer - Technology Detection</h5>
+<p><strong>v21.27.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2023-11-20-technology-support/"> ZAP Technology Support</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#highlights">Highlights</a>
+      <ul>
+        <li><a href="#modern-web-app-handling">Modern Web App Handling</a></li>
+        <li><a href="#zap-chat-video-series">ZAP Chat Video Series</a></li>
+      </ul>
+    </li>
+    <li><a href="#ongoing-work">Ongoing Work</a>
+      <ul>
+        <li><a href="#modern-web-app-handling-1">Modern Web App Handling</a></li>
+        <li><a href="#improved-automation-capabilities">Improved Automation Capabilities</a></li>
+        <li><a href="#usability-enhancements">Usability Enhancements</a></li>
+      </ul>
+    </li>
+    <li><a href="#website-updates">Website Updates</a></li>
+    <li><a href="#new-contributors">New Contributors</a></li>
+    <li><a href="#github-pulse">GitHub Pulse</a></li>
+    <li><a href="#released-add-ons---full-changelog">Released add-ons - Full Changelog</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/update/">update</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/" title="Home page">Home</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/sponsor/" title="Sponsor page">Sponsor</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2023-12-01-zap-updates-november-2023/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      ZAP is part of <a href="https://softwaresecurityproject.org/">The Software Security Project</a><br>
+      © Copyright 2023 the ZAP Dev Team</br>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.237d7f.js"></script>
+  
+</div>
+</body>
+</html>
