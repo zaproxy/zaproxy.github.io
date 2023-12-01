@@ -1634,6 +1634,15 @@ Alert ID: <a href="/docs/alerts/120000/">120000</a>.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/client/src/main/java/org/zaproxy/addon/client/pscan/SensitiveInfoInStorageScanRule.java">SensitiveInfoInStorageScanRule.java</a><br>
 Alert ID: <a href="/docs/alerts/120001/">120001</a>.</p>
 
+<h2 id="id-120002">Information Disclosure - JWT in Browser Storage <a class="header-link" href="#id-120002"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This rule reports any JWTs stored in browser localStorage and sessionStorage.</p>
+<p>JWTs are commonly stored in sessionStorage so these are just raised as Informational alerts.</p>
+<p>JWTs should not typically be stored in localStorage so these are raised as Medium alerts.</p>
+<p>The alert parameter will be the storage key used.
+An alert will only be raised once for each URL + key.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/client/src/main/java/org/zaproxy/addon/client/pscan/JwtInStorageScanRule.java">JwtInStorageScanRule.java</a><br>
+Alert ID: <a href="/docs/alerts/120002/">120002</a>.</p>
+
         </div>
       </div>
   </div>
