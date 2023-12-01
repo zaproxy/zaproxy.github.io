@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Information Disclosure - Sensitive Information in Browser sessionStorage</title>
+  <title>ZAP &ndash; Information Disclosure - JWT in Browser localStorage</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -131,7 +131,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Information Disclosure - Sensitive Information in Browser sessionStorage</h1>
+      <h1 class="text--white">Information Disclosure - JWT in Browser localStorage</h1>
   </div>
 </section>
 
@@ -155,7 +155,7 @@
               <td>
                 <strong>Alert Id</strong>
               </td>
-              <td>120001-2</td>
+              <td>120002-1</td>
             </tr>
             <tr> 
               <td>
@@ -174,7 +174,7 @@
                 <strong>
                   Risk
                 </td>
-              <td>Low</td>
+              <td>Medium</td>
             </tr>
             <tr> 
               <td>
@@ -218,7 +218,7 @@
                 <strong>More Info</strong>
               </td>
               <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/client-side-integration/pscan/#id-120001">Scan Rule Help</a><br>
+              	<a href="https://www.zaproxy.org/docs/desktop/addons/client-side-integration/pscan/#id-120002">Scan Rule Help</a><br>
               </td>
             </tr>
             
@@ -229,24 +229,30 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>Sensitive Information appears to have been stored in browser sessionStorage. This can violate PCI and most organizational compliance policies.
-For more details see the Client tabs - this information was set directly in the browser and will therefore not necessarily appear in this form in any HTTP(S) messages.</p>
+          <p>JWT was stored in browser localStorage.
+This is dangerous because data stored in localStorage does not expire. .</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Do not store sensitive information in browser storage. 
+          This is an informational alert and no action is necessary. 
         </div>
         <div data-attr="other" class="mb-20">
           <h3 class="mb-10">Other Info</h3>
-          The following data (key=value) was set which matches the pattern for email addresses: key=value Note that alerts will only be raised once for each URL &#43; key.
+          The following JWT was set: Key: key Header: {&#39;alg&#39;: &#39;HS256&#39;, &#39;typ&#39;: &#39;JWT&#39;} Payload: {&#39;sub&#39;: &#39;1234567890&#39;, &#39;name&#39;: &#39;John Doe&#39;, &#39;iat&#39;: 1516239022} Signature: d35db7e39ebbf34d76df8e7aefcd35db7e39ebbf34d76df8e7aefcd35db7e39ebbf34d76df8e7aefcd35db7e39ebbf Note that this alert will only be raised once for each URL &#43; key.
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
+          <li>
+            
+              <a href="https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/">https://www.zaproxy.org/blog/2020-09-03-zap-jwt-scanner/</a>
+            
+          </li>
+        
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/client/src/main/java/org/zaproxy/addon/client/pscan/SensitiveInfoInStorageScanRule.java'>org/zaproxy/addon/client/pscan/SensitiveInfoInStorageScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/client/src/main/java/org/zaproxy/addon/client/pscan/JwtInStorageScanRule.java'>org/zaproxy/addon/client/pscan/JwtInStorageScanRule.java</a>
       </section>
   </main>
 </div>

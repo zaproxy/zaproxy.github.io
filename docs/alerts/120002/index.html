@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Information Disclosure - Sensitive Information in Browser sessionStorage</title>
+  <title>ZAP &ndash; Information Disclosure - JWT in Browser Storage</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -131,7 +131,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Information Disclosure - Sensitive Information in Browser sessionStorage</h1>
+      <h1 class="text--white">Information Disclosure - JWT in Browser Storage</h1>
   </div>
 </section>
 
@@ -153,9 +153,9 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert Id</strong>
+                <strong>Scan Rule Id</strong>
               </td>
-              <td>120001-2</td>
+              <td>120002</td>
             </tr>
             <tr> 
               <td>
@@ -169,84 +169,27 @@
               </td>
               <td>alpha</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>Low</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/200.html">
-                  200
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>13</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/cwe-200">CWE-200</a><br>
-              
-              </td>
-            </tr>
-            
-            <tr> 
-              <td>
-                <strong>More Info</strong>
-              </td>
-              <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/client-side-integration/pscan/#id-120001">Scan Rule Help</a><br>
-              </td>
-            </tr>
-            
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>Sensitive Information appears to have been stored in browser sessionStorage. This can violate PCI and most organizational compliance policies.
-For more details see the Client tabs - this information was set directly in the browser and will therefore not necessarily appear in this form in any HTTP(S) messages.</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Do not store sensitive information in browser storage. 
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          The following data (key=value) was set which matches the pattern for email addresses: key=value Note that alerts will only be raised once for each URL &#43; key.
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
+        
+          <li>
+            <a href="/docs/alerts/120002-1">120002-1</a> Information Disclosure - JWT in Browser localStorage
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/120002-2">120002-2</a> Information Disclosure - JWT in Browser sessionStorage
+          </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/client/src/main/java/org/zaproxy/addon/client/pscan/SensitiveInfoInStorageScanRule.java'>org/zaproxy/addon/client/pscan/SensitiveInfoInStorageScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/client/src/main/java/org/zaproxy/addon/client/pscan/JwtInStorageScanRule.java'>
+            org/zaproxy/addon/client/pscan/JwtInStorageScanRule.java
+          </a>
       </section>
   </main>
 </div>
