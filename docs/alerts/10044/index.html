@@ -153,7 +153,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert Id</strong>
+                <strong>Scan Rule Id</strong>
               </td>
               <td>10044</td>
             </tr>
@@ -169,78 +169,27 @@
               </td>
               <td>release</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td></td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/.html">
-                  
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td></td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a03">OWASP_2017_A03</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a04">OWASP_2021_A04</a><br>
-              
-              	<a href="/alerttags/wstg-v42-info-05">WSTG-V42-INFO-05</a><br>
-              
-              </td>
-            </tr>
-            
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
+        
+          <li>
+            <a href="/docs/alerts/10044-1">10044-1</a> Big Redirect Detected (Potential Sensitive Information Leak)
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/10044-2">10044-2</a> Multiple HREFs Redirect Detected (Potential Sensitive Information Leak)
+          </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/BigRedirectsScanRule.java'>org/zaproxy/zap/extension/pscanrules/BigRedirectsScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/BigRedirectsScanRule.java'>
+            org/zaproxy/zap/extension/pscanrules/BigRedirectsScanRule.java
+          </a>
       </section>
   </main>
 </div>
