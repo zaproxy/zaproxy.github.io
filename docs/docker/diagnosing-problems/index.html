@@ -156,7 +156,8 @@
 <p>Any files created in a docker image will be lost when that image stops unless you map a local drive using the Docker <code>-v</code> option.</p>
 <p>For the packaged scans you need to map a drive to <code>/zap/wrk</code>.</p>
 <p>On Linux / MacOS you can do this using the Docker option <code>-v $(pwd):/zap/wrk/:rw</code>.</p>
-<p>On Windows you need to specify the full local directory name e.g. <code>-v C:\temp:/zap/wrk/:rw</code>.</p>
+<p>Note that <code>$(pwd)</code> is supported on Linux, MacOS and PowerShell.
+See <a href="/docs/docker/about/#mounting-the-current-directory">Docker About - Mounting the current directory</a> for Windows, etc.</p>
 <p>If you cannot see files that should be being created then first check to make sure they are created in the mapped drive.</p>
 <p>If they are then check that any file can be created - the following command should create the file <code>test.txt</code> in the CWD on Linux / MacOS.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable touch /zap/wrk/test.txt

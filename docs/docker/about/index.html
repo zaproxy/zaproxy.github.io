@@ -185,6 +185,26 @@ If you are running ZAP with port other than the default <code>8080</code>, you n
 
 <h2 id="usage-instructions">Usage Instructions <a class="header-link" href="#usage-instructions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 
+<h3 id="mounting-the-current-directory">Mounting the Current Directory <a class="header-link" href="#mounting-the-current-directory"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Many of the examples require that you mount the <code>/zap/wrk</code> directory, and these examples show how you can mount your <strong><a href="https://en.wikipedia.org/wiki/Working_directory">current working directory</a> (CWD)</strong>.
+One can <em>get</em> the CWD using various forms of <em>printing</em> the (current) working directory (PWD).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># ...linux / MacOS / PowerShell</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    The $(pwd) command substitution will get the current directory as a variable</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    The classic form `pwd` must be used for csh and tsch / is still supported in bash/zsh/etc.</span>
+</span></span><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t softwaresecurityproject/zap-stable zap.sh ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...linux / MacOS / PowerShell</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    The ${PWD} _environment variable_ is your current directory</span>
+</span></span><span style="display:flex;"><span>docker run -v <span style="color:#e6db74">${</span>PWD<span style="color:#e6db74">}</span>:/zap/wrk/:rw -t softwaresecurityproject/zap-stable zap.sh ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ...windows CMD</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#    The %cd% Windows CMD environment variable is your current directory</span>
+</span></span><span style="display:flex;"><span>docker run -v %cd%:/zap/wrk/:rw -t softwaresecurityproject/zap-stable zap.sh ...
+</span></span></code></pre></div><p>The examples use <code>$(pwd)</code> <a href="https://en.wikipedia.org/wiki/Command_substitution">command substitution</a>, which runs the <code>pwd</code> command, substituting the <em>result</em>.
+Command substitution, and the <code>pwd</code> command works in <em>most</em> Linux and MacOS shells (bash, zsh, fish(&gt;3.4.0), etc), and in Windows PowerShell.</p>
+<p>Many environments <em>also</em> support the $PWD / ${PWD} <em>environment variable</em>.</p>
+<p>Finding working solutions for <em>all</em> environments is outside the scope of this document.</p>
+
 <h3 id="packaged-scans">Packaged Scans <a class="header-link" href="#packaged-scans"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>All of the docker images (apart from the &lsquo;bare&rsquo; one) provide a set of packaged scan scripts:</p>
 <ul>
@@ -221,7 +241,9 @@ It is under active development and will in time exceed the capabilities of the p
 for people who want more control over ZAP. The packaged scans will not be removed but are being migrated to use the Automation Framework.</p>
 <p>You can run the Automation Framework in docker using the zap.yaml file in the current directory using:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t softwaresecurityproject/zap-stable zap.sh -cmd -autorun /zap/wrk/zap.yaml
-</span></span></code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory (ex: <code>C:\your\working\directory\</code>).</p>
+</span></span></code></pre></div><p>Note that <code>$(pwd)</code> is supported on Linux, MacOS and PowerShell.
+See <a href="/docs/docker/about/#mounting-the-current-directory">Docker About - Mounting the current directory</a> for Windows, etc.</p>
+<p>Remaining examples use the Linux approach.</p>
 <p>If you want to make sure that ZAP is up to date before running the yaml file then the recommended approach is:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t softwaresecurityproject/zap-stable bash -c <span style="color:#e6db74">&#34;zap.sh -cmd -addonupdate; zap.sh -cmd -autorun /zap/wrk/zap.yaml&#34;</span>
 </span></span></code></pre></div><p>The latest version of the Automation Framework will set the ZAP exit value based on the result of the plan, in order to have access to this you need to use a command like:</p>

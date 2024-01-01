@@ -182,7 +182,8 @@ correspond with the name of the hook. By default, ZAP scans will load hooks defi
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># or using Docker </span>
 </span></span><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py <span style="color:#ae81ff">\
 </span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    -t https://www.example.com -g gen.conf -r testreport.html --hook<span style="color:#f92672">=</span>/zap/wrk/my-hooks.py
-</span></span></code></pre></div><p>Note that <code>$(pwd)</code> is only supported on Linux and MacOS - on Windows you will need to replace this with the full current working directory.</p>
+</span></span></code></pre></div><p>Note that <code>$(pwd)</code> is supported on Linux, MacOS and PowerShell.
+See <a href="/docs/docker/about/#mounting-the-current-directory">Docker About - Mounting the current directory</a> for Windows, etc.</p>
 
 <h2 id="example-hooks">Example Hooks <a class="header-link" href="#example-hooks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>See <a href="https://github.com/zaproxy/community-scripts/tree/main/other/scan-hooks">https://github.com/zaproxy/community-scripts/tree/main/other/scan-hooks</a></p>
