@@ -1610,6 +1610,7 @@
           
 <h1 id="automation-framework---environment">Automation Framework - Environment</h1>
 <p>This section of the YAML configuration file defines the applications which the rest of the jobs can act on.</p>
+<p>The environment is covered in the video: <a href="https://youtu.be/1fcpU54N-mA">ZAP Chat 08 Automation Framework Part 2 - Environment</a>.</p>
 <p>The Automation Framework supports all of the <a href="/docs/desktop/addons/automation-framework/authentication/">authentication</a> mechanisms supported by ZAP.</p>
 <p><strong>Note</strong> When testing targets that operate on default ports (80 for http, 443 for https), the colon port portion of the URL should not be included.
 Including that portion (for example: <a href="http://example.com:80">http://example.com:80</a>) may result in an inability to crawl or test the target. If a &lsquo;default&rsquo; port is specified both
@@ -1650,6 +1651,7 @@ as part of the Context.</p>
           scriptEngine:                # String, the name of the script engine to use, only for &#39;script&#39; session management
       technology:
         exclude:                       # List of tech to exclude, as per https://www.zaproxy.org/techtags/ (just use last names)
+        include:                       # List of tech to include, should only be used when targeting specific techs, the exclude takes precedence when configuring the context.
       users:                           # List of one or more users available to use for authentication
       - name:                          # String, the name to be used by the jobs
         credentials:                   # List of user credentials - may include any required for scripts
