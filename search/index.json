@@ -4133,7 +4133,7 @@
     "keywords": ["","-","access","authorization","control","improper","issue"],
     "tags": null,
     "summary": "Insufficient Authorization results when an application does not perform adequate authorization checks to ensure that the user is performing a function or accessing data in a manner consistent with the security policy. Authorization procedures should enforce what a user, service or application is permitted to do. When a user is authenticated to a web site, it does not necessarily mean that the user should have full access to all content and functionality.",
-    "content": "insufficient authorization results when application does not perform adequate checks ensure that user performing function accessing data manner consistent security policy procedures should enforce what service permitted do authenticated web site necessarily mean have full access all content functionality many applications grant different users news will allows view stories publish them accounting system permissions accounts payable clerk receivable happens prevent from violation very visible example was 2005 hack harvard business schools process failure allowed their own they been part expose underlying identifiers url medical record one might such as: http:examplecomrecordviewid12345 check id has read rights then could display see more common than because programmers generally complete knowledge always mapping often tight control over mechanisms rely other systems databases "
+    "content": "insufficient authorization results when application does not perform adequate checks ensure that user performing function accessing data manner consistent security policy procedures should enforce what service permitted do authenticated web site necessarily mean have full access all content functionality many applications grant different users news will allows view stories publish them accounting system permissions accounts payable clerk receivable happens prevent from violation very visible example was 2005 hack harvard business schools process failure allowed their own they been part expose underlying identifiers url medical record one might such as: https:examplecomrecordviewid12345 check id has read rights then could display see more common than because programmers generally complete knowledge always mapping often tight control over mechanisms rely other systems databases "
     },
 {
     "url": "/docs/statistics/active-scan-rules-last-month/",
@@ -4464,12 +4464,28 @@
     "content": "response contained contentsecuritypolicyreportonly header may indicate workinprogress implementation oversight promoting preprod prod etc content security policy csp added layer that helps detect mitigate certain types attacks including cross site scripting xss data injection these used everything from theft defacement distribution malware provides set standard http headers allow website owners declare approved sources browsers should allowed load page covered javascript css html frames fonts images embeddable objects such java applets activex audio video files "
     },
 {
-    "url": "/docs/alerts/10019/",
+    "url": "/docs/alerts/10019-2/",
+    "title": "Content-Type Header Empty",
+    "keywords": ["","content-type","empty","header"],
+    "tags": null,
+    "summary": "The Content-Type header was either missing or empty.",
+    "content": "contenttype header was either missing empty "
+    },
+{
+    "url": "/docs/alerts/10019-1/",
     "title": "Content-Type Header Missing",
     "keywords": ["","content-type","header","missing"],
     "tags": null,
     "summary": "The Content-Type header was either missing or empty.",
     "content": "contenttype header was either missing empty "
+    },
+{
+    "url": "/docs/alerts/10019/",
+    "title": "Content-Type Header Missing",
+    "keywords": ["","content-type","header","missing"],
+    "tags": null,
+    "summary": "",
+    "content": ""
     },
 {
     "url": "/docs/contribute/coding/",
@@ -4990,6 +5006,14 @@
     "tags": null,
     "summary": "A Format String error occurs when the submitted data of an input string is evaluated as a command by the application.",
     "content": "format string error occurs when submitted data input evaluated command by application "
+    },
+{
+    "url": "/docs/alerts/110009/",
+    "title": "Full Path Disclosure",
+    "keywords": ["","disclosure","full","path"],
+    "tags": null,
+    "summary": "The full path of files which might be sensitive has been exposed to the client.",
+    "content": "full path files which might sensitive has been exposed client "
     },
 {
     "url": "/docs/alerts/90024/",
@@ -6152,12 +6176,76 @@
     "content": "response contents storable by caching components such proxy servers will not retrieved directly from cache without validating request upstream similar requests other users "
     },
 {
+    "url": "/docs/alerts/10035-6/",
+    "title": "Strict-Transport-Security Defined via META (Non-compliant with Spec)",
+    "keywords": ["","(non-compliant","defined","meta","spec)","strict-transport-security","via","with"],
+    "tags": null,
+    "summary": "A HTTP Strict Transport Security (HSTS) META tag was found, defining HTTP Strict Transport Security (HSTS) via a META tag is explicitly not supported by the spec (RFC 6797).",
+    "content": "http strict transport security hsts meta tag was found defining via explicitly not supported by spec rfc 6797 "
+    },
+{
+    "url": "/docs/alerts/10035-2/",
+    "title": "Strict-Transport-Security Disabled",
+    "keywords": ["","disabled","strict-transport-security"],
+    "tags": null,
+    "summary": "A HTTP Strict Transport Security (HSTS) header was found, but it contains the directive max-age=0 which disables the control and instructs browsers to reset any previous HSTS related settings. See RFC 6797 for further details. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.",
+    "content": "http strict transport security hsts header was found contains directive maxage0 which disables control instructs browsers reset any previous related settings see rfc 6797 further details web policy mechanism whereby server declares that complying user agents such browser interact using only secure https connections ie layered over tlsssl "
+    },
+{
     "url": "/docs/alerts/10035/",
     "title": "Strict-Transport-Security Header",
     "keywords": ["","header","strict-transport-security"],
     "tags": null,
+    "summary": "",
+    "content": ""
+    },
+{
+    "url": "/docs/alerts/10035-1/",
+    "title": "Strict-Transport-Security Header Not Set",
+    "keywords": ["","header","not","set","strict-transport-security"],
+    "tags": null,
     "summary": "HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.",
     "content": "http strict transport security hsts web policy mechanism whereby server declares that complying user agents such browser interact using only secure https connections ie layered over tlsssl ietf standards track protocol specified rfc 6797 "
+    },
+{
+    "url": "/docs/alerts/10035-4/",
+    "title": "Strict-Transport-Security Header on Plain HTTP Response",
+    "keywords": ["","header","http","on","plain","response","strict-transport-security"],
+    "tags": null,
+    "summary": "A HTTP Strict Transport Security (HSTS) header was found, but HSTS headers are ignored on plain (non-HTTPS) responses. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.",
+    "content": "http strict transport security hsts header was found headers ignored plain nonhttps responses web policy mechanism whereby server declares that complying user agents such browser interact using only secure https connections ie layered over tlsssl "
+    },
+{
+    "url": "/docs/alerts/10035-8/",
+    "title": "Strict-Transport-Security Malformed Content (Non-compliant with Spec)",
+    "keywords": ["","(non-compliant","content","malformed","spec)","strict-transport-security","with"],
+    "tags": null,
+    "summary": "A HTTP Strict Transport Security (HSTS) header was found, but it contains some content that was not expected (perhaps curly quotes), the expectation is that the content be printable ASCII characters.",
+    "content": "http strict transport security hsts header was found contains some content that not expected perhaps curly quotes expectation printable ascii characters "
+    },
+{
+    "url": "/docs/alerts/10035-7/",
+    "title": "Strict-Transport-Security Max-Age Malformed (Non-compliant with Spec)",
+    "keywords": ["","(non-compliant","malformed","max-age","spec)","strict-transport-security","with"],
+    "tags": null,
+    "summary": "A HTTP Strict Transport Security (HSTS) header was found, but it contains quotes preceding the max-age directive (the max-age value can be quoted, but the directive itself cannot be). See RFC 6797 for further details. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.",
+    "content": "http strict transport security hsts header was found contains quotes preceding maxage directive value can quoted itself cannot see rfc 6797 further details web policy mechanism whereby server declares that complying user agents such browser interact using only secure https connections ie layered over tlsssl "
+    },
+{
+    "url": "/docs/alerts/10035-5/",
+    "title": "Strict-Transport-Security Missing Max-Age (Non-compliant with Spec)",
+    "keywords": ["","(non-compliant","max-age","missing","spec)","strict-transport-security","with"],
+    "tags": null,
+    "summary": "A HTTP Strict Transport Security (HSTS) header was found, but it is missing the max-age directive (or the directive is missing a value). See RFC 6797 for further details. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.",
+    "content": "http strict transport security hsts header was found missing maxage directive value see rfc 6797 further details web policy mechanism whereby server declares that complying user agents such browser interact using only secure https connections ie layered over tlsssl "
+    },
+{
+    "url": "/docs/alerts/10035-3/",
+    "title": "Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)",
+    "keywords": ["","(non-compliant","entries","header","multiple","spec)","strict-transport-security","with"],
+    "tags": null,
+    "summary": "HTTP Strict Transport Security (HSTS) headers were found, a response with multiple HSTS header entries is not compliant with the specification (RFC 6797) and only the first HSTS header will be processed others will be ignored by user agents or the HSTS policy may be incorrectly applied. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.",
+    "content": "http strict transport security hsts headers were found response multiple header entries not compliant specification rfc 6797 only first will processed others ignored by user agents policy may incorrectly applied web mechanism whereby server declares that complying such browser interact using secure https connections ie layered over tlsssl "
     },
 {
     "url": "/student-hall-of-fame/",
