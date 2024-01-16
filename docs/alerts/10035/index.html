@@ -153,7 +153,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert Id</strong>
+                <strong>Scan Rule Id</strong>
               </td>
               <td>10035</td>
             </tr>
@@ -169,106 +169,51 @@
               </td>
               <td>release</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td></td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/.html">
-                  
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td></td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
-              
-              </td>
-            </tr>
-            
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
         
           <li>
-            
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</a>
-            
+            <a href="/docs/alerts/10035-1">10035-1</a> Strict-Transport-Security Header Not Set
           </li>
         
           <li>
-            
-              <a href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a>
-            
+            <a href="/docs/alerts/10035-2">10035-2</a> Strict-Transport-Security Disabled
           </li>
         
           <li>
-            
-              <a href="http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</a>
-            
+            <a href="/docs/alerts/10035-3">10035-3</a> Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)
           </li>
         
           <li>
-            
-              <a href="http://caniuse.com/stricttransportsecurity">http://caniuse.com/stricttransportsecurity</a>
-            
+            <a href="/docs/alerts/10035-4">10035-4</a> Strict-Transport-Security Header on Plain HTTP Response
           </li>
         
           <li>
-            
-              <a href="http://tools.ietf.org/html/rfc6797">http://tools.ietf.org/html/rfc6797</a>
-            
+            <a href="/docs/alerts/10035-5">10035-5</a> Strict-Transport-Security Missing Max-Age (Non-compliant with Spec)
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/10035-6">10035-6</a> Strict-Transport-Security Defined via META (Non-compliant with Spec)
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/10035-7">10035-7</a> Strict-Transport-Security Max-Age Malformed (Non-compliant with Spec)
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/10035-8">10035-8</a> Strict-Transport-Security Malformed Content (Non-compliant with Spec)
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java'>org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java'>
+            org/zaproxy/zap/extension/pscanrules/StrictTransportSecurityScanRule.java
+          </a>
       </section>
   </main>
 </div>

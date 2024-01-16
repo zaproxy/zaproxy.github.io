@@ -43,6 +43,13 @@
       <description>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</description>
     </item>
     <item>
+      <title>Information Disclosure - Debug Error Messages</title>
+      <link>/docs/alerts/10023/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10023/</guid>
+      <description>The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.</description>
+    </item>
+    <item>
       <title>Information Disclosure - Information in Browser localStorage</title>
       <link>/docs/alerts/120000-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -85,6 +92,20 @@
       <description>Sensitive Information appears to have been stored in browser sessionStorage. This can violate PCI and most organizational compliance policies. For more details see the Client tabs - this information was set directly in the browser and will therefore not necessarily appear in this form in any HTTP(S) messages.</description>
     </item>
     <item>
+      <title>Information Disclosure - Sensitive Information in HTTP Referrer Header</title>
+      <link>/docs/alerts/10025/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10025/</guid>
+      <description>The HTTP header may have leaked a potentially sensitive parameter to another domain. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Sensitive Information in URL</title>
+      <link>/docs/alerts/10024/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10024/</guid>
+      <description>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</description>
+    </item>
+    <item>
       <title>Information Disclosure - Suspicious Comments</title>
       <link>/docs/alerts/10027/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -104,6 +125,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/3-3/</guid>
       <description>A hyperlink pointing to another host name was found. As session ID URL rewrite is used, it may be disclosed in referer header to external hosts.</description>
+    </item>
+    <item>
+      <title>Server Leaks Information via &#34;X-Powered-By&#34; HTTP Response Header Field(s)</title>
+      <link>/docs/alerts/10037/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10037/</guid>
+      <description>The web/application server is leaking information via one or more &amp;ldquo;X-Powered-By&amp;rdquo; HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</description>
     </item>
     <item>
       <title>Server Leaks its Webserver Application via &#34;Server&#34; HTTP Response Header Field</title>

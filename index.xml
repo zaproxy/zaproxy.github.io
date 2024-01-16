@@ -5662,12 +5662,30 @@ Content Security Policy (CSP) is an added layer of security that helps to detect
     </item>
     
     <item>
+      <title>Content-Type Header Empty</title>
+      <link>/docs/alerts/10019-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10019-2/</guid>
+      <description>The Content-Type header was either missing or empty.</description>
+    </item>
+    
+    <item>
+      <title>Content-Type Header Missing</title>
+      <link>/docs/alerts/10019-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10019-1/</guid>
+      <description>The Content-Type header was either missing or empty.</description>
+    </item>
+    
+    <item>
       <title>Content-Type Header Missing</title>
       <link>/docs/alerts/10019/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/alerts/10019/</guid>
-      <description>The Content-Type header was either missing or empty.</description>
+      <description></description>
     </item>
     
     <item>
@@ -6270,6 +6288,15 @@ The verification URL will be one that you can request from the Manual Request Ed
       
       <guid>/docs/alerts/30002/</guid>
       <description>A Format String error occurs when the submitted data of an input string is evaluated as a command by the application.</description>
+    </item>
+    
+    <item>
+      <title>Full Path Disclosure</title>
+      <link>/docs/alerts/110009/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/110009/</guid>
+      <description>The full path of files which might be sensitive has been exposed to the client.</description>
     </item>
     
     <item>
@@ -7597,12 +7624,84 @@ Generally, the term input handing is used to describe functions like validation,
     </item>
     
     <item>
+      <title>Strict-Transport-Security Defined via META (Non-compliant with Spec)</title>
+      <link>/docs/alerts/10035-6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-6/</guid>
+      <description>A HTTP Strict Transport Security (HSTS) META tag was found, defining HTTP Strict Transport Security (HSTS) via a META tag is explicitly not supported by the spec (RFC 6797).</description>
+    </item>
+    
+    <item>
+      <title>Strict-Transport-Security Disabled</title>
+      <link>/docs/alerts/10035-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-2/</guid>
+      <description>A HTTP Strict Transport Security (HSTS) header was found, but it contains the directive max-age=0 which disables the control and instructs browsers to reset any previous HSTS related settings. See RFC 6797 for further details. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.</description>
+    </item>
+    
+    <item>
       <title>Strict-Transport-Security Header</title>
       <link>/docs/alerts/10035/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/alerts/10035/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Strict-Transport-Security Header Not Set</title>
+      <link>/docs/alerts/10035-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-1/</guid>
       <description>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</description>
+    </item>
+    
+    <item>
+      <title>Strict-Transport-Security Header on Plain HTTP Response</title>
+      <link>/docs/alerts/10035-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-4/</guid>
+      <description>A HTTP Strict Transport Security (HSTS) header was found, but HSTS headers are ignored on plain (non-HTTPS) responses. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.</description>
+    </item>
+    
+    <item>
+      <title>Strict-Transport-Security Malformed Content (Non-compliant with Spec)</title>
+      <link>/docs/alerts/10035-8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-8/</guid>
+      <description>A HTTP Strict Transport Security (HSTS) header was found, but it contains some content that was not expected (perhaps curly quotes), the expectation is that the content be printable ASCII characters.</description>
+    </item>
+    
+    <item>
+      <title>Strict-Transport-Security Max-Age Malformed (Non-compliant with Spec)</title>
+      <link>/docs/alerts/10035-7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-7/</guid>
+      <description>A HTTP Strict Transport Security (HSTS) header was found, but it contains quotes preceding the max-age directive (the max-age value can be quoted, but the directive itself cannot be). See RFC 6797 for further details. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.</description>
+    </item>
+    
+    <item>
+      <title>Strict-Transport-Security Missing Max-Age (Non-compliant with Spec)</title>
+      <link>/docs/alerts/10035-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-5/</guid>
+      <description>A HTTP Strict Transport Security (HSTS) header was found, but it is missing the max-age directive (or the directive is missing a value). See RFC 6797 for further details. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.</description>
+    </item>
+    
+    <item>
+      <title>Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)</title>
+      <link>/docs/alerts/10035-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/10035-3/</guid>
+      <description>HTTP Strict Transport Security (HSTS) headers were found, a response with multiple HSTS header entries is not compliant with the specification (RFC 6797) and only the first HSTS header will be processed others will be ignored by user agents or the HSTS policy may be incorrectly applied. HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.</description>
     </item>
     
     <item>
