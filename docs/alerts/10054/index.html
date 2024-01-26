@@ -153,7 +153,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert Id</strong>
+                <strong>Scan Rule Id</strong>
               </td>
               <td>10054</td>
             </tr>
@@ -169,84 +169,31 @@
               </td>
               <td>release</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>Low</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/1275.html">
-                  1275
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>13</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a05">OWASP_2017_A05</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a01">OWASP_2021_A01</a><br>
-              
-              	<a href="/alerttags/wstg-v42-sess-02">WSTG-V42-SESS-02</a><br>
-              
-              </td>
-            </tr>
-            
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a &lsquo;cross-site&rsquo; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Ensure that the SameSite attribute is set to either &#39;lax&#39; or ideally &#39;strict&#39; for all cookies.
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
         
           <li>
-            
-              <a href="https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site">https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</a>
-            
+            <a href="/docs/alerts/10054-1">10054-1</a> Cookie without SameSite Attribute
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/10054-2">10054-2</a> Cookie with SameSite Attribute None
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/10054-3">10054-3</a> Cookie with Invalid SameSite Attribute
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CookieSameSiteScanRule.java'>org/zaproxy/zap/extension/pscanrules/CookieSameSiteScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CookieSameSiteScanRule.java'>
+            org/zaproxy/zap/extension/pscanrules/CookieSameSiteScanRule.java
+          </a>
       </section>
   </main>
 </div>
