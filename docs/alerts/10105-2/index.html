@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. Actively maintained by a dedicated international team of volunteers. A GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; HTTPS Content Available via HTTP</title>
+  <title>ZAP &ndash; Weak Authentication Method</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -131,7 +131,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">HTTPS Content Available via HTTP</h1>
+      <h1 class="text--white">Weak Authentication Method</h1>
   </div>
 </section>
 
@@ -155,34 +155,34 @@
               <td>
                 <strong>Alert Id</strong>
               </td>
-              <td>10047</td>
+              <td>10105-2</td>
             </tr>
             <tr> 
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Active</td>
+              <td>Passive</td>
             </tr>
             <tr> 
               <td>
                 <strong>Status</strong>
               </td>
-              <td>beta</td>
+              <td>release</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td>Low</td>
+              <td>Medium</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/311.html">
-                  311
+                <a href="https://cwe.mitre.org/data/definitions/326.html">
+                  326
                 </a>
               </td>
             </tr>
@@ -208,23 +208,18 @@
               </td>
               <td>
               
-              	<a href="/alerttags/cwe-311">CWE-311</a><br>
+              	<a href="/alerttags/cwe-326">CWE-326</a><br>
               
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
+              	<a href="/alerttags/owasp_2017_a02">OWASP_2017_A02</a><br>
               
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
+              	<a href="/alerttags/owasp_2017_a03">OWASP_2017_A03</a><br>
               
-              	<a href="/alerttags/wstg-v42-cryp-03">WSTG-V42-CRYP-03</a><br>
+              	<a href="/alerttags/owasp_2021_a01">OWASP_2021_A01</a><br>
               
-              </td>
-            </tr>
-            
-            <tr> 
-              <td>
-                <strong>More Info</strong>
-              </td>
-              <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/active-scan-rules-beta/#id-10047">Scan Rule Help</a><br>
+              	<a href="/alerttags/owasp_2021_a02">OWASP_2021_A02</a><br>
+              
+              	<a href="/alerttags/wstg-v42-athn-01">WSTG-V42-ATHN-01</a><br>
+              
               </td>
             </tr>
             
@@ -235,53 +230,29 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>Content which was initially accessed via HTTPS (i.e.: using SSL/TLS encryption) is also accessible via HTTP (without encryption).</p>
+          <p>HTTP basic or digest authentication has been used over an unsecured connection. The credentials can be read and then reused by someone with access to the network.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Ensure that your web server, application server, load balancer, etc. is configured to only serve such content via HTTPS. Consider implementing HTTP Strict Transport Security.
+          Protect the connection using HTTPS or use a stronger authentication mechanism
         </div>
         <div data-attr="other" class="mb-20">
           <h3 class="mb-10">Other Info</h3>
-          ZAP attempted to connect via: http://example.org/
+          
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://owasp.org/www-community/Security_Headers">https://owasp.org/www-community/Security_Headers</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://caniuse.com/stricttransportsecurity">https://caniuse.com/stricttransportsecurity</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://datatracker.ietf.org/doc/html/rfc6797">https://datatracker.ietf.org/doc/html/rfc6797</a>
+              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/HttpsAsHttpScanRule.java'>org/zaproxy/zap/extension/ascanrulesBeta/HttpsAsHttpScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InsecureAuthenticationScanRule.java'>org/zaproxy/zap/extension/pscanrules/InsecureAuthenticationScanRule.java</a>
       </section>
   </main>
 </div>
