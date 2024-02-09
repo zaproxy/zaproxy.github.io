@@ -153,7 +153,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert Id</strong>
+                <strong>Scan Rule Id</strong>
               </td>
               <td>10105</td>
             </tr>
@@ -169,88 +169,27 @@
               </td>
               <td>release</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td></td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/326.html">
-                  326
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>4</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a02">OWASP_2017_A02</a><br>
-              
-              	<a href="/alerttags/owasp_2017_a03">OWASP_2017_A03</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a01">OWASP_2021_A01</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a02">OWASP_2021_A02</a><br>
-              
-              	<a href="/alerttags/wstg-v42-athn-01">WSTG-V42-ATHN-01</a><br>
-              
-              </td>
-            </tr>
-            
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>HTTP basic or digest authentication has been used over an unsecured connection. The credentials can be read and then reused by someone with access to the network.</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Protect the connection using HTTPS or use a stronger authentication mechanism
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
         
           <li>
-            
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</a>
-            
+            <a href="/docs/alerts/10105-1">10105-1</a> Authentication Credentials Captured
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/10105-2">10105-2</a> Weak Authentication Method
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InsecureAuthenticationScanRule.java'>org/zaproxy/zap/extension/pscanrules/InsecureAuthenticationScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InsecureAuthenticationScanRule.java'>
+            org/zaproxy/zap/extension/pscanrules/InsecureAuthenticationScanRule.java
+          </a>
       </section>
   </main>
 </div>

@@ -4140,8 +4140,8 @@
     "title": "Absence of Anti-CSRF Tokens",
     "keywords": ["","absence","anti-csrf","of","tokens"],
     "tags": null,
-    "summary": "A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way.",
-    "content": "crosssite request forgery attack that involves forcing victim send http target destination without their knowledge intent order perform action underlying cause application functionality using predictable urlform actions repeatable way nature csrf exploits trust web site has user by contrast scripting xss like attacks not necessarily they can also known xsrf oneclick session riding confused deputy sea surf effective number situations including: active authenticated via auth same local network primarily been used against victims privileges recent techniques have discovered disclose information gaining access response risk disclosure dramatically increased when vulnerable because platform allowing operate within bounds sameorigin policy "
+    "summary": "No Anti-CSRF tokens were found in a HTML submission form. A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way.",
+    "content": "anticsrf tokens were found html submission form crosssite request forgery attack that involves forcing victim send http target destination without their knowledge intent order perform action underlying cause application functionality using predictable urlform actions repeatable way nature csrf exploits trust web site has user by contrast scripting xss like attacks not necessarily they can also known xsrf oneclick session riding confused deputy sea surf effective number situations including: active authenticated via auth same local network primarily been used against victims privileges recent techniques have discovered disclose information gaining access response risk disclosure dramatically increased when vulnerable because platform allowing operate within bounds sameorigin policy "
     },
 {
     "url": "/docs/alerts/10101/",
@@ -4286,6 +4286,14 @@
     "tags": ["authentication","guide"],
     "summary": "If ZAP is handling authentication then it needs to handle sessions as well - logging in is of no use if ZAP does not maintain the session as the target app will just treat ZAP as being unauthenticated.\nSession management configuration is part of a ZAP context.",
     "content": "zap handling authentication then needs handle sessions logging use does not maintain session target app will just treat being unauthenticated management configuration part context desktop configured via screen framework defined environment api endpoints underneath sessionmanagement component supports cookie http out box your uses another mechanism you can that using custom script applications may implement serverside clientside both sides difficult test isolation typically need also configure before should always try auto detection first works nearly handled by headers straightforward getting hold tokens put harder do know what type application authenticate manually while proxying through look responses from headerbased arbitrary number used conjunction browser based all cookies set cookiebased see any setcookie returned likely make request verification url authenticated open manual editor dialog check there header when send indicates logged case remove response longer other such which wwwauthenticate authorization above automatically performed making requests ajax spider dom xss scanner rule cannot reason inject into selenium scripts video explains demonstrates how up owasp juice shop: previous finding next methods "
+    },
+{
+    "url": "/docs/alerts/10105-1/",
+    "title": "Authentication Credentials Captured",
+    "keywords": ["","authentication","captured","credentials"],
+    "tags": null,
+    "summary": "An insecure authentication mechanism is in use. This allows an attacker on the network access to the userid and password of the authenticated user. For Basic Authentication, the attacker must merely monitor the network traffic until a Basic Authentication request is received, and then base64 decode the username and password.",
+    "content": "insecure authentication mechanism use allows attacker network access userid password authenticated user basic must merely monitor traffic until request received then base64 decode username digest has possibly also hash including nonce can successfully cracked maninthemiddle attack mounted eavesdrops completed "
     },
 {
     "url": "/docs/authentication/authentication-methods/",
@@ -6680,12 +6688,20 @@
     "content": "identified library examplelibrary version xyz vulnerable "
     },
 {
-    "url": "/docs/alerts/10105/",
+    "url": "/docs/alerts/10105-2/",
     "title": "Weak Authentication Method",
     "keywords": ["","authentication","method","weak"],
     "tags": null,
     "summary": "HTTP basic or digest authentication has been used over an unsecured connection. The credentials can be read and then reused by someone with access to the network.",
     "content": "http basic digest authentication has been used over unsecured connection credentials can read then reused by someone access network "
+    },
+{
+    "url": "/docs/alerts/10105/",
+    "title": "Weak Authentication Method",
+    "keywords": ["","authentication","method","weak"],
+    "tags": null,
+    "summary": "",
+    "content": ""
     },
 {
     "url": "/docs/alerts/40039/",
