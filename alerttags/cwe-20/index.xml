@@ -29,6 +29,13 @@
       <description>The server initiated a proxied request via the proxy specified in the HTTP Proxy header of the request.Httpoxy typically affects code running in CGI or CGI like environments. This may allow attackers to:&#xA;Proxy the outgoing HTTP requests made by the web application Direct the server to open outgoing connections to an address and port of their choosing or Tie up server resources by forcing the vulnerable software to use a malicious proxy </description>
     </item>
     <item>
+      <title>Relative Path Confusion</title>
+      <link>/docs/alerts/10051/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10051/</guid>
+      <description>The web server is configured to serve responses to ambiguous URLs in a manner that is likely to lead to confusion about the correct &amp;ldquo;relative path&amp;rdquo; for the URL. Resources (CSS, images, etc.) are also specified in the page response using relative, rather than absolute URLs. In an attack, if the web browser parses the &amp;ldquo;cross-content&amp;rdquo; response in a permissive manner, or can be tricked into permissively parsing the &amp;ldquo;cross-content&amp;rdquo; response, using techniques such as framing, then the web browser may be fooled into interpreting HTML as CSS (or other content types), leading to an XSS vulnerability.</description>
+    </item>
+    <item>
       <title>User Controllable Charset</title>
       <link>/docs/alerts/10030/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
