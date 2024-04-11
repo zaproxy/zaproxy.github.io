@@ -446,6 +446,15 @@ History Version 3.0.0 - TBD Promote to beta status Change add-on name/descriptio
     </item>
     
     <item>
+      <title>Groovy Support Add-on SBOM</title>
+      <link>/docs/sbom/groovy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/sbom/groovy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Image Location and Privacy Scanner - About</title>
       <link>/docs/desktop/addons/image-location-and-privacy-scanner/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -455,6 +464,15 @@ History Version 3.0.0 - TBD Promote to beta status Change add-on name/descriptio
 https://github.com/veggiespam/ImageLocationScanner
 Authors Veggiespam and the ZAP Dev Team
 History Version 2 - TBD Maintenance changes. Version 1 - 2018-02-27 Image Location and Privacy Scanner separated from Passive Scan Rules Alpha and promoted to Beta. </description>
+    </item>
+    
+    <item>
+      <title>Image Location and Privacy Scanner Add-on SBOM</title>
+      <link>/docs/sbom/imagelocationscanner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/sbom/imagelocationscanner/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -2233,14 +2251,13 @@ Authors ZAP Dev Team</description>
     </item>
     
     <item>
-      <title>Scripts tree tab</title>
-      <link>/docs/desktop/addons/script-console/tree/</link>
+      <title>Script Scan Rules</title>
+      <link>/docs/desktop/addons/script-console/scanrules/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/script-console/tree/</guid>
-      <description>Scripts tree tab The Scripts tree tab shows you all of the scripts you currently have loaded organized by type.
-It also shows you which templates you have available - these cannot be run directly, you use them to create new scripts.
-It also allows you to add new scripts, load, save and remove them.</description>
+      <guid>/docs/desktop/addons/script-console/scanrules/</guid>
+      <description>Script Scan Rules Active and Passive Scripts that implement the `getMetadata` function are treated as first-class scan rules by ZAP. Example implementation of this function in a script would look like:
+function getMetadata() { return ScanRuleMetadata.fromYaml(` id: 12345 name: Active Vulnerability Title description: Full description solution: The solution references: - Reference 1 - Reference 2 category: INJECTION # info_gather, browser, server, misc, injection risk: INFO # info, low, medium, high confidence: LOW # false_positive, low, medium, high, user_confirmed cweId: 0 wascId: 0 alertTags: name1: value1 name2: value2 otherInfo: Any other Info status: alpha `); } The category field is only used for Active Scan Scripts.</description>
     </item>
     
     <item>
@@ -2419,6 +2436,17 @@ These release notes do not include all of the changes included in add-ons update
       <guid>/docs/desktop/addons/report-generation/api/</guid>
       <description>Report Generation API The following operations are added to the API:
 Views templates: View available templates. templateDetails (template*): View details of the specified template. Actions generate (title* template* theme description contexts sites sections includedConfidences includedRisks reportFileName reportFileNamePattern reportDir display): Generate a report with the supplied parameters. title: Report Title template: Report Template theme: Report Theme description: Report Description contexts: The name of the contexts to be included in the report, separated by &amp;lsquo;|&amp;rsquo;.</description>
+    </item>
+    
+    <item>
+      <title>Scripts tree tab</title>
+      <link>/docs/desktop/addons/script-console/tree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/script-console/tree/</guid>
+      <description>Scripts tree tab The Scripts tree tab shows you all of the scripts you currently have loaded organized by type.
+It also shows you which templates you have available - these cannot be run directly, you use them to create new scripts.
+It also allows you to add new scripts, load, save and remove them.</description>
     </item>
     
     <item>
@@ -8126,7 +8154,7 @@ Any third party can sponsor anyone to work on ZAP Third parties can promote thei
       <guid>/docs/statistics/top-addons-last-month/</guid>
       <description>These were the most frequently installed optional add-ons last month.
 Note that this does not mean they were the most used add-ons - that is harder to quantify.
-Position Add-On Status ID Last Updated 1 Import/Export beta exim 2023-11-10 2 Database alpha database 2023-10-12 3 Requester beta requester 2024-03-25 4 Spider release spider 2024-02-12 5 Authentication Helper beta authhelper 2024-02-06 6 Postman Support alpha postman 2024-04-02 7 Passive scanner rules (beta) beta pscanrulesBeta 2024-02-12 8 Active scanner rules (beta) beta ascanrulesBeta 2024-03-28 9 Passive scanner rules (alpha) alpha pscanrulesAlpha 2024-01-16 10 Active scanner rules (alpha) alpha ascanrulesAlpha 2024-03-28 11 Access Control Testing alpha accessControl 2024-03-25 12 Sequence alpha sequence 2023-10-23 13 Port Scanner beta portscan 2022-10-27 14 Plug-n-Hack Configuration beta plugnhack 2022-10-27 15 Custom Payloads beta custompayloads 2023-11-10 16 Wappalyzer - Technology Detection release wappalyzer 2024-03-28 17 Advanced SQLInjection Scanner beta sqliplugin 2021-10-20 18 FuzzDB Files release fuzzdb 2022-09-23 19 Python Scripting beta jython 2023-12-19 20 Directory List v2.</description>
+Position Add-On Status ID Last Updated 1 Import/Export beta exim 2023-11-10 2 Database alpha database 2023-10-12 3 Requester beta requester 2024-03-25 4 Spider release spider 2024-02-12 5 Authentication Helper beta authhelper 2024-02-06 6 Postman Support alpha postman 2024-04-02 7 Passive scanner rules (beta) beta pscanrulesBeta 2024-02-12 8 Active scanner rules (beta) beta ascanrulesBeta 2024-03-28 9 Passive scanner rules (alpha) alpha pscanrulesAlpha 2024-01-16 10 Active scanner rules (alpha) alpha ascanrulesAlpha 2024-03-28 11 Access Control Testing alpha accessControl 2024-03-25 12 Sequence alpha sequence 2023-10-23 13 Port Scanner beta portscan 2022-10-27 14 Plug-n-Hack Configuration beta plugnhack 2022-10-27 15 Custom Payloads beta custompayloads 2023-11-10 16 Wappalyzer - Technology Detection release wappalyzer 2024-04-11 17 Advanced SQLInjection Scanner beta sqliplugin 2021-10-20 18 FuzzDB Files release fuzzdb 2022-09-23 19 Python Scripting beta jython 2024-04-11 20 Directory List v2.</description>
     </item>
     
     <item>
