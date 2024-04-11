@@ -5499,21 +5499,227 @@ Series Title Length Tags Date ZAP Chat ZAP Chat 16 Automation Framework Part 7 -
     </item>
     
     <item>
-      <title>Authentication - Concepts</title>
-      <link>/docs/authentication/concepts/</link>
+      <title>Auth: All Done</title>
+      <link>/docs/authentication/use-the-context/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/concepts/</guid>
+      <guid>/docs/authentication/use-the-context/</guid>
+      <description>You now have a context that handles authentication for your app.
+However if you do not do anything with it then it will be lost when you close the ZAP desktop!
+Change to use a Headless Browser By default the Authentication Tester will use the Firefox browser - this means that you will see the browser being launched in order to login.</description>
+    </item>
+    
+    <item>
+      <title>Auth: All Information Available</title>
+      <link>/docs/authentication/test-the-context/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/test-the-context/</guid>
+      <description>You have a context for your app and have configured it to handle authentication.
+We now need to check that it really does work as expected.
+Action: Create an Automation Framework Plan There are other ways to test the context manually, but this will make it easier to retest if you need to make any changes.</description>
+    </item>
+    
+    <item>
+      <title>Auth: App Does Not Load in Time</title>
+      <link>/docs/authentication/app-does-not-load/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/app-does-not-load/</guid>
+      <description>Some modern apps can take a long time to load.
+Keep increasing the &amp;lsquo;Time to Wait (seconds)&amp;rsquo; field in the Authentication Tester and retesting until you see your app completely load in the browser.
+This field controls the time the browser will wait before closing. Be aware it might take even longer in CI/CD.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Application Type</title>
+      <link>/docs/authentication/what-app-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/what-app-type/</guid>
+      <description>Modern web apps make heavy use of JavaScript.
+Traditional web apps typically return a full HTML page when you follow links.
+APIs do not have a UI, but may be used by both modern and traditional web apps.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Authentication Tester</title>
+      <link>/docs/authentication/run-auth-tester/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/run-auth-tester/</guid>
+      <description>Run the Authentication Tester in the ZAP desktop. You should do this even if you want to automate ZAP from the command line, as it will help us understand which parts of the authentication process ZAP can automatically handle.
+If ZAP can automatically handle things then it will make your life easier.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Browser Fails to Launch</title>
+      <link>/docs/authentication/browser-fails-to-launch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/browser-fails-to-launch/</guid>
+      <description>Follow the FAQ How can I fix &amp;lsquo;browser was not found&amp;rsquo;? Next Step: Run the Auth Tester again Keep following the FAQ until you can launch a browser, or until you get to the end of the FAQ.
+If you cannot get ZAP to launch a browser then you will need assistance:</description>
+    </item>
+    
+    <item>
+      <title>Auth: Cannot Access The App</title>
+      <link>/docs/authentication/cannot-access-app/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/cannot-access-app/</guid>
+      <description> Follow the FAQ: Why can&amp;rsquo;t ZAP connect to my web application? Next Step: Run the Auth Tester again If ZAP can access your app but there is no fixed login URL then:
+Next Step: What type of app? </description>
+    </item>
+    
+    <item>
+      <title>Auth: Fails to Find The Login Fields</title>
+      <link>/docs/authentication/login-fields-not-found/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/login-fields-not-found/</guid>
+      <description>We want to make sure that ZAP can automatically fill in as many different types of login forms as possible, so please share details of the page with the ZAP team.
+We will want to know the HTML fragments for the form and all of the input fields in it.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Fails to Identify a Verification URL</title>
+      <link>/docs/authentication/manual-verification/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/manual-verification/</guid>
+      <description>ZAP has failed to identify a suitable URL to use to verify if the user is logged in, so you will need to do that. For more details see Finding a verification URL.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Fails to Identify the Session Handling</title>
+      <link>/docs/authentication/manual-session/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/manual-session/</guid>
+      <description>ZAP has failed to identify your app&amp;rsquo;s session handling, so you will need to do that. For more details see Session handling.
+If you succeed in identifying the session handling then you will need to also manually identify the verification handling.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Modern Web UI</title>
+      <link>/docs/authentication/modern-web-ui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/modern-web-ui/</guid>
+      <description>Your app is &amp;ldquo;modern&amp;rdquo; i.e. it makes heavy use of JavaScript.
+In order to explore your app in automation you will need to use the AJAX Spider - this launches browsers in order to explore your app.
+Injecting session state into a browser is not always possible, and where it is, it is always application specific.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Multiple Header Based Authentication</title>
+      <link>/docs/authentication/multiple-headers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/multiple-headers/</guid>
+      <description>You can do this via:
+Replacer Rules Scripts Background You have more than one authentication token which you need to supply in HTTP headers.</description>
+    </item>
+    
+    <item>
+      <title>Auth: No Easy Options</title>
+      <link>/docs/authentication/follow-other-guides/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/follow-other-guides/</guid>
+      <description>There are currently no easy options available to you, but we have lots of guides that can take you through the more complicated options that ZAP supports.
+Guide: Getting Further with Authenticate Blog: Authenticating Using Selenium Video: Automation Intro to Auth Video: Automation Simple Auth Bodgeit Video: Automation Simple Auth JuiceShop Video: Automation Auth Scripts Also note that paid for Consultancy is available from the ZAP Core Team.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Preparing to Test</title>
+      <link>/docs/authentication/update-the-context/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/update-the-context/</guid>
+      <description>Either ZAP has identified all of the information required, or you have found the parts it could not identify.
+We now need to update the context created by the Authentication Tester to test it.
+To edit the context double click on the &amp;lsquo;Authentication Test&amp;rsquo; context in the Sites tree.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Session Not Identified</title>
+      <link>/docs/authentication/session-not-identified/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/session-not-identified/</guid>
+      <description>Next Step: Run the Auth Tester again This time try exploring the app by clicking on links and filling in fields once ZAP has successfully logged in.
+You may need to keep Increasing the &amp;ldquo;Time to Wait&amp;rdquo; in order to give you enough time to explore the app.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Simple Header Based Authentication</title>
+      <link>/docs/authentication/one-header/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/one-header/</guid>
+      <description>The easiest way to do this will be via Authentication env vars.
+Other options are available, as detailed on Handling Authentication Yourself.
+Background You do have a single authentication token which you need to supply in a header.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Support</title>
+      <link>/docs/authentication/ask-for-support/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/ask-for-support/</guid>
+      <description>You have reached the limits of this guide and will need support. Explain:
+That you have followed this guide Exactly which steps you have taken Full details of what went wrong If you fail to provide these details then we&amp;rsquo;ll just ask you for them, which will delay the whole process.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Tester Outcome</title>
+      <link>/docs/authentication/auth-tester-results/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/auth-tester-results/</guid>
+      <description>The Authentication Tester will help us understand which parts of the authentication process ZAP can automatically handle.
+If ZAP can automatically handle things then it will make your life easier. Even if it cannot handle everything it may still give you a better starting point.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Token Based Authentication</title>
+      <link>/docs/authentication/token-based-authentication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/token-based-authentication/</guid>
+      <description>Your app is either an API or a traditional web app.
+If you have a reliable token that will not be invalidated during the scan then this is probably your best option to use.</description>
+    </item>
+    
+    <item>
+      <title>Auth: Verification Not Identified</title>
+      <link>/docs/authentication/verification-not-identified/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/verification-not-identified/</guid>
+      <description>Next Step: Run the Auth Tester again This time try exploring the app by clicking on links and filling in fields once ZAP has successfully logged in.
+You may need to keep Increasing the &amp;ldquo;Time to Wait&amp;rdquo; in order to give you enough time to explore the app.</description>
+    </item>
+    
+    <item>
+      <title>Authentication - Concepts</title>
+      <link>/docs/getting-further/authentication/concepts/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/getting-further/authentication/concepts/</guid>
       <description>These are the concepts that you will need to understand in order to configure authentication in ZAP.
 Contexts ZAP contexts are a way of relating a set of URLs together. You can define any contexts you like, but it is expected that a context will correspond to a web application.</description>
     </item>
     
     <item>
       <title>Authentication - Documented SSO Solutions</title>
-      <link>/docs/authentication/documented-sso-solutions/</link>
+      <link>/docs/getting-further/authentication/documented-sso-solutions/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/documented-sso-solutions/</guid>
+      <guid>/docs/getting-further/authentication/documented-sso-solutions/</guid>
       <description>The following SSO providers have documented solutions for automation.
 We will aim to test ZAP with as many of these providers as possible in order to provide specific ZAP integration details. If you would like to help with this effort then please get in touch &amp;#x1f601;.
 Keycloak Documentation: https://www.</description>
@@ -5521,30 +5727,30 @@ Keycloak Documentation: https://www.</description>
     
     <item>
       <title>Authentication - Make your Life Easier</title>
-      <link>/docs/authentication/make-your-life-easier/</link>
+      <link>/docs/getting-further/authentication/make-your-life-easier/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/make-your-life-easier/</guid>
+      <guid>/docs/getting-further/authentication/make-your-life-easier/</guid>
       <description>Authentication is a key way of restricting access to an app. Some authentication mechanisms also make it significantly harder to use tools like ZAP, even for those people who have permission to use them.
 Test in a Safe Environment Testing with valid credentials in a production environment is a really bad idea.</description>
     </item>
     
     <item>
       <title>Authentication - Manual</title>
-      <link>/docs/authentication/manual-auth/</link>
+      <link>/docs/getting-further/authentication/manual-auth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/manual-auth/</guid>
+      <guid>/docs/getting-further/authentication/manual-auth/</guid>
       <description>If you are just performing manual testing then authentication is generally easier.
 With manual testing you should be exploring the target app manually with a browser that is proxying through ZAP. In this case you can just use the valid credentials in the browser and in most cases you will be logged in.</description>
     </item>
     
     <item>
       <title>Authentication - Session Handling</title>
-      <link>/docs/authentication/session-handling/</link>
+      <link>/docs/getting-further/authentication/session-handling/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/session-handling/</guid>
+      <guid>/docs/getting-further/authentication/session-handling/</guid>
       <description>If ZAP is handling authentication then it needs to handle sessions as well - logging in is of no use if ZAP does not maintain the session as the target app will just treat ZAP as being unauthenticated.
 Session management configuration is part of a ZAP context.</description>
     </item>
@@ -5560,10 +5766,10 @@ Session management configuration is part of a ZAP context.</description>
     
     <item>
       <title>Authentication Methods</title>
-      <link>/docs/authentication/authentication-methods/</link>
+      <link>/docs/getting-further/authentication/authentication-methods/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/authentication-methods/</guid>
+      <guid>/docs/getting-further/authentication/authentication-methods/</guid>
       <description>Authentication Methods are the means by which ZAP actually authenticates to a web app.
 The following methods are supported:
 Manual Authentication This is the default method, and means that you are handling authentication yourself.
@@ -5581,10 +5787,10 @@ Auto Detect Auto-Detect Authentication indicates that the Authentication Request
     
     <item>
       <title>Auto-Detection</title>
-      <link>/docs/authentication/auto-detection/</link>
+      <link>/docs/getting-further/authentication/auto-detection/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/auto-detection/</guid>
+      <guid>/docs/getting-further/authentication/auto-detection/</guid>
       <description>ZAP has options for auto-detecting all of the different parts of authentication that it requires. If they work for your apps then it will make your life considerably easier, so this is the best place for you to start.
 Authentication Tester Dialog The Authentication Tester Dialog is a quick and easy way to check if ZAP can automatically detect all of the information it needs - you only need to provide the URL of your login page and valid credentials.</description>
     </item>
@@ -6278,10 +6484,10 @@ You can signup to Crowdin for free, and if you&amp;rsquo;d like to translate ZAP
     
     <item>
       <title>Diagnosing Authentication Problems</title>
-      <link>/docs/authentication/diagnosing-auth-problems/</link>
+      <link>/docs/getting-further/authentication/diagnosing-auth-problems/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/diagnosing-auth-problems/</guid>
+      <guid>/docs/getting-further/authentication/diagnosing-auth-problems/</guid>
       <description>If you ask a question related to authentication on one of the ZAP forums then you will be directed here.
 We know that the ZAP authentication documentation needs improving. One of the reasons why it has not been improved is that we are too busy trying to answer authentication questions &amp;#x1f609;.</description>
     </item>
@@ -6460,10 +6666,10 @@ ZAP Cannot Connect to the Target If ZAP cannot connect to your target app then t
     
     <item>
       <title>Finding a Verification URL</title>
-      <link>/docs/authentication/finding-a-verification-url/</link>
+      <link>/docs/getting-further/authentication/finding-a-verification-url/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/finding-a-verification-url/</guid>
+      <guid>/docs/getting-further/authentication/finding-a-verification-url/</guid>
       <description>If you need to set up ZAP to handle authentication then you really need to find a suitable verification URL in your app.
 You should always try Auto Detection first as if this works it will find a suitable verification URL for you.
 The verification URL will be one that you can request from the Manual Request Editor dialog and which will send a response that allows you to work out whether you are logged in or not.</description>
@@ -6605,10 +6811,10 @@ Candidates who have made more contributions to ZAP will be at an advantage, so s
     
     <item>
       <title>Handling Authentication Yourself (in Automation)</title>
-      <link>/docs/authentication/handling-auth-yourself/</link>
+      <link>/docs/getting-further/authentication/handling-auth-yourself/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/authentication/handling-auth-yourself/</guid>
+      <guid>/docs/getting-further/authentication/handling-auth-yourself/</guid>
       <description>If you can generate an authentication token (e.g. to use in a header or cookie) and you know that your app will not invalidate it while you are using ZAP then one option is to handle authentication yourself.
 In this case you take on the responsibility for handling the authentication and session handling.</description>
     </item>
