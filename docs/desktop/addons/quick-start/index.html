@@ -1722,8 +1722,14 @@ ZAP must be able to access this URL for the attack to proceed.</p>
 <p>The traditional spider explores the application by finding links in HTML pages. It is very fast but cannot handle applications which make heavy use of JavaScript.</p>
 
 <h3 id="use-ajax-spider">Use ajax spider <a class="header-link" href="#use-ajax-spider"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The ajax spider explores the application by launching the browser you have chosen and clicking on the links it finds. Is is slower than the traditional spider but handles JavaScript well.<br>
+<p>The ajax spider explores the application by launching the browser you have chosen and clicking on the links it finds. It is slower than the traditional spider but handles JavaScript well.<br>
 This option is only shown if the ajax spider add-on is installed. If it is not available then you can download and install it for free from the ZAP Marketplace.</p>
+<p>The options available are:</p>
+<ul>
+<li>Never: you will then need to use the traditional spider</li>
+<li>If Modern: will run if ZAP identifies the target as a modern app - for this you need to use the traditional spider</li>
+<li>Always: if you choose this option then you do not need to run the traditional spider</li>
+</ul>
 
 <h2 id="manual-explore">Manual Explore <a class="header-link" href="#manual-explore"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Manual Explore screen allows you to launch the browser of your choice so that you can explore your application while proxying through ZAP. Select the browser you want from the pull-down and press the &lsquo;Launch Browser&rsquo; button.<br>
