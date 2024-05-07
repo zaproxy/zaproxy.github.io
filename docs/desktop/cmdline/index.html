@@ -1255,6 +1255,9 @@
                             <a href="/docs/desktop/releases/2.14.0/">Release 2.14.0</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/releases/2.15.0/">Release 2.15.0</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
                         </li>  
                         <li> 
@@ -1797,6 +1800,11 @@
 </tr>
 <tr>
 <td></td>
+<td>-loglevel &lt;level&gt;</td>
+<td>Sets the log level, overriding the values specified in the log4j2.properties file in the home directory</td>
+</tr>
+<tr>
+<td></td>
 <td>-silent</td>
 <td>Ensures ZAP does not make any unsolicited requests, including check for updates</td>
 </tr>
@@ -1846,7 +1854,8 @@
 Relative paths to session file are resolved against the &ldquo;session&rdquo; directory located in ZAP&rsquo;s home directory (default or specified with <code>-dir</code> option).<br>
 Configuration keys should be specified using the dot notation based their location in the XML of the configuration file, eg:</p>
 <pre tabindex="0"><code>&lt;zap-script&gt; -config api.key=12345
-</code></pre><p>Examples:</p>
+</code></pre><p>The <code>-loglevel</code> option supports the following values: <code>OFF</code>, <code>FATAL</code>, <code>ERROR</code>, <code>WARN</code>, <code>INFO</code>, <code>DEBUG</code>, <code>TRACE</code>, and <code>ALL</code>, in order of increasing verbosity.</p>
+<p>Examples:</p>
 <ul>
 <li>
 <p>Start ZAP in &lsquo;daemon&rsquo; mode with a new session created at a given path:</p>

@@ -6,7 +6,7 @@
     <description>Recent content in The ZAP Homepage on ZAP</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 01 May 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 May 2024 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -120,8 +120,7 @@ If the starting point is in one or more Contexts then you will be able to choose
       <guid>/docs/desktop/addons/ajax-spider/automation/</guid>
       <description>Ajax Spider Automation Framework Support This add-on supports the Automation Framework.
 Job: spiderAjax The spiderAjax job allows you to run the Ajax Spider - it is slower than the traditional spider but handles modern web applications well.
-This job supports monitor tests.
-- type: spiderAjax # The ajax spider - slower than the spider but handles modern apps well parameters: context: # String: Name of the context to spider, default: first context user: # String: An optional user to use for authentication, must be defined in the env url: # String: Url to start spidering from, default: first context URL maxDuration: # Int: The max time in minutes the ajax spider will be allowed to run for, default: 0 unlimited maxCrawlDepth: # Int: The max depth that the crawler can reach, default: 10, 0 is unlimited numberOfBrowsers: # Int: The number of browsers the spider will use, more will be faster but will use up more memory, default: 1 runOnlyIfModern: # Boolean: If true then the spider will only run if a &amp;#34;modern app&amp;#34; alert is raised, default: false inScopeOnly: # Boolean: If true then any URLs requested which are out of scope will be ignored, default: true browserId: # String: Browser Id to use, default: firefox-headless clickDefaultElems: # Bool: When enabled only click the default element: &amp;#39;a&amp;#39;, &amp;#39;button&amp;#39; and &amp;#39;input&amp;#39;, default: true clickElemsOnce: # Bool: When enabled only click each element once, default: true eventWait: # Int: The time in milliseconds to wait after a client side event is fired, default: 1000 maxCrawlStates: # Int: The maximum number of crawl states the crawler should crawl, default: 0 unlimited randomInputs: # Bool: When enabled random values will be entered into input element, default: true reloadWait: # Int: The time in milliseconds to wait after the URL is loaded, default: 1000 elements: # A list of HTML elements to click - will be ignored unless clickDefaultElems is false - &amp;#34;a&amp;#34; - &amp;#34;button&amp;#34; - &amp;#34;input&amp;#34; excludedElements: # A list of HTML elements to exclude from click.</description>
+It is covered in the video: ZAP Chat 10 Automation Framework Part 4 - Spidering.</description>
     </item>
     
     <item>
@@ -784,15 +783,16 @@ As it means changing the response this functionality has to be manually enabled.
     </item>
     
     <item>
-      <title>Release 2.14.0</title>
-      <link>/docs/desktop/releases/2.14.0/</link>
+      <title>Release 2.15.0</title>
+      <link>/docs/desktop/releases/2.15.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.14.0/</guid>
-      <description>Release 2.14.0 This is a bug fix and enhancement release.
-These release notes do not include all of the changes included in add-ons updated since 2.13.0.
-This release was made possible thanks to our Platinum Sponsor, the Software Security Project.
-Some of the more significant enhancements include:</description>
+      <guid>/docs/desktop/releases/2.15.0/</guid>
+      <description>Release 2.15.0 This is a bug fix and enhancement release.
+These release notes do not include all of the changes included in add-ons updated since 2.14.0.
+This release was made possible thanks to our biggest supporter, the Crash Override.
+Some of the more significant enhancements include:
+Scripts as First Class Scan Rules Active and passive scan script rules can now be treated as &amp;ldquo;first class&amp;rdquo; scan rules.</description>
     </item>
     
     <item>
@@ -812,6 +812,7 @@ Some of the more significant enhancements include:</description>
       <guid>/docs/desktop/addons/replacer/automation/</guid>
       <description>Replacer Automation Framework Support This add-on supports the Automation Framework.
 Job: requester The replacer job allows you to add replacer rules.
+It is covered in the video: ZAP Chat 09 Automation Framework Part 3 - Requests.
 - type: &amp;#34;replacer&amp;#34; # Replacer rules parameters: deleteAllRules: # Boolean, if true then will delete all existing replacer rules, default false rules: # A list of replacer rules - description: # String, the name of the rule url: # String, a regex which will be used to match URLs, if empty then it will match all matchType: # String, one of req_header, req_header_str, req_body_str, resp_header, resp_header_str, resp_body_str matchString: # String, will be used to identify what should be replaced matchRegex: # Boolean, if set then the matchString will be treated as a regex, default false replacementString: # String, the new string that will replace the specified selection tokenProcessing: # Boolean, when enabled the replacementString may contain a single token initiators: # A list of integers representing the initiators (see the help) For more details of the parameters see the main replacer page.</description>
     </item>
     
@@ -1221,7 +1222,7 @@ Be Aware The following are all subject to change without notice. We intend for t
       <guid>/docs/desktop/addons/forced-browse/tab/</guid>
       <description>Forced Browse tab The Forced Browse tab allows you to perform a Forced Browse scan on any of the sites that have been accessed.
 Sites can be selected via the toolbar or the Sites tab .
-Any sites that have have been are are currently being scanned are marked in bold in the toolbar Sites pulldown control.</description>
+Any sites that have have been or are currently being scanned are marked in bold in the toolbar Sites pulldown control.</description>
     </item>
     
     <item>
@@ -1331,16 +1332,15 @@ Any sites that have have been are are currently being scanned are marked in bold
     </item>
     
     <item>
-      <title>Release 2.13.0</title>
-      <link>/docs/desktop/releases/2.13.0/</link>
+      <title>Release 2.14.0</title>
+      <link>/docs/desktop/releases/2.14.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.13.0/</guid>
-      <description>Release 2.13.0 This is a bug fix and enhancement release.
-These release notes do not include all of the changes included in add-ons updated since 2.12.0.
-Some of the more significant enhancements include:
-HTTP/2 Support HTTP/2 is now supported, with no configuration changes required.
-If you proxy HTTP/2 traffic through ZAP then ZAP will make the same HTTP/2 requests to the target.</description>
+      <guid>/docs/desktop/releases/2.14.0/</guid>
+      <description>Release 2.14.0 This is a bug fix and enhancement release.
+These release notes do not include all of the changes included in add-ons updated since 2.13.0.
+This release was made possible thanks to our Platinum Sponsor, the Software Security Project.
+Some of the more significant enhancements include:</description>
     </item>
     
     <item>
@@ -1823,14 +1823,16 @@ The Param Digger can be run on multiple URLs in parallel and the results for eac
     </item>
     
     <item>
-      <title>Release 2.12.0</title>
-      <link>/docs/desktop/releases/2.12.0/</link>
+      <title>Release 2.13.0</title>
+      <link>/docs/desktop/releases/2.13.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.12.0/</guid>
-      <description>Release 2.12.0 This is a bug fix and enhancement release, which now requires a minimum of Java 11.
-As the main zaproxy/zaproxy repo has just reached 10k stars we&amp;rsquo;re calling this the &amp;lsquo;Ten Thousand Star&amp;rsquo; Release!
-This release fixes an HTML Injection vulnerability in the ZAP Desktop which was rated a P3 / Medium level vulnerability.</description>
+      <guid>/docs/desktop/releases/2.13.0/</guid>
+      <description>Release 2.13.0 This is a bug fix and enhancement release.
+These release notes do not include all of the changes included in add-ons updated since 2.12.0.
+Some of the more significant enhancements include:
+HTTP/2 Support HTTP/2 is now supported, with no configuration changes required.
+If you proxy HTTP/2 traffic through ZAP then ZAP will make the same HTTP/2 requests to the target.</description>
     </item>
     
     <item>
@@ -2230,14 +2232,14 @@ Maximum depth to crawl The parameter defines the maximum depth in the crawling p
     </item>
     
     <item>
-      <title>Release 2.11.1</title>
-      <link>/docs/desktop/releases/2.11.1/</link>
+      <title>Release 2.12.0</title>
+      <link>/docs/desktop/releases/2.12.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.11.1/</guid>
-      <description>Release 2.11.1 This release includes an important security fix - users are urged to upgrade asap. For more details refer to the blog post ZAP and Log4Shell.
-Changes in Bundled Libraries The following library was updated:
-Log4j 2, 2.14.1 → 2.15.0 Updated Add-Ons All of the add-ons included by default have been updated since the last full release.</description>
+      <guid>/docs/desktop/releases/2.12.0/</guid>
+      <description>Release 2.12.0 This is a bug fix and enhancement release, which now requires a minimum of Java 11.
+As the main zaproxy/zaproxy repo has just reached 10k stars we&amp;rsquo;re calling this the &amp;lsquo;Ten Thousand Star&amp;rsquo; Release!
+This release fixes an HTML Injection vulnerability in the ZAP Desktop which was rated a P3 / Medium level vulnerability.</description>
     </item>
     
     <item>
@@ -2419,13 +2421,14 @@ Empty/Null - generates the selected payload multiple times, leaving the message 
     </item>
     
     <item>
-      <title>Release 2.11.0</title>
-      <link>/docs/desktop/releases/2.11.0/</link>
+      <title>Release 2.11.1</title>
+      <link>/docs/desktop/releases/2.11.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.11.0/</guid>
-      <description>Release 2.11.0 This is the OWASP 20th anniversary bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
-These release notes do not include all of the changes included in add-ons updated since 2.</description>
+      <guid>/docs/desktop/releases/2.11.1/</guid>
+      <description>Release 2.11.1 This release includes an important security fix - users are urged to upgrade asap. For more details refer to the blog post ZAP and Log4Shell.
+Changes in Bundled Libraries The following library was updated:
+Log4j 2, 2.14.1 → 2.15.0 Updated Add-Ons All of the add-ons included by default have been updated since the last full release.</description>
     </item>
     
     <item>
@@ -2545,12 +2548,12 @@ Base64 Decode Base64 Encode Expand (to a minimum specified length) JavaScript Es
     </item>
     
     <item>
-      <title>Release 2.10.0</title>
-      <link>/docs/desktop/releases/2.10.0/</link>
+      <title>Release 2.11.0</title>
+      <link>/docs/desktop/releases/2.11.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.10.0/</guid>
-      <description>Release 2.10.0 This is a 10 year anniversary bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
+      <guid>/docs/desktop/releases/2.11.0/</guid>
+      <description>Release 2.11.0 This is the OWASP 20th anniversary bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
 These release notes do not include all of the changes included in add-ons updated since 2.</description>
     </item>
     
@@ -2804,13 +2807,13 @@ The source code is freely and publicly available as required by the Clarified Ar
     </item>
     
     <item>
-      <title>Release 2.9.0</title>
-      <link>/docs/desktop/releases/2.9.0/</link>
+      <title>Release 2.10.0</title>
+      <link>/docs/desktop/releases/2.10.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.9.0/</guid>
-      <description>Release 2.9.0 This is a bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
-These release notes do not include all of the changes included in add-ons updated since 2.8.0.</description>
+      <guid>/docs/desktop/releases/2.10.0/</guid>
+      <description>Release 2.10.0 This is a 10 year anniversary bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
+These release notes do not include all of the changes included in add-ons updated since 2.</description>
     </item>
     
     <item>
@@ -3021,13 +3024,13 @@ Recovery Log Controls whether or not database&amp;rsquo;s recovery log is enable
     </item>
     
     <item>
-      <title>Release 2.8.0</title>
-      <link>/docs/desktop/releases/2.8.0/</link>
+      <title>Release 2.9.0</title>
+      <link>/docs/desktop/releases/2.9.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.8.0/</guid>
-      <description>Release 2.8.0 This is a bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
-These release notes do not include all of the changes included in add-ons updated since 2.7.0.</description>
+      <guid>/docs/desktop/releases/2.9.0/</guid>
+      <description>Release 2.9.0 This is a bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
+These release notes do not include all of the changes included in add-ons updated since 2.8.0.</description>
     </item>
     
     <item>
@@ -3084,14 +3087,13 @@ Show (local) CONNECT requests If the HTTP CONNECT requests received by ZAP&amp;r
     </item>
     
     <item>
-      <title>Release 2.7.0</title>
-      <link>/docs/desktop/releases/2.7.0/</link>
+      <title>Release 2.8.0</title>
+      <link>/docs/desktop/releases/2.8.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.7.0/</guid>
-      <description>Release 2.7.0 This is a bug fix and enhancement release, which requires a minimum of Java 8.
-Some of the more significant enhancements include:
-Browser launch included by default - this allows you to launch browsers from ZAP that are preconfigured to proxy through ZAP and ignore the certificate warnings due to the ZAP root certificate.</description>
+      <guid>/docs/desktop/releases/2.8.0/</guid>
+      <description>Release 2.8.0 This is a bug fix and enhancement release, which requires a minimum of Java 8. Note that a minimum of Java 11 is recommended, especially for high DPI displays.
+These release notes do not include all of the changes included in add-ons updated since 2.7.0.</description>
     </item>
     
     <item>
@@ -3169,13 +3171,14 @@ It allows you to specify how you would like this session persisted, you can also
     </item>
     
     <item>
-      <title>Release 2.6.0</title>
-      <link>/docs/desktop/releases/2.6.0/</link>
+      <title>Release 2.7.0</title>
+      <link>/docs/desktop/releases/2.7.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.6.0/</guid>
-      <description>Release 2.6.0 This release contains a large number of changes, in particular to the ZAP API.
-We have added a significant number of new API endpoints, working towards our goal of making ZAP completely controllable via the API. We have also changed some of the existing endpoints and in all cases these changes are backwards compatible.</description>
+      <guid>/docs/desktop/releases/2.7.0/</guid>
+      <description>Release 2.7.0 This is a bug fix and enhancement release, which requires a minimum of Java 8.
+Some of the more significant enhancements include:
+Browser launch included by default - this allows you to launch browsers from ZAP that are preconfigured to proxy through ZAP and ignore the certificate warnings due to the ZAP root certificate.</description>
     </item>
     
     <item>
@@ -3270,15 +3273,13 @@ Default Tokens These are the names of the Cookies that are considered by default
     </item>
     
     <item>
-      <title>Release 2.5.0</title>
-      <link>/docs/desktop/releases/2.5.0/</link>
+      <title>Release 2.6.0</title>
+      <link>/docs/desktop/releases/2.6.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.5.0/</guid>
-      <description>Release 2.5.0 The following changes were made in this release:
-ZAP API Changes: VIEW authorization / getAuthorizationDetectionMethod Now returns data wrapped in an object called authorizationDetectionMethod For example:
-{&amp;#34;authorizationDetectionMethod&amp;#34;:{&amp;#34;statusCode&amp;#34;:&amp;#34;-1&amp;#34;...&amp;#34;headerRegex&amp;#34;:&amp;#34;&amp;#34;}} instead of:
-{&amp;#34;statusCode&amp;#34;:&amp;#34;-1&amp;#34;...&amp;#34;headerRegex&amp;#34;:&amp;#34;&amp;#34;} VIEW context / context + technologyList Both now return data wrapped in an object called &amp;ldquo;context&amp;rdquo; For example:</description>
+      <guid>/docs/desktop/releases/2.6.0/</guid>
+      <description>Release 2.6.0 This release contains a large number of changes, in particular to the ZAP API.
+We have added a significant number of new API endpoints, working towards our goal of making ZAP completely controllable via the API. We have also changed some of the existing endpoints and in all cases these changes are backwards compatible.</description>
     </item>
     
     <item>
@@ -3354,13 +3355,15 @@ Copy This will copy the selected string to the clipboard.</description>
     </item>
     
     <item>
-      <title>Release 2.4.3</title>
-      <link>/docs/desktop/releases/2.4.3/</link>
+      <title>Release 2.5.0</title>
+      <link>/docs/desktop/releases/2.5.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.4.3/</guid>
-      <description>Release 2.4.3 The following changes were made in this release:
-Enhancements: Issue 1576 : Define URL path elements as &amp;rsquo;non structural&#39; Issue 1711 : Feature request: Option to specify number of token to be generated. Issue 1768 : Update to use a more recent user-agent Issue 1894 : ZAP only scans &amp;ldquo;User-Agent&amp;rdquo;, &amp;ldquo;Referer&amp;rdquo;, and &amp;ldquo;Host&amp;rdquo; request headers Issue 1911 : Search AJAX spider requests Issue 1913 : Pass all params across to zap.</description>
+      <guid>/docs/desktop/releases/2.5.0/</guid>
+      <description>Release 2.5.0 The following changes were made in this release:
+ZAP API Changes: VIEW authorization / getAuthorizationDetectionMethod Now returns data wrapped in an object called authorizationDetectionMethod For example:
+{&amp;#34;authorizationDetectionMethod&amp;#34;:{&amp;#34;statusCode&amp;#34;:&amp;#34;-1&amp;#34;...&amp;#34;headerRegex&amp;#34;:&amp;#34;&amp;#34;}} instead of:
+{&amp;#34;statusCode&amp;#34;:&amp;#34;-1&amp;#34;...&amp;#34;headerRegex&amp;#34;:&amp;#34;&amp;#34;} VIEW context / context + technologyList Both now return data wrapped in an object called &amp;ldquo;context&amp;rdquo; For example:</description>
     </item>
     
     <item>
@@ -3422,13 +3425,13 @@ Clicking on any of the table rows will bring up a dialog box which allows you to
     </item>
     
     <item>
-      <title>Release 2.4.2</title>
-      <link>/docs/desktop/releases/2.4.2/</link>
+      <title>Release 2.4.3</title>
+      <link>/docs/desktop/releases/2.4.3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.4.2/</guid>
-      <description>Release 2.4.2 The following changes were made in this release:
-Enhancements: Issue 1306 : Java PermSize command line flag removed in Java 8 Issue 1593 : Auto-scroll in Spider tab Issue 1600 : Dont report X-Frame-Options alert on 403 and 404 pages Issue 1654 : httpSessions/createEmptySession should initialize a site that was not previously visited Issue 1702 : Add &amp;ldquo;recurse&amp;rdquo; option to the spider API Issue 1715 : Unable to pass arguments when launching ZAP from the command line on Mac OS X Issue 1766 : Remove context via the API Issue 1768 : Update to use a more recent user-agent Issue 1778 : Passive scan AJAX spider requests Issue 1790 : Move Buffer Overflow Scanner from Beta to Release Issue 1793 : Allow active scan scripts to check if the scan was stopped Issue 1795 : Allow JVM options to be configured via GUI Issue 1799 : Minor Feature Request: Allow URL to be pasted into start Spider dialog.</description>
+      <guid>/docs/desktop/releases/2.4.3/</guid>
+      <description>Release 2.4.3 The following changes were made in this release:
+Enhancements: Issue 1576 : Define URL path elements as &amp;rsquo;non structural&#39; Issue 1711 : Feature request: Option to specify number of token to be generated. Issue 1768 : Update to use a more recent user-agent Issue 1894 : ZAP only scans &amp;ldquo;User-Agent&amp;rdquo;, &amp;ldquo;Referer&amp;rdquo;, and &amp;ldquo;Host&amp;rdquo; request headers Issue 1911 : Search AJAX spider requests Issue 1913 : Pass all params across to zap.</description>
     </item>
     
     <item>
@@ -3474,13 +3477,13 @@ Check the ZAP download page for the latest language pack available.</description
     </item>
     
     <item>
-      <title>Release 2.4.1</title>
-      <link>/docs/desktop/releases/2.4.1/</link>
+      <title>Release 2.4.2</title>
+      <link>/docs/desktop/releases/2.4.2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.4.1/</guid>
-      <description>Release 2.4.1 This release includes important security fixes - users are urged to upgrade asap.
-One of the changes means that an API key is created by default, which means that any applications using the ZAP API will fail unless they are updated to use that key.</description>
+      <guid>/docs/desktop/releases/2.4.2/</guid>
+      <description>Release 2.4.2 The following changes were made in this release:
+Enhancements: Issue 1306 : Java PermSize command line flag removed in Java 8 Issue 1593 : Auto-scroll in Spider tab Issue 1600 : Dont report X-Frame-Options alert on 403 and 404 pages Issue 1654 : httpSessions/createEmptySession should initialize a site that was not previously visited Issue 1702 : Add &amp;ldquo;recurse&amp;rdquo; option to the spider API Issue 1715 : Unable to pass arguments when launching ZAP from the command line on Mac OS X Issue 1766 : Remove context via the API Issue 1768 : Update to use a more recent user-agent Issue 1778 : Passive scan AJAX spider requests Issue 1790 : Move Buffer Overflow Scanner from Beta to Release Issue 1793 : Allow active scan scripts to check if the scan was stopped Issue 1795 : Allow JVM options to be configured via GUI Issue 1799 : Minor Feature Request: Allow URL to be pasted into start Spider dialog.</description>
     </item>
     
     <item>
@@ -3504,14 +3507,13 @@ If you select Off then the scan rule won&amp;rsquo;t run. If you select Low then
     </item>
     
     <item>
-      <title>Release 2.4.0</title>
-      <link>/docs/desktop/releases/2.4.0/</link>
+      <title>Release 2.4.1</title>
+      <link>/docs/desktop/releases/2.4.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.4.0/</guid>
-      <description>Release 2.4.0 The following changes were made in this release:
-Significant changes: Attack mode A new &amp;lsquo;ATTACK&amp;rsquo; Mode has been added - new nodes that are in Scope are actively scanned as soon as they are discovered.
-Advanced fuzzing A completely new fuzzing dialog has been introduced that allows multiple injection points to be attacked at the same time.</description>
+      <guid>/docs/desktop/releases/2.4.1/</guid>
+      <description>Release 2.4.1 This release includes important security fixes - users are urged to upgrade asap.
+One of the changes means that an API key is created by default, which means that any applications using the ZAP API will fail unless they are updated to use that key.</description>
     </item>
     
     <item>
@@ -3544,13 +3546,14 @@ Tag Interpolation In order to allow some flexibility in Tag creation and content
     </item>
     
     <item>
-      <title>Release 2.3.1</title>
-      <link>/docs/desktop/releases/2.3.1/</link>
+      <title>Release 2.4.0</title>
+      <link>/docs/desktop/releases/2.4.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.3.1/</guid>
-      <description>Release 2.3.1 The following changes were made in this release:
-Issue 81 : ZAP changes request data (while switching views) Issue 377 : Unfulfilled dependencies hang the active scan Issue 1073 : Cant remove scripts marked as &amp;rsquo;load on start&#39; Issue 1114 : core.newSession doesn&amp;rsquo;t clear Sites Issue 1155 : Historical Request Tab Doesn&amp;rsquo;t allow formatting changes Issue 1156 : Proxy gzip decoder doesn&amp;rsquo;t update content length in response headers Issue 1163 : Unable to set a home directory with a space on the command line Issue 1166 : Redundant indexes in zapdb.</description>
+      <guid>/docs/desktop/releases/2.4.0/</guid>
+      <description>Release 2.4.0 The following changes were made in this release:
+Significant changes: Attack mode A new &amp;lsquo;ATTACK&amp;rsquo; Mode has been added - new nodes that are in Scope are actively scanned as soon as they are discovered.
+Advanced fuzzing A completely new fuzzing dialog has been introduced that allows multiple injection points to be attacked at the same time.</description>
     </item>
     
     <item>
@@ -3576,13 +3579,13 @@ Configuration Options Field Details Default Config File Only scan messages in sc
     </item>
     
     <item>
-      <title>Release 2.3.0</title>
-      <link>/docs/desktop/releases/2.3.0/</link>
+      <title>Release 2.3.1</title>
+      <link>/docs/desktop/releases/2.3.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.3.0/</guid>
-      <description>Release 2.3.0 The following changes were made in this release:
-Significant changes: ZAP ‘lite’ version For this release we are providing a ‘lite’ version of ZAP in addition to the ‘full’ version. This contains exactly the same core code, but it just includes fewer default add-ons. Of course, you can download all of the ‘missing’ add-ons from the ZAP marketplace to ‘upgrade’ the lite version to a full one.</description>
+      <guid>/docs/desktop/releases/2.3.1/</guid>
+      <description>Release 2.3.1 The following changes were made in this release:
+Issue 81 : ZAP changes request data (while switching views) Issue 377 : Unfulfilled dependencies hang the active scan Issue 1073 : Cant remove scripts marked as &amp;rsquo;load on start&#39; Issue 1114 : core.newSession doesn&amp;rsquo;t clear Sites Issue 1155 : Historical Request Tab Doesn&amp;rsquo;t allow formatting changes Issue 1156 : Proxy gzip decoder doesn&amp;rsquo;t update content length in response headers Issue 1163 : Unable to set a home directory with a space on the command line Issue 1166 : Redundant indexes in zapdb.</description>
     </item>
     
     <item>
@@ -3608,13 +3611,13 @@ Scanning is performed in a background thread to ensure that it does not slow dow
     </item>
     
     <item>
-      <title>Release 2.2.2</title>
-      <link>/docs/desktop/releases/2.2.2/</link>
+      <title>Release 2.3.0</title>
+      <link>/docs/desktop/releases/2.3.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.2.2/</guid>
-      <description> Release 2.2.2 The following changes were made in this release:
-Minor changes: Issue 744 : Allow overwriting custom fuzz files Issue 795 : Allow param types scanned to be configured via UI Issue 797 : Limit number of ascan results listed to speed up scans Issue 798 : Add example scripts Bug Fixes: Issue 656 : Content-length: 0 in GET requests Issue 680 : Set the right content type for JSON API results Issue 716 : ZAP flags its own HTTP responses Issue 746 : PassiveScan Extension Crashes if the History Extension is disabled Issue 747 : Error opening session files on directories with special characters Issue 791 : Saved sessions are discarded on ZAP&amp;rsquo;s exit Issue 792 : Diff dialog fails when invoked from Zest Issue 794 : Malformed Byte Sequence Exception Issue 800 : User not prompted with check-for-updates option Issue 802 : XML report generated by API differs from GUI report See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
+      <guid>/docs/desktop/releases/2.3.0/</guid>
+      <description>Release 2.3.0 The following changes were made in this release:
+Significant changes: ZAP ‘lite’ version For this release we are providing a ‘lite’ version of ZAP in addition to the ‘full’ version. This contains exactly the same core code, but it just includes fewer default add-ons. Of course, you can download all of the ‘missing’ add-ons from the ZAP marketplace to ‘upgrade’ the lite version to a full one.</description>
     </item>
     
     <item>
@@ -3633,18 +3636,18 @@ Minor changes: Issue 744 : Allow overwriting custom fuzz files Issue 795 : Allow
       
       <guid>/docs/desktop/ui/dialogs/options/script/</guid>
       <description>Options Scripts screen This screen allows you to configure the script options:
-Directories A list of directories from which scripts will be loaded. ZAP will read (and write) the scripts using the character encoding UTF-8.
-The scripts must be in subdirectories named after the relevant script type (such as &amp;lsquo;active&amp;rsquo;, &amp;lsquo;passive&amp;rsquo;, &amp;lsquo;proxy&amp;rsquo; etc) and must have an appropriate extension for the script language used.</description>
+Enable scripts loaded from directories If this option is selected then all of the scripts loaded from the specified directories will be enabled by default.
+Directories A list of directories from which scripts will be loaded.</description>
     </item>
     
     <item>
-      <title>Release 2.2.1</title>
-      <link>/docs/desktop/releases/2.2.1/</link>
+      <title>Release 2.2.2</title>
+      <link>/docs/desktop/releases/2.2.2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.2.1/</guid>
-      <description> Release 2.2.1 The following changes were made in this release:
-Bug Fixes: Issue 789 : Scripting broken on Windows See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
+      <guid>/docs/desktop/releases/2.2.2/</guid>
+      <description> Release 2.2.2 The following changes were made in this release:
+Minor changes: Issue 744 : Allow overwriting custom fuzz files Issue 795 : Allow param types scanned to be configured via UI Issue 797 : Limit number of ascan results listed to speed up scans Issue 798 : Add example scripts Bug Fixes: Issue 656 : Content-length: 0 in GET requests Issue 680 : Set the right content type for JSON API results Issue 716 : ZAP flags its own HTTP responses Issue 746 : PassiveScan Extension Crashes if the History Extension is disabled Issue 747 : Error opening session files on directories with special characters Issue 791 : Saved sessions are discarded on ZAP&amp;rsquo;s exit Issue 792 : Diff dialog fails when invoked from Zest Issue 794 : Malformed Byte Sequence Exception Issue 800 : User not prompted with check-for-updates option Issue 802 : XML report generated by API differs from GUI report See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
     </item>
     
     <item>
@@ -3668,13 +3671,13 @@ See also UI Overview for an overview of the user interface Options dialogs for d
     </item>
     
     <item>
-      <title>Release 2.2.0</title>
-      <link>/docs/desktop/releases/2.2.0/</link>
+      <title>Release 2.2.1</title>
+      <link>/docs/desktop/releases/2.2.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.2.0/</guid>
-      <description>Release 2.2.0 The following changes were made in this release:
-Major changes: Issue 717 : Scripts: support multiple scripts and embedding within ZAP components Support for Mozilla Zest: https://developer.mozilla.org/en-US/docs/Zest Support for Mozilla Plug-n-Hack: https://developer.mozilla.org/en-US/docs/Plug-n-Hack Support for scanning headers as well as JSON and XML formats Minor changes: Issue 711 : Support scanning of XML requests Issue 713 : Add CWE and WASC numbers to issues Issue 719 : Custom http breakpoints with more options Issue 738 : Options to hide tabs / windows Issue 750 : Upgrade script console to support non textbased scripting languages Issue 752 : Create a new root CA when first run Issue 775 : Allow host to be set via the command line Bug Fixes: Issue 555 : Http panels default to hex view Issue 599 : The save session api does not allow to overwrite session already has same name Issue 630 : URLCanonicalizer.</description>
+      <guid>/docs/desktop/releases/2.2.1/</guid>
+      <description> Release 2.2.1 The following changes were made in this release:
+Bug Fixes: Issue 789 : Scripting broken on Windows See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
     </item>
     
     <item>
@@ -3700,13 +3703,13 @@ Statsd Server Enabled Check this box in order to configure the address of a Stat
     </item>
     
     <item>
-      <title>Release 2.1.0</title>
-      <link>/docs/desktop/releases/2.1.0/</link>
+      <title>Release 2.2.0</title>
+      <link>/docs/desktop/releases/2.2.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.1.0/</guid>
-      <description>Release 2.1.0 The following changes were made in this release:
-Minor changes: Issue 355: Allow Positional Fuzzing Issue 475: Http Sessions custom cookie value Issue 484: Check java version in zap.sh Issue 496: Allow to see the request and response at the same time in the main window Issue 505: Http Session API Implementation Issue 515: Change add-ons to make use of automatic load of messages Issue 516: Change add-ons messages keys to have unique prefix Issue 518: Add OData support Issue 537: Option to Force Browse files/resources with user-defined extensions Issue 538: Allow non sequential lines to be selected in the history log Issue 542: browse api - prompt window to enable Issue 551: Add csrfmiddlewaretoken to list of default Anti csrf tokens Issue 552: Make ZapPortNumberSpinner a subclass of ZapNumberSpinner Issue 553: Add option to filter alerts by scope Issue 561: Copy URLs right click option Issue 566: Abstract class for creating generic popups Issue 568: Allow extensions to run from the command line Issue 569: Allow Spider Scan to start without prior visit Issue 587: Upgrade to JBroFuzz 2.</description>
+      <guid>/docs/desktop/releases/2.2.0/</guid>
+      <description>Release 2.2.0 The following changes were made in this release:
+Major changes: Issue 717 : Scripts: support multiple scripts and embedding within ZAP components Support for Mozilla Zest: https://developer.mozilla.org/en-US/docs/Zest Support for Mozilla Plug-n-Hack: https://developer.mozilla.org/en-US/docs/Plug-n-Hack Support for scanning headers as well as JSON and XML formats Minor changes: Issue 711 : Support scanning of XML requests Issue 713 : Add CWE and WASC numbers to issues Issue 719 : Custom http breakpoints with more options Issue 738 : Options to hide tabs / windows Issue 750 : Upgrade script console to support non textbased scripting languages Issue 752 : Create a new root CA when first run Issue 775 : Allow host to be set via the command line Bug Fixes: Issue 555 : Http panels default to hex view Issue 599 : The save session api does not allow to overwrite session already has same name Issue 630 : URLCanonicalizer.</description>
     </item>
     
     <item>
@@ -3722,13 +3725,13 @@ What you can do, when you are in Protected mode What is shown in the History tab
     </item>
     
     <item>
-      <title>Release 2.0.0</title>
-      <link>/docs/desktop/releases/2.0.0/</link>
+      <title>Release 2.1.0</title>
+      <link>/docs/desktop/releases/2.1.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/2.0.0/</guid>
-      <description>Release 2.0.0 The following changes were made in this release:
-Significant changes: An integrated add-ons marketplace ZAP can be extended by add-ons that have full access to all of the ZAP internals. Anyone can write add-ons and upload them to the ZAP Add-on Marketplace (OK, so its a Google code project called zap-extensions, but you get the idea).</description>
+      <guid>/docs/desktop/releases/2.1.0/</guid>
+      <description>Release 2.1.0 The following changes were made in this release:
+Minor changes: Issue 355: Allow Positional Fuzzing Issue 475: Http Sessions custom cookie value Issue 484: Check java version in zap.sh Issue 496: Allow to see the request and response at the same time in the main window Issue 505: Http Session API Implementation Issue 515: Change add-ons to make use of automatic load of messages Issue 516: Change add-ons messages keys to have unique prefix Issue 518: Add OData support Issue 537: Option to Force Browse files/resources with user-defined extensions Issue 538: Allow non sequential lines to be selected in the history log Issue 542: browse api - prompt window to enable Issue 551: Add csrfmiddlewaretoken to list of default Anti csrf tokens Issue 552: Make ZapPortNumberSpinner a subclass of ZapNumberSpinner Issue 553: Add option to filter alerts by scope Issue 561: Copy URLs right click option Issue 566: Abstract class for creating generic popups Issue 568: Allow extensions to run from the command line Issue 569: Allow Spider Scan to start without prior visit Issue 587: Upgrade to JBroFuzz 2.</description>
     </item>
     
     <item>
@@ -3743,13 +3746,13 @@ ECMAScript / JavaScript (using Nashorn engine, included by default) Zest https:/
     </item>
     
     <item>
-      <title>Release 1.4.1</title>
-      <link>/docs/desktop/releases/1.4.1/</link>
+      <title>Release 2.0.0</title>
+      <link>/docs/desktop/releases/2.0.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/1.4.1/</guid>
-      <description> Release 1.4.1 The following changes were made in this release:
-Bug fixes: Issue 185: Problem causes Undoing/Redoing in text fields other than the one that has the focus. Issue 297: Exclusions not honored Issue 298: Content-Length header is not properly update Issue 306: Change zap.sh memory setting Issue 307: ConcurrentModificationException when openning a big session Issue 308: ZAP in daemon mode exits when you save a session Issue 309: Client API cant cope with Informational risk Issue 312: Increase the maximum number of scanning threads allowed Issue 314: Handle very large results more cleanly Issue 315: XSS false positive - injecting into an input src when the type is not &amp;lsquo;image&amp;rsquo; Issue 319: Spider progress not reported correctly via the API Issue 320: AScan can miss subtrees if invoked via the API Issue 337: Increase jvm permsize See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
+      <guid>/docs/desktop/releases/2.0.0/</guid>
+      <description>Release 2.0.0 The following changes were made in this release:
+Significant changes: An integrated add-ons marketplace ZAP can be extended by add-ons that have full access to all of the ZAP internals. Anyone can write add-ons and upload them to the ZAP Add-on Marketplace (OK, so its a Google code project called zap-extensions, but you get the idea).</description>
     </item>
     
     <item>
@@ -3763,15 +3766,13 @@ Cookie-Based Session Management In the case of this method the session is being 
     </item>
     
     <item>
-      <title>Release 1.4.0</title>
-      <link>/docs/desktop/releases/1.4.0/</link>
+      <title>Release 1.4.1</title>
+      <link>/docs/desktop/releases/1.4.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/1.4.0/</guid>
-      <description>Release 1.4.0 The following changes were made in this release:
-Significant changes: Issue 133: Add Syntax highlighting to Response Panel The HTML panels now support switchable syntax highlighting.
-Issue 153: fuzzdb integration The fuzzer includes fuzzdb (https://github.com/fuzzdb-project/fuzzdb) fuzzing files.
-Note that some fuzzdb files have been left out as they cause common anti virus scanners to flag them as containing viruses.</description>
+      <guid>/docs/desktop/releases/1.4.1/</guid>
+      <description> Release 1.4.1 The following changes were made in this release:
+Bug fixes: Issue 185: Problem causes Undoing/Redoing in text fields other than the one that has the focus. Issue 297: Exclusions not honored Issue 298: Content-Length header is not properly update Issue 306: Change zap.sh memory setting Issue 307: ConcurrentModificationException when openning a big session Issue 308: ZAP in daemon mode exits when you save a session Issue 309: Client API cant cope with Informational risk Issue 312: Increase the maximum number of scanning threads allowed Issue 314: Handle very large results more cleanly Issue 315: XSS false positive - injecting into an input src when the type is not &amp;lsquo;image&amp;rsquo; Issue 319: Spider progress not reported correctly via the API Issue 320: AScan can miss subtrees if invoked via the API Issue 337: Increase jvm permsize See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
     </item>
     
     <item>
@@ -3784,13 +3785,15 @@ Note that some fuzzdb files have been left out as they cause common anti virus s
     </item>
     
     <item>
-      <title>Release 1.3.4</title>
-      <link>/docs/desktop/releases/1.3.4/</link>
+      <title>Release 1.4.0</title>
+      <link>/docs/desktop/releases/1.4.0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/1.3.4/</guid>
-      <description>Release 1.3.4 The following changes were made in this release:
-Minor changes: Issue 146: Inverse regex on search plus fuzz match highlighting Issue 202: Option to turn off brute force recursion Issue 215: Allow custom brute force files to be added easily Also added the ability to set the default brute force file.</description>
+      <guid>/docs/desktop/releases/1.4.0/</guid>
+      <description>Release 1.4.0 The following changes were made in this release:
+Significant changes: Issue 133: Add Syntax highlighting to Response Panel The HTML panels now support switchable syntax highlighting.
+Issue 153: fuzzdb integration The fuzzer includes fuzzdb (https://github.com/fuzzdb-project/fuzzdb) fuzzing files.
+Note that some fuzzdb files have been left out as they cause common anti virus scanners to flag them as containing viruses.</description>
     </item>
     
     <item>
@@ -3823,13 +3826,13 @@ The full set of statistics maintained by the ZAP core and add-ons are maintained
     </item>
     
     <item>
-      <title>Release 1.3.3</title>
-      <link>/docs/desktop/releases/1.3.3/</link>
+      <title>Release 1.3.4</title>
+      <link>/docs/desktop/releases/1.3.4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/1.3.3/</guid>
-      <description> Release 1.3.3 The following changes were made in this release:
-Bug fixes: Issue 156: ZAP active scanner freezes against DVWA Issue 157: Alert edit/save broken Issue 161: Reporting does not work when not specifying the extension in the report&amp;rsquo;s name (on Linux) See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
+      <guid>/docs/desktop/releases/1.3.4/</guid>
+      <description>Release 1.3.4 The following changes were made in this release:
+Minor changes: Issue 146: Inverse regex on search plus fuzz match highlighting Issue 202: Option to turn off brute force recursion Issue 215: Allow custom brute force files to be added easily Also added the ability to set the default brute force file.</description>
     </item>
     
     <item>
@@ -3845,13 +3848,13 @@ There are currently 2 types of Structural Modifiers:</description>
     </item>
     
     <item>
-      <title>Release 1.3.2</title>
-      <link>/docs/desktop/releases/1.3.2/</link>
+      <title>Release 1.3.3</title>
+      <link>/docs/desktop/releases/1.3.3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/1.3.2/</guid>
-      <description> Release 1.3.2 The following changes were made in this release:
-Bug fixes: Issue 53: Scan Policy configuration bug Issue 62: The &amp;ldquo;Export all urls to File&amp;rdquo; does not seem to work Issue 87: SSL not working with Dynamic SSL Certificate generator (with Chrome on Mac OS) Issue 95: NullPointerException when dropping requests in proxy Issue 106: Cannot display HTTP gzipped contents Issue 107: The last intercepted request/response remains in the Break window Issue 131: Right click on Mac without mouse doesn&amp;rsquo;t work Issue 138: Broken end of stream detection causes endless loop and threads not ending Issue 143: Help button: Options &amp;ndash;&amp;gt; Language Issue 145: Crash at start up Issue 147: Session save and request/response data Issue 151: Incorrect language used by ZAP Issue 152: Check for updates not working See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
+      <guid>/docs/desktop/releases/1.3.3/</guid>
+      <description> Release 1.3.3 The following changes were made in this release:
+Bug fixes: Issue 156: ZAP active scanner freezes against DVWA Issue 157: Alert edit/save broken Issue 161: Reporting does not work when not specifying the extension in the report&amp;rsquo;s name (on Linux) See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
     </item>
     
     <item>
@@ -3865,13 +3868,13 @@ In &amp;rsquo;traditional&amp;rsquo; web applications the structure of the appli
     </item>
     
     <item>
-      <title>Release 1.3.1</title>
-      <link>/docs/desktop/releases/1.3.1/</link>
+      <title>Release 1.3.2</title>
+      <link>/docs/desktop/releases/1.3.2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/1.3.1/</guid>
-      <description>Release 1.3.1 The following changes were made in this release:
-Bug fixes: Issue 97: Working Directory for Applications Issue 98: Not possible to cancel check for updates Issue 100: Alerts tab has 2 &amp;lsquo;Resend&amp;hellip;&amp;rsquo; right click popups Issue 104: Display warning dialog, when no root CA certificate exists Issue 110: Choosing user&amp;rsquo;s language by default, when starting the first time Issue 112: Provide a way to apply language packs on Mac OS Issue 121: Session compare report javascript broken in Firefox 3 Issue 123: Cant select https site from Active scan window if theres an http equivalent Issue 127: CSRF token feature does not work in fuzz - added help explanation for partial fix Issue 140: The Display options shouldnt include the advanced or windows manager options SSL Bug which prevented SSL connections from being established in any browser Known issues: Mac OS X: Dynamic SSL and Google Chrome Currently Dynamic SSL is not working when using Google Chrome.</description>
+      <guid>/docs/desktop/releases/1.3.2/</guid>
+      <description> Release 1.3.2 The following changes were made in this release:
+Bug fixes: Issue 53: Scan Policy configuration bug Issue 62: The &amp;ldquo;Export all urls to File&amp;rdquo; does not seem to work Issue 87: SSL not working with Dynamic SSL Certificate generator (with Chrome on Mac OS) Issue 95: NullPointerException when dropping requests in proxy Issue 106: Cannot display HTTP gzipped contents Issue 107: The last intercepted request/response remains in the Break window Issue 131: Right click on Mac without mouse doesn&amp;rsquo;t work Issue 138: Broken end of stream detection causes endless loop and threads not ending Issue 143: Help button: Options &amp;ndash;&amp;gt; Language Issue 145: Crash at start up Issue 147: Session save and request/response data Issue 151: Incorrect language used by ZAP Issue 152: Check for updates not working See also Introduction the introduction to ZAP Releases the full set of releases Credits the people and groups who have made this release possible </description>
     </item>
     
     <item>
@@ -3887,15 +3890,13 @@ They can also be automatically added via Passive scanning - this allows you to a
     </item>
     
     <item>
-      <title>Release 1.3.0</title>
-      <link>/docs/desktop/releases/1.3.0/</link>
+      <title>Release 1.3.1</title>
+      <link>/docs/desktop/releases/1.3.1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/releases/1.3.0/</guid>
-      <description>Release 1.3.0 The following changes were made in this release:
-Significant changes: Fuzzing Strings in a response can now be fuzzed to try to find vulnerabilities.
-Anti CRSF tokens can be detected and automatically regenerated when fuzzing.
-This functionality is based on code from the OWASP JBroFuzz project.</description>
+      <guid>/docs/desktop/releases/1.3.1/</guid>
+      <description>Release 1.3.1 The following changes were made in this release:
+Bug fixes: Issue 97: Working Directory for Applications Issue 98: Not possible to cancel check for updates Issue 100: Alerts tab has 2 &amp;lsquo;Resend&amp;hellip;&amp;rsquo; right click popups Issue 104: Display warning dialog, when no root CA certificate exists Issue 110: Choosing user&amp;rsquo;s language by default, when starting the first time Issue 112: Provide a way to apply language packs on Mac OS Issue 121: Session compare report javascript broken in Firefox 3 Issue 123: Cant select https site from Active scan window if theres an http equivalent Issue 127: CSRF token feature does not work in fuzz - added help explanation for partial fix Issue 140: The Display options shouldnt include the advanced or windows manager options SSL Bug which prevented SSL connections from being established in any browser Known issues: Mac OS X: Dynamic SSL and Google Chrome Currently Dynamic SSL is not working when using Google Chrome.</description>
     </item>
     
     <item>
@@ -3905,6 +3906,18 @@ This functionality is based on code from the OWASP JBroFuzz project.</descriptio
       
       <guid>/docs/desktop/start/features/users/</guid>
       <description>Users Users are the ZAP representations of websites/webapps&amp;rsquo; users. They allow certain actions to be performed from the point of view of an user of the webapps. For each Context, a set of Users can be defined, which can then be used in actions related to the context.</description>
+    </item>
+    
+    <item>
+      <title>Release 1.3.0</title>
+      <link>/docs/desktop/releases/1.3.0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/releases/1.3.0/</guid>
+      <description>Release 1.3.0 The following changes were made in this release:
+Significant changes: Fuzzing Strings in a response can now be fuzzed to try to find vulnerabilities.
+Anti CRSF tokens can be detected and automatically regenerated when fuzzing.
+This functionality is based on code from the OWASP JBroFuzz project.</description>
     </item>
     
     <item>
@@ -3927,7 +3940,7 @@ Passive Scanner The passive scanner now looks for vulnerabilities, such as:</des
       <guid>/docs/desktop/releases/1.1.0/</guid>
       <description>Release 1.1.0 The following changes were made in this release:
 Significant changes: OWASP rebranding ZAP has been accepted as an OWASP project.
-Its homepage is now: https://owasp.org/www-project-zap/
+Its homepage is now: https://wiki.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project
 Brute Force The ability to brute force files and directories based on code from the OWASP DirBuster project.
 The new Brute Force tab shows the files and directories found.</description>
     </item>
@@ -3951,6 +3964,15 @@ Context sensitive help has also been implemented so that when you press the F1 k
       <guid>/docs/team/zapbot/</guid>
       <description>ZAPbot is ZAP&amp;rsquo;s automation account, and has such an impressive GitHub account that one of the FAANG&amp;rsquo;s offered them an interview!
 Luckily ZAPbot&amp;rsquo;s career goals are completely focused on ZAP &amp;#x1f609;</description>
+    </item>
+    
+    <item>
+      <title>ZAP 2.15.0</title>
+      <link>/blog/2024-05-07-zap-2-15-0/</link>
+      <pubDate>Tue, 07 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2024-05-07-zap-2-15-0/</guid>
+      <description>ZAP 2.15.0 has just been &lt;a href=&#34;/docs/desktop/releases/2.15.0/&#34;&gt;released&lt;/a&gt;, and adds support for scripts as first class scan rules, restructured desktop menu items, and more&amp;hellip;</description>
     </item>
     
     <item>
@@ -8369,7 +8391,7 @@ Any third party can sponsor anyone to work on ZAP Third parties can promote thei
       <guid>/docs/statistics/top-addons-last-month/</guid>
       <description>These were the most frequently installed optional add-ons last month.
 Note that this does not mean they were the most used add-ons - that is harder to quantify.
-Position Add-On Status ID Last Updated 1 Import/Export beta exim 2023-11-10 2 Database alpha database 2023-10-12 3 Requester beta requester 2024-03-25 4 Spider release spider 2024-02-12 5 Authentication Helper beta authhelper 2024-02-06 6 Postman Support alpha postman 2024-04-02 7 Passive scanner rules (beta) beta pscanrulesBeta 2024-02-12 8 Active scanner rules (beta) beta ascanrulesBeta 2024-03-28 9 Access Control Testing alpha accessControl 2024-03-25 10 Passive scanner rules (alpha) alpha pscanrulesAlpha 2024-01-16 11 Sequence alpha sequence 2023-10-23 12 Plug-n-Hack Configuration beta plugnhack 2022-10-27 13 Port Scanner beta portscan 2022-10-27 14 Custom Payloads beta custompayloads 2023-11-10 15 Active scanner rules (alpha) alpha ascanrulesAlpha 2024-03-28 16 Wappalyzer - Technology Detection release wappalyzer 2024-05-02 17 Advanced SQLInjection Scanner beta sqliplugin 2021-10-20 18 Python Scripting beta jython 2024-04-11 19 FuzzDB Files release fuzzdb 2022-09-23 20 Directory List v2.</description>
+Position Add-On Status ID Last Updated 1 Import/Export beta exim 2024-05-07 2 Database alpha database 2024-05-07 3 Requester beta requester 2024-05-07 4 Spider release spider 2024-05-07 5 Authentication Helper beta authhelper 2024-05-07 6 Postman Support alpha postman 2024-05-07 7 Passive scanner rules (beta) beta pscanrulesBeta 2024-02-12 8 Active scanner rules (beta) beta ascanrulesBeta 2024-03-28 9 Access Control Testing alpha accessControl 2024-03-25 10 Passive scanner rules (alpha) alpha pscanrulesAlpha 2024-01-16 11 Sequence alpha sequence 2023-10-23 12 Plug-n-Hack Configuration beta plugnhack 2022-10-27 13 Port Scanner beta portscan 2022-10-27 14 Custom Payloads beta custompayloads 2023-11-10 15 Active scanner rules (alpha) alpha ascanrulesAlpha 2024-03-28 16 Wappalyzer - Technology Detection release wappalyzer 2024-05-02 17 Advanced SQLInjection Scanner beta sqliplugin 2021-10-20 18 Python Scripting beta jython 2024-04-11 19 FuzzDB Files release fuzzdb 2022-09-23 20 Directory List v2.</description>
     </item>
     
     <item>
