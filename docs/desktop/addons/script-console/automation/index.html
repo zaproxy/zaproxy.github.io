@@ -1725,8 +1725,9 @@
 <li>type: mandatory, can be any of the script types supported by ZAP</li>
 <li>engine: optional, can be used to override the default engine for the file extension</li>
 <li>name: optional, defaults to the file name, can be used to specify the script in another job</li>
-<li>file: mandatory, the path to the file (absolute or relative to the plan), must be a readable text file</li>
+<li>source: mandatory, the path to the file (absolute or relative to the plan), must be a readable text file</li>
 </ul>
+<p>The <code>source</code> parameter was previously called <code>file</code>, both will work.</p>
 
 <h2 id="action-remove">Action: remove <a class="header-link" href="#action-remove"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Removes the specified script from ZAP.</p>
@@ -1741,6 +1742,14 @@
 <li>name: mandatory, the name of the script in ZAP</li>
 <li>engine: optional, can be used to override the default engine for the file extension</li>
 <li>target: mandatory, if type is &rsquo;targeted&rsquo;, the target URL to be invoked for &rsquo;targeted&rsquo; script</li>
+</ul>
+
+<h2 id="action-loaddir">Action: loaddir <a class="header-link" href="#action-loaddir"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Loads all of the scripts in the subdirectories under the specified source path to ZAP. Scripts are enabled but not configured to be loaded when ZAP restarts.</p>
+<p>The scripts must be in subdirectories named after the relevant script type (such as ‘active’, ‘passive’, ‘proxy’ etc)
+and must have an appropriate extension for the script language used.</p>
+<ul>
+<li>source: mandatory, the path to the directory (absolute or relative to the plan).</li>
 </ul>
 
 <h2 id="action-enable">Action: enable <a class="header-link" href="#action-enable"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
@@ -1763,11 +1772,12 @@
       type:                      # String: The type of the script
       engine:                    # String: The script engine to use - can be used to override the default engine for the file extension
       name:                      # String: The name of the script, defaults to the file name
-      file:                      # String: The full or relative file path, must be readable
+      source:                    # String: The full or relative file path, must be readable
       inline:                    # String: The full script (may be multi-line) - supply this or &#39;file&#39; not both
       target:                    # String: The URL to be invoked for &#34;targeted&#34; script type
 	
-</code></pre>
+</code></pre><p>The <code>source</code> parameter was previously called <code>file</code>, both will work.</p>
+
 <h2 id="inline-scripts">Inline Scripts <a class="header-link" href="#inline-scripts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Inline scripts are where the script contents are in the YAML plan rather that a separate file. An example of adding and running a simple standalone inline script is:</p>
 <pre tabindex="0"><code>  - type: script
