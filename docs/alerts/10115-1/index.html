@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Hash Disclosure - MD4 / MD5</title>
+  <title>ZAP &ndash; Script Served From Malicious polyfill.io Domain</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -127,7 +127,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Hash Disclosure - MD4 / MD5</h1>
+      <h1 class="text--white">Script Served From Malicious polyfill.io Domain</h1>
   </div>
 </section>
 
@@ -151,7 +151,7 @@
               <td>
                 <strong>Alert ID</strong>
               </td>
-              <td>10097</td>
+              <td>10115-1</td>
             </tr>
             <tr> 
               <td>
@@ -163,22 +163,22 @@
               <td>
                 <strong>Status</strong>
               </td>
-              <td>release</td>
+              <td>beta</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td>Low</td>
+              <td>High</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/200.html">
-                  200
+                <a href="https://cwe.mitre.org/data/definitions/829.html">
+                  829
                 </a>
               </td>
             </tr>
@@ -186,7 +186,7 @@
               <td>
                 <strong>WASC</strong>
               </td>
-              <td>13</td>
+              <td>15</td>
             </tr>
             <tr> 
               <td>
@@ -204,11 +204,11 @@
               </td>
               <td>
               
-              	<a href="/alerttags/cwe-200">CWE-200</a><br>
+              	<a href="/alerttags/cwe-829">CWE-829</a><br>
               
-              	<a href="/alerttags/owasp_2017_a03">OWASP_2017_A03</a><br>
+              	<a href="/alerttags/owasp_2017_a09">OWASP_2017_A09</a><br>
               
-              	<a href="/alerttags/owasp_2021_a04">OWASP_2021_A04</a><br>
+              	<a href="/alerttags/owasp_2021_a06">OWASP_2021_A06</a><br>
               
               </td>
             </tr>
@@ -218,7 +218,7 @@
                 <strong>More Info</strong>
               </td>
               <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/#id-10097">Scan Rule Help</a><br>
+              	<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules-beta/#id-10115">Scan Rule Help</a><br>
               </td>
             </tr>
             
@@ -229,12 +229,13 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>A hash was disclosed by the web server. - MD4 / MD5</p>
+          <p>The page includes one or more script files loaded from the polyfill.io domain.
+This is not associated with the polyfill.js library and is known to serve malicious content.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Ensure that hashes that are used to protect credentials or other resources are not leaked by the web server or database. There is typically no requirement for password hashes to be accessible to the web browser.
+          Change all scripts to use a known good source based on their documentation.
         </div>
         <div data-attr="other" class="mb-20">
           <h3 class="mb-10">Other Info</h3>
@@ -245,13 +246,19 @@
         
           <li>
             
-              <a href="https://openwall.info/wiki/john/sample-hashes">https://openwall.info/wiki/john/sample-hashes</a>
+              <a href="https://sansec.io/research/polyfill-supply-chain-attack">https://sansec.io/research/polyfill-supply-chain-attack</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://x.com/triblondon/status/1761852117579427975">https://x.com/triblondon/status/1761852117579427975</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/HashDisclosureScanRule.java'>org/zaproxy/zap/extension/pscanrules/HashDisclosureScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/PolyfillCdnScriptScanRule.java'>org/zaproxy/zap/extension/pscanrulesBeta/PolyfillCdnScriptScanRule.java</a>
       </section>
   </main>
 </div>
