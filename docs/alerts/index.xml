@@ -128,6 +128,13 @@
       <description>The given request has been identified as an authentication request. The &amp;lsquo;Other Info&amp;rsquo; field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to &amp;ldquo;Auto-Detect&amp;rdquo; then this rule will change the authentication to match the request identified.</description>
     </item>
     <item>
+      <title>Backup File Detected</title>
+      <link>/docs/alerts/100030/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100030/</guid>
+      <description>A backup or alternate version of a page or component was detected. An attacker may leverage information in such files to further attack or abuse the system.</description>
+    </item>
+    <item>
       <title>Backup File Disclosure</title>
       <link>/docs/alerts/10095/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -226,6 +233,13 @@
       <description>The response contained a Content-Security-Policy-Report-Only header, this may indicate a work-in-progress implementation, or an oversight in promoting pre-Prod to Prod, etc.&#xA;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks.</description>
     </item>
     <item>
+      <title>Content Security Policy Violations Reporting Enabled</title>
+      <link>/docs/alerts/100004/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100004/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Content-Type Header Empty</title>
       <link>/docs/alerts/10019-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -259,6 +273,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/10029/</guid>
       <description>This check looks at user-supplied input in query string parameters and POST data to identify where cookie parameters might be controlled. This is called a cookie poisoning attack, and becomes exploitable when an attacker can manipulate the cookie in various ways. In some cases this will not be exploitable, however, allowing URL parameters to set cookie values is generally considered a bug.</description>
+    </item>
+    <item>
+      <title>Cookie Set Without HttpOnly Flag</title>
+      <link>/docs/alerts/100003/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100003/</guid>
+      <description>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</description>
     </item>
     <item>
       <title>Cookie Slack Detector</title>
@@ -413,6 +434,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/20016-3/</guid>
       <description>Silverlight based cross-site request forgery may be possible, due to a misconfiguration on the web server.</description>
+    </item>
+    <item>
+      <title>Cross-Site WebSocket Hijacking</title>
+      <link>/docs/alerts/100025/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100025/</guid>
+      <description>Server accepted WebSocket connection through HTTP Upgrade request with modified Origin header.</description>
     </item>
     <item>
       <title>CSP</title>
@@ -618,6 +646,13 @@
       <description></description>
     </item>
     <item>
+      <title>File Content Disclosure (CVE-2019-5418)</title>
+      <link>/docs/alerts/100029/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100029/</guid>
+      <description>The application seems to be subject to CVE-2019-5418. By sending a specially crafted request it was possible to have the target return data from the server file system.</description>
+    </item>
+    <item>
       <title>File Upload</title>
       <link>/docs/alerts/40041/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -755,7 +790,7 @@
       <link>/docs/alerts/100015/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/100015/</guid>
-      <description>Unavailable</description>
+      <description>Find possible vulnerable entry points using HUNT Methodology (https://github.com/bugcrowd/HUNT).</description>
     </item>
     <item>
       <title>Image Exposes Location or Privacy Data</title>
@@ -772,6 +807,27 @@
       <description>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</description>
     </item>
     <item>
+      <title>Information Disclosure - Amazon S3 Bucket URL</title>
+      <link>/docs/alerts/100036/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100036/</guid>
+      <description>An Amazon S3 bucket URL was found in the HTTP response body.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Base64-encoded String</title>
+      <link>/docs/alerts/100007/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100007/</guid>
+      <description>A Base64-encoded string has been found in the HTTP response body. Base64-encoded data may contain sensitive information such as usernames, passwords or cookies which should be further inspected.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Credit Card Number</title>
+      <link>/docs/alerts/100008/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100008/</guid>
+      <description>A credit card number was found in the HTTP response body.</description>
+    </item>
+    <item>
       <title>Information Disclosure - Debug Error Messages</title>
       <link>/docs/alerts/10023/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -784,6 +840,41 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/110003/</guid>
       <description>The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Email Addresses</title>
+      <link>/docs/alerts/100009/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100009/</guid>
+      <description>An email address was found in the HTTP response body. Exposure of email addresses in HTTP messages can lead to privacy violations and targeted phishing attacks.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Google API Key</title>
+      <link>/docs/alerts/100034/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100034/</guid>
+      <description>A Google API Key was found in the HTTP response body.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Hash</title>
+      <link>/docs/alerts/100010/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100010/</guid>
+      <description>A hash was discovered in the HTTP response body.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - HTML Comments</title>
+      <link>/docs/alerts/100011/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100011/</guid>
+      <description>While adding general comments is very useful, some programmers tend to leave important data, such as: filenames related to the web application, old links or links which were not meant to be browsed by users, old code fragments, etc.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - IBAN Numbers</title>
+      <link>/docs/alerts/100012/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100012/</guid>
+      <description>An IBAN number was discovered in the HTTP response body.</description>
     </item>
     <item>
       <title>Information Disclosure - Information in Browser localStorage</title>
@@ -807,6 +898,20 @@
       <description></description>
     </item>
     <item>
+      <title>Information Disclosure - IP Exposed via F5 BIG-IP Persistence Cookie</title>
+      <link>/docs/alerts/100006/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100006/</guid>
+      <description>The F5 BIG-IP Persistence cookie set for this website can be decoded to a specific IP and port. An attacker may leverage this information to conduct Social Engineering attacks or other exploits.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Java Stack Trace</title>
+      <link>/docs/alerts/100035/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100035/</guid>
+      <description>A Java stack trace was found in the HTTP response body.</description>
+    </item>
+    <item>
       <title>Information Disclosure - JWT in Browser localStorage</title>
       <link>/docs/alerts/120002-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -826,6 +931,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/120002/</guid>
       <description></description>
+    </item>
+    <item>
+      <title>Information Disclosure - Private IP Address</title>
+      <link>/docs/alerts/100013/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100013/</guid>
+      <description>A private IP such as 10.x.x.x, 172.x.x.x, 192.168.x.x or IPV6 fe00:: has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.</description>
     </item>
     <item>
       <title>Information Disclosure - Sensitive Information in Browser localStorage</title>
@@ -863,6 +975,20 @@
       <description>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</description>
     </item>
     <item>
+      <title>Information Disclosure - Server Header</title>
+      <link>/docs/alerts/100019/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100019/</guid>
+      <description>The web/application server is leaking version information via the &amp;lsquo;Server&amp;rsquo; HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - SQL Error</title>
+      <link>/docs/alerts/100020/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100020/</guid>
+      <description>An SQL error was found in the HTTP response body.</description>
+    </item>
+    <item>
       <title>Information Disclosure - Suspicious Comments</title>
       <link>/docs/alerts/10027/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -875,6 +1001,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/110008/</guid>
       <description>The response appears to contain suspicious comments which may help an attacker.</description>
+    </item>
+    <item>
+      <title>Information Disclosure - X-Powered-By Header</title>
+      <link>/docs/alerts/100023/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100023/</guid>
+      <description>The web/application server is leaking information via one or more &amp;lsquo;X-Powered-By&amp;rsquo; HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</description>
     </item>
     <item>
       <title>Insecure HTTP Method</title>
@@ -933,6 +1066,13 @@
       <description>Java Serialization seems to be in use. If not correctly validated, an attacker can send a specially crafted object. This can lead to a dangerous &amp;ldquo;Remote Code Execution&amp;rdquo;. A magic sequence identifying JSO has been detected (Base64: rO0AB, Raw: 0xac, 0xed, 0x00, 0x05).</description>
     </item>
     <item>
+      <title>JWT None Exploit</title>
+      <link>/docs/alerts/100026/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100026/</guid>
+      <description>The application&amp;rsquo;s JWT implementation allows for the usage of the &amp;rsquo;none&amp;rsquo; algorithm, which bypasses the JWT hash verification.</description>
+    </item>
+    <item>
       <title>JWT Scan Rule</title>
       <link>/docs/alerts/40036/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -982,6 +1122,13 @@
       <description>The response does not include either Content-Security-Policy with &amp;lsquo;frame-ancestors&amp;rsquo; directive or X-Frame-Options to protect against &amp;lsquo;ClickJacking&amp;rsquo; attacks.</description>
     </item>
     <item>
+      <title>Missing Security Headers</title>
+      <link>/docs/alerts/100016/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100016/</guid>
+      <description>Some of the following security headers are missing from the HTTP response: Strict-Transport-Security, Content-Security-Policy, X-XSS-Protection, X-Content-Type-Options, X-Frame-Options.</description>
+    </item>
+    <item>
       <title>Modern Web Application</title>
       <link>/docs/alerts/10109/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1001,6 +1148,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/10020-2/</guid>
       <description>X-Frame-Options (XFO) headers were found, a response with multiple XFO header entries may not be predictably treated by all user-agents.</description>
+    </item>
+    <item>
+      <title>Non Static Site Detected</title>
+      <link>/docs/alerts/100017/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100017/</guid>
+      <description>A query string or form has been detected in the HTTP response body. This indicates that this may not be a static site.</description>
     </item>
     <item>
       <title>Non-Storable Content</title>
@@ -1189,7 +1343,7 @@
       <link>/docs/alerts/100014/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/100014/</guid>
-      <description>Unavailable</description>
+      <description>A reflected parameter value has been found in the HTTP response. Reflected parameter values may introduce XSS vulnerability or HTTP header injection.</description>
     </item>
     <item>
       <title>Relative Path Confusion</title>
@@ -1197,6 +1351,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/10051/</guid>
       <description>The web server is configured to serve responses to ambiguous URLs in a manner that is likely to lead to confusion about the correct &amp;ldquo;relative path&amp;rdquo; for the URL. Resources (CSS, images, etc.) are also specified in the page response using relative, rather than absolute URLs. In an attack, if the web browser parses the &amp;ldquo;cross-content&amp;rdquo; response in a permissive manner, or can be tricked into permissively parsing the &amp;ldquo;cross-content&amp;rdquo; response, using techniques such as framing, then the web browser may be fooled into interpreting HTML as CSS (or other content types), leading to an XSS vulnerability.</description>
+    </item>
+    <item>
+      <title>Relative Path Overwrite</title>
+      <link>/docs/alerts/100018/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100018/</guid>
+      <description>Potential RPO (Relative Path Overwrite) found. RPO allows attackers to manipulate URLs to include unintended paths, potentially leading to the execution of malicious scripts or the disclosure of sensitive information.</description>
     </item>
     <item>
       <title>Remote Code Execution - CVE-2012-1823</title>
@@ -1267,6 +1428,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/10108/</guid>
       <description>At least one link on this page is vulnerable to Reverse tabnabbing as it uses a target attribute without using both of the &amp;ldquo;noopener&amp;rdquo; and &amp;ldquo;noreferrer&amp;rdquo; keywords in the &amp;ldquo;rel&amp;rdquo; attribute, which allows the target page to take control of this page.</description>
+    </item>
+    <item>
+      <title>SameSite Cookie Attribute Protection Used</title>
+      <link>/docs/alerts/100005/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100005/</guid>
+      <description></description>
     </item>
     <item>
       <title>Script Served From Malicious Domain (polyfill)</title>
@@ -1351,6 +1519,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/10040/</guid>
       <description>The page includes mixed content, that is content accessed via HTTP instead of HTTPS.</description>
+    </item>
+    <item>
+      <title>Server is running on Clacks - GNU Terry Pratchett</title>
+      <link>/docs/alerts/100002/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100002/</guid>
+      <description>The web/application server is running over the Clacks network, some say it&amp;rsquo;s turtles/IP, some say it&amp;rsquo;s turtles all the way down the layer stack.</description>
     </item>
     <item>
       <title>Server Leaks Information via &#34;X-Powered-By&#34; HTTP Response Header Field(s)</title>
@@ -1675,6 +1850,13 @@
       <description>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</description>
     </item>
     <item>
+      <title>Telerik UI for ASP.NET AJAX Cryptographic Weakness (CVE-2017-9248)</title>
+      <link>/docs/alerts/100021/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100021/</guid>
+      <description>A request has been made that appears to conform to poor cryptography used by Telerik UI for ASP.NET AJAX prior to v2017.2.621. An attacker could manipulate the value of the dp parameter to possibly learn the machine key and upload arbitrary files, which could then lead to the compromise of ASP.</description>
+    </item>
+    <item>
       <title>Text4shell (CVE-2022-42889)</title>
       <link>/docs/alerts/40047/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1694,6 +1876,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/40029/</guid>
       <description>The ASP.NET Trace Viewer (trace.axd) was found to be available. This component can leak a significant amount of valuable information.</description>
+    </item>
+    <item>
+      <title>Upload Form Discovered</title>
+      <link>/docs/alerts/100022/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/100022/</guid>
+      <description>The presence of a file upload form can lead to various security vulnerabilities, such as uploading malicious files or overwriting existing files, if proper validation and restrictions are not implemented. This can result in unauthorized code execution, data breaches, or denial of service attacks.</description>
     </item>
     <item>
       <title>Use of SAML</title>
