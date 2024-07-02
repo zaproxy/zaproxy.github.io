@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Options Fuzz screen</title>
+  <title>ZAP &ndash; gRPC WebSocket</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -524,7 +524,7 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/fuzzer/">Fuzzing</a>
         <ul class="tree-branch">  
                         <li> 
@@ -536,7 +536,7 @@
                         <li> 
                             <a href="/docs/desktop/addons/fuzzer/locations/">Fuzz Location Processors dialog</a>
                         </li>  
-                        <li class="tree-active"> 
+                        <li> 
                             <a href="/docs/desktop/addons/fuzzer/options/">Options Fuzz screen</a>
                         </li>  
                         <li> 
@@ -593,13 +593,13 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/grpc-support/">gRPC Support</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/grpc-support/variant/">gRPC Variant</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/grpc-support/websocket/">gRPC WebSocket</a>
                         </li>
         </ul>
@@ -1714,45 +1714,18 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/fuzzer/'>Fuzzing</a>
+        <a href='/docs/desktop/addons/grpc-support/'>gRPC Support</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/fuzzer/options/'>Options Fuzz screen</a>
+        <a href='/docs/desktop/addons/grpc-support/websocket/'>gRPC WebSocket</a>
     </li>
 
 
 </ol>
           
-<h1 id="options-fuzzer-screen">Options Fuzzer screen</h1>
-<p>This screen allows you to configure the <a href="/docs/desktop/addons/fuzzer/">fuzzing</a> options:</p>
-
-<h3 id="default-category">Default Category <a class="header-link" href="#default-category"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The category that will initially be selected when the <a href="/docs/desktop/addons/fuzzer/dialogue/">Fuzz dialog</a> is displayed.</p>
-
-<h3 id="add-custom-fuzz-file">Add Custom Fuzz File <a class="header-link" href="#add-custom-fuzz-file"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Allows you to add your own files to be used when fuzzing.<br>
-These should be text files with one payload per line.<br>
-Files are added to the &lsquo;fuzzers&rsquo; directory underneath the ZAP home directory.</p>
-
-<h3 id="finished-fuzzers-in-ui">Finished Fuzzers in UI <a class="header-link" href="#finished-fuzzers-in-ui"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>It defines the numbers of fuzzers (that have completed their execution) visible in the fuzzer tab.</p>
-
-<h3 id="retries-on-io-error">Retries on IO Error <a class="header-link" href="#retries-on-io-error"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The number of retries when an input/output error occurs sending a request to the target.</p>
-
-<h3 id="max-errors-allowed">Max. Errors Allowed <a class="header-link" href="#max-errors-allowed"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>If the number of errors exceed this limit, the fuzzer will stop its execution.</p>
-
-<h3 id="payload-replacement-strategy">Payload Replacement Strategy <a class="header-link" href="#payload-replacement-strategy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Rules defined to control the order that multiple payload lists are iterated.</p>
-
-<h3 id="concurrent-scanning-threads-per-scan">Concurrent Scanning Threads per Scan <a class="header-link" href="#concurrent-scanning-threads-per-scan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The number of threads the fuzzer will use per scan.<br>
-Increasing the number of threads will speed up the scan but may put extra strain on the computer ZAP is running on as well as the target.</p>
-
-<h3 id="delay-when-fuzzing-in-milliseconds">Delay when Fuzzing (in milliseconds) <a class="header-link" href="#delay-when-fuzzing-in-milliseconds"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The number of milliseconds between requests by the fuzzer to the target host, usually done to avoid getting blocked by the target or if the target implements some sort of throttling requirement.</p>
+<h1 id="grpc-websocket-support">gRPC WebSocket Support</h1>
+<p>The gRPC WebSocket support feature enables the WebSocket add-on to decode and encode gRPC messages seamlessly. This integration allows users to inspect, modify, and manage gRPC communication over WebSockets.</p>
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
@@ -1760,12 +1733,19 @@ Increasing the number of threads will speed up the scan but may put extra strain
 <tr>
 <th></th>
 <th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td></td>
-<td><a href="/docs/desktop/addons/fuzzer/">Fuzzer concepts</a></td>
+<td><a href="/docs/desktop/addons/grpc-support/">gRPC</a></td>
+<td>for an overview of the gRPC add-on.</td>
+</tr>
+<tr>
+<td></td>
+<td><a href="/docs/desktop/addons/grpc-support/variant/">gRPC Variant</a></td>
+<td>for information about the gRPC variant.</td>
 </tr>
 </tbody>
 </table>
