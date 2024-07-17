@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2024-07-17-script-scan-rules/images/cover.jpg">
+  <meta name="twitter:title" content="ZAP Scripts are now Full Scan Rules!">
+  <meta name="twitter:description" content="ZAP scripts can now do everything that scan rules can.">
+
+    <meta property="og:url" content="/blog/2024-07-17-script-scan-rules/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="ZAP Scripts are now Full Scan Rules!">
+  <meta property="og:description" content="ZAP scripts can now do everything that scan rules can.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-07-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-07-17T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Scanrules">
+    <meta property="article:tag" content="Scripts">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2024-07-17-script-scan-rules/images/cover.jpg">
+
+  
+  <title>ZAP &ndash; ZAP Scripts are now Full Scan Rules!</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.23c036.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 54.98 55"><defs><radialGradient id="a" cx="29.16" cy="29.18" r="25.82" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4389ff"/><stop offset="1" stop-color="#00549e"/></radialGradient></defs><circle cx="29.16" cy="29.18" r="25.82" fill="url(#a)"/><path d="M2.17 10.82L22.67 2a.34.34 0 0 1 .42.12l11.08 15.74a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.36.36 0 0 1-.44.55l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64z" fill="#fff"/><path d="M22.8 2a.35.35 0 0 1 .29.15l11.08 15.71a.37.37 0 0 1-.18.57l-3 1a.37.37 0 0 0-.16.58l8.75 11a.37.37 0 0 1-.19.59l-3.79.93a.37.37 0 0 0-.2.59l12.92 16.32a.37.37 0 0 1-.27.6.3.3 0 0 1-.17 0l-29-16.74a.37.37 0 0 1 .05-.66l3.5-1.39a.37.37 0 0 0 .07-.64l-11.78-8.5a.38.38 0 0 1 .07-.64l2.69-1.18a.37.37 0 0 0 .06-.64L2.1 11.46a.37.37 0 0 1 .07-.64L22.67 2a.31.31 0 0 1 .13 0m0-2a2.22 2.22 0 0 0-.91.19L1.4 9a2.32 2.32 0 0 0-.43 4l9.16 6.52-.14.06a2.34 2.34 0 0 0-.42 4L19 30.45l-.81.32a2.33 2.33 0 0 0-.3 4.17l29 16.74a2.23 2.23 0 0 0 1.15.31 2.32 2.32 0 0 0 1.8-3.76L38.48 33.82l1.41-.34A2.32 2.32 0 0 0 41.52 32a2.36 2.36 0 0 0-.38-2.2l-7.34-9.26.79-.26a2.29 2.29 0 0 0 1.48-1.46 2.36 2.36 0 0 0-.3-2.08L24.68 1a2.3 2.3 0 0 0-1.88-1z"/></svg>
+        </a>
+        <nav class="site-nav" role="navigation">
+        <div>
+            <h1>&nbsp;<a href="/">ZAP</a></h1>
+        </div>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/support/" title="Support page">
+                  Support
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+      <div class="social-links header-social">
+        <a href="https://crashoverride.com?zap=web" aria-label="Go to the Crash Override page" class="logo">
+            <img height="35" src="/img/co-logo.png" alt="The Crash Override Open Source Fellowship"/>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">ZAP Scripts are now Full Scan Rules!</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday July 17, 2024</span>
+              <span class="word-count fl-r"> 982 Words </span>
+            </section>
+            <p>ZAP active and passive scripts are now first-class scan rules! 🎉</p>
+<p>ZAP scripts may now optionally be exposed as scan rules, allowing you to include them in your scan policies.</p>
+<p>Existing scripts are not affected by this change.</p>
+
+<h2 id="how-to-expose-a-script-as-a-scan-rule">How to Expose a Script as a Scan Rule <a class="header-link" href="#how-to-expose-a-script-as-a-scan-rule"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Any active or passive script that implements the <code>getMetadata</code> function will be exposed as a scan rule to ZAP.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ScanRuleMetadata</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.zaproxy.addon.commonlib.scanrules.ScanRuleMetadata&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getMetadata</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ScanRuleMetadata</span>.<span style="color:#a6e22e">fromYaml</span>(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">id: 12345
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">name: Passive Vulnerability Title
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">description: Full description
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">solution: The solution
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">references:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - https://example.org/reference-1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  - https://example.org/reference-2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">risk: INFO  # info, low, medium, high
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">confidence: LOW  # false_positive, low, medium, high, user_confirmed
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">cweId: 0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">wascId: 0
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alertTags:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name1: value1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  name2: value2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">otherInfo: Any other info
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">status: alpha
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Specifying the metadata in this manner also means that you don&rsquo;t have to set all these details when raising an alert in the script.
+The alert raised by each script is automatically populated with the details from the metadata.
+However, you can still override metadata for particular alerts if you want.
+For example,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">scan</span>(<span style="color:#a6e22e">helper</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">src</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// ... 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">foundKeys</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;my-secret-key&#34;</span>, <span style="color:#e6db74">&#34;my-other-secret-key&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">helper</span>
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">newAlert</span>()
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">setEvidence</span>(<span style="color:#a6e22e">foundKeys</span>[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">setOtherInfo</span>(<span style="color:#e6db74">`Other instances: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">foundKeys</span>.<span style="color:#a6e22e">slice</span>(<span style="color:#ae81ff">1</span>).<span style="color:#a6e22e">toString</span>()<span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">setMessage</span>(<span style="color:#a6e22e">msg</span>)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">raise</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Each script that is exposed as a scan rule must have a unique ID, otherwise it will not be loaded.
+The IDs of the scan rules and scripts available via add-ons from the <a href="/addons/">ZAP Marketplace</a> are maintained in the <a href="https://github.com/zaproxy/zaproxy/blob/main/docs/scanners.md"><code>scanners.md</code> file</a> in the core ZAP repository.</p>
+<p>While the code examples in this blog post are written in JS, ZAP scripts written in any supported programming language (e.g. Python, Groovy, Kotlin, etc.) may be exposed as scan rules.</p>
+
+<h2 id="community-scripts">Community Scripts <a class="header-link" href="#community-scripts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>All the passive scripts and most of the active scripts in the <a href="https://github.com/zaproxy/community-scripts">community-scripts</a> repository (and add-on) have been updated to implement the <code>getMetadata()</code> function.</p>
+<p>The <a href="/docs/alerts/">alerts page</a> on this website (which is auto-generated from scan rules) now contains information about the alerts raised by the community scripts too.</p>
+<p>It should be noted that all these scripts will now need to use the GraalVM engine (provided by the <code>graaljs</code> add-on), as template literals are not supported by Nashorn.</p>
+<p>If you have any scripts written for Nashorn, we recommend you switch to using the GraalVM engine.
+You should be able to switch your engine for the majority of your scripts without having to modify them.</p>
+<p>If you do not want to use GraalVM, you can still expose your scripts as scan rules by constructing the <a href="https://github.com/zaproxy/zap-extensions/blob/839d5c7df7432c1f4748275daacd1d4e8812a51a/addOns/commonlib/src/main/java/org/zaproxy/addon/commonlib/scanrules/ScanRuleMetadata.java">ScanRuleMetadata</a> object manually with its setters.</p>
+
+<h2 id="rapid-prototyping">Rapid Prototyping <a class="header-link" href="#rapid-prototyping"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Last month, we published a new passive scan rule to detect if a script in your webapp was being loaded from the malicious Polyfill.io domain.
+You can read the full blog post about it <a href="/blog/2024-06-27-polyfill.io-script-detection/">here</a>.</p>
+<p>The scan rule was <a href="https://github.com/zaproxy/zap-extensions/blob/839d5c7df7432c1f4748275daacd1d4e8812a51a/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/PolyfillCdnScriptScanRule.java">written in Java</a> and included in the <code>pscanrulesBeta</code> add-on.</p>
+<p>Here&rsquo;s the same scan rule written as a script, included here as an example.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ScanRuleMetadata</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;org.zaproxy.addon.commonlib.scanrules.ScanRuleMetadata&#34;</span>,
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">Alert</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.parosproxy.paros.core.scanner.Alert&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PLUGIN_ID</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">10115</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getMetadata</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">ScanRuleMetadata</span>.<span style="color:#a6e22e">fromYaml</span>(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">id: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PLUGIN_ID</span><span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">name: Script Served From Malicious Domain (polyfill)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">description: |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  The page includes one or more script files loaded from one of the &#39;polyfill&#39; domains.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  These are not associated with the polyfill.js library and are known to serve malicious content.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">solution: &gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  Change all scripts to use a known good source based on their documentation.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">risk: high
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">confidence: high
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">cweId: 829  # CWE-829: Inclusion of Functionality from Untrusted Control Sphere
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">wascId: 15  # WASC-15: Application Misconfiguration
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alertTags:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  OWASP_2017_A09: &#34;https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities.html&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  OWASP_2021_A06: &#34;https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">status: beta
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">transitiveScriptRefDescription</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`The page includes one or more script which appear to include a reference to one of the &#39;polyfill&#39; domains.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">These are not associated with the polyfill.js library and are known to serve malicious content.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You should check to see if it is a safe reference (for example in a comment) or whether the script is loading content from that domain.`</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">POLYFILL_IO</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*polyfill\.io\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">BOOTCSS_COM</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*bootcss\.com\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">BOOTCDN_NET</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*bootcdn\.net\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">STATICFILE_NET</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*staticfile\.net\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">STATICFILE_ORG</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*staticfile\.org\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">UNIONADJS_COM</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*unionadjs\.com\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">XHSBPZA_COM</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*xhsbpza\.com\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">UNION_MACOMS_LA</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*union\.macoms\.la\/.*/i</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">NEWCRBPC_COM</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">/https?:\/\/.*newcrbpc\.com\/.*/i</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">ALL_DOMAINS</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">POLYFILL_IO</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">BOOTCSS_COM</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">BOOTCDN_NET</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">STATICFILE_NET</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">STATICFILE_ORG</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">UNIONADJS_COM</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">XHSBPZA_COM</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">UNION_MACOMS_LA</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">NEWCRBPC_COM</span>,
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">scan</span>(<span style="color:#a6e22e">helper</span>, <span style="color:#a6e22e">msg</span>, <span style="color:#a6e22e">src</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getResponseBody</span>().<span style="color:#a6e22e">length</span>() <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">!</span><span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getResponseHeader</span>().<span style="color:#a6e22e">isHtml</span>()
+</span></span><span style="display:flex;"><span>  ) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sourceElements</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">src</span>.<span style="color:#a6e22e">getAllElements</span>(<span style="color:#e6db74">&#34;script&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">sourceElements</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">alertRaised</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">sourceElements</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sourceElement</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sourceElements</span>[<span style="color:#a6e22e">i</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">scriptSrc</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sourceElement</span>.<span style="color:#a6e22e">getAttributeValue</span>(<span style="color:#e6db74">&#34;src&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">scriptSrc</span> <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">ALL_DOMAINS</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">ALL_DOMAINS</span>[<span style="color:#a6e22e">j</span>].<span style="color:#a6e22e">test</span>(<span style="color:#a6e22e">scriptSrc</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">helper</span>
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">newAlert</span>()
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">setParam</span>(<span style="color:#a6e22e">scriptSrc</span>)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">setEvidence</span>(<span style="color:#a6e22e">sourceElement</span>.<span style="color:#a6e22e">toString</span>())
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">setAlertRef</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PLUGIN_ID</span><span style="color:#e6db74">}</span><span style="color:#e6db74">-1`</span>)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">raise</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">alertRaised</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">alertRaised</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Definitely an issue, no point checking the script contents
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Check the script contents, in case they are loading scripts via JS
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">sourceElements</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">contents</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sourceElements</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">getContent</span>().<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">j</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">j</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">ALL_DOMAINS</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">j</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">match</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> ((<span style="color:#a6e22e">match</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">ALL_DOMAINS</span>[<span style="color:#a6e22e">j</span>].<span style="color:#a6e22e">exec</span>(<span style="color:#a6e22e">contents</span>))) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">helper</span>
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">newAlert</span>()
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">setConfidence</span>(<span style="color:#a6e22e">Alert</span>.<span style="color:#a6e22e">CONFIDENCE_LOW</span>)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">setEvidence</span>(<span style="color:#a6e22e">match</span>[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">setDescription</span>(<span style="color:#a6e22e">transitiveScriptRefDescription</span>)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">setAlertRef</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PLUGIN_ID</span><span style="color:#e6db74">}</span><span style="color:#e6db74">-2`</span>)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">raise</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+<h2 id="how-will-you-use-zap-scripts">How will you use ZAP scripts? <a class="header-link" href="#how-will-you-use-zap-scripts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>You can now write a full scan rule <em>while ZAP is running</em>, in fewer lines of code.
+You can create prototypes of your custom rules and iterate on them rapidly to beat them into shape.</p>
+<p>Moreover, the <a href="/docs/automate/automation-framework/">automation framework</a> supports inline scripts, which means that you can now write and share automation framework plans that scan for specific issues.</p>
+<p>You can find an example of such a plan <a href="https://gist.github.com/ricekot/f45eb4640485909d16bd7dc1d2ec9d5f#file-example-zap-af-plan-yml">in this GitHub Gist</a> and you can run it with the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker run --rm zaproxy/zap-nightly zap.sh -cmd -autorun https://gist.githubusercontent.com/ricekot/f45eb4640485909d16bd7dc1d2ec9d5f/raw/
+</span></span></code></pre></div><p>Watch out for a full blog post on this topic soon.</p>
+<p>Until then, enjoy hacking and scripting with ZAP!</p>
+<p>If you have any feedback, comments, or ideas about ZAP Scripts, please reach out on the <a href="https://groups.google.com/group/zaproxy-scripts">ZAP Scripts Group</a>.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2024-06-27-polyfill.io-script-detection/"> Polyfill.io Script Detection</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/akshath-kothari_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Akshath Kothari
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/ricekot_">@ricekot_</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-to-expose-a-script-as-a-scan-rule">How to Expose a Script as a Scan Rule</a></li>
+    <li><a href="#community-scripts">Community Scripts</a></li>
+    <li><a href="#rapid-prototyping">Rapid Prototyping</a></li>
+    <li><a href="#how-will-you-use-zap-scripts">How will you use ZAP scripts?</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/scanrules/">scanrules</a> </li>
+           
+           <li> <a href="/tags/scripts/">scripts</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/support/" title="Support page">Support</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2024-07-17-script-scan-rules/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2024 the ZAP Dev Team</br>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.45b737.js"></script>
+  
+</div>
+</body>
+</html>
