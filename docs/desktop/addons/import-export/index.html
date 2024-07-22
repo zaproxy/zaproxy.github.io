@@ -1734,7 +1734,16 @@
 <p>Provides a context menu to save content of HTTP messages as XML.</p>
 
 <h1 id="import-har-http-archive-file">Import HAR (HTTP Archive File)</h1>
-<p>An option to import messages from a HTTP Archive (HAR), available via the &lsquo;Import&rsquo; menu.</p>
+<p>An option to import messages from a HTTP Archive (HAR), available via the &lsquo;Import&rsquo; menu. <strong>Note</strong> : The following modifications may be made when importing a HAR (HTTP Archive File):</p>
+<ul>
+<li>
+<p>Missing HTTP Version - If the message is missing the httpVersion attribute it will be set to &ldquo;HTTP/1.1&rdquo;.</p>
+</li>
+<li>
+<p>HTTP Version 3 - If the message has its httpVersion attribute set as &ldquo;h3&rdquo;, &ldquo;http/3&rdquo;, &ldquo;http/3.0&rdquo; it will be set to &ldquo;HTTP/2&rdquo;.</p>
+</li>
+<li>
+<p>Carriage return (CR) or Line feed (LF) in Headers - If the message contains headers with CR or LF, the CRLF(s) will be removed.</p>
 
 <h1 id="import-log-file">Import Log File</h1>
 <p>Allows you to import log files from ModSecurity and files previously exported from ZAP.</p>
@@ -1776,6 +1785,8 @@ This can be used, amongst other things, to compare the URLs available to users w
 <li><code>/exim/other/exportHar (baseurl start count)</code></li>
 <li><code>/exim/other/exportHarById (ids*)</code></li>
 <li><code>/exim/other/sendHarRequest (request* followRedirects)</code></li>
+</ul>
+</li>
 </ul>
 
         </div>
