@@ -1773,24 +1773,6 @@ Redirects are ignored except at the Low threshold.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/PermissionsPolicyScanRule.java">PermissionsPolicyScanRule.java</a><br>
 Alert ID: <a href="/docs/alerts/10063/">10063</a></p>
 
-<h2 id="id-10115">Script Served From Malicious Domain (polyfill) <a class="header-link" href="#id-10115"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>This checks for scripts being served from one of the &lsquo;polyfill&rsquo; domains, which are known to have been compromised.<br>
-It will raise an alert with a High confidence if a script is loaded from one of the malicious domains, and a Low confidence if it just finds an apparent reference to one of the malicious domains in the script contents.</p>
-<p>The known malicious &lsquo;polyfill&rsquo; domains are:</p>
-<ul>
-<li>polyfill.io</li>
-<li>bootcdn.net</li>
-<li>bootcss.com</li>
-<li>staticfile.net</li>
-<li>staticfile.org</li>
-<li>unionadjs.com</li>
-<li>xhsbpza.com</li>
-<li>union.macoms.la</li>
-<li>newcrbpc.com</li>
-</ul>
-<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/PolyfillCdnScriptScanRule.java">PolyfillCdnScriptScanRule.java</a></p>
-<p>Alert ID: <a href="/docs/alerts/10115/">10115</a>.</p>
-
 <h2 id="id-90004">Site Isolation Scan Rule <a class="header-link" href="#id-90004"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Spectre is a side-channel attack allowing an attacker to read data from memory. One of the counter-measures is to prevent sensitive data from entering the memory and to separate trusted and untrusted documents in different browsing contexts. Three headers have been defined to enable that:</p>
 <ul>
