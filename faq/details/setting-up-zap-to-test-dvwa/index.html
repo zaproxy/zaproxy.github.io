@@ -152,7 +152,7 @@
 </span></span><span style="display:flex;"><span>cd DVWA
 </span></span><span style="display:flex;"><span>docker compose up -d
 </span></span></code></pre></div><p>To run a full authenticated scan against DVWA download and import the
-<a href="/docs/automate/automation-framework/">Automation Frmework</a> plan:</p>
+<a href="/docs/automate/automation-framework/">Automation Framework</a> plan:</p>
 <ul>
 <li><a href="https://github.com/zaproxy/community-scripts/blob/main/other/af-plans/FullScanDvwaAuth.yaml">https://github.com/zaproxy/community-scripts/blob/main/other/af-plans/FullScanDvwaAuth.yaml</a></li>
 </ul>
@@ -168,6 +168,14 @@
 <li>SQL Injection (various varieties)</li>
 <li>Server Side Request Forgery</li>
 </ul>
+<p>Note that while ZAP can detect persistent XSS vulnerabilities it will not do so with DVWA,
+even though it has one (which it refers to as a stored XSS).</p>
+<p>This is because the vulnerability is in a &ldquo;Guestbook&rdquo; and on the same page theres an option to &ldquo;Clear Guestbook&rdquo;.</p>
+<p>ZAP injects unique tokens and then crawls the target again to see if they appear anywhere else.
+As part of that crawling it hits the &ldquo;Clear Guestbook&rdquo; functionality and wipes out the injected values.
+This is one of the many challenges you can find when attacking test vulnerable apps but which are much
+less likely in real world apps.</p>
+<p>ZAP does still find the XSS but reports it as a Reflected XSS &#x1f601;</p>
 
           </main>
       </article>
