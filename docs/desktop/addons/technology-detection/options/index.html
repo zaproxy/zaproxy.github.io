@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Persist Session dialog</title>
+  <title>ZAP &ndash; Options Tech Detection screen</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -137,7 +137,7 @@
     
     
         
-    <li data-depth="1" class="">
+    <li data-depth="1" class="tree-branch-active">
                 <a href="/docs/desktop/addons/">Add-ons</a>
         <ul class="tree-branch">
     <li data-depth="2" class="">
@@ -1100,13 +1100,13 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/technology-detection/">Technology Detection</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/technology-detection/api/">Technology Detection API</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/technology-detection/options/">Options Tech Detection screen</a>
                         </li>
         </ul>
@@ -1442,10 +1442,10 @@
     
     
         
-    <li data-depth="1" class="tree-branch-active">
+    <li data-depth="1" class="">
                 <a href="/docs/desktop/ui/">Desktop UI Overview</a>
         <ul class="tree-branch">
-    <li data-depth="2" class="tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/ui/dialogs/">Dialogs</a>
         <ul class="tree-branch">  
                         <li> 
@@ -1568,7 +1568,7 @@
         </ul>
     </li>
   
-                        <li class="tree-active"> 
+                        <li> 
                             <a href="/docs/desktop/ui/dialogs/persistsession/">Persist Session dialog</a>
                         </li>  
                         <li> 
@@ -1713,64 +1713,34 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/ui/'>Desktop UI Overview</a>
+        <a href='/docs/desktop/addons/'>Add-ons</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/ui/dialogs/'>Dialogs</a>
+        <a href='/docs/desktop/addons/technology-detection/'>Technology Detection</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/ui/dialogs/persistsession/'>Persist Session dialog</a>
+        <a href='/docs/desktop/addons/technology-detection/options/'>Options Tech Detection screen</a>
     </li>
 
 
 </ol>
           
-<h1 id="persist-session-dialog">Persist Session dialog</h1>
-<p>This dialog is shown by default whenever you start a new session, which always happens when ZAP starts.<br>
-It allows you to specify how you would like this session persisted, you can also set the default choice so that you are not prompted again.</p>
-<p>Persisting a session means it will be stored in a local database that you can access at a later date.<br>
-You do not need to keep &lsquo;saving&rsquo; a session as everything that happens in the session is continually recorded.<br>
-It is much faster to persist a session at the start, but you can always persist a session later if you need to.<br>
-If you close ZAP without persisting your session then you will not be able to access it again.</p>
+<h1 id="options-tech-detection-screen">Options Tech Detection screen</h1>
+<p>This screen allows you to configure the <a href="/docs/desktop/addons/technology-detection/">Tech Detection</a> options:</p>
 
-<h3 id="yes-i-want-to-persist-this-session-with-name-based-on-the-current-timestamp">Yes, I want to persist this session with name based on the current timestamp <a class="header-link" href="#yes-i-want-to-persist-this-session-with-name-based-on-the-current-timestamp"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Chose this option if you would like ZAP to store the session in the default directory with a name based on the current time.</p>
+<h3 id="mode">Mode <a class="header-link" href="#mode"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Mode which controls the behavior of the technology detection passive scan rule. This Mode is persisted between ZAP sessions.</p>
+<ul>
+<li>Quick &gt; Return on first match; which may mean missing version information, but should be slightly more performant. (This is the default.)</li>
+<li>Exhaustive &gt; Keep matching and don&rsquo;t return early; likely slightly less performant.</li>
+</ul>
 
-<h3 id="yes-i-want-to-persist-this-session-but-i-want-to-specify-the-name-and-location">Yes, I want to persist this session but I want to specify the name and location <a class="header-link" href="#yes-i-want-to-persist-this-session-but-i-want-to-specify-the-name-and-location"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Chose this option if you would like to specify exactly where ZAP should store the session.</p>
-
-<h3 id="no-i-do-not-want-to-persist-this-session-at-this-moment-in-time">No, I do not want to persist this session at this moment in time <a class="header-link" href="#no-i-do-not-want-to-persist-this-session-at-this-moment-in-time"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Chose this option if you do not want ZAP to store the session.<br>
-You can choose to store it at a later time using the <a href="/docs/desktop/ui/tlmenu/file/">Persist Session&hellip;</a> menu item.</p>
-
-<h3 id="remember-my-choice-and-do-not-ask-me-again">Remember my choice and do not ask me again. <a class="header-link" href="#remember-my-choice-and-do-not-ask-me-again"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Check this box if you want ZAP to remember your decision and not prompt you again.<br>
-You can change your decision via the <a href="/docs/desktop/ui/dialogs/options/database/">Options database</a> screen.</p>
-
-<h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/">UI Overview</a></td>
-<td>for an overview of the user interface</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/ui/dialogs/">Dialogs</a></td>
-<td>for details of the dialogs or popups</td>
-</tr>
-</tbody>
-</table>
+<h3 id="10004">Alerts <a class="header-link" href="#10004"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Allows the user to select whether or not the technology detection passive scan rule should raise alerts as technologies are identified (Enabled by default). Alerts are Informational and include the Tech Name, a Description of the tech if available, Other Info may include CPE or version details, and References may contain Tech specific URLs.</p>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/wappalyzer/src/main/java/org/zaproxy/zap/extension/wappalyzer/TechPassiveScanner.java">TechPassiveScanner.java</a></p>
+<p>Alert ID: <a href="/docs/alerts/10004/">10004</a></p>
 
         </div>
       </div>
