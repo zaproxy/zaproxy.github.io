@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; ASP.NET ViewState Disclosure</title>
+  <title>ZAP &ndash; Tech Detected - Apache HTTP Server</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -127,7 +127,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">ASP.NET ViewState Disclosure</h1>
+      <h1 class="text--white">Tech Detected - Apache HTTP Server</h1>
   </div>
 </section>
 
@@ -151,19 +151,19 @@
               <td>
                 <strong>Alert ID</strong>
               </td>
-              <td>10094-1</td>
+              <td>10004</td>
             </tr>
             <tr> 
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Passive</td>
+              <td>Tool</td>
             </tr>
             <tr> 
               <td>
                 <strong>Status</strong>
               </td>
-              <td>alpha</td>
+              <td>release</td>
             </tr>
             <tr> 
               <td>
@@ -206,10 +206,6 @@
               
               	<a href="/alerttags/cwe-200">CWE-200</a><br>
               
-              	<a href="/alerttags/owasp_2017_a03">OWASP_2017_A03</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a04">OWASP_2021_A04</a><br>
-              
               </td>
             </tr>
             
@@ -218,7 +214,7 @@
                 <strong>More Info</strong>
               </td>
               <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules-alpha/#id-10094">Scan Rule Help</a><br>
+              	<a href="https://www.zaproxy.org/docs/desktop/addons/technology-detection/options/#10004">Scan Rule Help</a><br>
               </td>
             </tr>
             
@@ -229,35 +225,29 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>An ASP.NET ViewState was disclosed by the application/web server.</p>
+          <p>The following &ldquo;Web servers&rdquo; technology was identified: Apache HTTP Server.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Manually confirm that the ASP.NET ViewState does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.
+          
         </div>
         <div data-attr="other" class="mb-20">
           <h3 class="mb-10">Other Info</h3>
-          
+          The following CPE is associated with the identified tech: cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:* The following version(s) is/are associated with the identified tech: 2.4.7
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="https://learn.microsoft.com/en-us/previous-versions/bb386448%28v=vs.140%29">https://learn.microsoft.com/en-us/previous-versions/bb386448(v=vs.140)</a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="https://projects.webappsec.org/w/page/13246936/Information%20Leakage">https://projects.webappsec.org/w/page/13246936/Information%20Leakage</a>
+              <a href="https://httpd.apache.org">https://httpd.apache.org</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesAlpha/src/main/java/org/zaproxy/zap/extension/pscanrulesAlpha/Base64Disclosure.java'>org/zaproxy/zap/extension/pscanrulesAlpha/Base64Disclosure.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/wappalyzer/src/main/java/org/zaproxy/zap/extension/wappalyzer/ExtensionWappalyzer.java'>org/zaproxy/zap/extension/wappalyzer/ExtensionWappalyzer.java</a>
       </section>
   </main>
 </div>
