@@ -1760,65 +1760,65 @@ You can replace them (and upgrade fuzzdb) by downloading the latest version of f
 <h3 id="issue-244-port-the-watcher-passive-checks">Issue 244: Port the Watcher passive checks <a class="header-link" href="#issue-244-port-the-watcher-passive-checks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The following checks have been ported from Watcher (thanks to Chris Weber for oking this):</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td>Check.Pasv.CrossDomain.ScriptReference.cs</td>
-<td>checks for cross-domain javascript files inclusion.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.Header.CacheControl.cs</td>
-<td>checks HTTP cache-control header on SSL pages.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.Header.ContentTypeMissing.cs</td>
-<td>checks that the Content-Type HTTP header is not missing.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.Header.FrameOptions.cs</td>
-<td>checks that the X-FRAME-OPTIONS is not missing or insecurely set.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.Header.IeXssProtection.cs</td>
-<td>checks that the X-XSS-Protection has not been set to disable IE&rsquo;s XSS protection.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.Header.MimeSniff.cs</td>
-<td>checks that the X-CONTENT-TYPE-OPTIONS has been set.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.InformationDisclosure.DatabaseErrors.cs</td>
-<td>checks for database error messages.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.InformationDisclosure.DebugErrors.cs</td>
-<td>checks for debugging error messages.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.InformationDisclosure.InUrl.cs</td>
-<td>checks for information disclosure in URL parameters.</td>
-</tr>
-<tr>
-<td></td>
-<td>Check.Pasv.InformationDisclosure.ReferrerLeak.cs</td>
-<td>checks HTTP Referer header for information disclosure.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.CrossDomain.ScriptReference.cs</td>
+          <td style="text-align: left">checks for cross-domain javascript files inclusion.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.Header.CacheControl.cs</td>
+          <td style="text-align: left">checks HTTP cache-control header on SSL pages.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.Header.ContentTypeMissing.cs</td>
+          <td style="text-align: left">checks that the Content-Type HTTP header is not missing.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.Header.FrameOptions.cs</td>
+          <td style="text-align: left">checks that the X-FRAME-OPTIONS is not missing or insecurely set.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.Header.IeXssProtection.cs</td>
+          <td style="text-align: left">checks that the X-XSS-Protection has not been set to disable IE&rsquo;s XSS protection.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.Header.MimeSniff.cs</td>
+          <td style="text-align: left">checks that the X-CONTENT-TYPE-OPTIONS has been set.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.InformationDisclosure.DatabaseErrors.cs</td>
+          <td style="text-align: left">checks for database error messages.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.InformationDisclosure.DebugErrors.cs</td>
+          <td style="text-align: left">checks for debugging error messages.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.InformationDisclosure.InUrl.cs</td>
+          <td style="text-align: left">checks for information disclosure in URL parameters.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Check.Pasv.InformationDisclosure.ReferrerLeak.cs</td>
+          <td style="text-align: left">checks HTTP Referer header for information disclosure.</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="issue-253-plugable-extensions">Issue 253: Plugable extensions <a class="header-link" href="#issue-253-plugable-extensions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
@@ -1946,30 +1946,30 @@ You can replace them (and upgrade fuzzdb) by downloading the latest version of f
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/">Introduction</a></td>
-<td>the introduction to ZAP</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/releases/">Releases</a></td>
-<td>the full set of releases</td>
-</tr>
-<tr>
-<td></td>
-<td><a href="/docs/desktop/credits/">Credits</a></td>
-<td>the people and groups who have made this release possible</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><a href="/docs/desktop/">Introduction</a></td>
+          <td style="text-align: left">the introduction to ZAP</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><a href="/docs/desktop/releases/">Releases</a></td>
+          <td style="text-align: left">the full set of releases</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"><a href="/docs/desktop/credits/">Credits</a></td>
+          <td style="text-align: left">the people and groups who have made this release possible</td>
+      </tr>
+  </tbody>
 </table>
 
         </div>

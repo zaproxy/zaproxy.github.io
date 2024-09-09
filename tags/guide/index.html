@@ -154,9 +154,8 @@
                   Posted <span class="post-date">Monday February 7, 2022</span>
                   <span class="word-count fl-r"> 227 Words </span>
                 </section>
-                <section class="summary">Code Formatting The ZAP code must conform to standard formatting rules - if any changes do not conform then they will fail the build.
-Fortunately you do not have to worry about these too much - just run the task: ./gradlew spotlessApply.
-Linting While not currently mandatory, we do recommend running SonarLint against any changes you make and fixing anything that it reports.</section>
+                <section class="summary"><h3 id="code-formatting">Code Formatting <a class="header-link" href="#code-formatting"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The ZAP code must conform to standard formatting rules - if any changes do not conform then they will fail the build.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -167,9 +166,10 @@ Linting While not currently mandatory, we do recommend running SonarLint against
                   Posted <span class="post-date">Wednesday December 1, 2021</span>
                   <span class="word-count fl-r"> 374 Words </span>
                 </section>
-                <section class="summary">This document gives an overview of the automatic and manual components provided by OWASP Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2021 risks.
-For the previous Top Ten see ZAPping the OWASP Top 10 (2017)
-Note that the OWASP Top Ten Project risks cover a wide range of underlying vulnerabilities, some of which are not really possible to test for in a completely automated way.</section>
+                <section class="summary"><p>This document gives an overview of the automatic and manual components provided by OWASP Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2021 risks.</p>
+<p>For the previous Top Ten see <a href="/docs/guides/zapping-the-top-10-2017">ZAPping the OWASP Top 10 (2017)</a></p>
+<p>Note that the <a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten Project</a> risks cover a wide range of underlying vulnerabilities, some of which are not really possible to test for in a completely automated way.
+If a completely automated tool claims to protect you against the full OWASP Top Ten then you can be sure they are being ‘economical with the truth’!</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -180,8 +180,12 @@ Note that the OWASP Top Ten Project risks cover a wide range of underlying vulne
                   Posted <span class="post-date">Wednesday September 15, 2021</span>
                   <span class="word-count fl-r"> 229 Words </span>
                 </section>
-                <section class="summary">ZAP stores its session data in an HSQLDB file database. There is also experimental support for other database engines.
-Connecting to a Session Database Since ZAP locks its session file, it is only possible to view or modify the database when ZAP doesn&rsquo;t have the session open. Session files are usually stored under session/ in the default directory.</section>
+                <section class="summary"><p>ZAP stores its session data in an <a href="https://hsqldb.org/">HSQLDB</a> file database.
+There is also experimental support for <a href="https://github.com/zaproxy/zaproxy/tree/main/zap/src/main/dist/db">other database engines</a>.</p>
+
+<h2 id="connecting-to-a-session-database">Connecting to a Session Database <a class="header-link" href="#connecting-to-a-session-database"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Since ZAP locks its session file, it is only possible to view or modify the database when ZAP doesn&rsquo;t have the session open.
+Session files are usually stored under <code>session/</code> in the <a href="/faq/what-is-the-default-directory-that-zap-uses/">default directory</a>.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -192,9 +196,10 @@ Connecting to a Session Database Since ZAP locks its session file, it is only po
                   Posted <span class="post-date">Monday March 22, 2021</span>
                   <span class="word-count fl-r"> 703 Words </span>
                 </section>
-                <section class="summary">This guide explains how to make changes to ZAP using IntelliJ IDEA.
-Preparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of IntelliJ IDEA.
-Gradle Resources Working with ZAP in IntelliJ IDEA may need a bit more Java resources for the Gradle actions.</section>
+                <section class="summary"><p>This guide explains how to make changes to ZAP using IntelliJ IDEA.</p>
+
+<h2 id="preparation">Preparation <a class="header-link" href="#preparation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>You will need to have followed the <a href="../quick-start-build/">Quick Start Guide to Building ZAP</a> and installed a version of <a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a>.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -205,8 +210,12 @@ Gradle Resources Working with ZAP in IntelliJ IDEA may need a bit more Java reso
                   Posted <span class="post-date">Monday March 22, 2021</span>
                   <span class="word-count fl-r"> 650 Words </span>
                 </section>
-                <section class="summary">ZAP has a plugin architecture and new functionality is implemented via add-ons.
-Add-ons can be defined in any repository but most of the ones that the ZAP core team maintains live in zap-extensions. You should use this repository if you are planning on contributing your add-on to the ZAP project, but please talk to the ZAP Core team about this first via the ZAP Developer Group.</section>
+                <section class="summary"><p>ZAP has a plugin architecture and new functionality is implemented via add-ons.</p>
+<p>Add-ons can be defined in any repository but most of the ones that the ZAP core team maintains live in
+<a href="https://github.com/zaproxy/zap-extensions/">zap-extensions</a>.
+You should use this repository if you are planning on contributing your add-on to the ZAP project,
+but please talk to the ZAP Core team about this first via the <a href="https://groups.google.com/g/zaproxy-develop">ZAP Developer Group</a>.
+If you are planning on maintaining your add-on yourself then you should create it in another repository.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -217,8 +226,10 @@ Add-ons can be defined in any repository but most of the ones that the ZAP core 
                   Posted <span class="post-date">Thursday March 18, 2021</span>
                   <span class="word-count fl-r"> 564 Words </span>
                 </section>
-                <section class="summary">If you want to make changes to ZAP using the Eclipse IDE then you are in the right place.
-Preparation You will need to have followed the Quick Start Guide to Building ZAP and installed a version of Eclipse suitable for Java development. We would suggest the &ldquo;Eclipse IDE for Java Developers&rdquo; package.</section>
+                <section class="summary"><p>If you want to make changes to ZAP using the Eclipse IDE then you are in the right place.</p>
+
+<h2 id="preparation">Preparation <a class="header-link" href="#preparation"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>You will need to have followed the <a href="../quick-start-build/">Quick Start Guide to Building ZAP</a> and installed a version of <a href="https://www.eclipse.org/">Eclipse</a> suitable for Java development. We would suggest the &ldquo;Eclipse IDE for Java Developers&rdquo; <a href="https://www.eclipse.org/downloads/packages/">package</a>.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -229,8 +240,10 @@ Preparation You will need to have followed the Quick Start Guide to Building ZAP
                   Posted <span class="post-date">Tuesday March 9, 2021</span>
                   <span class="word-count fl-r"> 610 Words </span>
                 </section>
-                <section class="summary">The new Automation Framework will in time replace the Command Line and Packaged Scan options. It allows you to control ZAP via one YAML file and provides more flexibility while not being tied to any specific container technology.
-The Automation Framework is included with the latest version of ZAP as well as the stable docker image.</section>
+                <section class="summary"><p>The new Automation Framework will in time replace the Command Line and Packaged Scan options.
+It allows you to control ZAP via one YAML file and provides more flexibility while not being tied to any specific container technology.</p>
+<p>The Automation Framework is included with the latest version of ZAP as well as the stable docker image.
+The framework is plugable and many of the existing add-ons have been enhanced to support it.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -241,8 +254,9 @@ The Automation Framework is included with the latest version of ZAP as well as t
                   Posted <span class="post-date">Wednesday January 20, 2021</span>
                   <span class="word-count fl-r"> 866 Words </span>
                 </section>
-                <section class="summary">This may look like a long list of rules but hopefully many of them are just good development practice.
-If you are just getting started with ZAP development then do not worry to much about them, but if you plan to make bigger contributions then you should check them before making too many changes that you might need to rework.</section>
+                <section class="summary"><p>This may look like a long list of rules but hopefully many of them are just good development practice.</p>
+<p>If you are just getting started with ZAP development then do not worry to much about them,
+but if you plan to make bigger contributions then you should check them before making too many changes that you might need to rework.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -253,8 +267,8 @@ If you are just getting started with ZAP development then do not worry to much a
                   Posted <span class="post-date">Friday December 4, 2020</span>
                   <span class="word-count fl-r"> 924 Words </span>
                 </section>
-                <section class="summary">Ever wanted to experiment with the ZAP codebase but felt intimidated by it? This guide will walk you through the process of building ZAP from the command line regardless of your operating system or IDE.
-You can also follow along with Simon Bennetts as he sets the ZAP development environment in this Deep Dive video:</section>
+                <section class="summary"><p>Ever wanted to experiment with the ZAP codebase but felt intimidated by it? This guide will walk you through the process of building ZAP from the command line regardless of your operating system or IDE.</p>
+<p>You can also follow along with Simon Bennetts as he sets the ZAP development environment in this <a href="/zap-deep-dive/">Deep Dive</a> video:</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -265,9 +279,10 @@ You can also follow along with Simon Bennetts as he sets the ZAP development env
                   Posted <span class="post-date">Thursday January 30, 2020</span>
                   <span class="word-count fl-r"> 417 Words </span>
                 </section>
-                <section class="summary">This document gives an overview of the automatic and manual components provided by OWASP Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2017 risks.
-For the latest Top Ten see ZAPping the OWASP Top 10 (2021)
-Note that the OWASP Top Ten Project risks cover a wide range of underlying vulnerabilities, some of which are not really possible to test for in a completely automated way.</section>
+                <section class="summary"><p>This document gives an overview of the automatic and manual components provided by OWASP Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2017 risks.</p>
+<p>For the latest Top Ten see <a href="/docs/guides/zapping-the-top-10-2021">ZAPping the OWASP Top 10 (2021)</a></p>
+<p>Note that the <a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten Project</a> risks cover a wide range of underlying vulnerabilities, some of which are not really possible to test for in a completely automated way.
+If a completely automated tool claims to protect you against the full OWASP Top Ten then you can be sure they are being ‘economical with the truth’!</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -278,8 +293,11 @@ Note that the OWASP Top Ten Project risks cover a wide range of underlying vulne
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 452 Words </span>
                 </section>
-                <section class="summary">These are the concepts that you will need to understand in order to configure authentication in ZAP.
-Contexts ZAP contexts are a way of relating a set of URLs together. You can define any contexts you like, but it is expected that a context will correspond to a web application.</section>
+                <section class="summary"><p>These are the concepts that you will need to understand in order to configure authentication in ZAP.</p>
+
+<h3 id="contexts">Contexts <a class="header-link" href="#contexts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>ZAP <a href="/docs/desktop/start/features/contexts/">contexts</a> are a way of relating a set of URLs together.
+You can define any contexts you like, but it is expected that a context will correspond to a web application.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -290,9 +308,16 @@ Contexts ZAP contexts are a way of relating a set of URLs together. You can defi
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 128 Words </span>
                 </section>
-                <section class="summary">The following SSO providers have documented solutions for automation.
-We will aim to test ZAP with as many of these providers as possible in order to provide specific ZAP integration details. If you would like to help with this effort then please get in touch &#x1f601;.
-Keycloak Documentation: https://www.</section>
+                <section class="summary"><p>The following SSO providers have documented solutions for automation.</p>
+<p>We will aim to test ZAP with as many of these providers as possible in order to provide specific ZAP integration details.
+If you would like to help with this effort then please get in touch &#x1f601;.</p>
+
+<h4 id="keycloak">Keycloak <a class="header-link" href="#keycloak"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<ul>
+<li>Documentation: <a href="https://www.keycloak.org/docs/latest/securing_apps/#_resource_owner_password_credentials_flow">https://www.keycloak.org/docs/latest/securing_apps/#_resource_owner_password_credentials_flow</a></li>
+<li>Test service: none</li>
+</ul>
+<p>Suggested way to get a session token using a direct grant:</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -303,8 +328,12 @@ Keycloak Documentation: https://www.</section>
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 354 Words </span>
                 </section>
-                <section class="summary">Authentication is a key way of restricting access to an app. Some authentication mechanisms also make it significantly harder to use tools like ZAP, even for those people who have permission to use them.
-Test in a Safe Environment Testing with valid credentials in a production environment is a really bad idea.</section>
+                <section class="summary"><p>Authentication is a key way of restricting access to an app.
+Some authentication mechanisms also make it significantly harder to use tools like ZAP, even for those people who have permission to use them.</p>
+
+<h3 id="test-in-a-safe-environment">Test in a Safe Environment <a class="header-link" href="#test-in-a-safe-environment"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Testing with valid credentials in a production environment is a really bad idea.
+You will pollute data stores with invalid data and you always run the risk of taking the service down or impacting valid users in some other way.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -315,8 +344,9 @@ Test in a Safe Environment Testing with valid credentials in a production enviro
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 336 Words </span>
                 </section>
-                <section class="summary">If you are just performing manual testing then authentication is generally easier.
-With manual testing you should be exploring the target app manually with a browser that is proxying through ZAP. In this case you can just use the valid credentials in the browser and in most cases you will be logged in.</section>
+                <section class="summary"><p>If you are just performing manual testing then authentication is generally easier.</p>
+<p>With manual testing you should be exploring the target app manually with a browser that is proxying through ZAP.
+In this case you can just use the valid credentials in the browser and in most cases you will be logged in.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -327,8 +357,10 @@ With manual testing you should be exploring the target app manually with a brows
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 614 Words </span>
                 </section>
-                <section class="summary">If ZAP is handling authentication then it needs to handle sessions as well - logging in is of no use if ZAP does not maintain the session as the target app will just treat ZAP as being unauthenticated.
-Session management configuration is part of a ZAP context.</section>
+                <section class="summary"><p><script type="text/javascript" async src="https://play.vidyard.com/embed/v4.js"></script>
+
+If ZAP is handling authentication then it needs to handle sessions as well - logging in is of no use if ZAP does not maintain the session as the target app will just treat ZAP as being unauthenticated.</p>
+<p><a href="/docs/desktop/start/features/sessionmanagement/">Session management</a> configuration is part of a ZAP context.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -339,10 +371,11 @@ Session management configuration is part of a ZAP context.</section>
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 204 Words </span>
                 </section>
-                <section class="summary">Authentication Methods are the means by which ZAP actually authenticates to a web app.
-The following methods are supported:
-Manual Authentication This is the default method, and means that you are handling authentication yourself.
-Auto Detect Auto-Detect Authentication indicates that the Authentication Request Identification passive scan rule should attempt to configure the Authentication method automatically.</section>
+                <section class="summary"><p>Authentication Methods are the means by which ZAP actually authenticates to a web app.</p>
+<p>The following methods are supported:</p>
+
+<h3 id="manual-authentication">Manual Authentication <a class="header-link" href="#manual-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This is the default method, and means that you are <a href="../manual-auth/">handling authentication yourself</a>.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -353,8 +386,12 @@ Auto Detect Auto-Detect Authentication indicates that the Authentication Request
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 305 Words </span>
                 </section>
-                <section class="summary">ZAP has options for auto-detecting all of the different parts of authentication that it requires. If they work for your apps then it will make your life considerably easier, so this is the best place for you to start.
-Authentication Tester Dialog The Authentication Tester Dialog is a quick and easy way to check if ZAP can automatically detect all of the information it needs - you only need to provide the URL of your login page and valid credentials.</section>
+                <section class="summary"><p>ZAP has options for auto-detecting all of the different parts of authentication that it requires.
+If they work for your apps then it will make your life considerably easier, so this is the best place for you to start.</p>
+
+<h3 id="authentication-tester-dialog">Authentication Tester Dialog <a class="header-link" href="#authentication-tester-dialog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/blog/2023-05-23-authentication-tester/">Authentication Tester Dialog</a> is a quick and easy way to check if ZAP can
+automatically detect all of the information it needs - you only need to provide the URL of your login page and valid credentials.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -365,7 +402,9 @@ Authentication Tester Dialog The Authentication Tester Dialog is a quick and eas
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 390 Words </span>
                 </section>
-                <section class="summary">ZAP cannot attack parts of the target app if it does not know about them. Exploring the app is key - the more effectively that is done the more effectively ZAP will be able to attack it. This is why ZAP has so many options for exploring apps.</section>
+                <section class="summary"><p>ZAP cannot attack parts of the target app if it does not know about them.
+Exploring the app is key - the more effectively that is done the more effectively ZAP will be able to attack it.
+This is why ZAP has so many options for exploring apps.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -376,9 +415,10 @@ Authentication Tester Dialog The Authentication Tester Dialog is a quick and eas
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 454 Words </span>
                 </section>
-                <section class="summary">If you want to use ZAP for automated security scanning then you have a wide range of options, also listed on the main Automate page.
-Also see the ZAP Chat 06 Automation Introduction video which talks about and demonstrates all of these options in more detail.
-Each of these options provides a different balance between ease of use and flexibility + functionality:</section>
+                <section class="summary"><p>If you want to use ZAP for automated security scanning then you have a wide range of options, also listed on the main
+<a href="/docs/automate/">Automate</a> page.</p>
+<p>Also see the <a href="https://www.youtube.com/watch?v=PnCbIAnauD8">ZAP Chat 06 Automation Introduction</a> video which talks about
+and demonstrates all of these options in more detail.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -389,8 +429,9 @@ Each of these options provides a different balance between ease of use and flexi
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 277 Words </span>
                 </section>
-                <section class="summary">If you ask a question related to authentication on one of the ZAP forums then you will be directed here.
-We know that the ZAP authentication documentation needs improving. One of the reasons why it has not been improved is that we are too busy trying to answer authentication questions &#x1f609;.</section>
+                <section class="summary"><p>If you ask a question related to authentication on one of the ZAP forums then you will be directed here.</p>
+<p>We know that the ZAP authentication documentation needs improving.
+One of the reasons why it has not been improved is that we are too busy trying to answer authentication questions &#x1f609;.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -401,8 +442,10 @@ We know that the ZAP authentication documentation needs improving. One of the re
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 770 Words </span>
                 </section>
-                <section class="summary">Docker is a great way to run ZAP in a CI/CD pipeline, but diagnosing problems can be tricky.
-ZAP Cannot Connect to the Target If ZAP cannot connect to your target app then the first thing to do is to see if this is a &lsquo;Docker&rsquo; networking issue.</section>
+                <section class="summary"><p>Docker is a great way to run ZAP in a CI/CD pipeline, but diagnosing problems can be tricky.</p>
+
+<h2 id="zap-cannot-connect-to-the-target">ZAP Cannot Connect to the Target <a class="header-link" href="#zap-cannot-connect-to-the-target"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>If ZAP cannot connect to your target app then the first thing to do is to see if this is a &lsquo;Docker&rsquo; networking issue.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -413,9 +456,9 @@ ZAP Cannot Connect to the Target If ZAP cannot connect to your target app then t
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 269 Words </span>
                 </section>
-                <section class="summary">If you need to set up ZAP to handle authentication then you really need to find a suitable verification URL in your app.
-You should always try Auto Detection first as if this works it will find a suitable verification URL for you.
-The verification URL will be one that you can request from the Manual Request Editor dialog and which will send a response that allows you to work out whether you are logged in or not.</section>
+                <section class="summary"><p>If you need to set up ZAP to handle authentication then you really need to find a suitable verification URL in your app.</p>
+<p>You should always try <a href="../auto-detection">Auto Detection</a> first as if this works it will find a suitable verification URL for you.</p>
+<p>The verification URL will be one that you can request from the <a href="/docs/desktop/addons/requester/dialogs/">Manual Request Editor dialog</a> and which will send a response that allows you to work out whether you are logged in or not. What that looks like will entirely depend on your app, but could be something like:</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -426,8 +469,10 @@ The verification URL will be one that you can request from the Manual Request Ed
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 461 Words </span>
                 </section>
-                <section class="summary">If you can generate an authentication token (e.g. to use in a header or cookie) and you know that your app will not invalidate it while you are using ZAP then one option is to handle authentication yourself.
-In this case you take on the responsibility for handling the authentication and session handling.</section>
+                <section class="summary"><p>If you can generate an authentication token (e.g. to use in a header or cookie) and you know that your app
+will not invalidate it while you are using ZAP then one option is to handle authentication yourself.</p>
+<p>In this case you take on the responsibility for handling the authentication and session handling.
+This means that you do not have to configure ZAP as much but it also means that ZAP will not be able to help you as much.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -438,9 +483,10 @@ In this case you take on the responsibility for handling the authentication and 
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 1181 Words </span>
                 </section>
-                <section class="summary">The ZAP API scan is a script that is available in the ZAP Docker images.
-It is tuned for performing scans against APIs defined by OpenAPI, SOAP, or GraphQL via either a local file or a URL.
-It imports the definition that you specify and then runs an Active Scan against the URLs found.</section>
+                <section class="summary"><p>The ZAP API scan is a script that is available in the ZAP <a href="../about/">Docker</a> images.</p>
+<p>It is tuned for performing scans against APIs defined by OpenAPI, SOAP, or GraphQL via either a local file or a URL.</p>
+<p>It imports the definition that you specify and then runs an Active Scan against the URLs found.
+The Active Scan is tuned to APIs, so it doesn&rsquo;t bother looking for things like XSSs.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -451,9 +497,9 @@ It imports the definition that you specify and then runs an Active Scan against 
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 1378 Words </span>
                 </section>
-                <section class="summary">The ZAP Baseline scan is a script that is available in the ZAP Docker images.
-It runs the ZAP spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.
-This means that the script doesn&rsquo;t perform any actual &lsquo;attacks&rsquo; and will run for a relatively short period of time (a few minutes at most).</section>
+                <section class="summary"><p>The ZAP Baseline scan is a script that is available in the ZAP <a href="../about/">Docker</a> images.</p>
+<p>It runs the ZAP spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.</p>
+<p>This means that the script doesn&rsquo;t perform any actual &lsquo;attacks&rsquo; and will run for a relatively short period of time (a few minutes at most).</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -464,9 +510,8 @@ This means that the script doesn&rsquo;t perform any actual &lsquo;attacks&rsquo
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 619 Words </span>
                 </section>
-                <section class="summary">The ZAP full scan is a script that is available in the ZAP Docker images.
-It runs the ZAP spider against the specified target (by default with no time limit) followed by an optional ajax spider scan and then a full active scan before reporting the results.
-This means that the script does perform actual &lsquo;attacks&rsquo; and can potentially run for a long period of time.</section>
+                <section class="summary"><p>The ZAP full scan is a script that is available in the ZAP <a href="../about/">Docker</a> images.</p>
+<p>It runs the ZAP spider against the specified target (by default with no time limit) followed by an optional ajax spider scan and then a full active scan before reporting the results.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -477,9 +522,16 @@ This means that the script does perform actual &lsquo;attacks&rsquo; and can pot
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 362 Words </span>
                 </section>
-                <section class="summary">Scan Hooks To make it easy to make little tweaks here and there a hook system is in place to help you. It enables you to override or modify behaviour of the script components instead of having to write a new script.
-Use Cases Modifying Args
-For the AJAX crawler you may want to target a suburl with a specific hash (http://example.</section>
+                <section class="summary"><h1 id="scan-hooks">Scan Hooks</h1>
+<p>To make it easy to make little tweaks here and there a hook system is in place to help you.
+It enables you to override or modify behaviour of the script components instead of having
+to write a new script.</p>
+
+<h2 id="use-cases">Use Cases <a class="header-link" href="#use-cases"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p><strong>Modifying Args</strong><br>
+For the AJAX crawler you may want to target a suburl with a specific
+hash (<code>http://example.com</code> vs <code>http://example.com/#/dashboard</code>). You can use the
+<code>zap_ajax_spider</code> hook to intercept the arguments and modify them.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -490,9 +542,21 @@ For the AJAX crawler you may want to target a suburl with a specific hash (http:
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 483 Words </span>
                 </section>
-                <section class="summary">Starting with version 2.5.0 you can run the ZAP Desktop UI in your browser without having to install Java, thanks to the magic of Docker and Webswing
-To do this you will just need Docker installed. Start the container with webswing support:
-Stable: docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.</section>
+                <section class="summary"><p>Starting with version 2.5.0 you can run the ZAP Desktop UI in your browser without having to install Java, thanks to the magic of <a href="https://www.docker.com/">Docker</a> and <a href="https://www.webswing.org">Webswing</a></p>
+<p>To do this you will just need Docker installed. Start the container with webswing support:</p>
+<ul>
+<li>Stable:
+<ul>
+<li><code>docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.io/zaproxy/zaproxy:stable zap-webswing.sh</code></li>
+</ul>
+</li>
+<li>Weekly:
+<ul>
+<li><code>docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.io/zaproxy/zaproxy:weekly zap-webswing.sh</code></li>
+</ul>
+</li>
+</ul>
+<p>Then point your browser at:</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -503,9 +567,20 @@ Stable: docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.</section>
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 1371 Words </span>
                 </section>
-                <section class="summary">Introduction Docker image with Zed Attack Proxy preinstalled.
-Please note that ZAP Docker images are available on Docker Hub as well as GitHub Container Registry (GHCR). While the docker run commands on this page use the Docker Hub images, either can be used interchangeably.
-Details Install Instructions Stable The stable image is updated whenever there is a ZAP full release.</section>
+                <section class="summary"><h1 id="introduction">Introduction</h1>
+<p>Docker image with Zed Attack Proxy preinstalled.</p>
+<p>Please note that ZAP Docker images are available on Docker Hub as well as GitHub Container Registry (GHCR).
+While the <code>docker run</code> commands on this page use the Docker Hub images, either can be used interchangeably.</p>
+
+<h1 id="details">Details</h1>
+
+<h2 id="install-instructions">Install Instructions <a class="header-link" href="#install-instructions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h4 id="stable">Stable <a class="header-link" href="#stable"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The stable image is updated whenever there is a ZAP full release.
+It is also regenerated monthly, typically on the first Monday of the month.
+The monthly updates pull in the latest base Docker image and also any updated ZAP add-ons - no ZAP &lsquo;core&rsquo;
+changes are included.</p></section>
             </article>
           
         </div>

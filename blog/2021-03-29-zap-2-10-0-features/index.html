@@ -212,70 +212,70 @@ The control appears just below the Main Toolbar and is aligned directly above th
 <p>The Encode/Decode/Hash functionality provided by ZAP is now scriptable and is now provided via an add-on, so it can be updated between main releases.</p>
 <p>It still supports a lot of default transformations:</p>
 <table>
-<thead>
-<tr>
-<th>Encoder</th>
-<th>Decoders</th>
-<th>Hashers</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2 byte Illegal UTF-8</td>
-<td>ASCII Hex Decode</td>
-<td>MD5</td>
-</tr>
-<tr>
-<td>3 byte Illegal UTF-8</td>
-<td>Base 64 Decode</td>
-<td>SHA1</td>
-</tr>
-<tr>
-<td>4 byte Illegal UTF-8</td>
-<td>Base 64 URL Decode</td>
-<td>SHA256</td>
-</tr>
-<tr>
-<td>ASCII Hex Encode</td>
-<td>HTML Decode</td>
-<td></td>
-</tr>
-<tr>
-<td>Base 64 Encode</td>
-<td>JavaScript Decode</td>
-<td></td>
-</tr>
-<tr>
-<td>Base 64 URL Encode</td>
-<td>URL Decode</td>
-<td></td>
-</tr>
-<tr>
-<td>HTML Encode</td>
-<td>Full URL Decode</td>
-<td></td>
-</tr>
-<tr>
-<td>JavaScript Encode</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>URL Encode</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Full URL Encode</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Unescaped Unicode Text</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Encoder</th>
+          <th style="text-align: left">Decoders</th>
+          <th style="text-align: left">Hashers</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">2 byte Illegal UTF-8</td>
+          <td style="text-align: left">ASCII Hex Decode</td>
+          <td style="text-align: left">MD5</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">3 byte Illegal UTF-8</td>
+          <td style="text-align: left">Base 64 Decode</td>
+          <td style="text-align: left">SHA1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">4 byte Illegal UTF-8</td>
+          <td style="text-align: left">Base 64 URL Decode</td>
+          <td style="text-align: left">SHA256</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ASCII Hex Encode</td>
+          <td style="text-align: left">HTML Decode</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Base 64 Encode</td>
+          <td style="text-align: left">JavaScript Decode</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Base 64 URL Encode</td>
+          <td style="text-align: left">URL Decode</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HTML Encode</td>
+          <td style="text-align: left">Full URL Decode</td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">JavaScript Encode</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">URL Encode</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Full URL Encode</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Unescaped Unicode Text</td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+  </tbody>
 </table>
 <p>Along with allowing users to create their own scripted transforms. For example say you wanted to be able to double space a string, you could add a JavaScript script such as:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">EncodeDecodeResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.zaproxy.addon.encoder.processors.EncodeDecodeResult&#34;</span>);

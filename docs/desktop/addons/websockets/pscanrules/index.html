@@ -1752,284 +1752,284 @@
 The regular expression which is used to identify the Base64 string is based on padding characters. As result False Negative may occur if the encoded string has length N bits where (N)mod6 = 0. On the other hand, False Positives may occur if the input text contains strings ending with &lsquo;=&rsquo;.</p>
 <p>Examples:</p>
 <table>
-<thead>
-<tr>
-<th>Original</th>
-<th>Payload</th>
-<th>Outcome</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Hello World</td>
-<td>SGVsbG8gV29ybGQ=</td>
-<td>True Positive</td>
-</tr>
-<tr>
-<td>Hello World</td>
-<td>THIS_ISSGVsbG8gV29ybGQ=TEXT</td>
-<td>True Positive</td>
-</tr>
-<tr>
-<td>Hello World!</td>
-<td>SGVsbG8gV29ybGQK</td>
-<td>False Negative</td>
-</tr>
-<tr>
-<td>122==122</td>
-<td><em>Invalid</em></td>
-<td>False Positive</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Original</th>
+          <th style="text-align: left">Payload</th>
+          <th style="text-align: left">Outcome</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Hello World</td>
+          <td style="text-align: left">SGVsbG8gV29ybGQ=</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Hello World</td>
+          <td style="text-align: left">THIS_ISSGVsbG8gV29ybGQ=TEXT</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Hello World!</td>
+          <td style="text-align: left">SGVsbG8gV29ybGQK</td>
+          <td style="text-align: left">False Negative</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">122==122</td>
+          <td style="text-align: left"><em>Invalid</em></td>
+          <td style="text-align: left">False Positive</td>
+      </tr>
+  </tbody>
 </table>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Info</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>Medium</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">Info</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">Medium</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="information-disclosure-application-errors">Information Disclosure: Application Errors <a class="header-link" href="#information-disclosure-application-errors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This passive scanner checks incoming WebSocket message payload for known Application Error messages. Access to such details may provide a malicious individual with means by which to further abuse the web site. They may also leak data not specifically meant for end user consumption.</p>
 <p>Examples:</p>
 <table>
-<thead>
-<tr>
-<th>Use case</th>
-<th>Outcome</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Warning: Cannot modify header information - headers already sent</td>
-<td>True Positive</td>
-</tr>
-<tr>
-<td>&rsquo;this&rsquo; is null or not an object</td>
-<td>True Positive</td>
-</tr>
-<tr>
-<td>System.Data.OleDb.OleDbException: Syntax error in string in query expression &lsquo;User ID = ? And Password = ?&rsquo;</td>
-<td>True Positive</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Use case</th>
+          <th style="text-align: left">Outcome</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Warning: Cannot modify header information - headers already sent</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">&rsquo;this&rsquo; is null or not an object</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">System.Data.OleDb.OleDbException: Syntax error in string in query expression &lsquo;User ID = ? And Password = ?&rsquo;</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+  </tbody>
 </table>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Medium</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>Medium</td>
-</tr>
-<tr>
-<td><strong>CWE ID</strong></td>
-<td>209: Information Exposure Through an Error Message</td>
-</tr>
-<tr>
-<td><strong>WASC ID</strong></td>
-<td>13: Information Leakage</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">Medium</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">Medium</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CWE ID</strong></td>
+          <td style="text-align: left">209: Information Exposure Through an Error Message</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>WASC ID</strong></td>
+          <td style="text-align: left">13: Information Leakage</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="information-disclosure-credit-card-number">Information Disclosure: Credit Card Number <a class="header-link" href="#information-disclosure-credit-card-number"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This script scans for the presence of Personally Information Identifiable in incoming WebSocket message payload. More specifically, it passively scans payload for credit card numbers. The available scans are for the following credit card types: {American Express, Diners Club, Discover, Jcb, Maestro, Master Card, Visa}.</p>
 <p>Examples:</p>
 <table>
-<thead>
-<tr>
-<th>Use case</th>
-<th>Outcome</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5264 8109 66944441</td>
-<td>True Positive</td>
-</tr>
-<tr>
-<td>{&ldquo;z&rdquo;:0.4333009597918351}</td>
-<td>False Positive</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Use case</th>
+          <th style="text-align: left">Outcome</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">5264 8109 66944441</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">{&ldquo;z&rdquo;:0.4333009597918351}</td>
+          <td style="text-align: left">False Positive</td>
+      </tr>
+  </tbody>
 </table>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>High</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>High</td>
-</tr>
-<tr>
-<td><strong>CWE ID</strong></td>
-<td>359: Exposure of Private Information (&lsquo;Privacy Violation&rsquo;)</td>
-</tr>
-<tr>
-<td><strong>WASC ID</strong></td>
-<td>13: Information Leakage</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">High</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">High</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CWE ID</strong></td>
+          <td style="text-align: left">359: Exposure of Private Information (&lsquo;Privacy Violation&rsquo;)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>WASC ID</strong></td>
+          <td style="text-align: left">13: Information Leakage</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="information-disclosure-debug-errors">Information Disclosure: Debug Errors <a class="header-link" href="#information-disclosure-debug-errors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This script checks the incoming WebSocket message payload for known Debug Error message fragments. Access to such details may provide a malicious individual with means by which to further abuse the web site. They may also leak data not specifically meant for end user consumption.</p>
 <p>Examples:</p>
 <table>
-<thead>
-<tr>
-<th>Use case</th>
-<th>Outcome</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Error Occurred While Processing Request</td>
-<td>True Positive</td>
-</tr>
-<tr>
-<td>PHP Warning: Error While Sending QUERY Packet</td>
-<td>True Positive</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Use case</th>
+          <th style="text-align: left">Outcome</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Error Occurred While Processing Request</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">PHP Warning: Error While Sending QUERY Packet</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+  </tbody>
 </table>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Info</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>Medium</td>
-</tr>
-<tr>
-<td><strong>CWE ID</strong></td>
-<td>200: Information Exposure</td>
-</tr>
-<tr>
-<td><strong>WASC ID</strong></td>
-<td>13: Info Leakage</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">Info</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">Medium</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CWE ID</strong></td>
+          <td style="text-align: left">200: Information Exposure</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>WASC ID</strong></td>
+          <td style="text-align: left">13: Info Leakage</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="information-disclosure-email-address">Information Disclosure: Email address <a class="header-link" href="#information-disclosure-email-address"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This script scans incoming WebSocket messages for email addresses. Email addresses may be not specifically meant for end user consumption.</p>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Info</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>Info</td>
-</tr>
-<tr>
-<td><strong>CWE ID</strong></td>
-<td>200: Information Exposure</td>
-</tr>
-<tr>
-<td><strong>WASC ID</strong></td>
-<td>13: Information Leakage</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">Info</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">Info</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CWE ID</strong></td>
+          <td style="text-align: left">200: Information Exposure</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>WASC ID</strong></td>
+          <td style="text-align: left">13: Information Leakage</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="information-disclosure-suspicious-xml-comments">Information Disclosure: Suspicious XML Comments <a class="header-link" href="#information-disclosure-suspicious-xml-comments"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This script checks incoming WebSocket messages payloads, which are XML formatted, for suspicious comments. The comments it is searching for are relevant to components with which an attacker can extract useful information. Comments like FIXME, BUG, etc. might be helpful for further attacks targeting the weaknesses of the web application.</p>
 <p>Examples:</p>
 <table>
-<thead>
-<tr>
-<th>Use case</th>
-<th>Outcome</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>&lt;xml_test&gt;&lt;!-- This is a comments section --&gt;&lt;/xml_test&gt;</code></td>
-<td>True Negative</td>
-</tr>
-<tr>
-<td><code>&lt;user_form&gt;&lt;!-- FIXME: Encode --&gt;&lt;/user_form&gt;</code></td>
-<td>True Positive</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Use case</th>
+          <th style="text-align: left">Outcome</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>&lt;xml_test&gt;&lt;!-- This is a comments section --&gt;&lt;/xml_test&gt;</code></td>
+          <td style="text-align: left">True Negative</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>&lt;user_form&gt;&lt;!-- FIXME: Encode --&gt;&lt;/user_form&gt;</code></td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+  </tbody>
 </table>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Info</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>Medium</td>
-</tr>
-<tr>
-<td><strong>CWE ID</strong></td>
-<td>200: Information Exposure</td>
-</tr>
-<tr>
-<td><strong>WASC ID</strong></td>
-<td>13: Info Leakage</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">Info</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">Medium</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CWE ID</strong></td>
+          <td style="text-align: left">200: Information Exposure</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>WASC ID</strong></td>
+          <td style="text-align: left">13: Info Leakage</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="ip_add_disc">Private Address Disclosure <a class="header-link" href="#ip_add_disc"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
@@ -2037,41 +2037,41 @@ The regular expression which is used to identify the Base64 string is based on p
 This passive scanner may generate false positives in the case of larger dotted numeric strings, such as vp09.02.51.10.01.09.16, where the latter 4 octets appear to be a RFC 1918 IPv4 address. After review an analyst can mark such alerts as False Positives in ZAP.</p>
 <p>Examples:</p>
 <table>
-<thead>
-<tr>
-<th>Use case</th>
-<th>Outcome</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10.255.255.255</td>
-<td>True Positive</td>
-</tr>
-<tr>
-<td>ip-10.0.0.0</td>
-<td>True Positive</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Use case</th>
+          <th style="text-align: left">Outcome</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">10.255.255.255</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">ip-10.0.0.0</td>
+          <td style="text-align: left">True Positive</td>
+      </tr>
+  </tbody>
 </table>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Low</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>Medium</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">Low</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">Medium</td>
+      </tr>
+  </tbody>
 </table>
 
 <h3 id="username-disclosure">Username Disclosure <a class="header-link" href="#username-disclosure"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
@@ -2082,30 +2082,30 @@ This passive scanner may generate false positives in the case of larger dotted n
 </ol>
 <p>Default Values:</p>
 <table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Risk</strong></td>
-<td>Info</td>
-</tr>
-<tr>
-<td><strong>Confidence</strong></td>
-<td>High</td>
-</tr>
-<tr>
-<td><strong>CWE ID</strong></td>
-<td>284: Improper Access Control</td>
-</tr>
-<tr>
-<td><strong>WASC ID</strong></td>
-<td>2: Insufficient Authorization</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Risk</strong></td>
+          <td style="text-align: left">Info</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Confidence</strong></td>
+          <td style="text-align: left">High</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>CWE ID</strong></td>
+          <td style="text-align: left">284: Improper Access Control</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>WASC ID</strong></td>
+          <td style="text-align: left">2: Insufficient Authorization</td>
+      </tr>
+  </tbody>
 </table>
 
         </div>
