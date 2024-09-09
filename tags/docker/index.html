@@ -176,8 +176,10 @@
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 770 Words </span>
                 </section>
-                <section class="summary">Docker is a great way to run ZAP in a CI/CD pipeline, but diagnosing problems can be tricky.
-ZAP Cannot Connect to the Target If ZAP cannot connect to your target app then the first thing to do is to see if this is a &lsquo;Docker&rsquo; networking issue.</section>
+                <section class="summary"><p>Docker is a great way to run ZAP in a CI/CD pipeline, but diagnosing problems can be tricky.</p>
+
+<h2 id="zap-cannot-connect-to-the-target">ZAP Cannot Connect to the Target <a class="header-link" href="#zap-cannot-connect-to-the-target"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>If ZAP cannot connect to your target app then the first thing to do is to see if this is a &lsquo;Docker&rsquo; networking issue.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -188,9 +190,10 @@ ZAP Cannot Connect to the Target If ZAP cannot connect to your target app then t
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 1181 Words </span>
                 </section>
-                <section class="summary">The ZAP API scan is a script that is available in the ZAP Docker images.
-It is tuned for performing scans against APIs defined by OpenAPI, SOAP, or GraphQL via either a local file or a URL.
-It imports the definition that you specify and then runs an Active Scan against the URLs found.</section>
+                <section class="summary"><p>The ZAP API scan is a script that is available in the ZAP <a href="../about/">Docker</a> images.</p>
+<p>It is tuned for performing scans against APIs defined by OpenAPI, SOAP, or GraphQL via either a local file or a URL.</p>
+<p>It imports the definition that you specify and then runs an Active Scan against the URLs found.
+The Active Scan is tuned to APIs, so it doesn&rsquo;t bother looking for things like XSSs.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -201,9 +204,9 @@ It imports the definition that you specify and then runs an Active Scan against 
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 1378 Words </span>
                 </section>
-                <section class="summary">The ZAP Baseline scan is a script that is available in the ZAP Docker images.
-It runs the ZAP spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.
-This means that the script doesn&rsquo;t perform any actual &lsquo;attacks&rsquo; and will run for a relatively short period of time (a few minutes at most).</section>
+                <section class="summary"><p>The ZAP Baseline scan is a script that is available in the ZAP <a href="../about/">Docker</a> images.</p>
+<p>It runs the ZAP spider against the specified target for (by default) 1 minute and then waits for the passive scanning to complete before reporting the results.</p>
+<p>This means that the script doesn&rsquo;t perform any actual &lsquo;attacks&rsquo; and will run for a relatively short period of time (a few minutes at most).</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -214,9 +217,8 @@ This means that the script doesn&rsquo;t perform any actual &lsquo;attacks&rsquo
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 619 Words </span>
                 </section>
-                <section class="summary">The ZAP full scan is a script that is available in the ZAP Docker images.
-It runs the ZAP spider against the specified target (by default with no time limit) followed by an optional ajax spider scan and then a full active scan before reporting the results.
-This means that the script does perform actual &lsquo;attacks&rsquo; and can potentially run for a long period of time.</section>
+                <section class="summary"><p>The ZAP full scan is a script that is available in the ZAP <a href="../about/">Docker</a> images.</p>
+<p>It runs the ZAP spider against the specified target (by default with no time limit) followed by an optional ajax spider scan and then a full active scan before reporting the results.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -227,9 +229,16 @@ This means that the script does perform actual &lsquo;attacks&rsquo; and can pot
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 362 Words </span>
                 </section>
-                <section class="summary">Scan Hooks To make it easy to make little tweaks here and there a hook system is in place to help you. It enables you to override or modify behaviour of the script components instead of having to write a new script.
-Use Cases Modifying Args
-For the AJAX crawler you may want to target a suburl with a specific hash (http://example.</section>
+                <section class="summary"><h1 id="scan-hooks">Scan Hooks</h1>
+<p>To make it easy to make little tweaks here and there a hook system is in place to help you.
+It enables you to override or modify behaviour of the script components instead of having
+to write a new script.</p>
+
+<h2 id="use-cases">Use Cases <a class="header-link" href="#use-cases"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p><strong>Modifying Args</strong><br>
+For the AJAX crawler you may want to target a suburl with a specific
+hash (<code>http://example.com</code> vs <code>http://example.com/#/dashboard</code>). You can use the
+<code>zap_ajax_spider</code> hook to intercept the arguments and modify them.</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -240,9 +249,21 @@ For the AJAX crawler you may want to target a suburl with a specific hash (http:
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 483 Words </span>
                 </section>
-                <section class="summary">Starting with version 2.5.0 you can run the ZAP Desktop UI in your browser without having to install Java, thanks to the magic of Docker and Webswing
-To do this you will just need Docker installed. Start the container with webswing support:
-Stable: docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.</section>
+                <section class="summary"><p>Starting with version 2.5.0 you can run the ZAP Desktop UI in your browser without having to install Java, thanks to the magic of <a href="https://www.docker.com/">Docker</a> and <a href="https://www.webswing.org">Webswing</a></p>
+<p>To do this you will just need Docker installed. Start the container with webswing support:</p>
+<ul>
+<li>Stable:
+<ul>
+<li><code>docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.io/zaproxy/zaproxy:stable zap-webswing.sh</code></li>
+</ul>
+</li>
+<li>Weekly:
+<ul>
+<li><code>docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.io/zaproxy/zaproxy:weekly zap-webswing.sh</code></li>
+</ul>
+</li>
+</ul>
+<p>Then point your browser at:</p></section>
             </article>
           
             <article class="blog-post-preview pt-40 pb-40">
@@ -253,9 +274,20 @@ Stable: docker run -u zap -p 8080:8080 -p 8090:8090 -i ghcr.</section>
                   Posted <span class="post-date">Monday January 1, 0001</span>
                   <span class="word-count fl-r"> 1371 Words </span>
                 </section>
-                <section class="summary">Introduction Docker image with Zed Attack Proxy preinstalled.
-Please note that ZAP Docker images are available on Docker Hub as well as GitHub Container Registry (GHCR). While the docker run commands on this page use the Docker Hub images, either can be used interchangeably.
-Details Install Instructions Stable The stable image is updated whenever there is a ZAP full release.</section>
+                <section class="summary"><h1 id="introduction">Introduction</h1>
+<p>Docker image with Zed Attack Proxy preinstalled.</p>
+<p>Please note that ZAP Docker images are available on Docker Hub as well as GitHub Container Registry (GHCR).
+While the <code>docker run</code> commands on this page use the Docker Hub images, either can be used interchangeably.</p>
+
+<h1 id="details">Details</h1>
+
+<h2 id="install-instructions">Install Instructions <a class="header-link" href="#install-instructions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h4 id="stable">Stable <a class="header-link" href="#stable"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The stable image is updated whenever there is a ZAP full release.
+It is also regenerated monthly, typically on the first Monday of the month.
+The monthly updates pull in the latest base Docker image and also any updated ZAP add-ons - no ZAP &lsquo;core&rsquo;
+changes are included.</p></section>
             </article>
           
         </div>

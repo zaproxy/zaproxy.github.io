@@ -175,78 +175,78 @@
 The following table lists the changes in the Spider&rsquo;s behaviour after said updates.</p>
 <p>The next weekly will include changes allowing users to specify <a href="https://github.com/zaproxy/zaproxy/pull/4398">Irrelevant parameters</a> which the Spider should ignore when <a href="/docs/desktop/ui/dialogs/options/spider/#query-parameters-handling">determining what resources were already visited</a>.</p>
 <table>
-<thead>
-<tr>
-<th>Before</th>
-<th>With</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Base - Proper handling</td>
-<td>Base - Proper handling</td>
-</tr>
-<tr>
-<td>A, Link, Area - ‘href’ attribute</td>
-<td>A, Link, Area - &lsquo;href&rsquo; attribute</td>
-</tr>
-<tr>
-<td>Frame, IFrame, Script, Img - ‘src’ attribute</td>
-<td>Applet, Audio, Embed, Frame, IFrame, Input, Script, Img, Video - &lsquo;src&rsquo; attribute</td>
-</tr>
-<tr>
-<td>Meta - ‘http-equiv’ for ’location’ and ‘refresh’</td>
-<td>Meta - &lsquo;http-equiv&rsquo; for &rsquo;location&rsquo;, &lsquo;refresh&rsquo; and &lsquo;Content-Security-Policy&rsquo;, &rsquo;name&rsquo; for &lsquo;msapplication-config&rsquo;</td>
-</tr>
-<tr>
-<td></td>
-<td>Applet - &lsquo;codebase&rsquo;, &lsquo;archive&rsquo; attributes</td>
-</tr>
-<tr>
-<td></td>
-<td>Img - &rsquo;longdesc&rsquo;, &rsquo;lowsrc&rsquo;, &lsquo;dynsrc&rsquo;, &lsquo;srcset&rsquo; attributes</td>
-</tr>
-<tr>
-<td></td>
-<td>Isindex - &lsquo;action&rsquo; attribute</td>
-</tr>
-<tr>
-<td></td>
-<td>Object - &lsquo;codebase&rsquo;, &lsquo;data&rsquo; attributes</td>
-</tr>
-<tr>
-<td></td>
-<td>Svg - &lsquo;href&rsquo; and &lsquo;xlink:href&rsquo; attributes of &lsquo;image&rsquo; and &lsquo;script&rsquo; elements</td>
-</tr>
-<tr>
-<td></td>
-<td>Table - &lsquo;background&rsquo; attribute</td>
-</tr>
-<tr>
-<td></td>
-<td>Video - &lsquo;poster&rsquo; attribute</td>
-</tr>
-<tr>
-<td>Form - proper handling of Forms with both GET and POST method. The fields values are generated validly, including HTML 5.0 input types.</td>
-<td>Form - proper handling of Forms with both GET and POST method. The fields values are generated validly, including HTML 5.0 input types &lsquo;form&rsquo;, &lsquo;formaction&rsquo;, &lsquo;formmethod&rsquo; attributes of buttons are also respected.</td>
-</tr>
-<tr>
-<td>Comments - Valid tags found in comments are also analyzed, if specified in the Options Spider screen</td>
-<td>Comments - Valid tags found in comments are also analyzed, if specified in the Options Spider screen</td>
-</tr>
-<tr>
-<td></td>
-<td>Import - &lsquo;implementation&rsquo; attribute</td>
-</tr>
-<tr>
-<td></td>
-<td>Inline string - &lsquo;p&rsquo;, &rsquo;title&rsquo;, &rsquo;li&rsquo;, &lsquo;h1&rsquo;, &lsquo;h2&rsquo;, &lsquo;h3&rsquo;, &lsquo;h4&rsquo;, &lsquo;h5&rsquo;, &lsquo;h6&rsquo;, and &lsquo;blockquote&rsquo; tags</td>
-</tr>
-<tr>
-<td></td>
-<td>SVG image files are parsed to identify HREF attributes and extract/resolve any contained links.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Before</th>
+          <th style="text-align: left">With</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Base - Proper handling</td>
+          <td style="text-align: left">Base - Proper handling</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">A, Link, Area - ‘href’ attribute</td>
+          <td style="text-align: left">A, Link, Area - &lsquo;href&rsquo; attribute</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Frame, IFrame, Script, Img - ‘src’ attribute</td>
+          <td style="text-align: left">Applet, Audio, Embed, Frame, IFrame, Input, Script, Img, Video - &lsquo;src&rsquo; attribute</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Meta - ‘http-equiv’ for ’location’ and ‘refresh’</td>
+          <td style="text-align: left">Meta - &lsquo;http-equiv&rsquo; for &rsquo;location&rsquo;, &lsquo;refresh&rsquo; and &lsquo;Content-Security-Policy&rsquo;, &rsquo;name&rsquo; for &lsquo;msapplication-config&rsquo;</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Applet - &lsquo;codebase&rsquo;, &lsquo;archive&rsquo; attributes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Img - &rsquo;longdesc&rsquo;, &rsquo;lowsrc&rsquo;, &lsquo;dynsrc&rsquo;, &lsquo;srcset&rsquo; attributes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Isindex - &lsquo;action&rsquo; attribute</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Object - &lsquo;codebase&rsquo;, &lsquo;data&rsquo; attributes</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Svg - &lsquo;href&rsquo; and &lsquo;xlink:href&rsquo; attributes of &lsquo;image&rsquo; and &lsquo;script&rsquo; elements</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Table - &lsquo;background&rsquo; attribute</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Video - &lsquo;poster&rsquo; attribute</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Form - proper handling of Forms with both GET and POST method. The fields values are generated validly, including HTML 5.0 input types.</td>
+          <td style="text-align: left">Form - proper handling of Forms with both GET and POST method. The fields values are generated validly, including HTML 5.0 input types &lsquo;form&rsquo;, &lsquo;formaction&rsquo;, &lsquo;formmethod&rsquo; attributes of buttons are also respected.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Comments - Valid tags found in comments are also analyzed, if specified in the Options Spider screen</td>
+          <td style="text-align: left">Comments - Valid tags found in comments are also analyzed, if specified in the Options Spider screen</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Import - &lsquo;implementation&rsquo; attribute</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">Inline string - &lsquo;p&rsquo;, &rsquo;title&rsquo;, &rsquo;li&rsquo;, &lsquo;h1&rsquo;, &lsquo;h2&rsquo;, &lsquo;h3&rsquo;, &lsquo;h4&rsquo;, &lsquo;h5&rsquo;, &lsquo;h6&rsquo;, and &lsquo;blockquote&rsquo; tags</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"></td>
+          <td style="text-align: left">SVG image files are parsed to identify HREF attributes and extract/resolve any contained links.</td>
+      </tr>
+  </tbody>
 </table>
 <p> </p>
 
