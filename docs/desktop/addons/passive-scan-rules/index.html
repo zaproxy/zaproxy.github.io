@@ -492,6 +492,12 @@
     </li>
 
     <li data-depth="2" class="">
+                <a href="/docs/desktop/addons/fuzzai-files/">Fuzz AI Files</a>
+        <ul class="tree-branch">
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/fuzzdb-files/">FuzzDB Files</a>
         <ul class="tree-branch">
         </ul>
@@ -1876,7 +1882,12 @@ The current implementation looks at excessively permissive CORS headers.</p>
 The rule does not scan messages that are not HTML pages.<br>
 At HIGH alert threshold only scans messages which are in scope.<br>
 Post 2.5.0 you can specify a comma separated list of identifiers in the <code>rules.csrf.ignorelist</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel. Any FORMs with a name or ID that matches one of these identifiers will be ignored when scanning for missing Anti-CSRF tokens. Only use this feature to ignore FORMs that you know are safe, for example search forms. Form element names are sorted and de-duplicated when they are printed in the ZAP Report.<br>
-Note: The rule also takes into account the Partial match setting within the Anti-CSRF Options.</p>
+Note:</p>
+<ul>
+<li>The rule also takes into account the Partial match setting within the Anti-CSRF Options.</li>
+<li>GET requests are only evaluated at Low Threshold.</li>
+</ul>
+<p>]</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/CsrfCountermeasuresScanRule.java">CsrfCountermeasuresScanRule.java</a></p>
 <p>Alert ID: <a href="/docs/alerts/100202/">100202</a>.</p>
 
@@ -1887,8 +1898,13 @@ Note: The rule also takes into account the Partial match setting within the Anti
 
 <h2 id="id-10097">Hash Disclosure <a class="header-link" href="#id-10097"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Passively scans for password hashes disclosed by the web server.<br>
-Various formats are including, including some formats such as MD4, MD5, and SHA*, which are sometimes used for purposes other than to contain password hashes.<br>
-<strong>Note:</strong> This scan rule will only analyze text responses, and only analyze JavaScript responses on LOW Threshold.</p>
+Various formats are included, including some formats such as MD4, MD5, and SHA*, which are sometimes used for purposes other than to contain password hashes.<br>
+<strong>Note:</strong></p>
+<ul>
+<li>This scan rule will only analyze text responses, and only analyze JavaScript responses on LOW Threshold.</li>
+<li></li>
+<li>The selection of Hash patterns which are evaluated is tied to the Confidence we have in the pattern and the Threshold set for the scan rule. In other words: Low confidence patterns will only be included for evaluation at Low Threshold, etc.</li>
+</ul>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/HashDisclosureScanRule.java">HashDisclosureScanRule.java</a></p>
 <p>Alert ID: <a href="/docs/alerts/10097/">10097</a>.</p>
 
