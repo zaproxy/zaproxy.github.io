@@ -1812,9 +1812,9 @@ If you do not use the &lsquo;browser launch&rsquo; feature then you have to inst
 or HTTP client application. See section <a href="#install">installation</a>
 for more details.</p>
 <p>The generated Root CA certificate is valid, by default, for one year. After that period you have
-to create a new one.<br>
-Every generated Root CA certificate is 2048 bit strong (RSA with SHA1).<br>
-Every generated Root CA certificate starts with serial number &ldquo;1&rdquo;.
+to create a new one.</p>
+<p>Every generated Root CA certificate is 2048 bit strong (RSA with SHA1).</p>
+<p>Every generated Root CA certificate starts with serial number &ldquo;1&rdquo;.
 Every generated Root CA certificate consists of the following identifiers:</p>
 <p><code> CN = Zed Attack Proxy Root CA</code><br>
 <code> L = 87b77fe834b0a301</code><br>
@@ -1830,8 +1830,8 @@ But there&rsquo;s no way, that anyone can figure out your name from this hash co
 <h3 id="import">Import <a class="header-link" href="#import"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>When you&rsquo;re using multiple ZAP installation and you want to use the same
 Root CA certificate, so you can import it. Simply use one installation of ZAP
-to generate one Root CA certificate.<br>
-Copy the file &lsquo;config.xml&rsquo; from ZAP&rsquo;s home directory to
+to generate one Root CA certificate.</p>
+<p>Copy the file &lsquo;config.xml&rsquo; from ZAP&rsquo;s home directory to
 the PC, where you want to use the same certificate and press &lsquo;import&rsquo; to import it.</p>
 <p>Alternatively you can use the <a href="/docs/desktop/addons/network/cmdline/">command line</a> options:</p>
 <ul>
@@ -1873,8 +1873,8 @@ the certificate and the unencrypted private key in the following format:</p>
 <code> j48o5+RLKvqrpxNlMeS5AkEA6qIdW/yp5N8b1j2OxYZ9u5O//BvspwRITGM60Cps</code><br>
 <code>yemZE/ua8wm34SKvDHf5uxcmofShW17PLICrsLJ7P35y/A==</code><br>
 <code> -----END PRIVATE KEY-----</code><br>
-<code> </code><br>
-And yes, that example will work - it&rsquo;s the Superfish certificate!</p>
+<code> </code></p>
+<p>And yes, that example will work - it&rsquo;s the Superfish certificate!</p>
 
 <h3 id="view">View <a class="header-link" href="#view"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>In the options dialog of ZAP you&rsquo;re seeing the certificate in PEM format.
@@ -1895,9 +1895,9 @@ import root certificates, to use them on multiple machines.
 When running, there will be sub-certificated created, each time an HTTPS
 resource is requested.
 That means, the Root CA certificate is used as an issuer.</p>
-<p>The issued certificates are valid, by default, for 368 days.<br>
-The issued certificates is 2048 bit strong (RSA with SHA1).<br>
-The issued certificates has a random serial number.
+<p>The issued certificates are valid, by default, for 368 days.</p>
+<p>The issued certificates is 2048 bit strong (RSA with SHA1).</p>
+<p>The issued certificates has a random serial number.
 The issued certificates consists of the following identifiers:</p>
 <p><code> CN = www.example.com</code><br>
 <code> E = zaproxy-develop@googlegroups.com</code><br>
@@ -1981,8 +1981,8 @@ Installation and late on validation is done in the same preferences dialog:</p>
 </ol>
 
 <h2 id="risks">Risks <a class="header-link" href="#risks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p><strong>Attention, there are risks!</strong><br>
-When adding self generated Root CA certificates to your list of trusted
+<p><strong>Attention, there are risks!</strong></p>
+<p>When adding self generated Root CA certificates to your list of trusted
 root certificates, everyone with the root certificate can smuggle data
 into your system (browser).
 In other words when you&rsquo;re not testing in a safe environment, but on

@@ -1761,13 +1761,14 @@
           
 <h1 id="dom-xss-active-scan-rule">DOM XSS Active Scan Rule</h1>
 <p>An Active Scan rule for detecting DOM XSS vulnerabilities.</p>
-<p>It launches browser windows and sends attack payloads to all of the relevant DOM elements.<br>
-As it launches browser windows it will take significantly longer than other (non browser based) rules.</p>
+<p>It launches browser windows and sends attack payloads to all of the relevant DOM elements.</p>
+<p>As it launches browser windows it will take significantly longer than other (non browser based) rules.</p>
 <p>This version supports Firefox (the default) and Chrome. They can be run with GUI or headless (default), it can be changed with
 the rule <code>rules.domxss.browserid</code>, via the Options &lsquo;Rule configuration&rsquo; panel, with values
 <code>firefox</code>, <code>firefox-headless</code>, <code>chrome</code> and <code>chrome-headless</code>.</p>
-<p>The following Attack Strengths are supported, and related directly to the number of attack payloads used
-for URL fragment and form input field injections (eg: <code>http://example.com/index.html?foo=bar#injection</code>):</p>
+
+<h3 id="strengths-and-thresholds">Strengths and Thresholds <a class="header-link" href="#strengths-and-thresholds"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The following Attack Strengths are supported, and related directly to the number of attack payloads used for URL fragment and form input field injections (eg: <code>http://example.com/index.html?foo=bar#injection</code>):</p>
 <ul>
 <li>LOW: 1 attack payloads</li>
 <li>MEDIUM: 3 attack payloads</li>
@@ -1777,6 +1778,13 @@ for URL fragment and form input field injections (eg: <code>http://example.com/i
 <p>The scanner will also attempt URL/query parameter injections which are not impacted by the selected strength.</p>
 <p>The rule will only report one DOM XSS vulnerability per node, unless the LOW Alert threshold
 is used, in which case it will keep trying all of the specified payloads.</p>
+
+<h3 id="exclusions">Exclusions <a class="header-link" href="#exclusions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The rule will block the browser it launches from accessing any URLs that are excluded by:</p>
+<ul>
+<li>Global Exclusions</li>
+<li>Context Exclusions, if invoked with the relevant context</li>
+</ul>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/domxss/src/main/java/org/zaproxy/zap/extension/domxss/DomXssScanRule.java">DomXssScanRule.java</a></p>
 
         </div>
