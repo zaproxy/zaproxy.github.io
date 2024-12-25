@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2024-12-24-use-zap-with-flagger-in-kubernetes/images/preview.png">
+  <meta name="twitter:title" content="Use ZAP with Flagger in Kubernetes">
+  <meta name="twitter:description" content="Learn how to integrate ZAP with Flagger in a Kubernetes cluster to scan the security of each new deployment.">
+
+    <meta property="og:url" content="/blog/2024-12-24-use-zap-with-flagger-in-kubernetes/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Use ZAP with Flagger in Kubernetes">
+  <meta property="og:description" content="Learn how to integrate ZAP with Flagger in a Kubernetes cluster to scan the security of each new deployment.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2024-12-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-24T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Tutorial">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Docker">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2024-12-24-use-zap-with-flagger-in-kubernetes/images/preview.png">
+
+  
+  <title>ZAP &ndash; Use ZAP with Flagger in Kubernetes</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.90b582.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Use ZAP with Flagger in Kubernetes</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday December 24, 2024</span>
+              <span class="word-count fl-r"> 2150 Words </span>
+            </section>
+            <p>Flagger is a tool for deploying applications to Kubernetes cluster using safer patterns like Canary, Blue/Green, and A/B Testing deployments. When ZAP is integrated with the deployment process, it can scan the security of each new deployment. Furthermore, if a test suite of requests is used during the deploy, ZAP can utilize those requests for more informed attacks.</p>
+
+<h2 id="prerequisites">Prerequisites <a class="header-link" href="#prerequisites"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This demo assumes a few things are already available</p>
+<ul>
+<li>A Kubernetes cluster</li>
+<li><a href="https://docs.flagger.app/">Flagger</a> installed and running in the Kubernetes cluster</li>
+<li><a href="https://helm.sh/docs/intro/install/">Helm CLI</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl">Kubectl</a></li>
+</ul>
+
+<h2 id="set-up-the-kubernetes-namespace">Set up the Kubernetes namespace <a class="header-link" href="#set-up-the-kubernetes-namespace"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ol>
+<li>Create the <code>zap-demo</code> namespace where we will be deploying all of our resources to
+<pre tabindex="0"><code>kubectl create namespace zap-demo
+</code></pre></li>
+</ol>
+
+<h2 id="install-the-flagger-load-tester-with-helm">Install the Flagger Load Tester with Helm <a class="header-link" href="#install-the-flagger-load-tester-with-helm"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>I&rsquo;ll be using the Flagger Load Tester to generate some traffic to a test service during deployments. I will also be using it to start ZAP off of a webhook. ZAP is currently not designed as a long running proxy. If you have alternate solutions for triggering Pods using webhooks, you can use that instead of the Flagger Load Tester.</p>
+<ol>
+<li>Add the Flagger helm repository
+<pre tabindex="0"><code>helm repo add flagger https://flagger.app
+</code></pre></li>
+<li>The Flagger Load Tester will need permission to create Jobs in the cluster, so we&rsquo;ll install it with the option to set up a role for itself.
+<pre tabindex="0"><code>helm install flagger-loadtester flagger/loadtester --namespace zap-demo --set rbac.create=true --set rbac.rules[0].apiGroups[0]=&#34;batch&#34; --set &#34;rbac.rules[0].resources={jobs,jobs/log,cronjobs,cronjobs/log}&#34; --set &#34;rbac.rules[0].verbs={get,create,list,watch}&#34;
+</code></pre></li>
+</ol>
+
+<h2 id="deploy-testing-service">Deploy Testing Service <a class="header-link" href="#deploy-testing-service"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The podinfo container will be used as our application that Flagger will be coordinating for deployment.</p>
+<ol>
+<li>Copy the podinfo <code>Deployment</code> and <code>Service</code> into a <code>podinfo.yaml</code> file and run <code>kubectl apply -f podinfo.yaml</code>
+<pre tabindex="0"><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+  namespace: zap-demo
+spec:
+  selector:
+    matchLabels:
+      app: podinfo
+  template:
+    metadata:
+      labels:
+        app: podinfo
+    spec:
+      containers:
+      - name: podinfod
+        image: ghcr.io/stefanprodan/podinfo:6.7.0
+        ports:
+        - name: http
+          containerPort: 9898
+          protocol: TCP
+        command:
+        - ./podinfo
+        - --port=9898
+        - --level=info
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: podinfo
+  namespace: zap-demo
+spec:
+  type: ClusterIP
+  selector:
+    app: podinfo
+  ports:
+    - name: http
+      port: 9898
+      protocol: TCP
+      targetPort: http
+</code></pre></li>
+</ol>
+
+<h2 id="deploy-zap-resources">Deploy ZAP resources <a class="header-link" href="#deploy-zap-resources"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Flagger will be triggering ZAP, but we need to set up the resources ahead of time.</p>
+<ol>
+<li>Copy the following <code>PersistentVolumeClaim</code>, substituting the <code>storageClassName</code> value with an appropriate <code>StorageClass</code> on your cluster. Save as <code>zap-pvc.yaml</code> and apply with <code>kubectl apply -f zap-pvc.yaml</code>. This is where the ZAP reports will be saved. I&rsquo;m saving mine to Azure Blob Storage, which is where I will be reading the report from.
+<pre tabindex="0"><code>apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app.kubernetes.io/name: zap
+  name: zap-pvc
+  namespace: zap-demo
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Mi
+  storageClassName: dynamic-slrs-blob-fuse
+</code></pre></li>
+<li>Create the following <code>CronJob</code> as <code>zap.yaml</code> and apply with <code>kubectl apply -f zap.yaml</code>. We are creating it suspended, so it will never run on the schedule, however we will be using it for Flagger to create the ZAP <code>Job</code>.
+<pre tabindex="0"><code>apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: zap
+  namespace: zap-demo
+spec:
+  schedule: &#34;* * * * *&#34;
+  suspend: true
+  jobTemplate:
+    spec:
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: zap
+        spec:
+          containers:
+          - args:
+            - ./zap.sh
+            - -cmd
+            - -autorun
+            - /zap/config/af-plan.yaml
+            - -host
+            - 0.0.0.0
+            - -config
+            - api.disablekey=true
+            - -config
+            - api.addrs.addr.name=.*
+            - -config
+            - api.addrs.addr.regex=true
+            image: ghcr.io/zaproxy/zaproxy:stable
+            name: zaproxy
+            ports:
+            - containerPort: 8080
+              name: zaproxy
+              protocol: TCP
+            startupProbe:
+              failureThreshold: 3
+              httpGet:
+                path: /
+                port: 8080
+                scheme: HTTP
+              initialDelaySeconds: 60
+              periodSeconds: 10
+              successThreshold: 1
+              timeoutSeconds: 3
+            volumeMounts:
+            - mountPath: /zap/config
+              name: config
+            - mountPath: /zap/reports
+              name: pvc
+          restartPolicy: Never
+          volumes:
+          - name: config
+            configMap:
+              name: zap-config
+          - name: pvc
+            persistentVolumeClaim:
+              claimName: zap-pvc
+</code></pre><ul>
+<li><strong>Note</strong>: ZAP&rsquo;s authentication features are being disabled to make this demo straightforward.</li>
+</ul>
+</li>
+<li>Create the following <code>Service</code> as <code>zap-service.yaml</code> and apply with <code>kubectl apply -f zap-service.yaml</code>
+<pre tabindex="0"><code>apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: zap
+  name: zap
+  namespace: zap-demo
+spec:
+  ports:
+  - name: zaproxy
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/name: zap
+</code></pre></li>
+</ol>
+
+<h2 id="create-zap-automation-plan">Create ZAP Automation Plan <a class="header-link" href="#create-zap-automation-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The ZAP Automation Plan is created as a <code>ConfigMap</code> which then Kubernetes attaches as the <code>af-plan.yaml</code> file to the ZAP Pod.</p>
+<ol>
+<li>Create the following <code>ConfigMap</code> as <code>zap-config.yaml</code> and apply with <code>kubectl apply -f zap-config.yaml</code>
+<pre tabindex="0"><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: zap
+  name: zap-config
+  namespace: zap-demo
+data:
+  af-plan.yaml: |
+    env:
+      contexts:
+      - authentication:
+          parameters: {}
+          verification:
+            method: response
+            pollFrequency: 60
+            pollUnits: requests
+        excludePaths:
+        - http://podinfo:9898/panic
+        - http://podinfo:9898/status/10
+        includePaths:
+        - http://podinfo:9898.*
+        name: Default Context
+        sessionManagement:
+          method: cookie
+          parameters: {}
+        technology:
+          exclude: []
+        urls:
+        - http://podinfo:9898
+      parameters:
+        failOnError: false
+        failOnWarning: false
+        progressToStdout: true
+      vars: {}
+    jobs:
+    - name: delay
+      parameters:
+        fileName: &#34;&#34;
+        time: &#34;600&#34;
+      type: delay
+    - name: openapi
+      parameters:
+        apiUrl: http://podinfo:9898/swagger.json
+        targetUrl: http://podinfo:9898
+        context: Default Context
+      type: openapi
+    - name: activeScan
+      parameters:
+        context: Default Context
+        maxAlertsPerRule: 0
+        maxRuleDurationInMins: 0
+        maxScanDurationInMins: 0
+        policy: &#34;&#34;
+        threadPerHost: 2
+        user: &#34;&#34;
+      policyDefinition:
+        defaultStrength: medium
+        defaultThreshold: medium
+        rules: []
+      type: activeScan
+    - name: pdf-report
+      parameters:
+        reportDescription: &#34;&#34;
+        reportDir: /zap/reports
+        reportTitle: ZAP Scanning Report
+        template: traditional-pdf
+      risks:
+      - info
+      - low
+      - medium
+      - high
+      confidences:
+      - low
+      - medium
+      - high
+      - confirmed
+      sections:
+      - instancecount
+      - alertdetails
+      - alertcount
+      type: report
+    - name: sarif-report
+      parameters:
+        template: sarif-json
+        reportDir: /zap/reports
+        reportTitle: ZAP Scanning Report
+        reportDescription: &#34;&#34;
+        displayReport: false
+      risks:
+      - low
+      - medium
+      - high
+      confidences:
+      - low
+      - medium
+      - high
+      - confirmed
+      sites: []
+      type: report
+</code></pre><ul>
+<li><code>af-plan.yaml</code> is an Automation Plan that was generated using the ZAP GUI.</li>
+<li>The context we are using is <code>http://podinfo:9898</code> with everything <code>http://podinfo:9898.*</code> in scope with the exclusion of <code>http://podinfo:9898/panic</code> and <code>http://podinfo:9898/status/10</code>. (podinfo has some testing features that ZAP can trigger and disrupt the pod)</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>The first job is a delay, this is so that Flagger can spin up ZAP when a deployment starts, but wait until the deployment is finished before triggering attacks. Attacks during the deployment process could potentially impact metrics and trigger a rollback.</li>
+<li>After the delay, ZAP inspects the OpenAPI spec and then uses it to attack podinfo.</li>
+<li>The results is then generated as a pdf report as well as a SARIF report.</li>
+</ul>
+
+<h2 id="create-the-flagger-canary">Create the Flagger Canary <a class="header-link" href="#create-the-flagger-canary"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The Flagger Canary definition will provide the instructions that Flagger needs to know to perform a deployment. The one below is configured as a <a href="https://docs.flagger.app/usage/deployment-strategies#blue-green-deployments">Blue/Green deployment</a>.</p>
+<ol>
+<li>Save the <code>Canary</code> as <code>podinfo-canary.yaml</code> and apply with <code>kubectl apply -f podinfo-canary.yaml</code>
+<pre tabindex="0"><code>apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: podinfo
+  namespace: zap-demo
+spec:
+  provider: kubernetes
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podinfo
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 600
+  service:
+    port: 9898
+    targetPort: http
+    portDiscovery: true
+  skipAnalysis: false
+  analysis:
+    # schedule interval (default 60s)
+    interval: 30s
+    # max number of failed metric checks before rollback
+    threshold: 2
+    # total number of iterations
+    iterations: 2
+    webhooks:
+    - name: start zap
+      type: confirm-rollout
+      url: http://flagger-loadtester.zap-demo/
+      timeout: 3m
+      metadata:
+        type: bash
+        cmd: &#34;r=$RANDOM &amp;&amp; kubectl create job -n zap-demo --from=cronjob/zap zap-job-${r} &amp;&amp; kubectl wait --for=jsonpath=&#39;{.status.ready}&#39;=1 -n zap-demo job/zap-job-${r} --timeout=2m&#34;
+    - name: load test
+      url: http://flagger-loadtester.zap-demo/
+      timeout: 5s
+      metadata:
+        cmd: &#34;hey -z 1m -q 10 -c 2 http://podinfo-canary:9898/&#34;
+    - name: run zap
+      type: post-rollout
+      url: http://flagger-loadtester.zap-demo/
+      timeout: 3m
+      metadata:
+        cmd: &#34;curl http://zap:8080/JSON/automation/action/endDelayJob&#34;
+</code></pre><ul>
+<li>The Canary targets the podinfo deployment. It then takes control over the podinfo <code>Service</code> as well as creates a <code>podinfo-canary</code> and <code>podinfo-primary</code> service.</li>
+<li>When a change to the podinfo deployment is detected, Flagger will first send a webhook to our flagger-loadtester service, with instructions for it to create the ZAP job, and then wait for the job to be ready.</li>
+<li>After ZAP gets started up, the loadtester is given instructions to send over some traffic to the canary service, which sends traffic to the new deployment. Flagger looks at the metrics of that traffic to ensure it was successful before moving on.</li>
+<li>After it&rsquo;s done 2 iterations of the load test (as we&rsquo;ve defined), Flagger spins up new pods with the new deployment configuration to replace the primary deployment.</li>
+<li>After the rollout is completed, the flagger-loadtester is used once again for the webhook, which then instructs it to hit the <code>endDelayJob</code> endpoint on our ZAP deployment. Which will end the delay in the ZAP Automation Plan. (Flagger is not being used to hit the <code>endDelayJob</code> endpoint directly because it includes a payload with the content type of <code>application/json</code>)</li>
+<li>Now that the Flagger rollout is complete, ZAP will begin to attack the new deployment.</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="trigger-a-deployment">Trigger A Deployment <a class="header-link" href="#trigger-a-deployment"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ol>
+<li>
+<p>Run the following command to update the podinfo image</p>
+<pre tabindex="0"><code>kubectl set image deployment -n zap-demo podinfo podinfod=ghcr.io/stefanprodan/podinfo:6.7.1
+</code></pre></li>
+<li>
+<p>Check on the <code>Canary</code> in order to get the status of the deployment</p>
+<pre tabindex="0"><code>kubectl describe canary -n zap-demo podinfo
+</code></pre><p><img src="./images/podinfo-canary.png" alt="podinfo-canary.png"></p>
+</li>
+<li>
+<p>Once the canary is successful, monitor the ZAP job to see when it completes</p>
+<pre tabindex="0"><code>kubectl get job -n zap-demo
+</code></pre></li>
+<li>
+<p>Once completed, the reports should be present in the volume
+<img src="./images/blob-report.png" alt="blob-report.png"></p>
+</li>
+<li>
+<p>And ZAP has created some results</p>
+<p><img src="./images/openapi-summary.png" alt="openapi-summary.png"></p>
+</li>
+</ol>
+
+<h2 id="proxy-requests-through-zap">Proxy Requests Through ZAP <a class="header-link" href="#proxy-requests-through-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Integration and smoke tests can be run during Flagger&rsquo;s deployment process when they are triggered off of a webhook. The requests from those tests can be proxied through ZAP and ZAP can use those endpoints and payloads to start its attacks using valid requests, giving ZAP the opportunity to find more vulnerabilities. The ZAP Automation Plan and the Canary definition can be updated to support this.</p>
+<ol>
+<li>
+<p>Update  <code>zap-config.yaml</code> and apply with <code>kubectl apply -f zap-config.yaml</code></p>
+<pre tabindex="0"><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: zap
+  name: zap-config
+  namespace: zap-demo
+data:
+  af-plan.yaml: |
+    env:
+      contexts:
+      - authentication:
+          parameters: {}
+          verification:
+            method: response
+            pollFrequency: 60
+            pollUnits: requests
+        excludePaths:
+        - http://podinfo:9898/panic
+        - http://podinfo:9898/status/10
+        includePaths:
+        - http://podinfo:9898.*
+        - http://podinfo-canary:9898.*
+        name: Default Context
+        sessionManagement:
+          method: cookie
+          parameters: {}
+        technology:
+          exclude: []
+        urls:
+        - http://podinfo:9898
+        - http://podinfo-canary:9898
+      parameters:
+        failOnError: true
+        failOnWarning: false
+        progressToStdout: true
+      vars: {}
+    jobs:
+    - name: delay
+      parameters:
+        fileName: &#34;&#34;
+        time: &#34;600&#34;
+      type: delay
+    - name: replacer
+      rules:
+      - description: podinfo
+        matchRegex: false
+        matchString: podinfo-canary:9898
+        matchType: req_header_str
+        replacementString: podinfo:9898
+        tokenProcessing: false
+        url: &#34;&#34;
+      type: replacer
+    - name: activeScan
+      parameters:
+        context: Default Context
+        maxAlertsPerRule: 0
+        maxRuleDurationInMins: 0
+        maxScanDurationInMins: 0
+        policy: &#34;&#34;
+        threadPerHost: 2
+        user: &#34;&#34;
+      policyDefinition:
+        defaultStrength: medium
+        defaultThreshold: low
+        rules: []
+      type: activeScan
+    - name: pdf-report
+      parameters:
+        reportDescription: &#34;&#34;
+        reportDir: /zap/reports
+        reportTitle: ZAP Scanning Report
+        template: traditional-pdf
+      risks:
+      - info
+      - low
+      - medium
+      - high
+      confidences:
+      - low
+      - medium
+      - high
+      - confirmed
+      sections:
+      - instancecount
+      - alertdetails
+      - alertcount
+      type: report
+    - name: sarif-report
+      parameters:
+        template: sarif-json
+        reportDir: /zap/reports
+        reportTitle: ZAP Scanning Report
+        reportDescription: &#34;&#34;
+        displayReport: false
+      risks:
+      - low
+      - medium
+      - high
+      confidences:
+      - low
+      - medium
+      - high
+      - confirmed
+      sites: []
+      type: report
+</code></pre><ul>
+<li><code>podinfo-canary</code> was added to be in scope since the requests will be proxied through ZAP using the canary host.</li>
+<li>The <code>replacer</code> job changes the host header so that requests sent to <code>podinfo-canary</code> will be used to attack <code>podinfo</code></li>
+</ul>
+</li>
+<li>
+<p>Update  <code>podinfo-canary.yaml</code> and apply with <code>kubectl apply -f podinfo-canary.yaml</code></p>
+<pre tabindex="0"><code>apiVersion: flagger.app/v1beta1
+kind: Canary
+metadata:
+  name: podinfo
+  namespace: zap-demo
+spec:
+  provider: kubernetes
+  targetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: podinfo
+  # the maximum time in seconds for the canary deployment
+  # to make progress before it is rollback (default 600s)
+  progressDeadlineSeconds: 600
+  service:
+    port: 9898
+    targetPort: http
+    portDiscovery: true
+  skipAnalysis: false
+  analysis:
+    # schedule interval (default 60s)
+    interval: 30s
+    # max number of failed metric checks before rollback
+    threshold: 2
+    # total number of iterations
+    iterations: 2
+    webhooks:
+    - name: start zap
+      type: confirm-rollout
+      url: http://flagger-loadtester.zap-demo/
+      timeout: 3m
+      metadata:
+        type: bash
+        cmd: &#34;r=$RANDOM &amp;&amp; kubectl create job -n zap-demo --from=cronjob/zap zap-job-${r} &amp;&amp; kubectl wait --for=jsonpath=&#39;{.status.ready}&#39;=1 -n zap-demo job/zap-job-${r} --timeout=2m&#34;
+    - name: integration test
+      type: pre-rollout
+      url: http://flagger-loadtester.zap-demo/
+      metadata:
+        cmd: &#34;curl --proxy http://zap:8080 http://podinfo-canary:9898/api/info&#34;
+      timeout: 3m
+    - name: load test
+      url: http://flagger-loadtester.zap-demo/
+      timeout: 5s
+      metadata:
+        cmd: &#34;hey -z 1m -q 10 -c 2 http://podinfo-canary:9898/&#34;
+    - name: run zap
+      type: post-rollout
+      url: http://flagger-loadtester.zap-demo/
+      timeout: 3m
+      metadata:
+        cmd: &#34;curl http://zap:8080/JSON/automation/action/endDelayJob&#34;
+</code></pre><ul>
+<li>Before the load test, an integration test was added. This is just a placeholder running a test suite. It&rsquo;s using the flagger-loadtester for the webhook and giving it instructions to send a request to the podinfo-canary service, proxying the request through ZAP. If using a container with a test suite, the proxy server can often be set using the HTTP_PROXY environment variable.</li>
+<li>The outcome of the defined webhooks is that the ZAP Job gets started up, then the integration test is ran on podinfo-canary while being proxied through ZAP. The load test then runs on the podinfo-canary, and when the rollout is complete, ZAP&rsquo;s Automation Plan&rsquo;s delay is ended and ZAP uses the requests to podinfo-canary to attack podinfo.</li>
+</ul>
+</li>
+<li>
+<p>To see this in action, update the podinfo image back to the previous version</p>
+<pre tabindex="0"><code>kubectl set image deployment -n zap-demo podinfo podinfod=ghcr.io/stefanprodan/podinfo:6.7.0
+</code></pre></li>
+<li>
+<p>And check on the canary results</p>
+<pre tabindex="0"><code>kubectl describe canary -n zap-demo podinfo
+</code></pre><p><img src="./images/canary-proxy.png" alt="canary-proxy.png"></p>
+</li>
+<li>
+<p>When ZAP finished, we can take a look at the report. Since we only had one endpoint in the test suite, there&rsquo;s not much here.
+<img src="./images/proxy-summary.png" alt="proxy-summary.png"></p>
+</li>
+<li>
+<p>However, it does prove that it was able to attack podinfo with the podinfo-canary request we proxied through it.
+<img src="./images/proxy-result.png" alt="proxy-result.png"></p>
+</li>
+</ol>
+
+<h2 id="conclusion">Conclusion <a class="header-link" href="#conclusion"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>ZAP can be integrated with Flagger in a Kubernetes cluster by triggering off a webhook. It can be used with OpenAPI specs to attack each new deployment, or requests from a test suite meant to test the canary service can be proxied through ZAP and used to attack the new deployment.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2024-12-02-zap-updates-november-2024/"> ZAP Updates - November 2024</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/trevor-mountney_400x400.png" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Trevor Mountney
+                  
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#set-up-the-kubernetes-namespace">Set up the Kubernetes namespace</a></li>
+    <li><a href="#install-the-flagger-load-tester-with-helm">Install the Flagger Load Tester with Helm</a></li>
+    <li><a href="#deploy-testing-service">Deploy Testing Service</a></li>
+    <li><a href="#deploy-zap-resources">Deploy ZAP resources</a></li>
+    <li><a href="#create-zap-automation-plan">Create ZAP Automation Plan</a></li>
+    <li><a href="#create-the-flagger-canary">Create the Flagger Canary</a></li>
+    <li><a href="#trigger-a-deployment">Trigger A Deployment</a></li>
+    <li><a href="#proxy-requests-through-zap">Proxy Requests Through ZAP</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/tutorial/">tutorial</a> </li>
+           
+           <li> <a href="/tags/kubernetes/">kubernetes</a> </li>
+           
+           <li> <a href="/tags/automation/">automation</a> </li>
+           
+           <li> <a href="/tags/docker/">docker</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2024-12-24-use-zap-with-flagger-in-kubernetes/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2024 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.90ed09.js"></script>
+  
+</div>
+</body>
+</html>
