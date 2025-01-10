@@ -273,7 +273,16 @@
                             <a href="/docs/desktop/addons/automation-framework/job-ascan/">Automation Framework - activeScan Job</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanconfig/">Automation Framework - activeScan-config Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanpolicy/">Automation Framework - activeScan-policy Job</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-delay/">Automation Framework - delay Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-exitstatus/">Automation Framework - exitStatus Job</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-pscanconf/">Automation Framework - passiveScan-config Job</a>
@@ -351,6 +360,9 @@
                             <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">Client Side Integration - AJAX Spider Enhancement</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/automation/">Client Side Integration - Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/firefox-profile/">Client Side Integration - Firefox Profile</a>
                         </li>  
                         <li> 
@@ -358,6 +370,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/spider/">Client Side Integration - Client Spider</a>
                         </li>
         </ul>
     </li>
@@ -622,6 +637,9 @@
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/import-export/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/import-export/sitestreeformat/">Sites Tree File Format</a>
                         </li>
         </ul>
     </li>
@@ -813,6 +831,9 @@
                 <a href="/docs/desktop/addons/passive-scanner/">Passive Scanner Add-on</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/api/">Passive Scanner API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/passive-scanner/automation/">Passive Scanner Automation Framework Support</a>
                         </li>  
                         <li> 
@@ -821,6 +842,21 @@
                         <li> 
                             <a href="/docs/desktop/addons/passive-scanner/job-pscanwait/">Passive Scanner Automation Framework - passiveScan-wait Job</a>
                         </li>
+    <li data-depth="3" class="">
+                <a href="/docs/desktop/addons/passive-scanner/options/">Options</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/rules/">Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/scanner/">Passive Scanner</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/tags/">Passive Scan Tags</a>
+                        </li>
+        </ul>
+    </li>
+
         </ul>
     </li>
 
@@ -1087,7 +1123,13 @@
 
     <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/sequence-scanner/">Sequence Scanner</a>
-        <ul class="tree-branch">
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/policy-sequence/">Sequence Policy</a>
+                        </li>
         </ul>
     </li>
 
@@ -1307,6 +1349,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.15.0/">Release 2.15.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.16.0/">Release 2.16.0</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
@@ -1745,7 +1790,7 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/'>The ZAP Desktop User Guide</a>
+        <a href='/docs/desktop/'>The ZAP by Checkmarx Desktop User Guide</a>
     </li>
 
     <li>
@@ -1761,6 +1806,8 @@
           
 <h1 id="automation-framework">Automation Framework</h1>
 <p>This add-on provides a framework that allows ZAP to be automated in an easy and flexible way.</p>
+
+<h3 id="command-line-options">Command Line Options <a class="header-link" href="#command-line-options"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>It provides the following command line options:</p>
 <ul>
 <li>-autorun &lt;source&gt; Run the automation jobs specified in the file or from the URL.</li>
@@ -1768,20 +1815,28 @@
 <li>-autogenmax &lt;filename&gt; Generate template automation file with all parameters.</li>
 <li>-autogenconf &lt;filename&gt; Generate template automation file using the current configuration.</li>
 </ul>
-<p>If the <code>-autorun</code> option is used with the ZAP <code>-cmd</code> option then the ZAP exit value will be set as follows:</p>
+
+<h3 id="exit-codes">Exit Codes <a class="header-link" href="#exit-codes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If the <code>-autorun</code> option is used with the ZAP <code>-cmd</code> option then the ZAP exit value will be set by default as follows:</p>
 <ul>
 <li>0 - The plan completed successfully with no errors or warnings</li>
 <li>1 - The plan reported one or more errors</li>
 <li>2 - The plan reported no errors but one or more warnings</li>
 </ul>
-<p>Whether the plan completed after encountering errors or warnings will depend on the settings used in the <a href="/docs/desktop/addons/automation-framework/environment/">environment</a>.</p>
+<p>These values can be overridden by the <a href="/docs/desktop/addons/automation-framework/job-exitstatus/">exitStatus</a> job.<br>
+Whether the plan completed after encountering errors or warnings will depend on the settings used in the <a href="/docs/desktop/addons/automation-framework/environment/">environment</a>.</p>
+
+<h3 id="usage">Usage <a class="header-link" href="#usage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>To use the automation framework:</p>
 <ol>
 <li>Generate a template automation file using one of the <code>-autogen*</code> command line options</li>
 <li>Edit the file to match your requirements</li>
 <li>Run the file using the <code>-autorun</code> commandline option e.g. <code>./zap.sh -cmd -autorun config.yaml</code></li>
 </ol>
-<p>In most cases it is recommended to also use the <code>-cmd</code> command line option so that the ZAP desktop is not displayed and ZAP exits as soon as it has finished generating or running the jobs defined in the file. However you can choose to run Automation Framework jobs using the ZAP desktop to help you debug issues.</p>
+<p><strong>Note:</strong> The Jobs are executed in the order in which they appear (top to bottom) within the Plan.</p>
+<p>In most cases it is recommended to also use the <code>-cmd</code> command line option so that the ZAP desktop is not displayed
+and ZAP exits as soon as it has finished generating or running the jobs defined in the file.
+However you can choose to run Automation Framework jobs using the ZAP desktop to help you debug issues.</p>
 
 <h2 id="authentication">Authentication <a class="header-link" href="#authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Automation Framework supports all of the <a href="/docs/desktop/addons/automation-framework/authentication/">authentication</a> mechanisms supported by ZAP.</p>
@@ -1807,12 +1862,23 @@
 <p>All file and directory paths can either be absolute or relative to the directory containing the plan. Relative paths are recommended for portability.</p>
 
 <h2 id="jobs">Jobs <a class="header-link" href="#jobs"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The jobs can be enabled/disabled through the GUI and the automation plan, with the <code>enabled</code> flag. Jobs are enabled by default.</p>
 <p>The following automation jobs are supported by this add-on:</p>
 <ul>
+<li><a href="/docs/desktop/addons/automation-framework/job-ascanconfig/">activeScan-config</a> - configures the active scanner</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-ascanpolicy/">activeScan-policy</a> - creates an active policy</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-addons/">addOns</a> - add-on management, now deprecated</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-delay/">delay</a> - pauses the plan for a specified period of time or a specific condition is met</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-requestor/">requestor</a> - crafts specific requests to send to the corresponding targets</li>
 <li><a href="/docs/desktop/addons/automation-framework/job-ascan/">activeScan</a> - runs the active scanner</li>
+<li><a href="/docs/desktop/addons/automation-framework/job-exitstatus/">exitStatus</a> - sets ZAP&rsquo;s exit code based on scan results</li>
+</ul>
+
+<h3 id="importance-of-job-order">Importance of Job Order <a class="header-link" href="#importance-of-job-order"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The order of jobs is relevant and important. For example:</p>
+<ul>
+<li>there is no point putting a passiveScan-wait job before any sort of spidering or importing</li>
+<li>configuring an alertFilter job after alerts have been generated by passive or active scanning will have no effect on the Alerts that were raised by those components in earlier jobs</li>
 </ul>
 <p><a href="/docs/desktop/addons/automation-framework/tests/">Job tests</a> can be added to jobs to check that the jobs have performed as expected.</p>
 <p>This framework is plugable and so other add-ons may add support for other jobs, see the

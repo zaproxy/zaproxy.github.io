@@ -272,7 +272,16 @@
                             <a href="/docs/desktop/addons/automation-framework/job-ascan/">Automation Framework - activeScan Job</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanconfig/">Automation Framework - activeScan-config Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanpolicy/">Automation Framework - activeScan-policy Job</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-delay/">Automation Framework - delay Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-exitstatus/">Automation Framework - exitStatus Job</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-pscanconf/">Automation Framework - passiveScan-config Job</a>
@@ -350,6 +359,9 @@
                             <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">Client Side Integration - AJAX Spider Enhancement</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/automation/">Client Side Integration - Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/firefox-profile/">Client Side Integration - Firefox Profile</a>
                         </li>  
                         <li> 
@@ -357,6 +369,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/spider/">Client Side Integration - Client Spider</a>
                         </li>
         </ul>
     </li>
@@ -621,6 +636,9 @@
         <ul class="tree-branch">  
                         <li class="tree-active"> 
                             <a href="/docs/desktop/addons/import-export/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/import-export/sitestreeformat/">Sites Tree File Format</a>
                         </li>
         </ul>
     </li>
@@ -812,6 +830,9 @@
                 <a href="/docs/desktop/addons/passive-scanner/">Passive Scanner Add-on</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/api/">Passive Scanner API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/passive-scanner/automation/">Passive Scanner Automation Framework Support</a>
                         </li>  
                         <li> 
@@ -820,6 +841,21 @@
                         <li> 
                             <a href="/docs/desktop/addons/passive-scanner/job-pscanwait/">Passive Scanner Automation Framework - passiveScan-wait Job</a>
                         </li>
+    <li data-depth="3" class="">
+                <a href="/docs/desktop/addons/passive-scanner/options/">Options</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/rules/">Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/scanner/">Passive Scanner</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/tags/">Passive Scan Tags</a>
+                        </li>
+        </ul>
+    </li>
+
         </ul>
     </li>
 
@@ -1086,7 +1122,13 @@
 
     <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/sequence-scanner/">Sequence Scanner</a>
-        <ul class="tree-branch">
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/policy-sequence/">Sequence Policy</a>
+                        </li>
         </ul>
     </li>
 
@@ -1306,6 +1348,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.15.0/">Release 2.15.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.16.0/">Release 2.16.0</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
@@ -1744,7 +1789,7 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/'>The ZAP Desktop User Guide</a>
+        <a href='/docs/desktop/'>The ZAP by Checkmarx Desktop User Guide</a>
     </li>
 
     <li>
@@ -1766,11 +1811,31 @@
 <p>This add-on supports the Automation Framework.</p>
 
 <h2 id="job-import">Job: import <a class="header-link" href="#job-import"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>The import job allows you to import HAR(HTTP Archive File), ModSecurity2 Logs, ZAP Messages or a file containing URLs locally.</p>
+<p>The import job allows you to import HAR (HTTP Archive File), ModSecurity2 Logs, ZAP Messages or a file containing URLs locally.</p>
 <pre tabindex="0"><code>  - type: import                       # Import a file of requests
     parameters:
       type:                            # String: One of [&#39;har&#39;, &#39;modsec2&#39;, &#39;url&#39;, &#39;zap_messages&#39;]
       fileName:                        # String: Name of the file containing the data
+</code></pre>
+<h2 id="job-export">Job: export <a class="header-link" href="#job-export"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The export job allows you to export messages in HAR format or as URLs as well as exporting the Sites Tree in the <a href="/docs/desktop/addons/import-export/sitestreeformat/">Sites Tree format</a>. The supported sources are:</p>
+<ul>
+<li>all: all messages, including those generated by ZAP, supports &lsquo;har&rsquo; and &lsquo;url&rsquo;</li>
+<li>history: the manually/proxied messages, supports &lsquo;har&rsquo; and &lsquo;url&rsquo;</li>
+<li>sitestree: the ZAP Sites Tree, supports &lsquo;yaml&rsquo;</li>
+</ul>
+<pre tabindex="0"><code>  - type: export            # Exports data into a file
+      parameters:
+        context:            # String: Name of the context from which to export. Default: first context
+        type:               # String: One of &#39;har&#39;, &#39;url&#39;, &#39;yaml&#39;. Default: &#39;har&#39;
+        source:             # String: One of &#39;history&#39;, &#39;sitestree&#39;, &#39;all&#39;. Default: &#39;history&#39;
+        fileName:           # String: Name/path to the file
+</code></pre>
+<h2 id="job-prune">Job: prune <a class="header-link" href="#job-prune"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The prune job allows you to remove nodes from the Sites Tree using data from a file. The file should use the <a href="/docs/desktop/addons/import-export/sitestreeformat/">Sites Tree format</a>.</p>
+<pre tabindex="0"><code>  - type: prune           # Prunes nodes from the Sites Tree using Sites Tree data (YAML) from a file
+    parameters:
+      fileName:           # String: Name/path to the file
 </code></pre>
         </div>
       </div>

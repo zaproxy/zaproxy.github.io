@@ -272,7 +272,16 @@
                             <a href="/docs/desktop/addons/automation-framework/job-ascan/">Automation Framework - activeScan Job</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanconfig/">Automation Framework - activeScan-config Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanpolicy/">Automation Framework - activeScan-policy Job</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-delay/">Automation Framework - delay Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-exitstatus/">Automation Framework - exitStatus Job</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-pscanconf/">Automation Framework - passiveScan-config Job</a>
@@ -350,6 +359,9 @@
                             <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">Client Side Integration - AJAX Spider Enhancement</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/automation/">Client Side Integration - Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/firefox-profile/">Client Side Integration - Firefox Profile</a>
                         </li>  
                         <li> 
@@ -357,6 +369,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/spider/">Client Side Integration - Client Spider</a>
                         </li>
         </ul>
     </li>
@@ -621,6 +636,9 @@
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/import-export/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/import-export/sitestreeformat/">Sites Tree File Format</a>
                         </li>
         </ul>
     </li>
@@ -812,6 +830,9 @@
                 <a href="/docs/desktop/addons/passive-scanner/">Passive Scanner Add-on</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/api/">Passive Scanner API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/passive-scanner/automation/">Passive Scanner Automation Framework Support</a>
                         </li>  
                         <li> 
@@ -820,6 +841,21 @@
                         <li> 
                             <a href="/docs/desktop/addons/passive-scanner/job-pscanwait/">Passive Scanner Automation Framework - passiveScan-wait Job</a>
                         </li>
+    <li data-depth="3" class="">
+                <a href="/docs/desktop/addons/passive-scanner/options/">Options</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/rules/">Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/scanner/">Passive Scanner</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/tags/">Passive Scan Tags</a>
+                        </li>
+        </ul>
+    </li>
+
         </ul>
     </li>
 
@@ -1086,7 +1122,13 @@
 
     <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/sequence-scanner/">Sequence Scanner</a>
-        <ul class="tree-branch">
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/policy-sequence/">Sequence Policy</a>
+                        </li>
         </ul>
     </li>
 
@@ -1306,6 +1348,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.15.0/">Release 2.15.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.16.0/">Release 2.16.0</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
@@ -1744,7 +1789,7 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/'>The ZAP Desktop User Guide</a>
+        <a href='/docs/desktop/'>The ZAP by Checkmarx Desktop User Guide</a>
     </li>
 
     <li>
@@ -1835,6 +1880,61 @@
                         }
                     ]
                 },
+</code></pre><p>The report can also include details of Sequences and related active scanning results, for example:</p>
+<pre tabindex="0"><code>    &#34;sequences&#34;: [
+      {
+        &#34;name&#34;: &#34;Seq name&#34;,
+        &#34;steps&#34;: [
+          {
+            &#34;step&#34;: &#34;1&#34;,
+            &#34;pass&#34;: &#34;true&#34;,
+            &#34;resultDetails&#34;: &#34;Pass&#34;,
+            &#34;alertIds&#34;: [],
+            &#34;original&#34;: {
+              &#34;uri&#34;: &#34;https://www.example.com/step1&#34;,
+              &#34;method&#34;: &#34;GET&#34;,
+              &#34;request-header&#34;: &#34;GET https://www.example.com/step1 HTTP/1.1\r\nhost: www.example.com\r\nuser-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0\r\npragma: no-cache\r\ncache-control: no-cache\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;request-body&#34;: &#34;\\x0000\\x0013&#34;,
+              &#34;response-header&#34;: &#34;HTTP/1.0 0\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;response-body&#34;: &#34;\\x0000\\x0013&#34;
+            },
+            &#34;replay&#34;: {
+              &#34;uri&#34;: &#34;https://www.example.com/step1&#34;,
+              &#34;method&#34;: &#34;GET&#34;,
+              &#34;request-header&#34;: &#34;GET https://www.example.com/step1 HTTP/1.1\r\nhost: www.example.com\r\nuser-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0\r\npragma: no-cache\r\ncache-control: no-cache\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;request-body&#34;: &#34;\\x0000\\x0013&#34;,
+              &#34;response-header&#34;: &#34;HTTP/1.0 0\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;response-body&#34;: &#34;\\x0000\\x0013&#34;
+            }
+          },
+          {
+            &#34;step&#34;: &#34;2&#34;,
+            &#34;pass&#34;: &#34;false&#34;,
+            &#34;resultDetails&#34;: &#34;Fail&#34;,
+            &#34;alertIds&#34;: [
+              2,
+              4
+            ],
+            &#34;original&#34;: {
+              &#34;uri&#34;: &#34;https://www.example.com/step2&#34;,
+              &#34;method&#34;: &#34;GET&#34;,
+              &#34;request-header&#34;: &#34;GET https://www.example.com/step2 HTTP/1.1\r\nhost: www.example.com\r\nuser-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0\r\npragma: no-cache\r\ncache-control: no-cache\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;request-body&#34;: &#34;\\x0000\\x0013&#34;,
+              &#34;response-header&#34;: &#34;HTTP/1.0 0\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;response-body&#34;: &#34;\\x0000\\x0013&#34;
+            },
+            &#34;replay&#34;: {
+              &#34;uri&#34;: &#34;https://www.example.com/step2&#34;,
+              &#34;method&#34;: &#34;GET&#34;,
+              &#34;request-header&#34;: &#34;GET https://www.example.com/step2 HTTP/1.1\r\nhost: www.example.com\r\nuser-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:92.0) Gecko/20100101 Firefox/92.0\r\npragma: no-cache\r\ncache-control: no-cache\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;request-body&#34;: &#34;\\x0000\\x0013&#34;,
+              &#34;response-header&#34;: &#34;HTTP/1.0 0\r\nTest: Foo-Header\\x0000\\x0013\r\n\r\n&#34;,
+              &#34;response-body&#34;: &#34;\\x0000\\x0013&#34;
+            }
+          }
+        ]
+      }
+    ]
 </code></pre>
         </div>
       </div>
