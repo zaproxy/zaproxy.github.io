@@ -272,7 +272,16 @@
                             <a href="/docs/desktop/addons/automation-framework/job-ascan/">Automation Framework - activeScan Job</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanconfig/">Automation Framework - activeScan-config Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-ascanpolicy/">Automation Framework - activeScan-policy Job</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-delay/">Automation Framework - delay Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/automation-framework/job-exitstatus/">Automation Framework - exitStatus Job</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/automation-framework/job-pscanconf/">Automation Framework - passiveScan-config Job</a>
@@ -350,6 +359,9 @@
                             <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">Client Side Integration - AJAX Spider Enhancement</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/automation/">Client Side Integration - Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/firefox-profile/">Client Side Integration - Firefox Profile</a>
                         </li>  
                         <li> 
@@ -357,6 +369,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/spider/">Client Side Integration - Client Spider</a>
                         </li>
         </ul>
     </li>
@@ -621,6 +636,9 @@
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/import-export/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/import-export/sitestreeformat/">Sites Tree File Format</a>
                         </li>
         </ul>
     </li>
@@ -812,6 +830,9 @@
                 <a href="/docs/desktop/addons/passive-scanner/">Passive Scanner Add-on</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/api/">Passive Scanner API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/passive-scanner/automation/">Passive Scanner Automation Framework Support</a>
                         </li>  
                         <li> 
@@ -820,6 +841,21 @@
                         <li> 
                             <a href="/docs/desktop/addons/passive-scanner/job-pscanwait/">Passive Scanner Automation Framework - passiveScan-wait Job</a>
                         </li>
+    <li data-depth="3" class="">
+                <a href="/docs/desktop/addons/passive-scanner/options/">Options</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/rules/">Passive Scan Rules</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/scanner/">Passive Scanner</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/passive-scanner/options/tags/">Passive Scan Tags</a>
+                        </li>
+        </ul>
+    </li>
+
         </ul>
     </li>
 
@@ -1086,7 +1122,13 @@
 
     <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/sequence-scanner/">Sequence Scanner</a>
-        <ul class="tree-branch">
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/automation/">Automation Framework Support</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/sequence-scanner/policy-sequence/">Sequence Policy</a>
+                        </li>
         </ul>
     </li>
 
@@ -1306,6 +1348,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.15.0/">Release 2.15.0</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.16.0/">Release 2.16.0</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
@@ -1744,7 +1789,7 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/'>The ZAP Desktop User Guide</a>
+        <a href='/docs/desktop/'>The ZAP by Checkmarx Desktop User Guide</a>
     </li>
 
     <li>
@@ -1783,12 +1828,51 @@
       <tr>
           <td><a href="/docs/alerts/50007-2/">50007-2</a></td>
           <td>GraphQL Server Implementation Identified</td>
-          <td>This alert is raised when the GraphQL implementation used by the server is identified. It utilises fingerprinting techniques adapted from the tool <a href="https://github.com/dolevf/graphw00f">graphw00f</a>.</td>
+          <td>This alert is raised when the GraphQL implementation used by the server is identified. It utilises fingerprinting techniques adapted from the tool <a href="https://github.com/dolevf/graphw00f">graphw00f</a>. <strong>Note:</strong> If the Tech Detection (Wappalyzer) add-on is installed the fingerprinter will also add identified GraphQL Engines to the Technology tab/data.</td>
           <td><a href="https://github.com/zaproxy/zap-extensions/tree/main/addOns/graphql/src/main/java/org/zaproxy/addon/graphql/GraphQlFingerprinter.java">GraphQlFingerprinter.java</a></td>
       </tr>
   </tbody>
 </table>
 <p>Alert ID: <a href="/docs/alerts/50007/">50007</a>.</p>
+
+<h2 id="engines">Supported Engines <a class="header-link" href="#engines"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Absinthe - <a href="https://github.com/absinthe-graphql/absinthe">https://github.com/absinthe-graphql/absinthe</a></li>
+<li>Agoo - <a href="https://github.com/ohler55/agoo">https://github.com/ohler55/agoo</a></li>
+<li>Apollo - <a href="https://github.com/apollographql/apollo-server">https://github.com/apollographql/apollo-server</a></li>
+<li>Ariadne - <a href="https://github.com/mirumee/ariadne">https://github.com/mirumee/ariadne</a></li>
+<li>AWS AppSync - <a href="https://aws.amazon.com/appsync">https://aws.amazon.com/appsync</a></li>
+<li>caliban - <a href="https://github.com/ghostdogpr/caliban">https://github.com/ghostdogpr/caliban</a></li>
+<li>Dgraph - <a href="https://github.com/dgraph-io/dgraph">https://github.com/dgraph-io/dgraph</a></li>
+<li>Diana.jl - <a href="https://github.com/neomatrixcode/Diana.jl">https://github.com/neomatrixcode/Diana.jl</a></li>
+<li>Directus - <a href="https://github.com/directus/directus">https://github.com/directus/directus</a></li>
+<li>gqlgen - <a href="https://github.com/99designs/gqlgen">https://github.com/99designs/gqlgen</a></li>
+<li>Graphene - <a href="https://github.com/graphql-python/graphene">https://github.com/graphql-python/graphene</a></li>
+<li>GraphQL by PoP - <a href="https://github.com/leoloso/PoP/tree/master/layers/GraphQLByPoP">https://github.com/leoloso/PoP/tree/master/layers/GraphQLByPoP</a></li>
+<li>GraphQL.NET - <a href="https://github.com/graphql-dotnet/graphql-dotnet">https://github.com/graphql-dotnet/graphql-dotnet</a></li>
+<li>graphql-flutter - <a href="https://github.com/zino-app/graphql-flutter">https://github.com/zino-app/graphql-flutter</a></li>
+<li>graphql-go - <a href="https://github.com/graphql-go/graphql">https://github.com/graphql-go/graphql</a></li>
+<li>graphql-java - <a href="https://github.com/graphql-java/graphql-java">https://github.com/graphql-java/graphql-java</a></li>
+<li>graphql-php - <a href="https://github.com/webonyx/graphql-php">https://github.com/webonyx/graphql-php</a></li>
+<li>graphql-ruby - <a href="https://github.com/rmosolgo/graphql-ruby">https://github.com/rmosolgo/graphql-ruby</a></li>
+<li>GraphQL Yoga - <a href="https://github.com/dotansimha/graphql-yoga">https://github.com/dotansimha/graphql-yoga</a></li>
+<li>Hasura - <a href="https://github.com/hasura/graphql-engine">https://github.com/hasura/graphql-engine</a></li>
+<li>Hot Chocolate - <a href="https://chillicream.com/docs/hotchocolate/v13">https://chillicream.com/docs/hotchocolate/v13</a></li>
+<li>HyperGraphQL - <a href="https://github.com/hypergraphql/hypergraphql">https://github.com/hypergraphql/hypergraphql</a></li>
+<li>Inigo - <a href="https://inigo.io">https://inigo.io</a></li>
+<li>jaal - <a href="https://github.com/appointy/jaal">https://github.com/appointy/jaal</a></li>
+<li>Juniper - <a href="https://github.com/graphql-rust/juniper">https://github.com/graphql-rust/juniper</a></li>
+<li>lacinia - <a href="https://github.com/walmartlabs/lacinia">https://github.com/walmartlabs/lacinia</a></li>
+<li>Lighthouse - <a href="https://github.com/nuwave/lighthouse">https://github.com/nuwave/lighthouse</a></li>
+<li>mercurius - <a href="https://github.com/mercurius-js/mercurius">https://github.com/mercurius-js/mercurius</a></li>
+<li>morpheus-graphql - <a href="https://github.com/morpheusgraphql/morpheus-graphql">https://github.com/morpheusgraphql/morpheus-graphql</a></li>
+<li>pg_graphql - <a href="https://supabase.github.io/pg_graphql">https://supabase.github.io/pg_graphql</a></li>
+<li>Sangria - <a href="https://github.com/sangria-graphql/sangria">https://github.com/sangria-graphql/sangria</a></li>
+<li>Strawberry - <a href="https://github.com/strawberry-graphql/strawberry">https://github.com/strawberry-graphql/strawberry</a></li>
+<li>tailcall - <a href="https://tailcall.run">https://tailcall.run</a></li>
+<li>tartiflette - <a href="https://github.com/tartiflette/tartiflette">https://github.com/tartiflette/tartiflette</a></li>
+<li>WPGraphQL WordPress Plugin - <a href="https://github.com/wp-graphql/wp-graphql">https://github.com/wp-graphql/wp-graphql</a></li>
+</ul>
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
