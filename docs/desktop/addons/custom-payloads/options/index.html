@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Client Side Integration - AJAX Spider Enhancement</title>
+  <title>ZAP &ndash; Options Custom Payloads screen</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -352,10 +352,10 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a>
         <ul class="tree-branch">  
-                        <li class="tree-active"> 
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/ajax-scan/">Client Side Integration - AJAX Spider Enhancement</a>
                         </li>  
                         <li> 
@@ -406,13 +406,13 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/custom-payloads/">Custom Payloads</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/custom-payloads/api/">Custom Payloads API</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/custom-payloads/options/">Options Custom Payloads screen</a>
                         </li>
         </ul>
@@ -1800,27 +1800,50 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/client-side-integration/'>Client Side Integration</a>
+        <a href='/docs/desktop/addons/custom-payloads/'>Custom Payloads</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/client-side-integration/ajax-scan/'>Client Side Integration - AJAX Spider Enhancement</a>
+        <a href='/docs/desktop/addons/custom-payloads/options/'>Options Custom Payloads screen</a>
     </li>
 
 
 </ol>
           
-<h1 id="client-side-integration---ajax-spider-enhancement">Client Side Integration - AJAX Spider Enhancement</h1>
-<p>This add-on now adds a <a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider</a> which is designed to explore modern web apps more effectively. You are recommended to try this out as it is likely to be more effective that the AJAX Spider Enhancement detailed here.</p>
-<p>Also note that from ZAP 2.16.0 the AJAX Spider has an option to enable browser extensions, and that option is turned off by default.
-You will need to turn it on in order for this integration to work.</p>
-<p>The AJAX Spider works by launching browsers, clicking links, and filling in fields.
-It is an effective way to crawl modern web apps but it is not able to directly access the DOM.</p>
-<p>The browser extensions included in this add-on can access the DOM and stream specific events back to ZAP.</p>
-<p>This add-on listens for AJAX Spider events and when the spider has finished it then examines the Client Map
-to see if it can find any URLs which were referenced by the DOM but which have not been accessed by ZAP.</p>
-<p>If it finds any &lsquo;missed&rsquo; URLs that were part of the AJAX Spider scan scope then it makes direct requests to these URLs.
-You will be able to see these requests in the History, Sites Tree, and Output tabs.</p>
+<h1 id="options-custom-payloads-screen">Options Custom Payloads screen</h1>
+<p>This screen/table allows you to configure <a href="/docs/desktop/addons/custom-payloads/">Custom Payload</a> options:</p>
+
+<h2 id="custom-payloads-table">Custom Payloads Table <a class="header-link" href="#custom-payloads-table"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="enabled">Enabled <a class="header-link" href="#enabled"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>A checkbox indicating whether or not the particular custom payload is to be used or not.</p>
+
+<h3 id="category">Category <a class="header-link" href="#category"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Indicates the category and by association the scan rule for which the custpm payload value should be used. The categories are also mentioned in the help entry for the applicable scan rules.</p>
+
+<h3 id="payload">Payload <a class="header-link" href="#payload"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The value of the specific custom payload.</p>
+
+<h2 id="custom-payloads-buttons">Custom Payloads Buttons <a class="header-link" href="#custom-payloads-buttons"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="add">Add <a class="header-link" href="#add"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Allows users to add a custom payload, setting the enable state, category, and payload value.</p>
+<p><strong>Note</strong> : Payload categories which are not listed in the table may be available via the Add button as not all rules which support custom payloads have default payloads.</p>
+
+<h3 id="modifyremove">Modify/Remove <a class="header-link" href="#modifyremove"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Either modify or remove the custom payload defined by the selected row.</p>
+
+<h3 id="enable-alldisable-all">Enable All/Disable All <a class="header-link" href="#enable-alldisable-all"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Sets the enable state of all custom payloads as applicable.</p>
+
+<h3 id="add-missing-defaults">Add Missing Defaults <a class="header-link" href="#add-missing-defaults"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Facilitates restoration of missing default custom payloads if they&rsquo;ve been previously removed.</p>
+
+<h3 id="reset-to-defaults">Reset to Defaults <a class="header-link" href="#reset-to-defaults"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Removes all payloads and restores just the defaults. <strong>Note</strong> : User added payloads will be lost.</p>
+
+<h3 id="add-multiple-payloads">Add Multiple Payloads <a class="header-link" href="#add-multiple-payloads"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Allows the user to import a text file of payloads (one payload per line) for the selected category.</p>
 
         </div>
       </div>
