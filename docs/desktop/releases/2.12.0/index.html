@@ -2151,13 +2151,11 @@ in future ZAP sessions to list out-of-band interactions made to the service whil
 <p>The returned data now includes the False Positive count. This change may break existing consumers as the number of expected alerts might no longer be the same. For example, if a Medium risk alert is marked as False Positive, the structure of returned data will be:</p>
 <blockquote>
 <pre><code>{&quot;High&quot;:0,&quot;Low&quot;:3,&quot;Medium&quot;:0,&quot;Informational&quot;:2,&quot;False Positive&quot;:1}
-</code></pre>
-</blockquote>
+</code></pre></blockquote>
 <p>instead of:</p>
 <blockquote>
 <pre><code>{&quot;High&quot;:0,&quot;Low&quot;:3,&quot;Medium&quot;:1,&quot;Informational&quot;:2}
-</code></pre>
-</blockquote>
+</code></pre></blockquote>
 
 <h3 id="endpoints-with-response-changes">Endpoints With Response Changes <a class="header-link" href="#endpoints-with-response-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The following endpoints used to return &ldquo;OK&rdquo; for all inputs. They now return suitable error messages (such as &ldquo;does_not_exist&rdquo; or &ldquo;illegal_parameter&rdquo;) when the inputs are invalid.</p>
