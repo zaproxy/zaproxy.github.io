@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-02-04-zap-updates-january-2025/images/zapbot-monthly-updates.png">
+  <meta name="twitter:title" content="ZAP Updates - January 2025">
+  <meta name="twitter:description" content="Starting 2025 with a full release, a new way to crawl modern web apps, and better authentication capabilities.">
+
+    <meta property="og:url" content="/blog/2025-02-04-zap-updates-january-2025/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="ZAP Updates - January 2025">
+  <meta property="og:description" content="Starting 2025 with a full release, a new way to crawl modern web apps, and better authentication capabilities.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-02-04T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-04T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Update">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-02-04-zap-updates-january-2025/images/zapbot-monthly-updates.png">
+
+  
+  <title>ZAP &ndash; ZAP Updates - January 2025</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.90b582.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">ZAP Updates - January 2025</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday February 4, 2025</span>
+              <span class="word-count fl-r"> 2750 Words </span>
+            </section>
+            <p>It&rsquo;s a new year, and that means new ZAP developments. Here&rsquo;s everything that happened in January 2025.</p>
+
+<h2 id="highlights">Highlights <a class="header-link" href="#highlights"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="zap-2160">ZAP 2.16.0 <a class="header-link" href="#zap-2160"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>ZAP 2.16.0 was released this month, which introduced a range of enhancements including a new spidering approach, detachable tabs, and an updated baseline Java requirement (now 17).
+This is also the first full release with the &ldquo;ZAP by Checkmarx&rdquo; branding.
+Read the <a href="/blog/2025-01-10-zap-2-16-0/">full release blog post</a> for more details.</p>
+
+<h3 id="client-spider">Client Spider <a class="header-link" href="#client-spider"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Client Spider offers a more effective way to crawl modern web applications by leveraging the built-in browser extension to capture events, DOM changes, and user interactions.
+It aims to replace or outperform the AJAX Spider, giving users deeper coverage of front-end frameworks that rely heavily on JavaScript.
+Over time, it will expand to handle a wider variety of clickable elements and replay sequences more accurately.
+For more details, check out the <a href="/blog/2025-01-31-client-spider/">blog post</a> and <a href="https://youtu.be/OkELONAQyAY">ZAP Chat episode</a> on the client spider.</p>
+
+<h3 id="client-script-authentication">Client Script Authentication <a class="header-link" href="#client-script-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This Authentication Helper add-on introduced a browser-based authentication method that can use Zest scripts to log in.
+It also supports Automation Framework configuration.
+Visit <a href="/docs/desktop/addons/authentication-helper/client-script/">the docs</a> to learn more.</p>
+
+<h2 id="ongoing-work">Ongoing Work <a class="header-link" href="#ongoing-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="improved-browser-based-authentication">Improved Browser Based Authentication <a class="header-link" href="#improved-browser-based-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Building on the Client Spider and Client Script Authentication, the plan is to enhance browser integration so that ZAP can handle even the trickiest login mechanisms.
+This includes enhanced detection of login fields, handling multi-step logins, TOTP support, and more.</p>
+
+<h3 id="authentication-report">Authentication Report <a class="header-link" href="#authentication-report"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>An upcoming authentication report feature will summarize authentication details, statistics, and step-by-step screenshots of the login process.
+It is aimed at making it easier to pinpoint login failures, expired tokens, or misconfigurations.
+The idea is that this report will contain all the details a user will need in order to set up ZAP to handle authentication, possibly even without access to the ZAP Desktop.</p>
+<p>Watch out for new docs, blog posts and videos on new authentication options soon!</p>
+
+<h2 id="miscellaneous-mentions">Miscellaneous Mentions <a class="header-link" href="#miscellaneous-mentions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="roadmap-updates">Roadmap Updates <a class="header-link" href="#roadmap-updates"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/docs/roadmap/">ZAP Roadmap</a> was updated with ongoing and planned items.</p>
+
+<h3 id="zapbot-on-bluesky">ZAPBot on Bluesky <a class="header-link" href="#zapbot-on-bluesky"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The ZAPBot account on Bluesky (<a href="https://bsky.app/profile/zaproxybot.bsky.social">@zaproxybot.bsky.social</a>) now creates posts for published nightly releases or integration test failures.</p>
+
+<h2 id="new-contributors">New Contributors <a class="header-link" href="#new-contributors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>A very warm welcome to the people who started contributing to ZAP in January!</p>
+<ul>
+<li><a href="https://github.com/bj-taduran">@bj-taduran</a></li>
+<li><a href="https://github.com/Kaifmohd">@Kaifmohd</a></li>
+<li><a href="https://github.com/middagj">@middagj</a></li>
+</ul>
+
+<h2 id="github-pulse">GitHub Pulse <a class="header-link" href="#github-pulse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Here are some statistics for the two main ZAP repositories:</p>
+<p><a href="https://github.com/zaproxy/zaproxy/pulse/monthly">zaproxy</a><br>
+Excluding merges, 5 authors have pushed 32 commits to main and 32 commits to all branches. On main, 79 files have changed and there have been 1,966 additions and 505 deletions.</p>
+<p><a href="https://github.com/zaproxy/zap-extensions/pulse/monthly">zap-extensions</a><br>
+Excluding merges, 8 authors have pushed 89 commits to main and 89 commits to all branches. On main, 1,828 files have changed and there have been 33,355 additions and 3,049 deletions.</p>
+<p>A total of <a href="https://github.com/search?q=org%3Azaproxy+type%3Apr+-author%3Azapbot+-author%3Aapp%2Fdependabot+sort%3Aupdated-asc+closed%3A2025-01+is%3Amerged&amp;type=pullrequests">124 human PRs were merged</a> on the ZAP repos.</p>
+
+<h2 id="released-add-ons---full-changelog">Released Add-ons - Full Changelog <a class="header-link" href="#released-add-ons---full-changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>In January 2025, we released updated versions of 52 add-ons:</p>
+
+<h5 id="active-scanner-rules">Active scanner rules</h5>
+<p><strong>v70</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Updated help with specific Category identifiers for use with the Custom Payloads add-on for rules:
+<ul>
+<li>Hidden File Finder</li>
+<li>User Agent Fuzzer</li>
+</ul>
+</li>
+<li>Now depends on minimum Common Library version 1.29.0.</li>
+<li>Add the <code>OUT_OF_BAND</code> alert tag to the following scan rules:
+<ul>
+<li>Server Side Template Injection (Blind)</li>
+<li>XML External Entity Attack</li>
+</ul>
+</li>
+<li>Cloud Metadata Attack scan rule is improved to support GCP, Azure, and OCI.</li>
+<li>Remove double dot in skipped message of a scan rule that uses the Active Scan OAST service.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>A situation where the Server-Side Template Injection (SSTI) scan rule might result in false positives related to the Go payloads (Issue 8622).</li>
+<li>False Positives in Cloud Metadata Attack scan rule (Issue 8514).</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Standardized Scan Policy related alert tags on the rule.</li>
+</ul>
+
+<h5 id="active-scanner-rules-beta">Active scanner rules (beta)</h5>
+<p><strong>v57</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>The following scan rules now use more specific CWE IDs:
+<ul>
+<li>Proxy Disclosure (Issue 8713)</li>
+<li>Possible Username Enumeration (Issue 8715)</li>
+</ul>
+</li>
+<li>Remove double dot in skipped message of scan rules that use the Active Scan OAST service.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Address exception when scanning a message without path with Possible Username Enumeration scan rule.</li>
+<li>The WSTG alert tags on the HTTP Only Site scan rule.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Standardized Scan Policy related alert tags on various rules.</li>
+</ul>
+
+<h5 id="ajax-spider">Ajax Spider</h5>
+<p><strong>v23.22.0</strong><br>
+Added</p>
+<ul>
+<li>Option to enable browser extensions added by other add-ons, previously they were always enabled but now the default is false.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Updated automation framework documentation and templates for <code>spiderAjax</code> job to reflect changes to the default value of numberOfBrowsers parameter</li>
+<li>Fields with default or missing values are omitted for the <code>spiderAjax</code> job in saved Automation Framework plans.</li>
+<li>Default the number of browsers to the number of available cores.</li>
+<li>Updated the job GUI to add an aditional &ldquo;Elements&rdquo; tab.</li>
+</ul>
+
+<h5 id="alert-filters">Alert Filters</h5>
+<p><strong>v23</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Fields with default or missing values are omitted for the <code>alertFilter</code> job in saved Automation Framework plans.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+</ul>
+
+<h5 id="authentication-helper">Authentication Helper</h5>
+<p><strong>v0.18.0</strong><br>
+Changed</p>
+<ul>
+<li>Ignore non-displayed fields when selecting the user name and password.</li>
+<li>Use single displayed field for user name, e.g. multi step login.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Input fields that do not explicitly declare their type were no longer being chosen by the Browser Based Authentication.</li>
+</ul>
+<p><strong>v0.17.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+<li>Address deprecation warnings with newer Selenium version (4.27).</li>
+<li>Optionally depend on the Client Integration add-on to provide Browser Based Authentication to the Client Spider.</li>
+</ul>
+
+<h5 id="automation-framework">Automation Framework</h5>
+<p><strong>v0.44.0</strong><br>
+Added</p>
+<ul>
+<li>Active scan policy job.</li>
+<li>Add job to configure the active scanner, <code>activeScan-config</code>.</li>
+<li>Allow to enable/disable jobs (Issue 5845).</li>
+<li>Method to allow the user to set the exit code via a script.</li>
+<li>Add exitStatus job (Issue #6928)</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Maintenance changes.</li>
+<li>Updated automation framework documentation and templates for <code>activeScan</code> job to reflect changes to the default value of threadPerHost parameter</li>
+<li>Update help for the &ldquo;requestor&rdquo; job.</li>
+<li>Update help to indicate that job order is important (Issue 8675).</li>
+<li>Fields with default or missing values are omitted for the following automation jobs in saved plans:
+<ul>
+<li><code>activeScan</code></li>
+<li><code>delay</code></li>
+<li><code>requestor</code></li>
+</ul>
+</li>
+</ul>
+<p>Removed</p>
+<ul>
+<li>Remove job implementations that were previously migrated to the Passive Scanner add-on (Issue 7959).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Templates generated with <code>-autogenmin</code> or <code>-autogenmax</code> were invalid in some cases.</li>
+<li>Allow to choose one thread for the <code>activeScan</code> job through the GUI.</li>
+<li>Active Scan jobs will once again use the default policy if neither a policy nor a policyDefinition has been set.</li>
+<li>Bug in job alert tests related to alert matching.</li>
+<li>Active scan rule ID 0 (Directory Browsing) will be included in the plan (yaml) when saved (Issue 8746).</li>
+<li>Sizing/display of the Active Scan Policy job rule add/modify dialogs.</li>
+</ul>
+
+<h5 id="call-home">Call Home</h5>
+<p><strong>v0.14.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Network stats to telemetry.</li>
+<li>Sequence stats to telemetry.</li>
+</ul>
+
+<h5 id="client-side-integration">Client Side Integration</h5>
+<p><strong>v0.12.0</strong><br>
+Fixed</p>
+<ul>
+<li>Extension not enabled when launched from ZAP.</li>
+<li>Browser recording not enabled when launched from ZAP recorder.</li>
+</ul>
+<p><strong>v0.11.0</strong><br>
+Fixed</p>
+<ul>
+<li>Fix concurrency issue with page components which could lead to exceptions in the GUI.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Updated Chrome and Firefox extensions to v0.0.11.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>A context menu allowing users to Export Client Map.</li>
+</ul>
+<p><strong>v0.10.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Maintenance changes.</li>
+<li>The current passive scan rules now uses a more specific CWE (Issue 8712).</li>
+<li>Updated Chrome and Firefox extensions to v0.0.10.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Added support for Browser Based Authentication when installed in conjunction with the Auth Helper add-on.</li>
+<li>Client spider, along with Automation Framework support.</li>
+</ul>
+
+<h5 id="common-library">Common Library</h5>
+<p><strong>v1.30.0</strong><br>
+Added</p>
+<ul>
+<li>Add solutions to Insufficient Process Validation vulnerability (Issue 8056).</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Improve solution and add more references to &lsquo;Information Leakage&rsquo; vulnerability (Issue 8056).</li>
+</ul>
+
+<h5 id="custom-payloads">Custom Payloads</h5>
+<p><strong>v0.14.0</strong><br>
+Changed</p>
+<ul>
+<li>Promoted to Release status.</li>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Maintenance changes.</li>
+<li>The superfluous/unused ID element of the custom payloads has been removed from the GUI and config.</li>
+<li>Now depends on the Common Library add-on.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Add help button to Options panel and add further detailed Help content.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>The add-on will no longer attempt to save or load Payloads for which there is no Category.</li>
+<li>Ensure file is selected, exists, and is readable when attempting to import multiple payloads.</li>
+</ul>
+
+<h5 id="dom-xss-active-scanner-rule">DOM XSS Active scanner rule</h5>
+<p><strong>v21</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Handle exceptions while obtaining the XPath of an element.</li>
+</ul>
+
+<h5 id="database">Database</h5>
+<p><strong>v0.7.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="dev-add-on">Dev Add-on</h5>
+<p><strong>v0.9.0</strong><br>
+Added</p>
+<ul>
+<li>Link which is only shown if a localStorage item is set, for testing in browser spider authentication.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="diff">Diff</h5>
+<p><strong>v17</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="directory-list-v10">Directory List v1.0</h5>
+<p><strong>v9</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="encoder">Encoder</h5>
+<p><strong>v1.6.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>A predefined processor &ldquo;ASCify&rdquo; which converts text removing accents/diacritics/ligatures (perhaps not fully, due to operation in compatibility mode) leaving only ASCII characters.</li>
+<li>Predefined processors for encoding and decoding Morse Code.</li>
+</ul>
+
+<h5 id="forced-browse">Forced Browse</h5>
+<p><strong>v17</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="fuzzer">Fuzzer</h5>
+<p><strong>v13.15.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="getting-started-with-zap-guide">Getting Started with ZAP Guide</h5>
+<p><strong>v19</strong><br>
+Changed</p>
+<ul>
+<li>Update Getting Started Guide for 2.16.0.</li>
+</ul>
+
+<h5 id="graalvm-javascript">GraalVM JavaScript</h5>
+<p><strong>v0.9.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="graphql-support">GraphQL Support</h5>
+<p><strong>v0.26.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on newer version of Common Library add-on (Issue 8016).</li>
+<li>Maintenance changes.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Fingerprinting checks for the following engines:
+<ul>
+<li>pg_graphql</li>
+<li>tailcall</li>
+<li>Hot Chocolate</li>
+<li>Inigo</li>
+</ul>
+</li>
+<li>Support for importing an introspection query response from a file (Issue 8569).</li>
+<li>If the Tech Detection (Wappalyzer) add-on is installed and a GraphQL engine is successfully fingerprinted, it is added to the Technology tab/data.</li>
+</ul>
+
+<h5 id="importexport">Import/Export</h5>
+<p><strong>v0.13.0</strong><br>
+Added</p>
+<ul>
+<li>Add Automation Framework job to export data (e.g. HAR, URLs).</li>
+<li>Support for Sites Tree export and prune.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Update dependency.</li>
+<li>Maintenance changes.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Import HAR entry sent and elapsed time.</li>
+<li>Duplicate or missing &ldquo;Save URLs&hellip;&rdquo; entries in the Export menu.</li>
+<li>The &ldquo;Save All URLs&hellip;&rdquo; export option was saving only the selected URLs.</li>
+<li>Correct bundled dependencies to avoid conflicts with core logging libraries.</li>
+</ul>
+
+<h5 id="invoke-applications">Invoke Applications</h5>
+<p><strong>v16</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="linux-webdrivers">Linux WebDrivers</h5>
+<p><strong>v122</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.159.</li>
+</ul>
+<p><strong>v121</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.110.</li>
+</ul>
+<p><strong>v120</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.83.</li>
+</ul>
+<p><strong>v119</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p><strong>v118</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 131.0.6778.264.</li>
+</ul>
+
+<h5 id="macos-webdrivers">MacOS WebDrivers</h5>
+<p><strong>v122</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.159.</li>
+</ul>
+<p><strong>v121</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.110.</li>
+</ul>
+<p><strong>v120</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.83.</li>
+</ul>
+<p><strong>v119</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p><strong>v118</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 131.0.6778.264.</li>
+</ul>
+
+<h5 id="network">Network</h5>
+<p><strong>v0.20.0</strong><br>
+Added</p>
+<ul>
+<li>Set the local address where (e.g. server, proxy) the request header was received.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="oast-support">OAST Support</h5>
+<p><strong>v0.21.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Maintenance changes.</li>
+<li>Include the handler and source when logging interactions not found in the permanent database.</li>
+</ul>
+
+<h5 id="online-menus">Online menus</h5>
+<p><strong>v14</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="openapi-support">OpenAPI Support</h5>
+<p><strong>v44</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on newer version of Common Library add-on (Issue 8016).</li>
+<li>Fields with default or missing values are omitted for the <code>openapi</code> job in saved Automation Framework plans.</li>
+</ul>
+
+<h5 id="passive-scanner">Passive Scanner</h5>
+<p><strong>v0.1.0</strong><br>
+Added</p>
+<ul>
+<li>Manage the passive scan related options and the scan rules (Issue 7959).</li>
+<li>Add passive scanner (Issue 7959).</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Fields with default or missing values are omitted for the following automation jobs in saved Automation Framework plans:
+<ul>
+<li><code>passiveScan-config</code></li>
+<li><code>passiveScan-wait</code></li>
+</ul>
+</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Fixed <code>passiveScan-wait</code> alert tests.</li>
+</ul>
+
+<h5 id="passive-scanner-rules">Passive scanner rules</h5>
+<p><strong>v62</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Updated help with specific Category identifiers for use with the Custom Payloads add-on for rules:
+<ul>
+<li>Application Error Disclosure</li>
+<li>Information Disclosure - Suspicious Comments</li>
+<li>Username Hash Found</li>
+</ul>
+</li>
+</ul>
+
+<h5 id="passive-scanner-rules-beta">Passive scanner rules (beta)</h5>
+<p><strong>v42</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Updated help with specific Category identifier for use with the Custom Payloads add-on for the &ldquo;Dangerous JS Functions&rdquo; rule.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Fix typo in log message.</li>
+<li>Fix Insufficient Site Isolation scan rule check that filters responses based on whether a response is a success or not.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h5 id="postman-support">Postman Support</h5>
+<p><strong>v0.5.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Fields with default or missing values are omitted for the <code>postman</code> job in saved Automation Framework plans.</li>
+</ul>
+
+<h5 id="quick-start">Quick Start</h5>
+<p><strong>v51</strong><br>
+Added</p>
+<ul>
+<li>Stats counter to the main toolbar button (Issue 8375).</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>An exception that prevented the look and feel from changing completely.</li>
+<li>Issues setting the AJAX Spider options.</li>
+</ul>
+
+<h5 id="replacer">Replacer</h5>
+<p><strong>v20</strong><br>
+Fixed</p>
+<ul>
+<li>Typo in automation job help.</li>
+<li>Address misleading warning <code>Unrecognised parameter</code> for <code>deleteAllRules</code> (Issue 8764).</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Fields with default or missing values are omitted for the <code>replacer</code> job in saved Automation Framework plans.</li>
+</ul>
+
+<h5 id="report-generation">Report Generation</h5>
+<p><strong>v0.35.0</strong><br>
+Added</p>
+<ul>
+<li>Stats counter to the main toolbar button (Issue 8375).</li>
+<li>Sequence data to JSON &amp; HTML reports.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Update automation job help.</li>
+<li>Fields with default or missing values are omitted for the <code>report</code> job in saved Automation Framework plans.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Do not log an error when the statistics do not have a resource message (Issue 8788).</li>
+</ul>
+
+<h5 id="requester">Requester</h5>
+<p><strong>v7.8.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="retest">Retest</h5>
+<p><strong>v0.11.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>To handle automation class changes.</li>
+<li>Depend on newer version of Passive Scanner add-on (Issue 7959).</li>
+</ul>
+
+<h5 id="retirejs">Retire.js</h5>
+<p><strong>v0.44.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with upstream retire.js pattern changes.</li>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="reveal">Reveal</h5>
+<p><strong>v9</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="soap-support">SOAP Support</h5>
+<p><strong>v24</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on newer version of Common Library add-on (Issue 8016).</li>
+<li>Fields with default or missing values are omitted for the <code>soap</code> job in saved Automation Framework plans.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Standardized Scan Policy related alert tags on scan rules.</li>
+</ul>
+
+<h5 id="scan-policies">Scan Policies</h5>
+<p><strong>v0.2.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Fix link in the help page.</li>
+</ul>
+
+<h5 id="script-console">Script Console</h5>
+<p><strong>v45.8.0</strong><br>
+Added</p>
+<ul>
+<li>Report indirect script errors while the Automation Framework plans are running (Issue 8586).</li>
+<li>Standardized Policy Tags to the base Scripts Active Scanner.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Fields with default or missing values are omitted for the <code>script</code> job in saved Automation Framework plans.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Correct auto-complete suggestions for parameters of Passive Rules.</li>
+<li>Some script errors were not being propagated to the output correctly.</li>
+</ul>
+
+<h5 id="selenium">Selenium</h5>
+<p><strong>v15.33.0</strong><br>
+Added</p>
+<ul>
+<li>Allow to log browser&rsquo;s <code>console.log</code>, done at DEBUG level with the name <code>org.zaproxy.webdriver</code>.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Use WebDriver BiDi with Chrome.</li>
+<li>Update Selenium to version 4.28.0.</li>
+</ul>
+<p><strong>v15.32.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="sequence">Sequence</h5>
+<p><strong>v8</strong><br>
+Added</p>
+<ul>
+<li>Add Automation Framework jobs:
+<ul>
+<li><code>sequence-import</code> to import HARs as sequences.</li>
+<li><code>sequence-activeScan</code> to active scan sequences.</li>
+</ul>
+</li>
+<li>Data for reporting.</li>
+<li>Stats for import automation and active scan.</li>
+<li>Sequence active scan policy which will be used if neither a policy nor policyDefinition are set.</li>
+<li>Add Import top level menu item to import HAR as sequence.</li>
+<li>Active Scan Sequence dialog.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Depend on Import/Export add-on to allow to import HARs as sequences.</li>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Maintenance changes.</li>
+<li>Sequence scan implementation.</li>
+<li>Promoted to beta.</li>
+</ul>
+<p>Removed</p>
+<ul>
+<li>Sequence panel from the Active Scan dialog.</li>
+</ul>
+
+<h5 id="spider">Spider</h5>
+<p><strong>v0.13.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on newer version of Common Library add-on (Issue 8016).</li>
+<li>Updated automation framework documentation and templates for <code>spider</code> job to reflect changes to the default value of threadCount parameter</li>
+<li>Fields with default or missing values are omitted for the <code>spider</code> job in saved Automation Framework plans.</li>
+</ul>
+<p>Removed</p>
+<ul>
+<li>Remove non-functional option &ldquo;request wait time&rdquo; from the API and Automation Framework.</li>
+</ul>
+
+<h5 id="technology-detection">Technology Detection</h5>
+<p><strong>v21.44.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+<li>The scan rule no longer sets a CWE for alerts (Issue 8733).</li>
+</ul>
+
+<h5 id="tips-and-tricks">Tips and Tricks</h5>
+<p><strong>v14</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h5 id="value-generator">Value Generator</h5>
+<p><strong>v6.7.0</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on Common Library add-on, to provide the default/custom values to the other add-ons (Issue 8016).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Fixed an issue in the help which may cause images to be displayed inline impacting the flow of the text.</li>
+</ul>
+
+<h5 id="websockets">WebSockets</h5>
+<p><strong>v32</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Correct location/function of New Context context menu item.</li>
+</ul>
+
+<h5 id="windows-webdrivers">Windows WebDrivers</h5>
+<p><strong>v122</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.159.</li>
+</ul>
+<p><strong>v121</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.110.</li>
+</ul>
+<p><strong>v120</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 132.0.6834.83.</li>
+</ul>
+<p><strong>v119</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p><strong>v118</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 131.0.6778.264.</li>
+</ul>
+
+<h5 id="zest---graphical-security-scripting-language">Zest - Graphical Security Scripting Language</h5>
+<p><strong>v48.1.0</strong><br>
+Changed</p>
+<ul>
+<li>Use ZAP for launching Firefox and Chrome.</li>
+<li>Update Zest library to 0.23.0:
+<ul>
+<li>Update Selenium to version 4.28.0.</li>
+<li>Update minimum Java version to 17.</li>
+</ul>
+</li>
+</ul>
+<p><strong>v48.0.0</strong><br>
+Added</p>
+<ul>
+<li>Allow other add-ons to create a Zest script from a list of messages.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Use Semantic Version.</li>
+<li>Maintenance changes.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2025-01-31-client-spider/"> The Client Spider</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/akshath-kothari_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Akshath Kothari
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/ricekot_">@ricekot_</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#highlights">Highlights</a>
+      <ul>
+        <li><a href="#zap-2160">ZAP 2.16.0</a></li>
+        <li><a href="#client-spider">Client Spider</a></li>
+        <li><a href="#client-script-authentication">Client Script Authentication</a></li>
+      </ul>
+    </li>
+    <li><a href="#ongoing-work">Ongoing Work</a>
+      <ul>
+        <li><a href="#improved-browser-based-authentication">Improved Browser Based Authentication</a></li>
+        <li><a href="#authentication-report">Authentication Report</a></li>
+      </ul>
+    </li>
+    <li><a href="#miscellaneous-mentions">Miscellaneous Mentions</a>
+      <ul>
+        <li><a href="#roadmap-updates">Roadmap Updates</a></li>
+        <li><a href="#zapbot-on-bluesky">ZAPBot on Bluesky</a></li>
+      </ul>
+    </li>
+    <li><a href="#new-contributors">New Contributors</a></li>
+    <li><a href="#github-pulse">GitHub Pulse</a></li>
+    <li><a href="#released-add-ons---full-changelog">Released Add-ons - Full Changelog</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/update/">update</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-02-04-zap-updates-january-2025/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2025 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.90ed09.js"></script>
+  
+</div>
+</body>
+</html>
