@@ -233,6 +233,9 @@
                             <a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script Authentication</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/authentication-helper/session-header/">Header Based Session Management</a>
                         </li>  
                         <li> 
@@ -1825,7 +1828,7 @@ as part of the Context.</p>
       includePaths:                    # An optional list of regexes to include
       excludePaths:                    # An optional list of regexes to exclude
       authentication:
-        method:                        # String, one of &#39;manual&#39;, &#39;http&#39;, &#39;form&#39;, &#39;json&#39; or &#39;script&#39;
+        method:                        # String, one of &#39;manual&#39;, &#39;http&#39;, &#39;form&#39;, &#39;json&#39;, &#39;script&#39;, &#34;autodetect&#34;, &#34;browser&#34;, or &#34;client&#34;
         parameters:                    # May include any required for scripts. All of the parameters support vars except for the port 
           hostname:                    # String, only for &#39;http&#39; authentication
           port:                        # Int, only for &#39;http&#39; authentication
@@ -1863,9 +1866,9 @@ as part of the Context.</p>
           password:                    # String, the password to use when authenticating, vars supported
   vars:                                # List of 0 or more custom variables to be used throughout the config file
     myVarOne: CustomConfigVarOne       # Can be used as ${myVarOne} anywhere throughout the config
-    myVarTwo: ${myVarOne}.VarTwo       # Can refer other vars    
+    myVarTwo: ${myVarOne}.VarTwo       # Can refer other vars
   parameters:
-    failOnError: true                  # If set exit on an error         
+    failOnError: true                  # If set exit on an error
     failOnWarning: false               # If set exit on a warning
     continueOnFailure: false           # Continue running all jobs, even if one fails
     progressToStdout: true             # If set will write job progress to stdout
