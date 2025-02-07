@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; In Page Banner Information Leak</title>
+  <link rel="alternate" type="application/rss+xml" href="/alerttags/cwe-497/index.xml" title="ZAP" />
+  <title>ZAP &ndash; CWE-497</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -110,137 +111,49 @@
 
   
 <section class="bolt-header">
-    <div class="wrapper py-20">
-      <h1 class="text--white">In Page Banner Information Leak</h1>
+  <div class="wrapper py-20">
+    
+      <h1 class="text--white">Alert Tag:  CWE-497</h1>
+    
   </div>
 </section>
-
-<div class="wrapper py-20" data-kind="page">
+  <div class="wrapper py-70">
     <header class="breadcrumbs">
-        <a href="/docs/">Docs</a> &gt;
-        <a href="/docs/alerts/">Alerts</a>
+        <a href="/alerttags/">Alert Tags</a> &gt;
+        
+        <a href="/alerttags/cwe-497">CWE-497</a>
+        
     </header>
-    <main class="post-content flex pt-10 on-sm-stack">
-      <section class="col-1-3 mr-30 mb-30">
-        <table class="bordered">
-          <thead>
-            <tr>
-              <th colspan="2">
-                Details
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <strong>Alert ID</strong>
-              </td>
-              <td>10009</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Alert Type</strong>
-              </td>
-              <td>Passive</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Status</strong>
-              </td>
-              <td>beta</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>Low</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/497.html">
-                  497
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>13</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/cwe-497">CWE-497</a><br>
-              
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
-              
-              	<a href="/alerttags/wstg-v42-info-02">WSTG-V42-INFO-02</a><br>
-              
-              </td>
-            </tr>
-            
-            <tr> 
-              <td>
-                <strong>More Info</strong>
-              </td>
-              <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules-beta/#id-10009">Scan Rule Help</a><br>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
+   
 
-      </section>
-      <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>
+    
+      
+      
+        <h4><a href="https://cwe.mitre.org/data/definitions/497.html">https://cwe.mitre.org/data/definitions/497.html</a></h4>
+      
+      All of the alerts which use this tag:
+    
 
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Configure the server to prevent such information leaks. For example: Under Tomcat this is done via the &#34;server&#34; directive and implementation of custom error pages. Under Apache this is done via the &#34;ServerSignature&#34; and &#34;ServerTokens&#34; directives.
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
-        
-          <li>
+   <div class="flex latest-versions">
+      <table data-sort-filter>
+         <thead>
+            <tr>
+               <th>Tag</th>
+               <th>Link</th>
+            </tr>
+         </thead>
+         <tbody>
             
-              <a href="https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/">https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</a>
+               
+               <tr>
+                  <td><a href="/docs/alerts/10009/">In Page Banner Information Leak</a></td>
+                  <td><a href=""></a></td>
+               </tr>
             
-          </li>
-        
-        </ul>
-        <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrulesBeta/src/main/java/org/zaproxy/zap/extension/pscanrulesBeta/InPageBannerInfoLeakScanRule.java'>org/zaproxy/zap/extension/pscanrulesBeta/InPageBannerInfoLeakScanRule.java</a>
-      </section>
-  </main>
-</div>
+         </tbody>
+      </table>
+   </div>
+  </div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
