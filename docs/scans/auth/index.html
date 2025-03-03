@@ -134,11 +134,25 @@
 
 
 </ol>
-    <main><p>Authentication Test Results</p>
+    <main><p>Testing ZAP authentication handling against a range of test and real world applications.</p>
+<p>Columns:</p>
+<ul>
+<li><strong>Type</strong>:
+<ul>
+<li><strong>stdbba</strong>:	Standard <a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based Authentication</a>, just the login URL and credentials, no additional configuration</li>
+<li><strong>bbaplus</strong>:	<a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based Authentication</a> with some additional configuration</li>
+<li><strong>csa</strong>:		<a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script Authentication</a>, using a client side Zest script to authenticate</li>
+</ul>
+</li>
+<li><strong>Auth</strong>: Did ZAP succeed in authentication to this site? This is the key column</li>
+<li><strong>Username</strong>: Did ZAP find the username field? Only applicable to Browser Based Auth</li>
+<li><strong>Password</strong>:  Did ZAP find the password field? Only applicable to Browser Based Auth</li>
+<li><strong>Session Mgmt</strong>: Did ZAP identify the session management method?</li>
+<li><strong>Verification</strong>: Did ZAP identify a suitable verification URL?</li>
+</ul>
 <table>
   <tr>
     <th>Site</th>
-    <th>URL</th>
     <th>Type</th>
     <th>Auth</th>
     <th>Username</th>
@@ -148,201 +162,157 @@
     <th>Note</th>
   </tr><tr>
       
-      <td>aspnet</td>
-      
       <td><a href="http://aspnet.testsparker.com">http://aspnet.testsparker.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>bluesky</td>
       
       <td><a href="https://bsky.app">https://bsky.app</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td>
+      <td><div class="scan-result-fail">&#10060; Failed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td>
       <td>BBA is failing verification detection.</td>
     </tr><tr>
-      
-      <td>ctflearn</td>
       
       <td><a href="https://ctflearn.com">https://ctflearn.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>deftheweb</td>
       
       <td><a href="https://defendtheweb.net">https://defendtheweb.net</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>ginnjuice</td>
       
       <td><a href="https://ginandjuice.shop">https://ginandjuice.shop</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>hackyourself</td>
       
       <td><a href="https://hack-yourself-first.com">https://hack-yourself-first.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>infosecex</td>
       
       <td><a href="https://infosec.exchange">https://infosec.exchange</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>insta</td>
       
       <td><a href="https://www.instagram.com">https://www.instagram.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td>
+      <td><div class="scan-result-fail">&#10060; Failed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td>
       <td>BBA is failing due to popups.</td>
     </tr><tr>
-      
-      <td>linkedin</td>
       
       <td><a href="https://www.linkedin.com">https://www.linkedin.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>mozbugz</td>
       
       <td><a href="https://bugzilla.mozilla.org">https://bugzilla.mozilla.org</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>phpspark</td>
       
       <td><a href="http://php.testsparker.com">http://php.testsparker.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>reddit</td>
       
       <td><a href="https://www.reddit.com">https://www.reddit.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-fail">&#10060; Failed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>spotify</td>
       
       <td><a href="https://accounts.spotify.com">https://accounts.spotify.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>testasp</td>
       
       <td><a href="http://testasp.vulnweb.com">http://testasp.vulnweb.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>testfire</td>
       
       <td><a href="http://testfire.net">http://testfire.net</a></td>
       
       <td>bbaplus</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td>CSA is failing due to use of autodetect.</td>
     </tr><tr>
-      
-      <td>testfire</td>
       
       <td><a href="http://testfire.net">http://testfire.net</a></td>
       
       <td>csa</td>
-      <td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-na">&mdash; N/A </div></td><td><div class="scan-result-na">&mdash; N/A </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td>
+      <td><div class="scan-result-fail">&#10060; Failed </div></td><td align="center"><div class="scan-result-na">&mdash; </div></td><td align="center"><div class="scan-result-na">&mdash; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td>
       <td>CSA is failing due to use of autodetect.</td>
     </tr><tr>
-      
-      <td>testfire</td>
       
       <td><a href="http://testfire.net">http://testfire.net</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td>CSA is failing due to use of autodetect.</td>
     </tr><tr>
-      
-      <td>testhtml5</td>
       
       <td><a href="http://testhtml5.vulnweb.com">http://testhtml5.vulnweb.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td>
+      <td><div class="scan-result-fail">&#10060; Failed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>testphp</td>
       
       <td><a href="http://testphp.vulnweb.com">http://testphp.vulnweb.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>webappsec</td>
       
       <td><a href="http://zero.webappsecurity.com">http://zero.webappsecurity.com</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td>
+      <td><div class="scan-result-fail">&#10060; Failed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>wikipedia</td>
       
       <td><a href="https://en.wikipedia.org">https://en.wikipedia.org</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td>
+      <td><div class="scan-result-pass">&#10003; Passed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td>
       <td></td>
     </tr><tr>
-      
-      <td>zoom</td>
       
       <td><a href="https://zoom.us">https://zoom.us</a></td>
       
       <td>stdbba</td>
-      <td><div class="scan-result-fail">&#10060; Failed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-pass">&#10003; Passed </div></td><td><div class="scan-result-fail">&#10060; Failed </div></td>
+      <td><div class="scan-result-fail">&#10060; Failed </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-pass">&#10003; </div></td><td align="center"><div class="scan-result-fail">&#10060; </div></td>
       <td>BBA is failing due to popups.</td>
     </tr></table>
 
