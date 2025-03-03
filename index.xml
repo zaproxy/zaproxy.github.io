@@ -6,7 +6,7 @@
     <description>Recent content in The ZAP Homepage on ZAP</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 03 Mar 2025 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -8043,6 +8043,15 @@ Context sensitive help has also been implemented so that when you press the F1 k
 &lt;a href=&#34;https://www.fastcompany.com/90790394/what-is-a-faang-company&#34;&gt;FAANG&lt;/a&gt;&amp;rsquo;s
 &lt;a href=&#34;https://twitter.com/psiinon/status/1577192848390094849&#34;&gt;offered them an interview&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Luckily ZAPbot&amp;rsquo;s career goals are completely focused on ZAP &amp;#x1f609;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ZAP Updates - February 2025</title>
+      <link>/blog/2025-03-03-zap-updates-february-2025/</link>
+      <pubDate>Mon, 03 Mar 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2025-03-03-zap-updates-february-2025/</guid>
+      <description>Authentication, authentication, authentication&amp;hellip; And there will be a 2.16.1 release &amp;ldquo;soon&amp;rdquo;.</description>
     </item>
     
     <item>
@@ -18217,11 +18226,25 @@ hash (&lt;code&gt;http://example.com&lt;/code&gt; vs &lt;code&gt;http://example.
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/docs/scans/auth/</guid>
-      <description>&lt;p&gt;Authentication Test Results&lt;/p&gt;
+      <description>&lt;p&gt;Testing ZAP authentication handling against a range of test and real world applications.&lt;/p&gt;
+&lt;p&gt;Columns:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Type&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;stdbba&lt;/strong&gt;:	Standard &lt;a href=&#34;/docs/desktop/addons/authentication-helper/browser-auth/&#34;&gt;Browser Based Authentication&lt;/a&gt;, just the login URL and credentials, no additional configuration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bbaplus&lt;/strong&gt;:	&lt;a href=&#34;/docs/desktop/addons/authentication-helper/browser-auth/&#34;&gt;Browser Based Authentication&lt;/a&gt; with some additional configuration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;csa&lt;/strong&gt;:		&lt;a href=&#34;/docs/desktop/addons/authentication-helper/client-script/&#34;&gt;Client Script Authentication&lt;/a&gt;, using a client side Zest script to authenticate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Auth&lt;/strong&gt;: Did ZAP succeed in authentication to this site? This is the key column&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Username&lt;/strong&gt;: Did ZAP find the username field? Only applicable to Browser Based Auth&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Password&lt;/strong&gt;:  Did ZAP find the password field? Only applicable to Browser Based Auth&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Session Mgmt&lt;/strong&gt;: Did ZAP identify the session management method?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Verification&lt;/strong&gt;: Did ZAP identify a suitable verification URL?&lt;/li&gt;
+&lt;/ul&gt;
 &lt;table&gt;
   &lt;tr&gt;
     &lt;th&gt;Site&lt;/th&gt;
-    &lt;th&gt;URL&lt;/th&gt;
     &lt;th&gt;Type&lt;/th&gt;
     &lt;th&gt;Auth&lt;/th&gt;
     &lt;th&gt;Username&lt;/th&gt;
@@ -18231,201 +18254,157 @@ hash (&lt;code&gt;http://example.com&lt;/code&gt; vs &lt;code&gt;http://example.
     &lt;th&gt;Note&lt;/th&gt;
   &lt;/tr&gt;&lt;tr&gt;
       
-      &lt;td&gt;aspnet&lt;/td&gt;
-      
       &lt;td&gt;&lt;a href=&#34;http://aspnet.testsparker.com&#34;&gt;http://aspnet.testsparker.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;bluesky&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://bsky.app&#34;&gt;https://bsky.app&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;BBA is failing verification detection.&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;ctflearn&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://ctflearn.com&#34;&gt;https://ctflearn.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;deftheweb&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://defendtheweb.net&#34;&gt;https://defendtheweb.net&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;ginnjuice&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://ginandjuice.shop&#34;&gt;https://ginandjuice.shop&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;hackyourself&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://hack-yourself-first.com&#34;&gt;https://hack-yourself-first.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;infosecex&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://infosec.exchange&#34;&gt;https://infosec.exchange&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;insta&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://www.instagram.com&#34;&gt;https://www.instagram.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;BBA is failing due to popups.&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;linkedin&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://www.linkedin.com&#34;&gt;https://www.linkedin.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;mozbugz&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://bugzilla.mozilla.org&#34;&gt;https://bugzilla.mozilla.org&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;phpspark&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://php.testsparker.com&#34;&gt;http://php.testsparker.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;reddit&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://www.reddit.com&#34;&gt;https://www.reddit.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;spotify&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://accounts.spotify.com&#34;&gt;https://accounts.spotify.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;testasp&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://testasp.vulnweb.com&#34;&gt;http://testasp.vulnweb.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;testfire&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://testfire.net&#34;&gt;http://testfire.net&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;bbaplus&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;CSA is failing due to use of autodetect.&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;testfire&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://testfire.net&#34;&gt;http://testfire.net&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;csa&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-na&#34;&gt;&amp;mdash; N/A &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-na&#34;&gt;&amp;mdash; N/A &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-na&#34;&gt;&amp;mdash; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-na&#34;&gt;&amp;mdash; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;CSA is failing due to use of autodetect.&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;testfire&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://testfire.net&#34;&gt;http://testfire.net&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;CSA is failing due to use of autodetect.&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;testhtml5&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://testhtml5.vulnweb.com&#34;&gt;http://testhtml5.vulnweb.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;testphp&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://testphp.vulnweb.com&#34;&gt;http://testphp.vulnweb.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;webappsec&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;http://zero.webappsecurity.com&#34;&gt;http://zero.webappsecurity.com&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;wikipedia&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://en.wikipedia.org&#34;&gt;https://en.wikipedia.org&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;&lt;/td&gt;
     &lt;/tr&gt;&lt;tr&gt;
-      
-      &lt;td&gt;zoom&lt;/td&gt;
       
       &lt;td&gt;&lt;a href=&#34;https://zoom.us&#34;&gt;https://zoom.us&lt;/a&gt;&lt;/td&gt;
       
       &lt;td&gt;stdbba&lt;/td&gt;
-      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; Passed &lt;/div&gt;&lt;/td&gt;&lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; Failed &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-pass&#34;&gt;&amp;#10003; &lt;/div&gt;&lt;/td&gt;&lt;td align=&#34;center&#34;&gt;&lt;div class=&#34;scan-result-fail&#34;&gt;&amp;#10060; &lt;/div&gt;&lt;/td&gt;
       &lt;td&gt;BBA is failing due to popups.&lt;/td&gt;
     &lt;/tr&gt;&lt;/table&gt;
 
