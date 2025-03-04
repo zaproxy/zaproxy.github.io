@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.8a24ff.css" rel="stylesheet">
+    <link href="/main.98e1bf.css" rel="stylesheet">
   
 </head>
 <body>
@@ -2136,29 +2136,52 @@ configuration file (so that they apply for subsequent ZAP use).</p>
 
 <h3 id="view-acsrf--optiontokensnames">VIEW acsrf / optionTokensNames <a class="header-link" href="#view-acsrf--optiontokensnames"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This change will break the consumers that were manually parsing/extracting the names from the string. The structure of the data returned was changed to properly separate each name:</p>
-<blockquote>
-<pre><code>{&quot;optionTokensNames&quot;:[&quot;anticsrf&quot;,&quot;CSRFToken&quot;]}
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>{&quot;optionTokensNames&quot;:[&quot;anticsrf&quot;,&quot;CSRFToken&quot;]}
+</code></pre>
+  </blockquote>
+
 <p>and:</p>
-<blockquote>
-<pre><code>&lt;optionTokensNames type=&quot;list&quot;&gt;
+
+
+
+  <blockquote>
+    <pre><code>&lt;optionTokensNames type=&quot;list&quot;&gt;
     &lt;tokenName&gt;anticsrf&lt;/tokenName&gt;
     &lt;tokenName&gt;CSRFToken&lt;/tokenName&gt;
 &lt;/optionTokensNames&gt;
-</code></pre></blockquote>
+</code></pre>
+  </blockquote>
+
 <p>instead of:</p>
-<blockquote>
-<pre><code>{&quot;TokensNames&quot;:&quot;[anticsrf, CSRFToken]&quot;}
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>{&quot;TokensNames&quot;:&quot;[anticsrf, CSRFToken]&quot;}
+</code></pre>
+  </blockquote>
+
 <p>and:</p>
-<blockquote>
-<pre><code>&lt;optionTokensNames&gt;[anticsrf, CSRFToken]&lt;/optionTokensNames&gt;
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>&lt;optionTokensNames&gt;[anticsrf, CSRFToken]&lt;/optionTokensNames&gt;
+</code></pre>
+  </blockquote>
+
 
 <h3 id="view-authentication--getauthenticationmethod">VIEW authentication / getAuthenticationMethod <a class="header-link" href="#view-authentication--getauthenticationmethod"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This change will break the consumers that were manually parsing/extracting the JSON response (and XML response, for manual authentication method). The structure of the data was changed to have an object wrap the authentication method data, to be consistent with all other views. The returned data would be, for example:</p>
-<blockquote>
-<pre><code>{
+
+
+
+  <blockquote>
+    <pre><code>{
   &quot;method&quot;: {
     &quot;port&quot;: &quot;443&quot;,
     &quot;host&quot;: &quot;example.com&quot;,
@@ -2166,21 +2189,31 @@ configuration file (so that they apply for subsequent ZAP use).</p>
     &quot;realm&quot;: &quot;example&quot;
   }
 }
-</code></pre></blockquote>
+</code></pre>
+  </blockquote>
+
 <p>instead of:</p>
-<blockquote>
-<pre><code>{
+
+
+
+  <blockquote>
+    <pre><code>{
   &quot;port&quot;: &quot;443&quot;,
   &quot;host&quot;: &quot;example.com&quot;,
   &quot;methodName&quot;: &quot;httpAuthentication&quot;,
   &quot;realm&quot;: &quot;example&quot;
 }
-</code></pre></blockquote>
+</code></pre>
+  </blockquote>
+
 
 <h3 id="view-core--alertssummary">VIEW core / alertsSummary <a class="header-link" href="#view-core--alertssummary"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This change will break the consumers that were manually parsing/extracting the JSON response. The structure of the data was changed to have an object wrap the alerts summary, to be consistent with all other views. The returned data would be, for example:</p>
-<blockquote>
-<pre><code>{
+
+
+
+  <blockquote>
+    <pre><code>{
   &quot;alertsSummary&quot;: {
     &quot;High&quot;: 0,
     &quot;Low&quot;: 3,
@@ -2188,16 +2221,23 @@ configuration file (so that they apply for subsequent ZAP use).</p>
     &quot;Informational&quot;: 1
   }
 }
-</code></pre></blockquote>
+</code></pre>
+  </blockquote>
+
 <p>instead of:</p>
-<blockquote>
-<pre><code>{
+
+
+
+  <blockquote>
+    <pre><code>{
   &quot;High&quot;: 0,
   &quot;Low&quot;: 3,
   &quot;Medium&quot;: 1,
   &quot;Informational&quot;: 1
 }
-</code></pre></blockquote>
+</code></pre>
+  </blockquote>
+
 
 <h3 id="view-core--alerts">VIEW core / alerts <a class="header-link" href="#view-core--alerts"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The view will now validate the risk ID, returning an error (ILLEGAL_PARAMETER) if not valid.</p>
@@ -2215,16 +2255,26 @@ configuration file (so that they apply for subsequent ZAP use).</p>
 
 <h3 id="action-context--excludecontexttechnologies">ACTION context / excludeContextTechnologies <a class="header-link" href="#action-context--excludecontexttechnologies"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The action will now accept the string with technologies even if there are spaces before or after the names, for example:</p>
-<blockquote>
-<pre><code>os.linux, db.mysql
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>os.linux, db.mysql
+</code></pre>
+  </blockquote>
+
 <p>will now be valid.</p>
 
 <h3 id="action-context--includecontexttechnologies">ACTION context / includeContextTechnologies <a class="header-link" href="#action-context--includecontexttechnologies"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The action will now accept the string with technologies even if there are spaces before or after the names, for example:</p>
-<blockquote>
-<pre><code>os.linux, db.mysql
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>os.linux, db.mysql
+</code></pre>
+  </blockquote>
+
 <p>will now be valid.</p>
 
 <h3 id="action-core--snapshotsession">ACTION core / snapshotSession <a class="header-link" href="#action-core--snapshotsession"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
