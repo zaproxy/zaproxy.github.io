@@ -23,7 +23,7 @@
   
   
   
-    <link href="/main.8a24ff.css" rel="stylesheet">
+    <link href="/main.98e1bf.css" rel="stylesheet">
   
 </head>
 <body>
@@ -1996,24 +1996,44 @@
 
 <h3 id="view-context--contextlist">VIEW context / contextList <a class="header-link" href="#view-context--contextlist"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This change will break the consumers that were manually parsing/extracting the names from the string. The structure of the data returned was changed to properly separate each name:</p>
-<blockquote>
-<pre><code>{&quot;contextList&quot;:[&quot;Context 1&quot;,&quot;Context 2&quot;]}
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>{&quot;contextList&quot;:[&quot;Context 1&quot;,&quot;Context 2&quot;]}
+</code></pre>
+  </blockquote>
+
 <p>and:</p>
-<blockquote>
-<pre><code>&lt;contextList type=&quot;list&quot;&gt;
+
+
+
+  <blockquote>
+    <pre><code>&lt;contextList type=&quot;list&quot;&gt;
     &lt;contextName&gt;Context 1&lt;/contextName&gt;
     &lt;contextName&gt;Context 2&lt;/contextName&gt;
 &lt;/contextList&gt;
-</code></pre></blockquote>
+</code></pre>
+  </blockquote>
+
 <p>instead of:</p>
-<blockquote>
-<pre><code>{&quot;contextList&quot;:&quot;[Context 1, Context 2]&quot;}
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>{&quot;contextList&quot;:&quot;[Context 1, Context 2]&quot;}
+</code></pre>
+  </blockquote>
+
 <p>and:</p>
-<blockquote>
-<pre><code>&lt;contextList&gt;[Context 1, Context 2]&lt;/contextList&gt;
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>&lt;contextList&gt;[Context 1, Context 2]&lt;/contextList&gt;
+</code></pre>
+  </blockquote>
+
 
 <h3 id="view-core--setoptionuseproxychain">VIEW core / setOptionUseProxyChain <a class="header-link" href="#view-core--setoptionuseproxychain"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Changed to return <code>FAIL</code> if the outgoing proxy was not enabled (because the required address/hostname was not previously set), before it would return always <code>OK</code>.</p>
@@ -2039,9 +2059,14 @@
 
 <h3 id="view-core--alertssummary">VIEW core / alertsSummary <a class="header-link" href="#view-core--alertssummary"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>A new summary view for Alerts which displays counts of Alerts per Risk level. Optionally, filtered by a baseurl value.</p>
-<blockquote>
-<pre><code>{&quot;High&quot;:0,&quot;Low&quot;:132,&quot;Medium&quot;:39,&quot;Informational&quot;:153}
-</code></pre></blockquote>
+
+
+
+  <blockquote>
+    <pre><code>{&quot;High&quot;:0,&quot;Low&quot;:132,&quot;Medium&quot;:39,&quot;Informational&quot;:153}
+</code></pre>
+  </blockquote>
+
 
 <h3 id="view-core--messagesbyid">VIEW core / messagesById <a class="header-link" href="#view-core--messagesbyid"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Gets the HTTP messages with the given IDs.</p>
