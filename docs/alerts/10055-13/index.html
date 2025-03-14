@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <link rel="alternate" type="application/rss+xml" href="/alerttags/cwe-693/index.xml" title="ZAP" />
-  <title>ZAP &ndash; CWE-693</title>
+  <title>ZAP &ndash; CSP: Failure to Define Directive with No Fallback</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -111,175 +110,159 @@
 
   
 <section class="bolt-header">
-  <div class="wrapper py-20">
-    
-      <h1 class="text--white">Alert Tag:  CWE-693</h1>
-    
+    <div class="wrapper py-20">
+      <h1 class="text--white">CSP: Failure to Define Directive with No Fallback</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
+
+<div class="wrapper py-20" data-kind="page">
     <header class="breadcrumbs">
-        <a href="/alerttags/">Alert Tags</a> &gt;
-        
-        <a href="/alerttags/cwe-693">CWE-693</a>
-        
+        <a href="/docs/">Docs</a> &gt;
+        <a href="/docs/alerts/">Alerts</a>
     </header>
-   
-
-    
-      
-      
-        <h4><a href="https://cwe.mitre.org/data/definitions/693.html">https://cwe.mitre.org/data/definitions/693.html</a></h4>
-      
-      All of the alerts which use this tag:
-    
-
-   <div class="flex latest-versions">
-      <table data-sort-filter>
-         <thead>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
             <tr>
-               <th>Tag</th>
-               <th>Link</th>
+              <th colspan="2">
+                Details
+              </th>
             </tr>
-         </thead>
-         <tbody>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert ID</strong>
+              </td>
+              <td>10055-13</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Passive</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>release</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>Medium</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/693.html">
+                  693
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>15</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Technologies Targeted</strong>
+              </td>
+              <td>
+              
+                All
+              
+	          </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Tags</strong>
+              </td>
+              <td>
+              
+              	<a href="/alerttags/cwe-693">CWE-693</a><br>
+              
+              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
+              
+              </td>
+            </tr>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10038-1/">Content Security Policy (CSP) Header Not Set</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+            <tr> 
+              <td>
+                <strong>More Info</strong>
+              </td>
+              <td>
+              	<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules/#id-10055">Scan Rule Help</a><br>
+              </td>
+            </tr>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10038-3/">Content Security Policy (CSP) Report-Only Header Found</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </tbody>
+        </table>
+
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.
+        </div>
+        <div data-attr="other" class="mb-20">
+          <h3 class="mb-10">Other Info</h3>
+          The directive(s): frame-ancestors is/are among the directives that do not fallback to default-src.
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-13/">CSP: Failure to Define Directive with No Fallback</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-12/">CSP: Header &amp; Meta</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </li>
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-9/">CSP: Malformed Policy (Non-ASCII)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="https://caniuse.com/#search=content&#43;security&#43;policy">https://caniuse.com/#search=content&#43;security&#43;policy</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-11/">CSP: Meta Policy Invalid Directive</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </li>
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-3/">CSP: Notices</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="https://content-security-policy.com/">https://content-security-policy.com/</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-10/">CSP: script-src unsafe-eval</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </li>
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-7/">CSP: script-src unsafe-hashes</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="https://github.com/HtmlUnit/htmlunit-csp">https://github.com/HtmlUnit/htmlunit-csp</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-5/">CSP: script-src unsafe-inline</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </li>
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-8/">CSP: style-src unsafe-hashes</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources">https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-6/">CSP: style-src unsafe-inline</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-4/">CSP: Wildcard Directive</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-1/">CSP: X-Content-Security-Policy</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10055-2/">CSP: X-WebKit-CSP</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90004-1/">Insufficient Site Isolation Against Spectre Vulnerability</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90004-2/">Insufficient Site Isolation Against Spectre Vulnerability</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/90004-3/">Insufficient Site Isolation Against Spectre Vulnerability</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100016/">Missing Security Headers</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10038-2/">Obsolete Content Security Policy (CSP) Header Found</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10063-1/">Permissions Policy Header Not Set</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10021/">X-Content-Type-Options Header Missing</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-         </tbody>
-      </table>
-   </div>
-  </div>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyScanRule.java'>org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyScanRule.java</a>
+      </section>
+  </main>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
