@@ -1860,7 +1860,6 @@ of the cookies set as part of authentication.</p>
       </tr>
   </tbody>
 </table>
-<p>When adding Header Based Session Management via the API the <code>headers</code> parameter is a string of <code>header:value</code> pairs separated by newline characters: <code>\n</code>.</p>
 
 <h2 id="automation-framework">Automation Framework <a class="header-link" href="#automation-framework"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Header Based Session Management can be configured in the environment section of an Automation Framework plan using:</p>
@@ -1868,10 +1867,41 @@ of the cookies set as part of authentication.</p>
         method: &#34;headers&#34;
         parameters:                    #  list of header: value pairs which can include any of the tokens defined above, e.g.
           Authorization: &#34;Bearer: {%json:AuthenticationResult.AccessToken%}&#34;
-</code></pre><p>Note that due to restrictions in the core:</p>
+</code></pre>
+<h2 id="api">API <a class="header-link" href="#api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Header Based Session Management can be configured via the ZAP API, using the following parameters:</p>
+<pre tabindex="0"><code>    contextId
+    methodName
+    methodConfigParams
+</code></pre><p>For example:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>contextId</td>
+          <td>1</td>
+      </tr>
+      <tr>
+          <td>methodName</td>
+          <td>headerBasedSessionManagement</td>
+      </tr>
+      <tr>
+          <td>methodConfigParams</td>
+          <td>headers=Authorization:Bearer 8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918</td>
+      </tr>
+  </tbody>
+</table>
+<p>When adding Header Based Session Management via the API the <code>headers</code> parameter is a string of
+<code>header:value</code> pairs separated by newline characters: <code>\n</code>.</p>
+<p>Note that due to restrictions in the core:</p>
 <ul>
 <li>Existing contexts are not updated in the GUI if you add or remove this add-on</li>
-<li>Header Based Session Management cannot be added to a context via the API</li>
+<li>Header based Session Management cannot be added to a context via the API (unless used with ZAP 2.16.1 or later)</li>
 </ul>
 <p>These restrictions will be addressed in a future release.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/authhelper/src/main/java/org/zaproxy/addon/authhelper/HeaderBasedSessionManagementMethodType.java">HeaderBasedSessionManagementMethodType.java</a></p>

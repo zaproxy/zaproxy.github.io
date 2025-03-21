@@ -1847,6 +1847,30 @@ authentication method set up correctly and with valid credentials.</p>
           <td style="text-align: left">Statistics</td>
           <td style="text-align: left">statistics</td>
       </tr>
+      <tr>
+          <td style="text-align: left">Diagnostics</td>
+          <td style="text-align: left">diagnostics</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">HTTP Messages for Diagnostics</td>
+          <td style="text-align: left">diagnosticsmessages</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Local Storage for Diagnostics</td>
+          <td style="text-align: left">diagnosticslocalstorage</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Screenshots for Diagnostics</td>
+          <td style="text-align: left">diagnosticsscreenshots</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Session Storage for Diagnostics</td>
+          <td style="text-align: left">diagnosticssessionstorage</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Web Elements for Diagnostics</td>
+          <td style="text-align: left">diagnosticswebelements</td>
+      </tr>
   </tbody>
 </table>
 
@@ -1920,9 +1944,94 @@ authentication method set up correctly and with valid credentials.</p>
 environment will have been updated with the values that ZAP has detected.</p>
 
 <h3 id="statistics">Statistics <a class="header-link" href="#statistics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>These are all of the statistcis that have been recorded by ZAP.<br>
+<p>These are all of the statistics that have been recorded by ZAP.<br>
 For more details of what they mean see <a href="/docs/internal-statistics/">https://www.zaproxy.org/docs/internal-statistics/</a></p>
 
+<h3 id="diagnostics">Diagnostics <a class="header-link" href="#diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based</a> and <a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script</a> authentication methods allow to record diagnostic data, which can be included in the Authentication Report, to help diagnose authentication problems.</p>
+<p>Diagnostic data can also be recorded with the <a href="/docs/desktop/addons/authentication-helper/auth-tester/">Authentication Tester Dialog</a>.</p>
+<p>The report will contain an array of diagnostic objects, one for each recorded authentication attempt. The diagnostic objet has the authentication method used, the name of the context and user, and each step performed during the authentication.</p>
+<pre tabindex="0"><code>	&#34;diagnostics&#34;: [
+		{
+			&#34;created&#34;: &#34;0000-00-00T00:00:00.000000Z&#34;,
+			&#34;authenticationMethod&#34;: &#34;Browser-based Authentication&#34;,
+			&#34;context&#34;: &#34;Context Name&#34;,
+			&#34;user&#34;: &#34;User Name&#34;,
+			&#34;steps&#34;: [
+				{ … }
+			]
+		}
+	]
+</code></pre><p>Each step has at least the URL and the description, it can, optionally, contain also the input element that&rsquo;s being acted upon (e.g. username field being filled).</p>
+<pre tabindex="0"><code>	{
+		&#34;created&#34;: &#34;0000-00-00T00:00:00.000000Z&#34;,
+		&#34;url&#34;: &#34;http://example.com/login/&#34;,
+		&#34;description&#34;: &#34;Auto Fill Username&#34;,
+		&#34;webElement&#34;: {
+			&#34;formIndex&#34;: 1,
+			&#34;attributeType&#34;: &#34;text&#34;,
+			&#34;attributeId&#34;: &#34;email&#34;,
+			&#34;attributeName&#34;: &#34;email&#34;,
+			&#34;attributeValue&#34;: &#34;&#34;,
+			&#34;text&#34;: &#34;&#34;,
+			&#34;displayed&#34;: true,
+			&#34;enabled&#34;: true
+		}
+		…
+	}
+</code></pre><p>More data can be included in each step depending on the additional diagnostics sections enabled for the report.</p>
+
+<h4 id="http-messages-for-diagnostics">HTTP Messages for Diagnostics <a class="header-link" href="#http-messages-for-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>When this section is enabled the step can, optionally, include HTTP messages that were sent during the step. Each message contains the request/response headers and bodies.</p>
+<pre tabindex="0"><code>	&#34;messages&#34;: [
+		{
+			&#34;created&#34;: &#34;0000-00-00T00:00:00.000000Z&#34;,
+			&#34;requestHeader&#34;: &#34;GET http://example.com/login HTTP/1.1&#34;,
+			&#34;requestBody&#34;: &#34;&#34;,
+			&#34;responseHeader&#34;: &#34;HTTP/1.1 200 OK&#34;,
+			&#34;responseBody&#34;: &#34;&#34;
+		}
+	]
+</code></pre>
+<h4 id="local-storage-for-diagnostics">Local Storage for Diagnostics <a class="header-link" href="#local-storage-for-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>When this section is enabled the step can, optionally, include the browser&rsquo;s local storage.</p>
+<pre tabindex="0"><code>	&#34;localStorage&#34;: [
+		{
+			&#34;created&#34;: &#34;0000-00-00T00:00:00.000000Z&#34;,
+			&#34;key&#34;: &#34;key&#34;,
+			&#34;value&#34;: &#34;value&#34;
+		}
+	]
+</code></pre>
+<h4 id="screenshots-for-diagnostics">Screenshots for Diagnostics <a class="header-link" href="#screenshots-for-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>When this section is enabled the step can, optionally, include a screenshot of the page with the image data Base64 encoded.</p>
+<pre tabindex="0"><code>	&#34;screenshot&#34;: &#34;…&#34;
+</code></pre>
+<h4 id="session-storage-for-diagnostics">Session Storage for Diagnostics <a class="header-link" href="#session-storage-for-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>When this section is enabled the step can, optionally, include the browser&rsquo;s session storage.</p>
+<pre tabindex="0"><code>	&#34;sessionStorage&#34;: [
+		{
+			&#34;created&#34;: &#34;0000-00-00T00:00:00.000000Z&#34;,
+			&#34;key&#34;: &#34;key&#34;,
+			&#34;value&#34;: &#34;value&#34;
+		}
+	]
+</code></pre>
+<h4 id="web-elements-for-diagnostics">Web Elements for Diagnostics <a class="header-link" href="#web-elements-for-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>When this section is enabled the step can, optionally, include all the input elements present in the page.</p>
+<pre tabindex="0"><code>	&#34;webElements&#34;: [
+		{
+			&#34;formIndex&#34;: 0,
+			&#34;attributeType&#34;: &#34;text&#34;,
+			&#34;attributeId&#34;: &#34;id&#34;,
+			&#34;attributeName&#34;: &#34;name&#34;,
+			&#34;attributeValue&#34;: &#34;&#34;,
+			&#34;text&#34;: &#34;&#34;,
+			&#34;displayed&#34;: true,
+			&#34;enabled&#34;: true
+		}
+	]
+</code></pre>
 <h3 id="sample">Sample <a class="header-link" href="#sample"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <pre tabindex="0"><code>{
 	&#34;@programName&#34;: &#34;ZAP&#34;,

@@ -1820,17 +1820,75 @@
 </ol>
           
 <h1 id="browser-based-authentication">Browser Based Authentication</h1>
-<p>This <a href="/docs/desktop/addons/authentication-helper/">add-on</a> adds a new authentication type which uses a browser to login to the target website.</p>
-<p>It uses the first field with a type of &ldquo;text&rdquo; or &ldquo;email&rdquo; for the user name and the first field with a type
-of &ldquo;password&rdquo; for the password.
-It does support login pages where the password field is only made visible when the username has been entered.
-It does not support login pages which do not submit when <code>Return</code> is used in the password field.</p>
+<p>This <a href="/docs/desktop/addons/authentication-helper/">add-on</a> adds a new authentication method which uses a browser to login to the target website.</p>
+<p>The authentication method requires the login URL and user credentials to perform the authentication. By default it automatically attempts to
+find suitable fields for the username and for the password, in the same page and multiple pages (i.e. password field is only made visible when
+the username has been entered).</p>
+<p>The plan is to keep enhancing this authentication method to handle all of the most commonly used login page formats.
+If it does not work with your application&rsquo;s login page then please inform the ZAP team via the
+<a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a> giving as many details as possible.</p>
+
+<h3 id="authentication-steps">Authentication Steps <a class="header-link" href="#authentication-steps"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>When the authentication method is not able to find suitable fields, or requires extra steps they can be manually specified by the user. The following steps are supported:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Auto Steps</td>
+          <td><code>AUTO_STEPS</code></td>
+          <td>Indicates that the authentication method should perform the steps that does by default, to identify and fill the required fields (if not already). This is useful when the authentication method is able to find and submit the fields but other required steps must happen before or after.</td>
+      </tr>
+      <tr>
+          <td>Click Element</td>
+          <td><code>CLICK</code></td>
+          <td>Clicks a web element, for example, to access the login form or dismiss a popup.</td>
+      </tr>
+      <tr>
+          <td>Fill Custom Field</td>
+          <td><code>CUSTOM_FIELD</code></td>
+          <td>Fills a custom field with the given value, for example, choose a realm or organisation department in the login form.</td>
+      </tr>
+      <tr>
+          <td>Fill Password Field</td>
+          <td><code>PASSWORD</code></td>
+          <td>Fills the password in a field, for when no suitable field was automatically identified.</td>
+      </tr>
+      <tr>
+          <td>Fill TOTP Field</td>
+          <td><code>TOTP_FIELD</code></td>
+          <td>Fills a TOTP field.</td>
+      </tr>
+      <tr>
+          <td>Fill Username Field</td>
+          <td><code>USERNAME</code></td>
+          <td>Fills the username in a field, for when no suitable field was automatically identified.</td>
+      </tr>
+      <tr>
+          <td>Send Escape</td>
+          <td><code>ESCAPE</code></td>
+          <td>Sends the escape to the web element, for example, to dismiss a popup.</td>
+      </tr>
+      <tr>
+          <td>Send Return</td>
+          <td><code>RETURN</code></td>
+          <td>Sends return to the web element, for example, to submit the login form.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Each step is executed sequentially in the order they are specified. Steps that act on a web element need to be identified with either its CSS Selector or XPath, both of which can be obtained, for example, through browser dev tools. Those steps have a timeout which allow to wait up to the given number of milliseconds for the web element to be shown and be interactable (when the login page takes some time to load).</p>
+
+<h3 id="session-identification">Session Identification <a class="header-link" href="#session-identification"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The response containing the session token is identified by choosing the first response following a login which contains any of:</p>
 <ul>
 <li>An <code>Authorization</code> header</li>
 <li>JSON data with an element called <code>AccessToken</code> or <code>token</code> - case is ignored</li>
 </ul>
-<p>The plan is to keep enhancing this authentication method to handle all of the most commonly used login page formats. If it does not work with you application&rsquo;s login page then please inform the ZAP team via the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a> giving as many details as possible.</p>
 
 <h2 id="automation-framework">Automation Framework <a class="header-link" href="#automation-framework"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Browser Based Authentication can be configured in the environment section of an Automation Framework plan using:</p>
@@ -1840,6 +1898,24 @@ It does not support login pages which do not submit when <code>Return</code> is 
           loginPageUrl:                # String, the URL of the login page, mandatory
           loginPageWait:               # Int, the time in seconds to wait after the login form has been submitted, default: 5
           browserId:                   # String, Browser Id to use, default: firefox-headless
+          diagnostics:                 # Bool, enables the recording of diagnostic data during the authentication. Default: false.
+          steps:                       # List of custom steps.
+          - description:               # String, the description of the step.
+            type:                      # The type of the step, one of: AUTO_STEPS, CLICK, CUSTOM_FIELD, ESCAPE, PASSWORD, RETURN, TOTP_FIELD, USERNAME
+            cssSelector:               # String, the CSS Selector to the web element.
+            xpath:                     # String, the XPath to the web element.
+            value:                     # String, the value to fill in the web element.
+            timeout:                   # Int, the number of milliseconds to wait for the web element. Default: 1000
+</code></pre><p>Refer to the <a href="/docs/desktop/addons/authentication-helper/auth-report-json/">Authentication Report</a> for more details on the diagnostics.</p>
+<p>Note the TOTP data is defined under the user credentials:</p>
+<pre tabindex="0"><code>      credentials:
+        username: …
+        password: …
+        totp:
+          secret:          # String, the secret.
+          period:          # Int, the period. Default: 30
+          digits:          # Int, the number of digits. Default: 6
+          algorithm:       # String, the algorithm. Default: SHA1
 </code></pre>
 <h2 id="ajax-spider-integration">AJAX Spider Integration <a class="header-link" href="#ajax-spider-integration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The AJAX Spider will automatically login if a user is specified which is in a context that uses Browser Based Authentication.</p>
@@ -1858,7 +1934,7 @@ AJAX spider is performing an authenticated scan using Browser Based Authenticati
 <p>Note that due to restrictions in the core:</p>
 <ul>
 <li>Existing contexts are not updated in the GUI if you add or remove this add-on</li>
-<li>Browser Based Authentication cannot be added to a context via the API</li>
+<li>Browser Based Authentication cannot be added to a context via the API (unless used with ZAP 2.16.1 or later)</li>
 </ul>
 <p>These restrictions will be addressed in a future release.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/authhelper/src/main/java/org/zaproxy/addon/authhelper/BrowserBasedAuthenticationMethodType.java">BrowserBasedAuthenticationMethodType.java</a></p>
