@@ -1,0 +1,998 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-04-09-portswigger-labs-broken-brute-force-protection-ip-block/images/image-header.jpg">
+  <meta name="twitter:title" content="PortSwigger Labs: Broken Brute-Force Protection, IP Block">
+  <meta name="twitter:description" content="Walkthrough for the PortSwigger lab, “Broken brute-force protection, IP block”.">
+
+    <meta property="og:url" content="/blog/2025-04-09-portswigger-labs-broken-brute-force-protection-ip-block/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="PortSwigger Labs: Broken Brute-Force Protection, IP Block">
+  <meta property="og:description" content="Walkthrough for the PortSwigger lab, “Broken brute-force protection, IP block”.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-04-09T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-09T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Fuzzer">
+    <meta property="article:tag" content="Portswigger-Lab">
+    <meta property="article:tag" content="Javascript">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-04-09-portswigger-labs-broken-brute-force-protection-ip-block/images/image-header.jpg">
+
+  
+  <title>ZAP &ndash; PortSwigger Labs: Broken Brute-Force Protection, IP Block</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.98e1bf.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">PortSwigger Labs: Broken Brute-Force Protection, IP Block</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday April 9, 2025</span>
+              <span class="word-count fl-r"> 3989 Words </span>
+            </section>
+            <p>This article describes how to solve the PortSwigger lab, “<a href="https://portswigger.net/web-security/authentication/password-based/lab-broken-bruteforce-protection-ip-block">Broken brute-force protection, IP block</a>”, using ZAP rather than Burp Suite. You can find this lab in the <a href="https://portswigger.net/web-security/authentication">Authentication vulnerabilities</a> learning path at the PortSwigger Web Security Academy.</p>
+<p>If you’re familiar with Burp Suite already, it might be helpful to take a look at the <a href="/docs/burp-to-zap-feature-map/">Burp to ZAP Feature Map</a> for a mapping of Burp features to ZAP equivalents. However, this article assumes little to no familiarity with ZAP, and I’ve attempted to make it as easy as possible to follow along.</p>
+
+<h2 id="prerequisites">Prerequisites <a class="header-link" href="#prerequisites"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>To continue with the rest of the article, you’ll need the following:</p>
+<ol>
+<li>A <a href="https://portswigger.net/web-security">PortSwigger Academy</a> account</li>
+<li>A <a href="/download/">ZAP</a> installation</li>
+<li>Basic JavaScript knowledge (See <a href="/docs/desktop/start/features/scripts/">Scripts</a> for other scripting languages you can use in ZAP)</li>
+</ol>
+<p>If you’re all set, let’s jump in!</p>
+
+<h2 id="have-username-want-password">Have Username, Want Password <a class="header-link" href="#have-username-want-password"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>We’ll begin with a review of the lab’s instructions:</p>
+
+
+
+  <blockquote>
+    <p>This lab is vulnerable due to a logic flaw in its password brute-force protection. To solve the lab, brute-force the victim&rsquo;s password, then log in and access their account page.</p>
+<ul>
+<li>Your credentials: <code>wiener:peter</code></li>
+<li>Victim&rsquo;s username: <code>carlos</code></li>
+<li><a href="https://portswigger.net/web-security/authentication/auth-lab-passwords">Candidate passwords</a></li>
+</ul>
+  </blockquote>
+
+<p>Brute-force protection is especially important for applications that depend entirely on password-based authentication. Without additional guard rails like multi-factor authentication (MFA), an attacker who can make multiple or unlimited guesses of users’ login credentials could eventually gain access to their accounts.</p>
+<p>However, poor implementation can undermine even the best defense mechanisms. If developers make incorrect assumptions about how users will interact with their application, they may unintentionally introduce vulnerabilities that attackers can exploit.</p>
+<p>This can be in the form of a logic flaw — a vulnerability that allows users to manipulate normal application functionality or workflow to achieve results the developer neither intended nor expected.</p>
+<p>In this lab, we’ll exploit a logic flaw to access another user’s account. The lab provides us with a specific username, “carlos”. So, we don’t need to guess a valid username — we can focus on brute-forcing Carlos’ password.</p>
+<p>Visit <a href="https://portswigger.net/web-security/authentication/password-based/lab-broken-bruteforce-protection-ip-block">the lab page</a> and click “Access the Lab” to launch the test site. The URL for the lab will look something like <code>https://0a19000b0319d4b784b7a40400f800ed.web-security-academy.net/</code>. You’ll want to copy it.</p>
+<p>For eagle-eyed readers, you may notice that the URLs in the screenshots vary. This is because multiple lab instances were used over the course of writing this article:</p>
+<p><img src="images/lab-home.png" alt="lab-home.png"></p>
+<p>Now, let’s open the lab URL you just copied via ZAP. Click <em>Manual Explore</em> in the <em>Quick Start</em> tab:</p>
+<p><img src="images/quick-start-manual-explore-screen.png" alt="quick-start-manual-explore-screen.png"></p>
+<p>Copy-paste the lab URL into the <em>URL to explore</em> field and launch your browser with the <em>Launch Browser</em> button. Or, use the browser icon in the main toolbar:</p>
+<p><img src="images/launch-test-site-ZAP-configured-browser.png" alt="launch-test-site-ZAP-configured-browser.png"></p>
+
+
+
+  <blockquote class="alert alert-note">
+    <p class="alert-heading">
+      📝
+      
+        Note
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>If you have any issues launching your browser from ZAP, see the following pages for help. ZAP uses add-ons to enhance its core features, including ones which provide webdrivers for interfacing with supported browsers. These are installed by default and expose some configurable options:</p>
+<ol>
+<li><a href="/faq/how-can-i-fix-browser-was-not-found/">How can I fix &lsquo;browser was not found&rsquo;?</a> - ZAP Docs (FAQ)</li>
+<li><a href="/docs/desktop/addons/quick-start/#manual-explore">Manual Explore</a> - ZAP Docs</li>
+<li><a href="/docs/desktop/addons/selenium/">Selenium</a> - ZAP Docs</li>
+</ol>
+    </div>
+  </blockquote>
+
+<p>Assuming you’ve opened the lab in a browser configured to proxy through ZAP, let’s try to log in with a random password. We want to capture a POST request we can work with in ZAP. I’ll try “randompass”. We’re notified that this is an “Incorrect password”, which is expected:</p>
+<p><img src="images/first-incorrect-attempt-manual.png" alt="first-incorrect-attempt-manual.png"></p>
+<p>We’ll come back to the captured POST request in a bit. We want to explore the site’s brute-force protection mechanism to understand how it works and how we can bypass it.</p>
+
+<h2 id="probing-the-defence">Probing the Defence <a class="header-link" href="#probing-the-defence"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>An app can defend against brute-force attacks in several ways. One of these is blocking IP addresses that have attempted — and failed — too many logins within a certain timeframe. With this approach, unblocking your IP might involve:</p>
+<ol>
+<li>Waiting a fixed amount of time, after which you can attempt another login.</li>
+<li>Changing your IP address.</li>
+<li>Entering correct credentials. This requires mixing your own credentials at intervals into your wordlist.</li>
+</ol>
+<p>You can potentially bypass rate-limiting and IP blocking in other ways, like making <a href="https://portswigger.net/web-security/authentication/password-based/lab-broken-brute-force-protection-multiple-credentials-per-request">multiple password guesses in a single request</a>. However, we’ll focus on the three methods listed above.</p>
+<p>Based on the title of this lab, we’re dealing with an IP block, so we’ll attempt to bypass this. Let’s make a few requests in the Request Editor (ZAP’s equivalent of Burp Suite’s Repeater).</p>
+<p>Head over to ZAP and open the POST request we captured earlier. You’ll find it in the Sites Tree under the <em>Sites</em> tab. It’ll look something like <code>POST:login()(password, username)</code>:</p>
+<p><img src="images/open-with-request-editor.png" alt="open-with-request-editor.png"></p>
+<p>We want to see how many requests we can make in quick succession before our IP address gets blocked. After four login attempts, we get an error message: <strong>“You have made too many incorrect login attempts. Please try again in 1 minute(s).”</strong></p>
+<p>After one minute, we can indeed make more login attempts. The idea is that if we fail to log in three times in a row, the server activates an IP block. It then denies any more requests sent for the next minute.</p>
+<p>If we enter our own credentials, <code>wiener:peter</code>, on every third login attempt, the IP block never activates. Each successful login resets the counter tracking the number of failed login attempts. We can keep going until we’ve tried enough passwords from our wordlist to find the right one for Carlos&rsquo; account.</p>
+
+
+
+  <blockquote class="alert alert-note">
+    <p class="alert-heading">
+      📝
+      
+        Note
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>This bypass — taking advantage of a logic flaw to reset the failure counter — enables us to brute-force Carlos’ password and successfully solve this lab. Although not the point of the lab, we can also wait out the IP block since we’re dealing with only a few credentials. This is covered in “Method 2: Wait Out the IP Block”.</p>
+    </div>
+  </blockquote>
+
+<p>What about changing our IP address? I used the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Forwarded-For"><code>X-Forwarded-For</code></a> header successfully in another lab. But the server here appears to block IPs based on the client&rsquo;s actual IP address (determined by the network layer rather than HTTP headers from the application layer), which makes sense in the context of rate-limiting. Rotating IP addresses via a proxy or VPN could work, but we won’t explore that here.</p>
+
+<h2 id="brute-forcing-the-password">Brute-forcing the Password <a class="header-link" href="#brute-forcing-the-password"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The default attack style of the ZAP Fuzzer when multiple payload positions are assigned a payload set is the <a href="https://portswigger.net/burp/documentation/desktop/tools/intruder/configure-attack/attack-types">cluster bomb attack</a>. (The ZAP Fuzzer is equivalent to Burp Suite’s Intruder.) A cluster bomb attack iterates through all possible combinations of the payloads. However, we want a <a href="https://portswigger.net/burp/documentation/desktop/tools/intruder/configure-attack/attack-types">pitchfork attack</a> to run through our username and password lists simultaneously. So, we’re using a custom script below.</p>
+
+<h3 id="method-1-interleave-wordlists-with-valid-credentials">Method 1: Interleave Wordlists With Valid Credentials <a class="header-link" href="#method-1-interleave-wordlists-with-valid-credentials"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Based on our tests in the previous section, we need to mix our username and password lists with our own credentials, <code>wiener:peter</code>. The username list will then look like this:</p>
+<pre tabindex="0"><code>carlos
+carlos
+wiener
+carlos
+carlos
+wiener
+carlos
+</code></pre><p>The password list will look similar, with “peter” repeated every third line. If you haven’t already, copy the <a href="https://portswigger.net/web-security/authentication/auth-lab-passwords">passwords in the provided wordlist</a>:</p>
+<pre tabindex="0"><code>123456
+password
+peter
+12345678
+qwerty
+peter
+123456789
+</code></pre><p>I used <a href="https://gist.github.com/Wryhder/041c6d1bed5ab3433c8ea3dd3a49169b">a script</a> to mix in the valid credentials, but you could use online text tools. After you have your username and passwords lists, create a new Payload Generator script. (You might wonder why we’re proceeding with creating a script instead of using the mixed lists directly. This is because we’ll create our payloads from pairs of usernames and passwords, rather than assign each list to different positions. This gives us a pitchfork, rather than a cluster bomb, attack.)</p>
+
+<h4 id="step-1-create-a-new-payload-generator-script">Step 1: Create a New Payload Generator Script <a class="header-link" href="#step-1-create-a-new-payload-generator-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p><a href="/docs/desktop/addons/fuzzer/payloads/">Payload generators</a> in ZAP generate the inputs sent to the target site you’re attacking. There are generators for strings, numbers, and other data types. You can also create custom scripts to generate specific payloads that the default generators don’t cover.</p>
+<p>Create a new Payload Generator script by right-clicking the “Payload Generator” type in the <em>Scripts</em> tab and hitting <em>New Script</em>. Or, use the <em>New Script</em> icon in the top-left corner:</p>
+<p><img src="images/create-new-payload-generator-script.png" alt="create-new-payload-generator-script.png"></p>
+<p>This brings up the <em>New Script</em> dialog. Here, you can enter the name of your script, like <em>pitchfork_username_password.js</em>. You can also set a script type manually if you didn’t create your script by right-clicking directly on the type. If you created the script from the “Payload Generator” type, the type field should be populated.</p>
+<p>Next, select “Graal.js” as the script engine:</p>
+<p><img src="images/select-script-engine.png" alt="select-script-engine.png"></p>
+<p>Depending on the version of ZAP you have installed, you may have either the Nashorn and Graal.js JavaScript engines available, or just Graal.js. Any engine you have available works. However, our script is written for Graal.js. So if you’re using Nashorn or another JavaScript engine, you might need to modify the script. See <a href="https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide/">Migration Guide from Nashorn to GraalJS</a> for more details.</p>
+<p>Finally, check the <em>Enabled</em> checkbox. You can leave everything else as-is.</p>
+
+<h4 id="step-2-generate-the-payload-sets">Step 2: Generate the Payload Sets <a class="header-link" href="#step-2-generate-the-payload-sets"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Once you’ve saved your options and created a new script, navigate to the <em>Script Console</em> to view the new file. Clear it and enter the following code. You can read the wordlists from a file, but the sample below reads them from array literals:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Auxiliary variables/constants for payload generation
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">MID</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&amp;password=&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">usernames</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;carlos&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;wiener&#34;</span>,
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">passwords</span> <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;123456&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;password&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;12345678&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;qwerty&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;123456789&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;12345&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1234&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;111111&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1234567&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;dragon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;123123&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;baseball&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;abc123&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;football&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;monkey&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;letmein&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;shadow&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;master&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;666666&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;qwertyuiop&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;123321&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mustang&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1234567890&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;michael&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;654321&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;superman&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1qaz2wsx&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;7777777&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;121212&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;000000&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;qazwsx&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;123qwe&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;killer&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;trustno1&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;jordan&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;jennifer&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;zxcvbnm&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;asdfgh&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;hunter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;buster&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;soccer&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;harley&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;batman&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;andrew&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;tigger&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;sunshine&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;iloveyou&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;2000&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;charlie&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;robert&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;thomas&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;hockey&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ranger&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;daniel&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;starwars&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;klaster&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;112233&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;george&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;computer&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;michelle&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;jessica&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pepper&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;1111&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;zxcvbn&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;555555&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;11111111&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;131313&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;freedom&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;777777&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pass&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;maggie&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;159753&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;aaaaaa&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ginger&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;princess&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;joshua&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;cheese&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;amanda&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;summer&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;love&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;ashley&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;nicole&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;chelsea&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;biteme&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;matthew&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;access&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;yankees&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;987654321&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;dallas&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;austin&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;thunder&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;taylor&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;matrix&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mobilemail&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;mom&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;monitor&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;monitoring&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;montana&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;moon&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;moscow&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;peter&#34;</span>,
+</span></span><span style="display:flex;"><span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Match the length of the shorter payload set
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// (either usernames or passwords), if unequal.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">NUMBER_OF_PAYLOADS</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">usernames</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">passwords</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">?</span> <span style="color:#a6e22e">usernames</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">passwords</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Returns the number of generated payloads, zero to indicate unknown number.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * The number is used as a hint for progress calculations.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {number} The number of generated payloads.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getNumberOfPayloads</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NUMBER_OF_PAYLOADS</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Returns true if there are still payloads to generate, false otherwise.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Called before each call to next().
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {boolean} If there are still payloads to generate.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">hasNext</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">hasMore</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">NUMBER_OF_PAYLOADS</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">hasMore</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;All payloads have been generated.&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hasMore</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Returns the next generated payload.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * This method is called while hasNext() returns true.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {string} The next generated payload.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">next</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">&gt;=</span> <span style="color:#a6e22e">NUMBER_OF_PAYLOADS</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">&#34;No more payloads available.&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">usernames</span>[<span style="color:#a6e22e">count</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">MID</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">passwords</span>[<span style="color:#a6e22e">count</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;DEBUG&#34;</span>, <span style="color:#e6db74">&#34;Generated payload: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">payload</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">payload</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;ERROR&#34;</span>, <span style="color:#e6db74">&#34;Payload generation failed: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">err</span>.<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Resets the internal state of the payload generator, as if no calls to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * hasNext() or next() have been previously made.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Normally called once the method hasNext() returns false and while payloads
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * are still needed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reset</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;Resetting payload generator.&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Releases any resources used for generation of payloads (for example, a file).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Called once the payload generator is no longer needed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">close</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;INFO&#34;</span>, <span style="color:#e6db74">&#34;Payload generator closed.&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Logs messages at different levels (INFO, DEBUG, ERROR).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {string} level - The log level.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @param {string} message - The message to log.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">level</span>, <span style="color:#a6e22e">message</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;[PayloadGenerator] [&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">level</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;] &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>As noted earlier, assigning the username and password payloads to separate positions results in a cluster bomb attack. So, our script generates payloads for just one position (based on <a href="https://stackoverflow.com/a/66613914">this Stackoverflow answer</a>). The position, as we’ll see in the next step, includes both the username and password values. This means that the payloads generated look something like <code>carlos&amp;password=randopass</code>:</p>
+<p><img src="images/fuzz_username_password.png" alt="fuzz_username_password.png"></p>
+<p>This is why our script above has a <code>MID</code> variable set to <code>&quot;&amp;password=&quot;</code>. You can see the line generating the payloads in the <code>next</code> function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">usernames</span>[<span style="color:#a6e22e">count</span>] <span style="color:#f92672">+</span> <span style="color:#a6e22e">MID</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">passwords</span>[<span style="color:#a6e22e">count</span>];
+</span></span></code></pre></div><p>All functions, except the <code>log</code> function, are part of a required interface that must be implemented for Payload Generator scripts. Most script types have specific interfaces that must be implemented to run successfully. You’ll usually run into an <code>Incorrect Implementation</code> error when attempting to use a script that does not implement the expected interface correctly:</p>
+<p><img src="images/implementation-error.png" alt="implementation-error.png"></p>
+
+
+
+  <blockquote class="alert alert-note">
+    <p class="alert-heading">
+      📝
+      
+        Note
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>Refer to the default templates for the interfaces required for each script type. You can find these in the Templates section of the Scripts tab. They include documentation comments describing each function and its parameters. You can also create new scripts from the templates.</p>
+    </div>
+  </blockquote>
+
+<p>You can save the file now. Also, check that the script is enabled, as disabled scripts won’t be available for selection when needed. If you missed the <em>Enable</em> checkbox earlier, you can right-click the filename in the <em>Scripts</em> tab and select <em>Enable Script(s)</em>.</p>
+
+<h4 id="step-3-add-the-payload">Step 3: Add the Payload <a class="header-link" href="#step-3-add-the-payload"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Now, we can bring up the Fuzzer dialog. Right-click the POST request we were working on in the Request Editor and select <em>Fuzz</em>. Alternatively, right-click the original captured POST request from the <em>Sites</em> tab and select <em>Attack</em> &gt; <em>Fuzz</em>.</p>
+<p>In the <em>Fuzzer Locations</em> tab, we’ll select the position we want to fuzz and add our payload. The fuzz position (or location) here, as discussed above, is most of the body starting from the username value. Highlight as shown to activate the <em>Add</em> button:</p>
+<p><img src="images/fuzz_username_password.png" alt="fuzz_username_password.png"></p>
+<p>After you open the <em>Add Payload</em> dialog, you can add the Payload Generator script from the previous step. The default payload generator type is “Strings”. Change this to “Script” and select the appropriate script:</p>
+<p><img src="images/add-payload-generator-script.png" alt="add-payload-generator-script.png"></p>
+<p>Save the payload and return to the main Fuzzer dialog. Then, run the Fuzzer with <em>Start Fuzzer</em>.</p>
+
+
+
+  <blockquote class="alert alert-important">
+    <p class="alert-heading">
+      ℹ️
+      
+        Important
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>You might notice that even though the payloads are generated correctly (as the logs in the script output panel show), the requests are sent in the wrong order. This causes an unexpected IP block early on. As a result, most of the requests are rejected with the message: <code>You have made too many incorrect login attempts. Please try again in 1 minute(s).</code></p>
+<p>This is due to the Fuzzer’s concurrency settings. You can enable sequential execution by setting the number of execution threads to 1. However, this slows down the Fuzzer a great deal. An alternative is to throttle requests with a small delay of 100–200 milliseconds. See <a href="/docs/desktop/addons/fuzzer/options/">Options Fuzzer screen</a> for more detail.</p>
+    </div>
+  </blockquote>
+
+<p>You can skip over the next section and head to <a href="#have-username-got-password">Have Username, Got Password</a>.</p>
+
+<h3 id="method-2-wait-out-the-ip-block">Method 2: Wait Out the IP Block <a class="header-link" href="#method-2-wait-out-the-ip-block"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This section explores brute-forcing Carlos’ password by waiting out the IP block. By waiting for the IP block to deactivate, we’re complying with the enforced rate limit. This isn’t much of an issue here since we’re dealing with just a few credentials.</p>
+<p>To recap, the lab server activates an IP block for a minute after three failed login attempts. Any further requests sent within this minute are rejected. To wait out the block, we’ll use a <a href="/docs/desktop/addons/fuzzer/dialogue/#message-processors-tab">message processor</a> script.</p>
+<p>Message processors can control the fuzzing process and modify requests in real-time. As you might have noticed from the previous section, if we’d needed a per-request delay, we could have set it directly in the Fuzzer <em>Options</em> tab:</p>
+<p><img src="images/add-delay-options-tab.png" alt="add-delay-options-tab.png"></p>
+<p>Since a per-request delay is not what we want, we’ll use our script to process our requests before they’re sent and add a delay after every three requests. The type of message processor we need is the Fuzzer HTTP Processor script. Let’s create it.</p>
+
+<h4 id="step-1-create-a-new-fuzzer-http-processor-script">Step 1: Create a New Fuzzer HTTP Processor Script <a class="header-link" href="#step-1-create-a-new-fuzzer-http-processor-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Create a new Fuzzer HTTP Processor script from the <em>Scripts</em> tab. The process is the same as when we created the Payload Generator script earlier:</p>
+<p><img src="images/create-new-fuzzer-http-processor-script.png" alt="create-new-fuzzer-http-processor-script.png"></p>
+<p>Enter the name of your script (e.g, <em>lockout-handler.js</em>). Then set the script type if you did not create it directly from the Fuzzer HTTP Processor type. As before, select “Graal.js” as the script engine.</p>
+
+<h4 id="step-2-implement-the-delay-logic">Step 2: Implement the Delay Logic <a class="header-link" href="#step-2-implement-the-delay-logic"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Navigate to the <em>Script Console</em> to view the new file. Clear it if it’s not empty, and enter the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Auxiliary variables/constants needed for processing.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">Thread</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;java.lang.Thread&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Processes the fuzzed message (payloads already injected).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Called before forwarding the message to the server.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* @param {HttpFuzzerTaskProcessorUtils} utils - A utility object that contains functions that ease common tasks.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* @param {HttpMessage} message - The fuzzed message, that will be forward to the server.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processMessage</span>(<span style="color:#a6e22e">utils</span>, <span style="color:#a6e22e">message</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">print</span>(<span style="color:#a6e22e">count</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">%</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">===</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Pausing for activated IP block...&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">Thread</span>.<span style="color:#a6e22e">sleep</span>(<span style="color:#ae81ff">60000</span>); <span style="color:#75715e">// Pause for 60 seconds
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">print</span>(<span style="color:#e6db74">&#34;Error in processMessage: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">error</span>.<span style="color:#a6e22e">message</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Processes the fuzz result.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Called after receiving the fuzzed message from the server.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* @param {HttpFuzzerTaskProcessorUtils} utils - A utility object that contains functions that ease common tasks.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* @param {HttpFuzzResult} fuzzResult - The result of sending the fuzzed message.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* @return {boolean} Whether the result should be accepted, or discarded and not shown.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processResult</span>(<span style="color:#a6e22e">utils</span>, <span style="color:#a6e22e">fuzzResult</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* This function is called during the script loading to obtain a list of the names of the required configuration parameters,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* that will be shown in the Add Message Processor Dialog for configuration. They can be used
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* to input dynamic data into the script, from the user interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getRequiredParamsNames</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* This function is called during the script loading to obtain a list of the names of the optional configuration parameters,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* that will be shown in the Add Message Processor Dialog for configuration. They can be used
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* to input dynamic data into the script, from the user interface
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getOptionalParamsNames</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> [];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>As noted already, most script types need to implement a specific interface to run correctly. For our Fuzzer HTTP Processor type, this interface includes four functions. For our purpose, we’re only interested in <code>processMessage</code>. However, ensure that you implement the other three functions and that they return truthy values. (You can refer to the default template if needed.)</p>
+<p><code>processMessage</code> is executed on each message before it is sent to the server. This enables us to alter payloads as needed or to introduce delays between requests.</p>
+<p>We didn’t need to use the <code>utils</code> and <code>message</code> parameters in <code>processMessage</code>. Still, it’s worth noting that they are injected by default when <code>processMessage</code> is called. This is similar to how the <code>resolve</code> and <code>reject</code> functions are passed as arguments to the executor function in the JavaScript Promise API. In other words, these parameters are not defined in the script’s global scope; their scope is limited to <code>processMessage</code>.</p>
+<p>Since our script manages the entire fuzzing session and <code>processMessage</code> is executed on every message, we can use the <code>count</code> variable as an iteration counter. It tracks the number of times <code>processMessage</code> is called.  Or, in other words, how many requests the Fuzzer has processed. After every three requests, we pause for one minute before sending the next.</p>
+<p>Finally, because ZAP runs on the Java Virtual Machine (JVM), we can access the Java API from guest languages like JavaScript. Depending on how you installed ZAP, you might have manually installed a JVM yourself beforehand, or it might have been installed automatically as a dependency.</p>
+<p>Our code sample above imports the <code>Thread</code> class using <code>Java.type('java.lang.Thread')</code>. We’ve used it to implement the one-minute delay between requests. For more details on available JavaScript features and the Java APIs accessible in your script, see <a href="https://www.graalvm.org/latest/reference-manual/js/JavaScriptCompatibility/">GraalJS Compatibility</a> and <a href="https://www.graalvm.org/jdk21/reference-manual/js/JavaInteroperability/">Java Interoperability</a>.</p>
+<p>If you’ve modified the script as stated, save it and ensure it is enabled. Aside from right-clicking the script&rsquo;s name in the Scripts tab, you can also enable it with the gray cross-in-circle icon in the <em>Script Console</em> tab (it is a green check icon when the script is enabled).</p>
+
+<h4 id="step-3-add-the-payload-1">Step 3: Add the Payload <a class="header-link" href="#step-3-add-the-payload-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>xt, let’s open the Fuzzer dialog. Right-click the captured POST request from the <em>Sites</em> tab and select <em>Attack</em> &gt; <em>Fuzz</em>. In the <em>Fuzzer Locations</em> tab, we’ll select the password value as the position we want to fuzz. Highlight it to activate the <em>Add</em> button:</p>
+<p><img src="images/fuzz-password.png" alt="fuzz-password.png"></p>
+<p>In the <em>Add Payload</em> dialog, keep the default “Strings” payload generator type. Then, copy the <a href="https://portswigger.net/web-security/authentication/auth-lab-passwords">password wordlist</a> from the lab page and paste it into the <em>Contents</em> field:</p>
+<p><img src="images/add-password-payload.png" alt="add-password-payload.png"></p>
+<p>Save the payload and return to the main Fuzzer dialog.</p>
+
+<h4 id="step-4-add-the-message-processor-script">Step 4: Add the Message Processor Script <a class="header-link" href="#step-4-add-the-message-processor-script"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Finally, switch to the <em>Message Processors</em> tab. This is where we will add our IP block handler script. Click <em>Add</em> to bring up the <em>Add Message Processor</em> dialog and select your script:</p>
+<p><img src="images/move-message-processor-script-top.png" alt="move-message-processor-script-top.png"></p>
+<p>You can optionally move the script to the top of the processor list. Then, run the Fuzzer.</p>
+
+<h2 id="have-username-got-password">Have Username, Got Password <a class="header-link" href="#have-username-got-password"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Once the Fuzzer is done, we can inspect the results. We’re looking for indications of a successful login. So, we’ll sort the results in descending order using the status code column (simply “<em>Code”</em> in the UI).</p>
+
+
+
+  <blockquote class="alert alert-note">
+    <p class="alert-heading">
+      📝
+      
+        Note
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>Both of these solutions are valid. As you might have noticed if you’ve solved a lab more than once, different lab instances can have different password solutions. So, you could see different passwords than shown below.</p>
+    </div>
+  </blockquote>
+
+
+<h3 id="method-1-interleave-wordlists-with-valid-credentials-1">Method 1: Interleave Wordlists With Valid Credentials <a class="header-link" href="#method-1-interleave-wordlists-with-valid-credentials-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Our sorted results from our bypass with valid credentials show multiple <code>302 Found</code> results. This is because of the logins to our own account. So, we want to search the <em>Payloads</em> column for a payload that includes “carlos”:</p>
+<p><img src="images/302-found-carlos.png" alt="302-found-carlos.png"></p>
+<p>Voila! Carlos’ password is “soccer”. Log in with the password to solve the lab.</p>
+
+<h3 id="method-2-wait-out-the-ip-block-1">Method 2: Wait Out the IP Block <a class="header-link" href="#method-2-wait-out-the-ip-block-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>For the second method, we also want to sort the results in descending order by status code. At the top of our sorted results is a <code>302 Found</code>:</p>
+<p><img src="images/password-found.png" alt="password-found.png"></p>
+<p>This is a different lab instance than used with the bypass method. The password here is “biteme”, as we can see either through the <em>Payloads</em> column or in the request body:</p>
+<p><img src="images/lab-solved.png" alt="lab-solved.png"></p>
+<p>We’ll confirm by logging in to Carlos’ account.</p>
+
+<h2 id="takeaway">Takeaway <a class="header-link" href="#takeaway"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Rate-limiting with IP blocking is a common defense against brute-force attacks. But, it can be bypassed if implemented poorly. Understanding how attackers can exploit logic flaws to bypass security measures can help developers build more secure systems. Explore other labs to learn additional ways attackers can exploit authentication mechanisms and workflows. You can also find more <a href="/tags/portswigger-lab/">PortSwigger lab walkthroughs</a> using ZAP in the Docs.</p>
+
+<h2 id="resources">Resources <a class="header-link" href="#resources"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ol>
+<li><a href="https://portswigger.net/web-security/authentication">Authentication vulnerabilities</a></li>
+<li><a href="/docs/burp-to-zap-feature-map/">Burp to ZAP Feature Map</a></li>
+<li><a href="/tags/portswigger-lab/">PortSwigger Lab Walkthroughs With ZAP</a></li>
+<li><a href="/docs/">ZAP Docs</a></li>
+<li><a href="https://www.graalvm.org/latest/reference-manual/js/NashornMigrationGuide/">Migration Guide from Nashorn to GraalJS</a></li>
+<li><a href="https://www.graalvm.org/latest/reference-manual/js/JavaScriptCompatibility/">GraalJS Compatibility</a></li>
+<li><a href="https://www.graalvm.org/jdk21/reference-manual/js/JavaInteroperability/">Java Interoperability</a></li>
+</ol>
+<p><em>Image credit: <a href="https://www.pexels.com/photo/real-estate-concept-with-key-and-house-models-31424880/">Pexels</a>.</em></p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2025-04-02-zap-updates-march-2025/"> ZAP Updates - March 2025</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/zap_400x400.png" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Jemimah O.
+                  
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#have-username-want-password">Have Username, Want Password</a></li>
+    <li><a href="#probing-the-defence">Probing the Defence</a></li>
+    <li><a href="#brute-forcing-the-password">Brute-forcing the Password</a>
+      <ul>
+        <li><a href="#method-1-interleave-wordlists-with-valid-credentials">Method 1: Interleave Wordlists With Valid Credentials</a></li>
+        <li><a href="#method-2-wait-out-the-ip-block">Method 2: Wait Out the IP Block</a></li>
+      </ul>
+    </li>
+    <li><a href="#have-username-got-password">Have Username, Got Password</a>
+      <ul>
+        <li><a href="#method-1-interleave-wordlists-with-valid-credentials-1">Method 1: Interleave Wordlists With Valid Credentials</a></li>
+        <li><a href="#method-2-wait-out-the-ip-block-1">Method 2: Wait Out the IP Block</a></li>
+      </ul>
+    </li>
+    <li><a href="#takeaway">Takeaway</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/fuzzer/">fuzzer</a> </li>
+           
+           <li> <a href="/tags/portswigger-lab/">portswigger-lab</a> </li>
+           
+           <li> <a href="/tags/javascript/">javascript</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-04-09-portswigger-labs-broken-brute-force-protection-ip-block/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2025 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.aa09f7.js"></script>
+  
+</div>
+</body>
+</html>
