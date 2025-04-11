@@ -8,11 +8,165 @@
     <language>en-us</language>
     <atom:link href="/alerttags/policy_dev_std/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Absence of Anti-CSRF Tokens</title>
+      <link>/docs/alerts/10202/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10202/</guid>
+      <description>&lt;p&gt;No Anti-CSRF tokens were found in a HTML submission form.&#xA;A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Authentication Credentials Captured</title>
+      <link>/docs/alerts/10105-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10105-1/</guid>
+      <description>&lt;p&gt;An insecure authentication mechanism is in use. This allows an attacker on the network access to the userid and password of the authenticated user. For Basic Authentication, the attacker must merely monitor the network traffic until a Basic Authentication request is received, and then base64 decode the username and password. For Digest Authentication, the attacker has access to the username, and possibly also the password, if the hash (including a nonce) can be successfully cracked, or if a Man-In-The-Middle attack is mounted.&#xA;The attacker eavesdrops on the network until an authentication has completed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie No HttpOnly Flag</title>
+      <link>/docs/alerts/10010/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10010/</guid>
+      <description>&lt;p&gt;A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie Poisoning</title>
+      <link>/docs/alerts/10029/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10029/</guid>
+      <description>&lt;p&gt;This check looks at user-supplied input in query string parameters and POST data to identify where cookie parameters might be controlled. This is called a cookie poisoning attack, and becomes exploitable when an attacker can manipulate the cookie in various ways. In some cases this will not be exploitable, however, allowing URL parameters to set cookie values is generally considered a bug.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie with Invalid SameSite Attribute</title>
+      <link>/docs/alerts/10054-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10054-3/</guid>
+      <description>&lt;p&gt;A cookie has been set with an invalid SameSite attribute value, which means that the cookie can be sent as a result of a &amp;lsquo;cross-site&amp;rsquo; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie with SameSite Attribute None</title>
+      <link>/docs/alerts/10054-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10054-2/</guid>
+      <description>&lt;p&gt;A cookie has been set with its SameSite attribute set to &amp;ldquo;none&amp;rdquo;, which means that the cookie can be sent as a result of a &amp;lsquo;cross-site&amp;rsquo; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie without SameSite Attribute</title>
+      <link>/docs/alerts/10054-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10054-1/</guid>
+      <description>&lt;p&gt;A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a &amp;lsquo;cross-site&amp;rsquo; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cookie Without Secure Flag</title>
+      <link>/docs/alerts/10011/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10011/</guid>
+      <description>&lt;p&gt;A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Cross Site Scripting (Reflected)</title>
       <link>/docs/alerts/40012/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/40012/</guid>
       <description>&lt;p&gt;Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user&amp;rsquo;s browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.&#xA;When an attacker gets a user&amp;rsquo;s browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cross-Domain JavaScript Source File Inclusion</title>
+      <link>/docs/alerts/10017/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10017/</guid>
+      <description>&lt;p&gt;The page includes one or more script files from a third-party domain.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: Failure to Define Directive with No Fallback</title>
+      <link>/docs/alerts/10055-13/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-13/</guid>
+      <description>&lt;p&gt;The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: Header &amp; Meta</title>
+      <link>/docs/alerts/10055-12/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-12/</guid>
+      <description>&lt;p&gt;The message contained both CSP specified via header and via Meta tag. It was not possible to union these policies in order to perform an analysis. Therefore, they have been evaluated individually.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: Malformed Policy (Non-ASCII)</title>
+      <link>/docs/alerts/10055-9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-9/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: Meta Policy Invalid Directive</title>
+      <link>/docs/alerts/10055-11/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-11/</guid>
+      <description>&lt;p&gt;The policy specified via meta element contains either or both the sandbox or frame-ancestors directive, which are not permitted inside meta CSP definitions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: Notices</title>
+      <link>/docs/alerts/10055-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-3/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: script-src unsafe-eval</title>
+      <link>/docs/alerts/10055-10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-10/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: script-src unsafe-hashes</title>
+      <link>/docs/alerts/10055-7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-7/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: script-src unsafe-inline</title>
+      <link>/docs/alerts/10055-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-5/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: style-src unsafe-hashes</title>
+      <link>/docs/alerts/10055-8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-8/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: style-src unsafe-inline</title>
+      <link>/docs/alerts/10055-6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-6/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: Wildcard Directive</title>
+      <link>/docs/alerts/10055-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-4/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: X-Content-Security-Policy</title>
+      <link>/docs/alerts/10055-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-1/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CSP: X-WebKit-CSP</title>
+      <link>/docs/alerts/10055-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10055-2/</guid>
+      <description>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</description>
     </item>
     <item>
       <title>External Redirect</title>
@@ -41,6 +195,62 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/20019-4/</guid>
       <description>&lt;p&gt;URL redirectors represent common functionality employed by web sites to forward an incoming request to an alternate resource. This can be done for a variety of reasons and is often done to allow resources to be moved within the directory structure and to avoid breaking functionality for users that request the resource at its previous location. URL redirectors may also be used to implement load balancing, leveraging abbreviated URLs or recording outgoing links. It is this last implementation which is often used in phishing attacks as described in the example below. URL redirectors do not necessarily represent a direct security vulnerability but can be abused by attackers trying to social engineer victims into believing that they are navigating to a site other than the true destination.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP Parameter Override</title>
+      <link>/docs/alerts/10026/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10026/</guid>
+      <description>&lt;p&gt;Unspecified form action: HTTP parameter override attack potentially possible. This is a known problem with Java Servlets but other platforms may also be vulnerable.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP to HTTPS Insecure Transition in Form Post</title>
+      <link>/docs/alerts/10041/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10041/</guid>
+      <description>&lt;p&gt;This check looks for insecure HTTP pages that host HTTPS forms. The issue is that an insecure HTTP page can easily be hijacked through MITM and the secure HTTPS form can be replaced or spoofed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTPS to HTTP Insecure Transition in Form Post</title>
+      <link>/docs/alerts/10042/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10042/</guid>
+      <description>&lt;p&gt;This check identifies secure HTTPS pages that host insecure HTTP forms. The issue is that a secure page is transitioning to an insecure page when data is uploaded through a form. The user may think they&amp;rsquo;re submitting data to a secure page when in fact they are not.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Sensitive Information in HTTP Referrer Header</title>
+      <link>/docs/alerts/10025/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10025/</guid>
+      <description>&lt;p&gt;The HTTP header may have leaked a potentially sensitive parameter to another domain. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Information Disclosure - Sensitive Information in URL</title>
+      <link>/docs/alerts/10024/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10024/</guid>
+      <description>&lt;p&gt;The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Loosely Scoped Cookie</title>
+      <link>/docs/alerts/90033/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90033/</guid>
+      <description>&lt;p&gt;Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. &lt;a href=&#34;http://www.nottrusted.com&#34;&gt;www.nottrusted.com&lt;/a&gt;, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Modern Web Application</title>
+      <link>/docs/alerts/10109/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10109/</guid>
+      <description>&lt;p&gt;The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Open Redirect</title>
+      <link>/docs/alerts/10028/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10028/</guid>
+      <description>&lt;p&gt;Open redirects are one of the OWASP 2010 Top Ten vulnerabilities. This check looks at user-supplied input in query string parameters and POST data to identify where open redirects might be possible. Open redirects occur when an application allows user-supplied input (e.g. &lt;a href=&#34;https://nottrusted.com&#34;&gt;https://nottrusted.com&lt;/a&gt;) to control an offsite redirect. This is generally a pretty accurate way to find where 301 or 302 redirects could be exploited by spammers or phishing attacks.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Path Traversal</title>
@@ -78,6 +288,13 @@
       <description>&lt;p&gt;The Path Traversal attack technique allows an attacker access to files, directories, and commands that potentially reside outside the web document root directory. An attacker may manipulate a URL in such a way that the web site will execute or reveal the contents of arbitrary files anywhere on the web server. Any device that exposes an HTTP-based interface is potentially vulnerable to Path Traversal.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Referer Exposes Session ID</title>
+      <link>/docs/alerts/3-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/3-3/</guid>
+      <description>&lt;p&gt;A hyperlink pointing to another host name was found. As session ID URL rewrite is used, it may be disclosed in referer header to external hosts.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>Remote File Inclusion</title>
       <link>/docs/alerts/7/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -90,6 +307,34 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/90020/</guid>
       <description>&lt;p&gt;Attack technique used for unauthorized execution of operating system commands. This attack is possible when an application accepts untrusted input to build operating system commands in an insecure manner involving improper data sanitization, and/or improper calling of external programs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Reverse Tabnabbing</title>
+      <link>/docs/alerts/10108/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10108/</guid>
+      <description>&lt;p&gt;At least one link on this page is vulnerable to Reverse tabnabbing as it uses a target attribute without using both of the &amp;ldquo;noopener&amp;rdquo; and &amp;ldquo;noreferrer&amp;rdquo; keywords in the &amp;ldquo;rel&amp;rdquo; attribute, which allows the target page to take control of this page.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Script Served From Malicious Domain (polyfill)</title>
+      <link>/docs/alerts/10115-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10115-1/</guid>
+      <description>&lt;p&gt;The page includes one or more script files loaded from one of the &amp;lsquo;polyfill&amp;rsquo; domains.&#xA;These are not associated with the polyfill.js library and are known to serve malicious content.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Script Served From Malicious Domain (polyfill)</title>
+      <link>/docs/alerts/10115-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10115-2/</guid>
+      <description>&lt;p&gt;The page includes one or more script which appear to include a reference to one of the &amp;lsquo;polyfill&amp;rsquo; domains.&#xA;These are not associated with the polyfill.js library and are known to serve malicious content.&#xA;You should check to see if it is a safe reference (for example in a comment) or whether the script is loading content from that domain.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Secure Pages Include Mixed Content</title>
+      <link>/docs/alerts/10040/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10040/</guid>
+      <description>&lt;p&gt;The page includes mixed content, that is content accessed via HTTP instead of HTTPS.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Server Side Include</title>
@@ -106,6 +351,20 @@
       <description>&lt;p&gt;When the user input is inserted in the template instead of being used as argument in rendering is evaluated by the template engine. Depending on the template engine it can lead to remote code execution.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Session ID in URL Rewrite</title>
+      <link>/docs/alerts/3-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/3-1/</guid>
+      <description>&lt;p&gt;URL rewrite is used to track user session ID. The session ID may be disclosed via cross-site referer header. In addition, the session ID might be stored in browser history or server logs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Session ID in URL Rewrite</title>
+      <link>/docs/alerts/3-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/3-2/</guid>
+      <description>&lt;p&gt;URL rewrite is used to track user session ID. The session ID may be disclosed via cross-site referer header. In addition, the session ID might be stored in browser history or server logs.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>SOAP Action Spoofing</title>
       <link>/docs/alerts/90026/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -120,11 +379,39 @@
       <description>&lt;p&gt;Some XML injected code has been interpreted by the server.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>Source Code Disclosure - PHP</title>
+      <link>/docs/alerts/10099/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10099/</guid>
+      <description>&lt;p&gt;Application Source Code was disclosed by the web server. - PHP&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>SQL Injection</title>
       <link>/docs/alerts/40018/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/40018/</guid>
       <description>&lt;p&gt;SQL injection may be possible.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sub Resource Integrity Attribute Missing</title>
+      <link>/docs/alerts/90003/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90003/</guid>
+      <description>&lt;p&gt;The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Vulnerable JS Library</title>
+      <link>/docs/alerts/10003/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10003/</guid>
+      <description>&lt;p&gt;The identified library appears to be vulnerable.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Weak Authentication Method</title>
+      <link>/docs/alerts/10105-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10105-2/</guid>
+      <description>&lt;p&gt;HTTP basic or digest authentication has been used over an unsecured connection. The credentials can be read and then reused by someone with access to the network.&lt;/p&gt;</description>
     </item>
     <item>
       <title>XML External Entity Attack</title>
