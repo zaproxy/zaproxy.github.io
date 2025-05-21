@@ -169,6 +169,9 @@ That is not the same as making your app easy to navigate by automated tools.</p>
 <p>HTML links are easy to identify. Event handlers on elements like DIVs are much harder to identify.</p>
 <p>The <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a> can struggle with popup menus, although the
 <a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider</a> can handle these in many cases.</p>
+<p>If your app frequently logs the user out for doing bad/unexpected things then the spiders will struggle with it, and if
+it automatically redirects the browser to the login page if a direct URL is used even when authenticated then crawling your app
+will be almost impossible.</p>
 <p>None of the ZAP spiders can currently handle Shadow DOMs.</p>
 <p>If you have integration tests for you app then you should look at <a href="/docs/getting-further/automation/exploring-your-app/#proxying-integration-tests">proxying</a>
 then through ZAP as these can significantly increase coverage.</p>
