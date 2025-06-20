@@ -380,6 +380,12 @@
                             <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/record/">Client Side Integration</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/spider-api/">Client Side Integration - Client Spider API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/spider/">Client Side Integration - Client Spider</a>
                         </li>
         </ul>
@@ -1092,6 +1098,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-dev-std/">Developer Standard Policy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/scan-policies/policy-pentest/">Penetration Tester Policy</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-qa-full/">QA Full Policy</a>
@@ -1835,8 +1844,10 @@
         method: &#34;client&#34;
         parameters:
           script: /path/to/RecordedAuth.zst  # String, the path to the Zest login script
+          scriptInline:                      # String, the full script (may be multi-line) - supply this or &#39;script&#39; not both
           scriptEngine: Mozilla Zest         # The script engine used for the login script
           diagnostics:                       # Bool, enables the recording of diagnostic data during the authentication. Default: false.
+          loginPageWait:                     # Int, the time in seconds to wait after the script has run, default: 5
 </code></pre><p>Refer to the <a href="/docs/desktop/addons/authentication-helper/auth-report-json/">Authentication Report</a> for more details on the diagnostics.</p>
 
 <h2 id="client-spider-and-ajax-spider-integration">Client Spider and AJAX Spider Integration <a class="header-link" href="#client-spider-and-ajax-spider-integration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
