@@ -380,6 +380,12 @@
                             <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/record/">Client Side Integration</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/spider-api/">Client Side Integration - Client Spider API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/spider/">Client Side Integration - Client Spider</a>
                         </li>
         </ul>
@@ -1092,6 +1098,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-dev-std/">Developer Standard Policy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/scan-policies/policy-pentest/">Penetration Tester Policy</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-qa-full/">QA Full Policy</a>
@@ -1897,6 +1906,16 @@
           <td>Select elements to click during crawl (table)</td>
           <td>The list of elements to crawl. This table only applies when &ldquo;click default elements only&rdquo; is not enabled. Use &ldquo;enable all&rdquo; for a more in depth analysis, though it may take somewhat longer.</td>
           <td>All enabled</td>
+      </tr>
+      <tr>
+          <td>Scope Check</td>
+          <td>How the scope is checked: * <code>Strict</code> - enforces that all requests need to be in scope to be accessed, with the exception of the Allowed Resources. * <code>Flexible</code> - allows all requests to be accessed. This scope check does not use nor require configuring the Allowed Resources for targets that need domains out of scope to work. This scope check has the side effect of allowing out of scope domains to be accessed, but not crawled.</td>
+          <td>Strict</td>
+      </tr>
+      <tr>
+          <td>Logout Avoidance</td>
+          <td>When enabled, the spider will avoid clicking common logout elements, which does not require manually excluding them.</td>
+          <td>False</td>
       </tr>
       <tr>
           <td>Allowed Resources (table)</td>

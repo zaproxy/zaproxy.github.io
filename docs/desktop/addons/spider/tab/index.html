@@ -380,6 +380,12 @@
                             <a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration - Passive Scan Rules</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/record/">Client Side Integration</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/client-side-integration/spider-api/">Client Side Integration - Client Spider API</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/client-side-integration/spider/">Client Side Integration - Client Spider</a>
                         </li>
         </ul>
@@ -1092,6 +1098,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-dev-std/">Developer Standard Policy</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/scan-policies/policy-pentest/">Penetration Tester Policy</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-qa-full/">QA Full Policy</a>
@@ -1842,7 +1851,15 @@ set of buttons which allows to:</p>
 <p>The progress bar shows how far the selected Spider scan has progressed. It is also shown the number of active Spider scans and the number of URIs found for the selected scan.</p>
 <p>For each URI found you can see:</p>
 <ul>
-<li>Processed - Whether the URI was processed by the Spider or was skipped from fetching because of a rule (e.g. it was out of scope)</li>
+<li>Processed - Whether the URI was processed by the Spider or was skipped from fetching because of a rule. Skipped reasons include:
+<ul>
+<li><img src="/docs/desktop/addons/spider/images/red_dot.png" alt="no parse">Out of Context - the message was not part of the targetted context</li>
+<li><img src="/docs/desktop/addons/spider/images/red_dot.png" alt="no parse">Out of Scope - the message was not in scope</li>
+<li><img src="/docs/desktop/addons/spider/images/red_dot.png" alt="no parse">Illegal Protocol - the message was neither HTTP nor HTTPS</li>
+<li><img src="/docs/desktop/addons/spider/images/red_dot.png" alt="no parse">User Rules - the message was skipped due to user defined exclude</li>
+<li><img src="/docs/desktop/addons/spider/images/red_dot.png" alt="no parse">Logout Avoidance - the message was skipped because the user indicated that logout related paths/functionality should be avoided</li>
+</ul>
+</li>
 <li>Method - The HTTP method, e.g. GET or POST, through which the resource should be accessed</li>
 <li>URI - the resource found</li>
 <li>Flags - any information about the URI (e.g. if it&rsquo;s a seed or why was it not processed)</li>
