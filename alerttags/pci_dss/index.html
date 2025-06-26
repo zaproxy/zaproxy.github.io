@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; External Redirect</title>
+  <link rel="alternate" type="application/rss+xml" href="/alerttags/pci_dss/index.xml" title="ZAP" />
+  <title>ZAP &ndash; PCI_DSS</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -110,161 +111,229 @@
 
   
 <section class="bolt-header">
-    <div class="wrapper py-20">
-      <h1 class="text--white">External Redirect</h1>
+  <div class="wrapper py-20">
+    
+      <h1 class="text--white">Alert Tag:  PCI_DSS</h1>
+    
   </div>
 </section>
-
-<div class="wrapper py-20" data-kind="page">
+  <div class="wrapper py-70">
     <header class="breadcrumbs">
-        <a href="/docs/">Docs</a> &gt;
-        <a href="/docs/alerts/">Alerts</a>
+        <a href="/alerttags/">Alert Tags</a> &gt;
+        
+        <a href="/alerttags/pci_dss">PCI_DSS</a>
+        
     </header>
-    <main class="post-content flex pt-10 on-sm-stack">
-      <section class="col-1-3 mr-30 mb-30">
-        <table class="bordered">
-          <thead>
-            <tr>
-              <th colspan="2">
-                Details
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <strong>Alert ID</strong>
-              </td>
-              <td>20019-4</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Alert Type</strong>
-              </td>
-              <td>Active</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Status</strong>
-              </td>
-              <td>release</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>High</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/601.html">
-                  601
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>38</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/cwe-601">CWE-601</a><br>
-              
-              	<a href="/alerttags/hipaa">HIPAA</a><br>
-              
-              	<a href="/alerttags/owasp_2017_a01">OWASP_2017_A01</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a03">OWASP_2021_A03</a><br>
-              
-              	<a href="/alerttags/policy_api">POLICY_API</a><br>
-              
-              	<a href="/alerttags/policy_dev_cicd">POLICY_DEV_CICD</a><br>
-              
-              	<a href="/alerttags/policy_dev_full">POLICY_DEV_FULL</a><br>
-              
-              	<a href="/alerttags/policy_dev_std">POLICY_DEV_STD</a><br>
-              
-              	<a href="/alerttags/policy_pentest">POLICY_PENTEST</a><br>
-              
-              	<a href="/alerttags/policy_qa_full">POLICY_QA_FULL</a><br>
-              
-              	<a href="/alerttags/policy_qa_std">POLICY_QA_STD</a><br>
-              
-              	<a href="/alerttags/policy_sequence">POLICY_SEQUENCE</a><br>
-              
-              	<a href="/alerttags/wstg-v42-clnt-04">WSTG-V42-CLNT-04</a><br>
-              
-              </td>
-            </tr>
-            
-            <tr> 
-              <td>
-                <strong>More Info</strong>
-              </td>
-              <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/active-scan-rules/#id-20019">Scan Rule Help</a><br>
-              </td>
-            </tr>
-            
-          </tbody>
-        </table>
+   
 
-      </section>
-      <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>URL redirectors represent common functionality employed by web sites to forward an incoming request to an alternate resource. This can be done for a variety of reasons and is often done to allow resources to be moved within the directory structure and to avoid breaking functionality for users that request the resource at its previous location. URL redirectors may also be used to implement load balancing, leveraging abbreviated URLs or recording outgoing links. It is this last implementation which is often used in phishing attacks as described in the example below. URL redirectors do not necessarily represent a direct security vulnerability but can be abused by attackers trying to social engineer victims into believing that they are navigating to a site other than the true destination.</p>
+    
+      
+      
+        <h4><a href="https://www.pcisecuritystandards.org/standards/pci-dss/">https://www.pcisecuritystandards.org/standards/pci-dss/</a></h4>
+      
+      All of the alerts which use this tag:
+    
 
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Assume all input is malicious. Use an &#34;accept known good&#34; input validation strategy, i.e., use an allow list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a deny list). However, deny lists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.  When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, &#34;boat&#34; may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as &#34;red&#34; or &#34;blue.&#34;  Use an allow list of approved URLs or domains to be used for redirection.  Use an intermediate disclaimer page that provides the user with a clear warning that they are leaving your site. Implement a long timeout before the redirect occurs, or force the user to click on the link. Be careful to avoid XSS problems when generating the disclaimer page.  When the set of acceptable objects, such as filenames or URLs, is limited or known, create a mapping from a set of fixed input values (such as numeric IDs) to the actual filenames or URLs, and reject all other inputs.  For example, ID 1 could map to &#34;/login.asp&#34; and ID 2 could map to &#34;https://www.example.com/&#34;. Features such as the ESAPI AccessReferenceMap provide this capability.  Understand all the potential areas where untrusted inputs can enter your software: parameters or arguments, cookies, anything read from the network, environment variables, reverse DNS lookups, query results, request headers, URL components, e-mail, files, databases, and any external systems that provide data to the application. Remember that such inputs may be obtained indirectly through API calls.  Many open redirect problems occur because the programmer assumed that certain inputs could not be modified, such as cookies and hidden form fields.
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          The response contains a redirect in its JavaScript code which allows an external Url to be set.
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
-        
-          <li>
+   <div class="flex latest-versions">
+      <table data-sort-filter>
+         <thead>
+            <tr>
+               <th>Tag</th>
+               <th>Link</th>
+            </tr>
+         </thead>
+         <tbody>
             
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Unvalidated_Redirects_and_Forwards_Cheat_Sheet.html</a>
+               
+               <tr>
+                  <td><a href="/docs/alerts/30001/">Buffer Overflow</a></td>
+                  <td><a href=""></a></td>
+               </tr>
             
-          </li>
-        
-          <li>
+               
+               <tr>
+                  <td><a href="/docs/alerts/40014/">Cross Site Scripting (Persistent)</a></td>
+                  <td><a href=""></a></td>
+               </tr>
             
-              <a href="https://cwe.mitre.org/data/definitions/601.html">https://cwe.mitre.org/data/definitions/601.html</a>
+               
+               <tr>
+                  <td><a href="/docs/alerts/40016/">Cross Site Scripting (Persistent) - Prime</a></td>
+                  <td><a href=""></a></td>
+               </tr>
             
-          </li>
-        
-        </ul>
-        <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/ExternalRedirectScanRule.java'>org/zaproxy/zap/extension/ascanrules/ExternalRedirectScanRule.java</a>
-      </section>
-  </main>
-</div>
+               
+               <tr>
+                  <td><a href="/docs/alerts/40017/">Cross Site Scripting (Persistent) - Spider</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40012/">Cross Site Scripting (Reflected)</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40028/">ELMAH Information Leak</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/90025/">Expression Language Injection</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40043-1/">Log4Shell (CVE-2021-44228)</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40043-2/">Log4Shell (CVE-2021-45046)</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40031/">Out of Band XSS</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/6-1/">Path Traversal</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/6-2/">Path Traversal</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/6-3/">Path Traversal</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/6-4/">Path Traversal</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/6-5/">Path Traversal</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/90020/">Remote OS Command Injection</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/90019-2/">Server Side Code Injection - ASP Code Injection</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/90019-1/">Server Side Code Injection - PHP Code Injection</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40046/">Server Side Request Forgery</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40045/">Spring4Shell</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40018/">SQL Injection</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40020/">SQL Injection - Hypersonic SQL</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40027/">SQL Injection - MsSQL</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40019/">SQL Injection - MySQL</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40021/">SQL Injection - Oracle</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40022/">SQL Injection - PostgreSQL</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40024/">SQL Injection - SQLite</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/40047/">Text4shell (CVE-2022-42889)</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/90023/">XML External Entity Attack</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/90021/">XPath Injection</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+               
+               <tr>
+                  <td><a href="/docs/alerts/90017/">XSLT Injection</a></td>
+                  <td><a href=""></a></td>
+               </tr>
+            
+         </tbody>
+      </table>
+   </div>
+  </div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
