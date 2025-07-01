@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-07-01-zap-updates-june-2025/images/zapbot-monthly-updates.png">
+  <meta name="twitter:title" content="ZAP Updates - June 2025">
+  <meta name="twitter:description" content="A new Intro video, lots of authentication work, and more news on the ZAP browser extensions.">
+
+    <meta property="og:url" content="/blog/2025-07-01-zap-updates-june-2025/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="ZAP Updates - June 2025">
+  <meta property="og:description" content="A new Intro video, lots of authentication work, and more news on the ZAP browser extensions.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-07-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-01T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Update">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-07-01-zap-updates-june-2025/images/zapbot-monthly-updates.png">
+
+  
+  <title>ZAP &ndash; ZAP Updates - June 2025</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.98e1bf.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">ZAP Updates - June 2025</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday July 1, 2025</span>
+              <span class="word-count fl-r"> 2468 Words </span>
+            </section>
+            
+<h2 id="highlights">Highlights <a class="header-link" href="#highlights"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Once again it&rsquo;s been a very busy couple of months for the ZAP team. So busy that we didn&rsquo;t have time to post an update last month!</p>
+
+<h3 id="new-introduction-video">New Introduction Video <a class="header-link" href="#new-introduction-video"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We have a brand new &ldquo;Intro to ZAP by Checkmarx&rdquo; video:</p>
+
+<div class='embed-youtube'>
+<iframe src='https://www.youtube.com/embed/yywD8ebNn6o' frameborder='0' allowfullscreen></iframe>
+</div>
+
+
+<p>Feedback appreciated 😀</p>
+
+<h3 id="authentication-changes">Authentication Changes <a class="header-link" href="#authentication-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Authentication has continued to be a big focus for us. The documentation is definitely lagging behind, but the plan is to
+publish new articles / blog posts ASAP.</p>
+
+<h3 id="browser-extensions">Browser Extensions <a class="header-link" href="#browser-extensions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>As you may already know, ZAP now has 2 browser extensions. These were originally introduced to stream data from
+the browser back to ZAP, but they have been extended to support recording the actions you take in the browser.</p>
+<p>ZAP now supports these <a href="/docs/desktop/addons/client-side-integration/record/">Client Side Scripts</a> as authentication scripts,
+so you can use them to record complex authentication flows.</p>
+
+<h4 id="zap-full-extension">ZAP Full Extension <a class="header-link" href="#zap-full-extension"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The &ldquo;Full&rdquo; extension is supported on Firefox and Chrome:</p>
+<ul>
+<li><a href="https://addons.mozilla.org/en-GB/firefox/addon/zap-browser-extension">Firefox - ZAP by Checkmarx Browser Extension</a></li>
+<li><a href="https://chromewebstore.google.com/detail/zap-by-checkmarx-browser/cgkggmillbmmpokepnicllalaohphffo">Chrome - ZAP by Checkmarx Browser Extension</a></li>
+</ul>
+<p>While these are available on the relevant browser stores, we don&rsquo;t expect many people to download them from there.
+They are bundled with ZAP (as part of the <a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a> add-on)
+and are automatically installed on the browsers launched from ZAP.</p>
+
+<h4 id="zap-recorder-extension">ZAP Recorder Extension <a class="header-link" href="#zap-recorder-extension"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The Recorder extension is a cut down version of the Full extension, and only allows you to record scripts, it will not try to stream any data to ZAP.</p>
+<p>You will need to install this extension manually, as it&rsquo;s designed to be used where you need to record a script on a machine
+without ZAP installed.</p>
+<p>As of last month this extension is now available on Edge as well as Firefox and Chrome:</p>
+<ul>
+<li><a href="https://addons.mozilla.org/en-GB/firefox/addon/zap-by-checkmarx-recorder/">Firefox - ZAP by Checkmarx Browser Recorder</a></li>
+<li><a href="https://chromewebstore.google.com/detail/zap-by-checkmarx-recorder/belmenkmkfloppjbbgibipmgcmnkaiki">Chrome - ZAP by Checkmarx Browser Recorder</a></li>
+<li><a href="https://microsoftedge.microsoft.com/addons/detail/zap-by-checkmarx-recorder/okgkpllibfpmngdhhponlojjgeabfeee">Edge - ZAP by Checkmarx Browser Recorder</a></li>
+</ul>
+
+<h4 id="zap-in-ten--addo-videos">ZAP in Ten / ADDO Videos <a class="header-link" href="#zap-in-ten--addo-videos"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Unfortunately the ZAP in Ten and All Day Dev Ops videos have been deleted from Vidyard. We never had copies of these videos
+and it was not possible to download them from that site, so they are probably gone for good 😢.</p>
+<p>However, as they were getting fairly old and a bit out of date this could be a good time to record a new series,
+starting from scratch again 😀.</p>
+<p>More news when we have it.</p>
+
+<h2 id="ongoing-work">Ongoing Work <a class="header-link" href="#ongoing-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Authentication will still be a focus for us, but we will also be starting to change our focus to look at both crawling modern web apps more effectively, and the scan rules.</p>
+
+<h2 id="github-pulse">GitHub Pulse <a class="header-link" href="#github-pulse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Here are some statistics for the two main ZAP repositories:</p>
+<p><a href="https://github.com/zaproxy/zaproxy/pulse/monthly">zaproxy</a><br>
+Excluding merges, 5 authors have pushed 8 commits to main and 8 commits to all branches. On main, 13 files have changed and there have been 241 additions and 168 deletions.</p>
+<p><a href="https://github.com/zaproxy/zap-extensions/pulse/monthly">zap-extensions</a><br>
+Excluding merges, 9 authors have pushed 68 commits to main and 83 commits to all branches. On main, 1,921 files have changed and there have been 17,732 additions and 3,818 deletions.</p>
+<p>A total of <a href="https://github.com/search?q=org%3Azaproxy+type%3Apr+-author%3Azapbot+-author%3Aapp%2Fdependabot+sort%3Aupdated-asc+closed%3A2025-06+is%3Amerged&amp;type=pullrequests">77 human PRs were merged</a> on the ZAP repos.</p>
+
+<h2 id="released-add-ons---full-changelog">Released Add-ons - Full Changelog <a class="header-link" href="#released-add-ons---full-changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>In June 2025, we released updated versions of 33 add-ons:</p>
+
+<h5 id="active-scanner-rules">Active scanner rules</h5>
+<p><strong>v72</strong><br>
+Added</p>
+<ul>
+<li>Some Postgres error messages in the SQL Injection scan rule.</li>
+<li>All rules have been tagged of interest to Penetration Testers.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>SQL Injection scan rule to start using ComparableResponse - part of the work to reduce False Positives.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Due to it being 2025 and the mass adoption of HTTPS: De-prioritized plain HTTP payloads in the External Redirect scan rule.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>SQL Injection scan rule to treat a 500 response to an SQLi attack as a likely vulnerability.</li>
+<li>Use location header in SQL injection response comparisons (Issue 8651).</li>
+<li>Addressed False Negative with simple allow list handling in the External Redirect scan rule.</li>
+</ul>
+
+<h5 id="active-scanner-rules-alpha">Active scanner rules (alpha)</h5>
+<p><strong>v49</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Maintenance changes.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>All rules (except examples) have been tagged of interest to Penetration Testers.</li>
+</ul>
+
+<h5 id="active-scanner-rules-beta">Active scanner rules (beta)</h5>
+<p><strong>v59</strong><br>
+Changed</p>
+<ul>
+<li>The extension now has a user friendly name for use in the GUI.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>All rules have been tagged of interest to Penetration Testers.</li>
+</ul>
+
+<h5 id="ajax-spider">Ajax Spider</h5>
+<p><strong>v23.24.0</strong><br>
+Added</p>
+<ul>
+<li>Allow to configure how the scope is checked, either Flexible or Strict, to allow or not access to out of scope domains.</li>
+<li>Allow to avoid logout elements.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Allow access to domains out of context (e.g. SSO) when using Client Script and Browser Based Authentication.</li>
+</ul>
+
+<h5 id="alert-filters">Alert Filters</h5>
+<p><strong>v24</strong><br>
+Changed</p>
+<ul>
+<li>Use the alert reference for statistics.</li>
+<li>Workaround core issue that prevents the filters to be correctly applied (Issue 8888).</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Added parameter descriptions for the ZAP API.</li>
+</ul>
+
+<h5 id="authentication-helper">Authentication Helper</h5>
+<p><strong>v0.26.0</strong><br>
+Added</p>
+<ul>
+<li>Add configuration support for the wait time after Client Script Based Authentication.</li>
+<li>Include the Web Element being interacted with in the Client Script Based Authentication diagnostics.</li>
+<li>Allow to enable authentication diagnostics for Client Script and Browser Based Authentication through the GUI.</li>
+<li>Automation Framework errors to the Authentication Report.</li>
+<li>Replace TOTP token during Client Script Based Authentication.</li>
+<li>Include more diagnostics in Client Script and Browser Based Authentication methods.</li>
+<li>Improve Authentication Report:
+<ul>
+<li>Add the ID of the step to make it easier to match with extracted screenshots.</li>
+<li>Include the script used by the Client Script Based Authentication.</li>
+<li>Add the initiator to the HTTP Messages to know what those messages correspond to.</li>
+<li>Include the tag name of the Web Element, now collecting <code>button</code>s along with <code>input</code>s.</li>
+</ul>
+</li>
+<li>Detection of session tokens in non standard headers.</li>
+<li>Search for username/password fields under shadow DOMs with Browser Based Authentication.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Warn when the recorded script used with Client Script Based Authentication does not launch a browser.</li>
+<li>Updated to depend on Zest add-on 48.6.0.</li>
+<li>Maintenance changes.</li>
+<li>Depend on reports 0.39.0 to include AF errors.</li>
+<li>Use Header Based Session Management configuration to find a better candidate authentication message with Client Script and Browser Based Authentication methods.</li>
+<li>Client Script authentication to refresh the page of no suitable verification URL found.</li>
+<li>Wait for the detection of the session method in Client Script Based Authentication method.</li>
+<li>Include the name of the interaction in the Client Script Based Authentication diagnostics.</li>
+<li>Clear fields before sending keys for Browser Based Authentication, including when using steps.</li>
+<li>Do not add an empty line to the start of the Other Info of Session Management Response Identified scan rule&rsquo;s alerts.</li>
+<li>Update the Client Script Based Authentication help page with the new Automation Framework <code>scriptInline</code> field.</li>
+<li>The Authentication Request Detection and Session Management Detection scan rules now skip resources (images, css, js, etc) which are unlikely to be relevant.</li>
+<li>The Verification Detection scan rule now skips messages that seem related to login/logout/registration functionality.</li>
+<li>Now depends on minimum Common Library version 1.33.0.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Correct descriptions of the Zest script steps in the Authentication Report.</li>
+<li>Fix loading/saving of Client Script Based Authentication through the GUI.</li>
+<li>Inject user credentials into the script when running the Client Script Based Authentication browser integration.</li>
+<li>Delay when recording diagnostics.</li>
+<li>Allow to use zero login page wait for Client Script and Browser Based Authentication methods through the GUI.</li>
+<li>Ensure Client Script Based Authentication method has a clean state when reauthenticating.</li>
+<li>Handle missing username field in Browser Based Authentication.</li>
+<li>Correct the processing of cookies with the same name in Header Based Session Management method.</li>
+<li>Correct redirection handling when checking verification URLs.</li>
+<li>Verification URL comparison.</li>
+<li>Use the session token from JSON string response.</li>
+<li>Do not auto configure the Header Based Session Management method with duplicated session tokens.</li>
+<li>Ensure that auth messages with both known and unknown Session tokens are correctly processed.</li>
+<li>Respect Client Script Based Authentication&rsquo;s Login Page Wait when authenticating in browsers (e.g. AJAX Spider).</li>
+<li>Correct handling of JSON arrays in the Authentication Request Identified scan rule.</li>
+</ul>
+
+<h5 id="automation-framework">Automation Framework</h5>
+<p><strong>v0.50.0</strong><br>
+Added</p>
+<ul>
+<li>Add support for the wait time of the Client Script Based Authentication.</li>
+<li>Allow to inline scripts for Script and Client Script Based Authentication.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+<li>Adjusted further dialog, progress, and log messages with regard to preventing inclusion of commas in scan rule ID numbers. As well as ensuring consistency in use of ID (full caps) for table column headings, and the Add Add-ons dialog.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Correctly handle missing script engines.</li>
+<li>Correct error messages of the statistics test.</li>
+<li>Allow to use zero login page wait for Client Script and Browser Based Authentication methods.</li>
+<li>Ensure log and progress messages related to scripts and script engines are not all referred to as session management related.</li>
+</ul>
+
+<h5 id="client-side-integration">Client Side Integration</h5>
+<p><strong>v0.16.0</strong><br>
+Added</p>
+<ul>
+<li>Client Spider scope check.</li>
+<li>Added optional parameters for Page Load Time and Max Crawl Depth to the Client Spider API.</li>
+<li>Recording advice and guidance.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Updated Chrome and Firefox extensions to v0.1.3.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Client Spider to allow all requests while authenticating.</li>
+<li>Ensure that the <code>clientSpider</code> API endpoint <code>status</code> returns 100(%) only when finished.</li>
+</ul>
+
+<h5 id="common-library">Common Library</h5>
+<p><strong>v1.33.0</strong><br>
+Added</p>
+<ul>
+<li>Constants related to authentication.</li>
+</ul>
+
+<h5 id="encoder">Encoder</h5>
+<p><strong>v1.7.0</strong><br>
+Fixed</p>
+<ul>
+<li>Address malformed HTML in the help.</li>
+</ul>
+
+<h5 id="fuzzer">Fuzzer</h5>
+<p><strong>v13.16.0</strong><br>
+Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+<li>Use a scrollbar in the Default Category combo box instead of making the options panel larger (Issue 8923).</li>
+</ul>
+
+<h5 id="image-location-and-privacy-scanner">Image Location and Privacy Scanner</h5>
+<p><strong>v6</strong><br>
+Added</p>
+<ul>
+<li>Updated to Image Location and Privacy Scanner version 1.2; merged from <a href="https://github.com/veggiespam/ImageLocationScanner">source</a>
+<ul>
+<li>Updated dependency Metadata Extractor to 2.19.0</li>
+<li>Added support for scanning HEIF image format used by modern iPhone images</li>
+<li>Added support for Samsung, more Reconyxs, &amp; Sony camera proprietary privacy leakage</li>
+<li>Added detection for a few new information leakage tags in currently supported cameras.</li>
+<li>Added GPS elevation detection</li>
+</ul>
+</li>
+<li>The rule has been tagged of interest to Penetration Testers and QA.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+<p>Removed</p>
+<ul>
+<li>No longer support XMP as it was too unreliable.</li>
+</ul>
+
+<h5 id="linux-webdrivers">Linux WebDrivers</h5>
+<p><strong>v145</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 138.0.7204.49.</li>
+</ul>
+<p><strong>v144</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.119.</li>
+</ul>
+<p><strong>v143</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.70.</li>
+</ul>
+<p><strong>v142</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.68.</li>
+</ul>
+
+<h5 id="macos-webdrivers">MacOS WebDrivers</h5>
+<p><strong>v145</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 138.0.7204.49.</li>
+</ul>
+<p><strong>v144</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.119.</li>
+</ul>
+<p><strong>v143</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.70.</li>
+</ul>
+<p><strong>v142</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.68.</li>
+</ul>
+
+<h5 id="network">Network</h5>
+<p><strong>v0.22.0</strong><br>
+Fixed</p>
+<ul>
+<li>A typo in the help with regard to Transparent Proxying.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Default Global Exclusions patterns:
+<ul>
+<li>All case insensitive (Issue 8930).</li>
+<li>Fix a naming mistake in &ldquo;ExtParam - .NET adx resources (SR/WR.adx?d=)&rdquo; adx should have been axd.</li>
+<li>Extend Image related patterns to include svg and webp.</li>
+<li>Extend Audio/Video patterns to include webm.</li>
+</ul>
+</li>
+<li>Change default log level of cookies processing to error to avoid flooding the logs with warnings when the cookies are rejected/invalid.</li>
+</ul>
+
+<h5 id="oast-support">OAST Support</h5>
+<p><strong>v0.22.0</strong><br>
+Changed</p>
+<ul>
+<li>Link to repositories/documentation instead of service URLs in the help content.</li>
+<li>No longer provide a default server URL for Interactsh due to (random) unavailability.</li>
+</ul>
+
+<h5 id="passive-scanner">Passive Scanner</h5>
+<p><strong>v0.3.0</strong><br>
+Changed</p>
+<ul>
+<li>Adjusted further dialog, progress, and log messages with regard to preventing inclusion of commas in scan rule ID numbers. As well as ensuring consistency in use of ID (full caps) for table column headings.</li>
+<li>Depend on the Common Library add-on.</li>
+<li>Log all errors that might happen during the passive scan.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>The Stats Passive Scan Rule been tagged of interest to Penetration Testers, as well as adding tags associated with DEV or QA applicability.</li>
+</ul>
+
+<h5 id="passive-scanner-rules">Passive scanner rules</h5>
+<p><strong>v65</strong><br>
+Added</p>
+<ul>
+<li>All rules have been tagged of interest to Penetration Testers, as well as adding tags associated with DEV or QA applicability.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Clarified details of the Viewstate scan rule alerts, in some instances they were misleading (containing colons suggesting further data).</li>
+<li>The Open Redirect scan rule (ID: 10028) and its alerts have been renamed &ldquo;Off-site Redirect&rdquo; as this is a passive rule which compares the authority of the origin and destination and there is no assurance of a truly &ldquo;open&rdquo; redirect.</li>
+</ul>
+
+<h5 id="passive-scanner-rules-alpha">Passive scanner rules (alpha)</h5>
+<p><strong>v45</strong><br>
+Added</p>
+<ul>
+<li>All rules have been tagged of interest to Penetration Testers, as well as adding tags associated with DEV or QA applicability.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+
+<h5 id="passive-scanner-rules-beta">Passive scanner rules (beta)</h5>
+<p><strong>v44</strong><br>
+Changed</p>
+<ul>
+<li>Dropped period from extension name used in the GUI.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>A false positive with the Sub Resource Integrity Attribute Missing scan rule with regard to which link tags it raises alerts on (Issue 8938).</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>All rules have been tagged of interest to Penetration Testers, as well as adding tags associated with DEV or QA applicability.</li>
+</ul>
+
+<h5 id="report-generation">Report Generation</h5>
+<p><strong>v0.39.0</strong><br>
+Changed</p>
+<ul>
+<li>Caps fixed for Section Selections of the Risk and Confidence HTML report (Issue 2000).</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>The Automation Framework progress to the report data when run via an AF job.</li>
+<li>Statistics to the traditional extended JSON and XML reports.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Correct error messages of the Automation Framework job.</li>
+</ul>
+
+<h5 id="retirejs">Retire.js</h5>
+<p><strong>v0.47.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with upstream retire.js pattern changes.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Maintenance changes.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>The scan rule as been tagged of interest to Penetration Testers, as well as adding tags associated with DEV or QA applicability.</li>
+</ul>
+
+<h5 id="reveal">Reveal</h5>
+<p><strong>v10</strong><br>
+Fixed</p>
+<ul>
+<li>The content length is now properly set on responses which have been modified (Issue 8947).</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h5 id="revisit">Revisit</h5>
+<p><strong>v6</strong><br>
+Changed</p>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Maintenance changes.</li>
+<li>Minor fix in help content.</li>
+</ul>
+
+<h5 id="soap-support">SOAP Support</h5>
+<p><strong>v25</strong><br>
+Added</p>
+<ul>
+<li>The WSDL passive scan rule has been tagged of interest to Penetration Testers and QA.</li>
+<li>The included active scan rules have been tagged of interest to Penetration Testers.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+
+<h5 id="scan-policies">Scan Policies</h5>
+<p><strong>v0.3.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated based on Rules&rsquo; Policy Tag assignments.</li>
+<li>Updated help to cover the PENTEST Policy Tag.</li>
+</ul>
+
+<h5 id="script-console">Script Console</h5>
+<p><strong>v45.12.0</strong><br>
+Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Loop when trying to extract an underlying script exception.</li>
+</ul>
+
+<h5 id="selenium">Selenium</h5>
+<p><strong>v15.37.0</strong><br>
+Changed</p>
+<ul>
+<li>Update Selenium to version 4.33.0.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Prevent concurrent modification exceptions.</li>
+<li>Restore loading of extensions with newer Chrome versions.</li>
+</ul>
+
+<h5 id="spider">Spider</h5>
+<p><strong>v0.15.0</strong><br>
+Changed</p>
+<ul>
+<li>Include anti-csrf tokens as part of irrelevant parameters.</li>
+<li>Ignore irrelevant parameters in request bodies (<code>x-www-form-urlencoded</code>) (Related to Issue 7771).</li>
+<li>Skip all URIs with <code>javascript</code> schemes.</li>
+<li>Changed to title caps on the Irrelevant Parameters table &ldquo;title&rdquo; in the Options dialog (Issue 2000).</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Add an option to allow users to indicate the Spider should attempt to avoid logout related paths/functionality.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>An incorrect column name in the Irrelevant Parameters table used by the Options dialog (Domain should have been Name).</li>
+</ul>
+
+<h5 id="technology-detection">Technology Detection</h5>
+<p><strong>v21.46.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h5 id="websockets">WebSockets</h5>
+<p><strong>v33</strong><br>
+Changed</p>
+<ul>
+<li>Add website alert links to the help page (Issue 8189).</li>
+<li>Replace usage of CWE-200 for the following rules (Issue 8712):
+<ul>
+<li>Email Disclosure.</li>
+<li>Debug Error Disclosure.</li>
+</ul>
+</li>
+</ul>
+
+<h5 id="windows-webdrivers">Windows WebDrivers</h5>
+<p><strong>v145</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 138.0.7204.49.</li>
+</ul>
+<p><strong>v144</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.119.</li>
+</ul>
+<p><strong>v143</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.70.</li>
+</ul>
+<p><strong>v142</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 137.0.7151.68.</li>
+</ul>
+
+<h5 id="zest---graphical-security-scripting-language">Zest - Graphical Security Scripting Language</h5>
+<p><strong>v48.7.0</strong><br>
+Changed</p>
+<ul>
+<li>Update Zest library to 0.30.0:
+<ul>
+<li>Update Selenium to version 4.33.0.</li>
+<li>Send RETURN key if submit fails for input elements not in a form.</li>
+</ul>
+</li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2025-05-05-zap-updates-april-2025/"> ZAP Updates - April 2025</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#highlights">Highlights</a>
+      <ul>
+        <li><a href="#new-introduction-video">New Introduction Video</a></li>
+        <li><a href="#authentication-changes">Authentication Changes</a></li>
+        <li><a href="#browser-extensions">Browser Extensions</a></li>
+      </ul>
+    </li>
+    <li><a href="#ongoing-work">Ongoing Work</a></li>
+    <li><a href="#github-pulse">GitHub Pulse</a></li>
+    <li><a href="#released-add-ons---full-changelog">Released Add-ons - Full Changelog</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/update/">update</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-07-01-zap-updates-june-2025/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2025 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.aa09f7.js"></script>
+  
+</div>
+</body>
+</html>
