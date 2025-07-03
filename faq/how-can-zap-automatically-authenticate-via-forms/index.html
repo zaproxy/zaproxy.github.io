@@ -124,43 +124,8 @@
     <div class="flex">
       <article class="pr-30 content single-post">
           <main class="post-content">
-            <p>ZAP supports form based authentication, and can automatically
-(re)authenticate, for example when using the Spider or Active Scanner.</p>
-<p>There are a few steps required to set this up which can be performed via
-either the UI or the API.</p>
-<p>Via the UI:</p>
-<ol>
-<li>Explore your app while proxying through ZAP</li>
-<li>Login using a valid username and password</li>
-<li>Define a <a href="/docs/desktop/start/features/contexts/">Context</a>, e.g. by right clicking the top node of your app in the Sites tab and selecting <a href="/docs/desktop/ui/tabs/sites/#include-in-context">&ldquo;Include in Context&rdquo;</a></li>
-<li>Find the &lsquo;Login request&rsquo; in the Sites or History tab</li>
-<li>Right click it and select <a href="/docs/desktop/ui/tabs/sites/#flag-as-context">&ldquo;Flag as Context&rdquo;</a> / &quot; Form-based Auth Login request&quot;</li>
-<li>Check that the Username and Password parameters are set correctly - they almost certainly wont be!</li>
-<li>Find a string in a response which can be used to determine if the user is logged in or not</li>
-<li>Highlight this string, right click and select &ldquo;Flag as Context&rdquo; / &quot; Logged in/out Indicator&quot; as relevant - you only need to set one of these, not both</li>
-<li>Double click on the relevant Context node and navigate to the &ldquo;Users&rdquo; page - check the user details are correct, add any other users you want to use and enable them all</li>
-<li>Navigate to the Context &ldquo;Forced User&rdquo; page and make sure the user you want to test is selected</li>
-<li>The <img src="/docs/desktop/images/fugue/forcedUserOff.png" alt=""> &ldquo;<a href="/docs/desktop/ui/tltoolbar/#--forced-user-mode-on--off">Forced User Mode disabled - click to enable</a>&rdquo; button should now be enabled</li>
-<li>Pressing this button in will cause ZAP to resend the authentication request whenever it detects that the user is no longer logged in, i.e. by using the &rsquo;logged in&rsquo; or &rsquo;logged out&rsquo; indicator.</li>
-</ol>
-<p>The <a href="/docs/api/#form-based-authentication">API documentation</a> explains the above process using the ZAP API.</p>
-
-<h2 id="diagnosing-problems">Diagnosing problems <a class="header-link" href="#diagnosing-problems"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>If the &ldquo;Forced User Mode disabled - click to enable&rdquo; button is not enabled
-then you have not configured enough information for ZAP to authenticate -
-double check that you have performed all of the above steps.</p>
-<p>If you have enable forced user mode and are still not logged in when you
-access your application then look at the requests in the History tab:</p>
-<ul>
-<li>If there is no login request then you have probably not chosen a suitable &ldquo;logged in/out&rdquo; indicator, try changing it and trying again</li>
-<li>If there is a login request then look at the requests and response and see if you can work out why the login failed - you may need to change the request or even make multiple requests</li>
-</ul>
-<p>If you need to make multiple requests to login then the best option is to
-record a <a href="/docs/desktop/addons/zest/">Zest</a> authentication script and to test this in isolation first.</p>
-<p>Links:</p>
-<ul>
-<li>Help Concept: <a href="/docs/desktop/start/features/authentication/">Authentication</a></li>
-</ul>
+            <p>ZAP can handle pretty much any authentication out there.</p>
+<p>The best place to start is the <a href="/docs/authentication/">Authentication Decision Tree</a>.</p>
 
           </main>
       </article>
