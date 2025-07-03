@@ -6,7 +6,7 @@
     <description>Recent content in The ZAP Homepage on ZAP</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 01 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jul 2025 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -4036,26 +4036,8 @@ well.&lt;/p&gt;</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/faq/how-can-zap-automatically-authenticate-via-forms/</guid>
-      <description>&lt;p&gt;ZAP supports form based authentication, and can automatically
-(re)authenticate, for example when using the Spider or Active Scanner.&lt;/p&gt;
-&lt;p&gt;There are a few steps required to set this up which can be performed via
-either the UI or the API.&lt;/p&gt;
-&lt;p&gt;Via the UI:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Explore your app while proxying through ZAP&lt;/li&gt;
-&lt;li&gt;Login using a valid username and password&lt;/li&gt;
-&lt;li&gt;Define a &lt;a href=&#34;/docs/desktop/start/features/contexts/&#34;&gt;Context&lt;/a&gt;, e.g. by right clicking the top node of your app in the Sites tab and selecting &lt;a href=&#34;/docs/desktop/ui/tabs/sites/#include-in-context&#34;&gt;&amp;ldquo;Include in Context&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Find the &amp;lsquo;Login request&amp;rsquo; in the Sites or History tab&lt;/li&gt;
-&lt;li&gt;Right click it and select &lt;a href=&#34;/docs/desktop/ui/tabs/sites/#flag-as-context&#34;&gt;&amp;ldquo;Flag as Context&amp;rdquo;&lt;/a&gt; / &amp;quot; Form-based Auth Login request&amp;quot;&lt;/li&gt;
-&lt;li&gt;Check that the Username and Password parameters are set correctly - they almost certainly wont be!&lt;/li&gt;
-&lt;li&gt;Find a string in a response which can be used to determine if the user is logged in or not&lt;/li&gt;
-&lt;li&gt;Highlight this string, right click and select &amp;ldquo;Flag as Context&amp;rdquo; / &amp;quot; Logged in/out Indicator&amp;quot; as relevant - you only need to set one of these, not both&lt;/li&gt;
-&lt;li&gt;Double click on the relevant Context node and navigate to the &amp;ldquo;Users&amp;rdquo; page - check the user details are correct, add any other users you want to use and enable them all&lt;/li&gt;
-&lt;li&gt;Navigate to the Context &amp;ldquo;Forced User&amp;rdquo; page and make sure the user you want to test is selected&lt;/li&gt;
-&lt;li&gt;The &lt;img src=&#34;/docs/desktop/images/fugue/forcedUserOff.png&#34; alt=&#34;&#34;&gt; &amp;ldquo;&lt;a href=&#34;/docs/desktop/ui/tltoolbar/#--forced-user-mode-on--off&#34;&gt;Forced User Mode disabled - click to enable&lt;/a&gt;&amp;rdquo; button should now be enabled&lt;/li&gt;
-&lt;li&gt;Pressing this button in will cause ZAP to resend the authentication request whenever it detects that the user is no longer logged in, i.e. by using the &amp;rsquo;logged in&amp;rsquo; or &amp;rsquo;logged out&amp;rsquo; indicator.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The &lt;a href=&#34;/docs/api/#form-based-authentication&#34;&gt;API documentation&lt;/a&gt; explains the above process using the ZAP API.&lt;/p&gt;</description>
+      <description>&lt;p&gt;ZAP can handle pretty much any authentication out there.&lt;/p&gt;
+&lt;p&gt;The best place to start is the &lt;a href=&#34;/docs/authentication/&#34;&gt;Authentication Decision Tree&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -4064,15 +4046,10 @@ either the UI or the API.&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/faq/how-do-you-add-a-script-to-zap-from-the-command-line/</guid>
-      <description>&lt;p&gt;To add a script you&amp;rsquo;ll need to use the following &lt;a href=&#34;/docs/desktop/cmdline&#34;&gt;command line&lt;/a&gt; options (with the
-values changed to match your requirements of course;)&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;-config script.scripts.name=&amp;quot;Remove Strict-Transport-Security&amp;quot;
--config script.scripts.engine=&amp;quot;Mozilla Zest&amp;quot;
--config script.scripts.type=proxy
--config script.scripts.enabled=true
--config script.scripts.file=&amp;quot;/home/user/scripts/Remove Strict-Transport-Security.zst&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;See also the FAQ: &lt;a href=&#34;/faq/how-do-you-find-out-what-key-to-use-to-set-a-config-value-on-the-command-line/&#34;&gt;How do you find out what key to use to set a config value on the command line?&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;If you are doing anything non-trivial with ZAP from the command line then you should use the
+&lt;a href=&#34;/docs/automate/automation-framework/&#34;&gt;Automation Framework&lt;/a&gt;.
+This has direct support for &lt;a href=&#34;/docs/desktop/addons/script-console/automation/&#34;&gt;scripts&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you cannot use the Automation Framework for any reason then you&amp;rsquo;ll need to use the following &lt;a href=&#34;/docs/desktop/cmdline/&#34;&gt;command line&lt;/a&gt; options (with the values changed to match your requirements of course;)&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -4118,12 +4095,13 @@ browser&amp;rsquo;s proxy settings as well: &lt;a href=&#34;/docs/desktop/start/
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/faq/how-do-you-find-out-what-key-to-use-to-set-a-config-value-on-the-command-line/</guid>
-      <description>&lt;p&gt;The &lt;a href=&#34;/docs/desktop/cmdline/&#34;&gt;ZAP command line&lt;/a&gt; allows you to set individual values as follows:&lt;/p&gt;
+      <description>&lt;p&gt;If you need to set options via the command line then have a look at the
+&lt;a href=&#34;/docs/automate/automation-framework/&#34;&gt;Automation Framework&lt;/a&gt; first.
+This is well documented and has support for all of the most commonly needed configuration parameters.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;/docs/desktop/cmdline/&#34;&gt;ZAP command line&lt;/a&gt; allows you to set individual values as follows:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-config api.key=12345 -config network.connection.timeoutInSecs=60
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;How can you find out what keys to use to set the values you want?&lt;/p&gt;
-&lt;p&gt;The keys are a dot notation of the XML used in the config.xml file.&lt;/p&gt;
-&lt;p&gt;One way to find out which value you need to change is:&lt;/p&gt;</description>
+&lt;p&gt;How can you find out what keys to use to set the values you want?&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -5138,13 +5116,12 @@ specific framework or technology, please ask in the
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/faq/can-zap-be-used-to-test-my-favorite-vulnerable-app/</guid>
-      <description>&lt;p&gt;If you have questions about using ZAP to test a specific vulnerable app, that
-isn&amp;rsquo;t answered here, please ask in the &lt;a href=&#34;https://groups.google.com/forum/#!forum/zaproxy-users&#34;&gt;User
-Group&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;We have a new section of the site focused on how to set up ZAP to scan a variety of test vulnerable web apps:
+&lt;a href=&#34;/docs/testapps/&#34;&gt;ZAP Vs Test Apps&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The following pages will be updated and moved to that section in time.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;/faq/details/setting-up-zap-to-test-dvwa/&#34;&gt;Damn Vulnerable Web App&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/faq/details/setting-up-zap-to-test-owasp-pixi/&#34;&gt;OWASP Pixi&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/rezen/zap-tutorial/blob/master/10_authentication.md&#34;&gt;Juice Shop&lt;/a&gt; (on another site)&lt;/li&gt;
 &lt;/ul&gt;</description>
     </item>
     
@@ -8139,6 +8116,15 @@ Context sensitive help has also been implemented so that when you press the F1 k
 &lt;a href=&#34;https://www.fastcompany.com/90790394/what-is-a-faang-company&#34;&gt;FAANG&lt;/a&gt;&amp;rsquo;s
 &lt;a href=&#34;https://twitter.com/psiinon/status/1577192848390094849&#34;&gt;offered them an interview&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Luckily ZAPbot&amp;rsquo;s career goals are completely focused on ZAP &amp;#x1f609;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Authentication Improvements</title>
+      <link>/blog/2025-07-03-authentication-improvements/</link>
+      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2025-07-03-authentication-improvements/</guid>
+      <description>We&amp;rsquo;ve made a lot of improvements in ZAP&amp;rsquo;s handling of authentication - here&amp;rsquo;s a summary of the most significant changes we&amp;rsquo;ve made.</description>
     </item>
     
     <item>
@@ -12717,9 +12703,11 @@ as it will help us understand which parts of the authentication process ZAP can 
       
       <guid>/docs/authentication/cannot-access-app/</guid>
       <description>&lt;h5 id=&#34;follow-the-faq-why-can&#34;&gt;Follow the FAQ: &lt;a href=&#34;/faq/why-cant-zap-connect-to-my-website/&#34;&gt;Why can&amp;rsquo;t ZAP connect to my web application?&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;Note that if the app does not have a static URL for the login page then you can also try
+using a URL that has a link to the login page.&lt;/p&gt;
 
 &lt;h4 id=&#34;next-step-run-the-auth-tester-again&#34;&gt;Next Step: &lt;a href=&#34;../auth-tester-results/&#34;&gt;Run the Auth Tester&lt;/a&gt; again &lt;a class=&#34;header-link&#34; href=&#34;#next-step-run-the-auth-tester-again&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h4&gt;
-&lt;p&gt;If ZAP can access your app but there is no fixed login URL then:&lt;/p&gt;</description>
+&lt;p&gt;If ZAP can access your app but still cannot authenticate then:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -12794,8 +12782,7 @@ For more details see &lt;a href=&#34;/docs/getting-further/authentication/sessio
 &lt;li&gt;&lt;a href=&#34;https://play.vidyard.com/iErtsKxpwKn4m8iRoovtH9&#34;&gt;Video: Automation Simple Auth Bodgeit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://play.vidyard.com/igf3A8UdZ6QAGiFjEpLH86&#34;&gt;Video: Automation Simple Auth JuiceShop&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://play.vidyard.com/gYz7LxioR54i2gY9Ze7c4F&#34;&gt;Video: Automation Auth Scripts&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Also note that paid for &lt;a href=&#34;/support/#consultancy&#34;&gt;Consultancy&lt;/a&gt; is available from the ZAP Core Team.&lt;/p&gt;</description>
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -12807,6 +12794,18 @@ For more details see &lt;a href=&#34;/docs/getting-further/authentication/sessio
       <description>&lt;p&gt;Either ZAP has identified all of the information required, or you have found the parts it could not identify.&lt;/p&gt;
 &lt;p&gt;We now need to update the context created by the Authentication Tester to test it.&lt;/p&gt;
 &lt;p&gt;To edit the context double click on the &amp;lsquo;Authentication Test&amp;rsquo; context in the Sites tree.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Auth: Record a Login Script</title>
+      <link>/docs/authentication/record-a-login-script/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/authentication/record-a-login-script/</guid>
+      <description>&lt;p&gt;In the Authentication Tester change the &amp;ldquo;Auth Method&amp;rdquo; to &amp;ldquo;Client Script&amp;rdquo; and then click on the &amp;ldquo;Record&amp;hellip;&amp;rdquo; button.&lt;/p&gt;
+&lt;p&gt;ZAP will launch your chosen browser and open the Login URL.&lt;/p&gt;
+&lt;p&gt;Login to your application in the browser and then close it.&lt;/p&gt;
+&lt;p&gt;ZAP will have created and selected a new &amp;ldquo;Client Script&amp;rdquo; which it will use to authenticate when you run the next test.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -15193,6 +15192,30 @@ regular pentests on all of their web apps.&lt;/p&gt;</description>
       
       <guid>/docs/alerts/90033/</guid>
       <description>&lt;p&gt;Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. &lt;a href=&#34;http://www.nottrusted.com&#34;&gt;www.nottrusted.com&lt;/a&gt;, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Markdown Callout Examples</title>
+      <link>/docs/md-callout-examples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/md-callout-examples/</guid>
+      <description>&lt;p&gt;A set of callouts supported in the markdown.&lt;/p&gt;
+
+&lt;h3 id=&#34;note&#34;&gt;Note &lt;a class=&#34;header-link&#34; href=&#34;#note&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+
+
+
+  &lt;blockquote class=&#34;alert alert-note&#34;&gt;
+    &lt;p class=&#34;alert-heading&#34;&gt;
+      📝
+      
+        Note
+      
+    &lt;/p&gt;
+    
+    &lt;div class=&#34;alert-content&#34;&gt;
+        &lt;p&gt;Useful information that users should know, even when skimming content.&lt;/p&gt;</description>
     </item>
     
     <item>
