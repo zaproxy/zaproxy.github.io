@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; SQL Injection - SQLite (Time Based)</title>
+  <title>ZAP &ndash; Remote OS Command Injection (Time Based)</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -111,7 +111,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">SQL Injection - SQLite (Time Based)</h1>
+      <h1 class="text--white">Remote OS Command Injection (Time Based)</h1>
   </div>
 </section>
 
@@ -135,7 +135,7 @@
               <td>
                 <strong>Alert ID</strong>
               </td>
-              <td>40024</td>
+              <td>90037</td>
             </tr>
             <tr> 
               <td>
@@ -161,8 +161,8 @@
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/89.html">
-                  89
+                <a href="https://cwe.mitre.org/data/definitions/78.html">
+                  78
                 </a>
               </td>
             </tr>
@@ -170,7 +170,7 @@
               <td>
                 <strong>WASC</strong>
               </td>
-              <td>19</td>
+              <td>31</td>
             </tr>
             <tr> 
               <td>
@@ -179,7 +179,11 @@
               <td>
               
                 
-                	<a href="/techtags/db.sqlite">Db / SQLite</a><br>
+                	<a href="/techtags/os.linux">OS / Linux</a><br>
+                
+                	<a href="/techtags/os.macos">OS / MacOS</a><br>
+                
+                	<a href="/techtags/os.windows">OS / Windows</a><br>
                 
               
 	          </td>
@@ -190,6 +194,8 @@
               </td>
               <td>
               
+              	<a href="/alerttags/cwe-78">CWE-78</a><br>
+              
               	<a href="/alerttags/hipaa">HIPAA</a><br>
               
               	<a href="/alerttags/owasp_2017_a01">OWASP_2017_A01</a><br>
@@ -198,13 +204,25 @@
               
               	<a href="/alerttags/pci_dss">PCI_DSS</a><br>
               
+              	<a href="/alerttags/policy_api">POLICY_API</a><br>
+              
+              	<a href="/alerttags/policy_dev_cicd">POLICY_DEV_CICD</a><br>
+              
+              	<a href="/alerttags/policy_dev_full">POLICY_DEV_FULL</a><br>
+              
+              	<a href="/alerttags/policy_dev_std">POLICY_DEV_STD</a><br>
+              
               	<a href="/alerttags/policy_pentest">POLICY_PENTEST</a><br>
               
               	<a href="/alerttags/policy_qa_full">POLICY_QA_FULL</a><br>
               
+              	<a href="/alerttags/policy_qa_std">POLICY_QA_STD</a><br>
+              
+              	<a href="/alerttags/policy_sequence">POLICY_SEQUENCE</a><br>
+              
               	<a href="/alerttags/test_timing">TEST_TIMING</a><br>
               
-              	<a href="/alerttags/wstg-v42-inpv-05">WSTG-V42-INPV-05</a><br>
+              	<a href="/alerttags/wstg-v42-inpv-12">WSTG-V42-INPV-12</a><br>
               
               </td>
             </tr>
@@ -214,7 +232,7 @@
                 <strong>More Info</strong>
               </td>
               <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/active-scan-rules/#id-40024">Scan Rule Help</a><br>
+              	<a href="https://www.zaproxy.org/docs/desktop/addons/active-scan-rules/#id-90037">Scan Rule Help</a><br>
               </td>
             </tr>
             
@@ -225,29 +243,35 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>SQL injection may be possible.</p>
+          <p>Attack technique used for unauthorized execution of operating system commands. This attack is possible when an application accepts untrusted input to build operating system commands in an insecure manner involving improper data sanitization, and/or improper calling of external programs.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Do not trust client side input, even if there is client side validation in place. In general, type check all data on the server side. If the application uses JDBC, use PreparedStatement or CallableStatement, with parameters passed by &#39;?&#39; If the application uses ASP, use ADO Command Objects with strong type checking and parameterized queries. If database Stored Procedures can be used, use them. Do *not* concatenate strings into queries in the stored procedure, or use &#39;exec&#39;, &#39;exec immediate&#39;, or equivalent functionality! Do not create dynamic SQL queries using simple string concatenation. Escape all data received from the client. Apply an &#39;allow list&#39; of allowed characters, or a &#39;deny list&#39; of disallowed characters in user input. Apply the principle of least privilege by using the least privileged database user possible. In particular, avoid using the &#39;sa&#39; or &#39;db-owner&#39; database users. This does not eliminate SQL injection, but minimizes its impact. Grant the minimum database access that is necessary for the application.
+          If at all possible, use library calls rather than external processes to recreate the desired functionality.  Run your code in a &#34;jail&#34; or similar sandbox environment that enforces strict boundaries between the process and the operating system. This may effectively restrict which files can be accessed in a particular directory or which commands can be executed by your software.  OS-level examples include the Unix chroot jail, AppArmor, and SELinux. In general, managed code may provide some protection. For example, java.io.FilePermission in the Java SecurityManager allows you to specify restrictions on file operations. This may not be a feasible solution, and it only limits the impact to the operating system; the rest of your application may still be subject to compromise.  For any data that will be used to generate a command to be executed, keep as much of that data out of external control as possible. For example, in web applications, this may require storing the command locally in the session&#39;s state instead of sending it out to the client in a hidden form field.  Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.  For example, consider using the ESAPI Encoding control or a similar tool, library, or framework. These will help the programmer encode outputs in a manner less prone to error.  If you need to use dynamically-generated query strings or commands in spite of the risk, properly quote arguments and escape any special characters within those arguments. The most conservative approach is to escape or filter all characters that do not pass an extremely strict allow list (such as everything that is not alphanumeric or white space). If some special characters are still needed, such as white space, wrap each argument in quotes after the escaping/filtering step. Be careful of argument injection.  If the program to be executed allows arguments to be specified within an input file or from standard input, then consider using that mode to pass arguments instead of the command line.  If available, use structured mechanisms that automatically enforce the separation between data and code. These mechanisms may be able to provide the relevant quoting, encoding, and validation automatically, instead of relying on the developer to provide this capability at every point where output is generated.  Some languages offer multiple functions that can be used to invoke commands. Where possible, identify any function that invokes a command shell using a single string, and replace it with a function that requires individual arguments. These functions typically perform appropriate quoting and filtering of arguments. For example, in C, the system() function accepts a string that contains the entire command to be executed, whereas execl(), execve(), and others require an array of strings, one for each argument. In Windows, CreateProcess() only accepts one command at a time. In Perl, if system() is provided with an array of arguments, then it will quote each of the arguments.  Assume all input is malicious. Use an &#34;accept known good&#34; input validation strategy, i.e., use an allow list of acceptable inputs that strictly conform to specifications. Reject any input that does not strictly conform to specifications, or transform it into something that does. Do not rely exclusively on looking for malicious or malformed inputs (i.e., do not rely on a deny list). However, deny lists can be useful for detecting potential attacks or determining which inputs are so malformed that they should be rejected outright.  When performing input validation, consider all potentially relevant properties, including length, type of input, the full range of acceptable values, missing or extra inputs, syntax, consistency across related fields, and conformance to business rules. As an example of business rule logic, &#34;boat&#34; may be syntactically valid because it only contains alphanumeric characters, but it is not valid if you are expecting colors such as &#34;red&#34; or &#34;blue.&#34;  When constructing OS command strings, use stringent allow lists that limit the character set based on the expected value of the parameter in the request. This will indirectly limit the scope of an attack, but this technique is less important than proper output encoding and escaping.  Note that proper output encoding, escaping, and quoting is the most effective solution for preventing OS command injection, although input validation may provide some defense-in-depth. This is because it effectively limits what will appear in output. Input validation will not always prevent OS command injection, especially if you are required to support free-form text fields that could contain arbitrary characters. For example, when invoking a mail program, you might need to allow the subject field to contain otherwise-dangerous inputs like &#34;;&#34; and &#34;&gt;&#34; characters, which would need to be escaped or otherwise handled. In this case, stripping the character might reduce the risk of OS command injection, but it would produce incorrect behavior because the subject field would not be recorded as the user intended. This might seem to be a minor inconvenience, but it could be more important when the program relies on well-structured subject lines in order to pass messages to other components.  Even if you make a mistake in your validation (such as forgetting one out of 100 input fields), appropriate encoding is still likely to protect you from injection-based attacks. As long as it is not done in isolation, input validation is still a useful technique, since it may significantly reduce your attack surface, allow you to detect some attacks, and provide other security benefits that proper encoding does not address.
         </div>
         <div data-attr="other" class="mb-20">
           <h3 class="mb-10">Other Info</h3>
-          
+          The scan rule was able to control the timing of the application response by sending [sleep 5] to the operating system running this application.
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html</a>
+              <a href="https://cwe.mitre.org/data/definitions/78.html">https://cwe.mitre.org/data/definitions/78.html</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://owasp.org/www-community/attacks/Command_Injection">https://owasp.org/www-community/attacks/Command_Injection</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionSqLiteTimingScanRule.java'>org/zaproxy/zap/extension/ascanrules/SqlInjectionSqLiteTimingScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/CommandInjectionTimingScanRule.java'>org/zaproxy/zap/extension/ascanrules/CommandInjectionTimingScanRule.java</a>
       </section>
   </main>
 </div>
