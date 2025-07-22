@@ -8,25 +8,25 @@
   
     
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-07-10-edge-support/images/blog-edge.png">
-  <meta name="twitter:title" content="Edge Support">
-  <meta name="twitter:description" content="ZAP now has “tier 1” support for Microsoft Edge, including exploring, crawling, and attacking.">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-07-22-timing-rule-changes/images/zapbot-clock-break.png">
+  <meta name="twitter:title" content="Timing Related Scan Rule Changes">
+  <meta name="twitter:description" content="Scan rules related to time based attacks have been split or renamed.">
 
-    <meta property="og:url" content="/blog/2025-07-10-edge-support/">
+    <meta property="og:url" content="/blog/2025-07-22-timing-rule-changes/">
   <meta property="og:site_name" content="ZAP">
-  <meta property="og:title" content="Edge Support">
-  <meta property="og:description" content="ZAP now has “tier 1” support for Microsoft Edge, including exploring, crawling, and attacking.">
+  <meta property="og:title" content="Timing Related Scan Rule Changes">
+  <meta property="og:description" content="Scan rules related to time based attacks have been split or renamed.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2025-07-10T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-07-10T00:00:00+00:00">
+    <meta property="article:published_time" content="2025-07-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-22T00:00:00+00:00">
     <meta property="article:tag" content="Blog">
-    <meta property="article:tag" content="Browser">
-    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-07-10-edge-support/images/blog-edge.png">
+    <meta property="article:tag" content="Scanrules">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-07-22-timing-rule-changes/images/zapbot-clock-break.png">
 
   
-  <title>ZAP &ndash; Edge Support</title>
+  <title>ZAP &ndash; Timing Related Scan Rule Changes</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -132,7 +132,7 @@
 
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">Edge Support</h1>
+    <h1 class="text--white">Timing Related Scan Rule Changes</h1>
   </div>
 </section>
 
@@ -145,35 +145,42 @@
 
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Thursday July 10, 2025</span>
-              <span class="word-count fl-r"> 158 Words </span>
+              Posted <span class="post-date">Tuesday July 22, 2025</span>
+              <span class="word-count fl-r"> 257 Words </span>
             </section>
-            <p>ZAP now supports Microsoft Edge as a &ldquo;tier 1&rdquo; browser!</p>
-<p><img src="images/blog-edge.png" alt="ZAPbot with Edge browser icon"></p>
-<p>This means you can use it for:</p>
+            
+<h3 id="time-based-scan-rule-changes">Time Based Scan Rule Changes <a class="header-link" href="#time-based-scan-rule-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We have recently implemented a number of <a href="https://github.com/zaproxy/zap-extensions/pull/4316">requested</a> changes with regard to scan rules which perform time based attacks.</p>
+<p>These changes were made to provide users with greater flexibility in creating scan policies. The changes are available in the current weekly release and Docker image, but not yet in stable.</p>
+<p>Here is a breakdown of what was changed:</p>
 <ul>
-<li><a href="/docs/desktop/addons/quick-start/#manual-explore">Browser Launch</a> (launching fully configured Edge browsers from the ZAP desktop)</li>
-<li><a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a></li>
-<li><a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider</a></li>
-<li><a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS Scan Rule</a></li>
+<li>The following Rules and Alerts were renamed to indicate that they&rsquo;re all time based (their IDs have stayed the same):
+<ul>
+<li><a href="/docs/alerts/40019/">40019</a> - SQL Injection - MySQL</li>
+<li><a href="/docs/alerts/40020/">40020</a> - SQL Injection - Hypersonic</li>
+<li><a href="/docs/alerts/40021/">40021</a> - SQL Injection - Oracle¹</li>
+<li><a href="/docs/alerts/40022/">40022</a> - SQL Injection - PostgreSQL</li>
+<li><a href="/docs/alerts/40024/">40024</a> - SQL Injection - SQLite¹ (This rule had contained code for union based SQLi attacks however it had been disabled for a long time. If further SQLite attacks are added in the future they will appear associated with rule ID 90038.)</li>
+<li><a href="/docs/alerts/40027/">40027</a> - SQL Injection - MsSQL</li>
 </ul>
-<p>Edge browsers launched by ZAP will include the <a href="https://github.com/zaproxy/browser-extension?tab=readme-ov-file#zap-browser-extensions">ZAP Browser Extension</a>. Note that is turned off by default with the AJAX Spider.</p>
-<p>As per the other browsers, you will need to have Edge installed.</p>
-<p>Unlike the other browsers you will also need to either have Internet access, or install the
-<a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">Edge WebDriver</a>
-<a href="/docs/desktop/addons/selenium/options/#webdrivers">manually</a>.
-We are looking at adding a new Edge webdriver add-on, which would remove this restriction.</p>
-<p>Also note that the ZAP <a href="/docs/docker/">Docker</a> images only have Firefox installed by default.</p>
-<p>We have a FAQ: <a href="/faq/how-do-i-use-chrome-with-zap-in-docker/">How do I use Chrome with ZAP in Docker?</a> and we&rsquo;ll look at adding one for Edge at some point. Feel free to submit a pull request to the
-<a href="https://github.com/zaproxy/zaproxy-website/tree/main/site/content/faq">zaproxy-website</a> repo if you beat us to it!</p>
+</li>
+<li><a href="/docs/alerts/40033/">40033</a> - NoSQL Injection - MongoDB - Time based attacks were previously split into rule <a href="/docs/alerts/90039/">90039</a>.</li>
+<li><a href="/docs/alerts/90020/">90020</a> - Remote OS Command Injection - Time based attacks were split into a separate rule with ID <a href="/docs/alerts/90037/">90037</a>.</li>
+</ul>
+
+<h4 id="alert-tag-test_timing">Alert Tag TEST_TIMING <a class="header-link" href="#alert-tag-test_timing"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>The rules (and alerts) are now also decorated with the <a href="/alerttags/test_timing/">TEST_TIMING</a> Alert Tag.</p>
+<hr>
+<p>¹ Although a number of changes have been implemented to address the potential for false positives in the past few years,
+this rule has not yet been updated to accommodate those improvements.
+It currently leverages &rsquo;expensive&rsquo; functions versus invoking dedicated sleep methods.
+The time based rules may also extend scan time.</p>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2025-07-03-authentication-improvements/"> Authentication Improvements</a>
+                Previous <a class="previous" href="/blog/2025-07-10-edge-support/"> Edge Support</a>
               
-              
-                Next <a class="next" href="/blog/2025-07-22-timing-rule-changes/"> Timing Related Scan Rule Changes</a>
               
           </div>
       </article>
@@ -187,22 +194,30 @@ We are looking at adding a new Edge webdriver add-on, which would remove this re
               <section class="post-author-single flex p-10">
                 <div class="col-1-5">
                   
-                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  <img class="author-picture" src="/img/authors/rick-mitchell_400x400.jpg" />
                   
                 </div>
                 <div class="author-name col-4-5">
                   
-                    Simon Bennetts
+                    Rick Mitchell
                   
                   
-                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  <a class="author-twitter" href="https://twitter.com/kingthorin_rm">@kingthorin_rm</a>
                   
                 </div>
               </section>
           
 
           <h4>Table of Contents</h4>
-          <nav id="TableOfContents"></nav>
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#time-based-scan-rule-changes">Time Based Scan Rule Changes</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
           
           <h4>Tags</h4>
@@ -210,7 +225,7 @@ We are looking at adding a new Edge webdriver add-on, which would remove this re
            
            <li> <a href="/tags/blog/">blog</a> </li>
            
-           <li> <a href="/tags/browser/">browser</a> </li>
+           <li> <a href="/tags/scanrules/">scanrules</a> </li>
            
           </ul>
           
@@ -254,7 +269,7 @@ We are looking at adding a new Edge webdriver add-on, which would remove this re
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-07-10-edge-support/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-07-22-timing-rule-changes/index.md">Edit on GitHub</a>
   </div>
 
     </div>
