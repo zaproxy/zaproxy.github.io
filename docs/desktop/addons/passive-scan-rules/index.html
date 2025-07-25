@@ -2243,6 +2243,18 @@ At LOW threshold it will alert on all responses including errors and redirects.<
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/XDebugTokenScanRule.java">XDebugTokenScanRule.java</a></p>
 <p>Alert ID: <a href="/docs/alerts/10056/">10056</a>.</p>
 
+<h2 id="id-10116">ZAP is Out of Date <a class="header-link" href="#id-10116"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This checks to make sure you are using the latest version of ZAP.<br>
+If your ZAP install is out of date then it will raise one alert on each domain with a severity based on how many versions out of date it is.</p>
+<ul>
+<li>1 version: Low Risk</li>
+<li>2 versions: Medium Risk</li>
+<li>3+ versions: High Risk</li>
+<li>More that one year: High Risk (just for date stamped versions, such as the nightly or weekly releases)</li>
+</ul>
+<p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ZapVersionScanRule.java">ZapVersionScanRule.java</a></p>
+<p>Alert ID: <a href="/docs/alerts/10116/">10116</a>.</p>
+
         </div>
       </div>
   </div>
