@@ -1706,7 +1706,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.pscan.&lt;rule-id&gt;.time" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.&lt;rule-id&gt;.time</a>
+            <a class="no-border" title="stats.pscan.&lt;rule-id&gt;.time" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscan/src/main/java/org/zaproxy/addon/pscan/internal/scanner/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.&lt;rule-id&gt;.time</a>
         </td>
         <td align="center">
             global
@@ -1721,7 +1721,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.pscan.&lt;rule-name&gt;" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.&lt;rule-name&gt;</a>
+            <a class="no-border" title="stats.pscan.&lt;rule-name&gt;" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscan/src/main/java/org/zaproxy/addon/pscan/internal/scanner/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.&lt;rule-name&gt;</a>
         </td>
         <td align="center">
             global
@@ -1730,13 +1730,28 @@
             counter
         </td>
         <td >
-            The cumulative number of milliseconds taken to run the given scan rule - DEPRECATED - use stats.pscan.&lt;rule-id&gt;.time instead
+            The cumulative number of milliseconds taken to run the given passive scanner, for scan rules use stats.pscan.&lt;rule-id&gt;.time
         </td>
     </tr>
     
     <tr>
         <td>
-            <a class="no-border" title="stats.pscan.reqBodyTooBig" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.reqBodyTooBig</a>
+            <a class="no-border" title="stats.pscan.recordsToScan" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscan/src/main/java/org/zaproxy/addon/pscan/internal/scanner/PassiveScanController.java" target="_blank" rel="noopener noreferrer">stats.pscan.recordsToScan</a>
+        </td>
+        <td align="center">
+            global
+        </td>
+        <td align="center">
+            highwatermark
+        </td>
+        <td >
+            The highest message count queued to passive scan
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <a class="no-border" title="stats.pscan.reqBodyTooBig" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscan/src/main/java/org/zaproxy/addon/pscan/internal/scanner/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.reqBodyTooBig</a>
         </td>
         <td align="center">
             global
@@ -1751,7 +1766,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.pscan.respBodyTooBig" href="https://github.com/zaproxy/zaproxy/blob/main/zap/src/main/java/org/zaproxy/zap/extension/pscan/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.respBodyTooBig</a>
+            <a class="no-border" title="stats.pscan.respBodyTooBig" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscan/src/main/java/org/zaproxy/addon/pscan/internal/scanner/PassiveScanTask.java" target="_blank" rel="noopener noreferrer">stats.pscan.respBodyTooBig</a>
         </td>
         <td align="center">
             global
@@ -1916,7 +1931,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.spider.started" href="https://github.com/zaproxy/zap-extensions/blob/main/zap/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.started</a>
+            <a class="no-border" title="stats.spider.started" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/spider/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.started</a>
         </td>
         <td align="center">
             global
@@ -1931,7 +1946,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.spider.stopped" href="https://github.com/zaproxy/zap-extensions/blob/main/zap/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.stopped</a>
+            <a class="no-border" title="stats.spider.stopped" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/spider/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.stopped</a>
         </td>
         <td align="center">
             global
@@ -1946,7 +1961,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.spider.time" href="https://github.com/zaproxy/zap-extensions/blob/main/zap/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.time</a>
+            <a class="no-border" title="stats.spider.time" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/spider/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.time</a>
         </td>
         <td align="center">
             global
@@ -1961,7 +1976,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.spider.url.error" href="https://github.com/zaproxy/zap-extensions/blob/main/zap/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.url.error</a>
+            <a class="no-border" title="stats.spider.url.error" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/spider/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.url.error</a>
         </td>
         <td align="center">
             global
@@ -1976,7 +1991,7 @@
     
     <tr>
         <td>
-            <a class="no-border" title="stats.spider.url.found" href="https://github.com/zaproxy/zap-extensions/blob/main/zap/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.url.found</a>
+            <a class="no-border" title="stats.spider.url.found" href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/spider/src/main/java/org/zaproxy/addon/spider/SpiderScan.java" target="_blank" rel="noopener noreferrer">stats.spider.url.found</a>
         </td>
         <td align="center">
             global
