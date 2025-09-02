@@ -1848,6 +1848,7 @@
     parameters:
       context:                         # String: Name of the context to attack, default: first context
       user:                            # String: An optional user to use for authentication, must be defined in the env
+      url:                             # String: The subtree to active scan, default: all URLs of the context
       policy:                          # String: Name of the scan policy to be used, default: Default Policy
       maxRuleDurationInMins:           # Int: The max time in minutes any individual rule will be allowed to run for, default: 0 unlimited
       maxScanDurationInMins:           # Int: The max time in minutes the active scanner will be allowed to run for, default: 0 unlimited
@@ -1862,6 +1863,11 @@
     policyDefinition:                  # The policy definition - only used if the &#39;policy&#39; is not set
       defaultStrength:                 # String: The default Attack Strength for all rules, one of Low, Medium, High, Insane (not recommended), default: Medium
       defaultThreshold:                # String: The default Alert Threshold for all rules, one of Off, Low, Medium, High, default: Medium
+      alertTags:                       # Add rules based on alert tags; does not override or remove rules listed explicitly under &#34;rules&#34;
+        include: []                    # List of alert tags to include, regex supported
+        exclude: []                    # List of alert tags to exclude from this include list, regex supported
+        strength:                      # String: The Attack Strength for this set of rules, one of Low, Medium, High, Insane, default: Medium
+        threshold:                     # String: The Alert Threshold for this set of rules, one of Off, Low, Medium, High, default: Medium
       rules:                           # A list of one or more active scan rules and associated settings which override the defaults
       - id:                            # Int: The rule id as per https://www.zaproxy.org/docs/alerts/
         name:                          # String: The name of the rule for documentation purposes - this is not required or actually used
@@ -1871,7 +1877,8 @@
     alwaysRun:                         # Bool: If set and the job is enabled then it will run even if the plan exits early, default: false
 </code></pre><p><strong>Note</strong> : Unless the <code>defaultThreshold</code> of the <code>policyDefinition</code> is <code>OFF</code> all rules will be enabled to start with.</p>
 <p>The policy can be one defined by a previous <a href="/docs/desktop/addons/automation-framework/job-ascanpolicy/">activeScan-policy</a> job, or by a scan policy file
-that has been put in <code>policies</code> directory under ZAP&rsquo;s <a href="/faq/what-is-the-default-directory-that-zap-uses/">HOME directory</a> .</p>
+that has been put in <code>policies</code> directory under ZAP&rsquo;s <a href="/faq/what-is-the-default-directory-that-zap-uses/">HOME directory</a> .
+For more information on how ZAP processes the policy definition, see the <a href="/docs/desktop/addons/automation-framework/job-ascanpolicy/">activeScan-policy</a> job documentation.</p>
 
 <h2 id="job-data">Job Data <a class="header-link" href="#job-data"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The following class will be made available to add-ons that provide access to the Job Data such as the Reporting add-on. Note that in this case the data is from the last Active Scan, regardless of whether it was started by the Automation Framework, the UI, or the API.</p>

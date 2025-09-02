@@ -1845,6 +1845,7 @@ the username has been entered).</p>
 <p>The plan is to keep enhancing this authentication method to handle all of the most commonly used login page formats.
 If it does not work with your application&rsquo;s login page then please inform the ZAP team via the
 <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a> giving as many details as possible.</p>
+<p>This method also supports HTTP Basic Authentication for Firefox only (due to Selenium restrictions).</p>
 
 <h3 id="authentication-steps">Authentication Steps <a class="header-link" href="#authentication-steps"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>When the authentication method is not able to find suitable fields, or requires extra steps they can be manually specified by the user. The following steps are supported:</p>
@@ -1897,6 +1898,11 @@ If it does not work with your application&rsquo;s login page then please inform 
           <td><code>RETURN</code></td>
           <td>Sends return to the web element, for example, to submit the login form.</td>
       </tr>
+      <tr>
+          <td>Wait For Timeout</td>
+          <td><code>WAIT</code></td>
+          <td>Waits for the specified timeout.</td>
+      </tr>
   </tbody>
 </table>
 <p>Each step is executed sequentially in the order they are specified. Steps that act on a web element need to be identified with either its CSS Selector or XPath, both of which can be obtained, for example, through browser dev tools. Those steps have a timeout which allow to wait up to the given number of milliseconds for the web element to be shown and be interactable (when the login page takes some time to load). The <code>CUSTOM_FIELD</code>, <code>PASSWORD</code> and <code>USERNAME</code> steps all clear any existing values from the corresponding field, so you will need to specify the full value you want.</p>
@@ -1915,11 +1921,12 @@ If it does not work with your application&rsquo;s login page then please inform 
         parameters:
           loginPageUrl:                # String, the URL of the login page, mandatory
           loginPageWait:               # Int, the time in seconds to wait after the login form has been submitted, default: 5
+          stepDelay:                   # Int, the time in seconds to wait in-between each step, default: 0
           browserId:                   # String, Browser Id to use, default: firefox-headless
           diagnostics:                 # Bool, enables the recording of diagnostic data during the authentication. Default: false.
           steps:                       # List of custom steps.
           - description:               # String, the description of the step.
-            type:                      # The type of the step, one of: AUTO_STEPS, CLICK, CUSTOM_FIELD, ESCAPE, PASSWORD, RETURN, TOTP_FIELD, USERNAME
+            type:                      # The type of the step, one of: AUTO_STEPS, CLICK, CUSTOM_FIELD, ESCAPE, PASSWORD, RETURN, TOTP_FIELD, USERNAME, WAIT
             cssSelector:               # String, the CSS Selector to the web element.
             xpath:                     # String, the XPath to the web element.
             value:                     # String, the value to fill in the web element.
