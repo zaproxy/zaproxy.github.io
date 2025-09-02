@@ -8,25 +8,25 @@
   
     
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-08-01-zap-updates-july-2025/images/zapbot-monthly-updates.png">
-  <meta name="twitter:title" content="ZAP Updates - July 2025">
-  <meta name="twitter:description" content="Authentication improvements, Edge support, timing rule changes, Docker news, and a new scan rule.">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-09-02-zap-updates-august-2025/images/zapbot-monthly-updates.png">
+  <meta name="twitter:title" content="ZAP Updates - August 2025">
+  <meta name="twitter:description" content="Microsoft Online Login Support, forking wavsep and much, much more!">
 
-    <meta property="og:url" content="/blog/2025-08-01-zap-updates-july-2025/">
+    <meta property="og:url" content="/blog/2025-09-02-zap-updates-august-2025/">
   <meta property="og:site_name" content="ZAP">
-  <meta property="og:title" content="ZAP Updates - July 2025">
-  <meta property="og:description" content="Authentication improvements, Edge support, timing rule changes, Docker news, and a new scan rule.">
+  <meta property="og:title" content="ZAP Updates - August 2025">
+  <meta property="og:description" content="Microsoft Online Login Support, forking wavsep and much, much more!">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="blog">
-    <meta property="article:published_time" content="2025-08-01T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-08-01T00:00:00+00:00">
+    <meta property="article:published_time" content="2025-09-02T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-09-02T00:00:00+00:00">
     <meta property="article:tag" content="Blog">
     <meta property="article:tag" content="Update">
-    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-08-01-zap-updates-july-2025/images/zapbot-monthly-updates.png">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-09-02-zap-updates-august-2025/images/zapbot-monthly-updates.png">
 
   
-  <title>ZAP &ndash; ZAP Updates - July 2025</title>
+  <title>ZAP &ndash; ZAP Updates - August 2025</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -132,7 +132,7 @@
 
 <section class="bolt-header">
   <div class="wrapper py-20">
-    <h1 class="text--white">ZAP Updates - July 2025</h1>
+    <h1 class="text--white">ZAP Updates - August 2025</h1>
   </div>
 </section>
 
@@ -145,278 +145,147 @@
 
           <main class="post-content">
             <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
-              Posted <span class="post-date">Friday August 1, 2025</span>
-              <span class="word-count fl-r"> 740 Words </span>
+              Posted <span class="post-date">Tuesday September 2, 2025</span>
+              <span class="word-count fl-r"> 736 Words </span>
             </section>
             
 <h2 id="highlights">Highlights <a class="header-link" href="#highlights"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>It has been another busy month!</p>
 
-<h3 id="authentication-changes">Authentication Changes <a class="header-link" href="#authentication-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>We published a blog on the <a href="/blog/2025-07-03-authentication-improvements/">Authentication improvements</a> at the start
-of the month, but we have also been carrying on with more improvements.</p>
-<p>More news about these improvements soon!</p>
+<h3 id="microsoft-online-login-support">Microsoft Online Login Support <a class="header-link" href="#microsoft-online-login-support"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>As you may well know, making authentication easier has been a big focus for us recently.</p>
+<p>We have 2 recommended ways to handle web app authentication (as opposed to APIs):</p>
+<ul>
+<li><a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based Authentication</a> (BBA) - which tries to login in the same way a user would</li>
+<li><a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script Authentication</a> (CSA) - which replays an authentication script that you have recorded in your browser</li>
+</ul>
+<p>BBA only needs the login URL and the user&rsquo;s credentials, it then tries to identify which fields to fill in.
+For complex authentication sequences you will need to use CSA.</p>
+<p>We have recently been working with a set of ZAP users who use Microsoft Online Logins.
+Initially we recommended using CSA, but it turns out that Microsoft Online Login sequences are &ldquo;challenging&rdquo;!</p>
+<p>The initial screens which take the user name and password are easy to handle, but then there are a set of screens which may or may not appear, including:</p>
+<ul>
+<li>Stay Signed In</li>
+<li>Lets Keep Your Account Secure</li>
+<li>No Methods Available</li>
+</ul>
+<p>The random nature of these screens breaks CSA, we need to have predictable sequences for recordings to work.</p>
+<p>To solve this problem we have enhanced BBA to recognise and handle the Microsoft Online Login sequences as a special case, and handle all of the combinations we know about.</p>
+<p>Obviously if (when) Microsoft change their login flows then this will break, but so would recordings!</p>
+<p>We have reached out to Microsoft to try to talk to the right people as we know other tools will have the same problems, but so far we have not been able to make the right connections.
+If you know someone who you think might be able to help then ask them to reach out to us &#x1f601;</p>
+<p>If any of your apps use Microsoft Online Login then please give it a go and let us know how you get on.
+If it does not succeed then please share details of the screen it fails on.</p>
 
-<h3 id="edge-support">Edge Support <a class="header-link" href="#edge-support"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>ZAP now <a href="/blog/2025-07-10-edge-support/">supports Microsoft Edge</a> as a “tier 1” browser, joining Firefox and Chrome.</p>
+<h3 id="zap-fork-of-wavsep">ZAP Fork of Wavsep <a class="header-link" href="#zap-fork-of-wavsep"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We have decided to fork <a href="https://github.com/sectooladdict/wavsep">wavsep</a> and plan to maintain it going forwards: <a href="https://github.com/zaproxy/wavsep">https://github.com/zaproxy/wavsep</a></p>
+<p>The Web Application Vulnerability Scanner Evaluation Project is a vulnerable web application designed to help assessing the features, quality and accuracy of web application vulnerability scanners.</p>
+<p>We will be publishing another blog post soon explaining why we have done this, what we have done so far and what we plan to do next.</p>
 
-<h3 id="timing-rule-changes">Timing Rule Changes <a class="header-link" href="#timing-rule-changes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>This month we also announced a set of <a href="/blog/2025-07-22-timing-rule-changes/">Time Based Scan Rule Changes</a>.
-These changes will provide you with greater flexibility in creating scan policies.</p>
+<h3 id="automation-framework-policy-alert-tags">Automation Framework: Policy Alert Tags <a class="header-link" href="#automation-framework-policy-alert-tags"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/docs/automate/automation-framework/">Automation Framework</a> activeScan and activeScan-Policy jobs now support Policy Alert Tags:</p>
+<p><img src="images/alert-policy-tags.png" alt="The Alert Policy Tags tab in the Active Scan Job dialog"></p>
+<p>These allow you to specify Alert Tag Patterns which will define which active scan rules are used.</p>
+<p>Look out for another blog post explaining this in more detail soon.</p>
 
-<h3 id="new-zap-is-out-of-date-scan-rule">New &ldquo;ZAP is Out of Date&rdquo; Scan Rule <a class="header-link" href="#new-zap-is-out-of-date-scan-rule"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Last week we published a <a href="/blog/2025-07-25-the-new-zap-is-out-of-date-rule/">New &lsquo;ZAP is Out of Date&rsquo; Rule</a>,
-and back-ported it to ZAP versions 2.14 and 2.15.</p>
-<p>Based on our telemetry we can see that on Wednesday 30th July over <strong>25 thousand</strong> of these alerts were raised!</p>
-<p>Hopefully they will encourage more of you to update to the <a href="/download/">latest version of ZAP</a>!</p>
+<h3 id="automation-framework-stop-plan">Automation Framework: Stop Plan <a class="header-link" href="#automation-framework-stop-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/docs/automate/automation-framework/">Automation Framework</a> has also been updated to allow you to stop running plans.</p>
+<p>You can stop them via a new &ldquo;Stop Plan&rdquo; button on the &ldquo;Automation&rdquo; tab in the desktop or via the API.</p>
 
-<h3 id="ssp-docker-images">SSP Docker Images <a class="header-link" href="#ssp-docker-images"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>In another attempt to encourage you all to use the latest version of ZAP, we announced on the
-<a href="https://groups.google.com/g/zaproxy-users/c/59-3Sd9OW4c/m/CV4VBZOMAgAJ">ZAP User Group</a>,
-<a href="https://x.com/zaproxy/status/1949776277554057683">Twitter/X</a>,
-<a href="https://infosec.exchange/@zaproxy/114930343459572118">Mastodon</a>, and
-<a href="https://bsky.app/profile/zaproxy.org/post/3luzegzcqps2i">Bluesky</a>
-that we will be deleting the Software Security Project Docker Hub Docker images.</p>
-<p>Don&rsquo;t worry, we still maintain ZAP Docker images on both Docker Hub and GHCR as per the
-<a href="/download/#docker">Docker</a> section of the Download page.</p>
-
-<h3 id="the-origin-of-zapbot">The Origin of ZAPbot <a class="header-link" href="#the-origin-of-zapbot"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Last, but definitely not least, those of you on LinkedIn can read about how <a href="https://www.linkedin.com/posts/lisa-raynaud-studio_branddesign-mascotdesign-techbranding-activity-7355973895960596481-cVtq">Lisa Raynaud created ZAPbot</a> &#x1f601;</p>
+<h3 id="auth-diags-tab">Auth Diags Tab <a class="header-link" href="#auth-diags-tab"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>There is a new &ldquo;Auth Diags&rdquo; tab which allows you to import a <a href="/docs/desktop/addons/authentication-helper/auth-report-json/">JSON Authentication Report</a>.</p>
+<p>This is primarily for our benefit, but if you would like more information about it then let us know and we can cover it in more detail.</p>
 
 <h2 id="github-pulse">GitHub Pulse <a class="header-link" href="#github-pulse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Here are some statistics for the two main ZAP repositories:</p>
 <p><a href="https://github.com/zaproxy/zaproxy/pulse/monthly">zaproxy</a><br>
-Excluding merges, 6 authors have pushed 12 commits to main and 12 commits to all branches. On main, 42 files have changed and there have been 277 additions and 151 deletions.</p>
+Excluding merges, 4 authors have pushed 6 commits to main and 6 commits to all branches. On main, 30 files have changed and there have been 158 additions and 120 deletions.</p>
 <p><a href="https://github.com/zaproxy/zap-extensions/pulse/monthly">zap-extensions</a><br>
-Excluding merges, 7 authors have pushed 88 commits to main and 92 commits to all branches. On main, 1,708 files have changed and there have been 72,176 additions and 3,535 deletions.</p>
-<p>A total of <a href="https://github.com/search?q=org%3Azaproxy+type%3Apr+-author%3Azapbot+-author%3Aapp%2Fdependabot+sort%3Aupdated-asc+closed%3A2025-07+is%3Amerged&amp;type=pullrequests">87 human PRs were merged</a> on the ZAP repos.</p>
+Excluding merges, 7 authors have pushed 54 commits to main and 54 commits to all branches. On main, 592 files have changed and there have been 6,221 additions and 42,449 deletions.</p>
+<p>A total of <a href="https://github.com/search?q=org%3Azaproxy+type%3Apr+-author%3Azapbot+-author%3Aapp%2Fdependabot+sort%3Aupdated-asc+closed%3A2025-08+is%3Amerged&amp;type=pullrequests">67 human PRs were merged</a> on the ZAP repos.</p>
 
 <h2 id="released-add-ons---full-changelog">Released Add-ons - Full Changelog <a class="header-link" href="#released-add-ons---full-changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>In July 2025, we released updated versions of 15 add-ons:</p>
+<p>In August 2025, we released updated versions of 4 add-ons:</p>
 
-<h5 id="passive-scanner-rules">Passive scanner rules</h5>
-<p><strong>v61.1.0</strong><br>
-Added</p>
-<ul>
-<li>A ZAP is Out of Date rule.</li>
-</ul>
-<p>Changed</p>
-<ul>
-<li>Updated help with specific Category identifiers for use with the Custom Payloads add-on for rules:
-<ul>
-<li>Application Error Disclosure</li>
-<li>Information Disclosure - Suspicious Comments</li>
-<li>Username Hash Found</li>
-</ul>
-</li>
-</ul>
-
-<h5 id="ajax-spider">Ajax Spider</h5>
-<p><strong>v23.25.0</strong><br>
+<h5 id="forced-browse">Forced Browse</h5>
+<p><strong>v18</strong><br>
 Fixed</p>
 <ul>
-<li>Correct configuration key for Logout Avoidance (Issue 8994).</li>
 <li>Error logs to always include stack trace.</li>
-</ul>
-
-<h5 id="authentication-helper">Authentication Helper</h5>
-<p><strong>v0.27.0</strong><br>
-Added</p>
-<ul>
-<li>Support for recorded scripts in the Authentication Tester.</li>
-</ul>
-<p>Changed</p>
-<ul>
-<li>Updated to depend on Zest add-on 48.8.0.</li>
-</ul>
-
-<h5 id="automation-framework">Automation Framework</h5>
-<p><strong>v0.51.0</strong><br>
-Added</p>
-<ul>
-<li>Support for exclude regexes to active scan config job.</li>
-<li>Always run option for all jobs.</li>
-<li>Support for data driven nodes in plan (not yet in the UI).</li>
-</ul>
-<p>Changed</p>
-<ul>
-<li>Job remains selected when moved in the GUI.</li>
-</ul>
-
-<h5 id="common-library">Common Library</h5>
-<p><strong>v1.34.0</strong><br>
-Added</p>
-<ul>
-<li>Added Alert Tags for PCI DSS and HIPAA standards.</li>
-<li>Added a help page for the alert tags provided through this add-on.</li>
-</ul>
-
-<h5 id="dom-xss-active-scanner-rule">DOM XSS Active scanner rule</h5>
-<p><strong>v22</strong><br>
-Changed</p>
-<ul>
-<li>Allow to use Edge.</li>
-<li>Depend on newer version of Selenium add-on.</li>
-<li>Maintenance changes.</li>
+<li>Address performance issue when checking responses.</li>
 </ul>
 
 <h5 id="linux-webdrivers">Linux WebDrivers</h5>
-<p><strong>v150</strong><br>
+<p><strong>v154</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.183.</li>
+<li>Update ChromeDriver to 139.0.7258.154.</li>
 </ul>
-<p><strong>v149</strong><br>
+<p><strong>v153</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.168.</li>
+<li>Update ChromeDriver to 139.0.7258.138.</li>
 </ul>
-<p><strong>v148</strong><br>
+<p><strong>v152</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.157.</li>
+<li>Update ChromeDriver to 139.0.7258.68.</li>
 </ul>
-<p><strong>v147</strong><br>
+<p><strong>v151</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.94.</li>
-</ul>
-<p><strong>v146</strong><br>
-Changed</p>
-<ul>
-<li>Update ChromeDriver to 138.0.7204.92.</li>
+<li>Update ChromeDriver to 139.0.7258.66.</li>
 </ul>
 
 <h5 id="macos-webdrivers">MacOS WebDrivers</h5>
-<p><strong>v150</strong><br>
+<p><strong>v154</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.183.</li>
+<li>Update ChromeDriver to 139.0.7258.154.</li>
 </ul>
-<p><strong>v149</strong><br>
+<p><strong>v153</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.168.</li>
+<li>Update ChromeDriver to 139.0.7258.138.</li>
 </ul>
-<p><strong>v148</strong><br>
+<p><strong>v152</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.157.</li>
+<li>Update ChromeDriver to 139.0.7258.68.</li>
 </ul>
-<p><strong>v147</strong><br>
+<p><strong>v151</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.94.</li>
-</ul>
-<p><strong>v146</strong><br>
-Changed</p>
-<ul>
-<li>Update ChromeDriver to 138.0.7204.92.</li>
-</ul>
-
-<h5 id="passive-scanner-rules-1">Passive scanner rules</h5>
-<p><strong>v66</strong><br>
-Added</p>
-<ul>
-<li>The Reverse Tabnabbing and Retrieved from Cache scan rules now have CWE references.</li>
-<li>A ZAP is Out of Date rule.</li>
-</ul>
-<p><strong>v57.1.0</strong><br>
-Added</p>
-<ul>
-<li>A ZAP is Out of Date rule.</li>
-</ul>
-<p>Changed</p>
-<ul>
-<li>The library (htmlunit-csp) used by the Content Security Policy scan rule was updated to v4.0.0, which includes support for the wasm-unsafe-eval source expression.</li>
-</ul>
-<p>Fixed</p>
-<ul>
-<li>A typo in the Other Info of one of the Retrieved from Cache Alerts.</li>
-</ul>
-
-<h5 id="quick-start">Quick Start</h5>
-<p><strong>v52</strong><br>
-Added</p>
-<ul>
-<li>Add icon for Edge browser.</li>
-</ul>
-
-<h5 id="retirejs">Retire.js</h5>
-<p><strong>v0.48.0</strong><br>
-Changed</p>
-<ul>
-<li>Updated with upstream retire.js pattern changes.</li>
-</ul>
-
-<h5 id="selenium">Selenium</h5>
-<p><strong>v15.39.0</strong><br>
-Added</p>
-<ul>
-<li>Allow to use Edge browser.</li>
-</ul>
-<p><strong>v15.38.0</strong><br>
-Changed</p>
-<ul>
-<li>Update Selenium to version 4.34.0.</li>
-</ul>
-
-<h5 id="technology-detection">Technology Detection</h5>
-<p><strong>v21.47.0</strong><br>
-Changed</p>
-<ul>
-<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Update ChromeDriver to 139.0.7258.66.</li>
 </ul>
 
 <h5 id="windows-webdrivers">Windows WebDrivers</h5>
-<p><strong>v150</strong><br>
+<p><strong>v154</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.183.</li>
+<li>Update ChromeDriver to 139.0.7258.154.</li>
 </ul>
-<p><strong>v149</strong><br>
+<p><strong>v153</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.168.</li>
+<li>Update ChromeDriver to 139.0.7258.138.</li>
 </ul>
-<p><strong>v148</strong><br>
+<p><strong>v152</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.157.</li>
+<li>Update ChromeDriver to 139.0.7258.68.</li>
 </ul>
-<p><strong>v147</strong><br>
+<p><strong>v151</strong><br>
 Changed</p>
 <ul>
-<li>Update ChromeDriver to 138.0.7204.94.</li>
-</ul>
-<p><strong>v146</strong><br>
-Changed</p>
-<ul>
-<li>Update ChromeDriver to 138.0.7204.92.</li>
-</ul>
-
-<h5 id="zest---graphical-security-scripting-language">Zest - Graphical Security Scripting Language</h5>
-<p><strong>v48.8.0</strong><br>
-Added</p>
-<ul>
-<li>New extension level method for recording client scripts.</li>
-</ul>
-<p>Changed</p>
-<ul>
-<li>Fail fast on client errors.</li>
-<li>Update Zest library to 0.31.0:
-<ul>
-<li>Update Selenium to version 4.34.0.</li>
-</ul>
-</li>
+<li>Update ChromeDriver to 139.0.7258.66.</li>
 </ul>
 
           </main>
           <div class="next-content bg--blue-lightest p-10">
               
-                Previous <a class="previous" href="/blog/2025-07-25-the-new-zap-is-out-of-date-rule/"> The New &#39;ZAP is Out of Date&#39; Rule</a>
+                Previous <a class="previous" href="/blog/2025-08-01-zap-updates-july-2025/"> ZAP Updates - July 2025</a>
               
-              
-                Next <a class="next" href="/blog/2025-09-02-zap-updates-august-2025/"> ZAP Updates - August 2025</a>
               
           </div>
       </article>
@@ -449,12 +318,11 @@ Added</p>
   <ul>
     <li><a href="#highlights">Highlights</a>
       <ul>
-        <li><a href="#authentication-changes">Authentication Changes</a></li>
-        <li><a href="#edge-support">Edge Support</a></li>
-        <li><a href="#timing-rule-changes">Timing Rule Changes</a></li>
-        <li><a href="#new-zap-is-out-of-date-scan-rule">New &ldquo;ZAP is Out of Date&rdquo; Scan Rule</a></li>
-        <li><a href="#ssp-docker-images">SSP Docker Images</a></li>
-        <li><a href="#the-origin-of-zapbot">The Origin of ZAPbot</a></li>
+        <li><a href="#microsoft-online-login-support">Microsoft Online Login Support</a></li>
+        <li><a href="#zap-fork-of-wavsep">ZAP Fork of Wavsep</a></li>
+        <li><a href="#automation-framework-policy-alert-tags">Automation Framework: Policy Alert Tags</a></li>
+        <li><a href="#automation-framework-stop-plan">Automation Framework: Stop Plan</a></li>
+        <li><a href="#auth-diags-tab">Auth Diags Tab</a></li>
       </ul>
     </li>
     <li><a href="#github-pulse">GitHub Pulse</a></li>
@@ -516,7 +384,7 @@ Added</p>
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-08-01-zap-updates-july-2025/index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-09-02-zap-updates-august-2025/index.md">Edit on GitHub</a>
   </div>
 
     </div>
