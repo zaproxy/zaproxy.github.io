@@ -1851,7 +1851,14 @@
           scriptEngine: Mozilla Zest         # The script engine used for the login script
           diagnostics:                       # Bool, enables the recording of diagnostic data during the authentication. Default: false.
           loginPageWait:                     # Int, the time in seconds to wait after the script has run, default: 5
+          minWaitFor:                        # Int, sets the minimum waitFor time in seconds to wait for each client statement, default: 0
 </code></pre><p>Refer to the <a href="/docs/desktop/addons/authentication-helper/auth-report-json/">Authentication Report</a> for more details on the diagnostics.</p>
+<p>Zest client element statements include a &ldquo;Wait For&rdquo; parameter in milliseconds which is the time that Zest will wait for the relevant
+element to become accessible. If it becomes accessible before the &ldquo;wait for&rdquo; time then the script carries on and does not wait for the
+full time. The &ldquo;minWaitFor&rdquo; parameter above (in seconds) allows you to extend (but not shorten) the time the script will wait.
+This can be very useful if the target site sometimes runs slowly.
+Increasing the &ldquo;minWaitFor&rdquo; time will not impact the overall time as long as all of the elements do appear within the time limit.
+It can impact the overall time in failure cases, for example where the elements never appear.</p>
 
 <h2 id="client-spider-and-ajax-spider-integration">Client Spider and AJAX Spider Integration <a class="header-link" href="#client-spider-and-ajax-spider-integration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Client or AJAX Spider will automatically login if a user is specified which is in a context that uses Client Script Authentication.</p>

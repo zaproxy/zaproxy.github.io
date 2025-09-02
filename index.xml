@@ -1419,6 +1419,11 @@ Arkaprabha Chakraborty&lt;/p&gt;</description>
 &lt;li&gt;maxAlerts: The maximum number of alerts.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
+&lt;li&gt;setMaxBodySizeInBytes (maxSize*): Sets the maximum body size in bytes that the passive scanner will scan.
+&lt;ul&gt;
+&lt;li&gt;maxSize: The maximum size in bytes, 0 to unset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;setScanOnlyInScope (onlyInScope*): Sets whether or not the passive scan should be performed only on messages that are in scope.
 &lt;ul&gt;
 &lt;li&gt;onlyInScope: The scan state, true or false.&lt;/li&gt;
@@ -1436,6 +1441,7 @@ Arkaprabha Chakraborty&lt;/p&gt;</description>
 &lt;ul&gt;
 &lt;li&gt;currentTasks: Shows information about the passive scan tasks currently being run (if any).&lt;/li&gt;
 &lt;li&gt;maxAlertsPerRule: Gets the maximum number of alerts a passive scan rule should raise.&lt;/li&gt;
+&lt;li&gt;maxBodySizeInBytes: Gets the maximum body size in bytes that the passive scanner will scan.&lt;/li&gt;
 &lt;li&gt;recordsToScan: The number of records the passive scanner still has to scan.&lt;/li&gt;
 &lt;li&gt;scanOnlyInScope: Tells whether or not the passive scan should be performed only on messages that are in scope.&lt;/li&gt;
 &lt;li&gt;scanners: Lists all passive scan rules with their ID, name, enabled state, and alert threshold.&lt;/li&gt;
@@ -5073,6 +5079,11 @@ ZAP. Some of the examples include:&lt;/p&gt;</description>
     policyDefinition:                  # The policy definition
       defaultStrength:                 # String: The default Attack Strength for all rules, one of Low, Medium, High, Insane (not recommended), default: Medium
       defaultThreshold:                # String: The default Alert Threshold for all rules, one of Off, Low, Medium, High, default: Medium
+      alertTags:                       # Add rules based on alert tags; does not override or remove rules listed explicitly under &amp;#34;rules&amp;#34;
+        include: []                    # List of alert tags to include, regex supported
+        exclude: []                    # List of alert tags to exclude from this include list, regex supported
+        strength:                      # String: The Attack Strength for this set of rules, one of Low, Medium, High, Insane, default: Medium
+        threshold:                     # String: The Alert Threshold for this set of rules, one of Off, Low, Medium, High, default: Medium
       rules:                           # A list of one or more active scan rules and associated settings which override the defaults
       - id:                            # Int: The rule id as per https://www.zaproxy.org/docs/alerts/
         name:                          # Comment: The name of the rule for documentation purposes - this is not required or actually used
@@ -5080,7 +5091,9 @@ ZAP. Some of the examples include:&lt;/p&gt;</description>
         threshold:                     # String: The Alert Threshold for this rule, one of Off, Low, Medium, High, default: Medium
     enabled:                           # Bool: If set to false the job will not be run, default: true
     alwaysRun:                         # Bool: If set and the job is enabled then it will run even if the plan exits early, default: false
-&lt;/code&gt;&lt;/pre&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;policy-definition-hierarchy&#34;&gt;Policy Definition Hierarchy &lt;a class=&#34;header-link&#34; href=&#34;#policy-definition-hierarchy&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ZAP processes the policy definition in the following order:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -5228,48 +5241,9 @@ Select a row to see the full requests and responses. You can also search for str
       <guid>/docs/desktop/addons/authentication-helper/session-header/</guid>
       <description>&lt;h1 id=&#34;header-based-session-management&#34;&gt;Header Based Session Management&lt;/h1&gt;
 &lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new session management type which supports an arbitrary number of headers.&lt;/p&gt;
-&lt;p&gt;If used in conjunction with &lt;a href=&#34;/docs/desktop/addons/authentication-helper/browser-auth/&#34;&gt;Browser Based Authentication&lt;/a&gt; then it will also maintain all
-of the cookies set as part of authentication.&lt;/p&gt;
-&lt;p&gt;The header values can include the following tokens:&lt;/p&gt;
-&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;/th&gt;
-          &lt;th&gt;&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;{%json:path.to.data%}&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;JSON authentication response data&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;{%env:env_var%}&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;Environmental variable&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;{%script:glob_var%}&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;Global script variable&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;{%header:env_var%}&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;Authentication response header&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;&lt;/td&gt;
-          &lt;td&gt;&lt;code&gt;{%url:key%}&lt;/code&gt;&lt;/td&gt;
-          &lt;td&gt;Authentication URL param&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&#34;automation-framework&#34;&gt;Automation Framework &lt;a class=&#34;header-link&#34; href=&#34;#automation-framework&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Header Based Session Management can be configured in the environment section of an Automation Framework plan using:&lt;/p&gt;</description>
+&lt;p&gt;If used in conjunction with &lt;a href=&#34;/docs/desktop/addons/authentication-helper/browser-auth/&#34;&gt;Browser Based Authentication&lt;/a&gt; or
+&lt;a href=&#34;/docs/desktop/addons/authentication-helper/client-script/&#34;&gt;Client Script Authentication&lt;/a&gt; then it will also maintain all
+of the cookies and any headers with names containing the strings &amp;ldquo;auth&amp;rdquo; or &amp;ldquo;csrf&amp;rdquo; (ignoring case) set as part of authentication.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -17006,7 +16980,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           exim
         &lt;/td&gt;
         &lt;td &gt;
-          2025-03-25
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17072,7 +17046,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           spider
         &lt;/td&gt;
         &lt;td &gt;
-          2025-06-20
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17094,7 +17068,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           authhelper
         &lt;/td&gt;
         &lt;td &gt;
-          2025-07-03
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17116,7 +17090,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           postman
         &lt;/td&gt;
         &lt;td &gt;
-          2025-02-03
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17138,7 +17112,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           pscan
         &lt;/td&gt;
         &lt;td &gt;
-          2025-06-20
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17182,7 +17156,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           client
         &lt;/td&gt;
         &lt;td &gt;
-          2025-06-20
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17226,7 +17200,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           scanpolicies
         &lt;/td&gt;
         &lt;td &gt;
-          2025-06-20
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17248,7 +17222,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           ascanrulesBeta
         &lt;/td&gt;
         &lt;td &gt;
-          2025-06-20
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17358,7 +17332,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           custompayloads
         &lt;/td&gt;
         &lt;td &gt;
-          2025-01-15
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17380,7 +17354,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           wappalyzer
         &lt;/td&gt;
         &lt;td &gt;
-          2025-07-15
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17402,7 +17376,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           ascanrulesAlpha
         &lt;/td&gt;
         &lt;td &gt;
-          2025-06-20
+          2025-09-02
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17576,12 +17550,14 @@ This is particularly useful for comparing 2 sessions which access the same appli
           &lt;td style=&#34;text-align: left&#34;&gt;Sequence Details&lt;/td&gt;
           &lt;td style=&#34;text-align: left&#34;&gt;sequencedetails&lt;/td&gt;
       &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Automation Framework State&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;afstate&lt;/td&gt;
+      &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&#34;sample&#34;&gt;Sample &lt;a class=&#34;header-link&#34; href=&#34;#sample&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
-
-&lt;h4 id=&#34;about-riskdesc&#34;&gt;About riskdesc &lt;a class=&#34;header-link&#34; href=&#34;#about-riskdesc&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h4&gt;
+&lt;h3 id=&#34;about-riskdesc&#34;&gt;About riskdesc &lt;a class=&#34;header-link&#34; href=&#34;#about-riskdesc&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;riskdesc - Is a combination identifier, showing Risk followed by Confidence (in brackets). For example &lt;code&gt;High (Medium)&lt;/code&gt; would indicate a High risk issue identified with Medium confidence.&lt;/p&gt;</description>
     </item>
     
