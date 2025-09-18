@@ -1107,6 +1107,9 @@
                             <a href="/docs/desktop/addons/scan-policies/policy-pentest/">Penetration Tester Policy</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/scan-policies/policy-qa-cicd/">QA CI/CD Policy</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-qa-full/">QA Full Policy</a>
                         </li>  
                         <li> 
@@ -2075,7 +2078,8 @@ If the unmodified query is not affected by a time delay, and the modified query&
 This rule is time sensitive, and should only be used in an attempt to find stubborn and un-obvious SQL injection vulnerabilities in a suspected Oracle database.<br>
 For this reason, the number of active scan threads should be set to the minimum when using this rule, to minimise load on the web server, application server, and database, in order to avoid false positives caused by load delays rather than by SQL injection delays.<br>
 The scan rule tests only for time-based SQL injection vulnerabilities.</p>
-<p>Note that this rule does not currently allow you to change the length of time used for the timing attacks due to the way the delay is caused.</p>
+<p>The scan rule tests only for time-based SQL injection vulnerabilities.</p>
+<p>Post 2.5.0 you can change the length of time used for the attack by changing the <code>rules.common.sleep</code> parameter via the Options &lsquo;Rule configuration&rsquo; panel.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrules/src/main/java/org/zaproxy/zap/extension/ascanrules/SqlInjectionOracleTimingScanRule.java">SqlInjectionOracleTimingScanRule.java</a></p>
 <p>Alert ID: <a href="/docs/alerts/40021/">40021</a>.</p>
 

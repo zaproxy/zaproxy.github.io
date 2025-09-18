@@ -1106,6 +1106,9 @@
                             <a href="/docs/desktop/addons/scan-policies/policy-pentest/">Penetration Tester Policy</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/scan-policies/policy-qa-cicd/">QA CI/CD Policy</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/scan-policies/policy-qa-full/">QA Full Policy</a>
                         </li>  
                         <li> 
@@ -1866,6 +1869,10 @@ authentication method set up correctly and with valid credentials.</p>
           <td style="text-align: left">statistics</td>
       </tr>
       <tr>
+          <td style="text-align: left">Domains</td>
+          <td style="text-align: left">domains</td>
+      </tr>
+      <tr>
           <td style="text-align: left">Diagnostics</td>
           <td style="text-align: left">diagnostics</td>
       </tr>
@@ -1985,6 +1992,10 @@ authentication method set up correctly and with valid credentials.</p>
       <tr>
           <td style="text-align: left">auth.failure.session_mgmt</td>
           <td style="text-align: left">Failed to identify session management.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">auth.failure.logged_in</td>
+          <td style="text-align: left">No indication found of being logged in.</td>
       </tr>
       <tr>
           <td style="text-align: left">auth.failure.login_failures</td>
@@ -2161,11 +2172,13 @@ For more details of what they mean see <a href="/docs/internal-statistics/">http
 		{
 			&#34;key&#34;: &#34;stats.auth.browser.foundfields&#34;,
 			&#34;scope&#34;: &#34;site&#34;,
+			&#34;site:&#34; &#34;https://www.example.org&#34;,
 			&#34;value&#34;: 1
 		},
 		{
 			&#34;key&#34;: &#34;stats.auth.browser.passed&#34;,
 			&#34;scope&#34;: &#34;site&#34;,
+			&#34;site:&#34; &#34;https://www.example.org&#34;,
 			&#34;value&#34;: 1
 		},
 		{
@@ -2206,11 +2219,13 @@ For more details of what they mean see <a href="/docs/internal-statistics/">http
 		{
 			&#34;key&#34;: &#34;stats.auth.sessiontoken.accesstoken&#34;,
 			&#34;scope&#34;: &#34;site&#34;,
+			&#34;site:&#34; &#34;https://www.example.org&#34;,
 			&#34;value&#34;: 9
 		},
 		{
 			&#34;key&#34;: &#34;stats.auth.sessiontoken.token&#34;,
 			&#34;scope&#34;: &#34;site&#34;,
+			&#34;site:&#34; &#34;https://www.example.org&#34;,
 			&#34;value&#34;: 6
 		},
 		{
@@ -2221,13 +2236,19 @@ For more details of what they mean see <a href="/docs/internal-statistics/">http
 		{
 			&#34;key&#34;: &#34;stats.auth.state.loggedin&#34;,
 			&#34;scope&#34;: &#34;site&#34;,
+			&#34;site:&#34; &#34;https://www.example.org&#34;,
 			&#34;value&#34;: 2
 		},
 		{
 			&#34;key&#34;: &#34;stats.auth.success&#34;,
 			&#34;scope&#34;: &#34;site&#34;,
+			&#34;site:&#34; &#34;https://www.example.org&#34;,
 			&#34;value&#34;: 1
 		}
+	]
+	,&#34;domains&#34;: [
+		&#34;https://www.example.org&#34;,
+		&#34;https://api.example.org&#34;
 	]
 }
 </code></pre>
