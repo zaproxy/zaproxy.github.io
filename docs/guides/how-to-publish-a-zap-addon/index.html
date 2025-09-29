@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; How to Publish a ZAP Add-on</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.66dc40.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+    <div class="wrapper py-20">
+      <h1 class="text--white">How to Publish a ZAP Add-on</h1>
+  </div>
+</section>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+  
+    <main><p>ZAP is a community project and we welcome contributions, especially new add-ons which add to
+ZAP&rsquo;s capabilities.</p>
+<p>This is the process to follow if you would like to publish your own add-on on the
+<a href="/addons/">ZAP Marketplace</a>.</p>
+
+<h3 id="create-your-add-on">Create Your Add-on <a class="header-link" href="#create-your-add-on"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>You can create your add-on in any way, but we recommend copying the
+<a href="https://github.com/zaproxy/addon-java">zaproxy/addon-java</a> repo as a good starting point.</p>
+<p>The main <a href="https://github.com/zaproxy/addon-java?tab=readme-ov-file#zap-template-java-add-on">README</a>
+in that repo explains what you need to do next.</p>
+
+<h3 id="raise-a-3rd-party-add-on-issue">Raise a 3rd Party Add-on Issue <a class="header-link" href="#raise-a-3rd-party-add-on-issue"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>When you are happy that your add-on is ready to be published then raise a
+<a href="https://github.com/zaproxy/zaproxy/issues/new?template=third-party-addon.yml">3rd party add-on</a>
+issue and fill in all of the fields.</p>
+
+<h3 id="the-review">The Review <a class="header-link" href="#the-review"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The ZAP team will nominate someone in the team to lead the review and assign your issue to them.</p>
+<p>They will clone your repo into <a href="https://github.com/zaproxy-addons">https://github.com/zaproxy-addons</a> and let you know that the review process has started.</p>
+<p>If you would like to implement your add-on in another JVM compatible language then please get in touch
+with us via the <a href="https://groups.google.com/group/zaproxy-develop">ZAP Developer Group</a>.
+ZAP add-ons can include scripts written in any of the scripting languages supported by ZAP.</p>
+<p>The review lead will ensure that at least 2 of the Core Team review your add-on and then will update the issue
+to let you know if it passed the review.</p>
+<p>See below for some of the review criteria.</p>
+<p>If your add-on fails the review then the review lead will explain what you need to change.
+Feel free to ask questions if anything is unclear.</p>
+<p>Once you have fixed any failures (and optionally any warnings) then update the issue and the review process will be resumed.</p>
+
+<h3 id="publishing-the-add-on">Publishing the Add-on <a class="header-link" href="#publishing-the-add-on"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Once your add-on has passed the review then a new release will be created in our clone of your repo and
+it will be published on the ZAP Marketplace.</p>
+<p>If you have added any help files then they will also be published on the website.</p>
+<p>The review lead will then let you know that your add-on has been published and will close the issue.</p>
+
+<h3 id="review-criteria">Review Criteria <a class="header-link" href="#review-criteria"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Potential Failures</p>
+<ul>
+<li>Wrong add-on URL (add-on manifest)</li>
+<li>Wrong repo URL (add-on manifest)</li>
+<li>No useful or original functionality</li>
+<li>Unexpected functionality</li>
+<li>Code that is difficult to understand or contains obfuscated portions</li>
+<li>Unsolicited requests made</li>
+<li>Requests made with functionality outside of ZAP</li>
+<li>Excessive logging at INFO level</li>
+<li>Prints to stdout</li>
+<li>Unwanted/unnecessary dependencies</li>
+<li>Dynamically un/loads incorrectly</li>
+<li>Scan rules without reserved IDs</li>
+<li>Excessive and misleading marketing in the help</li>
+<li>Wrong add-on status (ex: going straight to “release”)</li>
+</ul>
+<p>Warnings</p>
+<ul>
+<li>Not I18Ned</li>
+<li>Missing help</li>
+<li>Unclear usage/invocation (without having read the code)</li>
+<li>Making outgoing connections without using the ZAP upstream proxy settings</li>
+</ul>
+</main>
+  </article>
+</section>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/docs/guides/how-to-publish-a-zap-addon.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2025 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.c246f1.js"></script>
+  
+</div>
+</body>
+</html>
