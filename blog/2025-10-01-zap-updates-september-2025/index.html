@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-10-01-zap-updates-september-2025/images/zapbot-monthly-updates.png">
+  <meta name="twitter:title" content="ZAP Updates - September 2025">
+  <meta name="twitter:description" content="Configuring scan policies with alert tags, WAVSEP adoption, alert de-duplication and a new add-on publishing guide.">
+
+    <meta property="og:url" content="/blog/2025-10-01-zap-updates-september-2025/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="ZAP Updates - September 2025">
+  <meta property="og:description" content="Configuring scan policies with alert tags, WAVSEP adoption, alert de-duplication and a new add-on publishing guide.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-10-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-01T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Update">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-10-01-zap-updates-september-2025/images/zapbot-monthly-updates.png">
+
+  
+  <title>ZAP &ndash; ZAP Updates - September 2025</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.cb156c.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">ZAP Updates - September 2025</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday October 1, 2025</span>
+              <span class="word-count fl-r"> 2030 Words </span>
+            </section>
+            
+<h2 id="highlights">Highlights <a class="header-link" href="#highlights"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>As we head into October, here’s a roundup of what’s been happening around ZAP over the past month: new features, enhancements, and behind-the-scenes improvements you should know about.</p>
+
+<h3 id="configuring-scan-policies-with-alert-tags">Configuring Scan Policies with Alert Tags <a class="header-link" href="#configuring-scan-policies-with-alert-tags"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>You can now <a href="/blog/2025-09-03-configuring-scan-policies-with-alert-tags/">configure scan policies with alert tags</a> in <a href="/docs/automate/automation-framework/">Automation Framework</a> plans.</p>
+<p>This will make configuring scan policies much more intuitive and maintainable.</p>
+
+<h3 id="wavsep-adoption">WAVSEP Adoption <a class="header-link" href="#wavsep-adoption"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>ZAP is officially <a href="/blog/2025-09-08-zap-is-adopting-wavsep/">adopting and maintaining WAVSEP</a> (the Web Application Vulnerability Scanner Evaluation Project).</p>
+<p>WAVSEP provides a testbed of web app vulnerabilities used to benchmark and evaluate scanners.</p>
+<p>By bringing it in under the ZAP umbrella, the team hopes to keep it updated, extend it to support new types of vulnerabilities, and ensure it&rsquo;s a reliable baseline for evaluation.</p>
+<p>We also welcome contributions from the community!</p>
+
+<h3 id="alert-de-duplication">Alert De-Duplication <a class="header-link" href="#alert-de-duplication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The team is introducing a new mechanism to <a href="/2025-09-30-alert-de-duplication/">suppress duplicate alerts</a>, especially from passive scans.</p>
+<ul>
+<li>Duplicate alerts often happen when passive scans flag essentially the same issue across multiple URLs (even with trivial differences).</li>
+<li>ZAP is evolving its Alert Tree logic to adopt naming rules from the Sites Tree, so repeated alerts collapse into a single representative instance.</li>
+<li>Systemic alerts (e.g. missing security headers across many endpoints) will get a new SYSTEMIC tag; beyond a certain threshold, additional instances of that alert will be suppressed.</li>
+<li>Reporting, APIs, and alerts will include a nodeName field to help with consistent comparisons across scans.</li>
+</ul>
+<p>These changes should help reduce noise, make scan results more meaningful, and improve cross-scan comparisons.</p>
+
+<h3 id="zap-add-on-publishing-guide">ZAP Add-on Publishing Guide <a class="header-link" href="#zap-add-on-publishing-guide"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>We have a new guide for <a href="/docs/guides/how-to-publish-a-zap-addon/">publishing ZAP Add-ons</a>,
+designed to assist developers who want to contribute add-ons to the growing ZAP ecosystem.</p>
+<p>The new streamlined process should make it much easier to publish add-ons on the
+<a href="/addons/">ZAP Marketplace</a>.
+You can now maintain add-ons in your own repos and we&rsquo;ll fork/update them when
+you would like the add-ons to be released.</p>
+<p>If you have any questions about developing or publishing add-ons then just ask them on the
+<a href="https://groups.google.com/group/zaproxy-develop">ZAP Developer Group</a>.</p>
+
+<h2 id="ongoing-work">Ongoing Work <a class="header-link" href="#ongoing-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>We have also been making more improvements to authentication handling.</p>
+<p>Beyond the <a href="/blog/2025-09-02-zap-updates-august-2025/#microsoft-online-login-support">Microsoft login enhancements</a> announced last month, the ZAP team continues to invest in broader authentication support.</p>
+<p>The aim is to keep improving ZAP&rsquo;s support for the wide range of authentication flows used in real world apps.</p>
+<p>As these updates land, you are encouraged to test your particular auth flows (especially those that fail or only partially succeed) and provide feedback — this helps us refine detection, handling, and fallback logic.</p>
+<p>We are also getting closer to releasing 2.17.0. No date yet, but stay tuned for more news!</p>
+
+<h2 id="github-pulse">GitHub Pulse <a class="header-link" href="#github-pulse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Here are some statistics for the two main ZAP repositories:</p>
+<p><a href="https://github.com/zaproxy/zaproxy/pulse/monthly">zaproxy</a><br>
+Excluding merges, 7 authors have pushed 18 commits to main and 18 commits to all branches. On main, 26 files have changed and there have been 2,704 additions and 1,905 deletions.</p>
+<p><a href="https://github.com/zaproxy/zap-extensions/pulse/monthly">zap-extensions</a><br>
+Excluding merges, 6 authors have pushed 80 commits to main and 80 commits to all branches. On main, 1,953 files have changed and there have been 25,468 additions and 13,632 deletions.</p>
+<p>A total of <a href="https://github.com/search?q=org%3Azaproxy+type%3Apr+-author%3Azapbot+-author%3Aapp%2Fdependabot+sort%3Aupdated-asc+closed%3A2025-09+is%3Amerged&amp;type=pullrequests">92 human PRs were merged</a> on the ZAP repos.</p>
+
+<h2 id="released-add-ons---full-changelog">Released Add-ons - Full Changelog <a class="header-link" href="#released-add-ons---full-changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>In September 2025, we released updated versions of 32 add-ons:</p>
+
+<h5 id="active-scanner-rules">Active scanner rules</h5>
+<p><strong>v74</strong><br>
+Added</p>
+<ul>
+<li>QA CICD policy tag to selected rules.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+<li>The SQL Injection - Oracle (Time Based) rule now uses DBMS_SESSION.SLEEP instead of an &ldquo;expensive&rdquo; query.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Hidden Files rule raising false positives if server returning 200 for files that don&rsquo;t exist (Issue 8434).</li>
+</ul>
+<p><strong>v73</strong><br>
+Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>The following scan rules and their alerts have been renamed to clarify that they&rsquo;re time based (Issue 7341).
+<ul>
+<li>SQL Injection - Oracle</li>
+<li>SQL Injection - MsSQL</li>
+<li>SQL Injection - MySQL</li>
+<li>SQL Injection - Hypersonic</li>
+<li>SQL Injection - SQLite</li>
+<li>SQL Injection - PostgreSQL</li>
+</ul>
+</li>
+<li>The Remote OS Command Injection scan rule has been broken into two rules; one feedback based, and one time based (Issue 7341). This includes assigning the time based rule ID 90037.</li>
+<li>The External Redirect scan rule payload were slightly re-ordered to prioritize HTTPS variants.</li>
+<li>For Alerts raised by the SQL Injection scan rules the Attack field values are now simply the payload, not an assembled description.</li>
+<li>The Cross Site Scripting (Reflected) scan rule was updated to address potential false negatives when the injection context is a tag name and there is some filtering.</li>
+<li>The Path Traversal scan rule now includes further details when directory matches are made (Issue 8379).</li>
+<li>Add help details about behavior of scan rules which leverage OAST (Issue 8682).</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Rules (as applicable) have been tagged in relation to HIPAA and PCI DSS.</li>
+<li>The Cloud Metadata Potentially Exposed scan rules now has a CWE reference.</li>
+<li>Scan rules which execute time based attacks now include the &ldquo;TEST_TIMING&rdquo; alert tag.</li>
+<li>The XPath Injection scan rule now supports error patterns provided via the Custom Payloads add-on (Issue 8958). A minimum of Custom Payloads 0.15.0 is required to take advantage of this optional functionality.</li>
+</ul>
+
+<h5 id="active-scanner-rules-alpha">Active scanner rules (alpha)</h5>
+<p><strong>v51</strong><br>
+Changed</p>
+<ul>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+</ul>
+<p><strong>v50</strong><br>
+Changed</p>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Rules (as applicable) have been tagged in relation to HIPAA and PCI DSS.</li>
+<li>The Web Cache Deception scan rule now has a CWE reference.</li>
+</ul>
+
+<h5 id="active-scanner-rules-beta">Active scanner rules (beta)</h5>
+<p><strong>v62</strong><br>
+Added</p>
+<ul>
+<li>QA CICD policy tag to selected rules.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+</ul>
+<p><strong>v61</strong><br>
+Changed</p>
+<ul>
+<li>Add alert references to CORS Header scan rule alerts (Issue 7100).</li>
+</ul>
+<p><strong>v60</strong><br>
+Changed</p>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Add help details about behavior of scan rules which leverage OAST (Issue 8682)</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Error logs to always include stack trace.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>Rules (as applicable) have been tagged in relation to HIPAA and PCI DSS.</li>
+<li>The 403 Bypass scan rule now has a CWE reference.</li>
+<li>The Shell Shock scan rule now has the TEST_TIMING alert tag.</li>
+</ul>
+
+<h5 id="ajax-spider">Ajax Spider</h5>
+<p><strong>v23.26.0</strong><br>
+Added</p>
+<ul>
+<li>Support for stopping the spiderAjax automation job.</li>
+</ul>
+
+<h5 id="authentication-helper">Authentication Helper</h5>
+<p><strong>v0.29.0</strong><br>
+Added</p>
+<ul>
+<li>Add login word variant for Spanish.</li>
+<li>Log exception during authentication with diagnostics enabled.</li>
+<li>Add the statistics of the site of the verification URL to the Authentication Report.</li>
+<li>Add Authentication Report section for the domains accessed during the authentication.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update alert references to latest locations to fix 404 and resolve redirection.</li>
+<li>Search also for login elements with ARIA role button.</li>
+<li>Show always the diagnostic HTTP messages in the Sites tree and History tab when importing the Authentication Report.</li>
+<li>Include the site in the site statistics of the Authentication Report.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Collect the current value of the element&rsquo;s attributes for the authentication diagnostics.</li>
+<li>In the Authentication Report set authentication successful only when the login was verified with the indicators.</li>
+</ul>
+<p><strong>v0.28.0</strong><br>
+Added</p>
+<ul>
+<li>Add wait authentication step to Browser Based Authentication.</li>
+<li>Include Web Element&rsquo;s selector in the Authentication Report.</li>
+<li>Support for tracking authentication and CSRF headers automatically for Header based auth.</li>
+<li>Add Authentication Report section for the log file and for the Automation Framework plan.</li>
+<li>Support for step delay in Browser Based Authentication, which replaces the auth tester &ldquo;demo mode&rdquo;.</li>
+<li>Support for min wait for time in Client Script Authentication.</li>
+<li>Allow to manage the authentication diagnostics through the GUI.</li>
+</ul>
+
+<h5 id="automation-framework">Automation Framework</h5>
+<p><strong>v0.53.0</strong><br>
+Fixed</p>
+<ul>
+<li>Correct Session Management script&rsquo;s path validation with variables.</li>
+<li>Correct default value for Active Scan option <code>handleAntiCSRFTokens</code> in templates and help.</li>
+</ul>
+<p><strong>v0.52.0</strong><br>
+Added</p>
+<ul>
+<li>Support for step delay in Browser Based Authentication.</li>
+<li>Support for min wait for in Client Script Authentication.</li>
+<li>Support for url in activeScan job.</li>
+<li>Support for stopping plans and jobs.</li>
+<li>Allow selecting rules in policy definitions using alert tags.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Refer to output panel for errors.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Bug in handling headers with colons in the values.</li>
+<li>Use default authentication poll frequency when none specified, if the value is less than one a progress warning occurs.</li>
+<li>Do not warn if &ldquo;enabled&rdquo; or &ldquo;alwaysRun&rdquo; properties specified.</li>
+<li>Use the authentication method&rsquo;s diagnostics state when creating a plan from a context.</li>
+</ul>
+
+<h5 id="call-home">Call Home</h5>
+<p><strong>v0.15.0</strong><br>
+Added</p>
+<ul>
+<li>LLM, and Value Generator (Form Handler) stats to telemetry.</li>
+</ul>
+
+<h5 id="client-side-integration">Client Side Integration</h5>
+<p><strong>v0.17.0</strong><br>
+Added</p>
+<ul>
+<li>Edge recorder link to help.</li>
+<li>Support for stopping the spiderCient automation job.</li>
+<li>Support for configuring the client passive scan rules via the passiveScan-config Automation Framework job. This add-on now depends on the pscan add-on.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Updated Chrome and Firefox extensions to v0.1.6.</li>
+<li>Reduce warnings when passive scanning.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Error logs to always include stack trace.</li>
+<li>Log Firefox missing at debug instead of error.</li>
+</ul>
+
+<h5 id="common-library">Common Library</h5>
+<p><strong>v1.36.0</strong><br>
+Added</p>
+<ul>
+<li>QA CICD policy tag.</li>
+</ul>
+<p><strong>v1.35.0</strong><br>
+Changed</p>
+<ul>
+<li>Update dependency.</li>
+<li>Expose constant related to authentication.</li>
+</ul>
+
+<h5 id="custom-payloads">Custom Payloads</h5>
+<p><strong>v0.15.0</strong><br>
+Added</p>
+<ul>
+<li>Added support for adding payloads which are disabled by default.</li>
+</ul>
+
+<h5 id="image-location-and-privacy-scanner">Image Location and Privacy Scanner</h5>
+<p><strong>v7</strong><br>
+Changed</p>
+<ul>
+<li>Update alert reference and help link to latest location.</li>
+</ul>
+
+<h5 id="importexport">Import/Export</h5>
+<p><strong>v0.15.0</strong><br>
+Changed</p>
+<ul>
+<li>Update dependency.</li>
+<li>Use always the same newlines (LF) when exporting HAR files.</li>
+</ul>
+
+<h5 id="linux-webdrivers">Linux WebDrivers</h5>
+<p><strong>v158</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.207.</li>
+</ul>
+<p><strong>v157</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.185.</li>
+</ul>
+<p><strong>v156</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.82.</li>
+</ul>
+<p><strong>v155</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.80.</li>
+</ul>
+
+<h5 id="macos-webdrivers">MacOS WebDrivers</h5>
+<p><strong>v158</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.207.</li>
+</ul>
+<p><strong>v157</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.185.</li>
+</ul>
+<p><strong>v156</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.82.</li>
+</ul>
+<p><strong>v155</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.80.</li>
+</ul>
+
+<h5 id="network">Network</h5>
+<p><strong>v0.23.0</strong><br>
+Added</p>
+<ul>
+<li>NetworkUtils class.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Use only positive serial numbers for the Root CA certificate (Issue 8984).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Correctly inform about unknown proxy host on all OSes.</li>
+</ul>
+
+<h5 id="openapi-support">OpenAPI Support</h5>
+<p><strong>v46</strong><br>
+Fixed</p>
+<ul>
+<li>Warn logs to always include stack trace.</li>
+<li>Correct generation of empty object.</li>
+</ul>
+
+<h5 id="passive-scanner">Passive Scanner</h5>
+<p><strong>v0.5.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated Automation Framework template plans and help content for passiveScan-* jobs to be more consistent.</li>
+</ul>
+<p><strong>v0.4.0</strong><br>
+Added</p>
+<ul>
+<li>Allow to configure the option max body size through the API (Issue 8974).</li>
+<li>Support for stopping the passiveScan-wait automation job.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>To only record <code>stats.pscan.&lt;rule-name&gt;</code> statistics for scanners that have no IDs.</li>
+<li>To support other add-ons which manage passive scan rules. These rules will not currently be fully supported in the UI.</li>
+</ul>
+
+<h5 id="passive-scanner-rules">Passive scanner rules</h5>
+<p><strong>v67</strong><br>
+Changed</p>
+<ul>
+<li>Add alert references to HTTP Server Response Header scan rule alerts (Issue 7100, 9050).</li>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+</ul>
+
+<h5 id="passive-scanner-rules-alpha">Passive scanner rules (alpha)</h5>
+<p><strong>v46</strong><br>
+Changed</p>
+<ul>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+</ul>
+
+<h5 id="passive-scanner-rules-beta">Passive scanner rules (beta)</h5>
+<p><strong>v46</strong><br>
+Changed</p>
+<ul>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+</ul>
+<p><strong>v45</strong><br>
+Changed</p>
+<ul>
+<li>Add alert references to Content Cacheability scan rule alerts (Issue 7100).</li>
+</ul>
+
+<h5 id="postman-support">Postman Support</h5>
+<p><strong>v0.7.0</strong><br>
+Changed</p>
+<ul>
+<li>Enable API functionality for imports.</li>
+</ul>
+
+<h5 id="report-generation">Report Generation</h5>
+<p><strong>v0.41.0</strong><br>
+Changed</p>
+<ul>
+<li>Corrected a minor typo and image alt tags in the help.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>An ISO 8601 date and time field (ex: &ldquo;created&rdquo;: &ldquo;2025-09-03T12:49:35.236211400Z&rdquo;) has been added to the Traditional JSON, Traditional JSON with Requests and Responses, Traditional XML, Traditional XML with Requests and Responses.</li>
+</ul>
+<p><strong>v0.40.0</strong><br>
+Changed</p>
+<ul>
+<li>Provide/log details on report errors through the Automation Framework job.</li>
+<li>Allow to include Automation Framework errors and warnings in the Traditional JSON Report with Requests and Responses report.</li>
+</ul>
+
+<h5 id="retirejs">Retire.js</h5>
+<p><strong>v0.49.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with upstream retire.js pattern changes.</li>
+</ul>
+
+<h5 id="soap-support">SOAP Support</h5>
+<p><strong>v28</strong><br>
+Added</p>
+<ul>
+<li>QA CICD policy tag to active scan rules.</li>
+</ul>
+<p><strong>v27</strong><br>
+Fixed</p>
+<ul>
+<li>When parsing WSDL files ensure the dateTime values are generated in UTC.</li>
+</ul>
+<p><strong>v26</strong><br>
+Added</p>
+<ul>
+<li>The SOAP Action Spoofing, SOAP XML Injection, and WSDL File Detection scan rules now all have CWE references.</li>
+</ul>
+
+<h5 id="scan-policies">Scan Policies</h5>
+<p><strong>v0.5.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated based on Rules&rsquo; Policy Tag assignments.</li>
+</ul>
+<p>Added</p>
+<ul>
+<li>QA CI/CD scan policy help.</li>
+</ul>
+<p><strong>v0.4.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated based on Rules&rsquo; Policy Tag assignments.</li>
+</ul>
+
+<h5 id="script-console">Script Console</h5>
+<p><strong>v45.13.0</strong><br>
+Changed</p>
+<ul>
+<li>Update help with newer JavaScript engine and links.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Error logs to always include stack trace.</li>
+</ul>
+
+<h5 id="selenium">Selenium</h5>
+<p><strong>v15.40.0</strong><br>
+Changed</p>
+<ul>
+<li>Update Selenium to version 4.35.0.</li>
+</ul>
+
+<h5 id="spider">Spider</h5>
+<p><strong>v0.16.0</strong><br>
+Added</p>
+<ul>
+<li>Support for stopping the spider automation job.</li>
+</ul>
+
+<h5 id="technology-detection">Technology Detection</h5>
+<p><strong>v21.48.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>During load the time taken to process the data files will be shown in human readable format (generally seconds), as well as milliseconds (ms).</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h5 id="tips-and-tricks">Tips and Tricks</h5>
+<p><strong>v15</strong><br>
+Changed</p>
+<ul>
+<li>Change IRC tip to reference Slack.</li>
+</ul>
+
+<h5 id="windows-webdrivers">Windows WebDrivers</h5>
+<p><strong>v159</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.207.</li>
+</ul>
+<p><strong>v158</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.185.</li>
+</ul>
+<p><strong>v157</strong><br>
+Fixed</p>
+<ul>
+<li>Re-release because of accidental binary deletion of version 156.</li>
+</ul>
+<p><strong>v155</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 140.0.7339.80.</li>
+</ul>
+
+<h5 id="zest---graphical-security-scripting-language">Zest - Graphical Security Scripting Language</h5>
+<p><strong>v48.9.0</strong><br>
+Changed</p>
+<ul>
+<li>Allow to keep auhtenticator&rsquo;s proxy running after the authentication.</li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2025-09-30-alert-de-duplication/"> Alert De-Duplication</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    Simon Bennetts
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#highlights">Highlights</a>
+      <ul>
+        <li><a href="#configuring-scan-policies-with-alert-tags">Configuring Scan Policies with Alert Tags</a></li>
+        <li><a href="#wavsep-adoption">WAVSEP Adoption</a></li>
+        <li><a href="#alert-de-duplication">Alert De-Duplication</a></li>
+        <li><a href="#zap-add-on-publishing-guide">ZAP Add-on Publishing Guide</a></li>
+      </ul>
+    </li>
+    <li><a href="#ongoing-work">Ongoing Work</a></li>
+    <li><a href="#github-pulse">GitHub Pulse</a></li>
+    <li><a href="#released-add-ons---full-changelog">Released Add-ons - Full Changelog</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/update/">update</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-10-01-zap-updates-september-2025/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2025 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.4d3af1.js"></script>
+  
+</div>
+</body>
+</html>
