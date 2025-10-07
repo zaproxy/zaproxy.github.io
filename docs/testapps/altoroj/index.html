@@ -140,9 +140,30 @@
 maintained by <a href="https://www.hcl-software.com/">HCL Software</a>.</p>
 <p>It is a traditional app created in 2008 and is not updated very often.</p>
 <ul>
-<li>Online: <a href="http://testfire.net/">http://testfire.net/</a></li>
+<li>Online: <a href="https://demo.testfire.net/">https://demo.testfire.net/</a></li>
 <li>Repo: <a href="https://github.com/HCL-TECH-SOFTWARE/AltoroJ">https://github.com/HCL-TECH-SOFTWARE/AltoroJ</a></li>
 </ul>
+
+<h3 id="quick-start">Quick Start <a class="header-link" href="#quick-start"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>New to ZAP and just want to quickly run ZAP against Testfire (AltoroJ)?</p>
+<p>Just run these commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Download the recommended plan using curl, or use any other suitable tool</span>
+</span></span><span style="display:flex;"><span>curl -O https://raw.githubusercontent.com/zaproxy/community-scripts/refs/heads/main/other/af-plans/FullScanTestfireAuth.yaml
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run ZAP using the stable Docker image, mapping the CWD so that Docker can access the file system and export the report</span>
+</span></span><span style="display:flex;"><span>docker run -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/zap/wrk/:rw -t zaproxy/zap-stable zap.sh -cmd -autorun wrk/FullScanTestfireAuth.yaml
+</span></span></code></pre></div><p>To run this command on Windows see the <a href="/docs/docker/about/#mounting-the-current-directory">relevant documentation</a>.</p>
+<p>You will need to have Docker installed. If you do not want to use Docker then you can of course install ZAP locally.</p>
+<p>The scan should find the following High and Medium risk alerts:</p>
+<ul>
+<li>🔴 <a href="/docs/alerts/40012/">Cross Site Scripting (Reflected</a></li>
+<li>🔴 <a href="/docs/alerts/40018/">SQL Injection</a></li>
+<li>🟠 <a href="/docs/alerts/10202/">Absence of Anti-CSRF Tokens</a></li>
+<li>🟠 <a href="/docs/alerts/10020/">Missing Anti-clickjacking Header</a></li>
+<li>🟠 <a href="/docs/alerts/10038/">Content Security Policy (CSP) Header Not Set</a></li>
+<li>🟠 <a href="/docs/alerts/10040/">Secure Pages Include Mixed Content (Including Scripts)</a></li>
+</ul>
+<p>It will create an HTML report in your CWD containing full details of all of the issues found.</p>
 
 <h3 id="potential-pitfalls">Potential Pitfalls <a class="header-link" href="#potential-pitfalls"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>This is an online app which may be unavailable or broken at any point.
@@ -172,16 +193,13 @@ and will successfully identify the session handling and verification.</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">contexts</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">testfire</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">urls</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">http://testfire.net</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">http://demo.testfire.net</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">includePaths</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">http://testfire.net.*</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">excludePaths</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">http://testfire.net/logout.jsp</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">http://testfire.net/doLogin</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">https://demo.testfire.net.*</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">authentication</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#ae81ff">browser</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">parameters</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginPageUrl</span>: <span style="color:#ae81ff">http://testfire.net/login.jsp</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginPageUrl</span>: <span style="color:#ae81ff">https://demo.testfire.net/login.jsp</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginPageWait</span>: <span style="color:#ae81ff">2</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">browserId</span>: <span style="color:#ae81ff">firefox</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">verification</span>:
@@ -189,25 +207,48 @@ and will successfully identify the session handling and verification.</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">loggedInRegex</span>: <span style="color:#ae81ff">\Q 200 OK\E</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">loggedOutRegex</span>: <span style="color:#ae81ff">\Q 302 Found\E</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollFrequency</span>: <span style="color:#ae81ff">60</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollUnits</span>: <span style="color:#ae81ff">requests</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollUrl</span>: <span style="color:#ae81ff">http://testfire.net/bank/main.jsp</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollUnits</span>: <span style="color:#ae81ff">seconds</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollUrl</span>: <span style="color:#ae81ff">https://demo.testfire.net/bank/main.jsp</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollPostData</span>: <span style="color:#e6db74">&#34;&#34;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">sessionManagement</span>:
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#ae81ff">headers</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">users</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">admin</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">jsmith</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">credentials</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#ae81ff">admin</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">username</span>: <span style="color:#ae81ff">admin</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#ae81ff">demo1234</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">username</span>: <span style="color:#ae81ff">jsmith</span>
 </span></span></code></pre></div>
+
+
+  <blockquote class="alert alert-note">
+    <p class="alert-heading">
+      📝
+      
+        Note
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>There are no exclude paths added in the environment definition. Logout avoidance is used in the Traditional Spider job example below.
+doLogin is left included as it is impacted by a SQLi vulnerability.</p>
+    </div>
+  </blockquote>
+
+
 <h3 id="crawling">Crawling <a class="header-link" href="#crawling"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Any of the ZAP Spiders can be used to crawl AltoroJ.</p>
-<p>For the <a href="/docs/desktop/addons/spider/">Traditional Spider</a> to be able to crawl the app you need to exclude the login and logout URLs from the context as above.</p>
-<p>For the <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a> you need to exclude the logout link:</p>
+<p>Any of the ZAP Spiders can be used to crawl Testfire (AltoroJ).</p>
+<p>For the <a href="/docs/desktop/addons/spider/">Traditional Spider</a> we recommend the following configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">spider</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">context</span>: <span style="color:#ae81ff">testfire</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">jsmith</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">url</span>: <span style="color:#ae81ff">https://demo.testfire.net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">logoutAvoidance</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><p>For the <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a> you need to exclude the logout link:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">spiderAjax</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">context</span>: <span style="color:#ae81ff">testfire</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">admin</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">jsmith</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">browserId</span>: <span style="color:#ae81ff">firefox-headless</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#f92672">excludedElements</span>:
 </span></span><span style="display:flex;"><span>    - <span style="color:#f92672">description</span>: <span style="color:#ae81ff">Logout</span>
@@ -215,7 +256,7 @@ and will successfully identify the session handling and verification.</p>
 </span></span><span style="display:flex;"><span>      <span style="color:#f92672">text</span>: <span style="color:#ae81ff">Sign Off</span>
 </span></span></code></pre></div>
 <h3 id="scanning">Scanning <a class="header-link" href="#scanning"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>We are not aware of a definitive list of the vulnerabilities in AltoroJ.</p>
+<p>We believe this is a definitive list of the vulnerabilities in Testfire (AltoroJ): <a href="https://help.hcl-software.com/appscan/ASoC/ja/PDF/Sample_DAST_Report.pdf">https://help.hcl-software.com/appscan/ASoC/ja/PDF/Sample_DAST_Report.pdf</a></p>
 <p>Not too surprisingly you will need to configure the <a href="/docs/desktop/addons/automation-framework/job-ascan/">activeScan</a> job, and you will probably want to generate a <a href="/docs/desktop/addons/report-generation/automation/">report</a>.</p>
 </main>
   </article>
