@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <link rel="alternate" type="application/rss+xml" href="/alerttags/cwe-20/index.xml" title="ZAP" />
-  <title>ZAP &ndash; CWE-20</title>
+  <title>ZAP &ndash; Suspicious Input Transformation - Unicode Case Conversion</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -111,163 +110,137 @@
 
   
 <section class="bolt-header">
-  <div class="wrapper py-20">
-    
-      <h1 class="text--white">Alert Tag:  CWE-20</h1>
-    
+    <div class="wrapper py-20">
+      <h1 class="text--white">Suspicious Input Transformation - Unicode Case Conversion</h1>
   </div>
 </section>
-  <div class="wrapper py-70">
+
+<div class="wrapper py-20" data-kind="page">
     <header class="breadcrumbs">
-        <a href="/alerttags/">Alert Tags</a> &gt;
-        
-        <a href="/alerttags/cwe-20">CWE-20</a>
-        
+        <a href="/docs/">Docs</a> &gt;
+        <a href="/docs/alerts/">Alerts</a>
     </header>
-   
-
-    
-      
-      
-        <h4><a href="https://cwe.mitre.org/data/definitions/20.html">https://cwe.mitre.org/data/definitions/20.html</a></h4>
-      
-      All of the alerts which use this tag:
-    
-
-   <div class="flex latest-versions">
-      <table data-sort-filter>
-         <thead>
+    <main class="post-content flex pt-10 on-sm-stack">
+      <section class="col-1-3 mr-30 mb-30">
+        <table class="bordered">
+          <thead>
             <tr>
-               <th>Tag</th>
-               <th>Link</th>
+              <th colspan="2">
+                Details
+              </th>
             </tr>
-         </thead>
-         <tbody>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>Alert ID</strong>
+              </td>
+              <td>100044-9</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Alert Type</strong>
+              </td>
+              <td>Script Active</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Status</strong>
+              </td>
+              <td>alpha</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>
+                  Risk
+                </td>
+              <td>High</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>CWE</strong>
+              </td>
+              <td>
+                <a href="https://cwe.mitre.org/data/definitions/20.html">
+                  20
+                </a>
+              </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>WASC</strong>
+              </td>
+              <td>20</td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Technologies Targeted</strong>
+              </td>
+              <td>
+              
+                All
+              
+	          </td>
+            </tr>
+            <tr> 
+              <td>
+                <strong>Tags</strong>
+              </td>
+              <td>
+              
+              	<a href="/alerttags/cwe-20">CWE-20</a><br>
+              
+              	<a href="/alerttags/owasp_2017_a01">OWASP_2017_A01</a><br>
+              
+              	<a href="/alerttags/owasp_2021_a03">OWASP_2021_A03</a><br>
+              
+              	<a href="/alerttags/policy_pentest">POLICY_PENTEST</a><br>
+              
+              </td>
+            </tr>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10026/">HTTP Parameter Override</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+            <tr> 
+              <td>
+                <strong>More Info</strong>
+              </td>
+              <td>
+              	<a href="https://www.zaproxy.org/docs/desktop/addons/active-scan-rules-alpha/#id-100044">Scan Rule Help</a><br>
+              </td>
+            </tr>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/20014/">HTTP Parameter Pollution</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+          </tbody>
+        </table>
+
+      </section>
+      <section class="col-2-3">
+        <div data-attr="summary">
+          <h3 class="mb-10">Summary</h3>
+          <p>The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.</p>
+
+        </div>
+        <div data-attr="solution" class="mb-20">
+          <h3 class="mb-10">Solution</h3>
+          Review input validation and sanitization mechanisms. Ensure user input is properly escaped and validated before processing. Consider implementing strict input filtering to prevent injection attacks. 
+        </div>
+        <div data-attr="other" class="mb-20">
+          <h3 class="mb-10">Other Info</h3>
+          
+        </div>
+        <h3 class="mb-10">References</h3>
+        <ul data-attr="references">
+        
+          <li>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10107/">Httpoxy - Proxy Header Misuse</a></td>
-                  <td><a href=""></a></td>
-               </tr>
+              <a href="https://www.unicode.org/charts/case/index.html">https://www.unicode.org/charts/case/index.html</a>
             
-               
-               <tr>
-                  <td><a href="/docs/alerts/10051/">Relative Path Confusion</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100018/">Relative Path Overwrite</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/20018/">Remote Code Execution - CVE-2012-1823</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/20017/">Source Code Disclosure - CVE-2012-1823</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-2/">Suspicious Input Transformation - Arithmetic Evaluation</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-5/">Suspicious Input Transformation - EL Evaluation</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-3/">Suspicious Input Transformation - Expression Evaluation</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-1/">Suspicious Input Transformation - Quote Consumption</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-4/">Suspicious Input Transformation - Template Evaluation</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-8/">Suspicious Input Transformation - Unicode Byte Truncation</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-9/">Suspicious Input Transformation - Unicode Case Conversion</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-10/">Suspicious Input Transformation - Unicode Combining Diacritic</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-6/">Suspicious Input Transformation - Unicode Normalisation</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/100044-7/">Suspicious Input Transformation - URL Decoding Error</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10030/">User Controllable Charset</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10031/">User Controllable HTML Element Attribute (Potential XSS)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-               
-               <tr>
-                  <td><a href="/docs/alerts/10043/">User Controllable JavaScript Event (XSS)</a></td>
-                  <td><a href=""></a></td>
-               </tr>
-            
-         </tbody>
-      </table>
-   </div>
-  </div>
+          </li>
+        
+        </ul>
+        <h4 class="mb-10">Code</h4>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/zapHomeFiles/scripts/scripts/active/SuspiciousInputTransformation.js'>scripts/scripts/active/SuspiciousInputTransformation.js</a>
+      </section>
+  </main>
+</div>
 
  </div>
   <footer class="site-footer py-20 mt-20">
