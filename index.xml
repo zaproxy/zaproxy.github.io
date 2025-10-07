@@ -4223,7 +4223,7 @@ These release notes do not include all of the changes included in add-ons update
       
       <guid>/docs/desktop/addons/script-console/scanrules/</guid>
       <description>&lt;h1 id=&#34;script-scan-rules&#34;&gt;Script Scan Rules&lt;/h1&gt;
-&lt;p&gt;Active and Passive Scripts that implement the `getMetadata` function are treated as first-class scan rules by ZAP. Example implementation of this function in a script would look like:&lt;/p&gt;
+&lt;p&gt;Active and Passive Scripts that implement the &lt;code&gt;getMetadata&lt;/code&gt; function are treated as first-class scan rules by ZAP. An example implementation of this function in a script would look like:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;function getMetadata() {
 	return ScanRuleMetadata.fromYaml(`
 id: 12345
@@ -4243,10 +4243,14 @@ alertTags:
   name2: value2
 otherInfo: Any other Info
 status: alpha
+alertRefOverrides:
+  12345-1:
+    name: Alert Reference 1
+
 `);
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &lt;code&gt;category&lt;/code&gt; field is only used for Active Scan Scripts. Any additional fields in the metadata are ignored. The metadata function is evaluated upon saving the script, which is exposed as a scan rule if the metadata is valid.&lt;/p&gt;</description>
+&lt;p&gt;The metadata function is evaluated upon saving the script, which is exposed as a scan rule if the metadata is valid.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -16774,6 +16778,105 @@ publishes it for them.&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>Suspicious Input Transformation</title>
+      <link>/docs/alerts/100044/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Arithmetic Evaluation</title>
+      <link>/docs/alerts/100044-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-2/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - EL Evaluation</title>
+      <link>/docs/alerts/100044-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-5/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Expression Evaluation</title>
+      <link>/docs/alerts/100044-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-3/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Quote Consumption</title>
+      <link>/docs/alerts/100044-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-1/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Template Evaluation</title>
+      <link>/docs/alerts/100044-4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-4/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Unicode Byte Truncation</title>
+      <link>/docs/alerts/100044-8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-8/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Unicode Case Conversion</title>
+      <link>/docs/alerts/100044-9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-9/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Unicode Combining Diacritic</title>
+      <link>/docs/alerts/100044-10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-10/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - Unicode Normalisation</title>
+      <link>/docs/alerts/100044-6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-6/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Suspicious Input Transformation - URL Decoding Error</title>
+      <link>/docs/alerts/100044-7/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/alerts/100044-7/</guid>
+      <description>&lt;p&gt;The application performed a suspicious input transformation that may indicate a security vulnerability. The input was transformed in an unexpected way, suggesting potential issues with input validation, encoding/decoding, or expression evaluation. This could indicate vulnerabilities such as server-side template injection, expression language injection, unicode normalization issues, or other input processing flaws that may be exploitable.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Tech Detection Passive Scanner</title>
       <link>/docs/alerts/10004/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -17430,7 +17533,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           ascanrulesAlpha
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-18
+          2025-10-07
         &lt;/td&gt;
       &lt;/tr&gt;
       
