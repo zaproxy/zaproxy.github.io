@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2025-10-15-solving-caido-labs/images/image-header.png">
+  <meta name="twitter:title" content="Solving Caido Labs">
+  <meta name="twitter:description" content="In this blog we show how to solve Caido labs using ZAP.">
+
+    <meta property="og:url" content="/blog/2025-10-15-solving-caido-labs/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Solving Caido Labs">
+  <meta property="og:description" content="In this blog we show how to solve Caido labs using ZAP.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2025-10-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-10-15T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Fuzzer">
+    <meta property="article:tag" content="Caido-Lab">
+    <meta property="article:tag" content="Javascript">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2025-10-15-solving-caido-labs/images/image-header.png">
+
+  
+  <title>ZAP &ndash; Solving Caido Labs</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.cb156c.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Solving Caido Labs</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday October 15, 2025</span>
+              <span class="word-count fl-r"> 1972 Words </span>
+            </section>
+            <p>In this blog post we will solve challenges on <a href="https://labs.cai.do/">Caido labs</a>, while this first batch only showcases some easy vulnerabilities we will use some interesting features of ZAP to solve them.</p>
+
+<h2 id="match-and-replace">Match and Replace <a class="header-link" href="#match-and-replace"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This is the first challenge and can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/matchAndReplace.php">https://labs.cai.do/matchAndReplace.php</a></p>
+<p>In this challenge we are shown the next site.</p>
+<p><img src="images/matchrepsite.png" alt="matchrepsite.png"></p>
+<p>If we read the HTML code we can see that there is a function that checks the current role, and if it happens to be admin it executes <code>displayAdminUI()</code>.</p>
+<p><img src="images/matchcode.png" alt="matchcode.png"></p>
+<p>We can validate what that function does by executing it manually.</p>
+<p><img src="images/matchadmin.png" alt="matchadmin.png"></p>
+<p>While this uncovers the <em>hidden</em> panel, when testing a website, things are not usually that easy, and also we don&rsquo;t have the time to check everything, in this scenario we can create a rule to replace the text &ldquo;basic&rdquo; with &ldquo;admin&rdquo; in the responses so the JavaScript code gets executed with that role, we can do that by creating a rule in the Replacer add-on (Ctrl + R as shortcut).</p>
+<p><img src="images/matchreplacer.png" alt="matchreplacer.png"></p>
+<p>If we reload the page we notice that the admin panel is shown automatically.</p>
+<p><img src="images/matchrepadmin.png" alt="matchrepadmin.png"></p>
+<p>With that the challenge is solved.</p>
+<p><img src="images/matchsolve.png" alt="matchsolve.png"></p>
+<p>Notice that the Replacer rule stays active even if you close ZAP, so it&rsquo;s always good to disable the rules when you are done with them.</p>
+
+<h2 id="idor-vulnerability">IDOR Vulnerability <a class="header-link" href="#idor-vulnerability"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This challenge can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/idor.php">https://labs.cai.do/idor.php</a></p>
+<p>On this challenge we are shown the next site.</p>
+<p><img src="images/idorsite.png" alt="idorsite.png"></p>
+<p>If we click the button the next information gets retrieved.</p>
+<p><img src="images/idorinfo.png" alt="idorinfo.png"></p>
+<p>Checking the HTTP request we see that <code>user_id</code> is sent in a POST request.</p>
+<p><img src="images/idorreq.png" alt="idorreq.png"></p>
+<p>We can send the request to Requester (Ctrl + W as shortcut) and try to send a different ID.</p>
+<p><img src="images/idoradmin.png" alt="idoradmin.png"></p>
+<p>We got the information of the user Admin, but it tells us there is a kind of super admin user, to try to get it we send the request to the Fuzzer, and selecting the value of the user_id we add a payload of type &ldquo;Numberzz&rdquo; and set it to iterate from 1 to 50.</p>
+<p><img src="images/idorfuzz.png" alt="idorfuzz.png"></p>
+<p>Once it&rsquo;s done the easier way to notice any difference is by changing the order by the size of the response Body, there we can see that besides the values &ldquo;1&rdquo; and &ldquo;2&rdquo;, the value &ldquo;42&rdquo; is different.</p>
+<p><img src="images/idorfuzzed.png" alt="idorfuzzed.png"></p>
+<p>Cheking that request we can verify that we found the ID of the super admin user.</p>
+<p><img src="images/idorsuper.png" alt="idorsuper.png"></p>
+<p>While sorting by size works most of the time, there can be occasion where we want to look for something more specific, in that case we can write a &ldquo;Fuzzer HTTP Processor&rdquo; script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// Auxiliary variables/constants needed for processing.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processMessage</span>(<span style="color:#a6e22e">utils</span>, <span style="color:#a6e22e">message</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//message.getRequestHeader().setHeader(&#34;X-Unique-Id&#34;, count);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">processResult</span>(<span style="color:#a6e22e">utils</span>, <span style="color:#a6e22e">fuzzResult</span>){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">fuzzResult</span>.<span style="color:#a6e22e">getHttpMessage</span>().<span style="color:#a6e22e">getResponseBody</span>().<span style="color:#a6e22e">toString</span>()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;super&#34;</span>) <span style="color:#f92672">!==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">fuzzResult</span>.<span style="color:#a6e22e">addCustomState</span>(<span style="color:#e6db74">&#34;Key Custom State&#34;</span>,<span style="color:#e6db74">&#34;Super found&#34;</span>)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getRequiredParamsNames</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> [];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getOptionalParamsNames</span>(){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> [];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>All this script does is look for the word &ldquo;super&rdquo; in the response of the body and add a state that flags it, notice this is a very basic example and these scripts are really flexible, also if you want to know what every function does you can read the example script in ZAP since it is detailed there.
+Once we have our script loaded <strong>and</strong> enabled we can add it before executing the Fuzzer.</p>
+<p><img src="images/idorprocessor.png" alt="idorprocessor.png"></p>
+<p>After we run the Fuzzer we can see that the responses that included the word &ldquo;super&rdquo; were flagged.</p>
+<p><img src="images/idorsuperfuzz.png" alt="idorsuperfuzz.png"></p>
+
+<h2 id="too-many-requests">Too Many Requests <a class="header-link" href="#too-many-requests"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This challenge can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/tooManyRequests.php">https://labs.cai.do/tooManyRequests.php</a></p>
+<p>On this challenge we are shown the next site.</p>
+<p><img src="images/toomany.png" alt="toomany.png"></p>
+<p>If we click the start searching button we can see that the site sends 100 requests.</p>
+<p><img src="images/toomanyreq.png" alt="toomanyreq.png"></p>
+<p>If we have the ZAP session capturing a lot of traffic we can add a filter to only show the requests that include &ldquo;secretValueHere&rdquo; in the URL.</p>
+<p><img src="images/toomanyfilter.png" alt="toomanyfilter.png"></p>
+<p>Then ordering by the size of the responses we can see one is different.</p>
+<p><img src="images/toomanysize.png" alt="toomanysize.png"></p>
+<p>Checking the request we can find the secret value.</p>
+<p><img src="images/toomanysecret.png" alt="toomanysecret.png"></p>
+
+<h2 id="shasigned">ShaSigned <a class="header-link" href="#shasigned"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This challenge can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/shaSigned.php">https://labs.cai.do/shaSigned.php</a></p>
+<p>On this challenge we are shown the next site.</p>
+<p><img src="images/shasite.png" alt="shasite.png"></p>
+<p>The challenge seems to be a modified version of the IDOR challenge. If we click the button the next request is sent.</p>
+<p><img src="images/shareq.png" alt="shareq.png"></p>
+<p>Reading the HTML code we find the next function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">script</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">signRequest</span>(<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">form</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;userForm&#39;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">userId</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;[name=&#34;user_id&#34;]&#39;</span>).<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">postData</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`user_id=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">userId</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hash</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">CryptoJS</span>.<span style="color:#a6e22e">SHA256</span>(<span style="color:#a6e22e">postData</span>).<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#39;[name=&#34;hash&#34;]&#39;</span>).<span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hash</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">form</span>.<span style="color:#a6e22e">submit</span>();
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#960050;background-color:#1e0010">/script&gt;</span>
+</span></span></code></pre></div><p>We can see that the hash value is calculated by getting the SHA256 sum of the string &ldquo;user_id=&rdquo; plus the current ID, we can validate this by calculating it ourselves.</p>
+<p><img src="images/shalocal.png" alt="shalocal.png"></p>
+<p>Now that we know how the hash is calculated we can Fuzz the values, if we were using Burpsuite we could create the list of hashes and use a <em>pitchfork</em> attack, however in ZAP if we add more than one payload it treats it as a <em>Cluster Bomb</em> attack, since this is not what we want we&rsquo;ll have to use a single payload field and create a <strong>Payload Generator</strong> script that generates the whole body. Here is the script that we will use, everything is done in the <code>next()</code> function. To calculate the hash we are using the java <code>MessageDigest</code> class, since using it is not as straightforward as just calling it you can ask your favorite AI agent to write that part for you.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">MessageDigest</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;java.security.MessageDigest&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Auxiliary variables/constants for payload generation.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">NUMBER_OF_PAYLOADS</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">INITIAL_VALUE</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">INITIAL_VALUE</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Returns the number of generated payloads, zero to indicate unknown number.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * The number is used as a hint for progress calculations.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {number} The number of generated payloads.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">getNumberOfPayloads</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">NUMBER_OF_PAYLOADS</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Returns true if there are still payloads to generate, false otherwise.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Called before each call to next().
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {boolean} If there are still payloads to generate.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">hasNext</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">&lt;=</span> <span style="color:#a6e22e">NUMBER_OF_PAYLOADS</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Returns the next generated payload.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * This method is called while hasNext() returns true.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * @return {string} The next generated payload.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">next</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">start</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;user_id=&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ID</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">count</span>.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">mid</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&amp;hash=&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">sign</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">sha256</span>(<span style="color:#a6e22e">start</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ID</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">start</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">ID</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">mid</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">sign</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">count</span><span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">payload</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Resets the internal state of the payload generator, as if no calls to
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * hasNext() or next() have been previously made.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Normally called once the method hasNext() returns false and while payloads
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * are still needed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">reset</span>() {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">INITIAL_VALUE</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Releases any resources used for generation of payloads (for example, a file).
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Called once the payload generator is no longer needed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">close</span>() {
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">sha256</span>(<span style="color:#a6e22e">message</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">digest</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MessageDigest</span>.<span style="color:#a6e22e">getInstance</span>(<span style="color:#e6db74">&#34;SHA-256&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">bytes</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">java</span>.<span style="color:#a6e22e">lang</span>.String(<span style="color:#a6e22e">message</span>).<span style="color:#a6e22e">getBytes</span>(<span style="color:#e6db74">&#34;UTF-8&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">hash</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">digest</span>.<span style="color:#a6e22e">digest</span>(<span style="color:#a6e22e">bytes</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">hex</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">hash</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">byte</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">hash</span>[<span style="color:#a6e22e">i</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xff</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Manually pad with &#39;0&#39; if needed
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">hex</span> <span style="color:#f92672">+=</span> (<span style="color:#66d9ef">byte</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">16</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#66d9ef">byte</span>.<span style="color:#a6e22e">toString</span>(<span style="color:#ae81ff">16</span>);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hex</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Once we have the script ready and enabled we can start a Fuzzer by selecting the whole POST body and selecting our script as the payload.</p>
+<p><img src="images/shapayload.png" alt="shapayload.png"></p>
+<p>After running the Fuzzer we can see the requests that included &ldquo;super&rdquo; in the response.</p>
+<p><img src="images/shafuzzed.png" alt="shafuzzed.png"></p>
+<p>Finally we check the request to be sure we got the value of the super admin.</p>
+<p><img src="images/shasuper.png" alt="shasuper.png"></p>
+
+<h2 id="csrf-via-content-type">CSRF via Content-Type <a class="header-link" href="#csrf-via-content-type"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This challenge can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/csrfContentType.php">https://labs.cai.do/csrfContentType.php</a></p>
+<p>In this challenge we are shown the next site.</p>
+<p><img src="images/csrfsite.png" alt="csrfsite.png"></p>
+<p>If we change our name the next request is sent.</p>
+<p><img src="images/csrfreq.png" alt="csrfreq.png"></p>
+<p>The challenge says we can send &ldquo;text/plain&rdquo; as Content-Type, so we validate that.</p>
+<p><img src="images/csrfplain.png" alt="csrfplain.png"></p>
+<p>Now we can use the community script <a href="https://github.com/zaproxy/community-scripts/blob/main/targeted/json_csrf_poc_generator.js">json_csrf_poc_generator</a>, to use it we right click and select &ldquo;Invoke with Script&hellip;&rdquo; -&gt; json_csrf_poc_generator.py, this will generate the next page:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span> &lt;<span style="color:#f92672">title</span>&gt;CSRF POC&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">form</span> <span style="color:#a6e22e">action</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://labs.cai.do/csrfContentType.php&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formid&#34;</span> <span style="color:#a6e22e">method</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post&#34;</span> <span style="color:#a6e22e">enctype</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/plain&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type </span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;hidden&#39;</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{&#34;name&#34;:&#34;hacked&#34;,&#34;ignore_me&#34;:&#34;&#39;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;something&#34;}&#39;</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">form</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;formid&#39;</span>).<span style="color:#a6e22e">submit</span>();&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>We can see that the HTML adds the value <code>,&quot;ignore_me&quot;:&quot;' value='something&quot;}</code> to the request, this is because the browser expects to send a POST form as a request, not a JSON, if the request does not look like a POST form in the browser will try to format it, and that would send an invalid request.
+Now we change the value of &ldquo;name&rdquo; and host the page using python and open it on our browser. After opening it we see that it opens the CSRF site.</p>
+<p><img src="images/csrfpoc.png" alt="csrfpoc.png"></p>
+<p>If we check the request that was sent we can validate that the request came from our local python server.</p>
+<p><img src="images/csrfpocreq.png" alt="csrfpocreq.png"></p>
+<p>If we go back to the challenge page we can validate the name was updated.</p>
+<p><img src="images/csrfsolved.png" alt="csrfsolved.png"></p>
+
+<h2 id="session-monitor">Session Monitor <a class="header-link" href="#session-monitor"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This challenge can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/sessionMonitor.php">https://labs.cai.do/sessionMonitor.php</a></p>
+<p>The purpose of this challenge is to learn how to store changing values from requests to an environment variable, while I don&rsquo;t know how Caido can make use of this information ZAP can achieve something similar using <a href="/docs/desktop/addons/script-console/#global-variables">global variables</a>, so let&rsquo;s store the current session cookie value in a new one.</p>
+<p>When we access we are shown the next site.</p>
+<p><img src="images/monitorsite.png" alt="monitorsite.png"></p>
+<p>This site allows us to change our current session cookie by sending this request.</p>
+<p><img src="images/monitorreq.png" alt="monitorreq.png"></p>
+<p>To track the current PHPSESSID we create the next <strong>Proxy</strong> script.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">proxyRequest</span>(<span style="color:#a6e22e">msg</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">proxyResponse</span>(<span style="color:#a6e22e">msg</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cookielist</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getResponseHeader</span>().<span style="color:#a6e22e">getHttpCookies</span>(<span style="color:#e6db74">&#34;labs.cai.do&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">cookielist</span>.<span style="color:#a6e22e">length</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cookielist</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">getName</span>() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;PHPSESSID&#34;</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">org</span>.<span style="color:#a6e22e">zaproxy</span>.<span style="color:#a6e22e">zap</span>.<span style="color:#a6e22e">extension</span>.<span style="color:#a6e22e">script</span>.<span style="color:#a6e22e">ScriptVars</span>.<span style="color:#a6e22e">setGlobalVar</span>(<span style="color:#e6db74">&#34;currentSession&#34;</span>,<span style="color:#a6e22e">cookielist</span>[<span style="color:#a6e22e">i</span>].<span style="color:#a6e22e">getValue</span>())
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>As we see all it does is extract the cookies from the responses, then if it finds the cookie &ldquo;PHPSESSID&rdquo; it saves it in a variable called &ldquo;currentSession&rdquo;.
+We can access to this variable from any other script, in this case we make a simple print on python as a <strong>Stand Alone</strong> script.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> org.zaproxy.zap.extension.script <span style="color:#f92672">import</span> ScriptVars
+</span></span><span style="display:flex;"><span>print (ScriptVars<span style="color:#f92672">.</span>getGlobalVar(<span style="color:#e6db74">&#34;currentSession&#34;</span>))
+</span></span></code></pre></div><p>If we execute it every time we request a new cookie we can see the value changes.</p>
+<p><img src="images/monitorpy.png" alt="monitorpy.png"></p>
+<p>We can check the site to validate we got the correct values.</p>
+<p><img src="images/monitorsolve.png" alt="monitorpy.png"></p>
+<p>While this lab looked like a scenario to use a passive script instead of a proxy one, trying to track a changing value using passive scripts could end up not working properly. If the value changes too quick we could end up storing a previous value due the default parallel nature of passive scanning, also there can be a significant delay between receiving the cookie and the value being updated if there are many request being analyzed, given that by default there are some passive rules loaded that would need to be run on every request.</p>
+
+<h2 id="reflected-xss-lab">Reflected XSS Lab <a class="header-link" href="#reflected-xss-lab"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This challenge can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/xss.php">https://labs.cai.do/xss.php</a></p>
+<p>In this challenge we are shown the next site.</p>
+<p><img src="images/xsssite.png" alt="xsssite.png"></p>
+<p>If we set the classic XSS PoC as name <code>&lt;script&gt;alert(1)&lt;/script&gt;</code> we can validate the vulnerability.</p>
+<p><img src="images/xsspoc.png" alt="xsspoc.png"></p>
+<p>On the main page the description of the challenge is the next one:
+<code>Learn the basics of how to identify reflected XSS with two different vulnerabilities in the same lab.</code>
+It says that there are <strong>two</strong> vulnerabilities, while in this case we could find the other value by reading the HTML code, that&rsquo;s not always possible, so we will use Param Digger (equivalent of Burp&rsquo;s Param Miner) to find the other parameter, since the default wordlist is too small we will use Burp&rsquo;s list from Seclist.</p>
+<p><img src="images/xssparam.png" alt="xssparam.png"></p>
+<p>Once the scan is finished it reports the &ldquo;company&rdquo; parameter.</p>
+<p><img src="images/xssparamresult.png" alt="xssparamresult.png"></p>
+<p>We can read the response to find out how the parameter changes the response.</p>
+<p><img src="images/xsscompany.png" alt="xsscompany.png"></p>
+<p>Since we are already inside a <em>script</em> tag we use a different payload <code>';alert(1);'</code>:</p>
+<p><img src="images/xsscomppoc.png" alt="xsscomppoc.png"></p>
+
+<h2 id="http-hunt-lottery">HTTP Hunt Lottery <a class="header-link" href="#http-hunt-lottery"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This challenge can be found on the next URL:</p>
+<p><a href="https://labs.cai.do/http-hunt/index.php">https://labs.cai.do/http-hunt/index.php</a></p>
+<p>In this challenge we are shown the next site.</p>
+<p><img src="images/huntsite.png" alt="huntsite.png"></p>
+<p>If we click the button we see the next message:</p>
+<p><img src="images/huntluck.png" alt="huntluck.png"></p>
+<p>If we check the HTTP response we see extra information.</p>
+<p><img src="images/luckresponse.png" alt="luckresponse.png"></p>
+<p>Once we enter to the revealed site we get the solution.</p>
+<p><img src="images/huntsolve.png" alt="huntsolve.png"></p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2025-10-01-zap-updates-september-2025/"> ZAP Updates - September 2025</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/5ubterranean_400x400.png" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    5ubterranean
+                  
+                  
+                  <a class="author-twitter" href="https://twitter.com/5ubterranean_">@5ubterranean_</a>
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#match-and-replace">Match and Replace</a></li>
+    <li><a href="#idor-vulnerability">IDOR Vulnerability</a></li>
+    <li><a href="#too-many-requests">Too Many Requests</a></li>
+    <li><a href="#shasigned">ShaSigned</a></li>
+    <li><a href="#csrf-via-content-type">CSRF via Content-Type</a></li>
+    <li><a href="#session-monitor">Session Monitor</a></li>
+    <li><a href="#reflected-xss-lab">Reflected XSS Lab</a></li>
+    <li><a href="#http-hunt-lottery">HTTP Hunt Lottery</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/fuzzer/">fuzzer</a> </li>
+           
+           <li> <a href="/tags/caido-lab/">caido-lab</a> </li>
+           
+           <li> <a href="/tags/javascript/">javascript</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2025-10-15-solving-caido-labs/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2025 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.4d3af1.js"></script>
+  
+</div>
+</body>
+</html>
