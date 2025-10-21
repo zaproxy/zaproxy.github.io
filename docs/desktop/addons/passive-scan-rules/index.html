@@ -2096,14 +2096,14 @@ It does not indicate any potential vulnerabilities but it could indicate that th
 
 <h2 id="id-10062">PII Disclosure <a class="header-link" href="#id-10062"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>PII is information like credit card number, SSN etc. This check currently reports only numbers which match credit card numbers and pass Luhn checksum, which gives high confidence, that this is a credit card number.<br>
-At MEDIUM and HIGH threshold it attempts to use three characters of context on each side of potential matches to exclude matches within decimal like content. At LOW threshold, alerts will be raised for such matches.</p>
+At MEDIUM and HIGH threshold it attempts to use three characters of context on each side of potential matches to exclude matches within decimal like content or content which includes underscores. At LOW threshold, alerts will be raised for such matches.</p>
 <p>At MEDIUM and HIGH threshold, the following content types are evaluated:</p>
 <ul>
-<li>HTML</li>
+<li>HTML (visible text and script blocks)</li>
 <li>JSON</li>
 <li>XML</li>
 </ul>
-<p>Image and CSS files are always ignored. Every other content type is evaluated at LOW threshold.</p>
+<p>Image and CSS files are always ignored. Every other content type is evaluated at LOW threshold. Additionally at LOW threshold the entire HTML response is evaluated.</p>
 <p>Note: In the case of suspected credit card values, the potential credit card numbers are looked up against a Bank Identification Number List
 (BINList). If a match is found the alert is raised at High confidence and additional details are added to the &lsquo;Other Information&rsquo; field in the
 alert, otherwise the alerts will have Medium confidence.
