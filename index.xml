@@ -206,6 +206,7 @@ If you select one of the users then the active scan will be performed as that us
       <description>&lt;h1 id=&#34;api-policy&#34;&gt;API Policy&lt;/h1&gt;
 &lt;p&gt;A policy focusing on issues likely to impact APIs and not UI.&lt;/p&gt;
 &lt;p&gt;For the list of scan rules included see the &lt;a href=&#34;/alerttags/policy_api/&#34;&gt;Alert Tag: POLICY_API&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;Programmatic Name: &lt;code&gt;API&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Return to &lt;a href=&#34;/docs/desktop/addons/scan-policies/&#34;&gt;main scan policies page&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
@@ -2011,8 +2012,8 @@ to see WebSockets in action.&lt;/p&gt;
 &lt;h2 id=&#34;filters&#34;&gt;Filters &lt;a class=&#34;header-link&#34; href=&#34;#filters&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;h3 id=&#34;channel-selector&#34;&gt;Channel Selector &lt;a class=&#34;header-link&#34; href=&#34;#channel-selector&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;You can restrict the display of messages to one specific WebSocket channel or all.&lt;br&gt;
-If you select a specific channel, then the &lt;em&gt;Show handshake&lt;/em&gt; button (&lt;img src=&#34;/docs/desktop/addons/websockets/images/handshake.png&#34; alt=&#34;&#34;&gt;) becomes enabled. When you click on it, the corresponding HTTP handshake is shown in the Request/Response tab.&lt;/p&gt;</description>
+&lt;p&gt;You can restrict the display of messages to one specific WebSocket
+channel or all.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -2248,6 +2249,7 @@ Default: &lt;code&gt;20&lt;/code&gt;.&lt;/p&gt;</description>
       <guid>/docs/desktop/addons/scan-policies/policy-default/</guid>
       <description>&lt;h1 id=&#34;default-policy&#34;&gt;Default Policy&lt;/h1&gt;
 &lt;p&gt;A policy which enables all of the installed active scan rules.&lt;/p&gt;
+&lt;p&gt;Programmatic Name: &lt;code&gt;Default Policy&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Return to &lt;a href=&#34;/docs/desktop/addons/scan-policies/&#34;&gt;main scan policies page&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
@@ -3790,7 +3792,7 @@ browser, including:&lt;/p&gt;
 
 &lt;h2 id=&#34;actions&#34;&gt;Actions &lt;a class=&#34;header-link&#34; href=&#34;#actions&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;scan (browser url contextName userName subtreeOnly maxCrawlDepth pageLoadTime)&lt;/code&gt;: Runs the Client Spider against the given URL and/or context. Returns the scanId.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;scan (browser url contextName userName subtreeOnly maxCrawlDepth pageLoadTime numberOfBrowsers scopeCheck)&lt;/code&gt;: Runs the Client Spider against the given URL and/or context. Returns the scanId.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;stop (scanId*)&lt;/code&gt;: Stops a Client Spider scan.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -3803,13 +3805,15 @@ browser, including:&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;subtreeOnly&lt;/code&gt;: If set to &amp;rsquo;true&amp;rsquo;, the spider will only scan URLs under the specified URL. Default: &amp;lsquo;false&amp;rsquo;.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;maxCrawlDepth&lt;/code&gt;: The maximum depth the spider should crawl, where 0 is unlimited. Defaults to client options.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;pageLoadTime&lt;/code&gt;: The time in seconds to wait for a page to load. Defaults to client options.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;numberOfBrowsers&lt;/code&gt;: Number of Browser Windows to Open (concurrency). Integer, defaults to client options.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;scopeCheck&lt;/code&gt;: Scope Check mode, either &lt;code&gt;FLEXIBLE&lt;/code&gt; (default) or &lt;code&gt;STRICT&lt;/code&gt;.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;scanId&lt;/code&gt;: The ID of the scan to query or manage.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;examples&#34;&gt;Examples &lt;a class=&#34;header-link&#34; href=&#34;#examples&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;h3 id=&#34;start-a-scan&#34;&gt;Start a scan: &lt;a class=&#34;header-link&#34; href=&#34;#start-a-scan&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;https://zap/JSON/clientSpider/action/scan/?url=https://example.com&amp;amp;maxCrawlDepth=5&amp;amp;pageLoadTime=30
+&lt;pre&gt;&lt;code&gt;https://zap/JSON/clientSpider/action/scan/?url=https://example.com&amp;amp;maxCrawlDepth=5&amp;amp;pageLoadTime=30&amp;amp;numberOfBrowsers=1&amp;amp;scopeCheck=STRICT
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;check-status&#34;&gt;Check status: &lt;a class=&#34;header-link&#34; href=&#34;#check-status&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
@@ -5897,6 +5901,7 @@ client side validation (often enforced using javascript).&lt;/p&gt;</description
       <guid>/docs/desktop/addons/scan-policies/policy-pentest/</guid>
       <description>&lt;h1 id=&#34;penetration-tester-policy&#34;&gt;Penetration Tester Policy&lt;/h1&gt;
 &lt;p&gt;A policy which enables all of the installed active scan rules with the exception of the Example rules.&lt;/p&gt;
+&lt;p&gt;Programmatic Name: &lt;code&gt;Pen Test&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Return to &lt;a href=&#34;/docs/desktop/addons/scan-policies/&#34;&gt;main scan policies page&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
@@ -17219,7 +17224,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           spider
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-02
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17241,7 +17246,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           authhelper
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-18
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17307,7 +17312,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           pscanrulesBeta
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-18
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17329,7 +17334,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           client
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-02
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17351,7 +17356,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           scanpolicies
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-18
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17395,7 +17400,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           ascanrulesBeta
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-18
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17417,7 +17422,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           pscanrulesAlpha
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-18
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17527,7 +17532,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           wappalyzer
         &lt;/td&gt;
         &lt;td &gt;
-          2025-09-02
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       
@@ -17571,7 +17576,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           ascanrulesAlpha
         &lt;/td&gt;
         &lt;td &gt;
-          2025-10-07
+          2025-11-04
         &lt;/td&gt;
       &lt;/tr&gt;
       

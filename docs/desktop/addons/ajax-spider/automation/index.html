@@ -1886,11 +1886,11 @@
     tests:
       - name: &#39;At least 100 URLs found&#39;      # String: Name of the test, default: statistic + operator + value
         type: &#39;stats&#39;                        # String: Type of test, only &#39;stats&#39; is supported for now
-        statistic: &#39;spiderAjax.urls.added&#39;   # String: Name of an integer / long statistic, currently supported: &#39;spiderAjax.urls.added&#39;
+        statistic: &#39;stats.spiderAjax.urls.added&#39;   # String: Name of an integer / long statistic, currently supported: &#39;stats.spiderAjax.urls.added&#39;
         operator: &#39;&gt;=&#39;                       # String [&#39;==&#39;, &#39;!=&#39;, &#39;&gt;=&#39;, &#39;&gt;&#39;, &#39;&lt;&#39;, &#39;&lt;=&#39;]: Operator used for testing
         value: 100                           # Int: Change this to the number of URLs you expect to find
         onFail: &#39;info&#39;                       # String [warn, error, info]: Change this to &#39;warn&#39; or &#39;error&#39; for the test to take effect
-</code></pre><p>If the &lsquo;runOnlyIfModern&rsquo; is set to &lsquo;True&rsquo; then the <a href="/docs/desktop/addons/automation-framework/job-pscanwait/">passiveScan-wait</a> job MUST be run before this one (as well as after it) and the <a href="/docs/alerts/10109/">Modern Web Application</a> rule installed and enabled. If either of those things are not done then the ajax spider will always run and a warning output. If they are both done and no &ldquo;Modern Web Application&rdquo; alert is raised then the assumption is made that this is a tradition app and therefore the ajax spider is not needed.</p>
+</code></pre><p>If the &lsquo;runOnlyIfModern&rsquo; is set to &lsquo;True&rsquo; then the <a href="/docs/desktop/addons/automation-framework/job-pscanwait/">passiveScan-wait</a> job MUST be run before this one (as well as after it) and the <a href="/docs/alerts/10109/">Modern Web Application</a> rule installed and enabled. If either of those things are not done then the ajax spider will always run and a warning output. If they are both done and no &ldquo;Modern Web Application&rdquo; alert is raised then the assumption is made that this is a tradition app and therefore the ajax spider is not needed. Previously the statistic &ldquo;spiderAjax.urls.started&rdquo; was specified. This is no longer recommended and will be removed at some point in the future.</p>
 
         </div>
       </div>

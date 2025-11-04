@@ -1857,7 +1857,7 @@
 
 <h2 id="actions">Actions <a class="header-link" href="#actions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <ul>
-<li><code>scan (browser url contextName userName subtreeOnly maxCrawlDepth pageLoadTime)</code>: Runs the Client Spider against the given URL and/or context. Returns the scanId.</li>
+<li><code>scan (browser url contextName userName subtreeOnly maxCrawlDepth pageLoadTime numberOfBrowsers scopeCheck)</code>: Runs the Client Spider against the given URL and/or context. Returns the scanId.</li>
 <li><code>stop (scanId*)</code>: Stops a Client Spider scan.</li>
 </ul>
 
@@ -1870,13 +1870,15 @@
 <li><code>subtreeOnly</code>: If set to &rsquo;true&rsquo;, the spider will only scan URLs under the specified URL. Default: &lsquo;false&rsquo;.</li>
 <li><code>maxCrawlDepth</code>: The maximum depth the spider should crawl, where 0 is unlimited. Defaults to client options.</li>
 <li><code>pageLoadTime</code>: The time in seconds to wait for a page to load. Defaults to client options.</li>
+<li><code>numberOfBrowsers</code>: Number of Browser Windows to Open (concurrency). Integer, defaults to client options.</li>
+<li><code>scopeCheck</code>: Scope Check mode, either <code>FLEXIBLE</code> (default) or <code>STRICT</code>.</li>
 <li><code>scanId</code>: The ID of the scan to query or manage.</li>
 </ul>
 
 <h2 id="examples">Examples <a class="header-link" href="#examples"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 
 <h3 id="start-a-scan">Start a scan: <a class="header-link" href="#start-a-scan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<pre><code>https://zap/JSON/clientSpider/action/scan/?url=https://example.com&amp;maxCrawlDepth=5&amp;pageLoadTime=30
+<pre><code>https://zap/JSON/clientSpider/action/scan/?url=https://example.com&amp;maxCrawlDepth=5&amp;pageLoadTime=30&amp;numberOfBrowsers=1&amp;scopeCheck=STRICT
 </code></pre>
 
 <h3 id="check-status">Check status: <a class="header-link" href="#check-status"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
