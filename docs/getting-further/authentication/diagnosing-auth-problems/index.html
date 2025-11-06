@@ -150,8 +150,53 @@ We would love to be able to program ZAP to automatically understand all forms of
 <p>We probably do not have access to your app, and even if we did we would not have the time to understand it for you.</p>
 <p>This means that you need to understand exactly how your app handles authentication (and session handling) in order to configure ZAP to handle it for you.</p>
 
-<h3 id="existing-resources">Existing Resources <a class="header-link" href="#existing-resources"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>There are a lot of existing resources that can help you:</p>
+<h3 id="use-the-authentication-tester">Use the Authentication Tester <a class="header-link" href="#use-the-authentication-tester"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/blog/2023-05-23-authentication-tester/">Authentication Tester</a> makes it significantly easier to configure
+ZAP to handle most applications with login forms.</p>
+<p>It shows you what has worked, what has failed, and generates a context you can use for testing.</p>
+<p>If for any reason you cannot use the ZAP Desktop then you can use the
+<a href="https://github.com/zaproxy/community-scripts/blob/main/other/af-plans/BrowserAuthTest.yaml">BrowserAuthTest.yaml</a> Automation Framework plan.
+This generates an <a href="/docs/desktop/addons/authentication-helper/auth-report-json/">Authentication Report</a>
+which you can either analyse yourself or import into ZAP via the &ldquo;Auth Diags&rdquo; tab.</p>
+
+<h3 id="common-problems">Common Problems <a class="header-link" href="#common-problems"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+
+<h4 id="failure-to-access-the-app">Failure to Access the App <a class="header-link" href="#failure-to-access-the-app"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>See the FAQ: <a href="/faq/why-cant-zap-connect-to-my-website/">Why can&rsquo;t ZAP connect to my web application?</a></p>
+
+<h4 id="failure-to-fill-in-the-login-form">Failure to Fill in the Login Form <a class="header-link" href="#failure-to-fill-in-the-login-form"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Watch the browser when it is launched from the Authentication Tester, or check the screenshots in the Authentication Report.</p>
+<p>If you do not see the correct login form then try to find and configure the correct URL.</p>
+<p>If there is not a fixed URL you can use then select a fixed URL that has a link to the login URL.</p>
+<p>If the application is using anti-automation features like CAPTCHAs or OTPs then you should disable them.</p>
+<p>You can configure ZAP to handle TOTP but it will complicate your setup.</p>
+<p>If you need to fill in more information than just username and password then you should record a client side script. This can be done from within the Authentication Tester.</p>
+<p>If the recording fails then open the login page in a browser and check to see if the HTML element that the recording fails on is present. The failing element should be specified in the error message.</p>
+<p>If your app generates different IDs each time the login form is generated then you
+will either need to change your app to make it more automation friendly, or hand craft a Zest client side script to cope with them. XPath expressions may work more effectively that IDs.</p>
+
+<h4 id="failure-to-identify-session-or-verification">Failure to Identify Session or Verification <a class="header-link" href="#failure-to-identify-session-or-verification"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>Watch the browser when it is launched from the Authentication Tester, or check the screenshots in the Authentication Report.</p>
+<p>If the app does not fully load then increase the &ldquo;Time to Wait&rdquo; until you can see that it has fully loaded.</p>
+<p>Have a look at the domains in the Sites Tree. If there are any that you know are part of your app (such as APIs) or which could be related to authentication then add these domains in the Authentication Tester: Domains tab.</p>
+<p>If you are using the Authentication Tester then keep an eye on the passive scan threads in the <a href="/docs/desktop/ui/footer/">footer</a>.
+If there are still passive scan threads running when the browser is closed then the passive scan rules which
+detect the session and verification details may not have run.</p>
+<p>You can try disabling all of the passive scan rules except for the following ones:</p>
+<ul>
+<li><a href="/docs/alerts/10111/">Authentication Request Identified</a></li>
+<li><a href="/docs/alerts/10112/">Session Management Request Identified</a></li>
+<li><a href="/docs/alerts/10113/">Verification Request Identified</a></li>
+</ul>
+<p>If you still see failures then get in touch with us via the <a href="https://groups.google.com/group/zaproxy-users">User Group</a> so that we can keep improving ZAP.</p>
+<p>You can also try to configure them manually:</p>
+<ul>
+<li><a href="/docs/getting-further/authentication/session-handling/">Session Handling</a></li>
+<li><a href="/docs/getting-further/authentication/finding-a-verification-url/">Finding a Verification URL</a></li>
+</ul>
+
+<h3 id="other-resources">Other Resources <a class="header-link" href="#other-resources"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>There are a lot of other resources that can help you:</p>
 <ul>
 <li><a href="/docs/authentication/">ZAP Authentication</a> - the docs we are currently working on</li>
 <li><a href="/videos-list/">Official ZAP Videos</a> - search for &ldquo;auth&rdquo; in the &ldquo;Tags&rdquo; field</li>
