@@ -346,6 +346,91 @@ doLogin is left included as it is impacted by a SQLi vulnerability.</p>
       </tr>
   </tbody>
 </table>
+
+<h3 id="api-scanning">API Scanning <a class="header-link" href="#api-scanning"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Authentication is a bit different for the API.</p>
+<p>You need to make a <code>POST</code> request to the <code>/api/login</code> with the credentials in JSON format: <code>{&quot;username&quot;:&quot;jsmith&quot;,&quot;password&quot;:&quot;demo1234&quot;}</code>. Which responds with a an Authorization token which then needs to be sent via the <code>Authorization</code> header on requests to other parts of the API. Session/token validity can be verified by making a <code>GET</code> request to <code>/api/login</code> then checking the response code (200 OK vs 401 Unauthorized).</p>
+
+<h4 id="recommended-environment-1">Recommended Environment <a class="header-link" href="#recommended-environment-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contexts</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">testfire_api</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">urls</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">https://demo.testfire.net</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">includePaths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">https://demo.testfire.net.*</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">excludePaths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">https://demo.testfire.net/api/logout</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">authentication</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#ae81ff">json</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginRequestBody</span>: <span style="color:#e6db74">&#34;{\&#34;username\&#34;:\&#34;{%username%}\&#34;,\&#34;password\&#34;:\&#34;{%password%}\&#34;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginPageUrl</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginRequestUrl</span>: <span style="color:#ae81ff">https://demo.testfire.net/api/login</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">verification</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">method</span>: <span style="color:#ae81ff">poll</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loggedInRegex</span>: <span style="color:#ae81ff">200</span> <span style="color:#ae81ff">OK</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loggedOutRegex</span>: <span style="color:#ae81ff">401</span> <span style="color:#ae81ff">Unauthorized</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollFrequency</span>: <span style="color:#ae81ff">60</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollUnits</span>: <span style="color:#ae81ff">seconds</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollUrl</span>: <span style="color:#ae81ff">https://demo.testfire.net/api/login</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">pollPostData</span>: <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sessionManagement</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#ae81ff">headers</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">Authorization</span>: <span style="color:#e6db74">&#34;{%json:Authorization%}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">technology</span>: {}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">structure</span>: {}
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">users</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">jsmith</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">credentials</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#ae81ff">demo1234</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">username</span>: <span style="color:#ae81ff">jsmith</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>: {}
+</span></span></code></pre></div>
+<h4 id="openapi-import">OpenAPI Import <a class="header-link" href="#openapi-import"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>You can then use an OpenAPI Import job to explore the API prior to active scanning.</p>
+
+
+
+  <blockquote class="alert alert-note">
+    <p class="alert-heading">
+      📝
+      
+        Note
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>The traffic will be passively scanned during import.</p>
+    </div>
+  </blockquote>
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">openapi</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apiUrl</span>: <span style="color:#ae81ff">https://demo.testfire.net/swagger/properties.json</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">context</span>: <span style="color:#ae81ff">testfire_api</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">user</span>: <span style="color:#ae81ff">jsmith</span>
+</span></span></code></pre></div>
+<h4 id="scanning-1">Scanning <a class="header-link" href="#scanning-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>You can then active scan as you see fit.</p>
+
+
+
+  <blockquote class="alert alert-note">
+    <p class="alert-heading">
+      📝
+      
+        Note
+      
+    </p>
+    
+    <div class="alert-content">
+        <p>If you have the <a href="/docs/desktop/addons/scan-policies/">Scan Policies add-on</a> installed, this is a good opportunity to leverage the <a href="/docs/desktop/addons/scan-policies/policy-api/">API Policy</a>.</p>
+    </div>
+  </blockquote>
+
 </main>
   </article>
 </section>
