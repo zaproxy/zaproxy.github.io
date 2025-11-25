@@ -6,7 +6,7 @@
     <description>Recent content in The ZAP Homepage on ZAP</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Nov 2025 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -694,6 +694,26 @@ they will not persist over ZAP sessions unless the context is imported again.&lt
       
       <guid>/docs/sbom/exim/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Insights Fields</title>
+      <link>/docs/desktop/addons/insights/insights-fields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/insights/insights-fields/</guid>
+      <description>&lt;h1 id=&#34;insights-fields&#34;&gt;Insights Fields&lt;/h1&gt;
+
+&lt;h3 id=&#34;level&#34;&gt;Level &lt;a class=&#34;header-link&#34; href=&#34;#level&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;An indication of how significant an Insight is.&lt;/p&gt;
+&lt;p&gt;The following Levels are supported:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Info: An informational Insight which gives you more information about the target&lt;/li&gt;
+&lt;li&gt;Low: An Insight which is potentially a problem, depending on how your application works&lt;/li&gt;
+&lt;li&gt;Medium: A more significant Insight which should be investigated ASAP. It potentially means that the scan is not working as expected&lt;/li&gt;
+&lt;li&gt;High: A very significant Insight which is highly likely to impact the scan effectiveness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;We recommend terminating a scan early and investigating if any Medium or High level Insights are reported.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -2421,6 +2441,127 @@ USER zap
     </item>
     
     <item>
+      <title>Insights List</title>
+      <link>/docs/desktop/addons/insights/insights-list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/insights/insights-list/</guid>
+      <description>&lt;h1 id=&#34;insights-list&#34;&gt;Insights List&lt;/h1&gt;
+&lt;p&gt;This is the full set of Insights currently supported:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Key&lt;/th&gt;
+          &lt;th&gt;Description&lt;/th&gt;
+          &lt;th&gt;Site&lt;/th&gt;
+          &lt;th&gt;Type&lt;/th&gt;
+          &lt;th&gt;Low&lt;/th&gt;
+          &lt;th&gt;High&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.database.full&lt;/td&gt;
+          &lt;td&gt;Database full&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;High&lt;/td&gt;
+          &lt;td&gt;High&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.diskspace.full&lt;/td&gt;
+          &lt;td&gt;Diskspace full&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;High&lt;/td&gt;
+          &lt;td&gt;High&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.memory.usage&lt;/td&gt;
+          &lt;td&gt;Percentage of memory used&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;Mem&lt;/td&gt;
+          &lt;td&gt;Medium&lt;/td&gt;
+          &lt;td&gt;High&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.log.error&lt;/td&gt;
+          &lt;td&gt;Count of ZAP errors&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.log.warn&lt;/td&gt;
+          &lt;td&gt;Count of ZAP warnings&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.network.failure&lt;/td&gt;
+          &lt;td&gt;Percentage of network failures&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;Msg&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+          &lt;td&gt;Med&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.auth.failure&lt;/td&gt;
+          &lt;td&gt;Percentage of authentication failures&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Msg&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+          &lt;td&gt;Med&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.code.Xxx&lt;/td&gt;
+          &lt;td&gt;Percentage of Xxx response codes&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Msg&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.response.slow&lt;/td&gt;
+          &lt;td&gt;Percentage of slow responses&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;Msg&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+          &lt;td&gt;Low&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.endpoint.content.CCC&lt;/td&gt;
+          &lt;td&gt;Percentage of responses with content-type CCC&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.endpoint.method.MMM&lt;/td&gt;
+          &lt;td&gt;Percentage of responses with method MMM&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;insight.endpoint.total&lt;/td&gt;
+          &lt;td&gt;Total number of endpoints&lt;/td&gt;
+          &lt;td&gt;Yes&lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+          &lt;td&gt;Info&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The columns show the Insight &lt;a href=&#34;/docs/desktop/addons/insights/insights-fields/&#34;&gt;fields&lt;/a&gt; with the following additions:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>OAST API</title>
       <link>/docs/desktop/addons/oast-support/api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -3429,6 +3570,19 @@ These rules are often quite simple, they just need to detect that you are runnin
 &lt;p&gt;Allows to refresh anti-CSRF tokens contained in the request. The anti-CSRF tokens must be properly detected by ZAP to be able to use this processor.&lt;br&gt;
 For more information consult the help page &amp;ldquo;Getting Started&amp;rdquo; &amp;gt; &amp;ldquo;Features&amp;rdquo; &amp;gt; &amp;ldquo;Anti CSRF Tokens&amp;rdquo;.&lt;br&gt;
 &lt;strong&gt;Note:&lt;/strong&gt; This processor is automatically added to the list of processors, if anti-CSRF tokens were detected.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Insights Options</title>
+      <link>/docs/desktop/addons/insights/insights-options/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/insights/insights-options/</guid>
+      <description>&lt;h1 id=&#34;insights-options&#34;&gt;Insights Options&lt;/h1&gt;
+&lt;p&gt;This screen allows you to configure the &lt;a href=&#34;/docs/desktop/addons/insights/&#34;&gt;Insights&lt;/a&gt; options.&lt;/p&gt;
+
+&lt;h3 id=&#34;message-low-threshold-&#34;&gt;Message Low Threshold % &lt;a class=&#34;header-link&#34; href=&#34;#message-low-threshold-&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The low threshold used for insights related to messages, as a percentage of all messages sent.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -8117,6 +8271,15 @@ Context sensitive help has also been implemented so that when you press the F1 k
 &lt;a href=&#34;https://www.fastcompany.com/90790394/what-is-a-faang-company&#34;&gt;FAANG&lt;/a&gt;&amp;rsquo;s
 &lt;a href=&#34;https://twitter.com/psiinon/status/1577192848390094849&#34;&gt;offered them an interview&lt;/a&gt;!&lt;/p&gt;
 &lt;p&gt;Luckily ZAPbot&amp;rsquo;s career goals are completely focused on ZAP &amp;#x1f609;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>50 Million Errors in One Day?!</title>
+      <link>/blog/2025-11-25-50-million-errors-in-one-day/</link>
+      <pubDate>Tue, 25 Nov 2025 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2025-11-25-50-million-errors-in-one-day/</guid>
+      <description>ZAP logged a LOT of errors yesterday - heres why, and what we have already done to address the underlying problems</description>
     </item>
     
     <item>
