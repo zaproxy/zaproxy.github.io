@@ -1906,6 +1906,14 @@ authentication method set up correctly and with valid credentials.</p>
           <td style="text-align: left">domains</td>
       </tr>
       <tr>
+          <td style="text-align: left">Domains Partially Out of Scope</td>
+          <td style="text-align: left">domainspartiallyoutofscope</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Domains Out of Scope</td>
+          <td style="text-align: left">domainsoutofscope</td>
+      </tr>
+      <tr>
           <td style="text-align: left">Diagnostics</td>
           <td style="text-align: left">diagnostics</td>
       </tr>
@@ -2058,6 +2066,25 @@ environment will have been updated with the values that ZAP has detected.</p>
 <p>These are all of the statistics that have been recorded by ZAP.<br>
 For more details of what they mean see <a href="/docs/internal-statistics/">https://www.zaproxy.org/docs/internal-statistics/</a></p>
 
+<h3 id="domains">Domains <a class="header-link" href="#domains"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This section contains an array with all the domains that were accessed while performing the authentication.</p>
+<pre tabindex="0"><code>	&#34;domains&#34;: [
+		&#34;https://www.example.org&#34;,
+		&#34;https://api.example.org&#34;
+	]
+</code></pre>
+<h3 id="domains-partially-out-of-scope">Domains Partially Out of Scope <a class="header-link" href="#domains-partially-out-of-scope"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This section contains an array with the domains partially out of scope, that were accessed while performing the authentication. For example, when the context includes just a subset of the target (e.g. <code>https://www.example.org/frontend/</code>) and other resources were also accessed (e.g. <code>https://www.example.org/backend/</code>).</p>
+<pre tabindex="0"><code>	&#34;domainsPartiallyOutOfScope&#34;: [
+		&#34;https://www.example.org&#34;
+	]
+</code></pre>
+<h3 id="domains-out-of-scope">Domains Out of Scope <a class="header-link" href="#domains-out-of-scope"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This section contains an array with the domains out of scope (context), that were accessed while performing the authentication.</p>
+<pre tabindex="0"><code>	&#34;domainsOutOfScope&#34;: [
+		&#34;https://api.example.org&#34;
+	]
+</code></pre>
 <h3 id="diagnostics">Diagnostics <a class="header-link" href="#diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The <a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based</a> and <a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script</a> authentication methods allow to record diagnostic data, which can be included in the Authentication Report, to help diagnose authentication problems.</p>
 <p>Diagnostic data can also be recorded with the <a href="/docs/desktop/addons/authentication-helper/auth-tester/">Authentication Tester Dialog</a>.</p>
@@ -2278,10 +2305,6 @@ For more details of what they mean see <a href="/docs/internal-statistics/">http
 			&#34;site:&#34; &#34;https://www.example.org&#34;,
 			&#34;value&#34;: 1
 		}
-	]
-	,&#34;domains&#34;: [
-		&#34;https://www.example.org&#34;,
-		&#34;https://api.example.org&#34;
 	]
 }
 </code></pre>
