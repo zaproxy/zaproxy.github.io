@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Sub Resource Integrity Attribute Missing</title>
+  <title>ZAP &ndash; Cross Site Request Forgery</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -111,7 +111,7 @@
   
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Sub Resource Integrity Attribute Missing</h1>
+      <h1 class="text--white">Cross Site Request Forgery</h1>
   </div>
 </section>
 
@@ -135,34 +135,34 @@
               <td>
                 <strong>Alert ID</strong>
               </td>
-              <td>90003</td>
+              <td>40103</td>
             </tr>
             <tr> 
               <td>
                 <strong>Alert Type</strong>
               </td>
-              <td>Passive</td>
+              <td>Tool</td>
             </tr>
             <tr> 
               <td>
                 <strong>Status</strong>
               </td>
-              <td>beta</td>
+              <td>alpha</td>
             </tr>
             <tr> 
               <td>
                 <strong>
                   Risk
                 </td>
-              <td>Medium</td>
+              <td>High</td>
             </tr>
             <tr> 
               <td>
                 <strong>CWE</strong>
               </td>
               <td>
-                <a href="https://cwe.mitre.org/data/definitions/345.html">
-                  345
+                <a href="https://cwe.mitre.org/data/definitions/352.html">
+                  352
                 </a>
               </td>
             </tr>
@@ -170,7 +170,7 @@
               <td>
                 <strong>WASC</strong>
               </td>
-              <td>15</td>
+              <td>9</td>
             </tr>
             <tr> 
               <td>
@@ -188,29 +188,14 @@
               </td>
               <td>
               
-              	<a href="/alerttags/cwe-345">CWE-345</a><br>
+              	<a href="/alerttags/cwe-352">CWE-352</a><br>
               
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
+              	<a href="/alerttags/owasp_2021_a03">OWASP_2021_A03</a><br>
               
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
+              	<a href="/alerttags/owasp_2021_a10">OWASP_2021_A10</a><br>
               
-              	<a href="/alerttags/policy_dev_std">POLICY_DEV_STD</a><br>
+              	<a href="/alerttags/wstg-v42-clnt-04">WSTG-V42-CLNT-04</a><br>
               
-              	<a href="/alerttags/policy_pentest">POLICY_PENTEST</a><br>
-              
-              	<a href="/alerttags/policy_qa_std">POLICY_QA_STD</a><br>
-              
-              	<a href="/alerttags/systemic">SYSTEMIC</a><br>
-              
-              </td>
-            </tr>
-            
-            <tr> 
-              <td>
-                <strong>More Info</strong>
-              </td>
-              <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/passive-scan-rules-beta/#id-90003">Scan Rule Help</a><br>
               </td>
             </tr>
             
@@ -221,29 +206,40 @@
       <section class="col-2-3">
         <div data-attr="summary">
           <h3 class="mb-10">Summary</h3>
-          <p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>
+          <p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p>
+<p>CSRF attacks are effective in a number of situations, including:
+* The victim has an active session on the target site.
+* The victim is authenticated via HTTP auth on the target site.
+* The victim is on the same local network as the target site.</p>
+<p>CSRF has primarily been used to perform an action against a target site using the victim&rsquo;s privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>
 
         </div>
         <div data-attr="solution" class="mb-20">
           <h3 class="mb-10">Solution</h3>
-          Provide a valid integrity attribute to the tag.
+          Phase: Architecture and Design Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid. For example, use anti-CSRF packages such as the OWASP CSRFGuard.  Phase: Implementation Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.  Phase: Architecture and Design Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330). Note that this can be bypassed using XSS.  Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation. Note that this can be bypassed using XSS.  Use the ESAPI Session Management control. This control includes a component for CSRF.  Do not use the GET method for any request that triggers a state change.  Phase: Implementation Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.
         </div>
         <div data-attr="other" class="mb-20">
           <h3 class="mb-10">Other Info</h3>
-          The following hash was calculated (using base64 encoding of the output of the hash algorithm: SHA-384) for the script in question sha384-PJww2fZl501RXIQpYNSkUcg6ASX9Pec5LXs3IxrxDHLqWK7fzfiaV2W/kCr5Ps8G
+          
         </div>
         <h3 class="mb-10">References</h3>
         <ul data-attr="references">
         
           <li>
             
-              <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</a>
+              <a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="https://cwe.mitre.org/data/definitions/352.html">https://cwe.mitre.org/data/definitions/352.html</a>
             
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/SubResourceIntegrityAttributeScanRule.java'>org/zaproxy/zap/extension/pscanrules/SubResourceIntegrityAttributeScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/foxhound/src/main/java/org/zaproxy/zap/extension/foxhound/ExtensionFoxhound.java'>org/zaproxy/zap/extension/foxhound/ExtensionFoxhound.java</a>
       </section>
   </main>
 </div>
