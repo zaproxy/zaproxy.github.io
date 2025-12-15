@@ -698,6 +698,9 @@
                             <a href="/docs/desktop/addons/insights/insights-fields/">Insights Fields</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/insights/insights-job/">Insight Automation Framework Job</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/insights/insights-list/">Insights List</a>
                         </li>  
                         <li> 
@@ -1253,6 +1256,9 @@
                             <a href="/docs/desktop/addons/technology-detection/api/">Technology Detection API</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/technology-detection/automation/">Technology Detection Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/technology-detection/options/">Options Tech Detection screen</a>
                         </li>
         </ul>
@@ -1423,6 +1429,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.16.1/">Release 2.16.1</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.17.0/">Release 2.17.0</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
@@ -1927,6 +1936,159 @@ Once you have done that (and revisited the URLs) then they will all be represent
 <h3 id="custom-parameters">Custom Parameters <a class="header-link" href="#custom-parameters"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>Finally there are cases where sites define custom parameters which ZAP does not natively understand. As a result ZAP may not be able to correctly split requests into suitable nodes.</p>
 <p>In these cases you can use Input Vector <a href="/docs/desktop/start/features/scripts/">Scripts</a> which can represent request in the Sites Tree in any way you want.</p>
+
+<h2 id="node-name-format">Node Name Format <a class="header-link" href="#node-name-format"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="top-level-nodes">Top Level Nodes <a class="header-link" href="#top-level-nodes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The top level node names include the protocol, host name and the port (if specified), e.g. <code>https://www.example.com:8080</code></p>
+
+<h3 id="intermediate-nodes">Intermediate Nodes <a class="header-link" href="#intermediate-nodes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Non leaf nodes will just have the name of the relevant part of the URL path, unless they are configured to be <a href="/docs/desktop/start/features/ddc/">Data Driven Content</a> in which case then will have the format <code>«ddc-name»</code>.</p>
+
+<h3 id="leaf-nodes">Leaf Nodes <a class="header-link" href="#leaf-nodes"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Leaf node names are made up of:</p>
+<ul>
+<li>The HTTP method (GET, POST, etc)</li>
+<li>A colon</li>
+<li>The last path element, or &ldquo;/&rdquo; if the last element is empty</li>
+<li>A list of the URL parameter names in round brackets</li>
+<li>An optional representation of the POST parameter names in round brackets</li>
+</ul>
+<p>A GET request to</p>
+<ul>
+<li><code>https://www.example.com/aaa/bbb?cc=dd&amp;ee=ff</code></li>
+</ul>
+<p>will be represented as 3 nodes:</p>
+<ul>
+<li><a href="https://www.example.com">https://www.example.com</a>
+<ul>
+<li>aaa
+<ul>
+<li>GET:bbb(cc,ee)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>A POST request to</p>
+<ul>
+<li><code>https://www.example.com/aaa/bbb/ccc/?cc=dd</code></li>
+</ul>
+<p>with &ldquo;application/x-www-form-urlencoded&rdquo; encoded data</p>
+<ul>
+<li><code>cc=dd&amp;ee=ff&amp;gg=hh</code></li>
+</ul>
+<p>will be represented as 5 nodes:</p>
+<ul>
+<li><a href="https://www.example.com">https://www.example.com</a>
+<ul>
+<li>aaa
+<ul>
+<li>bbb
+<ul>
+<li>ccc
+<ul>
+<li>POST:/(cc)(cc,ee,gg)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>A POST request to</p>
+<ul>
+<li><code>https://www.example.com/aaa/bbb/ccc</code></li>
+</ul>
+<p>with the JSON encoded data</p>
+<ul>
+<li><code>{&quot;aaa&quot;:{&quot;bbb&quot;: &quot;ccc&quot;, &quot;ddd&quot;: &quot;eee&quot;}, fff: [&quot;kkk&quot;, {&quot;ggg&quot;:&quot;hhh&quot;}, {&quot;iii&quot;:&quot;jjj&quot;}]}</code></li>
+</ul>
+<p>will be represented as 4 nodes:</p>
+<ul>
+<li><a href="https://www.example.com">https://www.example.com</a>
+<ul>
+<li>aaa
+<ul>
+<li>bbb
+<ul>
+<li>POST:ccc()({aaa:{bbb,ddd},fff:[{ggg},{iii}]})</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>A POST request to</p>
+<ul>
+<li><code>https://www.example.com/aaa/bbb/</code></li>
+</ul>
+<p>with the XML encoded data</p>
+<ul>
+<li><code>&lt;aaa&gt;&lt;bbb&gt;BBB&lt;/bbb&gt;&lt;ccc&gt;CCC&lt;/ccc&gt;&lt;ddd&gt;DDD&lt;/ddd&gt;&lt;/aaa&gt;</code></li>
+</ul>
+<p>will be represented as 4 nodes:</p>
+<ul>
+<li><a href="https://www.example.com">https://www.example.com</a>
+<ul>
+<li>aaa
+<ul>
+<li>bbb
+<ul>
+<li>POST:/()(&lt;aaa:&lt;bbb&gt;,&lt;ccc&gt;,&lt;ddd&gt;&gt;)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>For JSON and XML data repeated child elements may be represented using &ldquo;<code>..</code>&rdquo;.<br>
+For example</p>
+<ul>
+<li><code>[{&quot;a&quot;:{&quot;b&quot;: &quot;c&quot;, &quot;d&quot;: &quot;e&quot;}},{&quot;a&quot;:{&quot;b&quot;: &quot;f&quot;, &quot;d&quot;: &quot;g&quot;}},{&quot;a&quot;:{&quot;b&quot;: &quot;h&quot;, &quot;d&quot;: &quot;i&quot;}}]</code></li>
+</ul>
+<p>will be represented as</p>
+<ul>
+<li><code>[{a:{b,d}}..]</code></li>
+</ul>
+<p>A POST request to</p>
+<ul>
+<li><code>https://www.example.com/aaa/</code></li>
+</ul>
+<p>with multipart POST data like:</p>
+<pre tabindex="0"><code>-----------------------------3973496743964376987349857345
+Content-Disposition: form-data; name=&#34;text&#34;
+
+text default
+-----------------------------3973496743964376987349857345
+Content-Disposition: form-data; name=&#34;file1&#34;; filename=&#34;a.txt&#34;
+Content-Type: text/plain
+
+Content of a.txt.
+
+-----------------------------3973496743964376987349857345
+Content-Disposition: form-data; name=&#34;file2&#34;; filename=&#34;a.html&#34;
+Content-Type: text/html
+
+&lt;!DOCTYPE html&gt;&lt;title&gt;Content of a.html.&lt;/title&gt;
+
+-----------------------------3973496743964376987349857345--
+</code></pre><p>will be represented as 3 nodes:</p>
+<ul>
+<li><a href="https://www.example.com">https://www.example.com</a>
+<ul>
+<li>aaa
+<ul>
+<li>POST:/()(multipart:text,file1,file2)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
