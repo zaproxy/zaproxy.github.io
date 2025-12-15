@@ -698,6 +698,9 @@
                             <a href="/docs/desktop/addons/insights/insights-fields/">Insights Fields</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/insights/insights-job/">Insight Automation Framework Job</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/insights/insights-list/">Insights List</a>
                         </li>  
                         <li> 
@@ -1253,6 +1256,9 @@
                             <a href="/docs/desktop/addons/technology-detection/api/">Technology Detection API</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/technology-detection/automation/">Technology Detection Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/technology-detection/options/">Options Tech Detection screen</a>
                         </li>
         </ul>
@@ -1423,6 +1429,9 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.16.1/">Release 2.16.1</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/releases/2.17.0/">Release 2.17.0</a>
                         </li>  
                         <li> 
                             <a href="/docs/desktop/releases/2.2.0/">Release 2.2.0</a>
@@ -1887,55 +1896,69 @@
 <p>This screen allows you to configure the <a href="/docs/desktop/start/features/ascan/">active scan</a> options:</p>
 
 <h3 id="number-of-hosts-scanned-concurrently">Number of Hosts Scanned Concurrently <a class="header-link" href="#number-of-hosts-scanned-concurrently"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The maximum number of hosts that will be scanned at the same time. Increasing this may put extra strain on the computer ZAP is running on.</p>
+<p>The maximum number of hosts that will be scanned at the same time.</p>
+<p>Increasing this may put extra strain on the computer ZAP is running on.</p>
 
 <h3 id="concurrent-scanning-threads-per-host">Concurrent Scanning Threads per Host <a class="header-link" href="#concurrent-scanning-threads-per-host"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The number of threads the scanner will use per host.<br>
-Increasing the number of threads will speed up the scan but may put extra strain on the computer ZAP is running on and the target host.</p>
+<p>The number of threads the scanner will use per host.</p>
+<p>Increasing the number of threads will speed up the scan but may put extra strain on the computer ZAP is running on and the target host.</p>
+
+<h3 id="persist-temporary-http-messages">Persist Temporary HTTP Messages <a class="header-link" href="#persist-temporary-http-messages"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If this option is selected the active scanner will persist all HTTP messages sent while active scanning, which allows to further inspect them (e.g. custom passive scanners, manually).
+They are temporary and removed once the session is closed, for cases where the HTTP messages are not necessary it is advised to disable this option for performance reasons (I/O, disk space).</p>
+<p>The option is disabled by default when running ZAP <a href="/docs/desktop/cmdline/">inline</a>, where the sessions are usually discarded.</p>
 
 <h3 id="max-results-to-list">Max Results to List <a class="header-link" href="#max-results-to-list"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The number of results that will be shown in the Active Scan tab.<br>
-Displaying a large number of results can significantly increase the time a scan takes.</p>
+<p>The number of results that will be shown in the Active Scan tab.</p>
+<p>Displaying a large number of results can significantly increase the time a scan takes.</p>
 
 <h3 id="maximum-rule-duration-minutes-0-is-unlimited">Maximum Rule Duration (minutes; 0 is unlimited) <a class="header-link" href="#maximum-rule-duration-minutes-0-is-unlimited"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The maximum time any individual rule can run for in minutes. Zero means no limit. This can be used to prevent rules that are taking an excessive amount of time.</p>
 
 <h3 id="max-alerts-any-rule-can-raise">Max alerts any rule can raise <a class="header-link" href="#max-alerts-any-rule-can-raise"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The maximum number of alerts any rule can raise during the active scan, scan rules that reach this value are skipped.<br>
-<strong>Note:</strong> The maximum might be exceed due to threading.</p>
+<p>The maximum number of alerts any rule can raise during the active scan, scan rules that reach this value are skipped.</p>
+<p><strong>Note:</strong> The maximum might be exceed due to threading.</p>
 
 <h3 id="maximum-scan-duration-minutes-0-is-unlimited">Maximum Scan Duration (minutes; 0 is unlimited) <a class="header-link" href="#maximum-scan-duration-minutes-0-is-unlimited"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The maximum time that the whole scan can run for in minutes. Zero means no limit. This can be used to ensure that a scan is completed around a set time.</p>
 
 <h3 id="delay-when-scanning-in-milliseconds">Delay When Scanning (In Milliseconds) <a class="header-link" href="#delay-when-scanning-in-milliseconds"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The delay in milliseconds between each request.<br>
-Setting this to a non zero value will increase the time an active scan takes, but will put less of a strain on the target host.<br>
-<strong>Note:</strong> This option has been deprecated and it will be removed in a future release. Use the Network &gt; Rate Limit option instead. The latter option allows to enforce the rate at which the requests are sent while the Delay When Scanning doesn&rsquo;t.</p>
+<p>The delay in milliseconds between each request.</p>
+<p>Setting this to a non zero value will increase the time an active scan takes, but will put less of a strain
+on the target host.</p>
+<p><strong>Note:</strong> This option has been deprecated and it will be removed in a future release. Use the Network &gt; Rate Limit option instead. The latter option
+allows to enforce the rate at which the requests are sent while the Delay When Scanning doesn&rsquo;t.</p>
 
 <h3 id="inject-plugin-id-in-header-for-all-active-scan-requests">Inject plugin ID in header for all active scan requests. <a class="header-link" href="#inject-plugin-id-in-header-for-all-active-scan-requests"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>If this option is selected the active scanner will inject the request header <code>X-ZAP-Scan-ID</code> with the ID of the scan rule that&rsquo;s sending the HTTP requests.</p>
+<p>If this option is selected the active scanner will inject the request header <code>X-ZAP-Scan-ID</code> with the ID of
+the scan rule that&rsquo;s sending the HTTP requests.</p>
 
 <h3 id="handle-anti-csrf-tokens">Handle anti-CSRF tokens. <a class="header-link" href="#handle-anti-csrf-tokens"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>If this option is selected then the active scanner will attempt to automatically request <a href="/docs/desktop/start/features/anticsrf/">anti CSRF</a> tokens when required.<br>
-Previously this would have forced the scanner to only use one thread, but that is no longer the case. You are strongly recommended to check that the anti CSRF tokens are being correctly generated if more than one thread is being used, for example using custom <a href="/docs/desktop/start/features/tags/">tags</a> to check for success / failure patterns in the response.</p>
+<p>If this option is selected then the active scanner will attempt to automatically request
+<a href="/docs/desktop/start/features/anticsrf/">anti CSRF</a> tokens when required.</p>
+<p>Previously this would have forced the scanner to only use one thread, but that is no longer the case.
+You are strongly recommended to check that the anti CSRF tokens are being correctly generated if more than one thread is being used,
+for example using custom <a href="/docs/desktop/start/features/tags/">tags</a> to check for success / failure patterns in the response.</p>
 
 <h3 id="in-attack-mode-prompt-to-rescan-nodes-when-scope-changed">In Attack Mode prompt to rescan nodes when scope changed. <a class="header-link" href="#in-attack-mode-prompt-to-rescan-nodes-when-scope-changed"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>If this option is selected then when you select Attack <a href="/docs/desktop/start/features/modes/">mode</a> you will be prompted to choose whether to rescan nodes in scope.<br>
-If the option is not selected then the following option will control whether the nodes are rescanned.</p>
+<p>If this option is selected then when you select Attack <a href="/docs/desktop/start/features/modes/">mode</a> you will be prompted to choose whether to rescan nodes in scope.</p>
+<p>If the option is not selected then the following option will control whether the nodes are rescanned.</p>
 
 <h3 id="in-attack-mode-always-rescan-nodes-when-scope-changed">In Attack Mode always rescan nodes when scope changed. <a class="header-link" href="#in-attack-mode-always-rescan-nodes-when-scope-changed"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>If this option is selected then when running in Attack <a href="/docs/desktop/start/features/modes/">mode</a> all nodes in scope will be rescanned if the scope changes.<br>
-This is not recommended for large sites as it could take a long time.</p>
+<p>If this option is selected then when running in Attack <a href="/docs/desktop/start/features/modes/">mode</a> all nodes in scope will be rescanned if the scope changes.</p>
+<p>This is not recommended for large sites as it could take a long time.</p>
 
 <h3 id="default-active-scan-policy">Default Active Scan Policy <a class="header-link" href="#default-active-scan-policy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The <a href="/docs/desktop/start/features/scanpolicy/">Scan Policy</a> that is used by default when you start an active scan.</p>
 
 <h3 id="attack-mode-scan-policy">Attack Mode Scan Policy <a class="header-link" href="#attack-mode-scan-policy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The <a href="/docs/desktop/start/features/scanpolicy/">Scan Policy</a> that is used for scanning in Attack <a href="/docs/desktop/start/features/modes/">mode</a>.</p>
+<p>The <a href="/docs/desktop/start/features/scanpolicy/">Scan Policy</a> that is used for scanning in
+Attack <a href="/docs/desktop/start/features/modes/">mode</a>.</p>
 
 <h3 id="max-progress-chart-in-mins">Max Progress Chart in Mins <a class="header-link" href="#max-progress-chart-in-mins"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The maximum time in minutes for which response codes will be charted in the <a href="/docs/desktop/ui/dialogs/scanprogress/">Scan Progress dialog</a>.<br>
-To disable the chart the option should be set to zero minutes.</p>
+<p>The maximum time in minutes for which response codes will be charted in the
+<a href="/docs/desktop/ui/dialogs/scanprogress/">Scan Progress dialog</a>.</p>
+<p>To disable the chart the option should be set to zero minutes.</p>
 
 <h2 id="see-also">See also <a class="header-link" href="#see-also"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <table>
