@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <link rel="alternate" type="application/rss+xml" href="/docs/getting-further/index.xml" title="ZAP" />
-  <title>ZAP &ndash; Getting Further</title>
+  <title>ZAP &ndash; Script Types</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -113,65 +112,144 @@
 
 <section class="bolt-header">
     <div class="wrapper py-20">
-      <h1 class="text--white">Getting Further</h1>
+      <h1 class="text--white">Script Types</h1>
   </div>
 </section>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+  <ol class="breadcrumbs">
 
-  <section>
-    <div class="wrapper py-70">
-      
-      
-      <p>More advanced guides - <a href="https://groups.google.com/group/zaproxy-users">let us know</a> what else you would like them to cover.</p>
 
-      
-        <div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                
-                  <p> <b><a href="/docs/getting-further/automation/"> Getting Further With Automation</a></b>  - an in-depth guide to ZAP automation </p>
-                
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                
-                  <p> <b><a href="/docs/getting-further/authentication/"> Getting Further With Authentication</a></b>  - everything you need to know about authentication in ZAP </p>
-                
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                
-                  <p> <b><a href="/docs/getting-further/scripting/"> Getting Further With Scripting</a></b>  - everything you need to know about scripting in ZAP </p>
-                
-              </div>
-            </div>
-          
-            <div class="flex">
-              <div class="circle-arrow mr-20">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30px"><g data-name="Layer 2"><circle cx="15" cy="15" r="15" fill="#4389ff"/><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12.72 8.64L19.07 15l-6.35 6.36"/></g></svg></div>
-              <div>
-                
-                  <p> <b><a href="/docs/getting-further/is-my-app-testable/"> Is My App Security Testable?</a></b>  - are you making life harder for yourself? </p>
-                
-              </div>
-            </div>
-          
-        </div>
-      
-      
-    </div>
-  </section>
+    <li>
+        <a href='/docs/'>Documentation</a>
+    </li>
 
+    <li>
+        <a href='/docs/getting-further/'>Getting Further</a>
+    </li>
+
+    <li>
+        <a href='/docs/getting-further/scripting/'>Getting Further with ZAP Scripting</a>
+    </li>
+
+    <li>
+        <a href='/docs/getting-further/scripting/script-types/'>Script Types</a>
+    </li>
+
+
+</ol>
+    <main><p>ZAP supports the following script types:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Name</th>
+          <th>Key / Examples</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Active Rules</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/active">active</a></td>
+          <td>Scripts that run as part of the Active Scanner to perform custom scan checks.</td>
+      </tr>
+      <tr>
+          <td>Authentication</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/authentication">authentication</a></td>
+          <td>Scripts invoked when performing authentication for a Context.</td>
+      </tr>
+      <tr>
+          <td>Encode / Decode</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/encode-decode">encode-decode</a></td>
+          <td>Scripts that provide custom data encoding and decoding.</td>
+      </tr>
+      <tr>
+          <td>Extender</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/extender">extender</a></td>
+          <td>Scripts that add new functionality, including UI elements and API endpoints.</td>
+      </tr>
+      <tr>
+          <td>Fuzzer HTTP Processor</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/httpfuzzerprocessor">httpfuzzerprocessor</a></td>
+          <td>Scripts that process HTTP fuzzer messages before or after sending.</td>
+      </tr>
+      <tr>
+          <td>Fuzzer Websocket Processor</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/websocketfuzzerprocessor">websocketfuzzerprocessor</a></td>
+          <td>Scripts that process WebSocket fuzzer messages.</td>
+      </tr>
+      <tr>
+          <td>HTTP Sender</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/httpsender">httpsender</a></td>
+          <td>Scripts that run for every HTTP request and response processed by ZAP.</td>
+      </tr>
+      <tr>
+          <td>Input Vector</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/variant">variant</a></td>
+          <td>Scripts that define exactly what the Active Scanner will attack.</td>
+      </tr>
+      <tr>
+          <td>Passive Rules</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/passive">passive</a></td>
+          <td>Scripts that run as part of the Passive Scanner to perform custom checks.</td>
+      </tr>
+      <tr>
+          <td>Payload Generator</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/payloadgenerator">payloadgenerator</a></td>
+          <td>Scripts that generate payloads for fuzzing.</td>
+      </tr>
+      <tr>
+          <td>Payload Processor</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/payloadprocessor">payloadprocessor</a></td>
+          <td>Scripts that process or modify payloads during fuzzing.</td>
+      </tr>
+      <tr>
+          <td>Proxy</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/proxy">proxy</a></td>
+          <td>Scripts that run inline on proxied traffic and can modify and drop requests and responses.</td>
+      </tr>
+      <tr>
+          <td>Selenium</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/selenium">selenium</a></td>
+          <td>Scripts that automate browser interactions using browsers launched from ZAP.</td>
+      </tr>
+      <tr>
+          <td>Sequence</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/sequence">sequence</a></td>
+          <td>Scripts that define sequences of HTTP requests to model workflows.</td>
+      </tr>
+      <tr>
+          <td>Session Management</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/session">session</a></td>
+          <td>Scripts that define how sessions are managed for a Context.</td>
+      </tr>
+      <tr>
+          <td>Stand Alone</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/standalone">standalone</a></td>
+          <td>Scripts that are run manually.</td>
+      </tr>
+      <tr>
+          <td>Targeted</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/targeted">targeted</a></td>
+          <td>Scripts that are run manually against a specified target URL.</td>
+      </tr>
+      <tr>
+          <td>Websocket Passive</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/websocketpassive">websocketpassive</a></td>
+          <td>Scripts that analyse WebSocket messages without modifying traffic.</td>
+      </tr>
+      <tr>
+          <td>Websocket Sender</td>
+          <td><a href="https://github.com/zaproxy/community-scripts/tree/main/websocketsender">websocketsender</a></td>
+          <td>Scripts that run for every Websocket message processed by ZAP.</td>
+      </tr>
+  </tbody>
+</table>
+<p>The links in the <strong>Key / Examples</strong> column point to the corresponding directories in the ZAP
+<a href="https://github.com/zaproxy/community-scripts">community-scripts</a> repository, which contains example scripts contributed by the community for each script type.</p>
+</main>
+  </article>
+</section>
 
  </div>
   <footer class="site-footer py-20 mt-20">
@@ -206,7 +284,7 @@
 
 
   <div class="ml-10">
-    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/docs/getting-further/_index.md">Edit on GitHub</a>
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/docs/getting-further/scripting/script-types.md">Edit on GitHub</a>
   </div>
 
     </div>
