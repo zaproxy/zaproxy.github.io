@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
   
-  <title>ZAP &ndash; Report Generation API</title>
+  <title>ZAP &ndash; OpenAPI LLM Support</title>
 
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
@@ -844,13 +844,13 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="">
+    <li data-depth="2" class="tree-branch-active">
                 <a href="/docs/desktop/addons/openapi-support/">OpenAPI Support</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/openapi-support/automation/">OpenAPI Automation Framework Support</a>
                         </li>  
-                        <li> 
+                        <li class="tree-active"> 
                             <a href="/docs/desktop/addons/openapi-support/llm/">OpenAPI LLM Support</a>
                         </li>
         </ul>
@@ -997,13 +997,13 @@
         </ul>
     </li>
 
-    <li data-depth="2" class="tree-branch-active">
+    <li data-depth="2" class="">
                 <a href="/docs/desktop/addons/report-generation/">Report Generation</a>
         <ul class="tree-branch">  
                         <li> 
                             <a href="/docs/desktop/addons/report-generation/about/">Report Generation - About</a>
                         </li>  
-                        <li class="tree-active"> 
+                        <li> 
                             <a href="/docs/desktop/addons/report-generation/api/">Report Generation API</a>
                         </li>  
                         <li> 
@@ -1881,45 +1881,30 @@
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/report-generation/'>Report Generation</a>
+        <a href='/docs/desktop/addons/openapi-support/'>OpenAPI Support</a>
     </li>
 
     <li>
-        <a href='/docs/desktop/addons/report-generation/api/'>Report Generation API</a>
+        <a href='/docs/desktop/addons/openapi-support/llm/'>OpenAPI LLM Support</a>
     </li>
 
 
 </ol>
           
-<h1 id="report-generation-api">Report Generation API</h1>
-<p>The following operations are added to the API:</p>
+<h1 id="openapi-llm-support">OpenAPI LLM Support</h1>
+<p>This add-on supports LLM integration for importing OpenAPI definitions. It will only be enabled if you have chosen to install the LLM add-on and configured it.</p>
 
-<h3 id="views">Views <a class="header-link" href="#views"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<h2 id="llmai-openapi-importer">LLM/AI OpenAPI Importer <a class="header-link" href="#llmai-openapi-importer"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The add-on adds a menu item to the Import menu:</p>
 <ul>
-<li>templates: View available templates.</li>
-<li>templateDetails (template*): View details of the specified template.</li>
+<li>LLM/AI OpenAPI Importer</li>
 </ul>
-
-<h3 id="actions">Actions <a class="header-link" href="#actions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>This menu item allows you to import OpenAPI definitions using an LLM to extract HTTP requests from the specification. The LLM analyzes the OpenAPI definition and generates sequences of HTTP calls that can be used for subsequent scanning operations.</p>
+<p>The import dialog allows you to specify:</p>
 <ul>
-<li>generate (title* template* theme description contexts sites sections includedConfidences includedRisks reportFileName reportFileNamePattern reportDir display): Generate a report with the supplied parameters.
-<ul>
-<li>title: Report Title</li>
-<li>template: Report Template</li>
-<li>theme: Report Theme</li>
-<li>description: Report Description</li>
-<li>contexts: The name of the contexts to be included in the report, separated by &lsquo;|&rsquo;. For example, &ldquo;Default Context|My Context&rdquo;.</li>
-<li>sites: The site URLs that should be included in the report, separated by &lsquo;|&rsquo;.</li>
-<li>sections: The report sections that should be included, separated by &lsquo;|&rsquo;. View section names via API view <code>templateDetails (template*)</code></li>
-<li>includedConfidences: Confidences that should be included in the report, separated by &lsquo;|&rsquo;. Accepted values are &ldquo;False Positive&rdquo;, &ldquo;Low&rdquo;, &ldquo;Medium&rdquo;, &ldquo;High&rdquo;, and &ldquo;Confirmed&rdquo;.</li>
-<li>includedRisks: Risks that should be included in the report, separated by &lsquo;|&rsquo;. Accepted values are &ldquo;Informational&rdquo;, &ldquo;Low&rdquo;, &ldquo;Medium&rdquo;, and &ldquo;High&rdquo;.</li>
-<li>reportFileName: The file name of the generated report. This value overrides the reportFileNamePattern parameter.</li>
-<li>reportFileNamePattern: Report File Name Pattern. For example, <code>{{yyyy-MM-dd}}-ZAP-Report-[[site]]</code>.</li>
-<li>reportDir: Path to directory in which the generated report should be placed.</li>
-<li>display: Display the generated report. Either &ldquo;true&rdquo; or &ldquo;false&rdquo;.</li>
+<li>OpenAPI File location or URL - The path to an OpenAPI definition file (JSON or YAML) or a URL pointing to the definition</li>
 </ul>
-</li>
-</ul>
+<p>The LLM will process the OpenAPI definition and create HTTP requests based on the endpoints defined in the specification. These requests will be added to the ZAP history, allowing you to scan and test the API endpoints.</p>
 
         </div>
       </div>
