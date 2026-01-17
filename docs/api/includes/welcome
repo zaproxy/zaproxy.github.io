@@ -89,7 +89,15 @@ when you are proxying through ZAP, or via the host and port ZAP is listening on,
 
 <p>By default only the machine ZAP is running on is able to access the APIs. You can <a href="https://www.zaproxy.org/faq/how-can-i-connect-to-zap-remotely/">allow other machines</a>, 
 that are able to use ZAP as a proxy, access to the API.</p>
-<h3 id='client-sdks'>Client SDKs</h3>
+<h3 id='using-the-zap-api-with-curl'>Using the ZAP API with curl</h3>
+<p>When interacting with the ZAP API using curl, keep the following points in mind:</p>
+
+<ul>
+<li>All parameter values must be URL-encoded.</li>
+<li>Some boolean parameters (for example <code>enabled</code>) may need to be explicitly provided when deviating from default values.</li>
+</ul>
+<div class="highlight"><pre class="highlight shell"><code>curl <span class="s2">"http://zap/&lt;format&gt;/&lt;component&gt;/&lt;operation&gt;/&lt;operation-name&gt;/?param1=value1&amp;param2=value2"</span>
+</code></pre></div><h3 id='client-sdks'>Client SDKs</h3>
 <p>API clients are available for the following languages:</p>
 
 <table><thead>
