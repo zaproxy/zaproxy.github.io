@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OWASP PTK Integration with ZAP">
+  <meta name="twitter:description" content="OWASP PTK is now pre-installed in the browsers launched by ZAP (Chrome, Edge and Firefox). This post shows how to run PTK’s DAST, IAST, SAST, and SCA inside the same authenticated session you’re testing, plus practical JWT and cookie workflows—while ZAP remains your traffic and context hub.">
+
+    <meta property="og:url" content="/blog/2026-01-19-owasp-ptk-add-on/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="OWASP PTK Integration with ZAP">
+  <meta property="og:description" content="OWASP PTK is now pre-installed in the browsers launched by ZAP (Chrome, Edge and Firefox). This post shows how to run PTK’s DAST, IAST, SAST, and SCA inside the same authenticated session you’re testing, plus practical JWT and cookie workflows—while ZAP remains your traffic and context hub.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Browser">
+    <meta property="article:tag" content="Chrome">
+    <meta property="article:tag" content="Edge">
+    <meta property="article:tag" content="Firefox">
+    <meta property="article:tag" content="Guest">
+
+  
+  <title>ZAP &ndash; OWASP PTK Integration with ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.cb156c.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">OWASP PTK Integration with ZAP</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday January 19, 2026</span>
+              <span class="word-count fl-r"> 890 Words </span>
+            </section>
+            <p>OWASP PTK (PenTest Kit) is a browser extension for practical application security testing where the <strong>browser session is the truth</strong>:
+authenticated navigation, SPA routing, client-side behavior, and the exact requests your app generates during real use.</p>
+<p>To enable this workflow, first install the <strong>OWASP PTK add-on</strong> from the <strong>ZAP Marketplace</strong>.
+Once installed, OWASP PTK will be <strong>pre-installed in the browsers launched from ZAP</strong> — <strong>Chrome, Edge and Firefox</strong>.
+You can launch a ZAP browser and immediately use PTK’s workflows (DAST, IAST, SAST, SCA, JWT tools, cookie tools) without any manual extension setup.</p>
+<p><img src="images/ptk_zap_launch.png" alt="ZAP launching a browser with OWASP PTK pre-installed"></p>
+
+<h2 id="getting-started">Getting Started <a class="header-link" href="#getting-started"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ol>
+<li>In ZAP, open <strong>Marketplace</strong>, search for <strong>OWASP PTK</strong>, and <strong>install the add-on</strong>.</li>
+<li>Launch a browser (Chrome, Edge or Firefox) using ZAP’s browser launch feature.</li>
+<li>In the launched browser, confirm you can see the OWASP PTK extension icon.</li>
+<li>Navigate to your target and <strong>log in</strong> before starting any runtime scans.</li>
+</ol>
+<p><img src="images/ptk_in_browser.png" alt="OWASP PTK visible in a ZAP-launched browser"></p>
+<p>From here you can treat ZAP as your <strong>traffic and context hub</strong> (Sites tree, History, passive scanning, auth/session handling),
+while PTK becomes your <strong>in-browser security toolkit</strong> for runtime scanning and targeted testing.</p>
+<hr>
+
+<h2 id="dast-scan-while-you-browse">DAST: Scan While You Browse <a class="header-link" href="#dast-scan-while-you-browse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>PTK DAST is built around a simple flow:</p>
+<p><strong>Start runtime scan → use the application normally → stop → review findings.</strong></p>
+<p>This is especially effective on modern apps where coverage depends on real navigation and real user flows.</p>
+
+<h3 id="recommended-workflow">Recommended workflow <a class="header-link" href="#recommended-workflow"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ol>
+<li>Open <strong>OWASP PTK → DAST</strong></li>
+<li>Click <strong>Scan in runtime</strong></li>
+<li>Browse key flows (forms, searches, account settings, admin pages, checkout, etc.)</li>
+<li>Click <strong>Stop runtime scan</strong></li>
+<li>Triage findings and re-test interesting requests with PTK’s request tools</li>
+</ol>
+<p><img src="images/ptk_dast_results.png" alt="PTK DAST results view"></p>
+
+<h3 id="practical-advice-stay-in-control-of-scan-footprint">Practical advice: stay in control of scan footprint <a class="header-link" href="#practical-advice-stay-in-control-of-scan-footprint"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>When running active checks, tune your settings to the target environment:</p>
+<ul>
+<li>Lower <strong>requests/sec</strong> for production or fragile targets</li>
+<li>Keep <strong>concurrency</strong> conservative for stability</li>
+<li>Scope domains tightly to avoid noise and accidental off-target scans</li>
+</ul>
+<p><img src="images/ptk_dast_policy.png" alt="PTK DAST scan policy settings"></p>
+<hr>
+
+<h2 id="iast-runtime-monitoring-in-the-browser">IAST: Runtime Monitoring in the Browser <a class="header-link" href="#iast-runtime-monitoring-in-the-browser"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>PTK IAST focuses on <strong>instrumenting runtime behavior</strong> in the browser session.
+You run it in the same way: start, browse, stop, review — but the findings are based on runtime signals rather than only response patterns.</p>
+
+<h3 id="recommended-workflow-1">Recommended workflow <a class="header-link" href="#recommended-workflow-1"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ol>
+<li>Open <strong>OWASP PTK → IAST</strong></li>
+<li>Click <strong>Scan in runtime</strong> (agent injects / begins monitoring)</li>
+<li>Browse flows that matter (especially authenticated routes)</li>
+<li>Stop scan and review findings</li>
+</ol>
+<p><img src="images/ptk_iast_finding.png" alt="PTK IAST finding example"></p>
+<p>IAST is particularly useful when:</p>
+<ul>
+<li>Behavior depends on real UI state (SPA routing, DOM mutations, client-side rendering)</li>
+<li>You need more context to triage quickly</li>
+<li>You want runtime visibility while keeping your test workflow “in browser”</li>
+</ul>
+<hr>
+
+<h2 id="sast-analyze-what-the-browser-actually-loads">SAST: Analyze What the Browser Actually Loads <a class="header-link" href="#sast-analyze-what-the-browser-actually-loads"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>PTK SAST is client-side focused: it analyzes <strong>inline scripts and external scripts loaded by the page</strong>.
+This is valuable when you don’t have repository access, or when production bundles differ from source.</p>
+
+<h3 id="recommended-workflow-2">Recommended workflow <a class="header-link" href="#recommended-workflow-2"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ol>
+<li>Open <strong>OWASP PTK → SAST</strong></li>
+<li>Run analysis on the current page/app</li>
+<li>Review findings (e.g., dangerous sinks, risky patterns)</li>
+<li>Pivot from findings into targeted runtime testing (DAST/IAST) as needed</li>
+</ol>
+<p><img src="images/ptk_sast_findings.png" alt="PTK SAST findings view"></p>
+<p>This style of SAST shines for:</p>
+<ul>
+<li>Large SPA bundles</li>
+<li>Third-party scripts</li>
+<li>“What is actually executing in production right now?”</li>
+</ul>
+<hr>
+
+<h2 id="sca-dependency-signals-from-the-running-app">SCA: Dependency Signals from the Running App <a class="header-link" href="#sca-dependency-signals-from-the-running-app"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>PTK SCA surfaces signals about <strong>software components and dependency risk</strong> relevant to what the app is serving/using.</p>
+
+<h3 id="recommended-workflow-3">Recommended workflow <a class="header-link" href="#recommended-workflow-3"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ol>
+<li>Open <strong>OWASP PTK → SCA</strong></li>
+<li>Run analysis for the current target/app</li>
+<li>Review packages/components and any vulnerability signals</li>
+<li>Use ZAP traffic context to validate origins and loading behavior</li>
+</ol>
+<p><img src="images/ptk_sca_results.png" alt="PTK SCA results"></p>
+<hr>
+
+<h2 id="request-builder-from-interesting-request-to-tested-hypothesis">Request Builder: From “Interesting Request” to “Tested Hypothesis” <a class="header-link" href="#request-builder-from-interesting-request-to-tested-hypothesis"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>One of the fastest loops you can build with PTK + ZAP is:</p>
+<p><strong>Spot something in traffic → open in PTK → modify → replay → validate behavior</strong></p>
+<p>Request Builder is designed for hands-on testing:</p>
+<ul>
+<li>Edit and resend requests</li>
+<li>Run targeted attacks against a specific request</li>
+<li>Clone/export (including “copy as cURL”)</li>
+<li>Advanced header manipulation and repeatable request sets</li>
+</ul>
+<p><img src="images/ptk_rbuilder_send.png" alt="Sending a request into PTK Request Builder">
+<img src="images/ptk_rbuilder_editor.png" alt="PTK Request Builder editor"></p>
+<hr>
+
+<h2 id="jwt-testing-inspect-modify-and-validate-assumptions">JWT Testing: Inspect, Modify, and Validate Assumptions <a class="header-link" href="#jwt-testing-inspect-modify-and-validate-assumptions"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Modern apps live on tokens, and PTK’s <strong>JWT tools</strong> are built for practical testing loops:
+decode, edit claims, switch algorithms (where relevant), and validate behavior changes quickly.</p>
+
+<h3 id="common-jwt-security-checks">Common JWT security checks <a class="header-link" href="#common-jwt-security-checks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ul>
+<li>Validate algorithm handling (including unsafe algorithm acceptance)</li>
+<li>Check for weak secrets (HMAC)</li>
+<li>Test claim enforcement (exp, nbf, aud, iss)</li>
+<li>Look for key confusion / trust errors (implementation dependent)</li>
+</ul>
+
+<h3 id="recommended-workflow-with-zap--ptk">Recommended workflow with ZAP + PTK <a class="header-link" href="#recommended-workflow-with-zap--ptk"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ol>
+<li>Use <strong>ZAP History</strong> to locate token-bearing requests (Authorization header, cookies)</li>
+<li>Open <strong>PTK JWT tools</strong> to decode and modify the token</li>
+<li>Replay flows and observe changes:
+<ul>
+<li>ZAP shows server responses and traffic diffs</li>
+<li>PTK accelerates token manipulation and repeatability</li>
+</ul>
+</li>
+</ol>
+<p><img src="images/ptk_jwt_inspector.png" alt="PTK JWT Inspector"></p>
+<hr>
+
+<h2 id="cookie-testing-edit-protect-block-and-reproduce">Cookie Testing: Edit, Protect, Block, and Reproduce <a class="header-link" href="#cookie-testing-edit-protect-block-and-reproduce"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Cookies still drive real-world auth/session states.
+PTK provides a cookie workflow aimed at fast, repeatable testing.</p>
+
+<h3 id="practical-cookie-tasks">Practical cookie tasks <a class="header-link" href="#practical-cookie-tasks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ul>
+<li>Add/edit/remove cookies</li>
+<li>Test behavior with missing/modified cookies</li>
+<li>Block or protect specific cookies during testing</li>
+<li>Import/export cookie sets for repeatability</li>
+</ul>
+<p><img src="images/ptk_cookie_tool.png" alt="PTK Cookie tool"></p>
+<hr>
+
+<h2 id="a-practical-daily-workflow">A Practical Daily Workflow <a class="header-link" href="#a-practical-daily-workflow"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>If you want a simple routine that works well on real targets:</p>
+<ol>
+<li>Launch Chrome/Edge/Firefox from ZAP (proxied session)</li>
+<li>Log in and browse the app normally</li>
+<li>Run PTK <strong>DAST runtime scan</strong> while you exercise key flows</li>
+<li>Run PTK <strong>IAST runtime scan</strong> for runtime context during the same flows</li>
+<li>Use PTK <strong>SAST</strong> to spot risky client-side patterns in loaded scripts</li>
+<li>Use PTK <strong>SCA</strong> for dependency-related signals</li>
+<li>Use PTK <strong>JWT</strong> and <strong>Cookie</strong> tools to validate auth/session assumptions quickly</li>
+</ol>
+<hr>
+
+<h2 id="notes-and-scope-reminders">Notes and Scope Reminders <a class="header-link" href="#notes-and-scope-reminders"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Only use active scanning and exploit-style testing where you have permission.</li>
+<li>Keep scope tight and use conservative rate/concurrency settings on production targets.</li>
+<li>ZAP remains your traffic backbone; PTK adds browser-native runtime workflows that speed up discovery and triage.</li>
+</ul>
+<p><a href="https://pentestkit.co.uk/howto.html">OWASP PTK howto</a></p>
+<p><a href="https://www.youtube.com/channel/UCbEcTounPkV1aitE1egXfqw">OWASP PTK YouTube channel</a></p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2025-12-15-zap-2-17-0/"> ZAP 2.17.0</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/denis-podgurskii_400x400.png" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/denispodgurskii/">Denis Podgurskii</a>
+                  
+                  
+                  (<a class="author-twitter" href="https://twitter.com/pentestkit">@pentestkit</a>)
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#dast-scan-while-you-browse">DAST: Scan While You Browse</a>
+      <ul>
+        <li><a href="#recommended-workflow">Recommended workflow</a></li>
+        <li><a href="#practical-advice-stay-in-control-of-scan-footprint">Practical advice: stay in control of scan footprint</a></li>
+      </ul>
+    </li>
+    <li><a href="#iast-runtime-monitoring-in-the-browser">IAST: Runtime Monitoring in the Browser</a>
+      <ul>
+        <li><a href="#recommended-workflow-1">Recommended workflow</a></li>
+      </ul>
+    </li>
+    <li><a href="#sast-analyze-what-the-browser-actually-loads">SAST: Analyze What the Browser Actually Loads</a>
+      <ul>
+        <li><a href="#recommended-workflow-2">Recommended workflow</a></li>
+      </ul>
+    </li>
+    <li><a href="#sca-dependency-signals-from-the-running-app">SCA: Dependency Signals from the Running App</a>
+      <ul>
+        <li><a href="#recommended-workflow-3">Recommended workflow</a></li>
+      </ul>
+    </li>
+    <li><a href="#request-builder-from-interesting-request-to-tested-hypothesis">Request Builder: From “Interesting Request” to “Tested Hypothesis”</a></li>
+    <li><a href="#jwt-testing-inspect-modify-and-validate-assumptions">JWT Testing: Inspect, Modify, and Validate Assumptions</a>
+      <ul>
+        <li><a href="#common-jwt-security-checks">Common JWT security checks</a></li>
+        <li><a href="#recommended-workflow-with-zap--ptk">Recommended workflow with ZAP + PTK</a></li>
+      </ul>
+    </li>
+    <li><a href="#cookie-testing-edit-protect-block-and-reproduce">Cookie Testing: Edit, Protect, Block, and Reproduce</a>
+      <ul>
+        <li><a href="#practical-cookie-tasks">Practical cookie tasks</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-practical-daily-workflow">A Practical Daily Workflow</a></li>
+    <li><a href="#notes-and-scope-reminders">Notes and Scope Reminders</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/browser/">browser</a> </li>
+           
+           <li> <a href="/tags/chrome/">chrome</a> </li>
+           
+           <li> <a href="/tags/edge/">edge</a> </li>
+           
+           <li> <a href="/tags/firefox/">firefox</a> </li>
+           
+           <li> <a href="/tags/guest/">guest</a> </li>
+           
+           <li> <a href="/tags/dast/">dast</a> </li>
+           
+           <li> <a href="/tags/iast/">iast</a> </li>
+           
+           <li> <a href="/tags/sast/">sast</a> </li>
+           
+           <li> <a href="/tags/sca/">sca</a> </li>
+           
+           <li> <a href="/tags/jwt/">jwt</a> </li>
+           
+           <li> <a href="/tags/cookies/">cookies</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-01-19-owasp-ptk-add-on/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.9ec611.js"></script>
+  
+</div>
+</body>
+</html>
