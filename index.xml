@@ -4196,6 +4196,12 @@ browser, including:&lt;/p&gt;
           &lt;td&gt;This alert is raised when the GraphQL implementation used by the server is identified. It utilises fingerprinting techniques adapted from the tool &lt;a href=&#34;https://github.com/dolevf/graphw00f&#34;&gt;graphw00f&lt;/a&gt;. &lt;strong&gt;Note:&lt;/strong&gt; If the Tech Detection (Wappalyzer) add-on is installed the fingerprinter will also add identified GraphQL Engines to the Technology tab/data.&lt;/td&gt;
           &lt;td&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/tree/main/addOns/graphql/src/main/java/org/zaproxy/addon/graphql/GraphQlFingerprinter.java&#34;&gt;GraphQlFingerprinter.java&lt;/a&gt;&lt;/td&gt;
       &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&#34;/docs/alerts/50007-3/&#34;&gt;50007-3&lt;/a&gt;&lt;/td&gt;
+          &lt;td&gt;GraphQL Circular References in Schema&lt;/td&gt;
+          &lt;td&gt;This alert is raised when cycles are found in the object types in the imported GraphQL schema. A new alert is raised for each unique cycle. The alert contains information about the cycle and a message with an example query. No requests are actually sent.&lt;/td&gt;
+          &lt;td&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/tree/main/addOns/graphql/src/main/java/org/zaproxy/addon/graphql/GraphQlCycleDetector.java&#34;&gt;GraphQlCycleDetector.java&lt;/a&gt;&lt;/td&gt;
+      &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Alert ID: &lt;a href=&#34;/docs/alerts/50007/&#34;&gt;50007&lt;/a&gt;.&lt;/p&gt;</description>
