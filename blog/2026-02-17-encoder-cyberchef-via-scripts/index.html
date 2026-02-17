@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-02-17-encoder-cyberchef-via-scripts/images/four_chefs_transparent.png">
+  <meta name="twitter:title" content="Using ZAP&#39;s Encode/Decode/Hash Add-on with CyberChef via Encode/Decode Scripts">
+  <meta name="twitter:description" content="Combine the Encode/Decode/Hash add-on with CyberChef operations in ZAP Encode/Decode Scripts for flexible encoding, decoding, and hashing in your testing workflow.">
+
+    <meta property="og:url" content="/blog/2026-02-17-encoder-cyberchef-via-scripts/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Using ZAP&#39;s Encode/Decode/Hash Add-on with CyberChef via Encode/Decode Scripts">
+  <meta property="og:description" content="Combine the Encode/Decode/Hash add-on with CyberChef operations in ZAP Encode/Decode Scripts for flexible encoding, decoding, and hashing in your testing workflow.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-02-17T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-02-17T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Encode-Decode-Hash">
+    <meta property="article:tag" content="Encoder">
+    <meta property="article:tag" content="Scripts">
+    <meta property="article:tag" content="Youdontknowzap">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-02-17-encoder-cyberchef-via-scripts/images/four_chefs_transparent.png">
+
+  
+  <title>ZAP &ndash; Using ZAP&#39;s Encode/Decode/Hash Add-on with CyberChef via Encode/Decode Scripts</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.cb156c.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Using ZAP&#39;s Encode/Decode/Hash Add-on with CyberChef via Encode/Decode Scripts</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday February 17, 2026</span>
+              <span class="word-count fl-r"> 741 Words </span>
+            </section>
+            <p><img src="images/four_chefs_transparent.png" alt="Three CyberChefs and Zapbot with a chefs hat"></p>
+<p><a href="/docs/desktop/addons/encode-decode-hash/">ZAP&rsquo;s Encode/Decode/Hash add-on</a> provides built-in operations for encoding, decoding, and hashing data; useful when crafting or inspecting requests during security testing. <a href="https://gchq.github.io/CyberChef/">CyberChef</a> offers a huge set of &ldquo;recipes&rdquo; for the same kinds of operations, often with more options and formats.</p>
+<p>You can get the best of both worlds by calling CyberChef-style operations from within ZAP via <a href="/docs/desktop/addons/encode-decode-hash/#custom"><strong>Encode/Decode Scripts</strong></a>.</p>
+
+<h2 id="what-youll-need">What You&rsquo;ll Need <a class="header-link" href="#what-youll-need"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>ZAP with the <a href="/docs/desktop/addons/encode-decode-hash/">Encode/Decode/Hash add-on</a> installed</li>
+<li>Script Console add-on and a script engine (e.g. GraalJS) for Encode/Decode Scripts (these are included in the main releases)</li>
+<li>CyberChef-server docker image (more on that below)</li>
+</ul>
+
+<h2 id="using-encodedecodehash-in-zap">Using Encode/Decode/Hash in ZAP <a class="header-link" href="#using-encodedecodehash-in-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>ZAP has a well featured Encode/Decode/Hash add-on which already provides great flexibility and power through allowing users to create their own Encode/Decode Scripts. You can find some example via <a href="https://github.com/zaproxy/community-scripts/tree/main/encode-decode">community-scripts</a> as well as a summary of the default template. You can send values to the add-on by pasting them in the GUI or by using the context menu on selected text.</p>
+<p><img src="images/encoder_context_menu.png" alt="Screenshot depicting a text highlight and ZAP&rsquo;s context menu"></p>
+
+<h2 id="bringing-in-cyberchef-style-operations">Bringing in CyberChef-Style Operations <a class="header-link" href="#bringing-in-cyberchef-style-operations"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>CyberChef, often referred to as the &ldquo;Cyber Swiss Army Knife,&rdquo; is a free, open-source, web-based application designed to enable both technical and non-technical analysts to manipulate, encode, decode, and analyze data in complex ways without needing specialized, complex tools or programming languages. While the base CyberChef project/site are well known for their all client-side processing, there is also CyberChef-server which offers and API and can be hosted in your control via Docker &#x1f600;.</p>
+<p>There’s some overlap with ZAP’s built-in operations, but CyberChef-server lets you call many more operations by sending a simple JSON request, so you don’t have to reimplement them in your Encode/Decode Scripts.</p>
+
+<h2 id="setup-cyberchef-server">Setup CyberChef-server <a class="header-link" href="#setup-cyberchef-server"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<div class="window">
+    <div class="titlebar">
+      CyberChef-server clone, build, run
+    </div>
+    <div class="terminal">
+      <ul>
+        
+        
+        <li></li>
+        
+        
+        <li>git&nbsp;clone&nbsp;https://github.com/gchq/CyberChef-server</li>
+        
+        
+        <li>cd&nbsp;CyberChef-server</li>
+        
+        
+        <li>docker&nbsp;build&nbsp;-t&nbsp;cyberchef-server&nbsp;.</li>
+        
+        
+        <li>docker&nbsp;run&nbsp;-it&nbsp;--rm&nbsp;--name=cyberchef-server&nbsp;-p&nbsp;3000:3000&nbsp;cyberchef-server</li>
+        
+        
+        <li></li>
+          
+      </ul>
+    </div>
+</div>
+<p>Once you&rsquo;ve got that done you should be able to browse to: http://localhost:3000/, you should be greeted by the Swagger UI for CyberChef-server:</p>
+<p><img src="images/browser_cyberchef.png" alt="Browsing to CyberChef-server localhost:3000 after things are running"></p>
+
+<h2 id="encodedecode-script-template">Encode/Decode Script Template <a class="header-link" href="#encodedecode-script-template"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The primary mechanism of Encode/Decode scripts is the <code>process(helper, value)</code> function. Here&rsquo;s a really simple example that simply takes the input and appends &ldquo;foo bar&rdquo; to it.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">process</span>(<span style="color:#a6e22e">helper</span>, <span style="color:#a6e22e">value</span>){
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">newResult</span>(<span style="color:#a6e22e">value</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;foo bar&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The script must return its value using <code>helper.newResult(result)</code> or <code>helper.newError(error)</code>; that return value is what the add-on displays in the associated output panel.</p>
+
+<h2 id="better-together-cyberchef-url-extractor-example">Better Together? CyberChef URL Extractor Example <a class="header-link" href="#better-together-cyberchef-url-extractor-example"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Let&rsquo;s say you&rsquo;ve got a blob of text that you want to get URLs out of, inside ZAP. Here&rsquo;s an example script we can use to submit the input to CyberChef-server and get the extracted URLs back.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// CyberChef - Extract URLs (via /bake)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// Paste this into a new Encode/Decode script in ZAP
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">EncodeDecodeResult</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;org.zaproxy.addon.encoder.processors.EncodeDecodeResult&#34;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HttpRequestHeader</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;org.parosproxy.paros.network.HttpRequestHeader&#34;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HttpMessage</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.parosproxy.paros.network.HttpMessage&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">HttpSender</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Java</span>.<span style="color:#a6e22e">type</span>(<span style="color:#e6db74">&#34;org.parosproxy.paros.network.HttpSender&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cyberchefUrl</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://localhost:3000/bake&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">header</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HttpRequestHeader</span>(<span style="color:#e6db74">&#34;POST &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">cyberchefUrl</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; HTTP/1.1&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">header</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Content-Type&#34;</span>, <span style="color:#e6db74">&#34;application/json&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">header</span>.<span style="color:#a6e22e">setHeader</span>(<span style="color:#e6db74">&#34;Accept&#34;</span>, <span style="color:#e6db74">&#34;application/json&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">msg</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HttpMessage</span>(<span style="color:#a6e22e">header</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">sender</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">HttpSender</span>(<span style="color:#a6e22e">HttpSender</span>.<span style="color:#a6e22e">MANUAL_REQUEST_INITIATOR</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">process</span>(<span style="color:#a6e22e">helper</span>, <span style="color:#a6e22e">value</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This is the recipe/operation(s) we&#39;re going to ask CyberChef to handle
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// In this case if the input value is empty send a single space, otherwise CyberChef complains
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">payload</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">input</span><span style="color:#f92672">:</span> <span style="color:#f92672">!</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">value</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">recipe</span><span style="color:#f92672">:</span> [{ <span style="color:#a6e22e">op</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Extract URLs&#34;</span> }],
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">setRequestBody</span>(<span style="color:#a6e22e">payload</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestHeader</span>().<span style="color:#a6e22e">setContentLength</span>(<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getRequestBody</span>().<span style="color:#a6e22e">length</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">sender</span>.<span style="color:#a6e22e">sendAndReceive</span>(<span style="color:#a6e22e">msg</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">responseStr</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getResponseBody</span>().<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// CyberChef /bake returns { &#34;value&#34;: &#34;...&#34;, &#34;type&#34;: &#34;string&#34; }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">msg</span>.<span style="color:#a6e22e">getResponseHeader</span>().<span style="color:#a6e22e">isJson</span>()) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">json</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">responseStr</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// If the return value is empty tell the user there&#39;s no URLs, otherwise provide them
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#75715e">// Falling back to the raw response if it isn&#39;t JSON
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">output</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;&#34;</span> <span style="color:#f92672">?</span> <span style="color:#e6db74">&#34;No URLs&#34;</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">json</span>.<span style="color:#a6e22e">value</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">responseStr</span>;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">newResult</span>(<span style="color:#a6e22e">output</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">newResult</span>(<span style="color:#a6e22e">responseStr</span>);
+</span></span><span style="display:flex;"><span>  } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">helper</span>.<span style="color:#a6e22e">newError</span>(<span style="color:#e6db74">&#34;Error contacting CyberChef: &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">toString</span>());
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Use the <a href="/docs/desktop/addons/encode-decode-hash/#toolbar">toolbar</a> in the Encode/Decode/Hash dialog to add a tab for your script processors, then add an output panel for your new script processor to it:</p>
+<p><img src="images/add_tab.png" alt="Add a tab in the Encode/Decode/Hash dialog"></p>
+<p><img src="images/add_output_panel.png" alt="Add an output panel for the new script processor"></p>
+<p>Now paste your text and try things out:</p>
+<p><img src="images/use_it.png" alt="Encode/Decode/Hash dialog with extracted URLs visible"></p>
+
+<h2 id="tips-and-caveats">Tips and Caveats <a class="header-link" href="#tips-and-caveats"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>You could expand on this idea to use CyberChef &ldquo;recipes&rdquo;; performing multiple actions on the input to apply multiple layers of processing.</li>
+<li>In case you&rsquo;re hitting an issue/failure make sure that CyberChef-server is running and accessible either locally or via the network.</li>
+<li>Getting things working in CyberChef-server weren&rsquo;t initially seamless &#x1f609;. <a href="https://github.com/gchq/CyberChef-server/issues/85">https://github.com/gchq/CyberChef-server/issues/85</a></li>
+</ul>
+
+<h2 id="next-steps">Next Steps <a class="header-link" href="#next-steps"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Share your creations and ideas via the <a href="https://groups.google.com/g/zaproxy-users">User Group</a>, or by opening a PR against <a href="https://github.com/zaproxy/community-scripts/">community-scripts</a>.</p>
+<ul>
+<li><a href="/docs/desktop/addons/encode-decode-hash/">Encode/Decode/Hash add-on docs</a>
+<ul>
+<li><a href="https://github.com/zaproxy/community-scripts/tree/main/encode-decode">community-script samples and docs</a></li>
+<li><a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/encoder/src/main/java/org/zaproxy/addon/encoder/processors/script/EncodeDecodeScriptHelper.java">Source</a> of the Encode/Decode scripts&rsquo; &ldquo;helper&rdquo; object.</li>
+</ul>
+</li>
+<li>CyberChef live, client-side processing: <a href="https://gchq.github.io/CyberChef/">https://gchq.github.io/CyberChef/</a>
+<ul>
+<li><a href="https://github.com/gchq/CyberChef">CyberChef GitHub</a></li>
+<li><a href="https://github.com/gchq/CyberChef-server">CyberChef-server GitHub</a></li>
+</ul>
+</li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-02-06-detecting-graphql-cycles/"> Detecting Circular Type References in GraphQL Schemas</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/rick-mitchell_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/thorin/">Rick Mitchell</a>
+                  
+                  
+                  (<a class="author-twitter" href="https://twitter.com/kingthorin_rm">@kingthorin_rm</a>)
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-youll-need">What You&rsquo;ll Need</a></li>
+    <li><a href="#using-encodedecodehash-in-zap">Using Encode/Decode/Hash in ZAP</a></li>
+    <li><a href="#bringing-in-cyberchef-style-operations">Bringing in CyberChef-Style Operations</a></li>
+    <li><a href="#setup-cyberchef-server">Setup CyberChef-server</a></li>
+    <li><a href="#encodedecode-script-template">Encode/Decode Script Template</a></li>
+    <li><a href="#better-together-cyberchef-url-extractor-example">Better Together? CyberChef URL Extractor Example</a></li>
+    <li><a href="#tips-and-caveats">Tips and Caveats</a></li>
+    <li><a href="#next-steps">Next Steps</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/encode-decode-hash/">encode-decode-hash</a> </li>
+           
+           <li> <a href="/tags/encoder/">encoder</a> </li>
+           
+           <li> <a href="/tags/scripts/">scripts</a> </li>
+           
+           <li> <a href="/tags/youdontknowzap/">youdontknowzap</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-02-17-encoder-cyberchef-via-scripts/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>
