@@ -1908,7 +1908,8 @@ It is a hierarchy of nodes, each of which represents all of the essential inform
     statusCode:        # The HTTP status code, where relevant
     data:              # The names of the data parameters, if any, separated with &#39;=&amp;&#39;s
     children:          # A list of child nodes, present for all nodes apart from the leaves
-</code></pre><p>This format is used by the <a href="/docs/desktop/addons/import-export/automation/">Automation Framework</a> export and prune jobs, and by the corresponding
+</code></pre><p>When exporting the Sites Tree with a context the nodes that are out of context but present in the tree will be absent of all properties except the node name and children (if any in context), to retain the tree structure.</p>
+<p>This format is used by the <a href="/docs/desktop/addons/import-export/automation/">Automation Framework</a> export and prune jobs, and by the corresponding
 <a href="/docs/desktop/addons/import-export/">desktop menus</a>.</p>
 <p>A full simple example:</p>
 <pre tabindex="0"><code>- node: Sites
