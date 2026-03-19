@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-03-19-introducing-deepviolet/images/deepviolet.png">
+  <meta name="twitter:title" content="Introducing DeepViolet">
+  <meta name="twitter:description" content="Introducing DeepViolet: The Engine Behind ZAP’s New TLS Analysis">
+
+    <meta property="og:url" content="/blog/2026-03-19-introducing-deepviolet/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Introducing DeepViolet">
+  <meta property="og:description" content="Introducing DeepViolet: The Engine Behind ZAP’s New TLS Analysis">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-03-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-03-19T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Guest">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-03-19-introducing-deepviolet/images/deepviolet.png">
+
+  
+  <title>ZAP &ndash; Introducing DeepViolet</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.0d44c8.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="site menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Introducing DeepViolet</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Thursday March 19, 2026</span>
+              <span class="word-count fl-r"> 1661 Words </span>
+            </section>
+            <p><img src="images/deepviolet.png" alt="DeepViolet"></p>
+<p>The ZAP <a href="/docs/desktop/addons/https-info/">HTTPS Info</a> add-on has just been re-released to the Marketplace recently, and now delivers TLS/SSL risk assessments alongside the connection details you&rsquo;re used to seeing. That capability comes from <strong>DeepViolet</strong>, an open-source TLS/SSL analysis library I&rsquo;ve been building since 2015, down for a brief hiatus, but now out of retirement. I wanted to take a moment to introduce the project to the ZAP community, explain what HTTPS Info is showing you, and share where things are headed.</p>
+<p>Please note that the <a href="/docs/desktop/addons/https-info/">HTTPS Info</a> add-on requires Java 21+, while the current release of ZAP only needs Java 17+.</p>
+
+<h2 id="a-quick-introduction">A Quick Introduction <a class="header-link" href="#a-quick-introduction"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>I&rsquo;m Milton Smith, an independent security researcher and open-source developer based in Houston, Texas area. I&rsquo;ve been working in application security for a long time, including stints at Oracle and Yahoo, and I&rsquo;ve presented tools at Black Hat Arsenal multiple times (DeepViolet in 2016 and 2018, and my other project JVMXRay in 2020). DeepViolet started as a standalone TLS scanning tool and has evolved into a modular API that other projects — like ZAP — can integrate directly.</p>
+<p><a href="/docs/team/psiinon/">Simon Bennetts</a> and I have known each other for years through the security tooling community, and when the opportunity came up to bring DeepViolet&rsquo;s TLS analysis into ZAP via the HTTPS Info add-on, it was a natural fit. ZAP already excels at HTTP-level security testing; DeepViolet fills in the transport layer picture.</p>
+
+<h2 id="what-youre-seeing-in-https-info">What You&rsquo;re Seeing in HTTPS Info <a class="header-link" href="#what-youre-seeing-in-https-info"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>When HTTPS Info runs a TLS assessment against a target, the output you get is powered by DeepViolet&rsquo;s scanning and risk evaluation engine. Here&rsquo;s a walkthrough of what each section means, using a scan against <code>revoked-rsa-dv.ssl.com</code> as an example.</p>
+
+<h3 id="risk-score-and-grade">Risk Score and Grade <a class="header-link" href="#risk-score-and-grade"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<pre><code>Risk score: 77/100
+Letter grade: C
+</code></pre>
+<p>DeepViolet assigns a numeric risk score and a letter grade based on the aggregate findings. A score of 77 with a &ldquo;C&rdquo; grade tells you this server has real issues that need attention — it&rsquo;s not catastrophically broken, but it&rsquo;s far from clean. The scoring is weighted: a CRITICAL finding like a revoked certificate drags the score down harder than a missing low-severity header.</p>
+
+<h3 id="protocols--connections">Protocols &amp; Connections <a class="header-link" href="#protocols--connections"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<pre><code>- [SYS-0000900] ALPN not negotiated (LOW)
+- [SYS-0001000] Server does not support TLS_FALLBACK_SCSV (MEDIUM)
+</code></pre>
+<p>This section covers the TLS handshake itself. ALPN (Application-Layer Protocol Negotiation) not being negotiated is a minor issue, it means the server isn&rsquo;t explicitly agreeing on HTTP/2 or other protocols during the handshake. The TLS_FALLBACK_SCSV check is more meaningful: this mechanism prevents protocol downgrade attacks, and its absence leaves a window for an attacker to force a weaker TLS version.</p>
+
+<h3 id="revocation--transparency">Revocation &amp; Transparency <a class="header-link" href="#revocation--transparency"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<pre><code>- [SYS-0030100] Certificate is revoked (CRITICAL)
+- [SYS-0030200] OCSP stapling not present (MEDIUM)
+- [SYS-0030300] Must-Staple extension not present (LOW)
+</code></pre>
+<p>This is where the scan found the most serious problem. The server&rsquo;s certificate has been revoked — meaning the issuing CA has declared it invalid, but the server is still presenting it. In practice, not all browsers enforce revocation checking aggressively, which makes this exactly the kind of issue that slips through unless you&rsquo;re actively scanning for it. OCSP stapling and Must-Staple are related: they control how revocation status gets communicated to clients. Without stapling, clients have to query the CA&rsquo;s OCSP responder directly (which many skip for performance), and without Must-Staple, there&rsquo;s no enforcement that the server even bother.</p>
+
+<h3 id="security-headers">Security Headers <a class="header-link" href="#security-headers"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<pre><code>- [SYS-0040100] Strict-Transport-Security header missing (HIGH)
+- [SYS-0040400] X-Content-Type-Options header missing (LOW)
+- [SYS-0040500] X-Frame-Options header missing (LOW)
+  ... (and others)
+</code></pre>
+<p>These are HTTP response headers that harden the connection beyond TLS itself. The big one here is HSTS (Strict-Transport-Security) — without it, a client can be tricked into making an initial plaintext HTTP request before upgrading to HTTPS, which is a well-known attack vector. The remaining headers (CSP, X-Frame-Options, Referrer-Policy, etc.) are defense-in-depth measures. None individually are catastrophic to miss, but collectively their absence paints a picture of a server that hasn&rsquo;t been hardened.</p>
+
+<h3 id="dns-security">DNS Security <a class="header-link" href="#dns-security"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<pre><code>- [SYS-0050100] No CAA records (any CA can issue certificates) (MEDIUM)
+- [SYS-0050200] No DANE/TLSA records (LOW)
+</code></pre>
+<p>CAA (Certificate Authority Authorization) records let a domain owner declare which CAs are allowed to issue certificates for it. Without CAA, any CA can issue a certificate for your domain — which expands your attack surface if a CA is compromised or issues certificates carelessly. DANE/TLSA records go further by pinning certificate information directly in DNS, secured by DNSSEC. Adoption is still low, but the check is there for environments where it matters.</p>
+
+<h3 id="certificate-details-and-cipher-suites">Certificate Details and Cipher Suites <a class="header-link" href="#certificate-details-and-cipher-suites"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The remainder of the report shows the server certificate chain (subject, issuer, validity dates, signing algorithm, fingerprint) and the negotiated cipher suites. In this case, the server supports only TLS 1.3 suites — all rated STRONG — which is actually the one bright spot in an otherwise troubled configuration.</p>
+
+<h2 id="deepviolet-api-architecture">DeepViolet API Architecture <a class="header-link" href="#deepviolet-api-architecture"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Under the hood, DeepViolet is structured as three layers:</p>
+<p><strong>DeepViolet API (Core Library)</strong> — This is what ZAP&rsquo;s HTTPS Info add-on integrates against. It&rsquo;s a pure Java library with no UI dependencies, designed to be embedded in other tools. You call it with a target host, it performs the TLS handshake analysis, certificate chain validation, revocation checks, header inspection, and DNS lookups, and returns structured results. It&rsquo;s available on Maven Central, so any JVM-based project can pull it in as a dependency.</p>
+<p><strong>DeepViolet Workbench</strong> — A standalone Java Swing desktop application that wraps the API with a graphical interface. Useful for ad-hoc investigations where you want to visually walk through certificate chains, inspect individual cipher suites, or compare scan results. Not relevant to ZAP users directly, but it&rsquo;s how I develop and test new analysis features before they reach the API.</p>
+<p><strong>DeepViolet CLI</strong> — A command-line interface for scripting and CI/CD pipelines. Same engine, different delivery mechanism.</p>
+<p>The architecture is intentional: the API is the product, and the Workbench and CLI are consumers of it, just like ZAP is. This means ZAP gets the same analysis depth as the standalone tools — it&rsquo;s not a watered-down integration.</p>
+
+<h2 id="beyond-https-info">Beyond HTTPS Info? <a class="header-link" href="#beyond-https-info"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>What HTTPS Info delivers today is the tip of what DeepViolet can do. Here are some capabilities that exist in the broader project or are on the roadmap, features that ZAP users might eventually see in some form:</p>
+<p><strong>Scan Persistence</strong> — DeepViolet supports saving and loading scan results. This means you can capture a point-in-time snapshot of a server&rsquo;s TLS configuration, archive it, and reload it later for comparison. Useful for compliance workflows or tracking how a target&rsquo;s posture changes over time.</p>
+<p><strong>AI-Augmented Reporting</strong> — There&rsquo;s work underway to integrate AI into DeepViolet&rsquo;s report generation. Rather than just listing findings with severity codes, the goal is to produce contextual analysis — explaining what a combination of findings means in practical terms, what the likely attack scenarios are, and what the remediation priority should be. Think of it as a junior analyst layer on top of the raw scan data.   Popular AI’s are supported like Anthropic and OpenAI, but for those uncomfortable with sharing their scans offsite, local LLM’s like Ollama are supported.</p>
+<p><strong>Interactive AI Chatbot</strong> — Related to reporting, this feature lets you load scan results and have a conversation with AI about them. Ask questions like &ldquo;What&rsquo;s the most urgent issue on this server?&rdquo; or &ldquo;If I can only fix three things, which three?&rdquo; and get reasoned answers grounded in the actual scan data.  Like AI-Augmented reporting both popular and local LLM’s are supported.</p>
+<p><strong>Customizable Risk Scoring</strong> — The risk scoring engine uses YAML-based rules that define how findings map to severity levels, weights, and the final score. These rules are user-editable. If your organization has a different risk tolerance — say you consider missing CAA records a HIGH rather than MEDIUM — you can adjust the rules to match your policy without touching code.</p>
+<p><strong>User Defined Risk Rules</strong> — In addition to the risk rules included in the project, users can also include their own risk rules using a yaml markup which offers conditionals.  For example, this yaml rule fragment shows a rule description for embedding in a report for displaying the certificate algorithm and key size, <em>description: &ldquo;Certificate uses ${algorithm} ${keysize}-bit key”.</em> The scheme facilitates flexible risk rules conformant with organizational policies.</p>
+<p><strong>User-Editable Cipher Suite Evaluations</strong> — Cipher suite strength ratings (STRONG, WEAK, etc) are also configurable. As cryptographic guidance evolves and older suites fall out of favor, you can update evaluations to reflect current best practices or your organization&rsquo;s standards.</p>
+<p><strong>Certificate Transparency Analysis</strong> — Deeper inspection of Certificate Transparency logs to verify that certificates have been properly logged, detect misissued certificates, and identify rogue CAs operating outside expected boundaries.</p>
+<p>These features represent the broader vision: DeepViolet isn&rsquo;t just a scanner, it&rsquo;s a TLS analysis platform. What HTTPS Info surfaces today is the assessment layer — a curated slice that fits naturally into ZAP&rsquo;s workflow. But there&rsquo;s a lot more depth available for users and integrators who need it.</p>
+
+<h2 id="getting-involved">Getting Involved <a class="header-link" href="#getting-involved"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>DeepViolet is open source and hosted on GitHub at <a href="https://github.com/spoofzu/DeepViolet">https://github.com/spoofzu/DeepViolet</a> (API) and <a href="https://github.com/spoofzu/DeepVioletTools">https://github.com/spoofzu/DeepVioletTools</a> (CLI, Workbench desktop app).  For ZAP users, the easiest way to see DeepViolet in action is to install HTTPS Info from the ZAP Marketplace and scan a target. If you find issues or have feature requests specific to the ZAP integration, those are welcome too.  Thanks to Simon Bennetts and the ZAP team for the opportunity to bring DeepViolet&rsquo;s analysis to the ZAP community. Building tools for defenders is what this is about, the more visibility we have into TLS configurations, the harder it is for things to slip through.</p>
+
+<h2 id="contacting">Contacting <a class="header-link" href="#contacting"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>By day, Milton Smith works at Oracle.  Outside of Oracle, Milton works independently with the open-source community on projects like DeepViolet and JVMXRay.  These open source projects are not Oracle projects and have not been evaluated or approved by Oracle.  Milton’s opinions are his own and don’t represent Oracle.  That said, Oracle has been a long time supporter of security, the open source community, and professional security organizations.</p>
+<p>You can find Milton on <a href="https://x.com/javamuffinztx">X</a> or <a href="https://www.linkedin.com/in/spoofzu/">LinkedIn</a></p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-03-02-zap-updates-february-2026/"> ZAP Updates - February 2026</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/milton_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/milton/">Milton Smith</a>
+                  
+                  
+                  (<a class="author-twitter" href="https://twitter.com/javamuffinztx">@javamuffinztx</a>)
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-quick-introduction">A Quick Introduction</a></li>
+    <li><a href="#what-youre-seeing-in-https-info">What You&rsquo;re Seeing in HTTPS Info</a>
+      <ul>
+        <li><a href="#risk-score-and-grade">Risk Score and Grade</a></li>
+        <li><a href="#protocols--connections">Protocols &amp; Connections</a></li>
+        <li><a href="#revocation--transparency">Revocation &amp; Transparency</a></li>
+        <li><a href="#security-headers">Security Headers</a></li>
+        <li><a href="#dns-security">DNS Security</a></li>
+        <li><a href="#certificate-details-and-cipher-suites">Certificate Details and Cipher Suites</a></li>
+      </ul>
+    </li>
+    <li><a href="#deepviolet-api-architecture">DeepViolet API Architecture</a></li>
+    <li><a href="#beyond-https-info">Beyond HTTPS Info?</a></li>
+    <li><a href="#getting-involved">Getting Involved</a></li>
+    <li><a href="#contacting">Contacting</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/guest/">guest</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-03-19-introducing-deepviolet/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>
