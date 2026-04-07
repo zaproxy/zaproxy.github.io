@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; Network Add-on Changelog</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<style>
+  .changelog-content h1 { font-size: 1.5em; }
+  .changelog-content h2 { font-size: 1.25em; }
+  .changelog-content h3 { font-size: 1.1em; }
+  .changelog-content h4 { font-size: 1em; }
+  .changelog-content h5 { font-size: 0.9em; }
+  .changelog-content h6 { font-size: 0.85em; }
+</style>
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Network Add-on Changelog</h1>
+  </div>
+</section>
+<div class="wrapper py-20" data-kind="page">
+  <header class="breadcrumbs">
+    <a href="/docs/">Docs</a> &gt;
+    <a href="/docs/desktop/addons/network/">Network</a> &gt;
+    Changelog
+  </header>
+  <br>
+  <main class="changelog-content">
+<h1 id="changelog">Changelog <a class="header-link" href="#changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h1>
+<p>All notable changes to this add-on will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+
+<h2 id="0260---2026-03-19"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.26.0">0.26.0</a> - 2026-03-19 <a class="header-link" href="#0260---2026-03-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>Method to expose if proxy enabled.</li>
+</ul>
+
+<h2 id="0250---2025-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.25.0">0.25.0</a> - 2025-12-15 <a class="header-link" href="#0250---2025-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.17.0.</li>
+<li>Update dependencies.</li>
+</ul>
+
+<h2 id="0240---2025-11-25"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.24.0">0.24.0</a> - 2025-11-25 <a class="header-link" href="#0240---2025-11-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Use UTF-8 charset for <code>application/json</code> when none specified on newer ZAP versions (Issue 6656).</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Update dependencies.</li>
+<li>Reset warned invalid content-type values on newer ZAP versions (Issue 9082).</li>
+<li>Updated user agents.</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Skip decoding of Brotli encoded empty bodies.</li>
+</ul>
+
+<h2 id="0230---2025-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.23.0">0.23.0</a> - 2025-09-02 <a class="header-link" href="#0230---2025-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-2">Added</h3>
+<ul>
+<li>NetworkUtils class.</li>
+</ul>
+
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Use only positive serial numbers for the Root CA certificate (Issue 8984).</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Correctly inform about unknown proxy host on all OSes.</li>
+</ul>
+
+<h2 id="0220---2025-06-20"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.22.0">0.22.0</a> - 2025-06-20 <a class="header-link" href="#0220---2025-06-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>A typo in the help with regard to Transparent Proxying.</li>
+</ul>
+
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Default Global Exclusions patterns:
+<ul>
+<li>All case insensitive (Issue 8930).</li>
+<li>Fix a naming mistake in &ldquo;ExtParam - .NET adx resources (SR/WR.adx?d=)&rdquo; adx should have been axd.</li>
+<li>Extend Image related patterns to include svg and webp.</li>
+<li>Extend Audio/Video patterns to include webm.</li>
+</ul>
+</li>
+<li>Change default log level of cookies processing to error to avoid flooding the logs with warnings when the cookies are rejected/invalid.</li>
+</ul>
+
+<h2 id="0210---2025-03-04"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.21.0">0.21.0</a> - 2025-03-04 <a class="header-link" href="#0210---2025-03-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>Ensure message properties are kept mutable even in case of connection close.</li>
+</ul>
+
+<h2 id="0200---2025-01-09"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.20.0">0.20.0</a> - 2025-01-09 <a class="header-link" href="#0200---2025-01-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-3">Added</h3>
+<ul>
+<li>Set the local address where (e.g. server, proxy) the request header was received.</li>
+</ul>
+
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+</ul>
+
+<h2 id="0190---2024-12-23"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.19.0">0.19.0</a> - 2024-12-23 <a class="header-link" href="#0190---2024-12-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>Configure the logging to prevent verbose log messages when using BC JSSE provider.</li>
+<li>Improve error handling on client&rsquo;s unknown CA TLS alert.</li>
+<li>Report available TLS providers when failed to query the TLS/SSL protocol versions.</li>
+<li>Rely on the default secure random generator when creating the Root CA certificate to use the most appropriate defined by the security provider.</li>
+<li>Update default user-agents.</li>
+</ul>
+
+<h2 id="0180---2024-09-24"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.18.0">0.18.0</a> - 2024-09-24 <a class="header-link" href="#0180---2024-09-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-4">Added</h3>
+<ul>
+<li>Send success/failure stats.</li>
+</ul>
+
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>Stop retrying 429 and 503 responses, instead of waiting for <code>retry-after</code> (Issue 8627).</li>
+</ul>
+
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>Fix typo in log message.</li>
+</ul>
+
+<h2 id="0170---2024-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.17.0">0.17.0</a> - 2024-09-02 <a class="header-link" href="#0170---2024-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>Guard against user without authentication state.</li>
+<li>Fix exception after regenerating the root CA cert during ZAP startup (Issue 8499).</li>
+<li>Use configured timeout as default.</li>
+</ul>
+
+<h2 id="0160---2024-05-07"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.16.0">0.16.0</a> - 2024-05-07 <a class="header-link" href="#0160---2024-05-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.15.0.</li>
+<li>Update default user-agents.</li>
+</ul>
+
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>Help content typos.</li>
+</ul>
+
+<h2 id="0150---2024-03-25"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.15.0">0.15.0</a> - 2024-03-25 <a class="header-link" href="#0150---2024-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-5">Added</h3>
+<ul>
+<li>Methods for accessing the upstream proxy.</li>
+</ul>
+
+<h2 id="0140---2024-02-22"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.14.0">0.14.0</a> - 2024-02-22 <a class="header-link" href="#0140---2024-02-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>Notify proxy listeners concurrently, might break listeners that do not correctly handle concurrency.</li>
+<li>Update dependencies.</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Remove legacy options panels that helped the user find the new options panels:
+<ul>
+<li>Client Certificate</li>
+<li>Connection</li>
+<li>Dynamic SSL Certificates</li>
+<li>Local Proxies</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>Accept rate limit rule&rsquo;s group by in lower case, when handling the API requests.</li>
+<li>Prevent configuration of the outgoing HTTP/SOCKS Proxy with the address of one of the Local Servers/Proxies, as it would lead to unintended request loops (Issue 5308).</li>
+<li>Fix exception while proxying NTLM authentication (Issue 7685).</li>
+</ul>
+
+<h2 id="0130---2023-11-17"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.13.0">0.13.0</a> - 2023-11-17 <a class="header-link" href="#0130---2023-11-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-6">Added</h3>
+<ul>
+<li>On weekly releases and versions after 2.14, handle content encodings and add <code>br</code> content encoding on supported OSes (Issue 2198).</li>
+</ul>
+
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Handle cookies like browsers, mostly send what is received (Issues 1232 and 7874).</li>
+<li>Do not set content-length to SSE responses, which would end up being closed prematurely.</li>
+</ul>
+
+<h2 id="0120---2023-10-12"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.12.0">0.12.0</a> - 2023-10-12 <a class="header-link" href="#0120---2023-10-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-7">Added</h3>
+<ul>
+<li>Allow to completely disable host header normalization.</li>
+</ul>
+
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+<li>Update default user-agents.</li>
+<li>Update dependencies.</li>
+</ul>
+
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>Do not initialize the view when failed to start the main proxy in <code>cmd</code> and <code>daemon</code> modes.</li>
+</ul>
+
+<h2 id="0112---2023-09-27"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.11.2">0.11.2</a> - 2023-09-27 <a class="header-link" href="#0112---2023-09-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>Ensure the main proxy with custom port (<code>-port</code>) is stopped when initialising after installation in <code>cmd</code> and <code>daemon</code> modes.</li>
+</ul>
+
+<h2 id="0111---2023-09-27"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.11.1">0.11.1</a> - 2023-09-27 <a class="header-link" href="#0111---2023-09-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-11">Fixed</h3>
+<ul>
+<li>Ensure servers are stopped when initialising after installation in <code>cmd</code> and <code>daemon</code> modes.</li>
+</ul>
+
+<h2 id="0110---2023-09-26"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.11.0">0.11.0</a> - 2023-09-26 <a class="header-link" href="#0110---2023-09-26"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-8">Added</h3>
+<ul>
+<li>Allow to create custom servers with the ZAP API.</li>
+</ul>
+
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Update names of generated root CA certificate and issued server certificates.</li>
+<li>Help improvements.</li>
+</ul>
+
+<h3 id="fixed-12">Fixed</h3>
+<ul>
+<li>Correct declaration of mandatory parameters of the API endpoint <code>setRateLimitRuleEnabled</code>.</li>
+</ul>
+
+<h2 id="0100---2023-07-11"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.10.0">0.10.0</a> - 2023-07-11 <a class="header-link" href="#0100---2023-07-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-9">Added</h3>
+<ul>
+<li>HTTP/HTTPS rate limiting capability.</li>
+<li>Allow to add a CRL Distribution Point in generated server certificates.</li>
+<li>On weekly releases and versions after 2.12 allow to manage global exclusions, supersedes core functionality.</li>
+</ul>
+
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.13.0.</li>
+<li>Update dependencies.</li>
+<li>Update default user-agents.</li>
+</ul>
+
+<h3 id="fixed-13">Fixed</h3>
+<ul>
+<li>Keep the original stack trace of timeout and unknown host exceptions.</li>
+</ul>
+
+<h2 id="090---2023-06-06"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.9.0">0.9.0</a> - 2023-06-06 <a class="header-link" href="#090---2023-06-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>Use <code>TRACE</code> level (instead of <code>DEBUG</code>) to log client side HTTP traffic to avoid accidentally enabling it when debugging other add-ons.</li>
+</ul>
+
+<h3 id="fixed-14">Fixed</h3>
+<ul>
+<li>Do not close the client connection when the server closes it, if not required, to keep the client connection in good state and be used longer.</li>
+</ul>
+
+<h2 id="080---2023-05-03"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.8.0">0.8.0</a> - 2023-05-03 <a class="header-link" href="#080---2023-05-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-10">Added</h3>
+<ul>
+<li>Allow to log client side HTTP traffic for debug purposes, using the name <code>org.zaproxy.addon.network.http</code>.</li>
+</ul>
+
+<h3 id="fixed-15">Fixed</h3>
+<ul>
+<li>Do not pass-through requests to the local proxies themselves (e.g. ZAP domain, aliases).</li>
+<li>Correctly handle concurrent requests (Issue 7838).</li>
+<li>Close connection on recursive request after notifying all handlers to still allow custom local proxies to serve or rewrite the request.</li>
+<li>Ensure WebSocket and SSE connections are not incorrectly reused (Issue 7730).</li>
+</ul>
+
+<h2 id="070---2023-04-04"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.7.0">0.7.0</a> - 2023-04-04 <a class="header-link" href="#070---2023-04-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Fallback to HTTP/1.1 in the main proxy if the client does not negotiate a protocol (ALPN) (Issue 7699).</li>
+<li>Read all main proxy configurations (<code>-config</code>) available, even if they don&rsquo;t include an address.</li>
+<li>Increase buffer used to read the HTTP body, to make reads more efficient.</li>
+<li>Clarify the description of command line arguments <code>-host</code> and <code>-port</code>.</li>
+</ul>
+
+<h3 id="fixed-16">Fixed</h3>
+<ul>
+<li>Ensure the whole HTTP response is delivered to the client before closing the connection.</li>
+</ul>
+
+<h2 id="060---2023-01-03"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.6.0">0.6.0</a> - 2023-01-03 <a class="header-link" href="#060---2023-01-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>Allow access to the ZAP API when running in command line mode.</li>
+<li>Fallback to HTTP/1.1 in internal local servers/proxies if the client does not negotiate a protocol (ALPN).</li>
+<li>Dynamically unload the add-on on newer core versions.</li>
+<li>Update dependencies.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-17">Fixed</h3>
+<ul>
+<li>Use always a plain connection to the outgoing HTTP proxy (Issue 7594).</li>
+<li>Do not change the case of the Content-Length header.</li>
+<li>Use the available response content when the Content-Length is more than what is available.</li>
+<li>Properly persist proxy error responses.</li>
+<li>Correctly manage cookies with domain and path attributes (Issue 7631).</li>
+<li>Do not prevent serving internal requests to the local servers/proxies.</li>
+<li>Consume the response body even when none expected (e.g. 204, HEAD), otherwise the previous body
+would not be cleared when reusing the same message.</li>
+</ul>
+
+<h2 id="050---2022-11-09"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.5.0">0.5.0</a> - 2022-11-09 <a class="header-link" href="#050---2022-11-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-18">Fixed</h3>
+<ul>
+<li>Fix authentication with TRACE requests and HTTP/NTLM reauthentication to proxy (Issue 7566).</li>
+</ul>
+
+<h2 id="040---2022-11-07"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.4.0">0.4.0</a> - 2022-11-07 <a class="header-link" href="#040---2022-11-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-11">Added</h3>
+<ul>
+<li>Allow to enable and configure ALPN for local servers/proxies.</li>
+</ul>
+
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>Update dependencies.</li>
+</ul>
+
+<h3 id="fixed-19">Fixed</h3>
+<ul>
+<li>Allow to send TRACE requests with payload and with an outgoing proxy (Issue 7578).</li>
+<li>Correct HTTP/NTLM reauthentication to target and proxy (Issue 7566).</li>
+</ul>
+
+<h2 id="030---2022-10-27"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.3.0">0.3.0</a> - 2022-10-27 <a class="header-link" href="#030---2022-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-12">Added</h3>
+<ul>
+<li>Client Certificates management (PKCS#11 and PKCS#12).</li>
+<li>Connection options, HTTP proxy, and SOCKS proxy.</li>
+<li>A newer HTTP client implementation.</li>
+</ul>
+
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+<li>Minor tweaks in help pages for better rendering.</li>
+<li>Promoted to Beta status.</li>
+<li>Maintenance changes.</li>
+<li>Update user agents.</li>
+</ul>
+
+<h2 id="020---2022-04-06"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.2.0">0.2.0</a> - 2022-04-06 <a class="header-link" href="#020---2022-04-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-13">Added</h3>
+<ul>
+<li>On weekly releases and versions after 2.11:
+<ul>
+<li>Management of local servers/proxies, supersedes core functionality;</li>
+<li>Configuration of aliases for the servers/proxies (<a href="https://github.com/zaproxy/zaproxy/issues/3594">Issue 3594</a>);</li>
+<li>Pass-through connections (<a href="https://github.com/zaproxy/zaproxy/issues/6832">Issue 6832</a>).</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="010---2022-02-01"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.1.0">0.1.0</a> - 2022-02-01 <a class="header-link" href="#010---2022-02-01"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-14">Added</h3>
+<ul>
+<li>Provide HTTP servers/proxies to other add-ons.</li>
+</ul>
+
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.1.</li>
+</ul>
+
+<h2 id="001---2021-12-03"><a href="https://github.com/zaproxy/zap-extensions/releases/network-v0.0.1">0.0.1</a> - 2021-12-03 <a class="header-link" href="#001---2021-12-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-15">Added</h3>
+<ul>
+<li>API endpoints to generate, import (<a href="https://github.com/zaproxy/zaproxy/issues/2280">Issue 2280</a>), and obtain the root CA certificate.</li>
+<li>On weekly releases and versions after 2.11:
+<ul>
+<li>Server certificates management.</li>
+<li>Handle command line arguments <code>-certload</code>, <code>-certpubdump</code>, and <code>-certfulldump</code>.</li>
+<li>Options panel to manage the root CA certificate and issued certificates.</li>
+<li>API endpoints to configure the validity of the root CA certificate and issued certificates (<a href="https://github.com/zaproxy/zaproxy/issues/4673">Issue 4673</a>).</li>
+</ul>
+</li>
+</ul>
+</main>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>

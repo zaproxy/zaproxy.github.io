@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; Script Console Add-on Changelog</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<style>
+  .changelog-content h1 { font-size: 1.5em; }
+  .changelog-content h2 { font-size: 1.25em; }
+  .changelog-content h3 { font-size: 1.1em; }
+  .changelog-content h4 { font-size: 1em; }
+  .changelog-content h5 { font-size: 0.9em; }
+  .changelog-content h6 { font-size: 0.85em; }
+</style>
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Script Console Add-on Changelog</h1>
+  </div>
+</section>
+<div class="wrapper py-20" data-kind="page">
+  <header class="breadcrumbs">
+    <a href="/docs/">Docs</a> &gt;
+    <a href="/docs/desktop/addons/script-console/">Script Console</a> &gt;
+    Changelog
+  </header>
+  <br>
+  <main class="changelog-content">
+<h1 id="changelog">Changelog <a class="header-link" href="#changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h1>
+<p>All notable changes to this add-on will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
+
+<h2 id="45180---2026-03-31"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.18.0">45.18.0</a> - 2026-03-31 <a class="header-link" href="#45180---2026-03-31"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Update dependency.</li>
+</ul>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>The Script Job Run action now supports:
+<ul>
+<li>Passing authentication details (context and user) for standalone Zest client script execution.</li>
+<li>Executing a chain of one or more Zest standalone scripts using the chain parameter.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="45170---2025-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.17.0">45.17.0</a> - 2025-12-15 <a class="header-link" href="#45170---2025-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Update the automation framework template to include missing field (<code>inline</code>).</li>
+<li>Do not display scripts added through the Automation Framework.</li>
+<li>Update minimum ZAP version to 2.17.0.</li>
+</ul>
+
+<h2 id="45160---2025-12-03"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.16.0">45.16.0</a> - 2025-12-03 <a class="header-link" href="#45160---2025-12-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Script scan rules were not using the attack strength and alert threshold from active scan policies.</li>
+</ul>
+
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Update dependency.</li>
+</ul>
+
+<h2 id="45150---2025-11-04"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.15.0">45.15.0</a> - 2025-11-04 <a class="header-link" href="#45150---2025-11-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-1">Added</h3>
+<ul>
+<li><code>scanHost</code> method to the active script scan rule interface that is called once per host being scanned.</li>
+</ul>
+
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Update dependency.</li>
+</ul>
+
+<h2 id="45140---2025-10-07"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.14.0">45.14.0</a> - 2025-10-07 <a class="header-link" href="#45140---2025-10-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-2">Added</h3>
+<ul>
+<li>Support for alert reference overrides in script scan rule metadata.</li>
+</ul>
+
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Do not report authentication script errors as warnings in the Automation Framework for consistent behavior with all authentication methods, which handle errors as authentication failures.</li>
+</ul>
+
+<h2 id="45130---2025-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.13.0">45.13.0</a> - 2025-09-02 <a class="header-link" href="#45130---2025-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>Update help with newer JavaScript engine and links.</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Error logs to always include stack trace.</li>
+</ul>
+
+<h2 id="45120---2025-06-20"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.12.0">45.12.0</a> - 2025-06-20 <a class="header-link" href="#45120---2025-06-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Loop when trying to extract an underlying script exception.</li>
+</ul>
+
+<h2 id="45110---2025-04-11"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.11.0">45.11.0</a> - 2025-04-11 <a class="header-link" href="#45110---2025-04-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>NPE when using scripts with no UI.</li>
+</ul>
+
+<h2 id="45100---2025-04-09"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.10.0">45.10.0</a> - 2025-04-09 <a class="header-link" href="#45100---2025-04-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>NPE when using some scripts after re-installing the scripts add-on.</li>
+<li>Correct error message of the Automation Framework job.</li>
+<li>Templates and Zest scripts were not being shown in the editor (Issue 8922).</li>
+</ul>
+
+<h3 id="added-3">Added</h3>
+<ul>
+<li>Standardized Policy Tags to the base Scripts Passive Scanner.</li>
+</ul>
+
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+
+<h2 id="4590---2025-03-25"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.9.0">45.9.0</a> - 2025-03-25 <a class="header-link" href="#4590---2025-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>Remove unnecessary custom parameter handling.</li>
+</ul>
+
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>Use the main Output panel for script output.</li>
+</ul>
+
+<h2 id="4580---2025-01-10"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.8.0">45.8.0</a> - 2025-01-10 <a class="header-link" href="#4580---2025-01-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-4">Added</h3>
+<ul>
+<li>Report indirect script errors while the Automation Framework plans are running (Issue 8586).</li>
+<li>Standardized Policy Tags to the base Scripts Active Scanner.</li>
+</ul>
+
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Fields with default or missing values are omitted for the <code>script</code> job in saved Automation Framework plans.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+</ul>
+
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>Correct auto-complete suggestions for parameters of Passive Rules.</li>
+<li>Some script errors were not being propagated to the output correctly.</li>
+</ul>
+
+<h2 id="4570---2024-10-07"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.7.0">45.7.0</a> - 2024-10-07 <a class="header-link" href="#4570---2024-10-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>Reuse script cache for all passive scan threads to avoid recompilation of Passive Rules scripts.</li>
+<li>Address a concurrency issue when using Graal.js Passive Rules scripts as first-class scan rules.</li>
+<li>Handle gracefully the inability to force stop the running standalone script in newer Java versions.</li>
+</ul>
+
+<h2 id="4560---2024-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.6.0">45.6.0</a> - 2024-09-02 <a class="header-link" href="#4560---2024-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Remove the active and passive script templates, superseded by the ones provided by the GraalVM JavaScript add-on.</li>
+</ul>
+
+<h2 id="4550---2024-07-22"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.5.0">45.5.0</a> - 2024-07-22 <a class="header-link" href="#4550---2024-07-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-5">Added</h3>
+<ul>
+<li>Provide the <code>script</code> API on newer ZAP versions.</li>
+</ul>
+
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Handle missing &ldquo;references&rdquo; field in the script metadata correctly.</li>
+</ul>
+
+<h2 id="4540---2024-05-16"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.4.0">45.4.0</a> - 2024-05-16 <a class="header-link" href="#4540---2024-05-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-6">Added</h3>
+<ul>
+<li>Support for Automation Framework loaddir action, which loads all of the scripts under the specified directory.</li>
+</ul>
+
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>File parameter to <code>source</code>, <code>file</code> will still work.</li>
+</ul>
+
+<h2 id="4530---2024-05-07"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.3.0">45.3.0</a> - 2024-05-07 <a class="header-link" href="#4530---2024-05-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-7">Added</h3>
+<ul>
+<li>Support for code and help links for script scan rules.</li>
+</ul>
+
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.15.0.</li>
+<li>Allow to set raw parameter values from Active Rules, by calling <code>as.setEscapedParam(HttpMessage msg, String param, String value)</code>.</li>
+</ul>
+
+<h2 id="4520---2024-04-11"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.2.0">45.2.0</a> - 2024-04-11 <a class="header-link" href="#4520---2024-04-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-8">Added</h3>
+<ul>
+<li>Active and Passive Scripts with a <code>getMetadata()</code> function are now treated as first-class scan rules (Issue 7105).</li>
+</ul>
+
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>Error when trying to run an unsupported script type through the Automation Framework.</li>
+<li>The &ldquo;Scripts Passive Scanner&rdquo; scan rule was being loaded twice.</li>
+</ul>
+
+<h2 id="4510---2024-03-25"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.1.0">45.1.0</a> - 2024-03-25 <a class="header-link" href="#4510---2024-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-9">Added</h3>
+<ul>
+<li>Support for menu weights (Issue 8369)</li>
+</ul>
+
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>Propagate script errors to the Automation Framework when running them.</li>
+</ul>
+
+<h2 id="4500---2024-02-12"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v45.0.0">45.0.0</a> - 2024-02-12 <a class="header-link" href="#4500---2024-02-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-10">Added</h3>
+<ul>
+<li>The scan rule functionality of scripts was moved from the ZAP core to this add-on (Related to Issue 7105).</li>
+</ul>
+
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-11">Fixed</h3>
+<ul>
+<li>The save button was not enabled for new scripts upon creation.</li>
+</ul>
+
+<h2 id="44---2023-12-19"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v44">44</a> - 2023-12-19 <a class="header-link" href="#44---2023-12-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>Rename &ldquo;Script Console&rdquo; in the Options panel list to &ldquo;Console&rdquo;.</li>
+</ul>
+
+<h3 id="fixed-12">Fixed</h3>
+<ul>
+<li>Prevent GUI initialization in daemon mode when installing the add-on.</li>
+</ul>
+
+<h2 id="43---2023-11-13"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v43">43</a> - 2023-11-13 <a class="header-link" href="#43---2023-11-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-11">Added</h3>
+<ul>
+<li>Allow setting the tab size and whether to use tabs or spaces for indentation in the console.
+The old defaults were to use the tab character with a tab size of 5.
+The new defaults are to use spaces with a tab size of 4.</li>
+<li>A gear button to the console toolbar to open the Script Console options screen.</li>
+<li>An enable / disable script button to the console toolbar to toggle enabling the open script.</li>
+<li>Options to allow editing the font name and size used in the console (Issue 8065).</li>
+<li>The shortcut <code>ctrl+S</code> (<code>cmd+S</code> on macOS) to save the script in the console.</li>
+</ul>
+
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>The &ldquo;Save Script&rdquo; button was moved to the console toolbar.</li>
+</ul>
+
+<h3 id="fixed-13">Fixed</h3>
+<ul>
+<li>Saving the script was causing the &ldquo;Keep or Replace&rdquo; dialog to show, even when no external changes were made to the script.</li>
+</ul>
+
+<h2 id="42---2023-10-12"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v42">42</a> - 2023-10-12 <a class="header-link" href="#42---2023-10-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+</ul>
+
+<h2 id="41---2023-10-04"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v41">41</a> - 2023-10-04 <a class="header-link" href="#41---2023-10-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-12">Added</h3>
+<ul>
+<li>Allow selecting a default behaviour when a script in the console changes on disk (Issues 5463, 7582). The allowed
+options are &ldquo;Ask Each Time&rdquo;, &ldquo;Keep Script&rdquo;, and &ldquo;Replace Script&rdquo;.</li>
+</ul>
+
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>Update extender template scripts to also work with Graal.js engine.</li>
+</ul>
+
+<h2 id="40---2023-09-11"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v40">40</a> - 2023-09-11 <a class="header-link" href="#40---2023-09-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>Allow to select a script node without focusing on it.</li>
+<li>Allow to display script without focusing on it.</li>
+<li>Maintenance changes.</li>
+<li>Depend on newer version of Automation Framework add-on (Related to Issue 7961).</li>
+</ul>
+
+<h2 id="39---2023-07-11"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v39">39</a> - 2023-07-11 <a class="header-link" href="#39---2023-07-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.13.0.</li>
+</ul>
+
+<h2 id="38---2023-03-29"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v38">38</a> - 2023-03-29 <a class="header-link" href="#38---2023-03-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-14">Fixed</h3>
+<ul>
+<li>extender/Copy as curl command menu.js - prevent and warn on local file inclusion when generating the command.
+Thanks to James Kettle (@albinowax) for reporting.</li>
+</ul>
+
+<h2 id="37---2023-03-18"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v37">37</a> - 2023-03-18 <a class="header-link" href="#37---2023-03-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-15">Fixed</h3>
+<ul>
+<li>Do not require a name if file provided when adding script with automation job.</li>
+</ul>
+
+<h2 id="36---2023-03-17"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v36">36</a> - 2023-03-17 <a class="header-link" href="#36---2023-03-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-13">Added</h3>
+<ul>
+<li>Support for inline scripts in the Automation Framework.</li>
+</ul>
+
+<h3 id="changed-19">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="35---2023-02-09"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v35">35</a> - 2023-02-09 <a class="header-link" href="#35---2023-02-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-14">Added</h3>
+<ul>
+<li>Help explaining how to interact with Automation Framework plans.</li>
+<li>Support for relative file paths and ones including vars in the Automation Framework job.</li>
+</ul>
+
+<h3 id="changed-20">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="34---2023-01-03"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v34">34</a> - 2023-01-03 <a class="header-link" href="#34---2023-01-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-16">Fixed</h3>
+<ul>
+<li>Prevent exception if no display (Issue 3978).</li>
+</ul>
+
+<h3 id="changed-21">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="33---2022-10-27"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v33">33</a> - 2022-10-27 <a class="header-link" href="#33---2022-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-22">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+</ul>
+
+<h2 id="32---2022-10-12"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v32">32</a> - 2022-10-12 <a class="header-link" href="#32---2022-10-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-23">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-17">Fixed</h3>
+<ul>
+<li>Don&rsquo;t print twice to std out when running without view and executing scripts (Issue 7455).</li>
+</ul>
+
+<h2 id="31---2022-09-23"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v31">31</a> - 2022-09-23 <a class="header-link" href="#31---2022-09-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-15">Added</h3>
+<ul>
+<li>Automation ScriptJob - Enable or Disable any script and run a targeted script (Issue 7025).</li>
+<li>Promoted to Release status.</li>
+</ul>
+
+<h3 id="changed-24">Changed</h3>
+<ul>
+<li>&lsquo;Copy as curl command menu.js&rsquo; added change that prevents curl from adding User-Agent when no User-Agent should be present.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="30---2022-02-25"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v30">30</a> - 2022-02-25 <a class="header-link" href="#30---2022-02-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-16">Added</h3>
+<ul>
+<li>Automation ScriptJob - Add or remove any script and run a standalone script</li>
+</ul>
+
+<h3 id="changed-25">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.1.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="29---2021-10-06"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v29">29</a> - 2021-10-06 <a class="header-link" href="#29---2021-10-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-17">Added</h3>
+<ul>
+<li>Allow to choose Kotlin for syntax highlighting.</li>
+</ul>
+
+<h3 id="changed-26">Changed</h3>
+<ul>
+<li>Do not show <code>Null</code> script engine in Edit Script dialogue.</li>
+<li>Now using 2.10 logging infrastructure (Log4j 2.x).</li>
+<li>Update links to zaproxy and community-scripts repo.</li>
+<li>Maintenance Changes.</li>
+<li>&lsquo;Copy as curl command menu.js&rsquo; is now preceded by a separator, and the Title Caps of the menu item were fixed (Issue 2000).</li>
+<li>&lsquo;Copy as curl command menu.js&rsquo; is now available in safe mode.</li>
+<li>Update minimum ZAP version to 2.11.0.</li>
+</ul>
+
+<h2 id="28---2020-12-18"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v28">28</a> - 2020-12-18 <a class="header-link" href="#28---2020-12-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-18">Fixed</h3>
+<ul>
+<li>GUI could hang when lots of print statements are used.</li>
+</ul>
+
+<h2 id="27---2020-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v27">27</a> - 2020-12-15 <a class="header-link" href="#27---2020-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-27">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.10.0.</li>
+<li>Tweak help content.</li>
+<li>Show script engine when editing the script.</li>
+<li>Fixed case where script print statements could deadlock ZAP.</li>
+<li>Maintenance changes.</li>
+<li>Support dark mode and dynamic Look and Feel switching</li>
+</ul>
+
+<h3 id="fixed-19">Fixed</h3>
+<ul>
+<li>Terminology</li>
+<li>Do not show the Enable/Disable Script menu item if the script can&rsquo;t be enabled/disabled, in some
+look and feels it could show an empty menu item (Issue 6256).</li>
+</ul>
+
+<h2 id="26---2020-01-17"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v26">26</a> - 2020-01-17 <a class="header-link" href="#26---2020-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-18">Added</h3>
+<ul>
+<li>Add repo URL.</li>
+</ul>
+
+<h3 id="changed-28">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.8.0.</li>
+<li>Update help to mention custom script/global variables (Issue 3402).</li>
+<li>Move empty template entry to the top, for consistency with other fields in New Script dialogue.</li>
+<li>Save cursor position when switching between scripts.</li>
+<li>Change info URL to link to the site.</li>
+<li>Provide information on how to create scripts from templates (Issue 5746).</li>
+</ul>
+
+<h3 id="fixed-20">Fixed</h3>
+<ul>
+<li>Fix links in script templates.</li>
+</ul>
+
+<h2 id="25---2019-06-07"><a href="https://github.com/zaproxy/zap-extensions/releases/scripts-v25">25</a> - 2019-06-07 <a class="header-link" href="#25---2019-06-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix typo in help page.</li>
+<li>Execute Targeted scripts in other thread than GUI thread.</li>
+<li>Clear highlighting syntax when a non-script node is selected.</li>
+<li>Warn of script changed by another program (post 2.7.0).</li>
+<li>Script console is disabled if script size &gt; 1MB and highlight behavior is disabled if script size &gt; 0.5MB.</li>
+<li>Allow to select the file path in the Edit Script dialogue.</li>
+<li>Allow to add selection listener to Scripts tree.</li>
+</ul>
+
+<h2 id="24---2018-01-25">24 - 2018-01-25 <a class="header-link" href="#24---2018-01-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix GUI freeze on script addition/removal through the API (Issue 4302).</li>
+<li>Prompt for a charset when failed to read the script file (Issue 3383).</li>
+</ul>
+
+<h2 id="23---2018-01-19">23 - 2018-01-19 <a class="header-link" href="#23---2018-01-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Correct extender script, Add history record menu.js, to show the info dialogue.</li>
+<li>Invoke script on selected message(s) (Issue 4085).</li>
+<li>Update extender scripts to use just Nashorn (Java 8).</li>
+<li>Do not show empty choice when the script engine requires a template.</li>
+<li>Confirm overwrite of existing script file.</li>
+<li>Support &rsquo;external&rsquo; scripts.</li>
+</ul>
+
+<h2 id="22---2017-11-27">22 - 2017-11-27 <a class="header-link" href="#22---2017-11-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for 2.7.0.</li>
+</ul>
+
+<h2 id="21---2017-11-24">21 - 2017-11-24 <a class="header-link" href="#21---2017-11-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Show script types in alphabetical order in dialogues New and Load Script.</li>
+<li>Fix an exception when installing extender scripts with errors.</li>
+<li>Correct state of Enabled checkbox when creating a script from templates.</li>
+<li>Allow to enable code folding in script text area.</li>
+</ul>
+
+<h2 id="20---2017-10-27">20 - 2017-10-27 <a class="header-link" href="#20---2017-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Added extender script type and examples.</li>
+</ul>
+
+<h2 id="19---2017-10-13">19 - 2017-10-13 <a class="header-link" href="#19---2017-10-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Code changes for Java 9 (Issue 2602).</li>
+<li>Inform when the script contains invalid char sequences (related to Issue 3377).</li>
+<li>Invoke Scripts tree context menu once.</li>
+<li>Title caps adjustments (related to Issue 2000).</li>
+<li>Allow to configure the enabled state of new/loaded scripts (Issue 2996).</li>
+<li>Use selected font in script text area.</li>
+<li>Fix UI hang when installing/uninstalling script engines (Issue 3945).</li>
+<li>Support basic auto-completion</li>
+</ul>
+
+<h2 id="18---2017-04-03">18 - 2017-04-03 <a class="header-link" href="#18---2017-04-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Remove unused resource messages (Issue 2386).</li>
+<li>Update help page to mention HTTP Sender scripts.</li>
+<li>Allow to save scripts through the context menu.</li>
+<li>Reset Console Output panel on session changes.</li>
+<li>If there is only one script engine available, make it the default when creating a new script.</li>
+</ul>
+
+<h2 id="17---2016-09-07">17 - 2016-09-07 <a class="header-link" href="#17---2016-09-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Discard undoable edits after setting a script (Issue 2675).</li>
+</ul>
+
+<h2 id="16---2016-06-02">16 - 2016-06-02 <a class="header-link" href="#16---2016-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix exceptions when installing/uninstalling script engines, with no script selected.</li>
+</ul>
+
+<h2 id="15---2015-08-23">15 - 2015-08-23 <a class="header-link" href="#15---2015-08-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Issue 1653: Support context menu key for trees.</li>
+<li>Updated add-on&rsquo;s info URL.</li>
+</ul>
+
+<h2 id="14---2015-04-13">14 - 2015-04-13 <a class="header-link" href="#14---2015-04-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Make sure all script engines are shown when creating a script from type (Issue 1503).</li>
+<li>Warn about missing script engines (Issue 1504).</li>
+<li>Unload all components when uninstalling (Issue 1507).</li>
+<li>Updated for ZAP 2.4</li>
+</ul>
+
+<h2 id="13---2014-09-10">13 - 2014-09-10 <a class="header-link" href="#13---2014-09-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Issue 1327: Support drag and drop in the scripts tree.</li>
+<li>Issue 1330: Add menu for duplicating a script.</li>
+<li>Issue 1278: Safe menu items not available in protected and safe modes.</li>
+</ul>
+
+<h2 id="12---2014-05-21">12 - 2014-05-21 <a class="header-link" href="#12---2014-05-21"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Disabled &ldquo;Word Wrap&rdquo; by default to avoid scrolling performance degradation due to long lines (Issue 1160).</li>
+</ul>
+
+<h2 id="11---2014-04-10">11 - 2014-04-10 <a class="header-link" href="#11---2014-04-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to use the latest core changes, other minor code changes (Issues 609, 1085, 1104 and 1105).</li>
+<li>Fixed an InvalidParameterException during add-on uninstallation (Issue 967).</li>
+<li>Changed help file structure to support internationalisation (Issue 981).</li>
+<li>Fixed inconsistencies in run/stop buttons (Issue 1023).</li>
+<li>Fixed a NullPointerException (Issue 1025).</li>
+<li>Added content-type to help pages (Issue 1080).</li>
+<li>Changed to allow to clear the output panel even if &ldquo;clear on run&rdquo; is enabled (Issue 1103).</li>
+<li>Updated add-on dir structure (Issue 1113).</li>
+</ul>
+
+<h2 id="10---2013-12-17">10 - 2013-12-17 <a class="header-link" href="#10---2013-12-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Changed to add an output console toolbar, depend on core ExtensionScript to avoid NullPointerException (Issue 847)</li>
+</ul>
+
+<h2 id="9---2013-09-11">9 - 2013-09-11 <a class="header-link" href="#9---2013-09-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Moved script support into the core and added targeted scripts</li>
+</ul>
+
+<h2 id="7---2013-05-27">7 - 2013-05-27 <a class="header-link" href="#7---2013-05-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated language files.</li>
+</ul>
+
+<h2 id="6---2013-05-13">6 - 2013-05-13 <a class="header-link" href="#6---2013-05-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Changed to unload all components when uninstalling.</li>
+<li>Changed to use the new version of the RSyntaxTextArea library.</li>
+</ul>
+
+<h2 id="5---2013-01-21">5 - 2013-01-21 <a class="header-link" href="#5---2013-01-21"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated language files</li>
+</ul>
+
+<h2 id="4---2013-01-17">4 - 2013-01-17 <a class="header-link" href="#4---2013-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to support new addon format</li>
+</ul>
+
+<h2 id="3---2012-11-23">3 - 2012-11-23 <a class="header-link" href="#3---2012-11-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+</main>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>

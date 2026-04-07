@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; Zest - Graphical Security Scripting Language Add-on Changelog</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<style>
+  .changelog-content h1 { font-size: 1.5em; }
+  .changelog-content h2 { font-size: 1.25em; }
+  .changelog-content h3 { font-size: 1.1em; }
+  .changelog-content h4 { font-size: 1em; }
+  .changelog-content h5 { font-size: 0.9em; }
+  .changelog-content h6 { font-size: 0.85em; }
+</style>
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Zest - Graphical Security Scripting Language Add-on Changelog</h1>
+  </div>
+</section>
+<div class="wrapper py-20" data-kind="page">
+  <header class="breadcrumbs">
+    <a href="/docs/">Docs</a> &gt;
+    <a href="/docs/desktop/addons/zest/">Zest - Graphical Security Scripting Language</a> &gt;
+    Changelog
+  </header>
+  <br>
+  <main class="changelog-content">
+<h1 id="changelog">Changelog <a class="header-link" href="#changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h1>
+<p>All notable changes to this add-on will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
+and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
+
+<h2 id="48130---2026-03-31"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.13.0">48.13.0</a> - 2026-03-31 <a class="header-link" href="#48130---2026-03-31"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>Internal support for creating a single runnable chain script from multiple Zest scripts.</li>
+<li>Support for import and export.</li>
+</ul>
+
+<h2 id="48120---2026-02-13"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.12.0">48.12.0</a> - 2026-02-13 <a class="header-link" href="#48120---2026-02-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-1">Added</h3>
+<ul>
+<li>UI support for Zest script options.</li>
+<li>Now supports authentication for client side scripts.</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Bug which prevented client side scripts from being recorded in ZAP.</li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Update Zest library to 0.35.0:
+<ul>
+<li>Migrate JSON serialization from Gson to Jackson.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="48110---2025-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.11.0">48.11.0</a> - 2025-12-15 <a class="header-link" href="#48110---2025-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.17.0.</li>
+<li>Use lowercase credential parameters in the Authentication default template.</li>
+<li>Update Zest library to 0.33.0:
+<ul>
+<li>Support for script level <code>statementDelay</code>.</li>
+<li>Update Selenium to version 4.39.0.</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Address deadlock when adding scripts.</li>
+</ul>
+
+<h2 id="48100---2025-10-29"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.10.0">48.10.0</a> - 2025-10-29 <a class="header-link" href="#48100---2025-10-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-2">Added</h3>
+<ul>
+<li>Support for Edge in scripts run from the script console.</li>
+</ul>
+
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Deprecate the <code>Username</code> and <code>Password</code> credential parameters in favor of the lowercase <code>username</code> and
+<code>password</code> variants, aligning them with the naming convention of the other authentication credentials.</li>
+<li>Update Zest library to 0.32.0.</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Support for Internet Explorer.</li>
+</ul>
+
+<h2 id="4890---2025-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.9.0">48.9.0</a> - 2025-09-02 <a class="header-link" href="#4890---2025-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Allow to keep auhtenticator&rsquo;s proxy running after the authentication.</li>
+</ul>
+
+<h2 id="4880---2025-07-03"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.8.0">48.8.0</a> - 2025-07-03 <a class="header-link" href="#4880---2025-07-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-3">Added</h3>
+<ul>
+<li>New extension level method for recording client scripts.</li>
+</ul>
+
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Fail fast on client errors.</li>
+<li>Update Zest library to 0.31.0:
+<ul>
+<li>Update Selenium to version 4.34.0.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="4870---2025-06-10"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.7.0">48.7.0</a> - 2025-06-10 <a class="header-link" href="#4870---2025-06-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>Update Zest library to 0.30.0:
+<ul>
+<li>Update Selenium to version 4.33.0.</li>
+<li>Send RETURN key if submit fails for input elements not in a form.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="4860---2025-05-20"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.6.0">48.6.0</a> - 2025-05-20 <a class="header-link" href="#4860---2025-05-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-4">Added</h3>
+<ul>
+<li>Client element waitForMsec parameter.</li>
+</ul>
+
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>Update Zest library to 0.29.0:
+<ul>
+<li>Allow to access the <code>WebElement</code> referenced by a <code>ZestClientElement</code>.</li>
+<li>Add new <code>waitForMsec</code> parameter to all client elements.</li>
+<li>Change <code>ZestClientElementClick</code>, <code>ZestClientElementSendKeys</code>, and <code>ZestClientElementSubmit</code> to wait for the element to also be enabled when using <code>waitForMsec</code>.</li>
+<li>Update Selenium to version 4.32.0.</li>
+<li>Change <code>ZestClientElementClick</code> to click on the position of the element instead of the element itself when obscured, to better reproduce a manual click.</li>
+<li>Change <code>ZestClientElementScrollTo</code> to only scroll to the element when not already in view and to scroll with <code>nearest</code> vertical alignment, to ensure the element is kept visible.</li>
+</ul>
+</li>
+<li>Allow to copy the script&rsquo;s file system path from the Edit Zest Script dialogue.</li>
+</ul>
+
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Print statements should print to the relevant script Output tab.</li>
+<li>Recording client Zest scripts.</li>
+</ul>
+
+<h2 id="4850---2025-03-25"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.5.0">48.5.0</a> - 2025-03-25 <a class="header-link" href="#4850---2025-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>Use TOTP data defined under user credentials during authentication when available.</li>
+<li>Update Zest library to 0.25.0:
+<ul>
+<li>Update Selenium to version 4.30.0.</li>
+</ul>
+</li>
+<li>Depend on newer version of Common Library add-on.</li>
+</ul>
+
+<h2 id="4840---2025-02-27"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.4.0">48.4.0</a> - 2025-02-27 <a class="header-link" href="#4840---2025-02-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>Update Zest library to 0.24.0:
+<ul>
+<li>Update Selenium to version 4.29.0.</li>
+<li>Remove workaround that was now causing exceptions.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="4830---2025-02-07"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.3.0">48.3.0</a> - 2025-02-07 <a class="header-link" href="#4830---2025-02-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>Enable ZAP API in the authentication runner so ZAP browser extension callbacks work.</li>
+</ul>
+
+<h2 id="4820---2025-02-04"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.2.0">48.2.0</a> - 2025-02-04 <a class="header-link" href="#4820---2025-02-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-5">Added</h3>
+<ul>
+<li>Firefox to recorder.</li>
+<li>Added support for custom script authentication.</li>
+</ul>
+
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>Record script order to be alphabetical.</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>Record Client Submit statement.</li>
+</ul>
+
+<h2 id="4810---2025-01-23"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.1.0">48.1.0</a> - 2025-01-23 <a class="header-link" href="#4810---2025-01-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>Use ZAP for launching Firefox and Chrome.</li>
+<li>Update Zest library to 0.23.0:
+<ul>
+<li>Update Selenium to version 4.28.0.</li>
+<li>Update minimum Java version to 17.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="4800---2025-01-10"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v48.0.0">48.0.0</a> - 2025-01-10 <a class="header-link" href="#4800---2025-01-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-6">Added</h3>
+<ul>
+<li>Allow other add-ons to create a Zest script from a list of messages.</li>
+</ul>
+
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Use Semantic Version.</li>
+<li>Maintenance changes.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+</ul>
+
+<h2 id="47---2024-09-24"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v47">47</a> - 2024-09-24 <a class="header-link" href="#47---2024-09-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>Correctly handle added scripts with no engine name.</li>
+</ul>
+
+<h2 id="46---2024-06-28"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v46">46</a> - 2024-06-28 <a class="header-link" href="#46---2024-06-28"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-7">Added</h3>
+<ul>
+<li>Document the engine name in the help page.</li>
+</ul>
+
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>Use script engines from ZAP when executing scripts.</li>
+<li>Update Zest library to 0.22.0:
+<ul>
+<li>Update Selenium to version 4.22.0.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="45---2024-05-07"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v45">45</a> - 2024-05-07 <a class="header-link" href="#45---2024-05-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.15.0.</li>
+<li>Update Zest library to 0.21.0:
+<ul>
+<li>Update Selenium to version 4.20.0.</li>
+<li>Update HtmlUnit to major version 3.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="44---2024-04-11"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v44">44</a> - 2024-04-11 <a class="header-link" href="#44---2024-04-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-8">Added</h3>
+<ul>
+<li>Support for menu weights (Issue 8369)</li>
+</ul>
+
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>Update minimum <code>scripts</code> add-on version to 45.1.0.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="43---2023-12-19"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v43">43</a> - 2023-12-19 <a class="header-link" href="#43---2023-12-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>Move &ldquo;Zest&rdquo; under &ldquo;Scripts &gt; Engine&rdquo; in the Options panel list.</li>
+</ul>
+
+<h2 id="42---2023-10-12"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v42">42</a> - 2023-10-12 <a class="header-link" href="#42---2023-10-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+<li>Update Zest library to 0.20.0:
+<ul>
+<li>Update Selenium to version 4.14.0.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="41---2023-09-26"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v41">41</a> - 2023-09-26 <a class="header-link" href="#41---2023-09-26"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-9">Added</h3>
+<ul>
+<li>Allow rendering Zest scripts in YAML. The format (JSON/YAML) may be changed via the Zest Options screen.</li>
+</ul>
+
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>Depend on Common Library add-on.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="40---2023-09-11"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v40">40</a> - 2023-09-11 <a class="header-link" href="#40---2023-09-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-10">Added</h3>
+<ul>
+<li>Client support to record Zest scripts.</li>
+</ul>
+
+<h3 id="changed-19">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>Resolved the browser window focus loss problem during the recording of Zest scripts.</li>
+</ul>
+
+<h2 id="39---2023-07-11"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v39">39</a> - 2023-07-11 <a class="header-link" href="#39---2023-07-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-11">Added</h3>
+<ul>
+<li>Dialogs for scroll, scrollTo, window resize and mouse over.</li>
+</ul>
+
+<h3 id="changed-20">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.13.0.</li>
+<li>Update Zest library to 0.18.0:
+<ul>
+<li>Update Selenium to version 4.</li>
+<li>jBrowserDriver (JBD), Opera, and PhantomJS are no longer supported (no longer being actively maintained).</li>
+<li>Add client statements for Scroll, MouseOver, and Window Resize events.</li>
+</ul>
+</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="38---2023-01-03"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v38">38</a> - 2023-01-03 <a class="header-link" href="#38---2023-01-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-21">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>Prevent exception if no display (Issue 3978).</li>
+</ul>
+
+<h2 id="37---2022-10-27"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v37">37</a> - 2022-10-27 <a class="header-link" href="#37---2022-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-22">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+<li>Update Zest library to 0.16.0:
+<ul>
+<li>Search script engines also by extension not just by name when invoking scripts otherwise it could miss some engines (e.g. Jython).</li>
+</ul>
+</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="36---2022-09-23"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v36">36</a> - 2022-09-23 <a class="header-link" href="#36---2022-09-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-23">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.1.</li>
+<li>Use Network add-on to proxy client authentication requests.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="35---2021-10-06"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v35">35</a> - 2021-10-06 <a class="header-link" href="#35---2021-10-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-24">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Update minimum ZAP version to 2.11.0.</li>
+</ul>
+
+<h2 id="34---2021-04-22"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v34">34</a> - 2021-04-22 <a class="header-link" href="#34---2021-04-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-25">Changed</h3>
+<ul>
+<li>Depend on Script Console add-on, it&rsquo;s required to work with Zest scripts (Issue 2656).</li>
+<li>Clear Zest Results Panel when new script is added.</li>
+<li>Update minimum ZAP version to 2.10.0.</li>
+</ul>
+
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>Track modifications done to the scripts to refresh the cached ones (Issue 6558).</li>
+</ul>
+
+<h2 id="33---2020-11-27"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v33">33</a> - 2020-11-27 <a class="header-link" href="#33---2020-11-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-12">Added</h3>
+<ul>
+<li>Allow to create a screenshot from the browser, using the context menu <code>Add Zest Client</code> &gt; <code>Screenshot</code>.</li>
+</ul>
+
+<h3 id="changed-26">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.9.0.</li>
+<li>Update Zest library to 0.15.0:
+<ul>
+<li>Do not follow redirects when disabled;</li>
+<li>Reduce the changes done to the requests sent.</li>
+</ul>
+</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Make sure the header fields are separated with CRLF when edited in the UI.</li>
+<li>Handle client requests when authenticating (Issue 5940).</li>
+</ul>
+
+<h2 id="32---2020-01-24"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v32">32</a> - 2020-01-24 <a class="header-link" href="#32---2020-01-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-27">Changed</h3>
+<ul>
+<li>Update Zest library to 0.14.2, to correctly ignore cert checks.</li>
+</ul>
+
+<h2 id="31---2020-01-17"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v31">31</a> - 2020-01-17 <a class="header-link" href="#31---2020-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-13">Added</h3>
+<ul>
+<li>Add info and repo URLs.</li>
+</ul>
+
+<h3 id="changed-28">Changed</h3>
+<ul>
+<li>Update Zest library to 0.14.1 to restore proxying capability, in the previous version the proxy settings were ignored.</li>
+</ul>
+
+<h2 id="30---2019-12-06"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v30">30</a> - 2019-12-06 <a class="header-link" href="#30---2019-12-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-14">Added</h3>
+<ul>
+<li>Allow to set, remove, and get global variables (Issue 3512), using the context menus:
+<ul>
+<li><code>Add Zest Action</code> &gt; <code>Action - Global Variable - Set</code></li>
+<li><code>Add Zest Action</code> &gt; <code>Action - Global Variable - Remove</code></li>
+<li><code>Add Zest Assignment</code> &gt; <code>Assign variable to Global Variable</code></li>
+</ul>
+</li>
+<li>Allow to start browsers (e.g. Chrome, Firefox) headless, enabled by default (Related to Issue 3866).</li>
+<li>Add new assignment which can filter the parsed DOM by element or attributes and select the content
+of an element or the value of an attribute.</li>
+</ul>
+
+<h3 id="changed-29">Changed</h3>
+<ul>
+<li>Update Zest library to 0.14.0 (Issue 4797). Refer to its <a href="https://github.com/zaproxy/zest/blob/0.14.0/CHANGELOG.md#changelog">CHANGELOG</a> for full set of changes.</li>
+<li>Send sequence messages with ZAP so that they make use of ZAP features e.g. authentication, HTTP
+Sender scripts. (Issue 5590)</li>
+<li>Set timestamp from/to Zest requests.</li>
+</ul>
+
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>Send PUT request with its body (Issue 4337).</li>
+<li>Launch browsers with capability <code>acceptInsecureCerts</code> set to true (Issue 4870).</li>
+<li>Proxy localhost with Chrome 72+ and Firefox 67+.</li>
+</ul>
+
+<h2 id="29---2019-06-07"><a href="https://github.com/zaproxy/zap-extensions/releases/zest-v29">29</a> - 2019-06-07 <a class="header-link" href="#29---2019-06-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Rely on script context writer for script output.</li>
+<li>Correct message handling in HTTP Sender scripts.</li>
+<li>Remove Scripts tree selection listener when add-on is uninstalled.</li>
+<li>Depend on newer version of Selenium add-on.</li>
+</ul>
+
+<h2 id="28---2018-11-07">28 - 2018-11-07 <a class="header-link" href="#28---2018-11-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Display HTTP message also when request statement is selected with keyboard.</li>
+<li>Update Content-Length of proxied responses (Issue 4613).</li>
+<li>Added input for Variable Name in Client Element Assign dialog.</li>
+<li>Allow to clear the Zest panel.</li>
+<li>Allow to access the options through Zest panel.</li>
+<li>Title caps adjustments (Issue 2000).</li>
+<li>Use selected text when adding assignments from the request/response.</li>
+<li>Show expression&rsquo;s inverse state in more tree nodes.</li>
+<li>Correct dialogue titles of client statements.</li>
+<li>Allow to invoke the context menu in text fields also with keyboard.</li>
+<li>Correct fields&rsquo; state in Switch To Frame dialogue.</li>
+<li>Correct request conversion that dropped the topmost header (Issue 5100).</li>
+</ul>
+
+<h2 id="27---2018-01-19">27 - 2018-01-19 <a class="header-link" href="#27---2018-01-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix exception when editing Action - Script with unsaved scripts.</li>
+<li>Allow to select more HTTP methods in Zest Request dialogue.</li>
+</ul>
+
+<h2 id="26---2017-11-27">26 - 2017-11-27 <a class="header-link" href="#26---2017-11-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Use custom plugin ID for fail actions.</li>
+<li>Updated for 2.7.0.</li>
+</ul>
+
+<h2 id="25---2017-10-17">25 - 2017-10-17 <a class="header-link" href="#25---2017-10-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Address exception when adding calc assign statement.</li>
+<li>Validate cookie name not empty.</li>
+<li>Code changes for Java 9 (Issue 2602).</li>
+<li>Default &rsquo;load on start&rsquo; to true in all cases.</li>
+<li>Re-enabled parameterize option.</li>
+<li>Cope with parameterizing strings in the URL.</li>
+<li>Correct drag-and-drop in loop statements.</li>
+</ul>
+
+<h2 id="24---2017-08-18">24 - 2017-08-18 <a class="header-link" href="#24---2017-08-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Update Zest library to version 0.13.</li>
+<li>Update to support Selenium version 3.4.0 (Issue 3509).</li>
+<li>Replace variables when running Action Invoke (Issue 3511).</li>
+<li>Execute scripts before programs when running Action Invoke (Issue 3488).</li>
+<li>Fix exceptions when running scripts (Issue 2859 and 2871).</li>
+<li>Bugfix in ZestScript Ui: When more than one &lsquo;Assign variable to a form field&rsquo; node is below a RequestNode then the RequestNode is now correctly determined.</li>
+<li>Correct operation set in calc assigns.</li>
+<li>Allow to loop files even if fuzzers.jbrf does not exist (Issue 3400).</li>
+<li>Properly remove Zest scripts (Issue 3401).</li>
+<li>Allow to select the case on assign replacements.</li>
+<li>Show/select the correct script in the Edit Zest Action dialogue (Issue 3489).</li>
+<li>Ensure recorded Sequence scripts can be scanned through context menu (Issue 3536).</li>
+<li>Updated to support latest selenium addon.</li>
+</ul>
+
+<h2 id="23---2017-04-03">23 - 2017-04-03 <a class="header-link" href="#23---2017-04-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Always show the expected URL in request statements (Issue 2854).</li>
+<li>Add HTTP requests to Sequence scripts when recording (Issue 3044).</li>
+<li>Execute nodes&rsquo; mouse click action just once (Issue 3099).</li>
+<li>Clear Zest Results panel on session changes.</li>
+</ul>
+
+<h2 id="22---2016-08-05">22 - 2016-08-05 <a class="header-link" href="#22---2016-08-05"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Change Sequence scripts to not use Sites tree nodes directly.</li>
+<li>Correct assertion of response body length when using charset (Issue 2669).</li>
+<li>Require just the parameters defined in the Authentication script (Issue 2734).</li>
+</ul>
+
+<h2 id="21---2016-06-02">21 - 2016-06-02 <a class="header-link" href="#21---2016-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix (UI) exceptions related to Zest Results tab.</li>
+</ul>
+
+<h2 id="20---2016-03-07">20 - 2016-03-07 <a class="header-link" href="#20---2016-03-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Add missing error messages for &lsquo;Assign variable via string delimiters&rsquo;.</li>
+<li>Add missing field (operand B) in &lsquo;Assign variable to a calculation&rsquo; dialogue.</li>
+<li>Send authentication requests with ZAP&rsquo;s configurations (Issue 2114).</li>
+<li>Fix &ldquo;Active scan sequence&rdquo; (Issue 2120).</li>
+<li>Fix exception while opening a dialogue.</li>
+<li>Cannot use auth script in daemon mode (Issue 2294).</li>
+<li>Support httpsender scripts (Issue 2293).</li>
+<li>Can&rsquo;t paste variable into new request dialog (Issue 2007).</li>
+<li>Script context menu has duplicated items (Issue 2106).</li>
+<li>Exception while adding Zest Condition (Issue 2296).</li>
+<li>Should not be able to delete THEN statement (Issue 2295).</li>
+<li>Statement lost after drag and drop (Issue 2299).</li>
+<li>It&rsquo;s possible to drag the script node (Issue 2302).</li>
+</ul>
+
+<h2 id="19---2015-08-23">19 - 2015-08-23 <a class="header-link" href="#19---2015-08-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated add-on&rsquo;s info URL.</li>
+<li>Correct the message shown in failed asserts (Issue 1647).</li>
+<li>Other code changes.</li>
+</ul>
+
+<h2 id="18---2015-04-13">18 - 2015-04-13 <a class="header-link" href="#18---2015-04-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>ZAP Issue 1411: Missing authentication handling for Zest scripts called from scanner</li>
+<li>ZAP Issue 1501: Add &ldquo;Inverse&rdquo; option in all the expression  dialog boxes.</li>
+<li>ZAP Issue 1507: Unload all components when uninstalling.</li>
+<li>ZAP Issue 1536: Change &ldquo;Zest&rdquo; add-on to depend on &ldquo;Selenium&rdquo; add-on.</li>
+<li>Zest Issue 66: Zest scripts cant be invoked from Zest scripts on Windows</li>
+<li>Zest Issue 67: Multipart/form-data request failed</li>
+<li>Zest Issue 68: ZestExpressionURL fails to initialise regex patterns</li>
+<li>Zest Issue 69: Added support for AssignCalc and ExpressionIsInteger</li>
+<li>Updated for ZAP 2.4</li>
+<li>Removed fuzzing code - will need to be re-implemented for new adv fuzzing</li>
+</ul>
+
+<h2 id="17---2014-09-10">17 - 2014-09-10 <a class="header-link" href="#17---2014-09-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>ZAP Issue 600: Add option to include response details or not</li>
+<li>ZAP Issue 658: define which headers to be included by default</li>
+<li>ZAP Issue 1248: ZestRequest always follow redirects, fails to match redirect responses</li>
+<li>ZAP Issue 1327: Support drag and drop</li>
+<li>ZAP Issue 1329: support commenting in/out statements</li>
+<li>ZAP Issue 1331: Update selenium jar to fix issue working with firefox 32.0</li>
+<li>ZAP Issue 1278: Safe menu items not available in protected and safe modes.</li>
+</ul>
+
+<h2 id="16---2014-07-09">16 - 2014-07-09 <a class="header-link" href="#16---2014-07-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>ZAP Issue 1259: Zest exception when adding request to Zest script</li>
+</ul>
+
+<h2 id="15---2014-07-02">15 - 2014-07-02 <a class="header-link" href="#15---2014-07-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>ZAP issue 1235: Support client side scripting</li>
+<li>ZAP issue 1250: Zest proxy scripts can break binary content</li>
+<li>ZAP Issue 1254:	Allow adding and pasting statements after other statements</li>
+</ul>
+
+<h2 id="14---2014-06-02">14 - 2014-06-02 <a class="header-link" href="#14---2014-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>ZAP issue 1218: ZEST Record button broken in Toolbar</li>
+<li>ZAP issue 1230: Changes to Zest scripts lost after the top level script node is changed</li>
+</ul>
+
+<h2 id="13---2014-05-21">13 - 2014-05-21 <a class="header-link" href="#13---2014-05-21"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h2 id="12---2014-04-10">12 - 2014-04-10 <a class="header-link" href="#12---2014-04-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Moved templates from core</li>
+<li>Updated to use the latest core changes, other minor code changes (Issues 416, 609,  503, 1085, 1104 and 1105).</li>
+<li>Changed help file structure to support internationalisation (Issue 981).</li>
+<li>Added content-type to help pages (Issue 1080).</li>
+<li>Updated add-on dir structure (Issue 1113).</li>
+</ul>
+
+<h2 id="11---2013-12-20">11 - 2013-12-20 <a class="header-link" href="#11---2013-12-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Changed to depend on core ExtensionScript to avoid NullPointerException (Issue 848)</li>
+<li>Fixed to allow Loops to use Custom fuzzers (Issue 916)</li>
+<li>Changed to show the correct selected message when the results are sorted in &ldquo;Zest Results&rdquo; tab (Issue 942)</li>
+<li>Added a &lsquo;Record new Zest script&rsquo; toolbar button (Issue 953)</li>
+</ul>
+
+<h2 id="10---2013-11-17">10 - 2013-11-17 <a class="header-link" href="#10---2013-11-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Misc bug fixes</li>
+</ul>
+
+<h2 id="9---2013-09-27">9 - 2013-09-27 <a class="header-link" href="#9---2013-09-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Misc bug fixes</li>
+</ul>
+
+<h2 id="8---2013-09-11">8 - 2013-09-11 <a class="header-link" href="#8---2013-09-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Promoted to beta (provisionally) and plug into script console ** Not ready for release yet!! ***</li>
+</ul>
+
+<h2 id="7---2013-05-03">7 - 2013-05-03 <a class="header-link" href="#7---2013-05-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Added support for cut and paste in the scripts tree</li>
+</ul>
+
+<h2 id="6---2013-05-02">6 - 2013-05-02 <a class="header-link" href="#6---2013-05-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Load and save passive scripts, added fail priorities, fixed some related bugs</li>
+</ul>
+
+<h2 id="5---2013-05-02">5 - 2013-05-02 <a class="header-link" href="#5---2013-05-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Load and save passive scripts and added fail priorities</li>
+</ul>
+
+<h2 id="4---2013-04-24">4 - 2013-04-24 <a class="header-link" href="#4---2013-04-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Added support for passive scripts and URL conditionals</li>
+</ul>
+
+<h2 id="3---2013-04-18">3 - 2013-04-18 <a class="header-link" href="#3---2013-04-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for 2.1.0</li>
+</ul>
+</main>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>

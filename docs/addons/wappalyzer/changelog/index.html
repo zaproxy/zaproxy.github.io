@@ -1,0 +1,901 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; Technology Detection Add-on Changelog</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<style>
+  .changelog-content h1 { font-size: 1.5em; }
+  .changelog-content h2 { font-size: 1.25em; }
+  .changelog-content h3 { font-size: 1.1em; }
+  .changelog-content h4 { font-size: 1em; }
+  .changelog-content h5 { font-size: 0.9em; }
+  .changelog-content h6 { font-size: 0.85em; }
+</style>
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Technology Detection Add-on Changelog</h1>
+  </div>
+</section>
+<div class="wrapper py-20" data-kind="page">
+  <header class="breadcrumbs">
+    <a href="/docs/">Docs</a> &gt;
+    <a href="/docs/desktop/addons/technology-detection/">Technology Detection</a> &gt;
+    Changelog
+  </header>
+  <br>
+  <main class="changelog-content">
+<h1 id="changelog">Changelog <a class="header-link" href="#changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h1>
+<p>All notable changes to this add-on will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
+
+<h2 id="21540---2026-03-31"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.54.0">21.54.0</a> - 2026-03-31 <a class="header-link" href="#21540---2026-03-31"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21530---2026-02-24"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.53.0">21.53.0</a> - 2026-02-24 <a class="header-link" href="#21530---2026-02-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Dependency update.</li>
+</ul>
+
+<h2 id="21520---2025-12-18"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.52.0">21.52.0</a> - 2025-12-18 <a class="header-link" href="#21520---2025-12-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Adjust warnings logged when a pattern incorrectly contains Confidence or Version tags, use just one punctuation character.</li>
+</ul>
+
+<h2 id="21510---2025-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.51.0">21.51.0</a> - 2025-12-15 <a class="header-link" href="#21510---2025-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>A help page for the tech-detection (<code>wappalyzer</code>) automation framework job.</li>
+</ul>
+
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.17.0.</li>
+</ul>
+
+<h2 id="21500---2025-12-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.50.0">21.50.0</a> - 2025-12-03 <a class="header-link" href="#21500---2025-12-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21490---2025-11-04"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.49.0">21.49.0</a> - 2025-11-04 <a class="header-link" href="#21490---2025-11-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+<li>The Technology panel toolbar now includes a toggle button to link its displayed contents to the Sites Tree selection.</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Icon sizing in the Technology table when a transparent placeholder needs to be used.</li>
+<li>Reduced usage of error level logging.</li>
+</ul>
+
+<h2 id="21480---2025-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.48.0">21.48.0</a> - 2025-09-02 <a class="header-link" href="#21480---2025-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>During load the time taken to process the data files will be shown in human readable format (generally seconds), as well as milliseconds (ms).</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="21470---2025-07-15"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.47.0">21.47.0</a> - 2025-07-15 <a class="header-link" href="#21470---2025-07-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21460---2025-06-20"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.46.0">21.46.0</a> - 2025-06-20 <a class="header-link" href="#21460---2025-06-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21450---2025-03-04"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.45.0">21.45.0</a> - 2025-03-04 <a class="header-link" href="#21450---2025-03-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21440---2025-01-15"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.44.0">21.44.0</a> - 2025-01-15 <a class="header-link" href="#21440---2025-01-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Depend on Passive Scanner add-on (Issue 7959).</li>
+<li>The scan rule no longer sets a CWE for alerts (Issue 8733).</li>
+</ul>
+
+<h2 id="21430---2024-11-25"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.43.0">21.43.0</a> - 2024-11-25 <a class="header-link" href="#21430---2024-11-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="21420---2024-09-24"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.42.0">21.42.0</a> - 2024-09-24 <a class="header-link" href="#21420---2024-09-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="21410---2024-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.41.0">21.41.0</a> - 2024-09-02 <a class="header-link" href="#21410---2024-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Request stats.</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Example alert details for documentation generation (Issue 6119).</li>
+</ul>
+
+<h2 id="21400---2024-08-28"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.40.0">21.40.0</a> - 2024-08-28 <a class="header-link" href="#21400---2024-08-28"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>The add-on now has an options screen to allow users to select Quick/Exhaustive mode used by the passive scanner (part of Issue 8361).
+<ul>
+<li>Quick &gt; Return on first match; which may mean missing version information, but should be slightly more performant. (This is the default.)</li>
+<li>Exhaustive &gt; Keep matching and don&rsquo;t return early; likely slightly less performant.</li>
+</ul>
+</li>
+<li>The add-on now also has the ability to optionally raise Alerts for each technology identified. The default setting is enabled. (Issue 8361)</li>
+<li>Maintenance changes.
+<ul>
+<li>This may be a breaking change for anyone that has code using the Automation Framework&rsquo;s Tech Detection (Wappalyzer) data.</li>
+</ul>
+</li>
+<li>The scan rule now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>Link website alert page and help (Issues 8189).</li>
+</ul>
+
+<h2 id="21390---2024-07-04"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.39.0">21.39.0</a> - 2024-07-04 <a class="header-link" href="#21390---2024-07-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21380---2024-06-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.38.0">21.38.0</a> - 2024-06-03 <a class="header-link" href="#21380---2024-06-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21370---2024-05-21"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.37.0">21.37.0</a> - 2024-05-21 <a class="header-link" href="#21370---2024-05-21"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.15.0.</li>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Maintenance changes (standardize on &ldquo;Technology Detection&rdquo; naming).</li>
+</ul>
+
+<h2 id="21360---2024-05-02"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.36.0">21.36.0</a> - 2024-05-02 <a class="header-link" href="#21360---2024-05-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Implemented a change to address a resource contention issue when loading Tech Detection details (Issue 8464).</li>
+</ul>
+
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>Suppress further un-helpful messages from the jsvg library logger.</li>
+</ul>
+
+<h2 id="21350---2024-04-23"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.35.0">21.35.0</a> - 2024-04-23 <a class="header-link" href="#21350---2024-04-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>A typo in the help content.</li>
+</ul>
+
+<h2 id="21340---2024-04-11"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.34.0">21.34.0</a> - 2024-04-11 <a class="header-link" href="#21340---2024-04-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-19">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Parallelize loading of the technology files, to improve install/start-up performance.</li>
+</ul>
+
+<h2 id="21330---2024-03-28"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.33.0">21.33.0</a> - 2024-03-28 <a class="header-link" href="#21330---2024-03-28"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-20">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21320---2024-03-04"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.32.0">21.32.0</a> - 2024-03-04 <a class="header-link" href="#21320---2024-03-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-21">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="21310---2024-02-09"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.31.0">21.31.0</a> - 2024-02-09 <a class="header-link" href="#21310---2024-02-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-22">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21300---2024-02-05"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.30.0">21.30.0</a> - 2024-02-05 <a class="header-link" href="#21300---2024-02-05"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-23">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Made UI strings and help less Wappalyzer centric and more Technology Detection focused.</li>
+</ul>
+
+<h2 id="21290---2024-01-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.29.0">21.29.0</a> - 2024-01-03 <a class="header-link" href="#21290---2024-01-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-24">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21280---2023-12-04"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.28.0">21.28.0</a> - 2023-12-04 <a class="header-link" href="#21280---2023-12-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-25">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+<li>Dependency updates.</li>
+</ul>
+
+<h2 id="21270---2023-11-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.27.0">21.27.0</a> - 2023-11-03 <a class="header-link" href="#21270---2023-11-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-26">Changed</h3>
+<ul>
+<li>Updated with enthec upstream icon and pattern changes.</li>
+</ul>
+
+<h2 id="21260---2023-10-18"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.26.0">21.26.0</a> - 2023-10-18 <a class="header-link" href="#21260---2023-10-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-27">Changed</h3>
+<ul>
+<li>Updated with last AliasIO/Wappalyzer icon and pattern changes.</li>
+<li>Updated with first set of icon and pattern changes from enthec/webappanalyzer.</li>
+<li>Help entries are now identified as &lsquo;Technology Detection - Wappalyzer&rsquo; to simplify searching/filtering.</li>
+</ul>
+
+<h2 id="21250---2023-10-13"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.25.0">21.25.0</a> - 2023-10-13 <a class="header-link" href="#21250---2023-10-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-28">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+<li>Moved from Apache batik libraries to weisJ&rsquo;s jsvg library (thus reducing the size of the add-on).</li>
+</ul>
+
+<h2 id="21240---2023-09-07"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.24.0">21.24.0</a> - 2023-09-07 <a class="header-link" href="#21240---2023-09-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-29">Changed</h3>
+<ul>
+<li>Dependency updates.</li>
+<li>Depend on newer versions of Automation Framework and Common Library add-ons (Related to Issue 7961).</li>
+</ul>
+
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>Ensure icons render when expected.</li>
+</ul>
+
+<h2 id="21230---2023-08-14"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.23.0">21.23.0</a> - 2023-08-14 <a class="header-link" href="#21230---2023-08-14"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-30">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Update minimum ZAP version to 2.13.0.</li>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21220---2023-06-06"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.22.0">21.22.0</a> - 2023-06-06 <a class="header-link" href="#21220---2023-06-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-31">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21210---2023-05-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.21.0">21.21.0</a> - 2023-05-03 <a class="header-link" href="#21210---2023-05-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-32">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21200---2023-04-04"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.20.0">21.20.0</a> - 2023-04-04 <a class="header-link" href="#21200---2023-04-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-33">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21190---2023-03-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.19.0">21.19.0</a> - 2023-03-03 <a class="header-link" href="#21190---2023-03-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-34">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="21180---2023-01-06"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.18.0">21.18.0</a> - 2023-01-06 <a class="header-link" href="#21180---2023-01-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-35">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21170---2022-12-13"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.17.0">21.17.0</a> - 2022-12-13 <a class="header-link" href="#21170---2022-12-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-36">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>Prevent exception if no display (Issue 3978).</li>
+</ul>
+
+<h2 id="21160---2022-11-14"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.16.0">21.16.0</a> - 2022-11-14 <a class="header-link" href="#21160---2022-11-14"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-37">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21150---2022-11-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.15.0">21.15.0</a> - 2022-11-03 <a class="header-link" href="#21150---2022-11-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-38">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21140---2022-10-27"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.14.0">21.14.0</a> - 2022-10-27 <a class="header-link" href="#21140---2022-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-39">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="21130---2022-09-23"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.13.0">21.13.0</a> - 2022-09-23 <a class="header-link" href="#21130---2022-09-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-40">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21120---2022-08-15"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.12.0">21.12.0</a> - 2022-08-15 <a class="header-link" href="#21120---2022-08-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-41">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="21110---2022-06-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.11.0">21.11.0</a> - 2022-06-03 <a class="header-link" href="#21110---2022-06-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>###Changed</p>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Update Wappalyzer URL in help documentation.</li>
+</ul>
+
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>Threading issue - only reproducible with currently unreleased core changes.</li>
+</ul>
+
+<h2 id="21100---2022-05-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.10.0">21.10.0</a> - 2022-05-03 <a class="header-link" href="#21100---2022-05-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-42">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Updated the pattern parser to deal with Confidence or Version fields extending DOM patterns (for the time being they&rsquo;re ignored).</li>
+<li>Updated the passive scan rule to be thread safe.</li>
+</ul>
+
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>Address error when generating the report with Java 17 (Issue 6880).</li>
+</ul>
+
+<h2 id="2190---2022-02-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.9.0">21.9.0</a> - 2022-02-03 <a class="header-link" href="#2190---2022-02-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-43">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="2180---2022-02-02"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.8.0">21.8.0</a> - 2022-02-02 <a class="header-link" href="#2180---2022-02-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-2">Added</h3>
+<ul>
+<li>API help content.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="changed-44">Changed</h3>
+<ul>
+<li>Further support for DOM selector patterns (Issue 6607).</li>
+</ul>
+
+<h2 id="2170---2022-01-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.7.0">21.7.0</a> - 2022-01-03 <a class="header-link" href="#2170---2022-01-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-45">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Update minimum ZAP version to 2.11.1.</li>
+</ul>
+
+<h2 id="2160---2021-12-07"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.6.0">21.6.0</a> - 2021-12-07 <a class="header-link" href="#2160---2021-12-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-46">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Dependency updates.</li>
+</ul>
+
+<h2 id="2150---2021-10-25"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.5.0">21.5.0</a> - 2021-10-25 <a class="header-link" href="#2150---2021-10-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-47">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Adapt script source handling to upstream changes.</li>
+</ul>
+
+<h2 id="2140---2021-10-07"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.4.0">21.4.0</a> - 2021-10-07 <a class="header-link" href="#2140---2021-10-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-48">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Updated to handle upstream Wappalyzer data file changes (Issue 6784).</li>
+<li>Update minimum ZAP version to 2.11.0.</li>
+</ul>
+
+<h2 id="2130---2021-08-25"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.3.0">21.3.0</a> - 2021-08-25 <a class="header-link" href="#2130---2021-08-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-49">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+<li>Reduce logging of &ldquo;Unexpected header type&rdquo; messages from error to debug (related to Issue 6607).</li>
+</ul>
+
+<h3 id="added-3">Added</h3>
+<ul>
+<li>Support for cookie patterns.</li>
+</ul>
+
+<h2 id="2120---2021-06-17"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.2.0">21.2.0</a> - 2021-06-17 <a class="header-link" href="#2120---2021-06-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-50">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Update link to repository.</li>
+<li>Update RE2/J library to latest version (1.6).</li>
+<li>Maintenance changes.</li>
+<li>DOM patterns are now only attempted against HTML responses.</li>
+</ul>
+
+<h3 id="added-4">Added</h3>
+<ul>
+<li>Support for automation job data to make it available in reports.</li>
+</ul>
+
+<h2 id="2110---2021-03-03"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.1.0">21.1.0</a> - 2021-03-03 <a class="header-link" href="#2110---2021-03-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-51">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Now using 2.10 logging infrastructure (Log4j 2.x).</li>
+</ul>
+
+<h3 id="added-5">Added</h3>
+<ul>
+<li>Support for DOM patterns, aligning with the upstream project (Issue 6180).</li>
+</ul>
+
+<h2 id="2100---2020-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v21.0.0">21.0.0</a> - 2020-12-15 <a class="header-link" href="#2100---2020-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-52">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Now targeting ZAP 2.10.</li>
+<li>Add-on promoted to Release.</li>
+<li>Dependency updates.</li>
+</ul>
+
+<h3 id="added-6">Added</h3>
+<ul>
+<li>Added support for CSS patterns, aligning with upstream project.</li>
+</ul>
+
+<h2 id="2030---2020-09-30"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v20.3.0">20.3.0</a> - 2020-09-30 <a class="header-link" href="#2030---2020-09-30"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-53">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+<li>When available the description of a given app/technology will show in the tooltip for a row in the table, and be included in detailed API responses.</li>
+</ul>
+
+<h2 id="2020---2020-08-04"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v20.2.0">20.2.0</a> - 2020-08-04 <a class="header-link" href="#2020---2020-08-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-54">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="2010---2020-06-30"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v20.1.0">20.1.0</a> - 2020-06-30 <a class="header-link" href="#2010---2020-06-30"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-55">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Correct script matching, check only script elements (Issue 6054).</li>
+</ul>
+
+<h2 id="2000---2020-06-15"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v20.0.0">20.0.0</a> - 2020-06-15 <a class="header-link" href="#2000---2020-06-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-56">Changed</h3>
+<ul>
+<li>Update RE2/J library to latest version (1.4).</li>
+<li>Add-on promoted to Beta.</li>
+</ul>
+
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>Fixed an exception which was occurring when the tab was shown during install.</li>
+</ul>
+
+<h2 id="19---2020-06-09"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v19">19</a> - 2020-06-09 <a class="header-link" href="#19---2020-06-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-57">Changed</h3>
+<ul>
+<li>Updated with upstream Wappalyzer icon and pattern changes.</li>
+<li>Wappalyzer&rsquo;s enabled state is now persisted between ZAP sessions.</li>
+</ul>
+
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>Fixed the Evidence context menu now functions properly again.</li>
+</ul>
+
+<h2 id="18---2020-04-06"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v18">18</a> - 2020-04-06 <a class="header-link" href="#18---2020-04-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-58">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.9.0.</li>
+<li>Update with Wappalyzer icon and pattern changes.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="added-7">Added</h3>
+<ul>
+<li>The Wappalyzer toolbar now has a toggle button to allow users to enable/disable the passive scanner simply from the GUI (Issue 5846).</li>
+</ul>
+
+<h2 id="17---2020-03-06"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v17">17</a> - 2020-03-06 <a class="header-link" href="#17---2020-03-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-59">Changed</h3>
+<ul>
+<li>Update with Wappalyzer icon and pattern changes.</li>
+</ul>
+
+<h2 id="16---2020-01-24"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v16">16</a> - 2020-01-24 <a class="header-link" href="#16---2020-01-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-8">Added</h3>
+<ul>
+<li>Add info and repo URLs.</li>
+<li>SVG icon support.</li>
+</ul>
+
+<h3 id="changed-60">Changed</h3>
+<ul>
+<li>The panel is now shown when the add-on is installed.</li>
+<li>The site &ldquo;names&rdquo; are now normalized based on scheme and authority (including port if non-standard or specifically included). This represents a breaking change for any API code that is using listSite with host:port &ldquo;names&rdquo;.</li>
+<li>Fixed an issue where large PNG icons weren&rsquo;t being resized.</li>
+</ul>
+
+<h2 id="15---2019-12-20"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v15">15</a> - 2019-12-20 <a class="header-link" href="#15---2019-12-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-61">Changed</h3>
+<ul>
+<li>Update patterns and icons as of AliasIO/wappalyzer@98814a0 (release 5.8.5+).</li>
+<li>Support for CPE information (as a table column in the GUI, and element in the new API output [as applicable]).</li>
+<li>Allow multi-select of rows to facilitate copy/paste, only show context menu if a single row is selected.</li>
+</ul>
+
+<h3 id="added-9">Added</h3>
+<ul>
+<li>Export button.</li>
+<li>API with three views:
+<ul>
+<li>listSites: Lists the sites that there are application (technology) details for [similar to the host:port drop down menu in the GUI].</li>
+<li>listAll: Lists all sites and their associated applications (technologies).</li>
+<li>listSite: Lists all the applications (technologies) for a given site [host:port] identifier.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="14---2019-10-02"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v14">14</a> - 2019-10-02 <a class="header-link" href="#14---2019-10-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Update apps.json and icons to align with AliasIO/Wappalyzer release 5.8.4 (plus any subsequent PRs).</li>
+</ul>
+
+<h2 id="13---2019-08-19"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v13">13</a> - 2019-08-19 <a class="header-link" href="#13---2019-08-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Performance improvements.</li>
+</ul>
+
+<h2 id="12---2019-04-24"><a href="https://github.com/zaproxy/zap-extensions/releases/wappalyzer-v12">12</a> - 2019-04-24 <a class="header-link" href="#12---2019-04-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Switch to using re2j where possible - results in significant performance improvements.</li>
+<li>Added version information column to Wappalyzer Results.</li>
+<li>Updated to align with AliasIO/Wappalyzer release v5.7.4.</li>
+</ul>
+
+<h2 id="11---2018-01-04">11 - 2018-01-04 <a class="header-link" href="#11---2018-01-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Minor code changes to address deprecations.</li>
+<li>Updated for latest contributions from main wappalyzer project.</li>
+</ul>
+
+<h2 id="10---2017-11-28">10 - 2017-11-28 <a class="header-link" href="#10---2017-11-28"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for 2.7.0.</li>
+</ul>
+
+<h2 id="9---2017-11-24">9 - 2017-11-24 <a class="header-link" href="#9---2017-11-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated Wappalyzer github link in help content.</li>
+<li>Code changes for Java 9 (Issue 2602).</li>
+</ul>
+
+<h2 id="8---2017-03-25">8 - 2017-03-25 <a class="header-link" href="#8---2017-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Remove the use of passive scan rule.</li>
+<li>Minor code cleanup.</li>
+<li>Add support for wappalyzer META tag checks.</li>
+</ul>
+
+<h2 id="7---2016-06-02">7 - 2016-06-02 <a class="header-link" href="#7---2016-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Allow to update/uninstall the add-on without restarting ZAP.</li>
+</ul>
+
+<h2 id="6---2016-02-08">6 - 2016-02-08 <a class="header-link" href="#6---2016-02-08"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for latest wappalyzer data.</li>
+</ul>
+
+<h2 id="5---2015-09-07">5 - 2015-09-07 <a class="header-link" href="#5---2015-09-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Do not access view components when view is not initialised (Issue 1617).</li>
+</ul>
+
+<h2 id="4---2015-04-13">4 - 2015-04-13 <a class="header-link" href="#4---2015-04-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to latest apps.json</li>
+</ul>
+
+<h2 id="3---2014-04-03">3 - 2014-04-03 <a class="header-link" href="#3---2014-04-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Minor code changes (Issues 503, 1083 and 1085).</li>
+<li>Changed help file structure to support internationalisation (Issue 981).</li>
+<li>Added content-type to help pages (Issue 1080).</li>
+<li>Updated add-on dir structure (Issue 1113).</li>
+</ul>
+
+<h2 id="2---2014-01-09">2 - 2014-01-09 <a class="header-link" href="#2---2014-01-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to latest rules and icons</li>
+</ul>
+
+<h2 id="1---2013-10-22">1 - 2013-10-22 <a class="header-link" href="#1---2013-10-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>First version</li>
+</ul>
+</main>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>
