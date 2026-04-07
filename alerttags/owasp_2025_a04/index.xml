@@ -8,6 +8,48 @@
     <language>en-us</language>
     <atom:link href="/alerttags/owasp_2025_a04/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Authentication Credentials Captured</title>
+      <link>/docs/alerts/10105-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10105-1/</guid>
+      <description>&lt;p&gt;An insecure authentication mechanism is in use. This allows an attacker on the network access to the userid and password of the authenticated user. For Basic Authentication, the attacker must merely monitor the network traffic until a Basic Authentication request is received, and then base64 decode the username and password. For Digest Authentication, the attacker has access to the username, and possibly also the password, if the hash (including a nonce) can be successfully cracked, or if a Man-In-The-Middle attack is mounted.&#xA;The attacker eavesdrops on the network until an authentication has completed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Generic Padding Oracle</title>
+      <link>/docs/alerts/90024/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90024/</guid>
+      <description>&lt;p&gt;By manipulating the padding on an encrypted string, an attacker is able to generate an error message that indicates a likely &amp;lsquo;padding oracle&amp;rsquo; vulnerability. Such a vulnerability can affect any application or framework that uses encryption improperly, such as some versions of ASP.net, Java Server Faces, and Mono. An attacker may exploit this issue to decrypt data and recover encryption keys, potentially viewing and modifying confidential data. This rule should detect the MS10-070 padding oracle vulnerability in ASP.net if CustomErrors are enabled for that.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Heartbleed OpenSSL Vulnerability</title>
+      <link>/docs/alerts/20015/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/20015/</guid>
+      <description>&lt;p&gt;The TLS implementation in OpenSSL 1.0.1 before 1.0.1g does not properly handle Heartbeat Extension packets, which allows remote attackers to obtain sensitive information from process memory via crafted packets that trigger a buffer over-read, potentially disclosing sensitive information.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Heartbleed OpenSSL Vulnerability (Indicative)</title>
+      <link>/docs/alerts/10034/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10034/</guid>
+      <description>&lt;p&gt;The TLS and DTLS implementations in OpenSSL 1.0.1 before 1.0.1g do not properly handle Heartbeat Extension packets, which allows remote attackers to obtain sensitive information from process memory via crafted packets that trigger a buffer over-read, potentially disclosing sensitive information.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP Only Site</title>
+      <link>/docs/alerts/10106/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10106/</guid>
+      <description>&lt;p&gt;The site is only served under HTTP and not HTTPS.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTP to HTTPS Insecure Transition in Form Post</title>
+      <link>/docs/alerts/10041/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10041/</guid>
+      <description>&lt;p&gt;This check looks for insecure HTTP pages that host HTTPS forms. The issue is that an insecure HTTP page can easily be hijacked through MITM and the secure HTTPS form can be replaced or spoofed.&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>HTTPS Configuration</title>
       <link>/docs/alerts/10205-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -15,11 +57,32 @@
       <description>&lt;p&gt;Performs HTTPS configuration analysis including certificate details and supported cipher suites.&lt;/p&gt;</description>
     </item>
     <item>
+      <title>HTTPS Content Available via HTTP</title>
+      <link>/docs/alerts/10047/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10047/</guid>
+      <description>&lt;p&gt;Content which was initially accessed via HTTPS (i.e.: using SSL/TLS encryption) is also accessible via HTTP (without encryption).&lt;/p&gt;</description>
+    </item>
+    <item>
       <title>HTTPS Security Configuration Issues</title>
       <link>/docs/alerts/10205-2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/10205-2/</guid>
       <description>&lt;p&gt;The HTTPS configuration has one or more security issues identified by the TLS risk assessment.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>HTTPS to HTTP Insecure Transition in Form Post</title>
+      <link>/docs/alerts/10042/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10042/</guid>
+      <description>&lt;p&gt;This check identifies secure HTTPS pages that host insecure HTTP forms. The issue is that a secure page is transitioning to an insecure page when data is uploaded through a form. The user may think they&amp;rsquo;re submitting data to a secure page when in fact they are not.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Weak Authentication Method</title>
+      <link>/docs/alerts/10105-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/10105-2/</guid>
+      <description>&lt;p&gt;HTTP basic or digest authentication has been used over an unsecured connection. The credentials can be read and then reused by someone with access to the network.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
