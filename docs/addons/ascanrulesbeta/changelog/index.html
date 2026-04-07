@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; Active scanner rules (beta) Add-on Changelog</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<style>
+  .changelog-content h1 { font-size: 1.5em; }
+  .changelog-content h2 { font-size: 1.25em; }
+  .changelog-content h3 { font-size: 1.1em; }
+  .changelog-content h4 { font-size: 1em; }
+  .changelog-content h5 { font-size: 0.9em; }
+  .changelog-content h6 { font-size: 0.85em; }
+</style>
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Active scanner rules (beta) Add-on Changelog</h1>
+  </div>
+</section>
+<div class="wrapper py-20" data-kind="page">
+  <header class="breadcrumbs">
+    <a href="/docs/">Docs</a> &gt;
+    <a href="/docs/desktop/addons/active-scan-rules-beta/">Active scanner rules (beta)</a> &gt;
+    Changelog
+  </header>
+  <br>
+  <main class="changelog-content">
+<h1 id="changelog">Changelog <a class="header-link" href="#changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h1>
+<p>All notable changes to this add-on will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
+
+<h2 id="64---2025-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v64">64</a> - 2025-12-15 <a class="header-link" href="#64---2025-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>The following scan rules were added, having been promoted from Alpha:
+<ul>
+<li>NoSQL Injection - MongoDB</li>
+<li>NoSQL Injection - MongoDB (Time Based)</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.17.0.</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+<ul>
+<li>The following scan rules were removed, having been promoted to Release:
+<ul>
+<li>Exponential Entity Expansion (Billion Laughs Attack)</li>
+<li>HTTP Only Site</li>
+<li>HTTPS Content Available via HTTP</li>
+<li>ShellShock - CVE-2014-6271</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="63---2025-11-04"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v63">63</a> - 2025-11-04 <a class="header-link" href="#63---2025-11-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-1">Added</h3>
+<ul>
+<li>SYSTEMIC tag to selected rules.</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Reduced usage of error level logging.</li>
+</ul>
+
+<h2 id="62---2025-09-18"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v62">62</a> - 2025-09-18 <a class="header-link" href="#62---2025-09-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-2">Added</h3>
+<ul>
+<li>QA CICD policy tag to selected rules.</li>
+</ul>
+
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+</ul>
+
+<h2 id="61---2025-09-10"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v61">61</a> - 2025-09-10 <a class="header-link" href="#61---2025-09-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Add alert references to CORS Header scan rule alerts (Issue 7100).</li>
+</ul>
+
+<h2 id="60---2025-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v60">60</a> - 2025-09-02 <a class="header-link" href="#60---2025-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Add help details about behavior of scan rules which leverage OAST (Issue 8682)</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Error logs to always include stack trace.</li>
+</ul>
+
+<h3 id="added-3">Added</h3>
+<ul>
+<li>Rules (as applicable) have been tagged in relation to HIPAA and PCI DSS.</li>
+<li>The 403 Bypass scan rule now has a CWE reference.</li>
+<li>The Shell Shock scan rule now has the TEST_TIMING alert tag.</li>
+</ul>
+
+<h2 id="59---2025-06-20"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v59">59</a> - 2025-06-20 <a class="header-link" href="#59---2025-06-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>The extension now has a user friendly name for use in the GUI.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+
+<h3 id="added-4">Added</h3>
+<ul>
+<li>All rules have been tagged of interest to Penetration Testers.</li>
+</ul>
+
+<h2 id="58---2025-03-04"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v58">58</a> - 2025-03-04 <a class="header-link" href="#58---2025-03-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>Replace usage of CWE-200 for the Insecure HTTP Method scan rule (Issue 8714).</li>
+<li>Include exception message of failed attacks in the Server Side Request Forgery scan rule.</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Address potential/theoretical reDoS issue in the Insecure HTTP Method scan rule.</li>
+</ul>
+
+<h2 id="57---2025-01-15"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v57">57</a> - 2025-01-15 <a class="header-link" href="#57---2025-01-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>The following scan rules now use more specific CWE IDs:
+<ul>
+<li>Proxy Disclosure (Issue 8713)</li>
+<li>Possible Username Enumeration (Issue 8715)</li>
+</ul>
+</li>
+<li>Remove double dot in skipped message of scan rules that use the Active Scan OAST service.</li>
+</ul>
+
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Address exception when scanning a message without path with Possible Username Enumeration scan rule.</li>
+<li>The WSTG alert tags on the HTTP Only Site scan rule.</li>
+</ul>
+
+<h3 id="added-5">Added</h3>
+<ul>
+<li>Standardized Scan Policy related alert tags on various rules.</li>
+</ul>
+
+<h2 id="56---2024-09-24"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v56">56</a> - 2024-09-24 <a class="header-link" href="#56---2024-09-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>Log exception details in Out of Band XSS scan rule.</li>
+<li>Maintenance changes.</li>
+<li>The Anti-CSRF Tokens Check scan rule now only considers GET requests at Low Threshold (Issue 7741).</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>Address time-based false positives in Remote Code Execution - Shell Shock scan rule (Issue 8516).</li>
+</ul>
+
+<h2 id="55---2024-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v55">55</a> - 2024-09-02 <a class="header-link" href="#55---2024-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>The following scan rules now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>Expression Language Injection</li>
+<li>Cookie Slack Detector</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>Potential false positives in the Source Code Disclosure - File Inclusion scan rule when responses are empty or the original message resulted in an error to start with (Issue 8517).</li>
+<li>A spacing/punctuation issue in the Cookie Slack Detector scan rule, whereby the Other Info field would not have a space after colons and before lists of cookie names.</li>
+</ul>
+
+<h2 id="54---2024-07-22"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v54">54</a> - 2024-07-22 <a class="header-link" href="#54---2024-07-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.15.0.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>Fixed regex for Relative Path Confusion, which detected absolute URL as relative.</li>
+<li>Alert text for various rules has been updated to more consistently use periods and spaces in a uniform manner.</li>
+</ul>
+
+<h2 id="53---2024-03-28"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v53">53</a> - 2024-03-28 <a class="header-link" href="#53---2024-03-28"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>Change links to use HTTPS in other info of Insecure HTTP Method (Issue 8262).</li>
+</ul>
+
+<h2 id="52---2024-03-25"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v52">52</a> - 2024-03-25 <a class="header-link" href="#52---2024-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>Updated reference for scan rule: Possible Username Enumeration (Issue 8262)</li>
+<li>Cookie Slack Detector scan rule now has a more specific CWE.</li>
+<li>Possible Username Enumeration scan rule now includes CWE-204 as a reference link.</li>
+<li>The following scan rules now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>Relative Path Confusion</li>
+<li>Integer Overflow Error</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="removed-1">Removed</h3>
+<ul>
+<li>Removed HTTP only reference for scan rule: Integer Overflow Error (Issue 8262)</li>
+</ul>
+
+<h2 id="51---2024-02-16"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v51">51</a> - 2024-02-16 <a class="header-link" href="#51---2024-02-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>The following scan rules now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>Backup File Disclosure</li>
+<li>Httpoxy - Proxy Header Misuse</li>
+<li>Anti-CSRF Tokens Check</li>
+<li>HTTP Parameter Pollution</li>
+<li>Cross-Domain Misconfiguration</li>
+</ul>
+</li>
+<li>Alerts from the HTTP Parameter Pollution scan rule are now raised with Low confidence.</li>
+<li>Updated reference for scan rules (Issue 8262):
+<ul>
+<li>Session Fixation</li>
+<li>Cross-Domain Misconfiguration</li>
+</ul>
+</li>
+<li>Add website alert links to the help page (Issue 8189).</li>
+</ul>
+
+<h2 id="50---2024-01-26"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v50">50</a> - 2024-01-26 <a class="header-link" href="#50---2024-01-26"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>References for the following scan rules were updated (Issue 8262):
+<ul>
+<li>Exponential Entity Expansion (Billion Laughs Attack)</li>
+<li>Relative Path Confusion</li>
+<li>HTTPS Content Available via HTTP</li>
+<li>Remote Code Execution - Shell Shock</li>
+</ul>
+</li>
+<li>The following scan rules now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>HTTPS Content Available via HTTP</li>
+<li>Remote Code Execution - Shell Shock (it now also uses Alert Refs (Issue 7100))</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="49---2024-01-16"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v49">49</a> - 2024-01-16 <a class="header-link" href="#49---2024-01-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+<li>Update references for Expression Language Injection and HTTP Parameter Pollution (Issue 8262).</li>
+<li>The Source Code Disclosure - SVN scan rule includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+</ul>
+
+<h3 id="removed-2">Removed</h3>
+<ul>
+<li>Help entry for the Spring Actuators scan rule (missed during previous removal/promotion).</li>
+</ul>
+
+<h2 id="48---2023-09-08"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v48">48</a> - 2023-09-08 <a class="header-link" href="#48---2023-09-08"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-6">Added</h3>
+<ul>
+<li>The HTTP Only Site scan rule now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+</ul>
+
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Depend on newer version of Common Library add-on.</li>
+<li>Use vulnerability data directly from Common Library add-on.</li>
+</ul>
+
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>The Source Code Disclosure - File Inclusion alerts now consistently leverage the description and solution from the associated vulnerability details.</li>
+</ul>
+
+<h2 id="47---2023-07-20"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v47">47</a> - 2023-07-20 <a class="header-link" href="#47---2023-07-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-7">Added</h3>
+<ul>
+<li>The Source Code Disclosure - File Inclusion now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>The following scan rules were added, having been promoted from Alpha:
+<ul>
+<li>Server Side Request Forgery</li>
+<li>Text4shell (CVE-2022-42889)</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.13.0.</li>
+</ul>
+
+<h3 id="removed-3">Removed</h3>
+<ul>
+<li>The following scan rules were removed, having been promoted to Release:
+<ul>
+<li>Log4Shell</li>
+<li>Spring Actuator Information Leak</li>
+<li>Spring4Shell</li>
+<li>Server Side Template Injection</li>
+<li>Server Side Template Injection (Blind)</li>
+<li>XPath Injection</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="46---2023-05-03"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v46">46</a> - 2023-05-03 <a class="header-link" href="#46---2023-05-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>The Insecure HTTP Method Scan rule now allows PUT/PATCH methods, if they return JSON or XML data in response (Issue 7772).</li>
+<li>The Source Code Disclosure - Git scan rule now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+</ul>
+
+<h2 id="45---2023-03-03"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v45">45</a> - 2023-03-03 <a class="header-link" href="#45---2023-03-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-19">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>The Log4Shell scan rule alerts now include Alert References and Tags.</li>
+<li>The Spring4Shell scan rule now includes a CVE Alert Tag and reference link.</li>
+</ul>
+
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>Use same non-default port in the HTTP Only Site scan rule.</li>
+</ul>
+
+<h2 id="44---2022-12-13"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v44">44</a> - 2022-12-13 <a class="header-link" href="#44---2022-12-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-20">Changed</h3>
+<ul>
+<li>Use lower case HTTP field names for compatibility with HTTP/2.</li>
+</ul>
+
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Preserve the HTTP version in the scan rules:
+<ul>
+<li>Backup File Disclosure</li>
+<li>Bypassing 403</li>
+<li>Cross-Domain Misconfiguration</li>
+<li>Relative Path Confusion</li>
+<li>Source Code Disclosure - Git</li>
+<li>Source Code Disclosure - SVN</li>
+<li>Possible Username Enumeration</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="43---2022-10-27"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v43">43</a> - 2022-10-27 <a class="header-link" href="#43---2022-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-21">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+<li>Depend on <code>database</code> add-on.</li>
+<li>Maintenance changes.</li>
+<li>Rely on Network add-on to obtain more information about socket timeouts.</li>
+</ul>
+
+<h3 id="added-8">Added</h3>
+<ul>
+<li>The following scan rules were added, having been promoted to Beta:
+<ul>
+<li>CORS</li>
+<li>Exponential Entity Expansion</li>
+<li>Forbidden Bypass</li>
+<li>Log4Shell</li>
+<li>Out-of-Band XSS</li>
+<li>Spring4Shell</li>
+<li>Spring Actuator</li>
+<li>Blind SSTI</li>
+<li>SSTI</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>NPE in Source Code Disclosure File Inclusion Scan Rule</li>
+</ul>
+
+<h3 id="removed-4">Removed</h3>
+<ul>
+<li>The following scan rules were removed, having been promoted to Release:
+<ul>
+<li>.env Information Leak</li>
+<li>Cloud Metadata Attack</li>
+<li>GET for POST</li>
+<li>Heartbleed OpenSSL Vulnerability</li>
+<li>Hidden File Finder</li>
+<li>Padding Oracle</li>
+<li>Remote Code Execution - CVE-2012-1823</li>
+<li>Source Code Disclosure - CVE-2012-1823</li>
+<li>SQL Injection - Hypersonic (Time Based)</li>
+<li>SQL Injection - MsSQL (Time Based)</li>
+<li>SQL Injection - MySQL (Time Based)</li>
+<li>SQL Injection - Oracle (Time Based)</li>
+<li>SQL Injection - PostgreSQL (Time Based)</li>
+<li>SQL Injection - SQLite</li>
+<li>Trace.axd Information Leak</li>
+<li>User Agent Fuzzer</li>
+<li>XSLT Injection</li>
+<li>XXE</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="42---2022-09-22"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v42">42</a> - 2022-09-22 <a class="header-link" href="#42---2022-09-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-22">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Improved description, solution, and references for the Integer Overflow scan rule.</li>
+<li>Added new Custom Payloads alert tag to the example alerts of the Hidden File Finder and User Agent scan rules.</li>
+</ul>
+
+<h3 id="added-9">Added</h3>
+<ul>
+<li>New User Agent strings to the User Agent fuzz scan rule.</li>
+<li>Additional source control paths for the Hidden Files finder scan rule.</li>
+</ul>
+
+<h2 id="41---2022-06-08"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v41">41</a> - 2022-06-08 <a class="header-link" href="#41---2022-06-08"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-23">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Adding more checks to Hidden File Finder scan rule.</li>
+<li>The Cloud Metadata scan rule will now be attempted with additional payloads (using DNS not just IPs), and supporting Alibaba.</li>
+</ul>
+
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>False Positive in XSLT Injection where &ldquo;Microsoft-Azure-Application-Gateway&rdquo; can be returned in a 403 if the gateway detects an attack.</li>
+</ul>
+
+<h2 id="40---2022-03-15"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v40">40</a> - 2022-03-15 <a class="header-link" href="#40---2022-03-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-24">Changed</h3>
+<ul>
+<li>Hidden File Finder scan rule, content checking has been added for .svn/entries as well as detection for wc.db.</li>
+<li>Use Network add-on to detect/serve HttPoxy scan rule requests.</li>
+<li>Maintenance changes.</li>
+<li>The CSRF Token scan rule will now raise alerts as Medium risk (Issue 7021).</li>
+</ul>
+
+<h3 id="fixed-11">Fixed</h3>
+<ul>
+<li>Adapted Cloud Metadata Attack scan rule to use Custom Pages and active scan analyzer to help reduce false positives in certain cases (Issue 7033).</li>
+<li>Generic Padding Oracle scan rule will no longer raise an alert for validation fields when the error response contains expected error patterns (Issue 6183).</li>
+<li>Hidden File Finder no longer follows redirects when sending requests for potential hidden files which should make it less false positive prone (Issue 7036).</li>
+</ul>
+
+<h2 id="39---2021-12-13"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v39">39</a> - 2021-12-13 <a class="header-link" href="#39---2021-12-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-25">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.1.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="38---2021-12-06"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v38">38</a> - 2021-12-06 <a class="header-link" href="#38---2021-12-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-26">Changed</h3>
+<ul>
+<li>Dependency updates.</li>
+<li>XxeScanRule: Use Out-of-band payloads in addition to existing attacks.</li>
+</ul>
+
+<h3 id="added-10">Added</h3>
+<ul>
+<li>OWASP Web Security Testing Guide v4.2 mappings where applicable.</li>
+</ul>
+
+<h2 id="37---2021-10-07"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v37">37</a> - 2021-10-07 <a class="header-link" href="#37---2021-10-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-11">Added</h3>
+<ul>
+<li>OWASP Top Ten 2021/2017 mappings.</li>
+</ul>
+
+<h3 id="changed-27">Changed</h3>
+<ul>
+<li>Now targeting ZAP 2.11.</li>
+<li>Maintenance changes.</li>
+<li>Use OAST Callbacks for the XXE Scan Rule.</li>
+<li>Backup File Disclosure Scan Rule: When checkout a parent folder for 404 behavior assume a minimum folder name length of four to further eliminate chance of collision on short folder names (Issue 5330).</li>
+</ul>
+
+<h2 id="36---2021-09-17"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v36">36</a> - 2021-09-17 <a class="header-link" href="#36---2021-09-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="removed-5">Removed</h3>
+<ul>
+<li>Apache Range Header DoS (CVE-2011-3192) scan rule has been retired (Issue 6516)</li>
+</ul>
+
+<h2 id="35---2021-07-06"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v35">35</a> - 2021-07-06 <a class="header-link" href="#35---2021-07-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-12">Fixed</h3>
+<ul>
+<li>Correct dependency requirements.</li>
+</ul>
+
+<h2 id="34---2021-06-17"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v34">34</a> - 2021-06-17 <a class="header-link" href="#34---2021-06-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-28">Changed</h3>
+<ul>
+<li>Now using 2.10 logging infrastructure (Log4j 2.x).</li>
+<li>The .env file scan rule now performs even better checks to reduce false positives (Issue 6099, 6629).</li>
+<li>The trace.axd file scan rule now performs a content check to reduce false positives (Issue 6517).</li>
+<li>XML External Entity Attack scan rule changed to detect a possible XML File Reflection Attack when XML validation is present. (Issue 6204)</li>
+<li>Added/updated the details of some alerts (some changes might break Alert Filters)
+<ul>
+<li>Backup File Disclosure
+<ul>
+<li>The attack, evidence, and other info will use URIs in encoded form.</li>
+</ul>
+</li>
+<li>Insecure HTTP Method
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>Integer Overflow
+<ul>
+<li>Added evidence</li>
+</ul>
+</li>
+<li>Relative Path Confusion
+<ul>
+<li>The attack and URI field will use URIs in encoded form.</li>
+</ul>
+</li>
+<li>Source Code Disclosure - File Inclusion
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>Source Code Disclosure - Git
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>Source Code Disclosure - SVN
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>SQL Injection - Hypersonic SQL
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>SQL Injection - MySQL
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>SQL Injection - Oracle
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>SQL Injection - PostgreSQL
+<ul>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>SQL Injection - SQLite
+<ul>
+<li>Evidence is now the string that was matched in the response</li>
+<li>The URI field will be in encoded form.</li>
+</ul>
+</li>
+<li>XPath Injection
+<ul>
+<li>Added evidence</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>The Source Code Disclosure - File Inclusion scan rule was modified to make use of the Dice algorithm for calculating the match percentage, thus improving its performance.</li>
+<li>Update links to repository.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-13">Fixed</h3>
+<ul>
+<li>Add missing file, used by Hidden File Finder scan rule.</li>
+<li>Correct Context check in scan rules:
+<ul>
+<li>Session Fixation</li>
+<li>Possible Username Enumeration</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="33---2020-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v33">33</a> - 2020-12-15 <a class="header-link" href="#33---2020-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-29">Changed</h3>
+<ul>
+<li>Now targeting ZAP 2.10.</li>
+<li>The following scan rules now support Custom Page definitions:
+<ul>
+<li>Hidden Files</li>
+<li>HTTPS as HTTP</li>
+<li>Insecure HTTP Methods</li>
+<li>Integer Overflow</li>
+<li>Padding Oracle</li>
+<li>Remove Code Execution CVE-2012-1823</li>
+<li>Session Fixation</li>
+<li>Source Code Disclosure CVE-2012-1823</li>
+<li>Source Code Disclosure Git</li>
+<li>Source Code Disclosure SVN</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="32---2020-11-26"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v32">32</a> - 2020-11-26 <a class="header-link" href="#32---2020-11-26"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-30">Changed</h3>
+<ul>
+<li>XML External Entity Attack scan rule changed to parse response body irrespective of the HTTP response status code. (Issue 6203)</li>
+<li>XML External Entity Attack scan rule changed to skip only Remote File Inclusion Attack when Callback extension is not available.</li>
+<li>Maintenance changes.</li>
+<li>The Relative Path Confusion scan rule no longer treats &lsquo;href=&quot;#&quot;&rsquo; as a problematic use.</li>
+</ul>
+
+<h3 id="fixed-14">Fixed</h3>
+<ul>
+<li>Terminology.</li>
+<li>Correct reason shown when the XML External Entity Attack scan rule is skipped.</li>
+<li>SocketTimeoutException in the Proxy Disclosure scan rule.</li>
+</ul>
+
+<h3 id="added-12">Added</h3>
+<ul>
+<li>The following scan rules were promoted to Beta: Cloud Meta Data, .env File, Hidden Files, XSLT Injection (Issue 6211).</li>
+</ul>
+
+<h3 id="removed-6">Removed</h3>
+<ul>
+<li>The following scan rules were removed and promoted to Release: ELMAH Information Leak, .htaccess Information Leak (Issue 6211).</li>
+</ul>
+
+<h2 id="31---2020-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v31">31</a> - 2020-09-02 <a class="header-link" href="#31---2020-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-31">Changed</h3>
+<ul>
+<li>ELMAH Information Leak ensure that test requests are appropriately rebuilt for this scan rule (Issue 6129).</li>
+<li>SQL rules changed to double check timing attacks</li>
+<li>Significantly reduced the number of attacks made by the SQLite rule</li>
+</ul>
+
+<h2 id="30---2020-07-23"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v30">30</a> - 2020-07-23 <a class="header-link" href="#30---2020-07-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-32">Changed</h3>
+<ul>
+<li>Anti-CSRF Tokens Check address potential false positives by only analyzing HTML responses (Issue 6089).</li>
+</ul>
+
+<h2 id="29---2020-07-22"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v29">29</a> - 2020-07-22 <a class="header-link" href="#29---2020-07-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-33">Changed</h3>
+<ul>
+<li>Maintenance Changes.</li>
+<li>Backup File Disclosure: don&rsquo;t raise issues for non-success codes unless at LOW threshold (Issue 6059).</li>
+<li>ELMAH Information Leak: don&rsquo;t raise issues unless content looks good unless at LOW threshold (Issue 6076).</li>
+<li>Session Fixation scan rule fix potential false positive on session cookie HttpOnly, and Secure flags (Issue 6082).</li>
+</ul>
+
+<h2 id="28---2020-06-01"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v28">28</a> - 2020-06-01 <a class="header-link" href="#28---2020-06-01"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-13">Added</h3>
+<ul>
+<li>Add info and repo URLs.</li>
+<li>Add links to the code in the help.</li>
+</ul>
+
+<h3 id="changed-34">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.9.0.</li>
+<li>Backup File Disclosure scan rule - updated CWE to 530, added reference links to alerts, made sure WASC and CWE identifiers are included in alerts.</li>
+<li>Maintenance changes.</li>
+<li>Updated owasp.org references (Issue 5962).</li>
+</ul>
+
+<h3 id="fixed-15">Fixed</h3>
+<ul>
+<li>Use correct risk (<code>INFO</code>) in User Agent Fuzzer, to run later in the scan.</li>
+</ul>
+
+<h2 id="27---2019-12-16"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v27">27</a> - 2019-12-16 <a class="header-link" href="#27---2019-12-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-14">Added</h3>
+<ul>
+<li>The following scan rules were promoted from Alpha to Beta:
+<ul>
+<li>Apache Range Header DoS</li>
+<li>Cookie Slack Detector</li>
+<li>ELMAH Information Leak</li>
+<li>GET for POST</li>
+<li>.htaccess Information Leak</li>
+<li>HTTP Only Site</li>
+<li>Httpoxy - Proxy Header Misuse</li>
+<li>HTTPS Content Available via HTTP</li>
+<li>Proxy Disclosure</li>
+<li>Relative Path Confusion</li>
+<li>Source Code Disclosure - File Inclusion</li>
+<li>Source Code Disclosure - Git</li>
+<li>SQL Injection - MsSQL</li>
+<li>SQL Injection - SQLite</li>
+<li>Trace.axd Information Leak</li>
+<li>User Agent Fuzzer</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="changed-35">Changed</h3>
+<ul>
+<li>Add dependency on Custom Payloads add-on.</li>
+<li>Fixed ArrayIndexOutOfBoundsException issue in XML External Entity Attack scan rule.
+<ul>
+<li>Now removes original XML header in &ldquo;Local File Reflection Attack&rdquo;.</li>
+</ul>
+</li>
+<li>Maintenance changes.</li>
+<li>Update minimum ZAP version to 2.8.0.</li>
+<li>Elmah scan rule updated to include a response content check, and vary alert confidence values accordingly.</li>
+</ul>
+
+<h2 id="26---2019-07-11"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v26">26</a> - 2019-07-11 <a class="header-link" href="#26---2019-07-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix FP in &ldquo;Source Code Disclosure SVN&rdquo; where the contents exactly matches, and only report issues with less evidence at a LOW threshold.</li>
+<li>Fix NPE in &ldquo;Session Fixation&rdquo; scan rule when the path of the request URI is null.</li>
+<li>Changed &ldquo;Source Code Disclosure CVE20121823&rdquo; to only analyze JS responses when a LOW alert threshold is used.</li>
+</ul>
+
+<h2 id="25---2019-06-07"><a href="https://github.com/zaproxy/zap-extensions/releases/ascanrulesBeta-v25">25</a> - 2019-06-07 <a class="header-link" href="#25---2019-06-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Correct HTTP message usage in Insecure HTTP Method scanner.</li>
+<li>Fix missing resource messages with Cross-Domain Misconfiguration scanner.</li>
+<li>Remove Source Code Disclosure WEB-INF Scanner (promoted to release Issue 4448).</li>
+<li>Report source code disclosure alerts at Medium instead of High</li>
+<li>Bundle Diff Utils library instead of relying on core.</li>
+</ul>
+
+<h2 id="24---2018-07-31">24 - 2018-07-31 <a class="header-link" href="#24---2018-07-31"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Maintenance changes.</li>
+<li>Issue 1142: Logic and alert risk ratings modified.</li>
+<li>Correct timeout per attack strength in Heartbleed OpenSSL Vulnerability scanner.</li>
+<li>Issue 174: Added further method checks to the Insecure HTTP Methods Scanner.</li>
+<li>Skip &ldquo;Source Code Disclosure - /WEB-INF folder&rdquo; on Java 9+ (Issue 4038).</li>
+<li>BackupFileDisclosure - Handle empty &ldquo;backup&rdquo; responses.</li>
+</ul>
+
+<h2 id="23---2018-01-19">23 - 2018-01-19 <a class="header-link" href="#23---2018-01-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>At HIGH threshold only perform CSRF checks for inScope messages (Issue 1354).</li>
+</ul>
+
+<h2 id="22---2017-11-24">22 - 2017-11-24 <a class="header-link" href="#22---2017-11-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix FP in &ldquo;Source Code Disclosure - /WEB-INF folder&rdquo; on successful responses (Issue 3048).</li>
+<li>Fix FP in &ldquo;Integer Overflow Error&rdquo; on 500 error responses (Issue 3064).</li>
+<li>Support security annotations for forms that dont need anti-CSRF tokens.</li>
+<li>Changed XXE rule to use new callback extension.</li>
+<li>Notify of messages sent during Heartbleed scanning (Issue 2425).</li>
+<li>Fix false positive in Code Disclosure - CVE-2012-1823 on image content (Issue 3846).</li>
+<li>Fix false positive in Backup File Disclosure scanner on 403 responses (Issue 3911).</li>
+<li>CsrfTokenScan : Keep session cookies instead of deleting all of them</li>
+</ul>
+
+<h2 id="21---2016-10-24">21 - 2016-10-24 <a class="header-link" href="#21---2016-10-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Support changing the length of time used in timing attacks via config options.</li>
+<li>Support ignoring specified forms when checking for CSRF vulnerabilities.</li>
+<li>Do not attempt to parse empty cross domain policy files.</li>
+<li>Correct creation of attack URL in Source Code Disclosure - CVE-2012-1823.</li>
+<li>Correct creation of attack URL in Remote Code Execution - CVE-2012-1823.</li>
+<li>Respect OS techs included when scanning with Remote Code Execution - CVE-2012-1823.</li>
+<li>Adjust log levels of some scanners, from INFO to DEBUG.</li>
+</ul>
+
+<h2 id="20---2016-06-02">20 - 2016-06-02 <a class="header-link" href="#20---2016-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Prevent XXE vulnerability.</li>
+<li>Issue 2174: Adjust logging, catch specific exceptions.</li>
+<li>Issue 2178: SQLInjectionMySQL - adjust logging, catch specific exceptions.</li>
+<li>Issue 2179: SQLInjectionPostgresql - adjust logging, catch specific exceptions.</li>
+<li>Issue 2272: SQLInjectionHypersonic - adjust logging, catch specific exceptions.</li>
+<li>Issue 2177: SourceCodeDisclosureSVN - adjust logging.</li>
+</ul>
+
+<h2 id="19---2016-02-05">19 - 2016-02-05 <a class="header-link" href="#19---2016-02-05"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Adding Integer Overflow Scanner.</li>
+<li>Issue 823: i18n (internationalise) beta active scan rules.</li>
+<li>Issue 1713: Source Code Disclosure SVN Throws False Positive - Fixed.</li>
+<li>Add CWE and WASC IDs to active scanners which may have been lacking those details.</li>
+<li>Create help for scanners which were missing entries.</li>
+<li>Issue 2180: Adjust logging, and implement plugin skip if runtime requirements not met.</li>
+<li>Security fixes, to be detailed later.</li>
+</ul>
+
+<h2 id="18---2015-12-04">18 - 2015-12-04 <a class="header-link" href="#18---2015-12-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Removing Format String.</li>
+<li>Fix unloading issue (Issue 1972).</li>
+<li>Slightly improve performance of &ldquo;LDAP Injection&rdquo; and &ldquo;Username Enumeration&rdquo;.</li>
+<li>Demoted LDAP rule due to performance issues</li>
+</ul>
+
+<h2 id="17---2015-09-07">17 - 2015-09-07 <a class="header-link" href="#17---2015-09-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Moved Format String scanner from alpha to beta.</li>
+<li>Removing Buffer Overflow.</li>
+</ul>
+
+<h2 id="16---2015-08-24">16 - 2015-08-24 <a class="header-link" href="#16---2015-08-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Minor code changes.</li>
+<li>Change scanners to honour the technologies enabled (Issue 1618).</li>
+<li>Added Buffer Overflow scanner to beta (Issue 1605).</li>
+</ul>
+
+<h2 id="15---2015-04-13">15 - 2015-04-13 <a class="header-link" href="#15---2015-04-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Solved Comparison operator in XpathInjectionPlugin (Issue 1189).</li>
+<li>Promoted Backup File Disclosure to beta</li>
+<li>Promoted Cross Domain Scanner to beta</li>
+<li>Promoted HeartBleed to beta</li>
+<li>Promoted Insecure HTTP Method to beta</li>
+<li>Promoted Remote Code Execution - CVE2012-1823 to beta</li>
+<li>Promoted Shell shock to beta</li>
+<li>Promoted Source Code Disclosure - CVE2012-1823 to beta</li>
+<li>Promoted Source Code Disclosure - SVN to beta</li>
+<li>Promoted Source Code Disclosure - WEB-INF to beta</li>
+<li>Fixed minor regex escaping issue with Source Code Disclosure - SVN (Issue 1377)</li>
+<li>Updated for ZAP 2.4</li>
+</ul>
+
+<h2 id="14---2014-10-20">14 - 2014-10-20 <a class="header-link" href="#14---2014-10-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Solved Comparison operator in XpathInjectionPlugin (Issue 1189).</li>
+<li>Promoted Backup File Disclosure to beta</li>
+<li>Promoted Cross Domain Scanner to beta</li>
+<li>Promoted HeartBleed to beta</li>
+<li>Promoted Insecure HTTP Method to beta</li>
+<li>Promoted Remote Code Execution - CVE2012-1823 to beta</li>
+<li>Promoted Shell shock to beta</li>
+<li>Promoted Source Code Disclosure - CVE2012-1823 to beta</li>
+<li>Promoted Source Code Disclosure - SVN to beta</li>
+<li>Promoted Source Code Disclosure - WEB-INF to beta</li>
+</ul>
+
+<h2 id="13---2014-04-10">13 - 2014-04-10 <a class="header-link" href="#13---2014-04-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Promoted new XXE Plugin to test for remote and local XML External Entity Vulnerability.</li>
+<li>Promoted new PaddingOracle plugin to test for possible encryption padding errors.</li>
+<li>Promoted PXSS tests to beta.</li>
+<li>Promoted Command Injection release.</li>
+<li>Promoted new Expression Language Plugin to test JSP EL Injection.</li>
+<li>Changed help file structure to support internationalisation (Issue 981).</li>
+<li>Added content-type to help pages (Issue 1080).</li>
+<li>Updated add-on dir structure (Issue 1113).</li>
+</ul>
+
+<h2 id="12---2014-02-15">12 - 2014-02-15 <a class="header-link" href="#12---2014-02-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fixed a ClassNotFoundException while installing the add-on.</li>
+<li>Removed the scanner &ldquo;Server Side Code Injection Plugin&rdquo; (promoted to &ldquo;Active scanner rules&rdquo; add-on).</li>
+<li>Changed the &ldquo;LDAP Injection&rdquo; scanner to scan the parameters defined in the &ldquo;Active Scan&rdquo; options.</li>
+<li>Updated the &ldquo;LDAP Injection&rdquo; scanner to perform logic-based LDAP injection vulnerability detection</li>
+</ul>
+
+<h2 id="11---2013-10-14">11 - 2013-10-14 <a class="header-link" href="#11---2013-10-14"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Corrected IDs to prevent clash</li>
+</ul>
+
+<h2 id="10---2013-09-27">10 - 2013-09-27 <a class="header-link" href="#10---2013-09-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fixed various errors logged</li>
+</ul>
+
+<h2 id="9---2013-09-11">9 - 2013-09-11 <a class="header-link" href="#9---2013-09-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to be compatible with 2.2.0</li>
+</ul>
+
+<h2 id="5---2013-06-18">5 - 2013-06-18 <a class="header-link" href="#5---2013-06-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fixed NullPointerExceptions when scanning with &ldquo;Anti CSRF tokens scanner&rdquo;</li>
+</ul>
+
+<h2 id="4---2013-05-13">4 - 2013-05-13 <a class="header-link" href="#4---2013-05-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fixed a MissingResourceException when scanning with &ldquo;Anti CSRF tokens scanner&rdquo;</li>
+</ul>
+
+<h2 id="3---2013-01-25">3 - 2013-01-25 <a class="header-link" href="#3---2013-01-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Moved SQL Injection to release, tweaked SQL timing rules names</li>
+</ul>
+
+<h2 id="2---2013-01-17">2 - 2013-01-17 <a class="header-link" href="#2---2013-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to support new addon format</li>
+</ul>
+</main>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>

@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; Ajax Spider Add-on Changelog</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<style>
+  .changelog-content h1 { font-size: 1.5em; }
+  .changelog-content h2 { font-size: 1.25em; }
+  .changelog-content h3 { font-size: 1.1em; }
+  .changelog-content h4 { font-size: 1em; }
+  .changelog-content h5 { font-size: 0.9em; }
+  .changelog-content h6 { font-size: 0.85em; }
+</style>
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Ajax Spider Add-on Changelog</h1>
+  </div>
+</section>
+<div class="wrapper py-20" data-kind="page">
+  <header class="breadcrumbs">
+    <a href="/docs/">Docs</a> &gt;
+    <a href="/docs/desktop/addons/ajax-spider/">Ajax Spider</a> &gt;
+    Changelog
+  </header>
+  <br>
+  <main class="changelog-content">
+<h1 id="changelog">Changelog <a class="header-link" href="#changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h1>
+<p>All notable changes to this add-on will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
+
+<h2 id="23290---2025-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.29.0">23.29.0</a> - 2025-12-15 <a class="header-link" href="#23290---2025-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.17.0.</li>
+</ul>
+
+<h2 id="23280---2025-12-03"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.28.0">23.28.0</a> - 2025-12-03 <a class="header-link" href="#23280---2025-12-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Correct bundled logging dependencies.</li>
+</ul>
+
+<h2 id="23270---2025-11-04"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.27.0">23.27.0</a> - 2025-11-04 <a class="header-link" href="#23270---2025-11-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>Spider stats.</li>
+</ul>
+
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Correctly validate browser IDs.</li>
+</ul>
+
+<h2 id="23260---2025-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.26.0">23.26.0</a> - 2025-09-02 <a class="header-link" href="#23260---2025-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-1">Added</h3>
+<ul>
+<li>Support for stopping the spiderAjax automation job.</li>
+</ul>
+
+<h2 id="23250---2025-07-10"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.25.0">23.25.0</a> - 2025-07-10 <a class="header-link" href="#23250---2025-07-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Correct configuration key for Logout Avoidance (Issue 8994).</li>
+<li>Error logs to always include stack trace.</li>
+</ul>
+
+<h2 id="23240---2025-06-20"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.24.0">23.24.0</a> - 2025-06-20 <a class="header-link" href="#23240---2025-06-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-2">Added</h3>
+<ul>
+<li>Allow to configure how the scope is checked, either Flexible or Strict, to allow or not access to out of scope domains.</li>
+<li>Allow to avoid logout elements.</li>
+</ul>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>Allow access to domains out of context (e.g. SSO) when using Client Script and Browser Based Authentication.</li>
+</ul>
+
+<h2 id="23230---2025-03-25"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.23.0">23.23.0</a> - 2025-03-25 <a class="header-link" href="#23230---2025-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>Only count processed URLs. Browsers can make lots of background requests which distort the numbers.</li>
+</ul>
+
+<h2 id="23220---2025-01-10"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.22.0">23.22.0</a> - 2025-01-10 <a class="header-link" href="#23220---2025-01-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-3">Added</h3>
+<ul>
+<li>Option to enable browser extensions added by other add-ons, previously they were always enabled but now the default is false.</li>
+</ul>
+
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Updated automation framework documentation and templates for <code>spiderAjax</code> job to reflect changes to the default value of numberOfBrowsers parameter</li>
+<li>Fields with default or missing values are omitted for the <code>spiderAjax</code> job in saved Automation Framework plans.</li>
+<li>Default the number of browsers to the number of available cores.</li>
+<li>Updated the job GUI to add an aditional &ldquo;Elements&rdquo; tab.</li>
+</ul>
+
+<h2 id="23210---2024-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.21.0">23.21.0</a> - 2024-09-02 <a class="header-link" href="#23210---2024-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Maintenance changes related to Passive Scanner add-on (Issue 7959).</li>
+</ul>
+
+<h2 id="23200---2024-07-22"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.20.0">23.20.0</a> - 2024-07-22 <a class="header-link" href="#23200---2024-07-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>Issue with browser based auth.</li>
+</ul>
+
+<h2 id="23190---2024-05-07"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.19.0">23.19.0</a> - 2024-05-07 <a class="header-link" href="#23190---2024-05-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-4">Added</h3>
+<ul>
+<li>Video link in help for Automation Framework job.</li>
+<li>Support for menu weights (Issue 8369)</li>
+</ul>
+
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.15.0.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>A typo in an API end-point description.</li>
+</ul>
+
+<h2 id="23180---2023-11-10"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.18.0">23.18.0</a> - 2023-11-10 <a class="header-link" href="#23180---2023-11-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-5">Added</h3>
+<ul>
+<li>Add context menu item to Contexts tree to show the AJAX Spider dialogue with the selected Context.</li>
+</ul>
+
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>Add icon to the Tools menu item.</li>
+<li>Scale icons.</li>
+</ul>
+
+<h2 id="23170---2023-10-12"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.17.0">23.17.0</a> - 2023-10-12 <a class="header-link" href="#23170---2023-10-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+</ul>
+
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>Add URL to start event.</li>
+</ul>
+
+<h2 id="23160---2023-09-26"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.16.0">23.16.0</a> - 2023-09-26 <a class="header-link" href="#23160---2023-09-26"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Depend on newer versions of Automation Framework and Common Library add-ons (Related to Issue 7961).</li>
+<li>Depend on newer version of Network add-on and allow to access the ZAP API while spidering.</li>
+</ul>
+
+<h2 id="23150---2023-07-11"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.15.0">23.15.0</a> - 2023-07-11 <a class="header-link" href="#23150---2023-07-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-6">Added</h3>
+<ul>
+<li>Support for authentication handlers.</li>
+</ul>
+
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.13.0.</li>
+<li>Depend on newer version of Selenium add-on.</li>
+<li>Update Crawljax to 3.7.1, to use the newer version of Selenium.</li>
+</ul>
+
+<h2 id="23141---2023-06-02"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.14.1">23.14.1</a> - 2023-06-02 <a class="header-link" href="#23141---2023-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Handle job with no parameters when reading Excluded Elements (Issue 7889).</li>
+</ul>
+
+<h2 id="23140---2023-05-31"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.14.0">23.14.0</a> - 2023-05-31 <a class="header-link" href="#23140---2023-05-31"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-7">Added</h3>
+<ul>
+<li>Allow to exclude elements from crawl (Issue 5875).</li>
+<li>Configure logging of dependencies directly, instead of relying on core.</li>
+</ul>
+
+<h2 id="23131---2023-04-05"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.13.1">23.13.1</a> - 2023-04-05 <a class="header-link" href="#23131---2023-04-05"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>Honour <code>-config</code> arguments when applying the default allowed resources (Issue 7809).</li>
+</ul>
+
+<h2 id="23130---2023-03-15"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.13.0">23.13.0</a> - 2023-03-15 <a class="header-link" href="#23130---2023-03-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-8">Added</h3>
+<ul>
+<li>Automation Framework - HTML elements to click support</li>
+</ul>
+
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>Close the AJAX Spider dialogue when uninstalling the add-on.</li>
+</ul>
+
+<h2 id="23120---2023-02-23"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.12.0">23.12.0</a> - 2023-02-23 <a class="header-link" href="#23120---2023-02-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-9">Added</h3>
+<ul>
+<li>Automation Framework - inScopeOnly option</li>
+</ul>
+
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>Add default Allowed Resources if none present in existing home directory when updating the add-on (Issue 7719).</li>
+</ul>
+
+<h2 id="23110---2023-02-06"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.11.0">23.11.0</a> - 2023-02-06 <a class="header-link" href="#23110---2023-02-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Default number of threads to 2 * processor count.</li>
+</ul>
+
+<h3 id="fixed-11">Fixed</h3>
+<ul>
+<li>Ensure default Allowed Resources are present with a new home directory (Issue 7719).</li>
+</ul>
+
+<h2 id="23100---2022-10-27"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.10.0">23.10.0</a> - 2022-10-27 <a class="header-link" href="#23100---2022-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="2390---2022-09-23"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.9.0">23.9.0</a> - 2022-09-23 <a class="header-link" href="#2390---2022-09-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="added-10">Added</h3>
+<ul>
+<li>Support for automation monitor tests.</li>
+<li>Added &lsquo;runOnlyIfModern&rsquo; Automation Framework option.</li>
+</ul>
+
+<h3 id="fixed-12">Fixed</h3>
+<ul>
+<li>Automation Framework dialog - min numberOfBrowsers now 1.</li>
+<li>Automation Framework job - correctly pick up URL from context.</li>
+</ul>
+
+<h2 id="2380---2022-08-04"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.8.0">23.8.0</a> - 2022-08-04 <a class="header-link" href="#2380---2022-08-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-11">Added</h3>
+<ul>
+<li>Missing &lsquo;user&rsquo; param in the Automation Framework help</li>
+</ul>
+
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.1.</li>
+<li>Use Network add-on to proxy Crawljax/browser requests.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-13">Fixed</h3>
+<ul>
+<li>Stop the spider scans when ZAP shuts down (<a href="https://github.com/zaproxy/zaproxy/issues/6643">Issue #6643</a>).</li>
+</ul>
+
+<h2 id="2370---2021-11-02"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.7.0">23.7.0</a> - 2021-11-02 <a class="header-link" href="#2370---2021-11-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-12">Added</h3>
+<ul>
+<li>Automation authentication support</li>
+</ul>
+
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>Dependency updates.</li>
+</ul>
+
+<h2 id="2360---2021-10-06"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.6.0">23.6.0</a> - 2021-10-06 <a class="header-link" href="#2360---2021-10-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.0.</li>
+</ul>
+
+<h2 id="2350---2021-09-16"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.5.0">23.5.0</a> - 2021-09-16 <a class="header-link" href="#2350---2021-09-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-13">Added</h3>
+<ul>
+<li>Add Job Name field in AJAX Spider Automation dialogue</li>
+</ul>
+
+<h3 id="fixed-14">Fixed</h3>
+<ul>
+<li>Address errors when running the AJAX Spider with Automation Framework.</li>
+<li>Fixed var support in URLs (<a href="https://github.com/zaproxy/zaproxy/issues/6726">Issue #6726</a>)</li>
+</ul>
+
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="2340---2021-08-05"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.4.0">23.4.0</a> - 2021-08-05 <a class="header-link" href="#2340---2021-08-05"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-14">Added</h3>
+<ul>
+<li>Automation Framework GUI</li>
+</ul>
+
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>Now using 2.10 logging infrastructure (Log4j 2.x).</li>
+<li>Maintenance changes.</li>
+<li>Handle multiple context URLs in automation.</li>
+</ul>
+
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li>Automation parameters <code>failIfFoundUrlsLessThan</code> and <code>warnIfFoundUrlsLessThan</code> in favour of the
+<code>spiderAjax.urls.added</code> statistic test.</li>
+</ul>
+
+<h2 id="2330---2021-03-09"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.3.0">23.3.0</a> - 2021-03-09 <a class="header-link" href="#2330---2021-03-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-15">Added</h3>
+<ul>
+<li>Initial support for the automation framework</li>
+</ul>
+
+<h3 id="changed-19">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.10.0.</li>
+</ul>
+
+<h2 id="2320---2020-11-09"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.2.0">23.2.0</a> - 2020-11-09 <a class="header-link" href="#2320---2020-11-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-16">Added</h3>
+<ul>
+<li>Allow to specify allowed resources (Issue 3236). The allowed resources are always fetched
+even if out of scope, allowing to include necessary resources (e.g. scripts) from 3rd-parties.
+By default it allows files with extension <code>.js</code> and <code>.css</code>.</li>
+</ul>
+
+<h3 id="changed-20">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.9.0.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-15">Fixed</h3>
+<ul>
+<li>Unregister the event publisher when the add-on is uninstalled.</li>
+<li>Persist the state of &ldquo;Remove Without Confirmation&rdquo; of non-default elements to click.</li>
+</ul>
+
+<h2 id="2310---2020-01-17"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.1.0">23.1.0</a> - 2020-01-17 <a class="header-link" href="#2310---2020-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-17">Added</h3>
+<ul>
+<li>Add repo URL.</li>
+</ul>
+
+<h3 id="changed-21">Changed</h3>
+<ul>
+<li>Enable websockets (<a href="https://github.com/zaproxy/zaproxy/issues/4521">Issue 4521</a>)</li>
+<li>Change info URL to link to the site.</li>
+</ul>
+
+<h2 id="2300---2019-06-07"><a href="https://github.com/zaproxy/zap-extensions/releases/spiderAjax-v23.0.0">23.0.0</a> - 2019-06-07 <a class="header-link" href="#2300---2019-06-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Correct WebDriver requester ID.</li>
+<li>Remove unused resource messages.</li>
+<li>Generate start and stop events.</li>
+<li>Run with Firefox headless by default (Issue 3866).</li>
+<li>Depend on newer version of Selenium add-on.</li>
+</ul>
+
+<h2 id="22---2018-08-08">22 - 2018-08-08 <a class="header-link" href="#22---2018-08-08"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Maintenance changes.</li>
+<li>Add Export button to results table (Issue 4875).</li>
+</ul>
+
+<h2 id="21---2018-01-19">21 - 2018-01-19 <a class="header-link" href="#21---2018-01-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Reset API scan also when in daemon mode (Issue 4163).</li>
+</ul>
+
+<h2 id="20---2017-11-27">20 - 2017-11-27 <a class="header-link" href="#20---2017-11-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for 2.7.0.</li>
+</ul>
+
+<h2 id="19---2017-11-24">19 - 2017-11-24 <a class="header-link" href="#19---2017-11-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Code changes for Java 9 (Issue 2602).</li>
+<li>Fix &ldquo;Internal Error&rdquo; when accessing the full results API view.</li>
+</ul>
+
+<h2 id="18---2017-08-18">18 - 2017-08-18 <a class="header-link" href="#18---2017-08-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Update to support Selenium version 3.4.0 (Issue 3509).</li>
+<li>Fix WebDriver process leak (Issue 3155).</li>
+</ul>
+
+<h2 id="17---2017-03-06">17 - 2017-03-06 <a class="header-link" href="#17---2017-03-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Show alerts/tags in the AJAX Spider tab.</li>
+<li>Use a custom initiator ID (10) for AJAX Spider requests.</li>
+<li>Show always the latest configured browsers in AJAX Spider dialogue (Issue 3057).</li>
+<li>Honour global excluded URLs (Issue 3172).</li>
+<li>Reset URL counter on session change.</li>
+<li>Show excluded URLs in the AJAX Spider tab and through the ZAP API.</li>
+<li>Use provided browsers from Selenium add-on.</li>
+<li>Show messages that were not successful because of I/O errors.</li>
+<li>Ensure New Scan button is enabled, when the mode allows it.</li>
+</ul>
+
+<h2 id="16---2016-09-05">16 - 2016-09-05 <a class="header-link" href="#16---2016-09-05"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Allow to show the AJAX Spider dialogue through Tools menu (and keyboard shortcut).</li>
+<li>Fixed the issue that prevented the ajaxSpider from resetting the crawled url count to zero while starting a new scan (Issue 2610).</li>
+<li>Warn always if attempting to AJAX spider &ldquo;localhost&rdquo; with PhantomJS.</li>
+<li>Allow to spider a context (Issue 1955).</li>
+<li>Allow to spider as a user (Issue 1956).</li>
+<li>Allow to manually specify the start URL in AJAX Spider dialogue (Issue 1957).</li>
+<li>Allow to spider just a site&rsquo;s subtree (Issue 2847).</li>
+</ul>
+
+<h2 id="15---2016-06-02">15 - 2016-06-02 <a class="header-link" href="#15---2016-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix issue that prevented the spider from clicking all elements set in the options (Issue 2151).</li>
+<li>Minor update in help pages.</li>
+<li>Suppress log of innocuous warning.</li>
+</ul>
+
+<h2 id="14---2015-12-04">14 - 2015-12-04 <a class="header-link" href="#14---2015-12-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Issue 2102: Allow ajax spider options to be set via the API.</li>
+</ul>
+
+<h2 id="13---2015-07-30">13 - 2015-07-30 <a class="header-link" href="#13---2015-07-30"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated add-on&rsquo;s info URL.</li>
+<li>Changed to use the (full) URI of selected node (to be used as spider&rsquo;s seed).</li>
+</ul>
+
+<h2 id="12---2015-04-13">12 - 2015-04-13 <a class="header-link" href="#12---2015-04-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Promoted to &lsquo;release&rsquo; status (Issue 1326).</li>
+<li>Set to depend on &lsquo;Selenium&rsquo; add-on (Issue 1534).</li>
+<li>Updated Crawljax to version 3.6 (Issue 1535).</li>
+<li>Advanced scan dialog (Issue 1177).</li>
+</ul>
+
+<h2 id="11---2014-09-22">11 - 2014-09-22 <a class="header-link" href="#11---2014-09-22"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Exposed several Crawljax options (Issue 945).</li>
+<li>A warning message is shown if the selected browser was not successfully started.</li>
+<li>Disable the attack menu item &ldquo;AJAX Spider Site&rdquo; when the spider is running (Issue 1289).</li>
+<li>Updated Crawljax to version 3.5.1 and Selenium which adds support for Firefox 32 (Issue 1336).</li>
+<li>Error while updating &ldquo;Ajax Spider&rdquo; add-on (Issue 1337).</li>
+<li>Allow to use PhantomJS (Issue 1338).</li>
+<li>Allow to use Internet Explorer (Issue 1340).</li>
+</ul>
+
+<h2 id="10---2014-04-10">10 - 2014-04-10 <a class="header-link" href="#10---2014-04-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to use the latest core changes (Issues 609 and 1102).</li>
+<li>Changed to display the spider results in a table (Issue 503).</li>
+<li>Moved the Ajax Spider help pages from ZAP core to the add-on (Issue 1098).</li>
+<li>Updated add-on dir structure (Issue 1113).</li>
+</ul>
+
+<h2 id="9---2013-12-16">9 - 2013-12-16 <a class="header-link" href="#9---2013-12-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Added support for modes and scope (Issue 334).</li>
+<li>Added API to control the Ajax Spider (Issue 369).</li>
+<li>AJAX Spider will now use the HTTP authentication credentials set in &ldquo;Options&rdquo; &gt; &ldquo;Authentication&rdquo; (Issue 584).</li>
+<li>AJAX Spider will now use the options set in &ldquo;Options&rdquo; &gt; &ldquo;Connection&rdquo;.</li>
+<li>Changed to persist the configurations (Issue 678).</li>
+<li>Changed to proxy SSL traffic (Firefox) (Issue 824).</li>
+<li>Fixed a ChromeDriver process leak that occurred after closing the &ldquo;Options&rdquo; with Chrome browser selected (Issue 831).</li>
+<li>Changed to verify and deny all requests outside of spider scope (Issue 833).</li>
+<li>Updated Crawljax library (version 3.4) and dependencies (Issue 834).</li>
+<li>Changed to allow to set ChromeDriver&rsquo;s path through the &ldquo;AJAX Spider&rdquo; options (Issue 835).</li>
+<li>Changed to automatically configure the proxy settings (Issue 836).</li>
+<li>Changed to clear the results tab when a new spider process is started (Issue 926).</li>
+<li>Changed to not allow to start a new spider process if one is already running (Issue 927).</li>
+<li>Changed the AJAX Spider to listen to session changes (Issue 928).</li>
+</ul>
+
+<h2 id="8---2013-12-10">8 - 2013-12-10 <a class="header-link" href="#8---2013-12-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fixed problem where self referencing links could trap the spider</li>
+</ul>
+
+<h2 id="7---2013-09-11">7 - 2013-09-11 <a class="header-link" href="#7---2013-09-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for 2.2.0.</li>
+</ul>
+
+<h2 id="5---2013-06-02">5 - 2013-06-02 <a class="header-link" href="#5---2013-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Changed to remove the footer status label when uninstalling;</li>
+<li>Updated Crawljax library (and its dependencies);</li>
+<li>Fixed a NoSuchMethodError which prevented the use of &ldquo;Firefox&rdquo; browser;</li>
+<li>Fixed a NoSuchMethodError which prevented the use of &ldquo;HtmlUnit&rdquo; browser;</li>
+<li>Changed the selection of browsers to use radio buttons.</li>
+</ul>
+
+<h2 id="4---2013-04-18">4 - 2013-04-18 <a class="header-link" href="#4---2013-04-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for ZAP 2.1.0</li>
+</ul>
+
+<h2 id="3---2013-01-28">3 - 2013-01-28 <a class="header-link" href="#3---2013-01-28"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to Selenium 2.28.0</li>
+</ul>
+
+<h2 id="2---2013-01-17">2 - 2013-01-17 <a class="header-link" href="#2---2013-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to support new addon format</li>
+</ul>
+
+<h2 id="1---2012-11-23">1 - 2012-11-23 <a class="header-link" href="#1---2012-11-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+</main>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>

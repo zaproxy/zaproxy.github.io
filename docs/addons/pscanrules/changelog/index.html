@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+  <title>ZAP &ndash; Passive scanner rules Add-on Changelog</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<style>
+  .changelog-content h1 { font-size: 1.5em; }
+  .changelog-content h2 { font-size: 1.25em; }
+  .changelog-content h3 { font-size: 1.1em; }
+  .changelog-content h4 { font-size: 1em; }
+  .changelog-content h5 { font-size: 0.9em; }
+  .changelog-content h6 { font-size: 0.85em; }
+</style>
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Passive scanner rules Add-on Changelog</h1>
+  </div>
+</section>
+<div class="wrapper py-20" data-kind="page">
+  <header class="breadcrumbs">
+    <a href="/docs/">Docs</a> &gt;
+    <a href="/docs/desktop/addons/passive-scan-rules/">Passive scanner rules</a> &gt;
+    Changelog
+  </header>
+  <br>
+  <main class="changelog-content">
+<h1 id="changelog">Changelog <a class="header-link" href="#changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h1>
+<p>All notable changes to this add-on will be documented in this file.</p>
+<p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
+
+<h2 id="72---2026-03-31"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v72">72</a> - 2026-03-31 <a class="header-link" href="#72---2026-03-31"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>Loosely scoped cookie rule to include evidence.</li>
+</ul>
+
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Loosely scoped cookie rule to just include cookie names in the &ldquo;Other Info&rdquo;.</li>
+</ul>
+
+<h2 id="71---2026-03-02"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v71">71</a> - 2026-03-02 <a class="header-link" href="#71---2026-03-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-1">Changed</h3>
+<ul>
+<li>Information Disclosure - Suspicious Comments scan rule:
+<ul>
+<li>Attempts to collect comments from JavaScript content using the ANTLR library, which should be more accurate.</li>
+<li>Provides more context in the evidence (Issue 9185).</li>
+</ul>
+</li>
+<li>The Content Security Policy scan rule leverages an updated version of the htmlunit-csp library that includes support for the trusted-types and require-trusted-types-for directives.</li>
+</ul>
+
+<h2 id="70---2025-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v70">70</a> - 2025-12-15 <a class="header-link" href="#70---2025-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-1">Added</h3>
+<ul>
+<li>The following scan rules were added, having been promoted from Beta:
+<ul>
+<li>In Page Banner Information Leak</li>
+<li>Java Serialization Object</li>
+<li>Sub Resource Integrity Attribute Missing</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="changed-2">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.17.0.</li>
+<li>Address redirection in a reference.</li>
+<li>Update dependency.</li>
+</ul>
+
+<h2 id="69---2025-11-04"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v69">69</a> - 2025-11-04 <a class="header-link" href="#69---2025-11-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-3">Changed</h3>
+<ul>
+<li>Update dependency.</li>
+<li>Reduced usage of error level logging.</li>
+<li>The Charset Mismatch scan rule now includes example alert functionality for documentation generation purposes (Issue 6119) and alert references (Issue 7100).</li>
+</ul>
+
+<h3 id="removed">Removed</h3>
+<ul>
+<li>The Charset Mismatch scan rule no longer produces an alert with regard to META content-type and older clients.</li>
+</ul>
+
+<h2 id="68---2025-10-21"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v68">68</a> - 2025-10-21 <a class="header-link" href="#68---2025-10-21"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-2">Added</h3>
+<ul>
+<li>SYSTEMIC tag to selected rules.</li>
+</ul>
+
+<h3 id="changed-4">Changed</h3>
+<ul>
+<li>Update dependency.</li>
+<li>The PII Disclosure scan rule now only evaluates visible text and script blocks in HTML responses at Medium or High alert threshold, while the entire response body is considered at Low alert threshold. To further prevent false positives at Medium or High alert threshold candidate strings with underscore are excluded.</li>
+<li>Depends on an updated version of the Common Library add-on.</li>
+</ul>
+
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>ZAP is Out of Date rule to not trigger a CFU request in silent mode (Issue 9096).</li>
+</ul>
+
+<h2 id="67---2025-09-18"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v67">67</a> - 2025-09-18 <a class="header-link" href="#67---2025-09-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-5">Changed</h3>
+<ul>
+<li>Add alert references to HTTP Server Response Header scan rule alerts (Issue 7100, 9050).</li>
+<li>Update alert references to latest locations to fix 404s and resolve redirections.</li>
+</ul>
+
+<h2 id="66---2025-07-25"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v66">66</a> - 2025-07-25 <a class="header-link" href="#66---2025-07-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-3">Added</h3>
+<ul>
+<li>The Reverse Tabnabbing and Retrieved from Cache scan rules now have CWE references.</li>
+<li>A ZAP is Out of Date rule.</li>
+</ul>
+
+<h2 id="65---2025-06-20"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v65">65</a> - 2025-06-20 <a class="header-link" href="#65---2025-06-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-4">Added</h3>
+<ul>
+<li>All rules have been tagged of interest to Penetration Testers, as well as adding tags associated with DEV or QA applicability.</li>
+</ul>
+
+<h3 id="changed-6">Changed</h3>
+<ul>
+<li>Depends on an updated version of the Common Library add-on.</li>
+<li>Clarified details of the Viewstate scan rule alerts, in some instances they were misleading (containing colons suggesting further data).</li>
+<li>The Open Redirect scan rule (ID: 10028) and its alerts have been renamed &ldquo;Off-site Redirect&rdquo; as this is a passive rule which compares the authority of the origin and destination and there is no assurance of a truly &ldquo;open&rdquo; redirect.</li>
+</ul>
+
+<h2 id="64---2025-03-25"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v64">64</a> - 2025-03-25 <a class="header-link" href="#64---2025-03-25"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-7">Changed</h3>
+<ul>
+<li>The CSP scan rule now treats Wildcard directives separately from those which are undefined but have no fallback (Issue 8700).</li>
+</ul>
+
+<h2 id="63---2025-03-04"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v63">63</a> - 2025-03-04 <a class="header-link" href="#63---2025-03-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>Refactored Loosely Scoped Cookie to comply with the latest RFC standards and streamline the loosely scoped cookie check (Issue 8863).</li>
+<li>The Absence of Anti-CSRF Tokens scan rule now only considers forms with GET method at Low Threshold. (Forms submitted via GET, not forms delivered via GET.)</li>
+<li>The Information Disclosure - Suspicious Comments scan rule:
+<ul>
+<li>Should now be less false positive prone on JavaScript findings (Issues 6622 &amp; 6736).</li>
+<li>Now skips obvious font requests even if their content type is text/html or text related.</li>
+</ul>
+</li>
+<li>Updated Timestamp Disclosure Scan Rule to skip JavaScript files when Alert Threshold is set to High (Issue 8380).</li>
+</ul>
+
+<h3 id="changed-8">Changed</h3>
+<ul>
+<li>Replace usage of CWE-200 for the following rules (Issue 8712):
+<ul>
+<li>Application Error Disclosure (Issue 8716)</li>
+<li>HTTP Server Response Header</li>
+<li>Hash Disclosure</li>
+<li>Information Disclosure - Debug Error Messages</li>
+<li>Information Disclosure - Sensitive Information in HTTP Referrer Header</li>
+<li>Information Disclosure - Sensitive Information in URL</li>
+<li>Information Disclosure - Suspicious Comments</li>
+<li>Private IP Disclosure</li>
+<li>Server Leaks Information via &ldquo;X-Powered-By&rdquo; HTTP Response Header</li>
+<li>Session ID in URL Rewrite</li>
+<li>Timestamp Disclosure</li>
+<li>X-Backend-Server Header Information Leak</li>
+<li>X-ChromeLogger-Data (XCOLD) Header Information Leak</li>
+<li>X-Debug-Token Information Leak</li>
+</ul>
+</li>
+<li>Removed lack of &ldquo;report-uri&rdquo; or &ldquo;plugin-types&rdquo; from &ldquo;CSP: Wildcard Directive&rdquo; alerts when missing. plugin-types is deprecated and report-uri has no impact for this issue. (Issue 8700)</li>
+</ul>
+
+<h2 id="62---2025-01-10"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v62">62</a> - 2025-01-10 <a class="header-link" href="#62---2025-01-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-9">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.16.0.</li>
+<li>Updated help with specific Category identifiers for use with the Custom Payloads add-on for rules:
+<ul>
+<li>Application Error Disclosure</li>
+<li>Information Disclosure - Suspicious Comments</li>
+<li>Username Hash Found</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="61---2024-09-24"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v61">61</a> - 2024-09-24 <a class="header-link" href="#61---2024-09-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-10">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>Rename Mac OSX salted SHA-1 in the Hash Disclosure scan rule to &ldquo;Salted SHA-1&rdquo;, reduce the associated alerts to Low risk and Low confidence, to align with other SHA related patterns it will only be evaluated a Low Threshold. (Note such matches may indicate leaks related but not limited to: MacOS X, Oracle, Tiger-192, Haval-192) (Issue 8624).</li>
+<li>The Insecure JSF ViewState now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>The Absence of Anti-CSRF Tokens scan rule now only considers GET requests at Low Threshold (Issue 7741).</li>
+</ul>
+
+<h2 id="60---2024-09-02"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v60">60</a> - 2024-09-02 <a class="header-link" href="#60---2024-09-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-11">Changed</h3>
+<ul>
+<li>Clarified Missing Anti-clickjacking Header description.</li>
+<li>Depend on Passive Scanner add-on to include it by default (Issue 7959).</li>
+<li>Re-examine Cache-control Directives scan rule now ignores cache-control for POST method requests (Issue 8592).</li>
+</ul>
+
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Polyfill scan rule running slowly.</li>
+<li>Only scan text responses for:
+<ul>
+<li>Hash Disclosure</li>
+<li>Private IP Disclosure</li>
+<li>Username Hash Found</li>
+</ul>
+</li>
+<li>Performance improvements for:
+<ul>
+<li>Cross-Domain JavaScript Source File Inclusion.</li>
+<li>Cross-Domain Misconfiguration.</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="59---2024-07-24"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v59">59</a> - 2024-07-24 <a class="header-link" href="#59---2024-07-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-5">Added</h3>
+<ul>
+<li>Polyfill scan rule, promoted from beta.</li>
+</ul>
+
+<h3 id="changed-12">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>Alert text for various rules has been updated to more consistently use periods and spaces in a uniform manner.</li>
+<li>Typo in Polyfill.io script detection alert description.</li>
+</ul>
+
+<h2 id="58---2024-05-07"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v58">58</a> - 2024-05-07 <a class="header-link" href="#58---2024-05-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-13">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.15.0.</li>
+<li>The library (htmlunit-csp) used by the Content Security Policy scan rule was updated to v4.0.0, which includes support for the wasm-unsafe-eval source expression.</li>
+</ul>
+
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>A typo in the Other Info of one of the Retrieved from Cache Alerts.</li>
+</ul>
+
+<h2 id="57---2024-03-28"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v57">57</a> - 2024-03-28 <a class="header-link" href="#57---2024-03-28"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-14">Changed</h3>
+<ul>
+<li>Use of HTTP for example URLs in the descriptions or other info details for the following rules have been updated to HTTPS (Issue 8262):
+<ul>
+<li>Cookie Poisoning</li>
+<li>Open Redirect</li>
+<li>X-Debug-Token Information Leak</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="56---2024-02-16"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v56">56</a> - 2024-02-16 <a class="header-link" href="#56---2024-02-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-6">Added</h3>
+<ul>
+<li>Website alert links for Passive Scan Rules (Issue 8189).</li>
+</ul>
+
+<h3 id="changed-15">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>The following rules now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>Timestamp Disclosure - Unix</li>
+<li>Hash Disclosure</li>
+<li>Cross-Domain Misconfiguration</li>
+<li>Weak Authentication Method</li>
+<li>Reverse Tabnabbing</li>
+<li>CSRF Countermeasures</li>
+</ul>
+</li>
+<li>The following scan rules now have alert references (Issue 7100):
+<ul>
+<li>Weak Authentication Method</li>
+</ul>
+</li>
+<li>The references for Alerts from the following rules were also updated (Issue 8262):
+<ul>
+<li>Timestamp Disclosure - Unix</li>
+<li>Hash Disclosure</li>
+<li>View State Scan Rule</li>
+<li>Weak Authentication Method</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="55---2024-01-26"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v55">55</a> - 2024-01-26 <a class="header-link" href="#55---2024-01-26"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-16">Changed</h3>
+<ul>
+<li>The Salvation2 library used by the CSP scan rule has been replaced by htmlunit-csp.</li>
+<li>The following rules now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>HTTPS to HTTP Insecure Transition in Form Post</li>
+<li>HTTP to HTTPS Insecure Transition in Form Post</li>
+<li>Secure Pages Include Mixed Content</li>
+<li>User Controllable JavaScript Event (XSS)</li>
+<li>Cookie without SameSite Attribute</li>
+<li>X-Debug-Token Information Leak</li>
+<li>Retrieved from Cache</li>
+</ul>
+</li>
+<li>The following scan rules now have alert references (Issue 7100):
+<ul>
+<li>Cookie without SameSite Attribute</li>
+<li>Retrieved from Cache (raw text was also trimmed from one Alert reference (Issue 8262))</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>An issue where Other Info on alerts for the following rules may have been hard to read (missing spaces or new lines):
+<ul>
+<li>HTTPS to HTTP Insecure Transition in Form Post</li>
+<li>HTTP to HTTPS Insecure Transition in Form Post</li>
+<li>User Controllable JavaScript Event (XSS)</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="54---2024-01-16"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v54">54</a> - 2024-01-16 <a class="header-link" href="#54---2024-01-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-17">Changed</h3>
+<ul>
+<li>The Big Redirect scan rule will now also alert on responses that have multiple HREFs (idea from xnl-h4ck3r).</li>
+<li>The references for the following scan rules are now all HTTPS (Issue 8262) and in some cases updated:
+<ul>
+<li>Loosely Scoped Cookie</li>
+<li>Charset Mismatch</li>
+<li>Strict-Transport-Security Header</li>
+<li>Content Security Policy (CSP) Header Not Set</li>
+<li>CSP</li>
+<li>Session ID in URL Rewrite</li>
+<li>HTTP Server Response Header</li>
+<li>Cookie Poisoning</li>
+<li>User Controllable HTML Element Attribute (Potential XSS)</li>
+<li>X-Content-Type-Options Header Missing</li>
+<li>Content-Type Header Missing</li>
+<li>Server Leaks Information via &ldquo;X-Powered-By&rdquo; HTTP Response Header Field(s)</li>
+<li>Retrieved from Cache</li>
+</ul>
+</li>
+<li>The Absence of Anti-CSRF Tokens scan rule now takes into account the Partial Match settings from the Anti-CSRF Options (Issue 8280).</li>
+<li>On Non-LOW threshold, PII Scan rule only evaluates HTML, JSON and XML responses (Issue 8264).</li>
+<li>Maintenance changes.</li>
+<li>The following rules now include example alert functionality for documentation generation and cross linking purposes (Issues 6119, and 8189).
+<ul>
+<li>Big Redirect</li>
+<li>Information Disclosure: Debug Errors</li>
+<li>Information Disclosure: In URL</li>
+<li>Information Disclosure: Referrer</li>
+<li>Cookie Poisoning</li>
+<li>User Controllable Charset</li>
+<li>Open Redirect</li>
+<li>User Controllable HTML Element Attribute (Potential XSS)</li>
+<li>Heartbleed OpenSSL Vulnerability (Indicative)</li>
+<li>Strict-Transport-Security Header</li>
+<li>Server Leaks Information via &ldquo;X-Powered-By&rdquo; HTTP Response Header Field(s)</li>
+<li>X-Content-Type-Options Header Missing</li>
+<li>Content-Type Header Missing</li>
+</ul>
+</li>
+<li>The CWE for the Cookie Poisoning scan rule was updated to a more specific one.</li>
+<li>The Strict-Transport-Security Header and Big Redirect scan rules now use alert references for their different types of alerts (Issue 7100).</li>
+</ul>
+
+<h2 id="53---2023-11-30"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v53">53</a> - 2023-11-30 <a class="header-link" href="#53---2023-11-30"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-18">Changed</h3>
+<ul>
+<li>The Application Error Disclosure rule no longer considers responses that contain ISO control characters (those which are likely to be binary file types).</li>
+<li>The Time Stamp Disclosure rule now includes the header field name as Parameter in alerts when a time stamp is identified in a header value (Issue 8160).</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="52---2023-10-12"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v52">52</a> - 2023-10-12 <a class="header-link" href="#52---2023-10-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>The CSRF Countermeasures scan rule now skips responses that are not HTML (Issue 7890).</li>
+<li>A potential NullPointerException when a CSP declared via META tag was invalid.</li>
+</ul>
+
+<h3 id="changed-19">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.14.0.</li>
+<li>CSP scan rule: Add deprecation warning for inclusion of prefetch-src (Issue 8077).</li>
+</ul>
+
+<h2 id="51---2023-09-08"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v51">51</a> - 2023-09-08 <a class="header-link" href="#51---2023-09-08"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-7">Added</h3>
+<ul>
+<li>The following now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>Loosely Scoped Cookie scan rule.</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="changed-20">Changed</h3>
+<ul>
+<li>Dependency updates.</li>
+<li>Maintenance changes.</li>
+<li>The alerts of the Hash Disclosure scan rule no longer have the evidence duplicated in the Other Info field.</li>
+<li>Depend on newer version of Common Library add-on.</li>
+<li>Use vulnerability data directly from Common Library add-on.</li>
+</ul>
+
+<h2 id="50---2023-07-11"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v50">50</a> - 2023-07-11 <a class="header-link" href="#50---2023-07-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-8">Added</h3>
+<ul>
+<li>The following now include example alert functionality for documentation generation purposes (Issue 6119):
+<ul>
+<li>Re-examine Cache-control Directives Scan Rule</li>
+<li>X-Backend-Server Scan Rule</li>
+<li>X-ChromeLogger-Data Header Information Leak Scan Rule</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="changed-21">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.13.0.</li>
+</ul>
+
+<h2 id="49---2023-06-06"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v49">49</a> - 2023-06-06 <a class="header-link" href="#49---2023-06-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-22">Changed</h3>
+<ul>
+<li>The X-AspNet-Version Response Header Scan Rule now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>The Information Disclosure Suspicious Comments scan rule:
+<ul>
+<li>Now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>Now has a Alert Tag with a OWASP WSTG reference.</li>
+<li>Added &lsquo;DEBUG&rsquo; to list of suspicious comments.</li>
+<li>Added custom payload support (via Custom Payloads add-on).</li>
+<li>Removed suspicious-comments.txt file in favor of payload editing via Custom Payloads add-on.</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>Ensure Custom Payloads support can be properly unloaded.</li>
+</ul>
+
+<h2 id="48---2023-05-03"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v48">48</a> - 2023-05-03 <a class="header-link" href="#48---2023-05-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-9">Added</h3>
+<ul>
+<li>Added alert examples to Directory Browsing (Issue 6119).</li>
+<li>Added Trusted Domains in Cross-Domain JavaScript Source File Inclusion (Issue 7775).</li>
+</ul>
+
+<h3 id="changed-23">Changed</h3>
+<ul>
+<li>Application Error Scan Rule no longer checks JavaScript or CSS responses unless threshold is Low (Issue 7724).</li>
+<li>The Cross-Domain JavaScript Source File Inclusion scan rule now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>Adjust alert details of Directory Browsing, use same name and description, and use the other info field for the name of the web server identified.</li>
+</ul>
+
+<h2 id="47---2023-04-04"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v47">47</a> - 2023-04-04 <a class="header-link" href="#47---2023-04-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Correct required version of Common Library add-on.</li>
+<li>Prevent error with the CSP scan rule when scanning <code>meta</code> elements with missing <code>http-equiv</code> attribute.</li>
+</ul>
+
+<h2 id="46---2023-03-03"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v46">46</a> - 2023-03-03 <a class="header-link" href="#46---2023-03-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-24">Changed</h3>
+<ul>
+<li>The PII Disclosure scan rule:
+<ul>
+<li>Now includes a solution statement.</li>
+<li>Now more specifically portrays alert Evidence.</li>
+<li>Now includes example alert functionality for documentation generation purposes (Issue 6119).</li>
+<li>Will now only consider PDFs at Low threshold.</li>
+</ul>
+</li>
+<li>Maintenance changes.</li>
+<li>The HeartBleed scan rule alert now includes a CVE tag.</li>
+<li>Timestamp Disclosure scan rule now excludes values in &ldquo;RateLimit-Reset&rdquo;, &ldquo;X-RateLimit-Reset&rdquo;, and &ldquo;X-Rate-Limit-Reset&rdquo; headers (Issue 7747).</li>
+</ul>
+
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>The CSP Missing scan rule now alerts when the Content-Security-Policy header is missing, and when the obsolete X-Content-Security-Policy or X-WebKit-CSP are found (Issue 7653).</li>
+</ul>
+
+<h2 id="45---2023-01-03"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v45">45</a> - 2023-01-03 <a class="header-link" href="#45---2023-01-03"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-25">Changed</h3>
+<ul>
+<li>The Private Address Disclosure and Session ID in URL Rewrite scan rules now include example alert functionality for documentation generation purposes (Issue 6119 and 7100).</li>
+<li>The Content Security Policy scan rule will now alert when &ldquo;unsafe-eval&rdquo; is allowed.</li>
+<li>Maintenance changes.</li>
+<li>The Salvation2 library used by the CSP scan rule was upgraded to v3.0.1. Alerts may now have an alert condition if the policy contains characters outside the accepted set.</li>
+<li>The CSP scan rule now includes handling for policies defined in META tags, as well as two new alerts pertaining to those policies (Issue 7303).</li>
+</ul>
+
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>The Modern App Detection scan rule now ignores non-HTML files (Issue 7617).</li>
+</ul>
+
+<h2 id="44---2022-10-27"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v44">44</a> - 2022-10-27 <a class="header-link" href="#44---2022-10-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-10">Added</h3>
+<ul>
+<li>The following scan rules were added, having been promoted from Beta:
+<ul>
+<li>Big Redirects</li>
+<li>Directory Browsing</li>
+<li>Hash Disclosure</li>
+<li>HeartBleed</li>
+<li>Insecure Form Load</li>
+<li>Insecure Form Post</li>
+<li>Link Target</li>
+<li>Modern App Detection</li>
+<li>PII</li>
+<li>Retrieved From Cache</li>
+<li>Server Header Info Leak</li>
+<li>Strict Transport Security</li>
+<li>User Controlled Charset</li>
+<li>User Controlled Cookie</li>
+<li>User Controlled HTML Attributes</li>
+<li>User Controlled Javascript Event</li>
+<li>User Controlled Open Redirect</li>
+<li>X-Backend-Server Information Leak</li>
+<li>X-ChromeLogger-Data Info Leak</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="changed-26">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.12.0.</li>
+<li>The Server Header Information Leak scan rule now has functionality to generate example alerts for documentation purposes (Issue 6119).</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="43---2022-09-15"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v43">43</a> - 2022-09-15 <a class="header-link" href="#43---2022-09-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-27">Changed</h3>
+<ul>
+<li>Reduce Cache Control scan rule confidence to Low, and add new reference (Issue 6446).</li>
+<li>Added new Custom Payloads alert tag to the example alerts of the Username IDOR and Application Error scan rules.</li>
+<li>Maintenance changes.</li>
+<li>The Timestamp Disclosure scan rule is now scoped to a 10 year range with a cap at the Y2038 rollover point (Issue 6741).</li>
+<li>The Content Security Policy Header Not Set scan rule will no longer alert if CSP is specified via META tag (Issue 7303).</li>
+</ul>
+
+<h2 id="42---2022-07-15"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v42">42</a> - 2022-07-15 <a class="header-link" href="#42---2022-07-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-28">Changed</h3>
+<ul>
+<li>The Content Security Policy scan rule will now raise alerts at High confidence, all alerts now include the appropriate header as the &ldquo;parameter&rdquo; value, and has functionality to generate example alerts for documentation purposes.</li>
+<li>The Content Security Policy scan rule will now raise an alert when the assessed policy contains non-ASCII characters (Issue 7379).</li>
+</ul>
+
+<h2 id="41---2022-06-24"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v41">41</a> - 2022-06-24 <a class="header-link" href="#41---2022-06-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-29">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+<li>The &ldquo;Viewstate without MAC Signature (Unsure)&rdquo; alert will now only be raised at Low Alert Threshold (Issue 7230).</li>
+<li>The Content Security Policy scan rule will now alert when &ldquo;unsafe-hashes&rdquo; are allowed.</li>
+</ul>
+
+<h3 id="fixed-11">Fixed</h3>
+<ul>
+<li>Correct parameter and evidence for Cookie without SameSite Attribute when SAMESITE was set to None (Issue 7358).</li>
+</ul>
+
+<h2 id="40---2022-04-05"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v40">40</a> - 2022-04-05 <a class="header-link" href="#40---2022-04-05"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-30">Changed</h3>
+<ul>
+<li>Clarify the alert solution for the Cache Control scan rule.</li>
+</ul>
+
+<h3 id="added-11">Added</h3>
+<ul>
+<li>Content Security Policy (CSP) Header Not Set scan rule promoted to release.</li>
+</ul>
+
+<h2 id="39---2022-03-07"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v39">39</a> - 2022-03-07 <a class="header-link" href="#39---2022-03-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-12">Added</h3>
+<ul>
+<li>Alert refs for the alerts which use them (10020 and 10032).</li>
+</ul>
+
+<h3 id="changed-31">Changed</h3>
+<ul>
+<li>Moved the detail information in Content Security Policy Rule to the otherInfo field and added alertRef ids.</li>
+<li>Address false positive condition for Timestamp Disclosure scan rule when values are percentages (Issue 7057).</li>
+<li>Update Cache-control scan rule name, description, and solution to make it more clear that there are cases in which caching is reasonable. Reduced risk to Info (Issue 6462).</li>
+<li>Maintenance changes.</li>
+<li>The CSRF Token scan rule will now raise alerts as Medium risk and Low confidence (Issue 7021).</li>
+</ul>
+
+<h3 id="fixed-12">Fixed</h3>
+<ul>
+<li>CSP scan rule will now alert in situations where default-src contains &lsquo;unsafe-inline&rsquo; or is not defined (Issue 7120). In certain situations this may mean a marked increase in CSP related Alerts.</li>
+<li>A typo was corrected in the CSP scan rule which was causing invalid assessment of &ldquo;connect-src&rdquo; directives.</li>
+</ul>
+
+<h2 id="38---2022-01-07"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v38">38</a> - 2022-01-07 <a class="header-link" href="#38---2022-01-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-32">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.1.</li>
+<li>Renamed &lsquo;X-Frame-Options Header Not Set&rsquo; alert to &lsquo;Missing Anti-clickjacking Header&rsquo;, and associated scan rule &lsquo;X-Frame-Options Header&rsquo; to &lsquo;Anti-clickjacking Header&rsquo;. The rule already considered Content-Security-Policy &lsquo;frame-ancestors&rsquo; which is a more modern solution to the same concern. Updated associated solution text. (Issue 6937)</li>
+<li>Content Security Policy scan rule will no longer classify &ldquo;require-trusted-types-for&rdquo; or &ldquo;trusted-types&rdquo; directives as unknown (Issue 6602).</li>
+</ul>
+
+<h2 id="37---2021-12-01"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v37">37</a> - 2021-12-01 <a class="header-link" href="#37---2021-12-01"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-13">Added</h3>
+<ul>
+<li>OWASP Top Ten 2021/2017 mappings for Insecure Authentication scan rule.</li>
+<li>OWASP Web Security Testing Guide v4.2 mappings where applicable.</li>
+</ul>
+
+<h3 id="changed-33">Changed</h3>
+<ul>
+<li>Timestamp Disclosure scan rule now excludes values in &ldquo;Expect-CT&rdquo; headers (Issue 6725), as well as zero strings (Issue 6761).</li>
+<li>Dependency updates.</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h2 id="36---2021-10-06"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v36">36</a> - 2021-10-06 <a class="header-link" href="#36---2021-10-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-14">Added</h3>
+<ul>
+<li>OWASP Top Ten 2021/2017 mappings.</li>
+</ul>
+
+<h3 id="changed-34">Changed</h3>
+<ul>
+<li>Update minimum ZAP version to 2.11.0.</li>
+</ul>
+
+<h3 id="fixed-13">Fixed</h3>
+<ul>
+<li>Fixed reference URL on CORS misconfiguration.</li>
+<li>Reduce false positives from Private IP Disclosure scan rule (Issue 6749).</li>
+</ul>
+
+<h2 id="35---2021-07-06"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v35">35</a> - 2021-07-06 <a class="header-link" href="#35---2021-07-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-35">Changed</h3>
+<ul>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="fixed-14">Fixed</h3>
+<ul>
+<li>Correct dependency requirements.</li>
+</ul>
+
+<h2 id="34---2021-06-17"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v34">34</a> - 2021-06-17 <a class="header-link" href="#34---2021-06-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-36">Changed</h3>
+<ul>
+<li>Cache-control scan rule no longer checks if Pragma is set or not.</li>
+<li>Maintenance changes.</li>
+<li>The Timestamp Disclosure scan rule now excludes values in &ldquo;Report-To&rdquo; or &ldquo;NEL&rdquo; headers (Issue 6493).</li>
+<li>The Timestamp Disclosure scan rule no longer considers font type requests or responses when looking for possible timestamps (Issue 6274).</li>
+<li>X-Frame-Options scan rule CWE ID changed from 16 to 1021.</li>
+<li>Discontinued use of CWE-16 and switched to more specific weaknesses in the following scan rules:
+<ul>
+<li>Character Set Mismatch</li>
+<li>Content Security Policy</li>
+<li>Cookie HttpOnly</li>
+<li>Cookie SameSite</li>
+<li>JSF ViewState</li>
+<li>MS ViewState</li>
+<li>X-Content-Type-Options</li>
+</ul>
+</li>
+<li>Cache-control scan rule no longer checks CSS messages unless threshold is Low (Issue 6596).</li>
+<li>Cookie SameSite Attribute scan rule now handles the value &ldquo;none&rdquo; (Issue 6482).</li>
+<li>Content Security Policy rule has been upgraded to use version 3 of the Salvation library.
+<ul>
+<li>Messages with multiple CSPs are no longer merged/intersected instead the policies are analyzed individually.</li>
+</ul>
+</li>
+<li>Update links to repository.</li>
+</ul>
+
+<h2 id="33---2021-01-29"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v33">33</a> - 2021-01-29 <a class="header-link" href="#33---2021-01-29"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added-15">Added</h3>
+<ul>
+<li>Added Express error string pattern (Issue 6412).</li>
+<li>Added sort to form field names that are displayed in Anti-CSRF alert other info field, duplicate names (arrays) are combined and not repeated.</li>
+</ul>
+
+<h3 id="changed-37">Changed</h3>
+<ul>
+<li>X-Frame-Options (XFO) scan rule no longer suggests the use of &ldquo;ALLOW-FROM&rdquo;, and also includes CSP &ldquo;frame-ancestors&rdquo; as an alternative.
+<ul>
+<li>XFO headers implementing &ldquo;ALLOW-FROM&rdquo; will now be considered malformed.</li>
+</ul>
+</li>
+<li>The Suspicious Comments scan rule will raise one alert per pattern per page and use more suitable evidence.</li>
+</ul>
+
+<h2 id="32---2021-01-20"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v32">32</a> - 2021-01-20 <a class="header-link" href="#32---2021-01-20"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-38">Changed</h3>
+<ul>
+<li>The Suspicious Comments scan rule will include the offending line as evidence.</li>
+<li>The Suspicious Comments scan rule will raise one alert per finding, instead of one aggregated alert per HTTP message.</li>
+</ul>
+
+<h2 id="31---2020-12-15"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v31">31</a> - 2020-12-15 <a class="header-link" href="#31---2020-12-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-39">Changed</h3>
+<ul>
+<li>Now targeting ZAP 2.10.</li>
+<li>The following scan rules now support Custom Page definitions:
+<ul>
+<li>Application Error</li>
+<li>Cache Control</li>
+<li>X-Content-Type-Options</li>
+<li>X-Frame-Options</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="30---2020-11-26"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v30">30</a> - 2020-11-26 <a class="header-link" href="#30---2020-11-26"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-40">Changed</h3>
+<ul>
+<li>The CSP scan rule now checks if the form-action directive allows wildcards.</li>
+<li>The CSP scan rule now includes further information in the description of allowed wildcard directives alerts when the impacted directive is one (or more) which doesn&rsquo;t fallback to default-src.</li>
+<li>Maintenance changes.</li>
+<li>Changed ViewState and XFrameOption rules to return example alerts for the docs.</li>
+<li>Handle an IllegalArgumentException that could occur in the CSP scan rule if multiple CSP headers were present and one (or more) had a report-uri directive when trying to merge them.</li>
+<li>Allow to ignore cookies in same site and loosely scoped scan rules.</li>
+<li>The Application Error scan rule will not alert on web assembly responses.</li>
+</ul>
+
+<h2 id="29---2020-06-01"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v29">29</a> - 2020-06-01 <a class="header-link" href="#29---2020-06-01"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-41">Changed</h3>
+<ul>
+<li>Updated owasp.org references (Issue 5962).</li>
+<li>Correct spelling of &ldquo;frame-ancestors&rdquo; in the alert details of the CSP scan rule wildcard directive check (Issue 6014).</li>
+</ul>
+
+<h2 id="28---2020-04-08"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v28">28</a> - 2020-04-08 <a class="header-link" href="#28---2020-04-08"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-42">Changed</h3>
+<ul>
+<li>&lsquo;CSP Scanner&rsquo; rule upgrade salvation library to v2.7.2.</li>
+<li>&lsquo;CSP Scanner&rsquo; rule now merges (intersects) multiple CSP header fields to more accurately evaluate policies and prevent parsing issues (Issue 5931).</li>
+<li>&lsquo;X-Frame-Options Header Scanner&rsquo; replace now invalid MSDN reference link with MDN link on X-Frame-Options (Issue 5867).</li>
+<li>&lsquo;Information Disclosure Referrer&rsquo; scan rule added support for looking up evidence against an Open Source Bank Identification Number List. Confidence is now modified based on whether the lookup is successful or not. Additional details are added to &lsquo;Other Info&rsquo; if available (Issue 5842).</li>
+</ul>
+
+<h2 id="27---2020-02-11"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v27">27</a> - 2020-02-11 <a class="header-link" href="#27---2020-02-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-43">Changed</h3>
+<ul>
+<li>Minimum ZAP version is now 2.9.0. (Various scan rules adjusted to address core deprecations.)</li>
+<li>&lsquo;Username Hash Found&rsquo; scan rule now uses updated core functionality to retrieve configured users.</li>
+<li>Tweak help for &lsquo;Cookie HttpOnly&rsquo; scan rule.</li>
+<li>&lsquo;Information Disclosure: Suspicious Comments&rsquo; if matched within script block or JS response raise Alert with Low confidence.</li>
+<li>Migrate an input file from Beta to Release that were missed during previous promotions.
+<ul>
+<li>This addresses errors such as <code>[ZAP-PassiveScanner] ERROR org.zaproxy.zap.extension.pscanrules.InformationDisclosureInURL  - No such file: .... /xml/URL-information-disclosure-messages.txt</code></li>
+</ul>
+</li>
+<li>&lsquo;Application Error&rsquo; scan rule now supports custom payloads when used in conjunction with the Custom Payloads addon.</li>
+<li>Timestamp Disclosure scan rule now only considers potential timestamps within plus or minus one year when used at High threshold (Issue 5837).</li>
+<li>&lsquo;Application Error&rsquo; scan rule&rsquo;s patterns file <code>application_errors.xml</code> is now copied to ZAP&rsquo;s home directory, which means it is editable by the user. As well as being more consistent with other similar input files.</li>
+<li>&lsquo;Information Disclosure - Sensitive Information in URL&rsquo; correct evidence field for some alerts, and enhance other info details (Issue 5832).</li>
+<li>Maintenance changes.</li>
+</ul>
+
+<h3 id="removed-1">Removed</h3>
+<ul>
+<li>&lsquo;Header XSS Protection&rsquo; was deprecated and removed (Issue 5849).</li>
+</ul>
+
+<h3 id="fixed-15">Fixed</h3>
+<ul>
+<li>Fix typo in the help page.</li>
+</ul>
+
+<h2 id="26---2020-01-17"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v26">26</a> - 2020-01-17 <a class="header-link" href="#26---2020-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-44">Changed</h3>
+<ul>
+<li>&ldquo;Cookie HttpOnly&rdquo;, &ldquo;Cookie Secure Flag&rdquo;, and &ldquo;Cookie Without SameSite Attribute&rdquo; scan rules no longer alert on expired (deleted) cookies (Issue 5295).</li>
+</ul>
+
+<h3 id="added-16">Added</h3>
+<ul>
+<li>Added links to the code in the help.</li>
+<li>Add info and repo URLs.</li>
+</ul>
+
+<h2 id="25---2019-12-16"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v25">25</a> - 2019-12-16 <a class="header-link" href="#25---2019-12-16"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-45">Changed</h3>
+<ul>
+<li>Content Security Policy scan rule: Update to Salvation 2.7.0, add handling for script-src-elem, script-src-attr, style-src-elem, and style-src-attr (Issue 5459).</li>
+<li>Minimum ZAP version is now 2.8.0.</li>
+</ul>
+
+<h3 id="added-17">Added</h3>
+<ul>
+<li>The following scan rules were added, promoted from Beta to Release:
+<ul>
+<li>Cookie Without SameSite Attribute</li>
+<li>Cross Domain Misconfiguration</li>
+<li>Information Disclosure: In URL</li>
+<li>Information Disclosure: Referrer</li>
+<li>Information Disclosure: Suspicious Comments</li>
+<li>Server Leaks Information via &ldquo;X-Powered-By&rdquo; HTTP Response Header Field(s)</li>
+<li>Timestamp Disclosure</li>
+<li>Username Hash Found</li>
+<li>X-AspNet-Version Response Header Scanner</li>
+<li>X-Debug-Token Information Leak</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="24---2019-06-07"><a href="https://github.com/zaproxy/zap-extensions/releases/pscanrules-v24">24</a> - 2019-06-07 <a class="header-link" href="#24---2019-06-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Maintenance changes.</li>
+<li>Migrate CSP Scanner into the main passive scan release package (promoting it to Release). Upgrade Salvation (dependency) to 2.6.0.</li>
+<li>Application Error scanner change for HTTP 500. Alert changed to low risk for HTTP 500, and not raised at all when Threshold is High.</li>
+<li>Updated the reference link for the alert: Web Browser XSS Protection Not Enabled.</li>
+<li>Promote Charset Mismatch Scanner to release (Issue 4460).</li>
+<li>Promote ViewState Scanner to release (Issue 4453).</li>
+<li>Promote Insecure JSF ViewState Scanner to release (Issue 4455).</li>
+<li>Promote Insecure Authentication Scanner to release (Issue 4456).</li>
+<li>Promote Information Disclosure Debug Errors Scanner to release (Issue 4457).</li>
+<li>Promote CSRF Countermeasures Scanner to release (Issue 4458).</li>
+<li>Promote Cookie Loosely Scoped Scanner to release (Issue 4459).</li>
+</ul>
+
+<h2 id="23---2018-08-15">23 - 2018-08-15 <a class="header-link" href="#23---2018-08-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix a typo in the description of Referer Exposes Session ID.</li>
+<li>Address false negative on jsessionid in URL Rewrite when preceded by a semi-colon and potentially followed by parameters (Issue 3008).</li>
+<li>Address potential false positive in Cross Domain Script Inclusion Scanner by ensuring that only HTML responses are analyzed.</li>
+</ul>
+
+<h2 id="22---2018-01-19">22 - 2018-01-19 <a class="header-link" href="#22---2018-01-19"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Retired the password auto-complete passive scan rule (Issue 4215).</li>
+</ul>
+
+<h2 id="21---2017-11-27">21 - 2017-11-27 <a class="header-link" href="#21---2017-11-27"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Update for 2.7.0, Minor code changes to address deprecation.</li>
+</ul>
+
+<h2 id="20---2017-11-24">20 - 2017-11-24 <a class="header-link" href="#20---2017-11-24"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fix false positive with Secure Pages Include Mixed Content and JavaScript files (Issue 3581).</li>
+<li>Fix false positive with Private IP Disclosure when target is a private IP on a non-standard port (Issue 3549).</li>
+<li>Fix false positive with X-Content-Type-Options Header Missing with certain system locales.</li>
+<li>Fix X-Content-Type-Options help content (Issue 3986).</li>
+<li>Remove N/A value from parameter of alert Session ID in URL Rewrite.</li>
+</ul>
+
+<h2 id="19---2017-04-06">19 - 2017-04-06 <a class="header-link" href="#19---2017-04-06"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Correct evidence of alerts raised by scanner &ldquo;Application Error Disclosure&rdquo;.</li>
+<li>Fixed some false positives caused by scanner &ldquo;Private Address Disclosure&rdquo;.</li>
+<li>Add support for cookie ignore rule.</li>
+</ul>
+
+<h2 id="18---2016-08-09">18 - 2016-08-09 <a class="header-link" href="#18---2016-08-09"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Only report issues on errors and redirects at LOW threshold.</li>
+<li>Only report X-Frame-Options issues at LOW threshold if CSP &lsquo;frame-ancestors&rsquo; element present.</li>
+<li>Issue 2732: False positives for security headers missing due to redirections.</li>
+</ul>
+
+<h2 id="17---2016-07-15">17 - 2016-07-15 <a class="header-link" href="#17---2016-07-15"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Correctly check that the cookie being set has the Secure and HttpOnly attributes.</li>
+<li>Do not set the attack field for Private IP Disclosure and Secure Pages Include Mixed Content.</li>
+<li>Remove &ldquo;N/A&rdquo; parameter from the alert of Application Error Disclosure.</li>
+<li>Issue 2539 - X-Frame-Options passive scanner, add compliance variants.</li>
+<li>Corrected Password Autocomplete parameter in alert</li>
+</ul>
+
+<h2 id="16---2016-06-02">16 - 2016-06-02 <a class="header-link" href="#16---2016-06-02"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Issue 823 - i18n (internationalise) release passive scan rules.</li>
+<li>Add CWE and WASC IDs to passive scanners which may have been lacking those details.</li>
+<li>Issue 2405 - Accommodate responses with multiple Cache-Control headers.</li>
+<li>Issue 395 - Add handling for allowed cross domain hosts (via context definition at HIGH threshold).</li>
+</ul>
+
+<h2 id="15---2015-12-04">15 - 2015-12-04 <a class="header-link" href="#15---2015-12-04"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Issue 1594 - TestInfoSessionIdURL overhaul matching mechanism.</li>
+</ul>
+
+<h2 id="14---2015-09-07">14 - 2015-09-07 <a class="header-link" href="#14---2015-09-07"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Issue 1600 - XFrameOptionScanner, add handling to prevent alerts on error responses at High threshold.</li>
+<li>Issue 760 - XContentTypeOptionsScanner, add handling to prevent alerts on error responses at High threshold.</li>
+</ul>
+
+<h2 id="13---2015-08-23">13 - 2015-08-23 <a class="header-link" href="#13---2015-08-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Minor code changes.</li>
+</ul>
+
+<h2 id="12---2015-04-13">12 - 2015-04-13 <a class="header-link" href="#12---2015-04-13"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Minor fixes to XFrameOptionsScanner (Issue 1256).</li>
+<li>XContentTypeOptionsScanner Internationalization (Issue 1343).</li>
+<li>XContentTypeOptionsScanner default/error page updates (Issue 760).</li>
+<li>TestInfoSessionIdURL added value length check to reduce false positives (Issue 1396).</li>
+<li>Application Error Disclosure shows evidence in attack (Issue 1487).</li>
+<li>Updated to ZAP 2.4.</li>
+<li>Issue 823: i18n active/passive scan rules.</li>
+</ul>
+
+<h2 id="11---2014-06-14">11 - 2014-06-14 <a class="header-link" href="#11---2014-06-14"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Improved scanner &ldquo;Web Browser XSS Protection Not Enabled&rdquo; (former &ldquo;IE8&rsquo;s XSS protection filter not disabled&rdquo;);</li>
+<li>Fixed duplicated plug-in ID.</li>
+</ul>
+
+<h2 id="10---2014-05-21">10 - 2014-05-21 <a class="header-link" href="#10---2014-05-21"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Fixed an issue with search of strings that affected &ldquo;Application Error disclosure&rdquo; scanner (Issue 1186).</li>
+</ul>
+
+<h2 id="9---2014-04-10">9 - 2014-04-10 <a class="header-link" href="#9---2014-04-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Added reference for X-Content-Type-Options header missing.</li>
+<li>Changed help file structure to support internationalisation (Issue 981).</li>
+<li>Added content-type to help pages (Issue 1080).</li>
+<li>Changed passive scanners to expose its IDs (Issue Issue 1101).</li>
+<li>Updated add-on dir structure (Issue 1113).</li>
+</ul>
+
+<h2 id="8---2013-10-21">8 - 2013-10-21 <a class="header-link" href="#8---2013-10-21"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Refactored new plugins for information disclosure detection</li>
+</ul>
+
+<h2 id="7---2013-09-11">7 - 2013-09-11 <a class="header-link" href="#7---2013-09-11"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to be compatible with 2.2.0</li>
+</ul>
+
+<h2 id="4---2013-04-18">4 - 2013-04-18 <a class="header-link" href="#4---2013-04-18"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated for ZAP 2.1.0</li>
+</ul>
+
+<h2 id="3---2013-01-17">3 - 2013-01-17 <a class="header-link" href="#3---2013-01-17"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li>Updated to support new addon format</li>
+</ul>
+
+<h2 id="1---2012-12-10">1 - 2012-12-10 <a class="header-link" href="#1---2012-12-10"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+</main>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>
