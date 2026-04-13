@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Use ZAP with KRO in Kubernetes">
+  <meta name="twitter:description" content="Learn how to integrate ZAP with KRO in a Kubernetes cluster to scan the security of each new deployment.">
+
+    <meta property="og:url" content="/blog/2026-04-13-use-zap-with-kro-in-kubernetes/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Use ZAP with KRO in Kubernetes">
+  <meta property="og:description" content="Learn how to integrate ZAP with KRO in a Kubernetes cluster to scan the security of each new deployment.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-04-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-13T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Tutorial">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Guest">
+
+  
+  <title>ZAP &ndash; Use ZAP with KRO in Kubernetes</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.617338.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Use ZAP with KRO in Kubernetes</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday April 13, 2026</span>
+              <span class="word-count fl-r"> 1531 Words </span>
+            </section>
+            <p>Kubernetes Resource Operator (KRO) is a lightweight way to define custom resources in your Kubernetes cluster that provide an interface to create workloads in your cluster without surfacing all the details of the underlying resources. When using KRO to provide these kinds of abstractions for deployments, ZAP can be included to run scans on each new deploy.</p>
+
+<h2 id="prerequisites">Prerequisites <a class="header-link" href="#prerequisites"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This demo assumes a few things are already available</p>
+<ul>
+<li>A Kubernetes cluster</li>
+<li><a href="https://kro.run/docs/getting-started/Installation">KRO</a> installed and running in the Kubernetes cluster</li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/#kubectl">Kubectl</a></li>
+</ul>
+
+<h2 id="set-up-the-kubernetes-namespace">Set up the Kubernetes namespace <a class="header-link" href="#set-up-the-kubernetes-namespace"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ol>
+<li>Create the <code>zap-demo</code> namespace where we will be deploying all of our resources to
+<pre tabindex="0"><code>kubectl create namespace zap-demo
+</code></pre></li>
+</ol>
+
+<h2 id="create-custom-resource-with-kro">Create custom resource with KRO <a class="header-link" href="#create-custom-resource-with-kro"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>With KRO, we use a <code>ResourceGraphDefinition</code> (RGD) manifest to create our custom schema definition and configure the underlying resources that it will use.</p>
+<ol>
+<li>
+<p>First we will set up our RGD and add our custom schema. Create a file called <code>my-application.yaml</code> and add the following:</p>
+<pre tabindex="0"><code>apiVersion: kro.run/v1alpha1
+kind: ResourceGraphDefinition
+metadata:
+  name: my-application
+spec:
+  schema:
+    apiVersion: v1alpha1
+    kind: Application
+    spec:
+      name: string | required=true
+      image:
+        repository: string | required=true
+        tag: string | required=true
+      replicas: integer | default=1
+      command: &#34;[]string&#34;
+      httpPort: integer | default=8080
+      forceRedeployCounter: integer | default=0
+      zap:
+        storageClassName: string | required=true
+        urls: &#34;[]string | required=true&#34;
+        excludePaths: &#34;[]string | default=[]&#34;
+        includePaths: &#34;[]string | default=[]&#34;
+        openApi:
+          apiUrl: string | required=true
+          targetUrl: string | required=true
+</code></pre><ul>
+<li>With this RGD we are creating a custom resource definition in the cluster called <code>Application</code> with a version of <code>v1alpha1</code>. <code>Application</code> can then be the resource definition used for deploying workloads in our cluster instead of the build in definitions like <code>Deployment</code>.</li>
+<li>In <code>spec.schema.spec</code> we define the parameters to be set when deploying each <code>Application</code>
+<ul>
+<li>The top level parameters are going to be used for the settings of the main workload we are deploying.</li>
+<li><code>spec.schema.spec.forceRedeployCounter</code> will be a counter we can update in order to force a redeployment of the workload, as well as retrigger ZAP.</li>
+</ul>
+</li>
+<li>There is a <code>spec.schema.spec.zap</code> section to define all the settings related to ZAP</li>
+<li><code>spec.schema.spec.zap.storageClassName</code> will be used in order to save the ZAP report in persistent storage. In my own cluster, I use a storage class that is saving the report to blob storage that is easy for me to access. Alternatively, you could set up the RGD using a ZAP script that sends the report elsewhere using HTTP. Or a sidecar container could be that watches for the ZAP report to appear and then sends that report elsewhere.</li>
+<li>The rest of the <code>spec.schema.spec.zap</code> parameters will be used in the ZAP Automation Plan</li>
+</ul>
+</li>
+<li>
+<p>Next, will start setting up the <code>resources</code> section of the RGD. First, we add the definitions we need for deploying the main workload.</p>
+<pre tabindex="0"><code>#spec:
+  resources:
+  - id: deployment
+    readyWhen:
+      - ${deployment.status.availableReplicas &gt; 0}
+      - ${deployment.status.conditions.exists(c, c.type == &#34;Available&#34; &amp;&amp; c.status == &#34;True&#34;)}
+    template:
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: ${schema.spec.name}
+        namespace: ${schema.metadata.namespace}
+      spec:
+        replicas: ${schema.spec.replicas}
+        selector:
+          matchLabels:
+            app: ${schema.spec.name}
+        template:
+          metadata:
+            labels:
+              app: ${schema.spec.name}
+              forceRedeployCounter: &#34;${string(schema.spec.forceRedeployCounter)}&#34;
+          spec:
+            containers:
+              - name: ${schema.spec.name}
+                image: &#34;${schema.spec.image.repository}:${schema.spec.image.tag}&#34;
+                ports:
+                - name: http
+                  containerPort: ${schema.spec.httpPort}
+                  protocol: TCP
+                command: ${schema.spec.command}
+  - id: service
+    template:
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: ${schema.spec.name}
+        namespace: ${schema.metadata.namespace}
+      spec:
+        selector: ${deployment.spec.selector.matchLabels}
+        ports:
+        - name: http
+          port: ${schema.spec.httpPort}
+          protocol: TCP
+          targetPort: http
+</code></pre><ul>
+<li>Here we&rsquo;re adding a <code>Deployment</code> and <code>Service</code> for our main workload. KRO will then deploys these when we create an <code>Application</code></li>
+<li>You can see that using the <code>${}</code> syntax we are able to reference values from the schema, as well as from other resources. When one resource references another, it creates a dependency and orders the creation of the resources.</li>
+<li>Using the <code>readyWhen</code> configuration allows us to define when KRO will consider this resource as done being applied. Resources that depend on it will not get applied until the KRO finds that the dependency is ready.</li>
+</ul>
+</li>
+<li>
+<p>Third, we&rsquo;ll add the ZAP Automation Plan to our resources list.</p>
+<pre tabindex="0"><code>#spec:
+  #resources:
+  - id: zapConfig
+    template:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        labels:
+          app.kubernetes.io/name: zap
+        name: ${schema.spec.name}-zap
+        namespace: ${schema.metadata.namespace}
+      data:
+        af-plan.yaml: |
+          env:
+            contexts:
+            - name: Default Context
+              excludePaths: ${&#34;[&#34; + schema.spec.zap.excludePaths.map(item, &#39;&#34;&#39; + item + &#39;&#34;&#39;).join(&#34;, &#34;) + &#34;]&#34;}
+              includePaths: ${&#34;[&#34; + schema.spec.zap.includePaths.map(item, &#39;&#34;&#39; + item + &#39;&#34;&#39;).join(&#34;, &#34;) + &#34;]&#34;}
+              urls: ${&#34;[&#34; + schema.spec.zap.urls.map(item, &#39;&#34;&#39; + item + &#39;&#34;&#39;).join(&#34;, &#34;) + &#34;]&#34;}
+            parameters:
+              failOnError: false
+              failOnWarning: false
+          jobs:
+          - name: openapi
+            parameters:
+              apiUrl: ${schema.spec.zap.openApi.apiUrl}
+              targetUrl: ${schema.spec.zap.openApi.targetUrl}
+              context: Default Context
+            type: openapi
+          - name: activeScan
+            parameters:
+              context: Default Context
+              policy: &#34;&#34;
+              threadPerHost: 2
+            policyDefinition:
+              defaultStrength: medium
+              defaultThreshold: medium
+            type: activeScan
+          - name: pdf-report
+            parameters:
+              reportDir: /zap/reports
+              reportTitle: ZAP Scanning Report
+              template: traditional-pdf
+            risks:
+            - info
+            - low
+            - medium
+            - high
+            confidences:
+            - low
+            - medium
+            - high
+            - confirmed
+            sections:
+            - instancecount
+            - alertdetails
+            - alertcount
+            type: report
+          - name: sarif-report
+            parameters:
+              template: sarif-json
+              reportDir: /zap/reports
+              reportTitle: ZAP Scanning Report
+            risks:
+            - low
+            - medium
+            - high
+            confidences:
+            - low
+            - medium
+            - high
+            - confirmed
+            type: report
+</code></pre><ul>
+<li>The ZAP Automation plan is getting saved as a ConfigMap, which we will later pass along to our ZAP workload.</li>
+<li>Since the Automation Plan is being saved as a string within the ConfiMap, we have to do some extra work to take values from the <code>Application</code> schema, and add them as strings instead of objects. For example, since <code>schema.spec.zap.urls</code> is an array, we have to convert the array into a string in order to inject into the Automation Plan. But that string still needs to be converted in a way that ZAP will be able to read it as a yaml list.</li>
+<li>In this plan we&rsquo;re reading the OpenAPI spec, attacking the workload, and then generating a report. However, other strategies could be used depending on how you deploy your workloads. For example KRO could be combined with the methods demonstrated in <a href="/blog/2024-12-24-use-zap-with-flagger-in-kubernetes/">Use ZAP with Flagger in Kubernetes</a> to proxy traffic through ZAP for giving ZAP requests to use to attack.</li>
+</ul>
+</li>
+<li>
+<p>Next, we&rsquo;ll add the rest of the resources need for ZAP</p>
+<pre tabindex="0"><code>#spec:
+  #resources:
+  - id: zapPvc
+    template:
+      apiVersion: v1
+      kind: PersistentVolumeClaim
+      metadata:
+        labels:
+          app.kubernetes.io/name: zap
+        name: ${schema.spec.name}-zap
+        namespace: ${schema.metadata.namespace}
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 50Mi
+        storageClassName: ${schema.spec.zap.storageClassName}
+  - id: zapPod
+    template:
+      apiVersion: v1
+      kind: Pod
+      metadata:
+        labels:
+          app.kubernetes.io/name: zap
+          dependency: ${deployment.metadata.name}
+        name: ${schema.spec.name}-${schema.spec.image.tag}-zap-${string(schema.spec.forceRedeployCounter)}
+        namespace: ${schema.metadata.namespace}
+      spec:
+        containers:
+        - args:
+          - ./zap.sh
+          - -cmd
+          - -autorun
+          - /zap/config/af-plan.yaml
+          - -host
+          - 0.0.0.0
+          - -config
+          - api.disablekey=true
+          - -config
+          - api.addrs.addr.name=.*
+          - -config
+          - api.addrs.addr.regex=true
+          image: ghcr.io/zaproxy/zaproxy:stable
+          name: zaproxy
+          ports:
+          - containerPort: 8080
+            name: zaproxy
+            protocol: TCP
+          startupProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 3
+          volumeMounts:
+          - mountPath: /zap/config
+            name: config
+          - mountPath: /zap/reports
+            name: pvc
+        restartPolicy: Never
+        volumes:
+        - name: config
+          configMap:
+            name: ${zapConfig.metadata.name}
+        - name: pvc
+          persistentVolumeClaim:
+            claimName: ${zapPvc.metadata.name}
+</code></pre><ul>
+<li>A <code>PersistentVolumeClaim</code> is created using our defined <code>schema.spec.zap.storageClassName</code> for saving the ZAP reports.</li>
+<li>A <code>Pod</code> resource is used for running the ZAP container. Other resources such as a <code>Job</code> could be used instead, but we&rsquo;re going to make the lifecycle of the Pod align with the main workload, and not previously completed Pods behind.</li>
+<li><strong>Note</strong>: ZAP&rsquo;s authentication features are being disabled to make this demo straightforward.</li>
+<li>The pod is getting the label <code>dependency: ${deployment.metadata.name}</code> to make sure that it depends on our main workload deploying first, and so ZAP won&rsquo;t get deployed until that workload is ready.</li>
+<li>For the name of the Pod, <code>${schema.spec.name}-${schema.spec.image.tag}-zap-${string(schema.spec.forceRedeployCounter)}</code> we&rsquo;re basing it off of the image tag of the main workload. This will ensure that when the tag gets updated, ZAP will get deployed again so that it can scan the new container version. We&rsquo;re also adding the <code>forceRedeployCounter</code> so that there is an easy way to retrigger the run of new ZAP pod, without having to deploy a new version.
+<ul>
+<li>A new ZAP pod will run until completion whenever <code>schema.spec.image.tag</code> or <code>forceRedeployCounter</code> is changed. KRO will automatically remove the old completed pod because it&rsquo;s name no longer matches what the name of the ZAP pod should be.</li>
+</ul>
+</li>
+<li>The ZAP <code>pod</code> mounts the our Automation Plan ConfigMap as a file to be used with ZAP and it also uses the <code>PersistentVolumeClaim</code> to mount storage for the ZAP report.</li>
+</ul>
+</li>
+<li>
+<p>Finally, with all that configuration saved in <code>my-application.yaml</code>, we can apply the RGD with <code>kubectl apply -f my-application.yaml</code></p>
+<ul>
+<li>Running <code>kubectl describe rgd my-application</code> should let you know if there are any issues with your RGD</li>
+<li>Running <code>kubectl get crds</code> should show <code>applications.kro.run</code> as an available CRD in your cluster.</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="deploy-an-instance-of-an-application">Deploy an Instance of an Application <a class="header-link" href="#deploy-an-instance-of-an-application"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>We&rsquo;ll deploy our application now. I&rsquo;m going to use the <code>podinfo</code> demo application for this example.</p>
+<ol>
+<li>
+<p>Create a <code>podinfo.yaml</code> file and create an Application definition:</p>
+<pre tabindex="0"><code>apiVersion: kro.run/v1alpha1
+kind: Application
+metadata:
+  name: podinfo
+  namespace: zap-demo
+spec:
+  name: podinfo
+  replicas: 1
+  forceRedeployCounter: 0
+  image:
+    repository: ghcr.io/stefanprodan/podinfo
+    tag: &#34;6.11.1&#34;
+  httpPort: 9898
+  command:
+  - ./podinfo
+  - --port=9898
+  - --level=info
+  zap:
+    storageClassName: default
+    urls:
+    - http://podinfo:9898
+    excludePaths:
+    - http://podinfo:9898/panic
+    - http://podinfo:9898/status/10
+    includePaths:
+    - http://podinfo:9898.*
+    openApi:
+      apiUrl: http://podinfo:9898/swagger.json
+      targetUrl: http://podinfo:9898
+</code></pre></li>
+<li>
+<p>Create the podinfo application by running <code>kubectl apply -f podinfo.yaml</code></p>
+<ul>
+<li>Running <code>kubectl describe application -n zap-demo podinfo</code> should let you know the status of your application</li>
+</ul>
+</li>
+<li>
+<p>Run <code>kubectl get pod -n zap-demo</code> and you should see the podinfo pod as well as the ZAP pod running.</p>
+<p><img src="./images/pods.png" alt="pods.png"></p>
+</li>
+<li>
+<p>Eventually the ZAP pod should show as <code>Completed</code> and you should have a ZAP report in your storage location.</p>
+<p><img src="./images/report.png" alt="report.png"></p>
+</li>
+</ol>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-04-03-zap-updates-march-2026/"> ZAP Updates - March 2026</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/trevor-mountney_400x400.png" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/trevor/">Trevor Mountney</a>
+                  
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#set-up-the-kubernetes-namespace">Set up the Kubernetes namespace</a></li>
+    <li><a href="#create-custom-resource-with-kro">Create custom resource with KRO</a></li>
+    <li><a href="#deploy-an-instance-of-an-application">Deploy an Instance of an Application</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/tutorial/">tutorial</a> </li>
+           
+           <li> <a href="/tags/kubernetes/">kubernetes</a> </li>
+           
+           <li> <a href="/tags/automation/">automation</a> </li>
+           
+           <li> <a href="/tags/docker/">docker</a> </li>
+           
+           <li> <a href="/tags/guest/">guest</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-04-13-use-zap-with-kro-in-kubernetes/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ee7c42.js"></script>
+  
+</div>
+</body>
+</html>
