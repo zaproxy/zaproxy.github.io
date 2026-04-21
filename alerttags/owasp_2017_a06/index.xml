@@ -351,11 +351,46 @@
       <description>&lt;p&gt;The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Insecure HTTP Method</title>
-      <link>/docs/alerts/90028/</link>
+      <title>Insecure HTTP Method - CONNECT</title>
+      <link>/docs/alerts/90028-4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/docs/alerts/90028/</guid>
-      <description>&lt;p&gt;The most common methodology for attackers is to first footprint the target&amp;rsquo;s web presence and enumerate as much information as possible. With this information, the attacker may develop an accurate attack scenario, which will effectively exploit a vulnerability in the software type/version being utilized by the target host.&lt;/p&gt;</description>
+      <guid>/docs/alerts/90028-4/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [CONNECT] is enabled for this resource, and is exploitable. It was found to be possible to establish a tunneled socket connection to a third party service, using this HTTP method. This would allow the service to be used as an anonymous spam relay, or as a web proxy, bypassing network restrictions. It also allows it to be used to establish a tunneled VPN, effectively extending the network perimeter to include untrusted components.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - DELETE</title>
+      <link>/docs/alerts/90028-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-1/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [DELETE] is enabled on the web server for this resource. Depending on the web server configuration, and the underlying implementation responsible for serving the resource, this might or might not be exploitable. The TRACK and TRACE methods may be used by an attacker, to gain access to the authorisation token/session cookie of an application user, even if the session cookie is protected using the HttpOnly flag. For the attack to be successful, the application user must typically be using an older web browser, or a web browser which has a Same Origin Policy (SOP) bypass vulnerability. The CONNECT method can be used by a web client to create an HTTP tunnel to third party websites or services.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - PROPFIND</title>
+      <link>/docs/alerts/90028-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-5/</guid>
+      <description>&lt;p&gt;This HTTP method is a WEBDAV method: PROPFIND. If this server is not offering any WEBDAV services, these methods should not be available.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - PUT</title>
+      <link>/docs/alerts/90028-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-2/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [PUT] is enabled on the web server for this resource. Depending on the web server configuration, and the underlying implementation responsible for serving the resource, this might or might not be exploitable. The TRACK and TRACE methods may be used by an attacker, to gain access to the authorisation token/session cookie of an application user, even if the session cookie is protected using the HttpOnly flag. For the attack to be successful, the application user must typically be using an older web browser, or a web browser which has a Same Origin Policy (SOP) bypass vulnerability. The CONNECT method can be used by a web client to create an HTTP tunnel to third party websites or services.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - PUT</title>
+      <link>/docs/alerts/90028-6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-6/</guid>
+      <description>&lt;p&gt;This method was originally intended for file management operations. It is now most commonly used in REST services, PUT is most-often utilized for &lt;strong&gt;update&lt;/strong&gt; capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - TRACE</title>
+      <link>/docs/alerts/90028-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-3/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [TRACE] is enabled for this resource, and is exploitable. The TRACK and TRACE methods may be used by an attacker, to gain access to the authorisation token/session cookie of an application user, even if the session cookie is protected using the HttpOnly flag. For the attack to be successful, the application user must typically be using an older web browser, or a web browser which has a Same Origin Policy (SOP) bypass vulnerability.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Insecure JSF ViewState</title>
