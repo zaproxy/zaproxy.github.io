@@ -86,9 +86,16 @@
     </item>
     <item>
       <title>Cross Site Scripting (Persistent)</title>
-      <link>/docs/alerts/40014/</link>
+      <link>/docs/alerts/40014-1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/docs/alerts/40014/</guid>
+      <guid>/docs/alerts/40014-1/</guid>
+      <description>&lt;p&gt;Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user&amp;rsquo;s browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.&#xA;When an attacker gets a user&amp;rsquo;s browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cross Site Scripting (Persistent)</title>
+      <link>/docs/alerts/40014-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/40014-3/</guid>
       <description>&lt;p&gt;Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user&amp;rsquo;s browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.&#xA;When an attacker gets a user&amp;rsquo;s browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.&lt;/p&gt;</description>
     </item>
     <item>
@@ -111,6 +118,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/docs/alerts/40012/</guid>
       <description>&lt;p&gt;Cross-site Scripting (XSS) is an attack technique that involves echoing attacker-supplied code into a user&amp;rsquo;s browser instance. A browser instance can be a standard web browser client, or a browser object embedded in a software product such as the browser within WinAmp, an RSS reader, or an email client. The code itself is usually written in HTML/JavaScript, but may also extend to VBScript, ActiveX, Java, Flash, or any other browser-supported technology.&#xA;When an attacker gets a user&amp;rsquo;s browser to execute his/her code, the code will run within the security context (or zone) of the hosting web site. With this level of privilege, the code has the ability to read, modify and transmit any sensitive data accessible by the browser. A Cross-site Scripted user could have his/her account hijacked (cookie theft), their browser redirected to another location, or possibly shown fraudulent content delivered by the web site they are visiting. Cross-site Scripting attacks essentially compromise the trust relationship between a user and the web site. Applications utilizing browser object instances which load content from the file system may execute code under the local machine zone allowing for system compromise.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cross Site Scripting Weakness (Persistent in JSON Response)</title>
+      <link>/docs/alerts/40014-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/40014-2/</guid>
+      <description>&lt;p&gt;A XSS attack was found in a JSON response, this might leave content consumers vulnerable to attack if they don&amp;rsquo;t appropriately handle the data (response).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Cross-Domain Misconfiguration - Adobe - Read</title>
@@ -260,11 +274,46 @@
       <description>&lt;p&gt;The HTTPS configuration has one or more security issues identified by the TLS risk assessment.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Insecure HTTP Method</title>
-      <link>/docs/alerts/90028/</link>
+      <title>Insecure HTTP Method - CONNECT</title>
+      <link>/docs/alerts/90028-4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/docs/alerts/90028/</guid>
-      <description>&lt;p&gt;The most common methodology for attackers is to first footprint the target&amp;rsquo;s web presence and enumerate as much information as possible. With this information, the attacker may develop an accurate attack scenario, which will effectively exploit a vulnerability in the software type/version being utilized by the target host.&lt;/p&gt;</description>
+      <guid>/docs/alerts/90028-4/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [CONNECT] is enabled for this resource, and is exploitable. It was found to be possible to establish a tunneled socket connection to a third party service, using this HTTP method. This would allow the service to be used as an anonymous spam relay, or as a web proxy, bypassing network restrictions. It also allows it to be used to establish a tunneled VPN, effectively extending the network perimeter to include untrusted components.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - DELETE</title>
+      <link>/docs/alerts/90028-1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-1/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [DELETE] is enabled on the web server for this resource. Depending on the web server configuration, and the underlying implementation responsible for serving the resource, this might or might not be exploitable. The TRACK and TRACE methods may be used by an attacker, to gain access to the authorisation token/session cookie of an application user, even if the session cookie is protected using the HttpOnly flag. For the attack to be successful, the application user must typically be using an older web browser, or a web browser which has a Same Origin Policy (SOP) bypass vulnerability. The CONNECT method can be used by a web client to create an HTTP tunnel to third party websites or services.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - PROPFIND</title>
+      <link>/docs/alerts/90028-5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-5/</guid>
+      <description>&lt;p&gt;This HTTP method is a WEBDAV method: PROPFIND. If this server is not offering any WEBDAV services, these methods should not be available.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - PUT</title>
+      <link>/docs/alerts/90028-2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-2/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [PUT] is enabled on the web server for this resource. Depending on the web server configuration, and the underlying implementation responsible for serving the resource, this might or might not be exploitable. The TRACK and TRACE methods may be used by an attacker, to gain access to the authorisation token/session cookie of an application user, even if the session cookie is protected using the HttpOnly flag. For the attack to be successful, the application user must typically be using an older web browser, or a web browser which has a Same Origin Policy (SOP) bypass vulnerability. The CONNECT method can be used by a web client to create an HTTP tunnel to third party websites or services.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - PUT</title>
+      <link>/docs/alerts/90028-6/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-6/</guid>
+      <description>&lt;p&gt;This method was originally intended for file management operations. It is now most commonly used in REST services, PUT is most-often utilized for &lt;strong&gt;update&lt;/strong&gt; capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Insecure HTTP Method - TRACE</title>
+      <link>/docs/alerts/90028-3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/docs/alerts/90028-3/</guid>
+      <description>&lt;p&gt;The insecure HTTP method [TRACE] is enabled for this resource, and is exploitable. The TRACK and TRACE methods may be used by an attacker, to gain access to the authorisation token/session cookie of an application user, even if the session cookie is protected using the HttpOnly flag. For the attack to be successful, the application user must typically be using an older web browser, or a web browser which has a Same Origin Policy (SOP) bypass vulnerability.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Log4Shell (CVE-2021-44228)</title>
