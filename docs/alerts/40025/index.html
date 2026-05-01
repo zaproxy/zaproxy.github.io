@@ -133,7 +133,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert ID</strong>
+                <strong>Scan Rule ID</strong>
               </td>
               <td>40025</td>
             </tr>
@@ -149,96 +149,27 @@
               </td>
               <td>beta</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>Medium</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/204.html">
-                  204
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>45</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                All
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/owasp_2017_a06">OWASP_2017_A06</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a05">OWASP_2021_A05</a><br>
-              
-              	<a href="/alerttags/owasp_2025_a02">OWASP_2025_A02</a><br>
-              
-              	<a href="/alerttags/policy_pentest">POLICY_PENTEST</a><br>
-              
-              	<a href="/alerttags/systemic">SYSTEMIC</a><br>
-              
-              </td>
-            </tr>
-            
-            <tr> 
-              <td>
-                <strong>More Info</strong>
-              </td>
-              <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/active-scan-rules-beta/#id-40025">Scan Rule Help</a><br>
-              </td>
-            </tr>
-            
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Disable the &#39;TRACE&#39; method on the proxy servers, as well as the origin web/application server. Disable the &#39;OPTIONS&#39; method on the proxy servers, as well as the origin web/application server, if it is not required for other purposes, such as &#39;CORS&#39; (Cross Origin Resource Sharing). Configure the web and application servers with custom error pages, to prevent &#39;fingerprintable&#39; product-specific error pages being leaked to the user in the event of HTTP errors, such as &#39;TRACK&#39; requests for non-existent pages. Configure all proxies, application servers, and web servers to prevent disclosure of the technology and version information in the &#39;Server&#39; and &#39;X-Powered-By&#39; HTTP response headers. 
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
         
           <li>
-            
-              <a href="https://datatracker.ietf.org/doc/html/rfc7231#section-5.1.2">https://datatracker.ietf.org/doc/html/rfc7231#section-5.1.2</a>
-            
+            <a href="/docs/alerts/40025-1">40025-1</a> Proxy Disclosure
+          </li>
+        
+          <li>
+            <a href="/docs/alerts/40025-2">40025-2</a> Proxy Disclosure
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/ProxyDisclosureScanRule.java'>org/zaproxy/zap/extension/ascanrulesBeta/ProxyDisclosureScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesBeta/src/main/java/org/zaproxy/zap/extension/ascanrulesBeta/ProxyDisclosureScanRule.java'>
+            org/zaproxy/zap/extension/ascanrulesBeta/ProxyDisclosureScanRule.java
+          </a>
       </section>
   </main>
 </div>
