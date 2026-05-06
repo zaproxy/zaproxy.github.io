@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-05-06-automating-owasp-ptk-with-zap-phase-1/images/ui-ptk-alerts.png">
+  <meta name="twitter:title" content="Automating OWASP PTK with ZAP (Phase 1)">
+  <meta name="twitter:description" content="ZAP’s Automation Framework can now drive OWASP PTK scans using the Client Spider. This is an early release - we want you to try it and give us feedback while we work toward deeper integration with ZAP’s active and passive scan engines.">
+
+    <meta property="og:url" content="/blog/2026-05-06-automating-owasp-ptk-with-zap-phase-1/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Automating OWASP PTK with ZAP (Phase 1)">
+  <meta property="og:description" content="ZAP’s Automation Framework can now drive OWASP PTK scans using the Client Spider. This is an early release - we want you to try it and give us feedback while we work toward deeper integration with ZAP’s active and passive scan engines.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-05-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-05-06T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Owasp-Ptk">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Client-Spider">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-05-06-automating-owasp-ptk-with-zap-phase-1/images/ui-ptk-alerts.png">
+
+  
+  <title>ZAP &ndash; Automating OWASP PTK with ZAP (Phase 1)</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.f1f0a5.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Automating OWASP PTK with ZAP (Phase 1)</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday May 6, 2026</span>
+              <span class="word-count fl-r"> 1258 Words </span>
+            </section>
+            
+<h2 id="early-release---we-want-your-feedback">Early Release - We Want Your Feedback <a class="header-link" href="#early-release---we-want-your-feedback"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Before we get into the details: this is a <strong>Phase 1</strong> release.</p>
+<p>The integration works, and you can use it today to run <a href="https://pentestkit.co.uk/">OWASP PTK</a> scans as part of an automated pipeline.
+But it is not the polished, fully-integrated experience we are working toward. We are publishing it
+now because we want real-world feedback to guide Phase 2, not because we think it is done.</p>
+<p>If you try it and run into friction, that friction is exactly what we want to hear about.
+Please let us know via the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a>.</p>
+
+<h2 id="how-ptk-is-different-from-zap">How PTK is Different from ZAP <a class="header-link" href="#how-ptk-is-different-from-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>ZAP is a proxy. It sits between your browser and the target, intercepting and analyzing HTTP traffic.
+Its active and passive scan rules work on requests and responses - what travels over the wire.</p>
+<p><strong>OWASP PTK works differently.</strong> PTK is a browser extension. It runs entirely inside the browser,
+which means it has access to things that a proxy simply cannot see:</p>
+<ul>
+<li>The DOM as it exists after JavaScript has run</li>
+<li>Client-side code execution paths and data flows</li>
+<li>Runtime behavior in single-page applications</li>
+<li>Dangerous JavaScript patterns in production bundles</li>
+</ul>
+<p>If you missed the earlier post introducing PTK in ZAP, start there:
+<a href="/blog/2026-01-19-owasp-ptk-add-on/">OWASP PTK Integration with ZAP</a>.</p>
+<p>Because PTK lives in the browser, automating it requires driving a real browser - not just firing
+HTTP requests. That is why the Automation Framework integration uses the <strong>Client Spider</strong>.</p>
+
+<h2 id="the-automation-approach-client-spider--ptk">The Automation Approach: Client Spider + PTK <a class="header-link" href="#the-automation-approach-client-spider--ptk"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The <a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider</a> launches a real browser,
+explores the target application by interacting with it the way a user would, and drives PTK scanning
+along the way.</p>
+<p>The overall flow looks like this:</p>
+<ol>
+<li>ZAP starts and runs the Automation Framework with your plan</li>
+<li>The <code>spiderClient</code> job opens a browser with PTK pre-installed</li>
+<li>PTK runs its configured scan rules (SAST, IAST, DAST) as the spider browses the application</li>
+<li>PTK findings are raised as ZAP alerts, visible in the Alerts tab and included in reports</li>
+</ol>
+
+<h2 id="prerequisites">Prerequisites <a class="header-link" href="#prerequisites"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Make sure you have the following add-ons installed and updated in ZAP before running the plan:</p>
+<ul>
+<li><strong>OWASP PTK add-on</strong> (from the ZAP Marketplace)</li>
+<li><strong>Client Side Integration add-on</strong> (provides the Client Spider)</li>
+<li><strong>Automation Framework add-on</strong></li>
+</ul>
+
+<h2 id="an-example-automation-plan">An Example Automation Plan <a class="header-link" href="#an-example-automation-plan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Below is a minimal AF plan that runs the Client Spider against a target, with PTK enabled.
+Replace the URL and context name with your own target.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contexts</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;default&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">urls</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;https://your-target.example.com&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">failOnError</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">failOnWarning</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">progressToStdout</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">configs</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ptk.automatedScanning.enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">spiderClient</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">numberOfBrowsers</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">maxDuration</span>: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">browserId</span>: <span style="color:#e6db74">&#34;firefox-headless&#34;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">report</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">template</span>: <span style="color:#e6db74">&#34;modern&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">reportFile</span>: <span style="color:#e6db74">&#34;ptk-report.html&#34;</span>
+</span></span></code></pre></div><p>Save this as <code>ptk-plan.yaml</code> and run it with:</p>
+<pre tabindex="0"><code>zap.sh -cmd -autorun ptk-plan.yaml
+</code></pre><p>Or via Docker weekly (which includes the PTK add-on by default):</p>
+<pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw \
+  ghcr.io/zaproxy/zaproxy:weekly \
+  zap.sh -cmd -autorun /zap/wrk/ptk-plan.yaml
+</code></pre><p>Or via Docker stable (which needs the PTK add-on to be installed):</p>
+<pre tabindex="0"><code>docker run -v $(pwd):/zap/wrk/:rw \
+  ghcr.io/zaproxy/zaproxy:stable \
+  zap.sh -cmd -addoninstall ptk -autorun /zap/wrk/ptk-plan.yaml
+</code></pre>
+<h2 id="configuring-ptk-rules">Configuring PTK Rules <a class="header-link" href="#configuring-ptk-rules"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>PTK has its own set of scan rule configurations, separate from ZAP&rsquo;s active and passive scan rules.
+You configure them in the ZAP UI at:</p>
+<p><strong>Tools → Options → OWASP PTK</strong></p>
+<p><img src="images/ui-ptk-options.png" alt="OWASP PTK Options Screen"></p>
+<p>Here you will find:</p>
+<ul>
+<li><strong>Enable Automated Scanning</strong> - when checked, PTK starts scanning automatically when a ZAP browser
+launches. Turn this on for automation runs.</li>
+<li><strong>Scan Rules</strong> - a tree of all available PTK rules, grouped by engine:
+<ul>
+<li><strong>SAST</strong> - static analysis of JavaScript loaded by the page</li>
+<li><strong>IAST</strong> - runtime instrumentation during browser interaction</li>
+<li><strong>DAST</strong> - dynamic testing driven from inside the browser</li>
+</ul>
+</li>
+</ul>
+<p>Enable the rule groups you want to run, then save your options. These settings persist and will be
+used when the Automation Framework launches a browser.</p>
+<p>PTK rules can also be configured via the Automation Framework&rsquo;s <code>configs</code> section. By default all
+PTK rules are enabled. You can disable an entire engine group at a high level:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">configs</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ptk.scanrules.IAST.enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span></code></pre></div><p>Individual rules can be enabled or disabled using the key shown when you hover over the rule in the
+PTK Options screen - for example:</p>
+<p><img src="images/ui-ptk-options-hover.png" alt="OWASP PTK Options Screen - key shown in hover"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">configs</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ptk.scanrules.IAST.enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ptk.scanrules.IAST.iast_dom_xss.enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div>
+
+
+  <blockquote>
+    <p><strong>Note:</strong> This is one of the things we plan to improve. The goal for Phase 2 is to integrate
+PTK rules into ZAP&rsquo;s standard scan rule management, so everything is configured in one place.</p>
+  </blockquote>
+
+
+<h2 id="what-the-plan-does">What the Plan Does <a class="header-link" href="#what-the-plan-does"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The <a href="/docs/desktop/addons/client-side-integration/automation/#job-spiderclient">spiderClient</a> job launches a headless Firefox with PTK pre-installed. Because you have
+<strong>Enable Automated Scanning</strong> turned on in configs, PTK starts its configured scan rules automatically
+as the spider explores the application.</p>
+<p>As PTK finds issues, it reports them back to ZAP, which raises them as standard ZAP alerts.
+Those alerts are available in the ZAP UI, in reports, and in any downstream tooling that reads
+ZAP output.</p>
+<p>The report job generates an HTML report in the same directory in which you saved your plan.</p>
+<p>You can use any of ZAP&rsquo;s <a href="/docs/desktop/addons/report-generation/">report templates</a>.</p>
+
+<h2 id="resource-considerations">Resource Considerations <a class="header-link" href="#resource-considerations"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Browsers are heavyweight processes, and PTK adds further overhead on top - it instruments the
+runtime, monitors the DOM, and runs analysis as the page executes. Running multiple browsers in
+parallel with PTK active will consume significantly more CPU and memory than a typical Client Spider
+run.</p>
+<p>If you normally use several browsers to speed up crawling, consider dropping to one or two when
+PTK is enabled:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">spiderClient</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">numberOfBrowsers</span>: <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>Start low and increase only if your environment has the headroom for it.</p>
+
+<h2 id="current-limitations">Current Limitations <a class="header-link" href="#current-limitations"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This is Phase 1, so there are real limitations to be aware of:</p>
+<ul>
+<li>
+<p><strong>No active or passive scan integration.</strong> PTK is currently configured separately from the existing
+active and passive scan rules.
+We plan to provide an integrated way to configure all of the ZAP scan rules in a future release.</p>
+</li>
+<li>
+<p><strong>PTK runs via the Client Spider.</strong>
+We plan to add a specific PTK active scan rule so that the PTK DAST and IAST rules run when you run an
+active scan.</p>
+</li>
+<li>
+<p><strong>Duplicate findings.</strong> Some of the PTK rules overlap with the ZAP ones, for example some of the rules
+related to security headers.
+We plan to configure PTK to not overlap with the existing ZAP rules by default, while giving you the option
+to configure whichever ZAP and PTK rules you like.</p>
+</li>
+</ul>
+
+<h2 id="what-phase-2-looks-like">What Phase 2 Looks Like <a class="header-link" href="#what-phase-2-looks-like"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Our goal is to make PTK feel like a first-class part of ZAP&rsquo;s scanning pipeline:</p>
+<ul>
+<li><strong>One place for all scan rule configuration.</strong> PTK rules integrated into ZAP&rsquo;s standard active
+and passive scan rule management - no separate Options screen.</li>
+<li><strong>PTK integrated with ZAP&rsquo;s active and passive scanners.</strong> Rather than being a separate system
+that reports findings back to ZAP, PTK will be wired into ZAP&rsquo;s core scan engines.</li>
+<li><strong>AF plan control over PTK rules.</strong> Configure which PTK rules run, and with what settings,
+directly in your <code>ptk-plan.yaml</code>.</li>
+<li><strong>Better authenticated scanning support.</strong> Tighter integration with ZAP&rsquo;s authentication handling
+so PTK covers authenticated flows reliably.</li>
+</ul>
+
+<h2 id="try-it-and-tell-us-what-you-think">Try It and Tell Us What You Think <a class="header-link" href="#try-it-and-tell-us-what-you-think"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The best thing you can do right now is try this against an application you own or have permission
+to test - targets like <a href="https://brokencrystals.com/">Broken Crystals</a> or <a href="https://owasp.org/www-project-juice-shop/">OWASP Juice Shop</a> are perfect -
+and then tell us what worked, what did not, and what you wish was different.</p>
+<p>We are actively working on Phase 2. Your feedback shapes what we prioritize.</p>
+<ul>
+<li><a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a></li>
+</ul>
+
+<h2 id="links">Links <a class="header-link" href="#links"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li><a href="/docs/desktop/addons/owasp-ptk/">OWASP PTK add-on docs</a></li>
+<li><a href="/docs/desktop/addons/owasp-ptk/ptk-options/">OWASP PTK Options</a></li>
+<li><a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider docs</a></li>
+<li><a href="/docs/desktop/addons/client-side-integration/automation/">Client Side Integration Automation Framework support</a></li>
+<li><a href="/docs/desktop/addons/automation-framework/">Automation Framework docs</a></li>
+<li><a href="/alerttags/tool_ptk/">OWASP PTK alert tags in ZAP</a></li>
+<li><a href="/blog/2026-04-01-owasp-ptk-findings-to-zap-alerts/">OWASP PTK Findings as ZAP Alerts (Juice Shop Walkthrough)</a></li>
+<li><a href="/blog/2026-01-19-owasp-ptk-add-on/">OWASP PTK Integration with ZAP</a></li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-05-01-zap-updates-april-2026/"> ZAP Updates - April 2026</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/simon/">Simon Bennetts</a>
+                  
+                  
+                  (<a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>)
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#early-release---we-want-your-feedback">Early Release - We Want Your Feedback</a></li>
+    <li><a href="#how-ptk-is-different-from-zap">How PTK is Different from ZAP</a></li>
+    <li><a href="#the-automation-approach-client-spider--ptk">The Automation Approach: Client Spider + PTK</a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#an-example-automation-plan">An Example Automation Plan</a></li>
+    <li><a href="#configuring-ptk-rules">Configuring PTK Rules</a></li>
+    <li><a href="#what-the-plan-does">What the Plan Does</a></li>
+    <li><a href="#resource-considerations">Resource Considerations</a></li>
+    <li><a href="#current-limitations">Current Limitations</a></li>
+    <li><a href="#what-phase-2-looks-like">What Phase 2 Looks Like</a></li>
+    <li><a href="#try-it-and-tell-us-what-you-think">Try It and Tell Us What You Think</a></li>
+    <li><a href="#links">Links</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/owasp-ptk/">owasp-ptk</a> </li>
+           
+           <li> <a href="/tags/automation/">automation</a> </li>
+           
+           <li> <a href="/tags/client-spider/">client-spider</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-05-06-automating-owasp-ptk-with-zap-phase-1/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.89277d.js"></script>
+  
+</div>
+</body>
+</html>
