@@ -133,7 +133,7 @@
           <tbody>
             <tr>
               <td>
-                <strong>Alert ID</strong>
+                <strong>Scan Rule ID</strong>
               </td>
               <td>40015</td>
             </tr>
@@ -149,111 +149,27 @@
               </td>
               <td>alpha</td>
             </tr>
-            <tr> 
-              <td>
-                <strong>
-                  Risk
-                </td>
-              <td>High</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>CWE</strong>
-              </td>
-              <td>
-                <a href="https://cwe.mitre.org/data/definitions/90.html">
-                  90
-                </a>
-              </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>WASC</strong>
-              </td>
-              <td>29</td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Technologies Targeted</strong>
-              </td>
-              <td>
-              
-                
-                	<a href="/techtags/protocol.ldap">Protocol / LDAP</a><br>
-                
-              
-	          </td>
-            </tr>
-            <tr> 
-              <td>
-                <strong>Tags</strong>
-              </td>
-              <td>
-              
-              	<a href="/alerttags/api_2023_api4">API_2023_API4</a><br>
-              
-              	<a href="/alerttags/hipaa">HIPAA</a><br>
-              
-              	<a href="/alerttags/owasp_2017_a01">OWASP_2017_A01</a><br>
-              
-              	<a href="/alerttags/owasp_2021_a03">OWASP_2021_A03</a><br>
-              
-              	<a href="/alerttags/owasp_2025_a05">OWASP_2025_A05</a><br>
-              
-              	<a href="/alerttags/pci_dss">PCI_DSS</a><br>
-              
-              	<a href="/alerttags/policy_pentest">POLICY_PENTEST</a><br>
-              
-              	<a href="/alerttags/wstg-v42-inpv-06">WSTG-V42-INPV-06</a><br>
-              
-              </td>
-            </tr>
-            
-            <tr> 
-              <td>
-                <strong>More Info</strong>
-              </td>
-              <td>
-              	<a href="https://www.zaproxy.org/docs/desktop/addons/active-scan-rules-alpha/#id-40015">Scan Rule Help</a><br>
-              </td>
-            </tr>
-            
           </tbody>
         </table>
 
       </section>
       <section class="col-2-3">
-        <div data-attr="summary">
-          <h3 class="mb-10">Summary</h3>
-          <p>LDAP Injection may be possible. It may be possible for an attacker to bypass authentication controls, and to view and modify arbitrary data in the LDAP directory.</p>
-
-        </div>
-        <div data-attr="solution" class="mb-20">
-          <h3 class="mb-10">Solution</h3>
-          Validate and/or escape all user input before using it to create an LDAP query.  In particular, the following characters (or combinations) should be deny listed: &amp; | ! &lt; &gt; = ~= &gt;= &lt;= * ( ) , &#43; - &#34; &#39; ; \ / NUL character 
-        </div>
-        <div data-attr="other" class="mb-20">
-          <h3 class="mb-10">Other Info</h3>
-          
-        </div>
-        <h3 class="mb-10">References</h3>
-        <ul data-attr="references">
+        <h3 class="mb-10">Alerts</h3>
+        <ul data-attr="alerts">
         
           <li>
-            
-              <a href="https://owasp.org/www-community/attacks/LDAP_Injection">https://owasp.org/www-community/attacks/LDAP_Injection</a>
-            
+            <a href="/docs/alerts/40015-1">40015-1</a> LDAP Injection - activedirectory
           </li>
         
           <li>
-            
-              <a href="https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html</a>
-            
+            <a href="/docs/alerts/40015-2">40015-2</a> LDAP Injection
           </li>
         
         </ul>
         <h4 class="mb-10">Code</h4>
-          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/LdapInjectionScanRule.java'>org/zaproxy/zap/extension/ascanrulesAlpha/LdapInjectionScanRule.java</a>
+          <a href='https://github.com/zaproxy/zap-extensions/blob/main/addOns/ascanrulesAlpha/src/main/java/org/zaproxy/zap/extension/ascanrulesAlpha/LdapInjectionScanRule.java'>
+            org/zaproxy/zap/extension/ascanrulesAlpha/LdapInjectionScanRule.java
+          </a>
       </section>
   </main>
 </div>
