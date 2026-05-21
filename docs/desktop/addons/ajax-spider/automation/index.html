@@ -758,6 +758,15 @@
                 <a href="/docs/desktop/addons/mcp-integration/">MCP Integration Add-on</a>
         <ul class="tree-branch">  
                         <li> 
+                            <a href="/docs/desktop/addons/mcp-integration/mcp-automation-config/">MCP Automation Framework - mcp-config Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/mcp-integration/mcp-automation-import/">MCP Automation Framework - mcp-import Job</a>
+                        </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/mcp-integration/mcp-automation/">MCP Automation Framework Support</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/mcp-integration/mcp-options/">MCP Integration Options</a>
                         </li>  
                         <li> 
@@ -1941,6 +1950,7 @@
       numberOfBrowsers:                # Int: The number of browsers the spider will use, more will be faster but will use up more memory, default: number of cores
       runOnlyIfModern:                 # Boolean: If true then the spider will only run if a &#34;modern app&#34; alert is raised, default: false
       inScopeOnly:                     # Boolean: If true then any URLs requested which are out of scope will be ignored, default: true
+      enableExtensions:                # Bool: When enabled then will use any browser extensions added by other add-ons, default: false
       browserId:                       # String: Browser Id to use, default: firefox-headless
       clickDefaultElems:               # Bool: When enabled only click the default element: &#39;a&#39;, &#39;button&#39; and &#39;input&#39;, default: true
       clickElemsOnce:                  # Bool: When enabled only click each element once, default: true
@@ -1949,6 +1959,7 @@
       randomInputs:                    # Bool: When enabled random values will be entered into input element, default: true
       reloadWait:                      # Int: The time in milliseconds to wait after the URL is loaded, default: 1000
       scopeCheck:                      # String: The scope check, either Flexible or Strict, default: Strict
+      logoutAvoidance:                 # Bool: When enabled, the spider will avoid clicking common logout elements, default: false
       elements:                        # A list of HTML elements to click - will be ignored unless clickDefaultElems is false
       - &#34;a&#34;
       - &#34;button&#34;
