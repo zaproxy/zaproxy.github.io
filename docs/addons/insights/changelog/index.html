@@ -135,9 +135,21 @@
 <p>All notable changes to this add-on will be documented in this file.</p>
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>.</p>
 
-<h2 id="040---2026-04-23"><a href="https://github.com/zaproxy/zap-extensions/releases/insights-v0.4.0">0.4.0</a> - 2026-04-23 <a class="header-link" href="#040---2026-04-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<h2 id="050---2026-06-12"><a href="https://github.com/zaproxy/zap-extensions/releases/insights-v0.5.0">0.5.0</a> - 2026-06-12 <a class="header-link" href="#050---2026-06-12"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="added">Added</h3>
+<ul>
+<li>Report data now exposes <code>stoppingInsight</code> to make it explicit which insight caused a stop. The built-in report templates render the stopping insight when present.</li>
+</ul>
 
 <h3 id="changed">Changed</h3>
+<ul>
+<li>The Automation Framework stop message now identifies the triggering insight (key, reason, site, value) instead of a generic string. The same details are appended to the daemon-mode exit reason.</li>
+</ul>
+
+<h2 id="040---2026-04-23"><a href="https://github.com/zaproxy/zap-extensions/releases/insights-v0.4.0">0.4.0</a> - 2026-04-23 <a class="header-link" href="#040---2026-04-23"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="changed-1">Changed</h3>
 <ul>
 <li>Elevated insight.auth.failure from Medium to High severity so that exitAutoOnHigh can stop scans with persistent auth failures.</li>
 <li>Reduced minimum auth request threshold from 10 to 5 to detect browser-based auth failures earlier.</li>
