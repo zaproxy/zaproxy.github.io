@@ -1955,10 +1955,16 @@ ZAP must be able to access this URL for the attack to proceed.</p>
 <h3 id="use-traditional-spider">Use traditional spider <a class="header-link" href="#use-traditional-spider"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>The traditional spider explores the application by finding links in HTML pages. It is very fast but cannot handle applications which make heavy use of JavaScript.</p>
 
-<h3 id="use-ajax-spider">Use ajax spider <a class="header-link" href="#use-ajax-spider"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The ajax spider explores the application by launching the browser you have chosen and clicking on the links it finds. It is slower than the traditional spider but handles JavaScript well.<br>
-This option is only shown if the ajax spider add-on is installed. If it is not available then you can download and install it for free from the ZAP Marketplace.</p>
-<p>The options available are:</p>
+<h3 id="use-modern-spider">Use modern spider <a class="header-link" href="#use-modern-spider"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The modern spider explores the application by launching the browser you have chosen and clicking on the links it finds. It is slower than the traditional spider but handles JavaScript well.<br>
+This option is only shown if at least one modern spider add-on is installed.</p>
+<p>Two modern spiders are available:</p>
+<ul>
+<li><strong>Ajax Spider</strong>: available if the Ajax Spider add-on is installed.</li>
+<li><strong>Client Spider</strong>: available if the Client Side Integration add-on is installed.</li>
+</ul>
+<p>When both are installed, a drop-down lets you choose which one to use. ZAP will remember the last spider and browser you chose when you restart it.</p>
+<p>The conditional options available are:</p>
 <ul>
 <li>Never: you will then need to use the traditional spider</li>
 <li>If Modern: will run if ZAP identifies the target as a modern app - for this you need to use the traditional spider</li>

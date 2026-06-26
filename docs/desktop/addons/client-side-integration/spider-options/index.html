@@ -1949,8 +1949,8 @@
 <li><strong>Number of Browser Windows to Open</strong> - The number of browser windows the spider uses in parallel. More windows increases speed but uses more memory.</li>
 <li><strong>Maximum Crawl Depth</strong> - The maximum depth the spider will crawl to. 0 means unlimited.</li>
 <li><strong>Maximum Children</strong> - The maximum number of child nodes to add under any single node in the tree. 0 means unlimited.</li>
-<li><strong>Initial Page Load Time</strong> - The number of seconds to wait after the initial URL is loaded. Default: 5.</li>
-<li><strong>Page Load Time</strong> - The number of seconds to wait after each subsequent URL is loaded. Default: 1.</li>
+<li><strong>Initial Page Load Time</strong> - The number of seconds to wait after the initial URL is loaded. Default: 0.</li>
+<li><strong>Page Load Time</strong> - The number of seconds to wait after each subsequent URL is loaded. Default: 0.</li>
 <li><strong>Action Wait Time</strong> - The number of seconds to wait after performing an action on the browser (e.g. opening a URL, clicking a button, submitting a form). Default: 0.</li>
 <li><strong>Shutdown Time</strong> - The number of seconds to wait for new events after the last action before the spider shuts down. Default: 5.</li>
 <li><strong>Maximum Duration</strong> - The maximum number of minutes the spider is allowed to run. 0 means unlimited.</li>
@@ -1962,6 +1962,7 @@
 </li>
 <li><strong>Logout Avoidance</strong> - When enabled, the spider will avoid clicking elements that are likely to log the user out.</li>
 </ul>
+<p>When both <strong>Page Load Time</strong> and <strong>Action Wait Time</strong> are set to 0, the spider uses an adaptive wait strategy instead of fixed delays. The adaptive strategy monitors in-scope network traffic and waits until requests quiesce, up to a hard limit of 15 seconds. It applies a longer quiesce threshold (2.5 seconds) the first time a URL is visited, and shorter thresholds for subsequent visits.</p>
 
         </div>
       </div>
