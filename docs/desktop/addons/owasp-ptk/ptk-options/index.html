@@ -1940,18 +1940,37 @@
 </ol>
           
 <h1 id="owasp-ptk-options">OWASP PTK Options</h1>
+<p>The OWASP PTK Options dialog has three tabs: <strong>Engines</strong> , <strong>Scan Rules</strong> , and <strong>Active Scan</strong> .</p>
 
-<h2 id="active-scan">Active Scan <a class="header-link" href="#active-scan"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>On the <strong>Active Scan</strong> tab, <strong>Enable Active Scan Rule</strong> controls whether the PTK active scan rule runs during ZAP active scans.</p>
+<h2 id="engines-tab">Engines Tab <a class="header-link" href="#engines-tab"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Controls where each PTK engine runs during a scan. Each engine (SAST, IAST, DAST) has an independent <strong>Run Location</strong> drop-down with three options:</p>
+<ul>
+<li><strong>In the Client Spider</strong> — the engine runs automatically whenever the ZAP Client Spider crawls a page. This is the default for SAST and IAST.</li>
+<li><strong>In the PTK Active Scan Rule</strong> — the engine runs as part of the PTK active scan rule. This is the default for DAST.</li>
+<li><strong>Manually</strong> — the engine is not triggered automatically; it only runs when invoked directly via the PTK API.</li>
+</ul>
+
+<h2 id="scan-rules-tab">Scan Rules Tab <a class="header-link" href="#scan-rules-tab"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The scan rules tree lists all available PTK rules grouped by engine (SAST, IAST, DAST) and module. Any rule that is enabled here will be available to PTK when it runs in the browser. Rules that are disabled will be ignored by PTK entirely.</p>
+<p>Hover over any node in the tree to see its internal ID, which is the value used in command-line
+configuration keys.</p>
+
+<h3 id="use-recommended-defaults">Use Recommended Defaults <a class="header-link" href="#use-recommended-defaults"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <strong>Use recommended defaults</strong> checkbox at the top of the tab applies a curated set of rules suited to security testing of web applications in a developer or CI context. When checked, the checkboxes in the tree are greyed out to show the recommended state — you can still expand and collapse the tree to see which rules are included — but the individual rules cannot be changed while this mode is active.</p>
+<p>Some rules are excluded from the recommended set because they overlap with existing ZAP rules,
+or because they are more relevant to penetration testers than to developers.</p>
+<p>If you uncheck <strong>Use recommended defaults</strong>, the tree becomes fully editable starting from
+the recommended state. Any changes you make and save become your custom configuration.
+Rechecking the option reapplies the recommended state.</p>
+<p>This option is enabled by default for new installations.</p>
+
+<h2 id="active-scan-tab">Active Scan Tab <a class="header-link" href="#active-scan-tab"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p><strong>Enable Active Scan Rule</strong> controls whether the PTK active scan rule runs during ZAP active scans.</p>
 <p><strong>Enable automated scanning (deprecated)</strong> controls the older in-browser automated mode
 exposed via the PTK API (<code>mode:auto</code>). It is disabled while the active scan rule is enabled.
 When unchecked, PTK will still be active in the browser but no automated scanning will take place.</p>
 <p><strong>Browser</strong> , <strong>Action Wait Time (seconds)</strong> , and <strong>Number of Browser Windows to Open</strong>
 apply to the PTK active scan rule. The default thread count is half the number of available processor cores.</p>
-
-<h2 id="scan-rules">Scan Rules <a class="header-link" href="#scan-rules"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>On the <strong>Scan Rules</strong> tab, the scan rules tree lists all available PTK rules grouped by engine (DAST, IAST, SAST) and module. Any rule that is enabled here will be available to PTK when it runs in the browser. Rules that are disabled will be ignored by PTK entirely.</p>
-<p>All rules are enabled by default. Uncheck any rules you do not want PTK to use.</p>
 
 <h2 id="command-line-configuration">Command-Line Configuration <a class="header-link" href="#command-line-configuration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>PTK scan-rule state can be set directly from the ZAP command line using the <code>-config</code> flag, without opening the Options dialog. This is useful for headless or automated runs where you want to enable or disable specific engines, modules, or rules.</p>
@@ -1959,11 +1978,12 @@ apply to the PTK active scan rule. The default thread count is half the number o
 ZAP rules in due course.</p>
 
 <h3 id="key-format">Key format <a class="header-link" href="#key-format"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Configuration keys follow the hierarchy of the scan-rules tree:</p>
 <ul>
-<li><code>ptk.scanrules.</code><em>ENGINE</em><code>.enabled</code> — enable or disable an entire engine</li>
+<li><code>ptk.useRecommendedDefaults</code> — <code>true</code> to use the recommended rule set (default); <code>false</code> to use custom per-rule flags</li>
+<li><code>ptk.scanrules.</code><em>ENGINE</em><code>.enabled</code> — enable or disable an entire engine (only applied when <code>ptk.useRecommendedDefaults=false</code>)</li>
 <li><code>ptk.scanrules.</code><em>ENGINE</em> <code>.</code><em>moduleId</em><code>.enabled</code> — enable or disable a module within an engine</li>
 <li><code>ptk.scanrules.</code><em>ENGINE</em> <code>.</code><em>moduleId</em> <code>.</code><em>ruleId</em><code>.enabled</code> — enable or disable a single rule</li>
+<li><code>ptk.engine.</code><em>ENGINE</em><code>.runLocation</code> — run location for an engine: <code>CLIENT_SPIDER</code>, <code>ACTIVE_SCAN_RULE</code>, or <code>MANUAL</code></li>
 <li><code>ptk.activescan.rule.enabled</code> — enable or disable the PTK active scan rule</li>
 <li><code>ptk.automatedScanning.enabled</code> — enable or disable automated scanning (deprecated; use the active scan rule instead)</li>
 <li><code>ptk.activescan.browserId</code> — browser ID for the PTK active scan rule (see Selenium documentation for valid IDs)</li>
@@ -1973,19 +1993,29 @@ ZAP rules in due course.</p>
 <p>Engine names are <code>SAST</code>, <code>IAST</code>, and <code>DAST</code>. Module and rule IDs can be found by hovering over a node in the Options dialog tree — the tooltip shows the internal ID used in configuration keys.</p>
 
 <h3 id="inheritance">Inheritance <a class="header-link" href="#inheritance"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Settings are inherited from parent to child: a rule-level key overrides its module key, which overrides the engine key, which overrides the default of <code>true</code> (enabled). This means you can disable an entire engine with a single key and then selectively re-enable individual rules or modules.</p>
+<p>Scan-rule settings are inherited from parent to child: a rule-level key overrides its module key, which overrides the engine key, which overrides the default of <code>true</code> (enabled). This means you can disable an entire engine with a single key and then selectively re-enable individual rules or modules.</p>
 
 <h3 id="examples">Examples <a class="header-link" href="#examples"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>Disable all IAST and DAST rules, leaving only SAST active:</p>
-<pre tabindex="0"><code>zap.sh -config ptk.scanrules.IAST.enabled=false \
+<p>Use the recommended rule set (the default):</p>
+<pre tabindex="0"><code>zap.sh -config ptk.useRecommendedDefaults=true
+</code></pre><p>Disable recommended defaults and use fully custom per-rule flags:</p>
+<pre tabindex="0"><code>zap.sh -config ptk.useRecommendedDefaults=false
+</code></pre><p>Disable all IAST and DAST rules, leaving only SAST active (custom mode):</p>
+<pre tabindex="0"><code>zap.sh -config ptk.useRecommendedDefaults=false \
+        -config ptk.scanrules.IAST.enabled=false \
         -config ptk.scanrules.DAST.enabled=false
-</code></pre><p>Disable a specific SAST module:</p>
-<pre tabindex="0"><code>zap.sh -config ptk.scanrules.SAST.dom-xss.enabled=false
-</code></pre><p>Disable a single rule within a module:</p>
-<pre tabindex="0"><code>zap.sh -config ptk.scanrules.SAST.dom-xss.no-inner-outer-html.enabled=false
-</code></pre><p>Disable all SAST rules except one:</p>
-<pre tabindex="0"><code>zap.sh -config ptk.scanrules.SAST.enabled=false \
+</code></pre><p>Disable a specific SAST module (custom mode):</p>
+<pre tabindex="0"><code>zap.sh -config ptk.useRecommendedDefaults=false \
+        -config ptk.scanrules.SAST.dom-xss.enabled=false
+</code></pre><p>Disable a single rule within a module (custom mode):</p>
+<pre tabindex="0"><code>zap.sh -config ptk.useRecommendedDefaults=false \
+        -config ptk.scanrules.SAST.dom-xss.no-inner-outer-html.enabled=false
+</code></pre><p>Disable all SAST rules except one (custom mode):</p>
+<pre tabindex="0"><code>zap.sh -config ptk.useRecommendedDefaults=false \
+        -config ptk.scanrules.SAST.enabled=false \
         -config ptk.scanrules.SAST.dom-xss.no-inner-outer-html.enabled=true
+</code></pre><p>Run DAST in the Client Spider instead of the active scan rule:</p>
+<pre tabindex="0"><code>zap.sh -config ptk.engine.DAST.runLocation=CLIENT_SPIDER
 </code></pre><p>Enable the PTK active scan rule:</p>
 <pre tabindex="0"><code>zap.sh -config ptk.activescan.rule.enabled=true
 </code></pre><p>Enable automated scanning (deprecated):</p>
@@ -1995,7 +2025,8 @@ ZAP rules in due course.</p>
         -config ptk.activescan.actionWaitTime=2 \
         -config ptk.activescan.threadCount=4
 </code></pre><p>For many options, use a properties file with <code>-configfile</code>:</p>
-<pre tabindex="0"><code>ptk.scanrules.IAST.enabled=false
+<pre tabindex="0"><code>ptk.useRecommendedDefaults=false
+ptk.scanrules.IAST.enabled=false
 ptk.scanrules.DAST.enabled=false
 ptk.scanrules.SAST.dom-xss.no-inner-outer-html.enabled=false
 </code></pre><pre tabindex="0"><code>zap.sh -configfile my-ptk-config.properties
