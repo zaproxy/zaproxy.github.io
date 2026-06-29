@@ -156,8 +156,8 @@ Options:
     -U user           username to use for authenticated scans - must be defined in the given context file (post 2.9.0)
     -z zap_options    ZAP command line options e.g. -z &#34;-config aaa=bbb -config ccc=ddd&#34;
     --hook            path to python file that define your custom hooks
-    --ajax-spider     use the Ajax spider when -j is specified (default) - currently only in the nightly and weekly images
-    --client-spider   use the Client spider instead of the Ajax spider when -j is specified - currently only in the nightly and weekly images
+    --ajax-spider     use the Ajax spider when -j is specified (default)
+    --client-spider   use the Client spider instead of the Ajax spider when -j is specified
 </code></pre><p>To run it with no &lsquo;file&rsquo; params use:</p>
 <pre tabindex="0"><code>docker run -t ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t https://www.example.com
 </code></pre><p>If you use &lsquo;file&rsquo; params then you need to mount the directory those file are in or will be generated in, eg</p>
