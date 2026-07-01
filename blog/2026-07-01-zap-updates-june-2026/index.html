@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-07-01-zap-updates-june-2026/images/zapbot-monthly-updates.png">
+  <meta name="twitter:title" content="ZAP Updates - June 2026">
+  <meta name="twitter:description" content="In June the OWASP PTK add-on graduated to beta with its integration now properly matching ZAP’s architecture, a security advisory was issued and patched for the Viewstate add-on, and the Client Spider continued its rapid progress toward becoming our recommended spider for modern web apps.">
+
+    <meta property="og:url" content="/blog/2026-07-01-zap-updates-june-2026/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="ZAP Updates - June 2026">
+  <meta property="og:description" content="In June the OWASP PTK add-on graduated to beta with its integration now properly matching ZAP’s architecture, a security advisory was issued and patched for the Viewstate add-on, and the Client Spider continued its rapid progress toward becoming our recommended spider for modern web apps.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-01T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Update">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-07-01-zap-updates-june-2026/images/zapbot-monthly-updates.png">
+
+  
+  <title>ZAP &ndash; ZAP Updates - June 2026</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.8129fb.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">ZAP Updates - June 2026</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Wednesday July 1, 2026</span>
+              <span class="word-count fl-r"> 1409 Words </span>
+            </section>
+            
+<h2 id="highlights">Highlights <a class="header-link" href="#highlights"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="owasp-ptk-integration-matures">OWASP PTK Integration Matures <a class="header-link" href="#owasp-ptk-integration-matures"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>June was a big month for the <a href="https://pentestkit.co.uk/">OWASP PTK</a> integration, with two blog posts published.</p>
+<p><a href="/blog/2026-06-05-automating-owasp-ptk-with-zap-phase-2/">Phase 2</a> introduced a dedicated <strong>PTK Scan Rules</strong> active scan rule, replacing the earlier approach of running PTK inside the Client Spider job. This correctly separates exploration from attacking, the way ZAP is designed to work. The practical impact is significant: enabling the rule produces substantial new coverage of Firing Range categories that ZAP could not previously test, including DOM XSS triggered after JavaScript execution, client-side sinks, and runtime behaviours.</p>
+<p><a href="/blog/2026-06-29-even-more-owasp-ptk-integration-with-zap/">Even More OWASP PTK Integration</a> followed at the end of the month with v0.7.0 of the add-on, which graduates PTK from alpha to <strong>beta</strong>. The active scan rule is now enabled by default - no explicit opt-in needed. PTK&rsquo;s SAST and IAST engines now run automatically during the Client Spider, adding browser-level passive coverage at no extra cost. A new <strong>&ldquo;Use recommended defaults&rdquo;</strong> option selects a curated PTK rule set designed to complement ZAP&rsquo;s existing rules rather than duplicate them. And the PTK active scan now uses <code>existingOnly</code>, so it revisits already-discovered Client Map nodes rather than re-crawling the application - exploration and attacking stay properly separated.</p>
+
+<h3 id="security-advisory-viewstate-add-on-deserialization">Security Advisory: Viewstate Add-on Deserialization <a class="header-link" href="#security-advisory-viewstate-add-on-deserialization"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>On 24 June we published a <a href="/blog/2026-06-24-java-deserialization-vulnerability-in-zap-viewstate-addon/">security advisory for the Viewstate add-on</a>. An insecure Java deserialization vulnerability was reported via <a href="https://neo.projectdiscovery.io/">Neo by ProjectDiscovery</a>, triggered when a user viewed a response containing a malicious <code>javax.faces.ViewState</code> value. We patched it within 30 minutes of the report.</p>
+<p>Neither the ZAP team nor the researcher were able to achieve RCE - ZAP&rsquo;s per-add-on classloaders and up-to-date dependencies provided effective defence-in-depth. The add-on is alpha and not included in any ZAP release by default, so exposure is limited. That said:</p>
+
+
+
+  <blockquote class="alert alert-important">
+    <p class="alert-heading">
+      ℹ️
+      
+        Important
+      
+    </p>
+    
+    <div class="alert-content">
+        <p><strong>Please update all of your ZAP 2.17 add-ons now.</strong> If you are on an older version of ZAP, please update to 2.17 - older versions will be vulnerable to Remote Code Execution.</p>
+    </div>
+  </blockquote>
+
+
+<h3 id="client-spider-in-docker-packaged-scans">Client Spider in Docker Packaged Scans <a class="header-link" href="#client-spider-in-docker-packaged-scans"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <code>zap-baseline.py</code> and <code>zap-full-scan.py</code> packaged scan scripts now accept an option to use the Client Spider instead of the AJAX Spider. This lets CI users opt in to PTK&rsquo;s passive (SAST/IAST) coverage as part of an existing pipeline today.</p>
+
+<h3 id="authenticated-requests-via-the-zap-api">Authenticated Requests via the ZAP API <a class="header-link" href="#authenticated-requests-via-the-zap-api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Core API can now send requests with a specified context and user, meaning ZAP&rsquo;s configured authentication credentials are applied. This is a clean addition that pipeline integrations will benefit from directly.</p>
+
+<h2 id="ongoing-work">Ongoing Work <a class="header-link" href="#ongoing-work"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+
+<h3 id="client-side-integration">Client Side Integration <a class="header-link" href="#client-side-integration"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a> add-on had its busiest month yet, with three releases (v0.27 through v0.29). The Client Spider gained ZAP mode support, fills text areas while crawling, shows its own icon in the Sites tree, handles adaptive waits by default, caps threads at half the available cores (max 8), and received a number of stability and GUI-freeze fixes. The bundled Chrome and Firefox extensions were updated to v0.2.0.</p>
+<p>We are on track to recommend that everyone switch from the AJAX Spider to the Client Spider for modern (JavaScript-heavy) applications - watch for a dedicated blog post on that soon.</p>
+
+<h3 id="script-diagnostics">Script Diagnostics <a class="header-link" href="#script-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>Script diagnostics support, introduced in May, continued to expand this month. Script stdout is now persisted in the ZAP session database and exposed in all of the traditional reports via a new <code>scriptdiagnosticsoutput</code> section. The Automation Framework Scripts add-on also gained <code>failureLevel</code> support on the run action, so you can control how script failures affect a job&rsquo;s outcome. A full blog post on script diagnostics is coming soon.</p>
+
+<h2 id="new-contributors">New Contributors <a class="header-link" href="#new-contributors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>A very warm welcome to the people who started to contribute to ZAP this month!</p>
+<ul>
+<li><a href="https://github.com/LucasParsy">LucasParsy</a></li>
+<li><a href="https://github.com/cedricbu">cedricbu</a></li>
+<li><a href="https://github.com/tejgokani">tejgokani</a></li>
+<li><a href="https://github.com/Flintstqne">Flintstqne</a></li>
+<li><a href="https://github.com/NabilKara">NabilKara</a></li>
+<li><a href="https://github.com/gabiRoBt">gabiRoBt</a></li>
+<li><a href="https://github.com/YameenShaikh07">YameenShaikh07</a></li>
+</ul>
+
+<h2 id="github-pulse">GitHub Pulse <a class="header-link" href="#github-pulse"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Here are some statistics for the two main ZAP repositories:</p>
+<p><a href="https://github.com/zaproxy/zaproxy/pulse/monthly">zaproxy</a><br>
+Excluding merges, 5 authors have pushed 14 commits to main and 14 commits to all branches. On main, 29 files have changed and there have been 277 additions and 339 deletions.</p>
+<p><a href="https://github.com/zaproxy/zap-extensions/pulse/monthly">zap-extensions</a><br>
+Excluding merges, 7 authors have pushed 97 commits to main and 97 commits to all branches. On main, 1,020 files have changed and there have been 19,824 additions and 5,079 deletions.</p>
+<p>A total of <a href="https://github.com/search?q=org%3Azaproxy+type%3Apr+-author%3Azapbot+-author%3Aapp%2Fdependabot+sort%3Aupdated-asc+closed%3A2026-06+is%3Amerged&amp;type=pullrequests">91 human PRs were merged</a> on the ZAP repos.</p>
+
+<h2 id="released-add-ons---full-changelog">Released Add-ons - Full Changelog <a class="header-link" href="#released-add-ons---full-changelog"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>In June 2026, we released updated versions of 18 add-ons:</p>
+
+<h5 id="access-control-testing">Access Control Testing</h5>
+<p><strong>v13</strong><br>
+Changed</p>
+<ul>
+<li>Formatted JavaScript files for consistency.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Discrepancy between Sites tree node name &amp; Access Control recomputed node name made check silently fail and fallback to parent rule.</li>
+</ul>
+
+<h5 id="active-scanner-rules">Active scanner rules</h5>
+<p><strong>v83</strong><br>
+Changed</p>
+<ul>
+<li>Updated a reference link for the XSLT Injection scan rule.</li>
+</ul>
+
+<h5 id="authentication-helper">Authentication Helper</h5>
+<p><strong>v0.40.0</strong><br>
+Added</p>
+<ul>
+<li>Support for handling the Microsoft login &ldquo;Permissions requested&rdquo; user consent screen.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Handling of Ionic input elements, which can appear to not be displayed until they are clicked on.</li>
+</ul>
+
+<h5 id="call-home">Call Home</h5>
+<p><strong>v0.22.0</strong><br>
+Removed</p>
+<ul>
+<li>Stop collecting &ldquo;stats.auth.detect.session.*&rdquo;.</li>
+</ul>
+
+<h5 id="client-side-integration-1">Client Side Integration</h5>
+<p><strong>v0.29.0</strong><br>
+Changed</p>
+<ul>
+<li>Use new functionality from the browser extension for crawling.</li>
+<li>Fill text areas while crawling.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Spider should finish when existingOnly option used with an empty Client Map.</li>
+</ul>
+<p><strong>v0.28.0</strong><br>
+Added</p>
+<ul>
+<li>Client Spider existingOnly option, e.g. for scan rules.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Reduce duplicated accesses while crawling.</li>
+<li>Use adaptive wait by default for page load and action waits while crawling.</li>
+<li>Default threads to 1/2 number of cores, max 8.</li>
+<li>Updated Chrome and Firefox extensions to v0.2.0.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Prevent temporary GUI hang when stopping the Client Spider.</li>
+</ul>
+<p><strong>v0.27.0</strong><br>
+Added</p>
+<ul>
+<li>Client Spider Options panel.</li>
+<li>Support for ZAP modes in the Client Spider.</li>
+<li>Show Client Spider icon in the Sites tree.</li>
+<li>More option API endpoints.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Change the Client Spider to crawl through page components (e.g. links) to reduce full page reloads, improving support for SPAs.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Change the Client Spider to track all redirects while crawling.</li>
+</ul>
+
+<h5 id="common-library">Common Library</h5>
+<p><strong>v1.42.0</strong><br>
+Added</p>
+<ul>
+<li>Add Sites tree context menus:
+<ul>
+<li>A &ldquo;Get Info&rdquo; that summarizes the selected node&rsquo;s subtree (total node count, most-recent addition, breakdown by source type) (Issue 3738).</li>
+<li>An expand/collapse a node and all its children (previously provided by the TreeTools add-on).</li>
+</ul>
+</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>Update dependencies.</li>
+<li>Maintenance changes.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Prevent performance issues in the output tabs when showing lengthier messages.</li>
+</ul>
+
+<h5 id="insights">Insights</h5>
+<p><strong>v0.5.0</strong><br>
+Added</p>
+<ul>
+<li>Report data now exposes <code>stoppingInsight</code> to make it explicit which insight caused a stop. The built-in report templates render the stopping insight when present.</li>
+</ul>
+<p>Changed</p>
+<ul>
+<li>The Automation Framework stop message now identifies the triggering insight (key, reason, site, value) instead of a generic string. The same details are appended to the daemon-mode exit reason.</li>
+</ul>
+
+<h5 id="linux-webdrivers">Linux WebDrivers</h5>
+<p><strong>v205</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.200.</li>
+</ul>
+<p><strong>v204</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.196.</li>
+</ul>
+<p><strong>v203</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.155.</li>
+</ul>
+<p><strong>v202</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.114.</li>
+</ul>
+<p><strong>v201</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.102.</li>
+</ul>
+<p><strong>v200</strong><br>
+Changed</p>
+<ul>
+<li>Update geckodriver to 0.37.0.</li>
+</ul>
+<p>Removed</p>
+<ul>
+<li>The Linux 32-bit <code>geckodriver</code> binary is no longer provided, discontinued by upstream.</li>
+</ul>
+<p><strong>v199</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.53.</li>
+</ul>
+
+<h5 id="mcp-integration">MCP Integration</h5>
+<p><strong>v0.2.0</strong><br>
+Changed</p>
+<ul>
+<li>Content type to not include charset (some servers complain).</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Handling of multiple SSE events on import.</li>
+</ul>
+
+<h5 id="passive-scanner-rules">Passive scanner rules</h5>
+<p><strong>v74</strong><br>
+Changed</p>
+<ul>
+<li>Update dependency.</li>
+<li>Updated a reference link for the Sub Resource Integrity Attribute Missing scan rule.</li>
+<li>Remove reference link which is no longer available for the Script Served From Malicious Domain (polyfill) scan rule.</li>
+<li>Remove OWASP Top 10 Security Misconfiguration tags from the Modern Web Application scan rule, it only informs about the likely type of the website.</li>
+</ul>
+
+<h5 id="quick-start">Quick Start</h5>
+<p><strong>v57</strong><br>
+Added</p>
+<ul>
+<li>Option to select modern spider.</li>
+</ul>
+
+<h5 id="retirejs">Retire.js</h5>
+<p><strong>v0.60.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with upstream retire.js pattern changes.</li>
+</ul>
+<p><strong>v0.59.0</strong><br>
+Changed</p>
+<ul>
+<li>Updated with upstream retire.js pattern changes.</li>
+</ul>
+
+<h5 id="soap-support">SOAP Support</h5>
+<p><strong>v31</strong><br>
+Changed</p>
+<ul>
+<li>Update dependency.</li>
+</ul>
+<p>Fixed</p>
+<ul>
+<li>Fix SOAP requests generated from some WSDLs being incomplete. Requests now correctly include all fields defined in the schema, and requests are no longer broken by certain characters in element or attribute names and values.</li>
+</ul>
+
+<h5 id="selenium">Selenium</h5>
+<p><strong>v15.51.0</strong><br>
+Changed</p>
+<ul>
+<li>Update Selenium to version 4.45.0.</li>
+</ul>
+<p><strong>v15.50.0</strong><br>
+Changed</p>
+<ul>
+<li>Only collect browser&rsquo;s <code>console.log</code> when DEBUG level is set for <code>org.zaproxy.webdriver</code>, to avoid unnecessary work for common browser usage.</li>
+</ul>
+
+<h5 id="sequence">Sequence</h5>
+<p><strong>v10</strong><br>
+Fixed</p>
+<ul>
+<li>Send requests using ZAP instead of default Zest HTTP client implementation.</li>
+</ul>
+
+<h5 id="viewstate">ViewState</h5>
+<p><strong>v4</strong><br>
+Changed</p>
+<ul>
+<li>Maintenance changes.</li>
+<li>Update minimum ZAP version to 2.17.0.</li>
+<li>Disable support for JSF.</li>
+</ul>
+
+<h5 id="windows-webdrivers">Windows WebDrivers</h5>
+<p><strong>v206</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.200.</li>
+</ul>
+<p><strong>v205</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.196.</li>
+</ul>
+<p><strong>v204</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.155.</li>
+</ul>
+<p><strong>v203</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.114.</li>
+</ul>
+<p><strong>v202</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.102.</li>
+</ul>
+<p><strong>v201</strong><br>
+Changed</p>
+<ul>
+<li>Update geckodriver to 0.37.0.</li>
+</ul>
+<p><strong>v200</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.53.</li>
+</ul>
+
+<h5 id="macos-webdrivers">macOS WebDrivers</h5>
+<p><strong>v205</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.200.</li>
+</ul>
+<p><strong>v204</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.196.</li>
+</ul>
+<p><strong>v203</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.155.</li>
+</ul>
+<p><strong>v202</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.114.</li>
+</ul>
+<p><strong>v201</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.102.</li>
+</ul>
+<p><strong>v200</strong><br>
+Changed</p>
+<ul>
+<li>Update geckodriver to 0.37.0.</li>
+</ul>
+<p><strong>v199</strong><br>
+Changed</p>
+<ul>
+<li>Update ChromeDriver to 149.0.7827.53.</li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-06-29-even-more-owasp-ptk-integration-with-zap/"> Even More OWASP PTK Integration with ZAP</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/zapbot_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/zapbot/">ZAPbot</a>
+                  
+                  
+                  (<a class="author-twitter" href="https://twitter.com/zaproxybot">@zaproxybot</a>)
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#highlights">Highlights</a>
+      <ul>
+        <li><a href="#owasp-ptk-integration-matures">OWASP PTK Integration Matures</a></li>
+        <li><a href="#security-advisory-viewstate-add-on-deserialization">Security Advisory: Viewstate Add-on Deserialization</a></li>
+        <li><a href="#client-spider-in-docker-packaged-scans">Client Spider in Docker Packaged Scans</a></li>
+        <li><a href="#authenticated-requests-via-the-zap-api">Authenticated Requests via the ZAP API</a></li>
+      </ul>
+    </li>
+    <li><a href="#ongoing-work">Ongoing Work</a>
+      <ul>
+        <li><a href="#client-side-integration">Client Side Integration</a></li>
+        <li><a href="#script-diagnostics">Script Diagnostics</a></li>
+      </ul>
+    </li>
+    <li><a href="#new-contributors">New Contributors</a></li>
+    <li><a href="#github-pulse">GitHub Pulse</a></li>
+    <li><a href="#released-add-ons---full-changelog">Released Add-ons - Full Changelog</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/update/">update</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-07-01-zap-updates-june-2026/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.d2480f.js"></script>
+  
+</div>
+</body>
+</html>
