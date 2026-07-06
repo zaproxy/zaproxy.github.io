@@ -1090,6 +1090,9 @@
                         <li> 
                             <a href="/docs/desktop/addons/report-generation/report-traditional-pdf/">Traditional PDF</a>
                         </li>  
+                        <li> 
+                            <a href="/docs/desktop/addons/report-generation/report-traditional-script-diagnostics/">Script Diagnostics in Traditional Reports</a>
+                        </li>  
                         <li class="tree-active"> 
                             <a href="/docs/desktop/addons/report-generation/report-traditional-xml-plus/">Traditional XML Report with Requests and Responses</a>
                         </li>  
@@ -1941,6 +1944,30 @@
           
 <h1 id="traditional-xml-report-with-requests-and-responses">Traditional XML Report with Requests and Responses</h1>
 
+<h3 id="sections">Sections <a class="header-link" href="#sections"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Section</th>
+          <th style="text-align: left">ID</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Script Diagnostics</td>
+          <td style="text-align: left">scriptdiagnostics</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Screenshots for Script Diagnostics</td>
+          <td style="text-align: left">scriptdiagnosticsscreenshots</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Output for Script Diagnostics</td>
+          <td style="text-align: left">scriptdiagnosticsoutput</td>
+      </tr>
+  </tbody>
+</table>
+
 <h3 id="sample">Sample <a class="header-link" href="#sample"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <pre tabindex="0"><code>        &lt;?xml version=&#34;1.0&#34;?&gt;
         &lt;OWASPZAPReport version=&#34;2.11.1&#34; generated=&#34;Fr., 30 Sep. 2022 08:40:35&#34; created=&#34;2022-09-30T08:40:35.236211400Z&#34;&gt;
@@ -2143,6 +2170,43 @@
                                 &lt;/statistic&gt;
                         &lt;/statistics&gt;
         &lt;/OWASPZAPReport&gt;                
+</code></pre><p>Section descriptions are documented in <a href="/docs/desktop/addons/report-generation/report-traditional-script-diagnostics/">Script
+Diagnostics in Traditional Reports</a> . The XML representation is shown below.</p>
+
+<h4 id="script-diagnostics-section">Script Diagnostics Section <a class="header-link" href="#script-diagnostics-section"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>When enabled, the report includes a <code>scriptDiagnostics</code> element containing <code>run</code> elements:</p>
+<pre tabindex="0"><code>        &lt;scriptDiagnostics&gt;
+                &lt;run&gt;
+                        &lt;created&gt;2026-05-13T12:19:50.536360Z&lt;/created&gt;
+                        &lt;outcome&gt;FAILED&lt;/outcome&gt;
+                        &lt;summary&gt;Job: script Chain order: account_check -&gt; nav failed.&lt;/summary&gt;
+                        &lt;scripts&gt;
+                                { … }
+                        &lt;/scripts&gt;
+                &lt;/run&gt;
+        &lt;/scriptDiagnostics&gt;
+</code></pre><p>Each script in a run has an order, name, type, and <code>steps</code> element. Steps include the source statement index, line (element type), and <code>outputs</code> :</p>
+<pre tabindex="0"><code>                &lt;step&gt;
+                        &lt;sourceStepIndex&gt;13&lt;/sourceStepIndex&gt;
+                        &lt;line&gt;ZestClientElementClick&lt;/line&gt;
+                        &lt;outputs&gt;
+                                &lt;output&gt;
+                                        &lt;kind&gt;ERROR&lt;/kind&gt;
+                                        &lt;message&gt;…&lt;/message&gt;
+                                &lt;/output&gt;
+                        &lt;/outputs&gt;
+                &lt;/step&gt;
+</code></pre>
+<h4 id="output-for-script-diagnostics">Output for Script Diagnostics <a class="header-link" href="#output-for-script-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>For example:</p>
+<pre tabindex="0"><code>                &lt;output&gt;
+                        &lt;kind&gt;OUTPUT&lt;/kind&gt;
+                        &lt;message&gt;In example_script&lt;/message&gt;
+                &lt;/output&gt;
+</code></pre>
+<h4 id="screenshots-for-script-diagnostics">Screenshots for Script Diagnostics <a class="header-link" href="#screenshots-for-script-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
+<p>For example:</p>
+<pre tabindex="0"><code>        &lt;screenshot&gt;…&lt;/screenshot&gt;
 </code></pre>
         </div>
       </div>
