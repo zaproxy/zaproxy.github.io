@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-07-06-client-spider-now-recommended/images/blog-client-spider.png">
+  <meta name="twitter:title" content="Use the Client Spider for Modern Web Apps">
+  <meta name="twitter:description" content="We now recommend the Client Spider over the AJAX Spider for crawling modern web applications. It finds more endpoints, scales much better vs large apps, and unlocks PTK’s passive coverage for free.">
+
+    <meta property="og:url" content="/blog/2026-07-06-client-spider-now-recommended/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Use the Client Spider for Modern Web Apps">
+  <meta property="og:description" content="We now recommend the Client Spider over the AJAX Spider for crawling modern web applications. It finds more endpoints, scales much better vs large apps, and unlocks PTK’s passive coverage for free.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-07-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-07-06T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Client-Spider">
+    <meta property="article:tag" content="Ajax-Spider">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-07-06-client-spider-now-recommended/images/blog-client-spider.png">
+
+  
+  <title>ZAP &ndash; Use the Client Spider for Modern Web Apps</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.8129fb.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Use the Client Spider for Modern Web Apps</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Monday July 6, 2026</span>
+              <span class="word-count fl-r"> 1437 Words </span>
+            </section>
+            <p>When the <a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider</a> launched in ZAP 2.16.0 we asked for your feedback and kept the <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a> as the default recommendation while we gathered it.</p>
+<p>That changes today.</p>
+
+
+
+  <blockquote class="alert alert-important">
+    <p class="alert-heading">
+      ℹ️
+      
+        Important
+      
+    </p>
+    
+    <div class="alert-content">
+        <p><strong>We now recommend everyone use the Client Spider when crawling modern web applications.</strong></p>
+    </div>
+  </blockquote>
+
+<p>Here is why.</p>
+
+<h2 id="it-finds-more">It Finds More <a class="header-link" href="#it-finds-more"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Both spiders launch real browsers and interact with the application - clicking links, filling forms, navigating JavaScript-heavy pages. The difference is in how they track what they have found.</p>
+<p>The <a href="/docs/desktop/addons/ajax-spider/">AJAX Spider</a> is built on <a href="https://github.com/crawljax/crawljax">Crawljax</a>, a third-party project that is only updated sporadically. ZAP has limited visibility into Crawljax&rsquo;s internal state, which means the spider can revisit the same paths repeatedly and miss others entirely. Because it is a third-party dependency we cannot easily fix issues or add the features we need.</p>
+<p>By default the AJAX Spider will only click on <code>a</code>, <code>button</code>, and <code>input</code> HTML elements. You can configure it to click on any elements you like, but then it will click on all instances of those elements.
+Many modern web apps use <code>div</code> elements for navigation, but clicking on all <code>div</code>s significantly increases the scan time.</p>
+<p>The <a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider</a> is maintained by the ZAP team and uses the <a href="https://github.com/zaproxy/browser-extension/">ZAP Browser Extension</a> - the same extension that powers <a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a>. The extension is injected into every browser the spider launches and streams selected DOM events back to ZAP in real time. ZAP uses those events to build and maintain the <a href="/docs/desktop/addons/client-side-integration/">Client Map</a>, a live representation of the application&rsquo;s structure. Because ZAP owns that map, the spider always knows exactly what has been discovered and what still needs to be visited. In practice this means it finds more unique endpoints, and wastes less time revisiting pages it has already seen.</p>
+<p>The Client Spider has full access to the DOM, which means it can be more intelligent about which elements it clicks.
+It checks the state and styles of elements, which we have found to be a much more effective and efficient approach.</p>
+<p>We run both spiders regularly against 2 test sites and publish the results:</p>
+<ul>
+<li><a href="https://github.com/zaproxy/crawlground">Crawlground</a> : <a href="/docs/scans/crawlground/">ZAP vs Crawlground</a></li>
+<li><a href="https://github.com/google/security-crawl-maze">Google Crawlmaze</a> : <a href="/docs/scans/crawlmaze/">ZAP vs Security Crawl Maze</a></li>
+</ul>
+<p>The Client Spider consistently scores higher across both benchmarks.</p>
+
+<h2 id="it-navigates-modern-apps-more-effectively">It Navigates Modern Apps More Effectively <a class="header-link" href="#it-navigates-modern-apps-more-effectively"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The AJAX Spider starts navigating from the &ldquo;root&rdquo; URL, and always opens the root URL before starting a new
+&ldquo;flow&rdquo;. If an application takes a while to initialise then this will significantly slow down the crawling
+as the app which keep on reinitialising.
+We have also seen apps which log you out if you perform a browser refresh. These apps cannot be crawled effectively
+by the AJAX Spider.</p>
+<p>The Client Spider take a more direct route from state to state, and will not refresh the root URL.
+This mirrors how user will use the app, and will not cause it to log the user out.</p>
+<p>The <a href="/docs/desktop/addons/client-side-integration/spider/#tasks">Client Spider / Tasks</a> panel show you all of the tasks
+it performs, which will allow you to understand exactly what the Client Spider is doing.</p>
+
+<h2 id="it-scales-better">It Scales Better <a class="header-link" href="#it-scales-better"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>On small applications the difference in performance is modest. On larger applications it becomes significant.</p>
+<p>The AJAX Spider&rsquo;s performance degrades rapidly as the target grows. It was not designed with very large applications in mind, and as the number of pages increases the spider spends a disproportionate amount of time revisiting paths.</p>
+<p>The Client Spider&rsquo;s workload scales linearly. New URLs are only followed if they have not been explored before,
+and this makes a huge difference.</p>
+<p>For large modern applications this difference matters. The Client Spider finishes in a predictable, consistent time; the AJAX Spider takes exponentially longer.</p>
+
+<h2 id="it-unlocks-ptk-passive-coverage">It Unlocks PTK Passive Coverage <a class="header-link" href="#it-unlocks-ptk-passive-coverage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>If you use <a href="/docs/desktop/addons/owasp-ptk/">OWASP PTK</a> - and <a href="/blog/2026-01-19-owasp-ptk-add-on/">you should</a> - the Client Spider gives you something the AJAX Spider cannot: PTK&rsquo;s SAST and IAST engines run automatically as the spider explores your application.</p>
+<p>SAST analyses JavaScript statically as each page loads. IAST instruments the browser at runtime, tracking taint flows through the application. Neither makes additional requests. In ZAP terms they are passive - they observe and analyse what the spider is already doing. You get that coverage for free, as a side effect of crawling.</p>
+<p>With the AJAX Spider you do not get this.</p>
+<p>This was <a href="/blog/2026-06-29-even-more-owasp-ptk-integration-with-zap/">covered in detail</a> in the PTK 0.7.0 release post. The short version: if you run the Client Spider, PTK&rsquo;s SAST and IAST coverage comes along with it at no extra cost.</p>
+
+<h2 id="it-facilitates-ptk-active-coverage">It Facilitates PTK Active Coverage <a class="header-link" href="#it-facilitates-ptk-active-coverage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Using the Client Spider also unlocks the OWASP PTK DAST rules, which can be run via the PTK active scan rule.
+Most of the ZAP active scan rules work off the <a href="/docs/desktop/start/features/sitestree/">Site Tree</a>.
+The PTK DAST rules are different - they run off the <a href="/docs/desktop/addons/client-side-integration/#client-map">Client Map</a> which is only populated by browsers with the ZAP extension installed.
+This is the case for browsers launched via ZAP for manual exploring, and for the Client spider.</p>
+<p>To recap - to run the PTK DAST rules you will need to have explored the target with the Client spider or
+by manual exploration (with the ZAP browser extension), and will then need to run the ZAP active scanner with
+the PTK active rule enabled.</p>
+
+<h2 id="what-to-do">What to Do <a class="header-link" href="#what-to-do"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>If you are using the AJAX Spider today, switch to the Client Spider.
+Exactly how to do that will depend on how you are using ZAP.</p>
+<p>Authentication works in exactly the same way - if you have configured authentication to work with the
+AJAX Spider then it should still work for the Client Spider.</p>
+<p>Note that we recommend using the traditional spider when crawling apps, even if they are modern.
+The traditional spider will often find a very different set of endpoints, so for best results use it in combination
+with the Client Spider.</p>
+<p>The AJAX Spider is not going away immediately. But it is no longer the recommended tool for exploring modern web applications.</p>
+
+<h3 id="desktop">Desktop <a class="header-link" href="#desktop"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The <a href="/docs/desktop/addons/quick-start/#use-modern-spider">Quick Start / Automated Scan</a> tab has already been updated to use the Client Spider by default.</p>
+<p>You can also run the Client Spider on its own via  <strong>Tools → Client Spider</strong> (or the context menu).</p>
+
+<h3 id="automation-framework">Automation framework <a class="header-link" href="#automation-framework"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>In the Automation Framework: replace the <a href="/docs/desktop/addons/ajax-spider/automation/">spiderAjax</a> job with <a href="/docs/desktop/addons/client-side-integration/automation/#job-spiderclient">spiderClient</a>.</p>
+<p>Note while some of the <code>spiderClient</code> job parameters are the same, some are different.
+We recommend that you start off with the default settings unless you have a reason to change them.</p>
+
+<h3 id="packaged-scans">Packaged Scans <a class="header-link" href="#packaged-scans"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>If you are running the <a href="/docs/docker/baseline-scan/">Baseline</a> or <a href="/docs/docker/full-scan/">Full Scan</a> packaged Docker scans, both now have an option to use the Client Spider - use the <code>-j</code> flag to enable the &lsquo;default modern
+spider&rsquo;, and <code>--client-spider</code> to always use the Client Spider.</p>
+<p>We have changed the packaged scans in the nightly releases to use the Client Spider by default, and
+plan to do the same for the next weekly release. The stable release will be changed as well before too long.</p>
+<p>There is also a <code>--ajax-spider</code> option if for any reason you decide to keep using the AJAX Spider.
+But if you need to use this then do <a href="https://groups.google.com/group/zaproxy-users">let us know why</a>!</p>
+
+<h3 id="api">API <a class="header-link" href="#api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The Client Spider has its own set of API endpoints under <a href="/docs/api/#zap-api-clientspider">clientSpider</a>.</p>
+<p>The main endpoints are very similar, but some of the option endpoints will be different.</p>
+
+<h2 id="handling-problems">Handling Problems <a class="header-link" href="#handling-problems"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The Client Spider is a big step up from the AJAX Spider, but no spider is perfect - here&rsquo;s what to do if you hit issues.</p>
+<p>Although we know that the Client Spider is much better at exploring modern web apps than the AJAX Spider,
+it will not necessarily be able to explore <em>your</em> application.</p>
+<p>The most likely reason for this is that your application may need more knowledge about how to drive them.
+A good way to solve this problem is via <a href="/docs/getting-further/automation/exploring-your-app/#replaying-recordings">recorded scripts</a>.</p>
+<p>However if you do find examples where the Client Spider fails to explore your apps effectively then please let us know about them.
+We will need enough information to reproduce the problem - pull requests to the
+<a href="https://github.com/zaproxy/crawlground">Crawlground</a> test app (which we maintain) are ideal &#x1f601;</p>
+<p>You may find that the Client Spider takes longer that the AJAX Spider for some specific apps.
+We have seen this where the Client Spider is finding significantly more content than the AJAX Spider is able to.</p>
+<p>In some specific cases (for example auto generated API interfaces) you may find is best to exclude these from the
+Client Spider.
+That is recommended for test sites like <a href="https://brokencrystals.com/">Broken Crystals</a>:</p>
+<ul>
+<li><a href="https://brokencrystals.com/swagger">https://brokencrystals.com/swagger</a></li>
+<li><a href="https://brokencrystals.com/graphiql">https://brokencrystals.com/graphiql</a></li>
+</ul>
+
+<h2 id="links">Links <a class="header-link" href="#links"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<ul>
+<li><a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider docs</a></li>
+<li><a href="/blog/2025-01-31-client-spider/">The Client Spider - introductory blog post</a></li>
+<li><a href="/docs/scans/crawlmaze/">ZAP vs Security Crawl Maze results</a></li>
+<li><a href="/docs/scans/crawlground/">ZAP vs Crawlground results</a></li>
+<li><a href="/blog/2026-06-29-even-more-owasp-ptk-integration-with-zap/">OWASP PTK integration</a></li>
+<li><a href="/docs/desktop/addons/ajax-spider/">AJAX Spider docs</a></li>
+</ul>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-07-01-zap-updates-june-2026/"> ZAP Updates - June 2026</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/simon/">Simon Bennetts</a>
+                  
+                  
+                  (<a class="author-twitter" href="https://twitter.com/psiinon">@psiinon</a>)
+                  
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#it-finds-more">It Finds More</a></li>
+    <li><a href="#it-navigates-modern-apps-more-effectively">It Navigates Modern Apps More Effectively</a></li>
+    <li><a href="#it-scales-better">It Scales Better</a></li>
+    <li><a href="#it-unlocks-ptk-passive-coverage">It Unlocks PTK Passive Coverage</a></li>
+    <li><a href="#it-facilitates-ptk-active-coverage">It Facilitates PTK Active Coverage</a></li>
+    <li><a href="#what-to-do">What to Do</a>
+      <ul>
+        <li><a href="#desktop">Desktop</a></li>
+        <li><a href="#automation-framework">Automation framework</a></li>
+        <li><a href="#packaged-scans">Packaged Scans</a></li>
+        <li><a href="#api">API</a></li>
+      </ul>
+    </li>
+    <li><a href="#handling-problems">Handling Problems</a></li>
+    <li><a href="#links">Links</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/client-spider/">client-spider</a> </li>
+           
+           <li> <a href="/tags/ajax-spider/">ajax-spider</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-07-06-client-spider-now-recommended/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.d2480f.js"></script>
+  
+</div>
+</body>
+</html>
