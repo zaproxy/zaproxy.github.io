@@ -150,6 +150,9 @@
               Posted <span class="post-date">Monday January 29, 2024</span>
               <span class="word-count fl-r"> 496 Words </span>
             </section>
+            
+            
+            
             <p><img src="images/featured.png" alt="ZAP Python Script Image"></p>
 <p>In the community-scripts repository, a new script is now available that enables signing of outgoing requests using RSA keys. The script was written at the suggestion of <a href="https://www.zaproxy.org/docs/team/psiinon/">Simon Bennetts</a> based on the article <a href="https://mwalkowski.github.io/post/using-burp-python-scripts-to-sign-requests-with-rsa-keys/">&ldquo;Using Burp Python Scripts to sign requests with RSA keys.&rdquo;</a> This script proves useful when testing applications that require signing requests with RSA keys. The need for writing this script arose during the implementation of a project where the API was used for communication, among other things, with a mobile application. The mobile app transmits sensitive data, such as personal information and credit card data, to the backend. For obvious reasons, this data must be protected from modification. The mechanism employed in the examined application aims to hinder attackers from manipulating requests and further exploitation. At the same time, the applied mechanisms made it challenging to conduct penetration tests. In the analyzed software, the author implemented two security mechanisms. Firstly, in the requests, two additional headers can be observed, &lsquo;X-Nonce-Value&rsquo; and &lsquo;X-Nonce-Created-At,&rsquo; designed to protect against replay attacks. Secondly, there&rsquo;s a third &lsquo;X-Signature&rsquo; header, securing the integrity of the transmitted message using an RSA signature.</p>
 <p>The script works as follows:</p>
