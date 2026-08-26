@@ -4002,104 +4002,128 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;p&gt;All notable changes to this add-on will be documented in this file.&lt;/p&gt;
 &lt;p&gt;The format is based on &lt;a href=&#34;https://keepachangelog.com/en/1.0.0/&#34;&gt;Keep a Changelog&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;0410---2026-08-07&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.41.0&#34;&gt;0.41.0&lt;/a&gt; - 2026-08-07 &lt;a class=&#34;header-link&#34; href=&#34;#0410---2026-08-07&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;0420---2026-08-26&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.42.0&#34;&gt;0.42.0&lt;/a&gt; - 2026-08-26 &lt;a class=&#34;header-link&#34; href=&#34;#0420---2026-08-26&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;h3 id=&#34;added&#34;&gt;Added&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A toolbar button to the Authentication Diagnostics screenshots tab, to toggle screenshots between full size and scaled to fit the window.&lt;/li&gt;
+&lt;li&gt;Use the HTTP method for the verification configuration (on newer ZAP versions).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;changed&#34;&gt;Changed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Depend on newer Common Library add-on.&lt;/li&gt;
+&lt;li&gt;Tag diagnostic HTTP messages with an internal ID, to make it easier to cross reference them.&lt;/li&gt;
+&lt;li&gt;Obtain the minimal authentication diagnostics when aborting the authentication.&lt;/li&gt;
+&lt;li&gt;Authentication report: include summary with connection success and failure counts.&lt;/li&gt;
+&lt;li&gt;Include Accept, Accept-Language, Connection, and User-Agent headers when doing authentication verification.&lt;/li&gt;
+&lt;li&gt;Ignore commented Zest statements when collecting authentication diagnostics.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Do not wait when getting the element for a screenshot diagnostic step to not add unnecessary delays.&lt;/li&gt;
+&lt;li&gt;Performance issue checking for where cookie values were set during authentication.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;0410---2026-08-07&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.41.0&#34;&gt;0.41.0&lt;/a&gt; - 2026-08-07 &lt;a class=&#34;header-link&#34; href=&#34;#0410---2026-08-07&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&#34;added-1&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Automation Framework &lt;code&gt;diagnostics&lt;/code&gt; job to start and stop plan-level recording of authentication related diagnostics.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-1&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Update dependency.&lt;/li&gt;
 &lt;li&gt;Include the Zest statement index in the authentication diagnostics&amp;rsquo; steps.&lt;/li&gt;
 &lt;li&gt;Include Origin header when doing authentication verification.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Handle exception while extracting session tokens.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0400---2026-06-12&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.40.0&#34;&gt;0.40.0&lt;/a&gt; - 2026-06-12 &lt;a class=&#34;header-link&#34; href=&#34;#0400---2026-06-12&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-1&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-2&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for handling the Microsoft login &amp;ldquo;Permissions requested&amp;rdquo; user consent screen.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Handling of Ionic input elements, which can appear to not be displayed until they are clicked on.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0390---2026-05-06&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.39.0&#34;&gt;0.39.0&lt;/a&gt; - 2026-05-06 &lt;a class=&#34;header-link&#34; href=&#34;#0390---2026-05-06&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-1&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-2&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Do not attempt to extract session tokens from big responses, to reduce memory usage, which are more likely to represent application data rather than having session tokens.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Improve detection of finished Microsoft login.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0380---2026-04-14&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.38.0&#34;&gt;0.38.0&lt;/a&gt; - 2026-04-14 &lt;a class=&#34;header-link&#34; href=&#34;#0380---2026-04-14&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Correct reported username/password fields&amp;rsquo; state in the Authentication Report.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0370---2026-03-31&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.37.0&#34;&gt;0.37.0&lt;/a&gt; - 2026-03-31 &lt;a class=&#34;header-link&#34; href=&#34;#0370---2026-03-31&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-2&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-3&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for Microsoft login in a pop-up window&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0360---2026-03-19&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.36.0&#34;&gt;0.36.0&lt;/a&gt; - 2026-03-19 &lt;a class=&#34;header-link&#34; href=&#34;#0360---2026-03-19&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-2&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-3&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintenance changes.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Autodetect HTTP authentication, and added more auth diagnostics.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0350---2026-03-02&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.35.0&#34;&gt;0.35.0&lt;/a&gt; - 2026-03-02 &lt;a class=&#34;header-link&#34; href=&#34;#0350---2026-03-02&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Exception in authentication diagnostics.&lt;/li&gt;
 &lt;li&gt;Ensure the login link verification URL has both logged in and out indicators.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-3&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-4&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintenance changes.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0340---2025-12-15&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.34.0&#34;&gt;0.34.0&lt;/a&gt; - 2025-12-15 &lt;a class=&#34;header-link&#34; href=&#34;#0340---2025-12-15&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-4&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-5&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Update minimum ZAP version to 2.17.0.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0330---2025-12-03&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.33.0&#34;&gt;0.33.0&lt;/a&gt; - 2025-12-03 &lt;a class=&#34;header-link&#34; href=&#34;#0330---2025-12-03&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-3&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-4&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Handle account selection and TOTP step in Microsoft login.&lt;/li&gt;
 &lt;li&gt;Allow to include domains completely and partially out of scope in the Authentication Report.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-5&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-6&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Fail the Microsoft login if not able to perform all the expected steps.&lt;/li&gt;
 &lt;li&gt;Track GWT headers.&lt;/li&gt;
@@ -4107,7 +4131,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Improved performance of the Session Detection scan rule.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-7&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Do not include known authentication providers in context.&lt;/li&gt;
 &lt;li&gt;Ensure all domains accessed during authentication are included in the Authentication Report.&lt;/li&gt;
@@ -4115,7 +4139,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0320---2025-11-07&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.32.0&#34;&gt;0.32.0&lt;/a&gt; - 2025-11-07 &lt;a class=&#34;header-link&#34; href=&#34;#0320---2025-11-07&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-6&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-7&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Track authentication headers with key in the name.&lt;/li&gt;
 &lt;li&gt;No longer quote domains as these will not get counted as valid URLs in the Automation Framework.&lt;/li&gt;
@@ -4123,34 +4147,34 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0310---2025-11-05&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.31.0&#34;&gt;0.31.0&lt;/a&gt; - 2025-11-05 &lt;a class=&#34;header-link&#34; href=&#34;#0310---2025-11-05&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-4&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-5&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Domains to auth tester.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0300---2025-11-04&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.30.0&#34;&gt;0.30.0&lt;/a&gt; - 2025-11-04 &lt;a class=&#34;header-link&#34; href=&#34;#0300---2025-11-04&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-5&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-6&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Click on button when login form does not handle return in Browser Based Authentication.&lt;/li&gt;
 &lt;li&gt;Handle password fields by ID and name in Browser Based Authentication.&lt;/li&gt;
 &lt;li&gt;Check div elements when searching for login links.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-7&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-8&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintenance changes&lt;/li&gt;
 &lt;li&gt;Depend on newer version of Zest add-on.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-7&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-8&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Inform when the Authentication Report being imported does not contain any diagnostics.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0290---2025-09-18&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.29.0&#34;&gt;0.29.0&lt;/a&gt; - 2025-09-18 &lt;a class=&#34;header-link&#34; href=&#34;#0290---2025-09-18&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-6&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-7&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Add login word variant for Spanish.&lt;/li&gt;
 &lt;li&gt;Log exception during authentication with diagnostics enabled.&lt;/li&gt;
@@ -4158,7 +4182,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Add Authentication Report section for the domains accessed during the authentication.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-8&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-9&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Update alert references to latest locations to fix 404 and resolve redirection.&lt;/li&gt;
 &lt;li&gt;Search also for login elements with ARIA role button.&lt;/li&gt;
@@ -4166,7 +4190,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Include the site in the site statistics of the Authentication Report.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-8&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-9&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Collect the current value of the element&amp;rsquo;s attributes for the authentication diagnostics.&lt;/li&gt;
 &lt;li&gt;In the Authentication Report set authentication successful only when the login was verified with the indicators.&lt;/li&gt;
@@ -4174,7 +4198,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0280---2025-09-02&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.28.0&#34;&gt;0.28.0&lt;/a&gt; - 2025-09-02 &lt;a class=&#34;header-link&#34; href=&#34;#0280---2025-09-02&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-7&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-8&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Add wait authentication step to Browser Based Authentication.&lt;/li&gt;
 &lt;li&gt;Include Web Element&amp;rsquo;s selector in the Authentication Report.&lt;/li&gt;
@@ -4185,7 +4209,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Allow to manage the authentication diagnostics through the GUI.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;changed-9&#34;&gt;Changed &lt;a class=&#34;header-link&#34; href=&#34;#changed-9&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;changed-10&#34;&gt;Changed &lt;a class=&#34;header-link&#34; href=&#34;#changed-10&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Now depends on minimum Common Library version 1.35.0 and Zest version 48.9.0.&lt;/li&gt;
 &lt;li&gt;Send the referer header on verification if set on the original request.&lt;/li&gt;
@@ -4198,7 +4222,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Consider login like URLs as candidates for verification URL.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-9&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-10&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Do not fail the authentication on diagnostic errors.&lt;/li&gt;
 &lt;li&gt;Do not configure poll authentication verification without logged in indicator.&lt;/li&gt;
@@ -4208,19 +4232,19 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0270---2025-07-03&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.27.0&#34;&gt;0.27.0&lt;/a&gt; - 2025-07-03 &lt;a class=&#34;header-link&#34; href=&#34;#0270---2025-07-03&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-8&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-9&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for recorded scripts in the Authentication Tester.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-10&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-11&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Updated to depend on Zest add-on 48.8.0.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0260---2025-06-20&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.26.0&#34;&gt;0.26.0&lt;/a&gt; - 2025-06-20 &lt;a class=&#34;header-link&#34; href=&#34;#0260---2025-06-20&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-9&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-10&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Add configuration support for the wait time after Client Script Based Authentication.&lt;/li&gt;
 &lt;li&gt;Include the Web Element being interacted with in the Client Script Based Authentication diagnostics.&lt;/li&gt;
@@ -4240,7 +4264,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Search for username/password fields under shadow DOMs with Browser Based Authentication.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-11&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-12&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Warn when the recorded script used with Client Script Based Authentication does not launch a browser.&lt;/li&gt;
 &lt;li&gt;Updated to depend on Zest add-on 48.6.0.&lt;/li&gt;
@@ -4258,7 +4282,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Now depends on minimum Common Library version 1.33.0.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-10&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-11&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Correct descriptions of the Zest script steps in the Authentication Report.&lt;/li&gt;
 &lt;li&gt;Fix loading/saving of Client Script Based Authentication through the GUI.&lt;/li&gt;
@@ -4279,21 +4303,21 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0250---2025-03-25&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.25.0&#34;&gt;0.25.0&lt;/a&gt; - 2025-03-25 &lt;a class=&#34;header-link&#34; href=&#34;#0250---2025-03-25&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-12&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-13&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Use TOTP data defined under user credentials for Client Script and Browser Based Authentication, when available.&lt;/li&gt;
 &lt;li&gt;Maintenance changes.&lt;/li&gt;
 &lt;li&gt;Depend on newer version of Common Library add-on.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;added-10&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-11&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;The Authentication Report now includes information around authentication failures (if applicable).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0240---2025-03-21&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.24.0&#34;&gt;0.24.0&lt;/a&gt; - 2025-03-21 &lt;a class=&#34;header-link&#34; href=&#34;#0240---2025-03-21&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-11&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-12&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Document custom steps for Browser Based Authentication.&lt;/li&gt;
 &lt;li&gt;Document Authentication Report diagnostics data.&lt;/li&gt;
@@ -4301,7 +4325,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Help content for configuration and use of Header Based Session Management via ZAP API (these additions will only work properly when used with ZAP 2.16.1 or later).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-13&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-14&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Add any session related cookies which are not being tracked.&lt;/li&gt;
 &lt;li&gt;Ignore non proxied requests in auth tester diagnostics.&lt;/li&gt;
@@ -4311,7 +4335,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Skip disabled authentication steps when creating the context from the Authentication Tester dialog.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-11&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-12&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Allow the Client Script Authentication, and Browser Based Authentication method types as well as Header Based Session Management to be configured via the API (these fixes will only work properly when used with ZAP 2.16.1 or later).&lt;/li&gt;
 &lt;li&gt;Bug where some of the data structures were not being reset when the session changed.&lt;/li&gt;
@@ -4320,7 +4344,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0230---2025-03-04&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.23.0&#34;&gt;0.23.0&lt;/a&gt; - 2025-03-04 &lt;a class=&#34;header-link&#34; href=&#34;#0230---2025-03-04&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-12&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-13&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;If authentication fails then try to find a likely looking login link.&lt;/li&gt;
 &lt;li&gt;Persist diagnostics to the session and include it in the Authentication Report (JSON) for Client Script and Browser Based Authentication methods.&lt;/li&gt;
@@ -4328,7 +4352,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Checks to try to find a verification URL with a login link, if nothing better has been found.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-14&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-15&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Prefer form related fields in Browser Based Authentication for the selection of username field.&lt;/li&gt;
 &lt;li&gt;Tweaked the auth report summary keys.&lt;/li&gt;
@@ -4336,7 +4360,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Added API support to the browser based auth method proxy.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-12&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-13&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Correctly read the API parameters when setting up Browser Based Authentication.&lt;/li&gt;
 &lt;li&gt;Tweaked auth report output to ensure that values are properly escaped.&lt;/li&gt;
@@ -4346,27 +4370,27 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0220---2025-02-12&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.22.0&#34;&gt;0.22.0&lt;/a&gt; - 2025-02-12 &lt;a class=&#34;header-link&#34; href=&#34;#0220---2025-02-12&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-13&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-14&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Initial authentication report (JSON).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0210---2025-02-10&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.21.0&#34;&gt;0.21.0&lt;/a&gt; - 2025-02-10 &lt;a class=&#34;header-link&#34; href=&#34;#0210---2025-02-10&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;fixed-13&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-14&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Delays identifying verification due to tests being performed on too many unlikely URLs (such as images).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0200---2025-02-07&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.20.0&#34;&gt;0.20.0&lt;/a&gt; - 2025-02-07 &lt;a class=&#34;header-link&#34; href=&#34;#0200---2025-02-07&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-15&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-16&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Reduce add-on size.&lt;/li&gt;
 &lt;li&gt;Improved session management detection.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-14&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-15&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintain the correct cookie state when using client script authentication.&lt;/li&gt;
 &lt;li&gt;Do not close windows when running client auth in the spiders.&lt;/li&gt;
@@ -4375,33 +4399,33 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0190---2025-02-04&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.19.0&#34;&gt;0.19.0&lt;/a&gt; - 2025-02-04 &lt;a class=&#34;header-link&#34; href=&#34;#0190---2025-02-04&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-14&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-15&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Added support for Client Script Authentication when used in conjunction with the Ajax Spider add-on or the Client Spider via the Client Side Integration add-on.&lt;/li&gt;
 &lt;li&gt;Add support for custom authentication steps in Browser Based Authentication.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-15&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-16&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Reset always the state of the demo mode in the Authentication Tester dialogue.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0180---2025-01-27&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.18.0&#34;&gt;0.18.0&lt;/a&gt; - 2025-01-27 &lt;a class=&#34;header-link&#34; href=&#34;#0180---2025-01-27&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-16&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-17&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Ignore non-displayed fields when selecting the user name and password.&lt;/li&gt;
 &lt;li&gt;Use single displayed field for user name, e.g. multi step login.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-16&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-17&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Input fields that do not explicitly declare their type were no longer being chosen by the Browser Based Authentication.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0170---2025-01-09&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.17.0&#34;&gt;0.17.0&lt;/a&gt; - 2025-01-09 &lt;a class=&#34;header-link&#34; href=&#34;#0170---2025-01-09&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-17&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-18&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Update minimum ZAP version to 2.16.0.&lt;/li&gt;
 &lt;li&gt;Depend on Passive Scanner add-on (Issue 7959).&lt;/li&gt;
@@ -4411,33 +4435,33 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0160---2024-11-06&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.16.0&#34;&gt;0.16.0&lt;/a&gt; - 2024-11-06 &lt;a class=&#34;header-link&#34; href=&#34;#0160---2024-11-06&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;fixed-17&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-18&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Address concurrency issue while passive scanning with the Session Management Response Identified scan rule (Issue 8187).&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0151---2024-09-02&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.15.1&#34;&gt;0.15.1&lt;/a&gt; - 2024-09-02 &lt;a class=&#34;header-link&#34; href=&#34;#0151---2024-09-02&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-18&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-19&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Restored stats removed in previous release as these could be used in AF tests.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0150---2024-08-28&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.15.0&#34;&gt;0.15.0&lt;/a&gt; - 2024-08-28 &lt;a class=&#34;header-link&#34; href=&#34;#0150---2024-08-28&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-19&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-20&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintenance changes.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-18&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-19&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Bug in session detection scan rule which impacted performance.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0140---2024-07-31&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.14.0&#34;&gt;0.14.0&lt;/a&gt; - 2024-07-31 &lt;a class=&#34;header-link&#34; href=&#34;#0140---2024-07-31&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;fixed-19&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-20&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Potential timing issue trying to use browser based auth to authenticate before the session management method has been identified.&lt;/li&gt;
 &lt;li&gt;Timing issue with session management detection.&lt;/li&gt;
@@ -4445,7 +4469,7 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0130---2024-05-07&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.13.0&#34;&gt;0.13.0&lt;/a&gt; - 2024-05-07 &lt;a class=&#34;header-link&#34; href=&#34;#0130---2024-05-07&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-20&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-21&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Update minimum ZAP version to 2.15.0.&lt;/li&gt;
 &lt;li&gt;Maintenance changes.&lt;/li&gt;
@@ -4453,34 +4477,34 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;0120---2024-02-06&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.12.0&#34;&gt;0.12.0&lt;/a&gt; - 2024-02-06 &lt;a class=&#34;header-link&#34; href=&#34;#0120---2024-02-06&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-21&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-22&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Handle traditional apps better in authentication detection dialog.&lt;/li&gt;
 &lt;li&gt;Make cookies set in auth request available to header based session management.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-20&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-21&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Correct HTTP field names shown in diagnostic data.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0110---2024-01-10&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.11.0&#34;&gt;0.11.0&lt;/a&gt; - 2024-01-10 &lt;a class=&#34;header-link&#34; href=&#34;#0110---2024-01-10&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-22&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-23&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Maintenance changes.&lt;/li&gt;
 &lt;li&gt;Dropped &amp;ldquo;to Clipboard&amp;rdquo; from ZAP copy menu items or buttons (Issue 8179).&lt;/li&gt;
 &lt;li&gt;Update cookies in header based session management, to cope with apps that set them via JavaScript.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-21&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-22&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Read the user details from the session rather than the individual messages, which could cause an NPE.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;0100---2023-10-12&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.10.0&#34;&gt;0.10.0&lt;/a&gt; - 2023-10-12 &lt;a class=&#34;header-link&#34; href=&#34;#0100---2023-10-12&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-23&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-24&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Update minimum ZAP version to 2.14.0.&lt;/li&gt;
 &lt;li&gt;Maintenance changes.&lt;/li&gt;
@@ -4488,63 +4512,63 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 
 &lt;h2 id=&#34;090---2023-07-11&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.9.0&#34;&gt;0.9.0&lt;/a&gt; - 2023-07-11 &lt;a class=&#34;header-link&#34; href=&#34;#090---2023-07-11&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-15&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-16&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Direct support for handling browser based authentication in the AJAX spider.&lt;/li&gt;
 &lt;li&gt;Support for cookie based session management.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-24&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-25&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Update minimum ZAP version to 2.13.0.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;080---2023-06-06&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.8.0&#34;&gt;0.8.0&lt;/a&gt; - 2023-06-06 &lt;a class=&#34;header-link&#34; href=&#34;#080---2023-06-06&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;changed-25&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-26&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Prefer username fields with known id/name strings.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-22&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-23&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Correct example alert of Session Management Response Identified scan rule.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;070---2023-05-23&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.7.0&#34;&gt;0.7.0&lt;/a&gt; - 2023-05-23 &lt;a class=&#34;header-link&#34; href=&#34;#070---2023-05-23&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-16&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-17&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Authentication tester dialog.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;changed-26&#34;&gt;Changed&lt;/h3&gt;
+&lt;h3 id=&#34;changed-27&#34;&gt;Changed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Promoted to Beta&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;060---2023-05-09&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.6.0&#34;&gt;0.6.0&lt;/a&gt; - 2023-05-09 &lt;a class=&#34;header-link&#34; href=&#34;#060---2023-05-09&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-17&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-18&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for login pages where the username has to be submitted before the password field is accessible.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;050---2023-05-04&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.5.0&#34;&gt;0.5.0&lt;/a&gt; - 2023-05-04 &lt;a class=&#34;header-link&#34; href=&#34;#050---2023-05-04&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-18&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-19&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for verification type of &amp;ldquo;autodetect&amp;rdquo; (post 2.12).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-23&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-24&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Ensure verification processor shut down on exit, otherwise the AF hangs.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;040---2023-04-28&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.4.0&#34;&gt;0.4.0&lt;/a&gt; - 2023-04-28 &lt;a class=&#34;header-link&#34; href=&#34;#040---2023-04-28&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-19&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-20&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for session management identification.&lt;/li&gt;
 &lt;li&gt;Support for auto-detect authentication.&lt;/li&gt;
@@ -4552,33 +4576,33 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
 &lt;li&gt;Support for auto-detect verification.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-24&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-25&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Clear launched browser authentication when disabled, otherwise it would prevent enabling it again.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;030---2023-03-13&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.3.0&#34;&gt;0.3.0&lt;/a&gt; - 2023-03-13 &lt;a class=&#34;header-link&#34; href=&#34;#030---2023-03-13&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-20&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-21&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for browser based authentication.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;020---2023-02-08&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.2.0&#34;&gt;0.2.0&lt;/a&gt; - 2023-02-08 &lt;a class=&#34;header-link&#34; href=&#34;#020---2023-02-08&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-21&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-22&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support for header based session management.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed-25&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-26&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Code link in help.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;010---2023-01-17&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/authhelper-v0.1.0&#34;&gt;0.1.0&lt;/a&gt; - 2023-01-17 &lt;a class=&#34;header-link&#34; href=&#34;#010---2023-01-17&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
-&lt;h3 id=&#34;added-22&#34;&gt;Added&lt;/h3&gt;
+&lt;h3 id=&#34;added-23&#34;&gt;Added&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Support of authentication request identification and configuration.&lt;/li&gt;
 &lt;/ul&gt;</description>
@@ -4594,14 +4618,13 @@ By default it allows files with extension &lt;code&gt;.js&lt;/code&gt; and &lt;c
     </item>
     
     <item>
-      <title>Authentication Request Identification</title>
-      <link>/docs/desktop/addons/authentication-helper/auth-req-id/</link>
+      <title>Authentication Report - JSON</title>
+      <link>/docs/desktop/addons/authentication-helper/auth-report-json/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/authentication-helper/auth-req-id/</guid>
-      <description>&lt;h1 id=&#34;authentication-request-identification&#34;&gt;Authentication Request Identification&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; includes a passive scan rule which attempts to identify authentication requests.&lt;br&gt;
-It identifies authentication requests by the presence of commonly used username and password field names. It also uses commonly used URL segments to identify more likely authentication requests, and uses commonly used registration URL segments to ignore registration requests.&lt;/p&gt;</description>
+      <guid>/docs/desktop/addons/authentication-helper/auth-report-json/</guid>
+      <description>&lt;h1 id=&#34;authentication-report---json&#34;&gt;Authentication Report - JSON&lt;/h1&gt;
+&lt;p&gt;This is a specialized report which details how authentication handling worked for the given site. &lt;strong&gt;Note&lt;/strong&gt; : In order to ensure the most helpful and realistic output users should ensure no other traffic is happening via ZAP at the same time that authentication diagnostics are being collected.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -13497,6 +13520,13 @@ the options you want to change.&lt;/p&gt;
 &lt;p&gt;All notable changes to this add-on will be documented in this file.&lt;/p&gt;
 &lt;p&gt;The format is based on &lt;a href=&#34;https://keepachangelog.com/en/1.0.0/&#34;&gt;Keep a Changelog&lt;/a&gt;.&lt;/p&gt;
 
+&lt;h2 id=&#34;040---2026-08-26&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/mcp-v0.4.0&#34;&gt;0.4.0&lt;/a&gt; - 2026-08-26 &lt;a class=&#34;header-link&#34; href=&#34;#040---2026-08-26&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Allow MCP security key to be copied (Issue #9432)&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h2 id=&#34;030---2026-08-07&#34;&gt;&lt;a href=&#34;https://github.com/zaproxy/zap-extensions/releases/mcp-v0.3.0&#34;&gt;0.3.0&lt;/a&gt; - 2026-08-07 &lt;a class=&#34;header-link&#34; href=&#34;#030---2026-08-07&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 
 &lt;h3 id=&#34;added&#34;&gt;Added&lt;/h3&gt;
@@ -13517,7 +13547,7 @@ the options you want to change.&lt;/p&gt;
 &lt;li&gt;Content type to not include charset (some servers complain).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Handling of multiple SSE events on import.&lt;/li&gt;
 &lt;/ul&gt;
@@ -24971,13 +25001,14 @@ with a specific request.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Auto-Detect Authentication</title>
-      <link>/docs/desktop/addons/authentication-helper/autodetect-auth/</link>
+      <title>Authentication Request Identification</title>
+      <link>/docs/desktop/addons/authentication-helper/auth-req-id/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/authentication-helper/autodetect-auth/</guid>
-      <description>&lt;h1 id=&#34;auto-detect-authentication&#34;&gt;Auto-Detect Authentication&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new authentication type which you can use to indicate that the &lt;a href=&#34;/docs/desktop/addons/authentication-helper/auth-req-id/&#34;&gt;Authentication Request Identification&lt;/a&gt; passive scan rule should attempt to configure the Authentication method automatically.&lt;/p&gt;</description>
+      <guid>/docs/desktop/addons/authentication-helper/auth-req-id/</guid>
+      <description>&lt;h1 id=&#34;authentication-request-identification&#34;&gt;Authentication Request Identification&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; includes a passive scan rule which attempts to identify authentication requests.&lt;br&gt;
+It identifies authentication requests by the presence of commonly used username and password field names. It also uses commonly used URL segments to identify more likely authentication requests, and uses commonly used registration URL segments to ignore registration requests.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26207,6 +26238,19 @@ scripts, by addons (extensions), or manually using the &lt;a href=&#34;/docs/des
     </item>
     
     <item>
+      <title>Authentication Tester Dialog</title>
+      <link>/docs/desktop/addons/authentication-helper/auth-tester/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/auth-tester/</guid>
+      <description>&lt;h1 id=&#34;authentication-tester-dialog&#34;&gt;Authentication Tester Dialog&lt;/h1&gt;
+&lt;p&gt;This dialog allows you to test if ZAP can authenticate and automatically handle the session handling and verification for a site given only the login page and credentials.&lt;/p&gt;
+
+&lt;h2 id=&#34;fields&#34;&gt;Fields &lt;a class=&#34;header-link&#34; href=&#34;#fields&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The following fields are provided:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Automation Framework - Environment</title>
       <link>/docs/desktop/addons/automation-framework/environment/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -26216,19 +26260,6 @@ scripts, by addons (extensions), or manually using the &lt;a href=&#34;/docs/des
 &lt;p&gt;This section of the YAML configuration file defines the applications which the rest of the jobs can act on.&lt;/p&gt;
 &lt;p&gt;The environment is covered in the video: &lt;a href=&#34;https://youtu.be/1fcpU54N-mA&#34;&gt;ZAP Chat 08 Automation Framework Part 2 - Environment&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The Automation Framework supports all of the &lt;a href=&#34;/docs/desktop/addons/automation-framework/authentication/&#34;&gt;authentication&lt;/a&gt; mechanisms supported by ZAP.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Browser Based Authentication</title>
-      <link>/docs/desktop/addons/authentication-helper/browser-auth/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/browser-auth/</guid>
-      <description>&lt;h1 id=&#34;browser-based-authentication&#34;&gt;Browser Based Authentication&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new authentication method which uses a browser to login to the target website.&lt;/p&gt;
-&lt;p&gt;The authentication method requires the login URL and user credentials to perform the authentication. By default it automatically attempts to
-find suitable fields for the username and for the password, in the same page and multiple pages (i.e. password field is only made visible when
-the username has been entered).&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26839,6 +26870,16 @@ is configured using the &lt;a href=&#34;/docs/desktop/ui/dialogs/options/anticsr
     </item>
     
     <item>
+      <title>Auto-Detect Authentication</title>
+      <link>/docs/desktop/addons/authentication-helper/autodetect-auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/autodetect-auth/</guid>
+      <description>&lt;h1 id=&#34;auto-detect-authentication&#34;&gt;Auto-Detect Authentication&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new authentication type which you can use to indicate that the &lt;a href=&#34;/docs/desktop/addons/authentication-helper/auth-req-id/&#34;&gt;Authentication Request Identification&lt;/a&gt; passive scan rule should attempt to configure the Authentication method automatically.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Automation Framework - authentication</title>
       <link>/docs/desktop/addons/automation-framework/authentication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -27443,19 +27484,6 @@ which allows you to manage ZAP&amp;rsquo;s understanding of the structure of the
     </item>
     
     <item>
-      <title>Session Management Identification</title>
-      <link>/docs/desktop/addons/authentication-helper/session-mgmt-id/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/session-mgmt-id/</guid>
-      <description>&lt;h1 id=&#34;session-management-identification&#34;&gt;Session Management Identification&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; includes a passive scan rule which attempts to identify session management methods.&lt;br&gt;
-It identifies session management methods by the presence of commonly used session management identifiers and any values specified in Authorization request headers.&lt;/p&gt;
-&lt;p&gt;The rule will not attempt to identify very unusual session management methods - automation is one of the end goals so false negatives
-(missing unusual session management methods) are more desirable than false positives (incorrectly identifying a session management method).&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>WebSocket Scripts</title>
       <link>/docs/desktop/addons/websockets/script/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -27601,6 +27629,16 @@ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg
     </item>
     
     <item>
+      <title>Auto-Detect Session Management</title>
+      <link>/docs/desktop/addons/authentication-helper/autodetect-session/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/autodetect-session/</guid>
+      <description>&lt;h1 id=&#34;auto-detect-session-management&#34;&gt;Auto-Detect Session Management&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new Session Management type which you can use to indicate that the &lt;a href=&#34;/docs/desktop/addons/authentication-helper/session-mgmt-id/&#34;&gt;Session Management Request Identification&lt;/a&gt; passive scan rule should attempt to configure the Session Management method automatically.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Automation Framework - addOns Job</title>
       <link>/docs/desktop/addons/automation-framework/job-addons/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -27610,20 +27648,6 @@ when you are proxying via ZAP, or via the host and port ZAP is listening on, eg
 &lt;p&gt;This job has been depreciated, no longer does anything, and should no longer be used.&lt;/p&gt;
 &lt;p&gt;Previously it allowed you to manage the ZAP add-ons.
 However it turns out that adding and updating add-ons when running a plan is a bad idea and does not work well.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Client Script Authentication</title>
-      <link>/docs/desktop/addons/authentication-helper/client-script/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/client-script/</guid>
-      <description>&lt;h1 id=&#34;client-script-authentication&#34;&gt;Client Script Authentication&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new authentication type which uses a browser to login to the target website.&lt;/p&gt;
-&lt;p&gt;This functionality leverages Zest scripts (which may have been recorded via the ZAP Browser Extension) to login.&lt;/p&gt;
-
-&lt;h2 id=&#34;automation-framework&#34;&gt;Automation Framework &lt;a class=&#34;header-link&#34; href=&#34;#automation-framework&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Client Script Authentication can be configured in the environment section of an Automation Framework plan using:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27969,13 +27993,16 @@ If you are new to ZAP automation then the best place to start is the ZAP &lt;a h
     </item>
     
     <item>
-      <title>Auto-Detect Session Management</title>
-      <link>/docs/desktop/addons/authentication-helper/autodetect-session/</link>
+      <title>Authentication Helper Automation Framework Support</title>
+      <link>/docs/desktop/addons/authentication-helper/automation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/docs/desktop/addons/authentication-helper/autodetect-session/</guid>
-      <description>&lt;h1 id=&#34;auto-detect-session-management&#34;&gt;Auto-Detect Session Management&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new Session Management type which you can use to indicate that the &lt;a href=&#34;/docs/desktop/addons/authentication-helper/session-mgmt-id/&#34;&gt;Session Management Request Identification&lt;/a&gt; passive scan rule should attempt to configure the Session Management method automatically.&lt;/p&gt;</description>
+      <guid>/docs/desktop/addons/authentication-helper/automation/</guid>
+      <description>&lt;h1 id=&#34;authentication-helper-automation-framework-support&#34;&gt;Authentication Helper Automation Framework Support&lt;/h1&gt;
+&lt;p&gt;This add-on supports the Automation Framework.&lt;/p&gt;
+
+&lt;h2 id=&#34;job-diagnostics&#34;&gt;Job: diagnostics &lt;a class=&#34;header-link&#34; href=&#34;#job-diagnostics&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The diagnostics job starts or stops plan-level recording of authentication related diagnostics. Recorded diagnostics appear in the Authentication Diagnostics UI and can be included in the &lt;a href=&#34;/docs/desktop/addons/authentication-helper/reports/&#34;&gt;Authentication Report&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28269,6 +28296,19 @@ ZAP. Some of the examples include:&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>Browser Based Authentication</title>
+      <link>/docs/desktop/addons/authentication-helper/browser-auth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/browser-auth/</guid>
+      <description>&lt;h1 id=&#34;browser-based-authentication&#34;&gt;Browser Based Authentication&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new authentication method which uses a browser to login to the target website.&lt;/p&gt;
+&lt;p&gt;The authentication method requires the login URL and user credentials to perform the authentication. By default it automatically attempts to
+find suitable fields for the username and for the password, in the same page and multiple pages (i.e. password field is only made visible when
+the username has been entered).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Can ZAP be used to test mobile apps?</title>
       <link>/faq/can-zap-be-used-to-test-mobile-apps/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -28376,19 +28416,6 @@ Select a row to see the full requests and responses. You can also search for str
 
 &lt;h2 id=&#34;http-fuzzer-results&#34;&gt;HTTP Fuzzer results &lt;a class=&#34;header-link&#34; href=&#34;#http-fuzzer-results&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;The results have to be manually assessed to know if any vulnerability was found.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Header Based Session Management</title>
-      <link>/docs/desktop/addons/authentication-helper/session-header/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/session-header/</guid>
-      <description>&lt;h1 id=&#34;header-based-session-management&#34;&gt;Header Based Session Management&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new session management type which supports an arbitrary number of headers.&lt;/p&gt;
-&lt;p&gt;If used in conjunction with &lt;a href=&#34;/docs/desktop/addons/authentication-helper/browser-auth/&#34;&gt;Browser Based Authentication&lt;/a&gt; or
-&lt;a href=&#34;/docs/desktop/addons/authentication-helper/client-script/&#34;&gt;Client Script Authentication&lt;/a&gt; then it will also maintain all
-of the cookies and any headers with names containing the strings &amp;ldquo;auth&amp;rdquo; or &amp;ldquo;csrf&amp;rdquo; (ignoring case) set as part of authentication.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28838,6 +28865,20 @@ dialog which will allow you to change the alert details.&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>Client Script Authentication</title>
+      <link>/docs/desktop/addons/authentication-helper/client-script/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/client-script/</guid>
+      <description>&lt;h1 id=&#34;client-script-authentication&#34;&gt;Client Script Authentication&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new authentication type which uses a browser to login to the target website.&lt;/p&gt;
+&lt;p&gt;This functionality leverages Zest scripts (which may have been recorded via the ZAP Browser Extension) to login.&lt;/p&gt;
+
+&lt;h2 id=&#34;automation-framework&#34;&gt;Automation Framework &lt;a class=&#34;header-link&#34; href=&#34;#automation-framework&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Client Script Authentication can be configured in the environment section of an Automation Framework plan using:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Client Side Integration - Firefox Profile</title>
       <link>/docs/desktop/addons/client-side-integration/firefox-profile/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -28972,21 +29013,6 @@ For more details refer to the blog post &lt;a href=&#34;/blog/2021-12-10-zap-and
     </item>
     
     <item>
-      <title>Verification Request Identification</title>
-      <link>/docs/desktop/addons/authentication-helper/verification-id/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/verification-id/</guid>
-      <description>&lt;h1 id=&#34;verification-request-identification&#34;&gt;Verification Request Identification&lt;/h1&gt;
-&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; includes a passive scan rule which attempts to identify Verification requests.&lt;br&gt;
-Verification requests are the requests that ZAP uses to tell if a session is still valid.&lt;/p&gt;
-&lt;p&gt;Unlike the other identification scan rules in this add-on, this rule will only raise alerts if you have indicated that you want to use
-verification auto-detection for a specific context.
-Due to the way the ZAP 2.12 core works it is not currently possible to add a new Verification Method Type dynamically.
-Instead you will need to:&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>What is the Best Way to Automate ZAP?</title>
       <link>/faq/what-is-the-best-way-to-automate-zap/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29012,19 +29038,6 @@ Instead you will need to:&lt;/p&gt;</description>
 A progress bar shows how far the scan of the selected site has progressed.&lt;br&gt;
 The &amp;lsquo;Current scans&amp;rsquo; value shows how many scans are currently active - hovering over this value will show a list of the sites being scanned in a popup.&lt;br&gt;
 The &amp;lsquo;Show scan progress details&amp;rsquo; button &lt;img src=&#34;/docs/desktop/images/fugue/system-monitor.png&#34; alt=&#34;&#34;&gt; launches the &lt;a href=&#34;/docs/desktop/ui/dialogs/scanprogress/&#34;&gt;Scan Progress dialog&lt;/a&gt; which allows you to see details about which rules are running, skip individual rules and see a chart of the responses.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Authentication Tester Dialog</title>
-      <link>/docs/desktop/addons/authentication-helper/auth-tester/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/auth-tester/</guid>
-      <description>&lt;h1 id=&#34;authentication-tester-dialog&#34;&gt;Authentication Tester Dialog&lt;/h1&gt;
-&lt;p&gt;This dialog allows you to test if ZAP can authenticate and automatically handle the session handling and verification for a site given only the login page and credentials.&lt;/p&gt;
-
-&lt;h2 id=&#34;fields&#34;&gt;Fields &lt;a class=&#34;header-link&#34; href=&#34;#fields&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The following fields are provided:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29064,6 +29077,19 @@ client side validation (often enforced using javascript).&lt;/p&gt;</description
 
 &lt;h2 id=&#34;browser-extension&#34;&gt;Browser Extension &lt;a class=&#34;header-link&#34; href=&#34;#browser-extension&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/client-side-integration/&#34;&gt;add-on&lt;/a&gt; depends on a &lt;a href=&#34;https://github.com/zaproxy/browser-extension&#34;&gt;ZAP browser extension&lt;/a&gt; which runs in Firefox and Chrome - if this extension is not present then this add-on will not be able to do anything.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Header Based Session Management</title>
+      <link>/docs/desktop/addons/authentication-helper/session-header/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/session-header/</guid>
+      <description>&lt;h1 id=&#34;header-based-session-management&#34;&gt;Header Based Session Management&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; adds a new session management type which supports an arbitrary number of headers.&lt;/p&gt;
+&lt;p&gt;If used in conjunction with &lt;a href=&#34;/docs/desktop/addons/authentication-helper/browser-auth/&#34;&gt;Browser Based Authentication&lt;/a&gt; or
+&lt;a href=&#34;/docs/desktop/addons/authentication-helper/client-script/&#34;&gt;Client Script Authentication&lt;/a&gt; then it will also maintain all
+of the cookies and any headers with names containing the strings &amp;ldquo;auth&amp;rdquo; or &amp;ldquo;csrf&amp;rdquo; (ignoring case) set as part of authentication.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29282,19 +29308,6 @@ It allows you to specify how you would like this session persisted, you can also
     </item>
     
     <item>
-      <title>Authentication Helper Automation Framework Support</title>
-      <link>/docs/desktop/addons/authentication-helper/automation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/automation/</guid>
-      <description>&lt;h1 id=&#34;authentication-helper-automation-framework-support&#34;&gt;Authentication Helper Automation Framework Support&lt;/h1&gt;
-&lt;p&gt;This add-on supports the Automation Framework.&lt;/p&gt;
-
-&lt;h2 id=&#34;job-diagnostics&#34;&gt;Job: diagnostics &lt;a class=&#34;header-link&#34; href=&#34;#job-diagnostics&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;The diagnostics job starts or stops plan-level recording of authentication related diagnostics. Recorded diagnostics appear in the Authentication Diagnostics UI and can be included in the &lt;a href=&#34;/docs/desktop/addons/authentication-helper/reports/&#34;&gt;Authentication Report&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>Automation Framework - requestor Job</title>
       <link>/docs/desktop/addons/automation-framework/job-requestor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29404,6 +29417,19 @@ performing an &lt;a href=&#34;/docs/desktop/start/features/ascan/&#34;&gt;active
     </item>
     
     <item>
+      <title>Session Management Identification</title>
+      <link>/docs/desktop/addons/authentication-helper/session-mgmt-id/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/session-mgmt-id/</guid>
+      <description>&lt;h1 id=&#34;session-management-identification&#34;&gt;Session Management Identification&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; includes a passive scan rule which attempts to identify session management methods.&lt;br&gt;
+It identifies session management methods by the presence of commonly used session management identifiers and any values specified in Authorization request headers.&lt;/p&gt;
+&lt;p&gt;The rule will not attempt to identify very unusual session management methods - automation is one of the end goals so false negatives
+(missing unusual session management methods) are more desirable than false positives (incorrectly identifying a session management method).&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Automation Framework - Job Tests</title>
       <link>/docs/desktop/addons/automation-framework/tests/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -29500,6 +29526,21 @@ generates any output.&lt;/p&gt;</description>
 &lt;h3 id=&#34;progress-tab&#34;&gt;Progress tab &lt;a class=&#34;header-link&#34; href=&#34;#progress-tab&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This shows which scan rules are running for each host being scanned, as well as other details such as the elapsed time they have been running and the number of requests made per rule.&lt;br&gt;
 It also allows you to skip the rule which is currently being run by clicking on the &amp;lsquo;Skip current running active scan&amp;rsquo; button &lt;img src=&#34;/docs/desktop/images/10/137.png&#34; alt=&#34;&#34;&gt; in the Status column.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Verification Request Identification</title>
+      <link>/docs/desktop/addons/authentication-helper/verification-id/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/desktop/addons/authentication-helper/verification-id/</guid>
+      <description>&lt;h1 id=&#34;verification-request-identification&#34;&gt;Verification Request Identification&lt;/h1&gt;
+&lt;p&gt;This &lt;a href=&#34;/docs/desktop/addons/authentication-helper/&#34;&gt;add-on&lt;/a&gt; includes a passive scan rule which attempts to identify Verification requests.&lt;br&gt;
+Verification requests are the requests that ZAP uses to tell if a session is still valid.&lt;/p&gt;
+&lt;p&gt;Unlike the other identification scan rules in this add-on, this rule will only raise alerts if you have indicated that you want to use
+verification auto-detection for a specific context.
+Due to the way the ZAP 2.12 core works it is not currently possible to add a new Verification Method Type dynamically.
+Instead you will need to:&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -36980,19 +37021,6 @@ The attacker eavesdrops on the network until an authentication has completed.&lt
 
 &lt;h3 id=&#34;manual-authentication&#34;&gt;Manual Authentication &lt;a class=&#34;header-link&#34; href=&#34;#manual-authentication&#34;&gt;&lt;svg class=&#34;fill-current o-60 hover-accent-color-light&#34; height=&#34;22px&#34; viewBox=&#34;0 0 24 24&#34; width=&#34;22px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34;&gt;&lt;path d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34;/&gt;&lt;path d=&#34;M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z&#34; fill=&#34;currentColor&#34;/&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;This is the default method, and means that you are &lt;a href=&#34;../manual-auth/&#34;&gt;handling authentication yourself&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Authentication Report - JSON</title>
-      <link>/docs/desktop/addons/authentication-helper/auth-report-json/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/docs/desktop/addons/authentication-helper/auth-report-json/</guid>
-      <description>&lt;h1 id=&#34;authentication-report---json&#34;&gt;Authentication Report - JSON&lt;/h1&gt;
-&lt;p&gt;This is a specialized report which details how authentication handling worked for the given site.&lt;/p&gt;
-&lt;p&gt;You must specify the site you want the report for otherwise no data will be generated.&lt;/p&gt;
-&lt;p&gt;This report is designed to be run after attempting to access at least one authenticated URL with the
-authentication method set up correctly and with valid credentials.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -44748,7 +44776,7 @@ This is particularly useful for comparing 2 sessions which access the same appli
           authhelper
         &lt;/td&gt;
         &lt;td &gt;
-          2026-08-07
+          2026-08-26
         &lt;/td&gt;
       &lt;/tr&gt;
       
