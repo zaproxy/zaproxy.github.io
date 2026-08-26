@@ -1967,11 +1967,16 @@
 </ol>
           
 <h1 id="authentication-report---json">Authentication Report - JSON</h1>
-<p>This is a specialized report which details how authentication handling worked for the given site.</p>
+<p>This is a specialized report which details how authentication handling worked for the given site. <strong>Note</strong> : In order to ensure the most helpful and realistic output users should ensure no other traffic is happening via ZAP at the same time that authentication diagnostics are being collected.</p>
+
+<h2 id="web-scanning-usage">Web Scanning Usage <a class="header-link" href="#web-scanning-usage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>You must specify the site you want the report for otherwise no data will be generated.</p>
 <p>This report is designed to be run after attempting to access at least one authenticated URL with the
 authentication method set up correctly and with valid credentials.</p>
 <p>Session handling and verification can be left as &ldquo;autodetect&rdquo; - this report will detail how effective that was.</p>
+
+<h2 id="api-scanning-usage">API Scanning Usage <a class="header-link" href="#api-scanning-usage"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The intended workflow is that an enabling diagnostics job be included, and an API definition import done with a limited number of messages. The report can then include the relevant summary and traffic details.</p>
 
 <h3 id="sections">Sections <a class="header-link" href="#sections"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <table>
@@ -2042,7 +2047,11 @@ authentication method set up correctly and with valid credentials.</p>
 </table>
 
 <h3 id="summary">Summary <a class="header-link" href="#summary"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
-<p>The following summary items are used:</p>
+<p>Summary items fall into two categories:</p>
+<ul>
+<li><strong>Pass/Fail items</strong> : Use a boolean <code>passed</code> field to indicate success or failure.</li>
+<li><strong>Value-based items</strong> : Use a numeric <code>value</code> field (count) instead of <code>passed</code>.</li>
+</ul>
 <table>
   <thead>
       <tr>
@@ -2102,8 +2111,21 @@ authentication method set up correctly and with valid credentials.</p>
           <td style="text-align: left">true</td>
           <td style="text-align: left">Verification URL identified</td>
       </tr>
+      <tr>
+          <td style="text-align: left">auth.summary.connection_successes</td>
+          <td style="text-align: left">Value Based</td>
+          <td style="text-align: left">Responses received</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">auth.summary.connection_failures</td>
+          <td style="text-align: left">Value Based</td>
+          <td style="text-align: left">Communication or network failures</td>
+      </tr>
   </tbody>
 </table>
+<p>The connection success and failure items use a numeric <code>value</code> instead of
+<code>passed</code>. These counts reflect the overall results of network requests made while diagnostics are enabled,
+including responses received and any network or communication failures.</p>
 
 <h4 id="failure-details">Failure Details <a class="header-link" href="#failure-details"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h4>
 <p>The following failure detail items are used:</p>
@@ -2154,6 +2176,8 @@ authentication method set up correctly and with valid credentials.</p>
 <p>This is the <a href="/docs/desktop/addons/automation-framework/environment/">Automation Framework environment</a> that can be used to recreate the context being tested.</p>
 <p>If you have set the Session Management or Verification to &ldquo;autodetect&rdquo; and ZAP successfully detected them then the
 environment will have been updated with the values that ZAP has detected.</p>
+<p>The environment reflects the context used for the report. If several contexts are available, ZAP uses the one most
+relevant to the report; otherwise the first context is included.</p>
 
 <h3 id="statistics">Statistics <a class="header-link" href="#statistics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
 <p>These are all of the statistics that have been recorded by ZAP.<br>
