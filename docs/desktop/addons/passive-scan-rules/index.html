@@ -2104,7 +2104,7 @@ The current implementation looks at excessively permissive CORS headers.</p>
 
 <h2 id="id-10055">CSP (Content Security Policy) <a class="header-link" href="#id-10055"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>The Content Security Policy (CSP) passive scan rule parses and analyzes CSP headers and META definitions for potential misconfiguration or weakness. This rule leverages HtmlUnit&rsquo;s <a href="https://github.com/HtmlUnit/htmlunit-csp">htmlunit-csp</a> library to perform it&rsquo;s parsing and assessment of CSPs.</p>
-<p>If a response has multiple CSPs they are analyzed individually, as there is no sure way to intersect/merge the policies and further different browsers have varying levels of CSP support and enforcement.</p>
+<p>If a response has multiple Content-Security-Policy headers or CSP META definitions, they are analyzed together using browser-style intersection: a resource is allowed only if every policy allows it.</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/ContentSecurityPolicyScanRule.java">ContentSecurityPolicyScanRule.java</a></p>
 <p>Alert ID: <a href="/docs/alerts/10055/">10055</a>.</p>
 
@@ -2172,10 +2172,7 @@ Note: Javascript responses are only assessed at LOW threshold.</p>
 
 <h2 id="id-10025">Information Disclosure: Referrer <a class="header-link" href="#id-10025"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
 <p>Identifies the existence of sensitive details within the Referrer header field of HTTP requests (this may include parameters, document names, directory names, etc.).</p>
-<p>Note: In the case of suspected credit card identifiers in the Referrer value, the potential credit card numbers are looked up against a Bank Identification
-Number List (BINList). If a match is found the alert is raised at High confidence and additional details are added to the &lsquo;Other Information&rsquo; field in the alert,
-otherwise the alerts will have Medium confidence.
-See: <a href="https://github.com/iannuttall/binlist-data">binlist-data</a> for more information.</p>
+<p>Note: For suspected credit card values see the <a href="/docs/desktop/addons/common-library/">Common Library</a> add-on help (BIN List).</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/InformationDisclosureReferrerScanRule.java">InformationDisclosureReferrerScanRule.java</a></p>
 <p>Alert ID: <a href="/docs/alerts/10025/">10025</a>.</p>
 
@@ -2239,10 +2236,7 @@ At MEDIUM and HIGH threshold it attempts to use three characters of context on e
 <li>XML</li>
 </ul>
 <p>Image and CSS files are always ignored. Every other content type is evaluated at LOW threshold. Additionally at LOW threshold the entire HTML response is evaluated.</p>
-<p>Note: In the case of suspected credit card values, the potential credit card numbers are looked up against a Bank Identification Number List
-(BINList). If a match is found the alert is raised at High confidence and additional details are added to the &lsquo;Other Information&rsquo; field in the
-alert, otherwise the alerts will have Medium confidence.
-See: <a href="https://github.com/iannuttall/binlist-data">binlist-data</a> for more information.</p>
+<p>Note: For suspected credit card values see the <a href="/docs/desktop/addons/common-library/">Common Library</a> add-on help (BIN List).</p>
 <p>Latest code: <a href="https://github.com/zaproxy/zap-extensions/blob/main/addOns/pscanrules/src/main/java/org/zaproxy/zap/extension/pscanrules/PiiScanRule.java">PiiScanRule.java</a></p>
 <p>Alert ID: <a href="/docs/alerts/10062/">10062</a>.</p>
 
