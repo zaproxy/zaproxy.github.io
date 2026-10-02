@@ -1986,7 +1986,9 @@ You will need to change the &ldquo;Record Type&rdquo; to &ldquo;Client (browser)
 ZAP will launch your chosen browser and record the Zest statements in the Script Console as you perform actions in the browser.</p>
 
 <h2 id="recorder-advice-and-guidance">Recorder Advice and Guidance <a class="header-link" href="#recorder-advice-and-guidance"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
-<p>If you are going to use the recorded script for authentication then you need to make sure that the browser will be in the same state as when it is launched from ZAP.</p>
+<p>If you have any problems recording or replaying client side scripts then start by making sure that you have the latest version of the ZAP Recorder (if you have installed that) or the Client Side Integration (if you are launching the recording from ZAP).</p>
+<p>If you are going to use the recorded script for authentication then you need to make sure that the browser
+will be in the same state as when it is launched from ZAP.</p>
 <p>If the login URL is static then you can open that page before starting to record.</p>
 <p>If the URL is dynamic then you should enter a suitable static URL in the Recorder Dialog. This URL will then
 be recorded in the script and the browser will handle the dynamic redirects as required.</p>
@@ -1996,6 +1998,29 @@ as ZAP will need to do the same things.</p>
 application state.</p>
 <p>The &lsquo;buttons&rsquo; on some modern web apps can be complicated HTML components that are sometimes hard to click on using automation.
 If your forms can be submitted using the RETURN key then that is often a better option to use when recording.</p>
+<p>Try recording the same script twice, making sure you perform exactly the same actions.
+Then diff the scripts - if they are significantly different then its possible that ZAP is using
+values to reference HTML elements that are not consistent.
+If that is the case then you may need to manually edit the script in order to use values which are consistent.</p>
+
+<h2 id="recorder-diagnostics">Recorder Diagnostics <a class="header-link" href="#recorder-diagnostics"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>If you still have problems recording or replaying client side scripts then please report them to the ZAP team via a <a href="https://github.com/zaproxy/zaproxy/issues/new?template=bug-report.yml">new issue</a>.</p>
+<p>We will need to know:</p>
+<ul>
+<li>The ZAP and add-on versions - Help / Support Info&hellip;</li>
+<li>The browser extension version</li>
+<li>The failing Zest statement, obfuscating anything sensitive</li>
+<li>A detailed description of what you are doing, and what goes wrong</li>
+<li>Whether the problem is consistent</li>
+<li>Any relevant error messages</li>
+<li>The HTML for the element that is causing problems:
+<ul>
+<li>In your browser, right click the element and &ldquo;Inspect&rdquo;</li>
+<li>In the Dev Tools (Chrome, Edge) / Inspector (Firefox) right click the element</li>
+<li>Select &ldquo;Copy&rdquo; -&gt; &ldquo;Copy outerHTML&rdquo; / &ldquo;Outer HTML&rdquo;</li>
+</ul>
+</li>
+</ul>
 
         </div>
       </div>
