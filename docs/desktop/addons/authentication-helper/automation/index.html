@@ -245,6 +245,9 @@
                             <a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/authentication-helper/oauth2-auth/">OAuth2 Authentication</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/authentication-helper/reports/">Report Templates</a>
                         </li>  
                         <li> 
@@ -939,6 +942,15 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/parameter-digger/tab/">Param Digger tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+                <a href="/docs/desktop/addons/parameters-add-on/">Params</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/parameters-add-on/automation/">Params Automation Framework Support</a>
                         </li>
         </ul>
     </li>
@@ -1977,7 +1989,14 @@ If recording is still on at plan finish, it is stopped and persisted automatical
 <pre tabindex="0"><code>  - type: diagnostics                  # Enable or disable plan-level diagnostics recording
     parameters:
       enabled:                         # Bool: If true, start diagnostics recording, default: false
-</code></pre><p>Enabling both this job and <code>env</code> authentication diagnostics (browser/client
+      type:                            # String: omit for whole-plan recording, or auth_on_failure / auth_failure_rolling to retain only failed authentication attempts
+      count:                           # Int: number of failures to retain, only used by auth_failure_rolling, default: 5
+</code></pre><p>By default (<code>type</code> omitted) the job records all traffic for the whole plan,
+as described above. Setting <code>type</code> to <code>auth_on_failure</code> or
+<code>auth_failure_rolling</code> switches to per-attempt recording instead: only failed authentication
+attempts are retained (successes are discarded), either just the latest one, or the last <code>count</code>
+of them. With <code>auth_on_failure</code>, to keep the overhead low, only the error step is recorded, with just its screenshot.</p>
+<p>Enabling both this job and <code>env</code> authentication diagnostics (browser/client
 <code>authentication.parameters.diagnostics</code>) in the same plan is not recommended and may cause
 duplicate diagnostic records. Prefer using one diagnostics mechanism per plan.</p>
 
