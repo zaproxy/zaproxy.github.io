@@ -245,6 +245,9 @@
                             <a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script Authentication</a>
                         </li>  
                         <li> 
+                            <a href="/docs/desktop/addons/authentication-helper/oauth2-auth/">OAuth2 Authentication</a>
+                        </li>  
+                        <li> 
                             <a href="/docs/desktop/addons/authentication-helper/reports/">Report Templates</a>
                         </li>  
                         <li> 
@@ -939,6 +942,15 @@
                         </li>  
                         <li> 
                             <a href="/docs/desktop/addons/parameter-digger/tab/">Param Digger tab</a>
+                        </li>
+        </ul>
+    </li>
+
+    <li data-depth="2" class="">
+                <a href="/docs/desktop/addons/parameters-add-on/">Params</a>
+        <ul class="tree-branch">  
+                        <li> 
+                            <a href="/docs/desktop/addons/parameters-add-on/automation/">Params Automation Framework Support</a>
                         </li>
         </ul>
     </li>
@@ -1998,6 +2010,7 @@ as part of the Context.</p>
           loggedOutRegex:              # String, regex pattern for determining if logged out
           pollFrequency:               # Int, the poll frequency, only for &#39;poll&#39; verification
           pollUnits:                   # String, the poll units, one of &#39;requests&#39;, &#39;seconds&#39;, only for &#39;poll&#39; verification
+          pollMethod:                  # String, the poll HTTP method (e.g. GET), only for &#39;poll&#39; verification. Post 2.17.0.
           pollUrl:                     # String, the URL to poll, only for &#39;poll&#39; verification
           pollPostData:                # String, post dat to include in the poll, only for &#39;poll&#39; verification
           pollAdditionalHeaders:       # List of additional headers for poll request, only for &#39;poll&#39; verification
@@ -2035,6 +2048,7 @@ as part of the Context.</p>
     failOnWarning: false               # If set exit on a warning
     continueOnFailure: false           # Continue running all jobs, even if one fails
     progressToStdout: true             # If set will write job progress to stdout
+    maxDuration: 0                     # The max time, in seconds, the plan is allowed to run, default: 0 unlimited
   proxy:                               # Optional upstream proxy settings
     hostname:                          # String, the proxy host
     port:                              # Int, the proxy port

@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-10-08-oauth2-support/images/oauth2-config.png">
+  <meta name="twitter:title" content="Initial OAuth2.0 support">
+  <meta name="twitter:description" content="The Authentication Helper add-on now ships with an OAuth2 authentication method for the non-interactive grant types: client_credentials and password. This is an early release and we want your feedback. Here’s what’s done, what isn’t, and what’s coming next.">
+
+    <meta property="og:url" content="/blog/2026-10-08-oauth2-support/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Initial OAuth2.0 support">
+  <meta property="og:description" content="The Authentication Helper add-on now ships with an OAuth2 authentication method for the non-interactive grant types: client_credentials and password. This is an early release and we want your feedback. Here’s what’s done, what isn’t, and what’s coming next.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-10-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-10-08T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Api">
+    <meta property="article:tag" content="Authentication">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Oauth2">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-10-08-oauth2-support/images/oauth2-config.png">
+
+  
+  <title>ZAP &ndash; Initial OAuth2.0 support</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.e0450d.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Initial OAuth2.0 support</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Thursday October 8, 2026</span>
+              <span class="word-count fl-r"> 713 Words </span>
+            </section>
+            
+            
+            
+            
+<h2 id="oauth20-support-has-landed-in-authentication-helper">OAuth2.0 support has landed in Authentication Helper <a class="header-link" href="#oauth20-support-has-landed-in-authentication-helper"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>We&rsquo;re pleased to announce the first version of OAuth2.0 support in the <a href="/docs/desktop/addons/authhelper/">Authentication Helper add-on</a>.
+The new authentication method is configured against a single token endpoint and handles the non-interactive grant types that work well with automated and CI-driven scanning:</p>
+<ul>
+<li><strong>client_credentials</strong> (the default)</li>
+<li><strong>password</strong> (resource owner password credentials)</li>
+</ul>
+<p>Note that we recommend only using this new method for authenticating to APIs (where relevant), not for
+web apps that use OAuth2.0.</p>
+<p>If you have a web app that has an authentication flow that uses web based login screens then you should
+continue to use either <a href="/docs/desktop/addons/authentication-helper/browser-auth/">Browser Based Authentication</a>
+or <a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script Authentication</a>,
+even if those screens drive OAuth2.0 in the background.
+These options are needed in order to explore your app with the modern spiders.</p>
+
+<h2 id="how-to-configure-it">How to configure it <a class="header-link" href="#how-to-configure-it"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Update to the latest version of the <a href="/docs/desktop/addons/authhelper/">Authentication Helper add-on</a> add-on, or use the latest <a href="/download/#weekly">weekly release</a>.</p>
+
+<h3 id="desktop-ui">Desktop UI <a class="header-link" href="#desktop-ui"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ol>
+<li>Double click on the Context you want to configure</li>
+<li>Select the Authentication screen</li>
+<li>Select OAuth2 Authentication in the authentication pulldown</li>
+</ol>
+<p><img src="images/oauth2-config.png" alt="OAuth2 configuration screen"></p>
+
+<h3 id="automation-framework">Automation Framework <a class="header-link" href="#automation-framework"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>An example Automation Framework configuration looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contexts</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;oauth2-context&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">urls</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;https://api.example.com&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">includePaths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;https://api\\.example\\.com.*&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">excludePaths</span>: []
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">authentication</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#34;oauth2&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">grantType</span>: <span style="color:#e6db74">&#34;client_credentials&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">tokenEndpoint</span>: <span style="color:#e6db74">&#34;https://authserver.example.com/token&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">clientId</span>: <span style="color:#e6db74">&#34;test-client&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">clientSecret</span>: <span style="color:#e6db74">&#34;test-secret&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">clientAuthMethod</span>: <span style="color:#e6db74">&#34;client_secret_basic&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">extraTokenParams</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">require_client_auth_method</span>: <span style="color:#e6db74">&#34;client_secret_basic&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">verification</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#34;response&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loggedInRegex</span>: <span style="color:#e6db74">&#34;\\Q 200 OK\\E&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loggedOutRegex</span>: <span style="color:#e6db74">&#34;\\Q 401 Unauthorized\\E&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sessionManagement</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#34;headers&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">Authorization</span>: <span style="color:#e6db74">&#34;Bearer {%json:access_token%}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">users</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;test-user&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">credentials</span>: {}
+</span></span></code></pre></div><p>For more details see the OAuth2.0 Automation Framework <a href="/docs/desktop/addons/authentication-helper/auth2-auth/">help</a>.</p>
+
+<h3 id="api">API <a class="header-link" href="#api"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p>The OAuth2 method is available through the ZAP API. To check which authentication methods are available for a context, request:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X GET <span style="color:#e6db74">&#34;http://localhost:8080/JSON/authentication/view/getSupportedAuthenticationMethods/&#34;</span>
+</span></span></code></pre></div><p>The OAuth2 method is listed as <code>oauth2Authentication</code>. To set the method and its configuration on a context (ID 1), send a request such as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -X POST <span style="color:#e6db74">&#34;http://localhost:8080/JSON/authentication/action/setAuthenticationMethod/&#34;</span> -d <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span><span style="color:#e6db74">&#34;contextId=1&amp;authMethodName=oauth2Authentication&amp;\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">authMethodConfigParams=grantType%3D\client_credentials%26\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">tokenEndpoint%3Dhttps%3A%2F%2Fauthserver.example.com%2Ftoken%26\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">clientId%3Dtest-client%26\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">clientSecret%3Dtest-secret%26\
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">clientAuthMethod%3Dclient_secret_basic&#34;</span>
+</span></span></code></pre></div><p>The <code>authMethodConfigParams</code> object supports the same parameters as the desktop UI: <code>grantType</code>, <code>tokenEndpoint</code>, <code>clientId</code>, <code>clientSecret</code>, <code>clientAuthMethod</code>, <code>scope</code>, <code>accessTokenField</code>, <code>refreshTokenField</code> and <code>extraTokenParams</code>.</p>
+
+<h2 id="oauth2-configuration-parameters">OAuth2 configuration parameters <a class="header-link" href="#oauth2-configuration-parameters"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>For each of the grant types you can configure the token endpoint URL, client identifier and secret, the client authentication method (client_secret_basic, client_secret_post, or none for public clients), the scope, custom JSON field names for the access and refresh tokens, and any extra parameters to send to the token endpoint.</p>
+<p>When a token is obtained, the add-on normalises the token response so the tokens are always available under the canonical <code>access_token</code> / <code>refresh_token</code> JSON keys, and it feeds them into the configured session management method. That means templating such as <code>Authorization: Bearer {%json:access_token%}</code> in
+<a href="/docs/desktop/addons/authentication-helper/session-header/">Header Based Session Management</a> works with OAuth2 as you&rsquo;d expect.</p>
+
+<h2 id="whats-not-yet-supported">What&rsquo;s not yet supported <a class="header-link" href="#whats-not-yet-supported"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This is an early release, and there are a few important gaps to be aware of before you rely on it:</p>
+<ul>
+<li><strong>Limited Autodetection for Verification and Session Management.</strong> This may work in some cases but has not been tested, so should not be relied upon.</li>
+<li><strong>The interactive &ldquo;Authorization Code&rdquo; grant is not supported.</strong> The Authentication Helper only handles non-interactive grants that exchange directly against a token endpoint. The browser-based flow — where a user signs in on an authorization endpoint, is redirected back with a code, and the code is exchanged for a token — is not yet implemented.</li>
+<li><strong>No proactive token refresh.</strong> The method does not currently read <code>expires_in</code> or refresh tokens on its own. If a token expires mid-scan, ZAP will see a 401 on a subsequent request and trigger re-authentication, rather than silently refreshing the token first.</li>
+<li><strong>PKCE is not yet supported.</strong> Public clients can be configured with <code>client_auth: none</code>, but the PKCE challenge/response is not yet enforced.</li>
+<li><strong>Other grant types and OIDC extensions</strong> (e.g. JWT bearer, dynamic client registration, userinfo) are not part of this initial release.</li>
+</ul>
+<p>You can see the full behaviour, including the known gaps, in the <a href="/docs/desktop/addons/authentication-helper/auth2-auth/">help</a>.</p>
+<p>As you can see we have plenty of things left to do and we want your feedback to help us prioritise it.</p>
+
+<h2 id="give-us-your-feedback">Give us your feedback <a class="header-link" href="#give-us-your-feedback"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>We&rsquo;d love to hear from you. Try the new method against your IdP and let us know how it goes:</p>
+<ul>
+<li>On the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a></li>
+<li>By raising <a href="https://github.com/zaproxy/zaproxy/issues">issues</a> for bugs - please include enough information for us to reproduce the problem</li>
+</ul>
+<p>The more real-world feedback we get, the better the next release will be.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-10-01-zap-updates-september-2026/"> ZAP Updates - September 2026</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/simon/">Simon Bennetts</a>
+                  
+                  
+<a class="author-twitter" href="https://twitter.com/psiinon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+ @psiinon</a>
+
+
+
+
+<br /><a class="author-mastodon" rel="me" href="https://infosec.exchange/@psiinon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+ @psiinon</a>
+
+<br /><a class="author-bluesky" href="https://bsky.app/profile/psiinon.bsky.social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c.136-.02.275-.039.415-.056c-.138.022-.276.04-.415.056c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056c2.67.297 5.568-.628 6.383-3.364c.246-.828.624-5.79.624-6.478c0-.69-.139-1.861-.902-2.206c-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8"/></svg>
+ @psiinon.bsky.social</a>
+
+
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#oauth20-support-has-landed-in-authentication-helper">OAuth2.0 support has landed in Authentication Helper</a></li>
+    <li><a href="#how-to-configure-it">How to configure it</a>
+      <ul>
+        <li><a href="#desktop-ui">Desktop UI</a></li>
+        <li><a href="#automation-framework">Automation Framework</a></li>
+        <li><a href="#api">API</a></li>
+      </ul>
+    </li>
+    <li><a href="#oauth2-configuration-parameters">OAuth2 configuration parameters</a></li>
+    <li><a href="#whats-not-yet-supported">What&rsquo;s not yet supported</a></li>
+    <li><a href="#give-us-your-feedback">Give us your feedback</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/api/">api</a> </li>
+           
+           <li> <a href="/tags/authentication/">authentication</a> </li>
+           
+           <li> <a href="/tags/automation/">automation</a> </li>
+           
+           <li> <a href="/tags/oauth2/">oauth2</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-10-08-oauth2-support/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.2644d5.js"></script>
+  
+</div>
+</body>
+</html>
