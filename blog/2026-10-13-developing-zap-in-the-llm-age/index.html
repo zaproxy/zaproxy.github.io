@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-10-13-developing-zap-in-the-llm-age/images/blog-developing-zap-llm.png">
+  <meta name="twitter:title" content="Developing ZAP in the LLM Age">
+  <meta name="twitter:description" content="LLMs have made it much easier to generate code, which changes the balance of how open source projects like ZAP are developed. We are not closing the door on new contributors - ZAP has always been a community project - but reviewing is now the bottleneck, so every PR needs to be as easy to review as possible.">
+
+    <meta property="og:url" content="/blog/2026-10-13-developing-zap-in-the-llm-age/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Developing ZAP in the LLM Age">
+  <meta property="og:description" content="LLMs have made it much easier to generate code, which changes the balance of how open source projects like ZAP are developed. We are not closing the door on new contributors - ZAP has always been a community project - but reviewing is now the bottleneck, so every PR needs to be as easy to review as possible.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-10-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-10-13T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Llm">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Hacking">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-10-13-developing-zap-in-the-llm-age/images/blog-developing-zap-llm.png">
+
+  
+  <title>ZAP &ndash; Developing ZAP in the LLM Age</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.e0450d.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Developing ZAP in the LLM Age</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday October 13, 2026</span>
+              <span class="word-count fl-r"> 1398 Words </span>
+            </section>
+            
+            
+            
+            
+<h2 id="why-were-writing-this">Why we&rsquo;re writing this <a class="header-link" href="#why-were-writing-this"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Large Language Models (LLMs) have changed how a lot of software gets written, and ZAP is no exception.
+Many of us on the <a href="/docs/team">ZAP Core Team</a> now use LLM assistants day to day, and increasingly
+we&rsquo;re seeing them used in contributions from across the community.</p>
+<p>That&rsquo;s fine - but it means we need to be explicit about how we&rsquo;re changing the way we develop
+ZAP, so that everyone knows what to expect.</p>
+<p><img src="images/blog-developing-zap-llm.png" alt="ZAPbot and their laptop"></p>
+
+<h2 id="some-projects-are-closing-their-doors">Some projects are closing their doors <a class="header-link" href="#some-projects-are-closing-their-doors"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>You may have seen reports of well-known open source projects
+<a href="https://tldraw.dev/blog/stay-away-from-my-trash">restricting or blocking</a> contributions from new
+contributors, largely because maintainers are being flooded with AI-generated pull requests
+that take more effort to review than they would have taken to write in the first place.</p>
+<p>We do not want to do that.</p>
+<p>ZAP has always been a community project, and it always will be. Anyone can contribute -
+whether that&rsquo;s your first ever pull request or your five hundredth, whether you wrote every
+line by hand or with a lot of help from an LLM. We&rsquo;re not going to start gating contributions
+on who you are, how much experience you have, or what tools you used.</p>
+
+<h2 id="but-the-balance-has-changed">But the balance has changed <a class="header-link" href="#but-the-balance-has-changed"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>What has changed is the balance of effort.</p>
+<p>It is now much easier for anyone to generate code. What has not got any easier is reviewing
+it. Reviewing is where the real cost is now: understanding what a change is supposed to do,
+working out whether it actually does that, checking it fits with the rest of the codebase, and
+being confident there isn&rsquo;t something subtle broken somewhere.</p>
+<p>A reviewer can&rsquo;t outsource that judgment. If a pull request arrives that&rsquo;s hard to follow,
+contains code the submitter can&rsquo;t explain, or has no tests, then reviewing it can easily take
+longer than writing the original change would have - and there are only so many review hours
+available.</p>
+<p>To be completely clear: <strong>this applies to contributions from anyone, including the ZAP Core
+Team.</strong> We&rsquo;re holding ourselves to exactly the same standards we&rsquo;re asking everyone else to
+meet. Several of us (including me) have already had PRs sent back - or reworked before submission -
+for being too big, too thin on tests, or too hard to follow.</p>
+
+<h2 id="the-pr-submitter-is-responsible-for-their-code">The PR submitter is responsible for their code <a class="header-link" href="#the-pr-submitter-is-responsible-for-their-code"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The most important rule is this: <strong>the pull request submitter is responsible for the code they
+propose.</strong></p>
+<p>That means you must:</p>
+<ul>
+<li><strong>Understand it.</strong> If you can&rsquo;t explain what the change does and why, line by line if
+needed, then you aren&rsquo;t ready to submit it. &ldquo;The LLM wrote it&rdquo; is not an explanation.</li>
+<li><strong>Believe it to be correct.</strong> You should be confident the change does what you intended,
+handles the important edge cases, and doesn&rsquo;t break anything else - not just that it
+compiles and the happy path works once on your machine.</li>
+</ul>
+<p>Using an LLM to help is completely fine. Hiding behind one is not. The person whose name is on
+the PR is the person who owns it.</p>
+
+<h2 id="make-your-prs-as-easy-to-review-as-possible">Make your PRs as easy to review as possible <a class="header-link" href="#make-your-prs-as-easy-to-review-as-possible"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The easier your PR is to review, the quicker we will get to it. That&rsquo;s not a reward, it&rsquo;s just
+arithmetic - reviewer time is the scarce resource, so spend less of it per change. Concretely:</p>
+<ul>
+<li><strong>Smaller PRs.</strong> Prefer several focused PRs over one big one. A change that touches one
+concern and is a few hundred lines is dramatically easier to review than a multi-thousand
+line change that mixes several features or a feature with a refactor. If a PR can plausibly
+be split, split it.</li>
+<li><strong>Full unit tests, where possible.</strong> Tests are the fastest way for a reviewer to see what
+your code is supposed to do and to gain confidence that it does. Don&rsquo;t just add a test that
+the code runs - cover the edge cases and the failure paths. If you genuinely believe part of
+the change can&rsquo;t be unit tested, say so in the PR description and explain why.</li>
+<li><strong>Ideally end to end tests too.</strong> Unit tests prove the pieces work; end to end tests prove
+the feature works in a real ZAP. For anything that can be exercised that way, include one.</li>
+<li><strong>Preferably as Automation Framework plans.</strong> The best end to end tests for ZAP are
+<a href="/docs/desktop/automate/automation-framework/">Automation Framework</a> plans that we can run
+with little to no preparation - no manual setup, no special environment, no undocumented
+prerequisites. A plan we can drop in and run tells a reviewer far more, far faster, than a
+description of how you tested it manually.</li>
+</ul>
+<p>A good, concise PR description also helps: what&rsquo;s the problem, what&rsquo;s your approach, how did you test
+it, and anything you know is incomplete or deliberately out of scope.</p>
+
+<h2 id="an-llm-will-review-your-pr-before-we-do">An LLM will review your PR before we do <a class="header-link" href="#an-llm-will-review-your-pr-before-we-do"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>To be upfront about part of our process: for any non-trivial change, the first thing we will
+do is submit it to an LLM for review.</p>
+<p>This is not a replacement for human review - a reviewer still has to understand the change,
+judge whether it belongs, and be confident it&rsquo;s correct. What the LLM pass does is catch the
+obvious problems early - missing edge cases, sloppy error handling, tests that don&rsquo;t really
+test anything - so that when a human does look at the PR, their time goes on the things that
+actually need judgment.</p>
+<p>Which suggests a tip that we&rsquo;d encourage all contributors to follow: <strong>before you submit, get
+a second LLM to review your changes - one you didn&rsquo;t use to write them.</strong> A fresh model, looking
+at your code for the first time, will often spot things the one that helped you write it
+missed, in much the same way that a fresh pair of human eyes does. If your second reviewer
+finds problems, fix them before opening the PR - fixing them first means fewer rounds of
+&ldquo;please fix this basic thing&rdquo; comments.</p>
+
+<h2 id="making-our-integration-tests-easier-to-write">Making our integration tests easier to write <a class="header-link" href="#making-our-integration-tests-easier-to-write"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>One thing we&rsquo;re doing to make the end to end tests described above easier is reworking how our
+integration tests are built.</p>
+<p>We already run a set of <a href="https://github.com/zaproxy/zaproxy/tree/main/docker/integration_tests">Integration Tests</a>
+every night. Many of them depend on the <a href="/docs/desktop/addons/dev-add-on/">Dev add-on</a>, which
+starts a simple test web service inside ZAP with a very basic templating engine that we can
+extend with whatever functionality we need. Because the add-on runs inside ZAP, there&rsquo;s no
+extra software to install, and we can fake any endpoints we need - which has been invaluable
+for testing things like handling Single Sign On.</p>
+<p>Up to now all of these test pages were written by hand, but it turns out LLMs are very good at
+generating exactly this kind of simple test page - a task where LLM assistance really pays off.</p>
+<p>We&rsquo;re restructuring the test service to make it much more pluggable: we expect the number of
+test cases to grow quickly, and it makes more sense for test pages to belong to the add-ons
+that implement the functionality they are testing. Once that&rsquo;s in place, if you&rsquo;re adding a
+feature to an add-on you&rsquo;ll be able to add the test pages for it right alongside the code,
+which should make supplying end to end tests with your PR much more straightforward.</p>
+
+<h2 id="what-this-means-going-forward">What this means going forward <a class="header-link" href="#what-this-means-going-forward"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Nothing about how ZAP works is changing - we&rsquo;re still a community project and we still want
+your contributions, first timers included. What&rsquo;s changing is where the effort goes. Less of
+it in typing code, more of it in understanding, testing, and reviewing it.</p>
+<p>So before you open your next PR, ask yourself: <em>would I want to review this?</em> If the answer is
+no, it&rsquo;s probably not ready yet - split it, test it, or write it up until it is.</p>
+<p>We know this is a higher bar than many projects have asked for in the past, but
+it&rsquo;s the bar that keeps the project healthy when code is cheap and review isn&rsquo;t. If you&rsquo;re not
+sure whether your change is ready, ask first - on the <a href="https://groups.google.com/group/zaproxy-develop">ZAP Developer Group</a>
+or in the relevant issue - and we&rsquo;ll happily give you a steer before you spend time on it.</p>
+<p>And yes, I did use an LLM to help write this blog post, but it was carefully prompted and checked
+by me, so any mistakes or inaccuracies are mine. &#x1f601;</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-10-08-oauth2-support/"> Initial OAuth2.0 support</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/simon/">Simon Bennetts</a>
+                  
+                  
+<a class="author-twitter" href="https://twitter.com/psiinon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+ @psiinon</a>
+
+
+
+
+<br /><a class="author-mastodon" rel="me" href="https://infosec.exchange/@psiinon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+ @psiinon</a>
+
+<br /><a class="author-bluesky" href="https://bsky.app/profile/psiinon.bsky.social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c.136-.02.275-.039.415-.056c-.138.022-.276.04-.415.056c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056c2.67.297 5.568-.628 6.383-3.364c.246-.828.624-5.79.624-6.478c0-.69-.139-1.861-.902-2.206c-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8"/></svg>
+ @psiinon.bsky.social</a>
+
+
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-were-writing-this">Why we&rsquo;re writing this</a></li>
+    <li><a href="#some-projects-are-closing-their-doors">Some projects are closing their doors</a></li>
+    <li><a href="#but-the-balance-has-changed">But the balance has changed</a></li>
+    <li><a href="#the-pr-submitter-is-responsible-for-their-code">The PR submitter is responsible for their code</a></li>
+    <li><a href="#make-your-prs-as-easy-to-review-as-possible">Make your PRs as easy to review as possible</a></li>
+    <li><a href="#an-llm-will-review-your-pr-before-we-do">An LLM will review your PR before we do</a></li>
+    <li><a href="#making-our-integration-tests-easier-to-write">Making our integration tests easier to write</a></li>
+    <li><a href="#what-this-means-going-forward">What this means going forward</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/llm/">llm</a> </li>
+           
+           <li> <a href="/tags/ai/">ai</a> </li>
+           
+           <li> <a href="/tags/hacking/">hacking</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-10-13-developing-zap-in-the-llm-age/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.2644d5.js"></script>
+  
+</div>
+</body>
+</html>
