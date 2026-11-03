@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-11-03-ai-assisted-authentication/images/auth-tester-all-tabs.png">
+  <meta name="twitter:title" content="AI Assisted Authentication">
+  <meta name="twitter:description" content="Authenticating to modern web apps is hard. The Authentication Helper add-on now has an AI Assisted Authentication method which uses an LLM to work out how to log in, then turns that into a fast, repeatable Client Script. Here’s how it works and how to try it out.">
+
+    <meta property="og:url" content="/blog/2026-11-03-ai-assisted-authentication/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="AI Assisted Authentication">
+  <meta property="og:description" content="Authenticating to modern web apps is hard. The Authentication Helper add-on now has an AI Assisted Authentication method which uses an LLM to work out how to log in, then turns that into a fast, repeatable Client Script. Here’s how it works and how to try it out.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-11-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-11-03T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Authentication">
+    <meta property="article:tag" content="Automation">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Llm">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-11-03-ai-assisted-authentication/images/auth-tester-all-tabs.png">
+
+  
+  <title>ZAP &ndash; AI Assisted Authentication</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.e0450d.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">AI Assisted Authentication</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday November 3, 2026</span>
+              <span class="word-count fl-r"> 1410 Words </span>
+            </section>
+            
+            
+            
+            
+<h2 id="authentication-is-hard">Authentication is hard <a class="header-link" href="#authentication-is-hard"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Handling authentication for modern web apps is one of the hardest parts of getting a good scan.
+Single page apps, multi-step logins, redirects through identity providers, tokens stored in odd places,
+cookie banners that get in the way&hellip; there are a lot of ways for things to go wrong.</p>
+<p>We <strong>do not recommend</strong> that you configure authentication in ZAP manually, i.e. by working out which requests
+to send, which fields to set, and how to identify a logged in session by hand.
+It is time consuming, fragile, and it does not work well with the modern spiders, which need to be able to
+authenticate in a real browser.</p>
+<p>Instead we recommend one of the two methods provided by the
+<a href="/docs/desktop/addons/authentication-helper/">Authentication Helper add-on</a>:</p>
+<ul>
+<li><a href="/docs/desktop/addons/authentication-helper/browser-auth/"><strong>Browser Based Authentication</strong></a> -
+ZAP launches a browser, loads your login page, and uses heuristics to find the username and password fields
+and submit the form. You supply the login page URL and credentials, and ZAP does the rest, including working out
+how your app handles sessions and how to verify that you are logged in. This works for a large number of apps.</li>
+<li><a href="/docs/desktop/addons/authentication-helper/client-script/"><strong>Client Script Authentication</strong></a> -
+for apps where the heuristics are not enough, you record your login with the browser extension or
+the Authentication Tester, and ZAP replays that <a href="/docs/desktop/addons/zest/">Zest</a> script whenever it
+needs to authenticate. You have full control, and the replay is fast and deterministic.</li>
+</ul>
+
+<h2 id="introducing-ai-assisted-authentication">Introducing AI Assisted Authentication <a class="header-link" href="#introducing-ai-assisted-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The new <strong>AI Assisted Authentication</strong> method sits between those two. It uses an LLM to drive the browser
+and log in for you, even when the login flow is something the Browser Based heuristics cannot handle.</p>
+<p>At each step ZAP sends the LLM a description of the current page: the URL, the title, the visible text and the form
+elements. The LLM decides what to click, type or select next, and ZAP carries out that action in the browser.
+This repeats until the LLM decides that the login has succeeded or failed, or a maximum number of turns is reached.</p>
+<p>The clever part is what happens next. Running an LLM on every authentication attempt would be slow, costly and
+non-deterministic. So AI Assisted Authentication is only meant to be used <strong>once</strong>, to work out how to log in.
+While it runs, ZAP records every action that succeeds. When the login works, ZAP automatically:</p>
+<ol>
+<li>Builds a Zest script from the recorded actions</li>
+<li>Switches your context to <a href="/docs/desktop/addons/authentication-helper/client-script/">Client Script Authentication</a> using that script</li>
+</ol>
+<p>All of the subsequent authentication attempts then use the generated script, with no LLM involved.
+You can also review, test, or edit the script just like any other Client Script.</p>
+
+<h3 id="your-credentials-stay-with-zap">Your credentials stay with ZAP <a class="header-link" href="#your-credentials-stay-with-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<p><strong>ZAP does not send your credentials to the LLM.</strong> The LLM is only given placeholders for the username and password,
+and tells ZAP which field each one should go into. ZAP then fills in the real values locally in the browser.
+Any real credential values that appear in the page elements are also replaced with the placeholders before they are sent.</p>
+
+<h3 id="what-you-need">What you need <a class="header-link" href="#what-you-need"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ul>
+<li>The latest version of the <a href="/docs/desktop/addons/authhelper/">Authentication Helper add-on</a></li>
+<li>The <a href="/docs/desktop/addons/llm-support/">LLM Support add-on</a>, configured with a working LLM provider</li>
+</ul>
+<p>Note that the description of each page that is sent to the LLM includes the page text, and this is sent regardless of
+the provider&rsquo;s <a href="/docs/desktop/addons/llm-support/options/">Trusted</a> setting.
+So choose a provider you are happy to share this with. A locally hosted model is a good option if you have concerns.</p>
+
+<h2 id="trying-it-out-with-the-authentication-tester">Trying it out with the Authentication Tester <a class="header-link" href="#trying-it-out-with-the-authentication-tester"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The easiest way to try this out is with the <a href="/blog/2023-05-23-authentication-tester/">Authentication Tester</a>, which is available from the
+<strong>Tools</strong> menu (or the <code>Ctrl+T</code> shortcut, <code>Cmd+T</code> on macOS).</p>
+<p><img src="images/auth-tester-ai-start.png" alt="The Authentication Tester dialog with the AI Assisted auth method selected"></p>
+<ol>
+<li>Make sure the LLM Support add-on is configured with a provider</li>
+<li>Open the <strong>Authentication Tester</strong></li>
+<li>Enter the <strong>Login URL</strong> of your app</li>
+<li>Select <strong>AI Assisted</strong> as the <strong>Auth Method</strong></li>
+<li>Select the <strong>Browser</strong> you want to use</li>
+<li>Enter the <strong>Username</strong> and <strong>Password</strong></li>
+<li>If your login has steps which are not obvious from the page itself, enter some guidance in the <strong>Hints</strong> field,
+for example: <code>Set the domain dropdown to Project1 before clicking Next.</code></li>
+<li>Press the <strong>Test</strong> button and watch ZAP work through your login</li>
+</ol>
+<p>Hints are the main way to help when the LLM gets stuck. Things like which option to choose in a dropdown,
+or how to dismiss a particular cookie banner, are very difficult to infer from the page alone.</p>
+<p>The results panel shows the progress and what has been identified, as with the other methods.
+If it succeeds, ZAP will have worked out the session handling and verification as well, and your context will have been
+switched over to Client Script Authentication using the script it just generated.</p>
+<p>You can follow what the LLM is doing as it happens: all of the interactions with the LLM are shown in an
+<strong>AI Assisted Auth</strong> tab in the <a href="/docs/desktop/addons/llm-support/chat/">LLM Chat tab</a>. For each step you can see the page
+that ZAP described, the actions the LLM chose and its reasoning for them, which is very useful when you are working out
+what hints to give it, or why a login failed. Remember that the credentials only ever appear there as placeholders.</p>
+<p><img src="images/auth-tester-all-tabs.png" alt="The Authentication Tester passing, with the LLM&rsquo;s reasoning and actions shown in the AI Assisted Auth tab and the generated script in the Scripts tree"></p>
+
+<h2 id="automating-ai-assisted-authentication">Automating AI Assisted Authentication <a class="header-link" href="#automating-ai-assisted-authentication"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>You can also use the method outside of the Authentication Tester:</p>
+<ul>
+<li>In the <a href="/docs/desktop/addons/authentication-helper/automation/">Automation Framework</a> set the authentication <code>method</code> to <code>ai</code></li>
+<li>Via the API using the <code>aiAssistedAuthentication</code> action in the <code>authentication</code> API</li>
+</ul>
+<p>An example Automation Framework plan which configures an LLM provider and then uses the <code>ai</code> method looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">env</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">contexts</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;ai-auth-context&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">urls</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;https://www.example.com&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">includePaths</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;https://www\\.example\\.com.*&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">authentication</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#34;ai&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginPageUrl</span>: <span style="color:#e6db74">&#34;https://www.example.com/login&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">browserId</span>: <span style="color:#e6db74">&#34;firefox-headless&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">loginPageWait</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">hint</span>: <span style="color:#e6db74">&#34;Set the domain dropdown to Project1 before clicking Next.&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">verification</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#34;autodetect&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sessionManagement</span>:
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#34;autodetect&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">users</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;test-user&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">credentials</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">username</span>: <span style="color:#e6db74">&#34;test@example.com&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">password</span>: <span style="color:#e6db74">&#34;${AUTH_PASSWORD}&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#ae81ff">llm-config</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultProvider</span>: <span style="color:#e6db74">&#34;my-provider&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultModel</span>: <span style="color:#e6db74">&#34;my-model&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">providers</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;my-provider&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;OPENAI_COMPATIBLE&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">apiKey</span>: <span style="color:#e6db74">&#34;${LLM_API_KEY}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">endpoint</span>: <span style="color:#e6db74">&#34;https://llm.example.com/v1&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">models</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#e6db74">&#34;my-model&#34;</span>
+</span></span><span style="display:flex;"><span>- <span style="color:#f92672">type</span>: <span style="color:#e6db74">&#34;requestor&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">parameters</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">user</span>: <span style="color:#e6db74">&#34;test-user&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">requests</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">url</span>: <span style="color:#e6db74">&#34;https://www.example.com/&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">method</span>: <span style="color:#e6db74">&#34;GET&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">responseCode</span>: <span style="color:#ae81ff">200</span>
+</span></span></code></pre></div><p>Only <code>loginPageUrl</code> is mandatory, the <code>hint</code> is optional. The <code>llm-config</code> job is only needed if you have not already configured a provider in ZAP.
+We recommend using environment variables for secrets, as shown above, so that they are not saved in the plan.</p>
+<p>The <code>requestor</code> job sends a request as <code>test-user</code>, which triggers the authentication.
+Once the authentication succeeds ZAP switches the context in the running ZAP instance to Client Script Authentication.
+The plan itself is not changed though, so if you re-run it ZAP will use the LLM again.
+To use the generated script instead you need to create a new plan that uses the updated context.</p>
+<p>See the <a href="/docs/desktop/addons/authentication-helper/ai-auth/">AI Assisted Authentication help</a> for all of the details.</p>
+
+<h2 id="choosing-a-model">Choosing a model <a class="header-link" href="#choosing-a-model"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The model you use makes a big difference. The LLM has to reliably follow instructions and respond with
+structured output, across a number of turns, so our recommendations are:</p>
+<ul>
+<li><strong>Use a current, capable model.</strong> The frontier models from the major providers do best, and we have had good results
+with the Claude, Gemini and OpenAI families. A mid-sized model from one of these families is usually plenty,
+you do not need the biggest and most expensive one.</li>
+<li><strong>Be wary of very small models.</strong> Small models, including many that you can run locally, often struggle to
+produce valid structured responses or to choose the right element on a busy page.
+If you want to stay local then use the largest model your hardware can run, and expect to need more hints.</li>
+<li><strong>It is a one-off cost.</strong> Because the result is converted into a script, you will only need the LLM
+when you first set up the authentication (or when the login page changes), so the token usage is small.
+It is worth using a better model, rather than burning time on retries with a poor one.</li>
+</ul>
+<p>If a model fails, try a different one before spending a long time tuning your hints.</p>
+
+<h2 id="what-about-totp">What about TOTP? <a class="header-link" href="#what-about-totp"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Multi-factor authentication using Time-based One-Time Passwords (TOTP) is <strong>not currently supported</strong> by
+AI Assisted Authentication. This is coming soon, so keep an eye on the
+<a href="/blog/">ZAP blog</a> for the announcement.</p>
+
+<h2 id="feedback">Feedback <a class="header-link" href="#feedback"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>This is a new feature, and we want to hear how it works for you, especially on the login pages that Browser Based Authentication
+could not handle. Please let us know how you get on in the <a href="https://groups.google.com/group/zaproxy-users">ZAP User Group</a>,
+or raise an issue in the <a href="https://github.com/zaproxy/zaproxy">zaproxy</a> repository if you find something that does not work.</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-11-02-zap-updates-october-2026/"> ZAP Updates - October 2026</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/simon-bennetts_400x400.jpg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="/authors/simon/">Simon Bennetts</a>
+                  
+                  
+<a class="author-twitter" href="https://twitter.com/psiinon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+ @psiinon</a>
+
+
+
+
+<br /><a class="author-mastodon" rel="me" href="https://infosec.exchange/@psiinon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.193 7.88c0-5.207-3.411-6.733-3.411-6.733C18.062.357 15.108.025 12.041 0h-.076c-3.069.025-6.02.357-7.74 1.147 0 0-3.412 1.526-3.412 6.732 0 1.193-.023 2.619.015 4.13.124 5.092.934 10.11 5.641 11.355 2.17.574 4.034.695 5.536.612 2.722-.15 4.25-.972 4.25-.972l-.09-1.975s-1.945.613-4.13.54c-2.165-.075-4.449-.234-4.799-2.892a5.5 5.5 0 0 1-.048-.745s2.125.52 4.818.643c1.646.075 3.19-.097 4.758-.283 3.007-.359 5.625-2.212 5.954-3.905.517-2.665.475-6.508.475-6.508zm-4.024 6.709h-2.497v-6.12c0-1.29-.543-1.944-1.628-1.944-1.2 0-1.802.776-1.802 2.313v3.349h-2.484v-3.35c0-1.537-.602-2.313-1.802-2.313-1.085 0-1.628.655-1.628 1.945v6.119H4.831V8.285c0-1.29.328-2.314.987-3.07.68-.759 1.57-1.147 2.674-1.147 1.278 0 2.246.491 2.886 1.474L12 6.585l.622-1.043c.64-.983 1.608-1.474 2.886-1.474 1.104 0 1.994.388 2.674 1.146.658.757.986 1.781.986 3.07v6.305z"/></svg>
+ @psiinon</a>
+
+<br /><a class="author-bluesky" href="https://bsky.app/profile/psiinon.bsky.social"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565C.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479c.815 2.736 3.713 3.66 6.383 3.364c.136-.02.275-.039.415-.056c-.138.022-.276.04-.415.056c-3.912.58-7.387 2.005-2.83 7.078c5.013 5.19 6.87-1.113 7.823-4.308c.953 3.195 2.05 9.271 7.733 4.308c4.267-4.308 1.172-6.498-2.74-7.078a8.741 8.741 0 0 1-.415-.056c.14.017.279.036.415.056c2.67.297 5.568-.628 6.383-3.364c.246-.828.624-5.79.624-6.478c0-.69-.139-1.861-.902-2.206c-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8"/></svg>
+ @psiinon.bsky.social</a>
+
+
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#authentication-is-hard">Authentication is hard</a></li>
+    <li><a href="#introducing-ai-assisted-authentication">Introducing AI Assisted Authentication</a>
+      <ul>
+        <li><a href="#your-credentials-stay-with-zap">Your credentials stay with ZAP</a></li>
+        <li><a href="#what-you-need">What you need</a></li>
+      </ul>
+    </li>
+    <li><a href="#trying-it-out-with-the-authentication-tester">Trying it out with the Authentication Tester</a></li>
+    <li><a href="#automating-ai-assisted-authentication">Automating AI Assisted Authentication</a></li>
+    <li><a href="#choosing-a-model">Choosing a model</a></li>
+    <li><a href="#what-about-totp">What about TOTP?</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/authentication/">authentication</a> </li>
+           
+           <li> <a href="/tags/automation/">automation</a> </li>
+           
+           <li> <a href="/tags/ai/">ai</a> </li>
+           
+           <li> <a href="/tags/llm/">llm</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-11-03-ai-assisted-authentication/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ea2319.js"></script>
+  
+</div>
+</body>
+</html>
