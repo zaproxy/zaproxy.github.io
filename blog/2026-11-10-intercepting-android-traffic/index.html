@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="The world’s most widely used web app scanner. Free and open source. ZAP is a community project actively maintained by a dedicated international team, and a GitHub Top 1000 project.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/blog/2026-11-10-intercepting-android-traffic/images/connect.png">
+  <meta name="twitter:title" content="Intercepting all Android traffic with ZAP">
+  <meta name="twitter:description" content="zaptun is a community add-on by David Araújo that captures all of the traffic from an Android emulator or rooted device in ZAP with one click. It uses a VPN rather than a proxy, so apps that ignore the system proxy can’t hide from you. Here’s how it works.">
+
+    <meta property="og:url" content="/blog/2026-11-10-intercepting-android-traffic/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="Intercepting all Android traffic with ZAP">
+  <meta property="og:description" content="zaptun is a community add-on by David Araújo that captures all of the traffic from an Android emulator or rooted device in ZAP with one click. It uses a VPN rather than a proxy, so apps that ignore the system proxy can’t hide from you. Here’s how it works.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2026-11-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-11-10T00:00:00+00:00">
+    <meta property="article:tag" content="Blog">
+    <meta property="article:tag" content="Android">
+    <meta property="article:tag" content="Add-On">
+    <meta property="og:image" content="https://www.zaproxy.org/blog/2026-11-10-intercepting-android-traffic/images/connect.png">
+
+  
+  <title>ZAP &ndash; Intercepting all Android traffic with ZAP</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js"></script>
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.e0450d.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  
+
+<section class="bolt-header">
+  <div class="wrapper py-20">
+    <h1 class="text--white">Intercepting all Android traffic with ZAP</h1>
+  </div>
+</section>
+
+<div class="wrapper py-70" data-kind="page">
+    <div class="flex latest-versions">
+      <article class="col-2-3 pr-30 content single-post">
+          <div class="breadcrumbs">
+              <a href="/blog/">The ZAP Blog</a>
+          </div>
+
+          <main class="post-content">
+            <section class="p-10 bg--blue-lightest mb-10 mt-10 smaller-text text--blue-dark">
+              Posted <span class="post-date">Tuesday November 10, 2026</span>
+              <span class="word-count fl-r"> 2962 Words </span>
+            </section>
+            
+            
+            
+            <p>Testing Android apps with ZAP has always had two sticking points: getting the device to trust ZAP&rsquo;s
+certificate, and getting <em>all</em> of the app&rsquo;s traffic to go through ZAP, including from apps that ignore the system proxy.</p>
+<p><strong><a href="/docs/desktop/addons/zaptun-adndroid-interception/">zaptun</a></strong> is a ZAP add-on by <a href="https://davidjosearaujo.dev/">David Araújo</a> that solves both. Pick a device in <em>Tools → Android Devices&hellip;</em>,
+click <strong>Intercept</strong>, and every TCP connection the device makes goes through ZAP. It works with Android emulators
+and rooted devices, and <code>adb</code>.
+The rest of this post is David&rsquo;s own write-up of how it works, starting with why this is hard in the first place.</p>
+<p>zaptun is available from the <a href="/addons/#addon-zaptun">ZAP Marketplace</a>, and the source is on Codeberg: <a href="https://codeberg.org/davidjosearaujo/zaptun">davidjosearaujo/zaptun</a>.</p>
+
+<h2 id="capturing-everything-is-the-hard-part">Capturing everything is the hard part <a class="header-link" href="#capturing-everything-is-the-hard-part"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Watching an Android app&rsquo;s traffic in ZAP sounds simple: point the device at ZAP as a proxy and read the requests. In practice, two things stand in the way, and both are a nuisance.</p>
+<p>The first is <strong>trust</strong>. HTTPS traffic is only readable if the device trusts ZAP&rsquo;s root certificate, and on Android 14+ that&rsquo;s genuinely hard. System certificates no longer live in a folder you can write to; they&rsquo;re inside the <strong>Conscrypt APEX</strong> module, mounted read-only. Dropping a certificate into <code>/system/etc/security/cacerts</code> does nothing, because Android isn&rsquo;t looking there anymore.</p>
+<p>The second is <strong>routing</strong>. Setting a system HTTP proxy only catches apps that bother to read it. Plenty don&rsquo;t: anything built on Flutter, OkHttp clients configured with <code>Proxy.NO_PROXY</code>, apps talking over raw sockets, malware that deliberately ignores the proxy to stay hidden. Set a proxy and you see the well-behaved half of the traffic and miss exactly the half you care about.</p>
+<p>So the honest way to see <strong>everything</strong> is to put the device behind a VPN that forwards every TCP connection to ZAP, and to inject ZAP&rsquo;s certificate into the system store the hard way. Both are fiddly, both need root, and both have to be redone after every reboot. I&rsquo;d done it by hand enough times to want a button instead.</p>
+<p><strong>zaptun</strong> is that button. It&rsquo;s a ZAP add-on: pick a device, click <strong>Intercept</strong>, and every byte the device sends goes through ZAP. It&rsquo;s roughly what <a href="https://httptoolkit.com/">HTTP Toolkit&rsquo;s</a> &ldquo;Android device via ADB&rdquo; does, but for ZAP.</p>
+
+<h2 id="one-click-in-zap">One click in ZAP <a class="header-link" href="#one-click-in-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The add-on adds a <em>Tools → Android Devices…</em> dialog that lists every device <code>adb</code> can see, with its Android version, how it can get root, and whether it&rsquo;s currently being intercepted. You pick one, optionally choose which apps to capture (all of them by default), and click <strong>Intercept</strong>. The add-on runs five steps over <code>adb</code>, logging each one:</p>
+<ol>
+<li><strong>Installs the zaptun VPN app</strong> on the device (the add-on bundles the APK and pushes it).</li>
+<li><strong>Injects ZAP&rsquo;s root CA</strong> into the system store, and also installs it as a user CA.</li>
+<li><strong>Tunnels the device&rsquo;s <code>127.0.0.1:&lt;port&gt;</code> to ZAP</strong> with <code>adb reverse</code>. On an emulator, the <code>10.0.2.2</code> host alias would work too, but its network adds about a second to every new connection, while the adb tunnel adds a few milliseconds.</li>
+<li><strong>Starts the VPN</strong>, after which every TCP connection on the device goes through ZAP.</li>
+<li><strong>Makes zaptun Android&rsquo;s always-on VPN, with lockdown</strong>, so nothing gets around ZAP even while the VPN restarts. More on that <a href="#locking-the-door">below</a>.</li>
+</ol>
+<p>There&rsquo;s nothing to export, push or configure by hand. <strong>Stop</strong> turns lockdown off, then the VPN, and removes the tunnel.</p>
+<p><img src="images/connect.png" alt="The zaptun devices dialog in ZAP after Intercept, with the log of each step, next to the zaptun app on the emulator showing it is intercepting traffic with ZAP&rsquo;s CA trusted"></p>
+<p>It works headless too, driven from ZAP&rsquo;s API, which is handy in a script or CI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e">## Intercept the only connected device (or pick one with serial=; apps= is optional)</span>
+</span></span><span style="display:flex;"><span>curl <span style="color:#e6db74">&#34;http://localhost:9090/JSON/zaptun/action/intercept/?apikey=</span>$KEY<span style="color:#e6db74">&amp;serial=emulator-5554&#34;</span>
+</span></span><span style="display:flex;"><span>curl <span style="color:#e6db74">&#34;http://localhost:9090/JSON/zaptun/action/stop/?apikey=</span>$KEY<span style="color:#e6db74">&amp;serial=emulator-5554&#34;</span>
+</span></span></code></pre></div><p>The easiest way to get the add-on is from the Marketplace, but you can also build it yourself. That takes one Gradle command and <em>File → Load Add-on File…</em>. Building it needs <strong>only a JDK (17+), not the Android SDK</strong>: the repo carries a prebuilt copy of the VPN app, and when no SDK is around, the build bundles that one into the add-on. With an SDK, it builds the app from source and bundles that instead, so a plain JDK container is enough to produce a working add-on.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>./gradlew copyZapAddOn    <span style="color:#75715e"># the .zap file lands in zap-addon/build/zapAddOn/bin/</span>
+</span></span></code></pre></div><p>The rest of this post is about how the interesting parts work: the VPN, how it hands ZAP real hostnames, how it stops traffic leaking around ZAP, and how the certificate gets in.</p>
+
+<h2 id="a-vpn-not-a-proxy">A VPN, not a proxy <a class="header-link" href="#a-vpn-not-a-proxy"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>The device side of zaptun is an Android <code>VpnService</code>. Android lets an app declare itself a VPN and receive <strong>every IP packet</strong> the device tries to send, through a <code>tun</code> interface. That&rsquo;s the whole point: a VPN sees the Flutter app, the OkHttp client that refused the proxy, the raw socket and the malware, because none of them get a say. They just send packets, and the packets come to us.</p>
+<p>The catch is that a VPN gives you <strong>raw IP packets</strong>, not connections. ZAP, on the other hand, speaks HTTP: it wants <code>CONNECT host:port</code> and a TLS stream, not a pile of TCP segments. So zaptun&rsquo;s job is to turn one into the other, connection by connection, and that&rsquo;s most of the code.</p>
+
+<h2 id="how-the-tunnel-works">How the tunnel works <a class="header-link" href="#how-the-tunnel-works"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Reassembling TCP from raw packets in userspace is a lot of work to get right (sequence numbers, retransmits, windows, the lot). zaptun sidesteps almost all of it with a trick: it rewrites each packet&rsquo;s headers so the connection lands on a <strong>local socket</strong>, and lets the <strong>kernel&rsquo;s own TCP stack</strong> do the hard part.</p>
+<pre tabindex="0"><code>app ──► tun ──► TcpNat (header rewrite) ──► local relay ──► CONNECT host:port ──► ZAP
+</code></pre><p>A small NAT table rewrites an outgoing packet from <code>app → real destination</code> into <code>fake address → local relay port</code>, and rewrites the replies back, so the app thinks it&rsquo;s talking to its real destination while the bytes actually arrive on a plain <code>ServerSocket</code> the relay is listening on. Because the relay is a normal socket, the kernel handles all the TCP machinery, and the relay just gets a clean byte stream. The original destination is remembered against the fake source port, so the relay can look up where each connection was really going.</p>
+<p>For each connection the relay then decides a <strong>route</strong>. Only connections to the <strong>intercepted ports</strong> (80, 443, 8080 and a handful of other common web ports by default, editable in the app) are candidates for ZAP; a connection to anything else goes <strong>straight to its destination</strong>, untouched, so non-web protocols keep working. For an intercepted port, the relay peeks at the first bytes to work out what it&rsquo;s looking at, opens <code>CONNECT &lt;host&gt;:&lt;port&gt;</code> on ZAP, and pipes the stream through. ZAP sees a normal proxied connection; the app sees its server.</p>
+<p>Some apps talk HTTP on ports nobody would guess. For those, the app has an <strong>Also find HTTP on every other port</strong> switch: the relay then gives every other connection half a second to show its first bytes, and sends plain HTTP, and TLS whose ClientHello offers HTTP through ALPN (<code>h2</code>, <code>http/1.1</code>), to ZAP as well. Other TLS (MQTT, IMAP, XMPP&hellip;) still goes direct, since ZAP would break it, and so does a protocol where the server speaks first, like SSH, once that half second is up.</p>
+
+<h2 id="giving-zap-real-hostnames">Giving ZAP real hostnames <a class="header-link" href="#giving-zap-real-hostnames"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>If you just forwarded the raw bytes, ZAP would see connections to <strong>IP addresses</strong>, and its History and generated certificates would be full of <code>104.18.x.x</code> instead of hostnames. That&rsquo;s miserable to read and breaks name-based certificate generation. So before opening the tunnel, zaptun reads the start of the stream and pulls the hostname out of it:</p>
+<ul>
+<li>For <strong>TLS</strong>, it parses the ClientHello and takes the <strong>SNI</strong> (the <code>server_name</code> the client asks for).</li>
+<li>For <strong>plain HTTP</strong>, it takes the <strong><code>Host</code> header</strong>.</li>
+<li>A request an app already addressed to a proxy (a <code>CONNECT</code> or an absolute-URI request, from an app honouring the system proxy) is handed to ZAP unchanged.</li>
+<li>Anything else, a protocol that isn&rsquo;t HTTP on a web port, or a server that speaks first, is sent <strong>direct</strong>, because there&rsquo;s no hostname to give ZAP and no point tunnelling it.</li>
+</ul>
+<p>A detail that bit me: some clients (browsers especially) open a socket <strong>well before</strong> they send anything, then reuse it later. If the relay gave up after a second of silence and sent that socket direct, the connection would skip ZAP. So on an intercepted port the relay waits up to <strong>30 seconds</strong> for the first bytes before deciding, which keeps those early-opened sockets captured.</p>
+<p>Closing is tracked per direction, too, and this one is subtle. ZAP drops a tunnel the moment its client half-closes it, <strong>even if a reply is still on the way</strong>. A naive relay that forwarded the app&rsquo;s half-close straight through would make ZAP hang up on responses the app was still owed. So when a connection is going to ZAP, zaptun <strong>holds back the app&rsquo;s half-close</strong> while the app is still waiting for a reply, and lets the connection end when ZAP itself closes it, once the exchange is actually over.</p>
+
+<h2 id="plugging-the-leaks">Plugging the leaks <a class="header-link" href="#plugging-the-leaks"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>A VPN that only handles TCP cleanly will quietly leak the rest, and a leak is exactly what you don&rsquo;t want when you&rsquo;re trying to see everything. So zaptun deals with the awkward cases on purpose:</p>
+<ul>
+<li><strong>DNS</strong> is forwarded to the real network&rsquo;s resolvers, over UDP and TCP, so name resolution keeps working while the VPN is up. <strong>Private DNS</strong> (DNS over TLS) is refused at once, so the device falls back to plain DNS that zaptun can see, instead of resolving names over a channel it can&rsquo;t read.</li>
+<li><strong>IPv6 isn&rsquo;t carried.</strong> <code>AAAA</code> lookups come back empty so apps use IPv4, and an app that still tries IPv6 (an address literal, a cached record) gets an immediate reset rather than a long timeout. Everything then rides IPv4, where the tunnel lives.</li>
+<li><strong>QUIC</strong> (HTTP/3) can&rsquo;t go through ZAP, so it&rsquo;s refused with an ICMP &ldquo;port unreachable&rdquo;. That&rsquo;s every packet to UDP 443, and on any other port, a packet that looks like a QUIC client&rsquo;s very first one (a padded Initial of a known version). Clients take the hint and <strong>fall back to TCP</strong>, which ZAP does see. Every other UDP flow (calls, NTP, games) passes straight through uncaptured, because ZAP can&rsquo;t proxy UDP anyway, and breaking them would just make apps misbehave.</li>
+</ul>
+<p>There&rsquo;s one more escape route, and it&rsquo;s a sneaky one. If the device has Android&rsquo;s <strong>global HTTP proxy</strong> set (some emulator setups and launch scripts do this), apps that honour it will send their traffic to that proxy and never meet the VPN at all. So while zaptun is connected it <strong>switches the global proxy off</strong>, and puts the old value back when you disconnect. Changing a secure setting needs a permission the add-on grants over <code>adb</code> when you click <strong>Intercept</strong>; on a Magisk-rooted phone it falls back to <code>su</code>. The one proxy it can&rsquo;t touch is the one set by the <strong>emulator itself</strong>, with its <code>-http-proxy</code> launch flag: that lives outside the device, so even zaptun&rsquo;s &ldquo;direct&rdquo; connections go through it.</p>
+
+<h2 id="locking-the-door">Locking the door <a class="header-link" href="#locking-the-door"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>All of that assumes zaptun is running. But there are moments when it isn&rsquo;t: right after a boot, before it starts, or for an instant while it restarts. Without anything else in place, apps talk straight to the internet during those moments, and ZAP never sees it.</p>
+<p>Android has an answer for this: an <strong>always-on VPN with lockdown</strong> (&ldquo;Block connections without VPN&rdquo; in the settings). With lockdown on, apps get <strong>no network at all</strong> while the VPN is down. So once the VPN is up, <strong>Intercept</strong> makes zaptun the always-on VPN with lockdown, and <strong>Stop</strong> turns it off again before stopping the VPN.</p>
+<p>There&rsquo;s a catch: only system code may change that setting, and the permission can&rsquo;t be granted with <code>pm grant</code>. So zaptun does it the way scrcpy runs its server, with a small tool inside its own APK, started as root through <code>app_process</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>adb shell <span style="color:#e6db74">&#39;CLASSPATH=$(pm path dev.davidjosearaujo.zaptun | cut -d: -f2) \
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    app_process /system/bin dev.davidjosearaujo.zaptun.AlwaysOnVpn status&#39;</span>   <span style="color:#75715e"># or on, off</span>
+</span></span></code></pre></div><p>Lockdown has to respect which apps you chose to capture. In &ldquo;all apps except&hellip;&rdquo; mode, the excluded apps are allowed around it (Android 10+). In &ldquo;only these apps&rdquo; mode, the other apps aren&rsquo;t on the VPN at all, and lockdown would cut them off, so zaptun stays always-on <strong>without</strong> lockdown. And it covers apps, not root: processes running as root, like an <code>adb shell</code> after <code>adb root</code>, still go around a stopped VPN.</p>
+<p>The same idea applies when zaptun reconnects, for example after you change the app list. The new session is set up <strong>while the old one still carries the traffic</strong>, and Android swaps the two. Android&rsquo;s swap still has a window of about 20 ms between removing the old interface and adding the new routes, which lockdown covers too. Connections from the old session get a reset at once, as if from their server, so apps reconnect through the new one straight away, including the ones that are only waiting to receive, like a WebSocket or a long poll.</p>
+
+<h2 id="making-the-device-trust-zap">Making the device trust ZAP <a class="header-link" href="#making-the-device-trust-zap"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>None of the HTTPS reading works unless the device trusts ZAP&rsquo;s certificate, so the add-on installs it two ways.</p>
+<p>The <strong>system</strong> store is the hard one on Android 14+, because the authoritative certificates live in the read-only Conscrypt APEX. You can&rsquo;t write into the APEX, so zaptun <strong>covers it up</strong> instead: it builds a certificate folder in a <code>tmpfs</code> (a RAM disk) over <code>/system/etc/security/cacerts</code>, fills it with everything the device already trusts plus ZAP&rsquo;s certificate, and then <strong>bind-mounts that folder on top of</strong> <code>/apex/com.android.conscrypt/cacerts</code>.</p>
+<p>The twist is that Android apps don&rsquo;t all share one mount namespace, so a mount done in one shell is invisible to everyone else. The injection script walks <strong>every mount namespace on the device</strong> and uses <code>nsenter</code> to do the bind-mount in each one, including Zygote&rsquo;s, so newly launched apps inherit it. Since many processes share a namespace, it mounts <strong>once per namespace</strong> rather than stacking dozens of identical mounts. An app that&rsquo;s already running keeps the trust store it loaded at startup, though, so start (or restart) the app you want to capture <strong>after</strong> clicking <strong>Intercept</strong>. This is the technique <a href="https://httptoolkit.com/blog/android-14-install-system-ca-certificate/">HTTP Toolkit documented</a>, and it&rsquo;s genuinely clever.</p>
+<p>That system change lives in RAM, so it&rsquo;s gone after a reboot (just click <strong>Intercept</strong> again). As a belt-and-braces second route, zaptun also installs ZAP&rsquo;s certificate as a <strong>user CA</strong> in <code>/data/misc/user/0/cacerts-added/</code>. A user CA lives on disk, so every process sees it whatever its mount namespace, and it survives a reboot; apps that opt into user certificates trust it too.</p>
+<p>All of this needs <strong>root</strong>, because injecting a system CA does. On an emulator that means a <strong>&ldquo;Google APIs&rdquo;</strong> image, where <code>adb root</code> works (&ldquo;Google Play&rdquo; images are production builds and won&rsquo;t give you root); on a phone it means <code>su</code> (Magisk). The add-on figures out which applies and runs <code>adb root</code> for you when it can.</p>
+
+
+
+  <blockquote>
+    <p><strong>Pinning is a separate fight</strong></p>
+<p>zaptun gets the device to trust ZAP and routes every connection through it, which is enough for the large majority of apps. An app that does <strong>certificate pinning</strong> validates the certificate itself and won&rsquo;t be fooled by a trusted CA. For those you still need to disable the pinning in the app, with Frida or objection. zaptun handles the plumbing, not the pinning.</p>
+  </blockquote>
+
+
+<h2 id="from-a-shell-or-on-the-phone">From a shell, or on the phone <a class="header-link" href="#from-a-shell-or-on-the-phone"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>You don&rsquo;t have to use ZAP&rsquo;s UI. The repo ships <code>scripts/zaptun.sh</code>, which does the same steps from a shell (lockdown included), so you can wire interception into a script with the app built and ZAP running. It needs a root <code>adb shell</code>, so a &ldquo;Google APIs&rdquo; emulator; for a phone rooted with <code>su</code>, use the add-on:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>export ANDROID_SERIAL<span style="color:#f92672">=</span>emulator-5554   <span style="color:#75715e"># optional, picks the device</span>
+</span></span><span style="display:flex;"><span>scripts/zaptun.sh install             <span style="color:#75715e"># once: install and pre-approve the VPN</span>
+</span></span><span style="display:flex;"><span>scripts/zaptun.sh start               <span style="color:#75715e"># CA + VPN, ZAP on port 9090, all apps</span>
+</span></span><span style="display:flex;"><span>scripts/zaptun.sh start <span style="color:#ae81ff">9090</span> com.example.app,com.example.other
+</span></span><span style="display:flex;"><span>scripts/zaptun.sh stop
+</span></span></code></pre></div><p>It even fetches ZAP&rsquo;s root CA on its own, using the one-time download link on ZAP&rsquo;s <code>http://zap/</code> welcome page, so there&rsquo;s no API key and no manual certificate export.</p>
+<p>On the device itself, the zaptun app is a single page: the connection status and the ZAP address it&rsquo;s forwarding to, whether ZAP&rsquo;s certificate currently has <strong>system</strong> and <strong>user</strong> trust, the <strong>intercepted ports</strong> (add or remove them live, no reconnect), the <strong>apps</strong> (capture everything, or only the ones you pick), and an <strong>Activity</strong> log of recent connections, each showing whether it went to ZAP or direct, the bytes moved, how long it lasted and who closed it, with counters for the UDP, IPv6 and DNS traffic it refused or passed through. It&rsquo;s the quickest way to confirm the capture is doing what you think, and to spot an app doing something beyond ZAP&rsquo;s reach. While connected, it keeps an ongoing notification, and if Android kills it anyway, the VPN comes back by itself.</p>
+<p><img src="images/intercept.png" alt="ZAP intercepting an emulator: the browser&rsquo;s request to example.org shows up in ZAP&rsquo;s History"></p>
+<p>A couple of quick checks tell you it&rsquo;s working: ZAP&rsquo;s History shows <strong>hostnames, not IPs</strong>, for HTTPS traffic, the app&rsquo;s <strong>System trust</strong> row has a green tick, and <code>adb logcat -s zaptun</code> prints a line like <code>TLS api.example.com:443 → ZAP</code> for each connection.</p>
+
+<h2 id="conclusion">Conclusion <a class="header-link" href="#conclusion"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h2>
+<p>Most of zaptun isn&rsquo;t about ZAP at all. The ZAP side is a handful of <code>adb</code> calls; the real work is on the device, turning a stream of raw IP packets back into connections the kernel can carry, teaching ZAP the hostnames it needs, and refusing to let anything, DNS, IPv6, QUIC, a stray global proxy or a VPN restart, sneak around the tunnel. Add the certificate dance on Android 14+, and &ldquo;point the phone at ZAP&rdquo; turns out to be a surprising amount of plumbing.</p>
+<p>The payoff is that none of it is my problem anymore. Pick a device, click <strong>Intercept</strong>, and read the traffic.</p>
+<p>Happy zapping!</p>
+
+          </main>
+          <div class="next-content bg--blue-lightest p-10">
+              
+                Previous <a class="previous" href="/blog/2026-11-03-ai-assisted-authentication/"> AI Assisted Authentication</a>
+              
+              
+          </div>
+      </article>
+      <aside class="col-1-3">
+        <section class="post-meta">
+          
+          
+          <div class="post-authors">
+            
+            
+              <section class="post-author-single flex p-10">
+                <div class="col-1-5">
+                  
+                  <img class="author-picture" src="/img/authors/david-araujo.svg" />
+                  
+                </div>
+                <div class="author-name col-4-5">
+                  
+                    <a href="https://davidjosearaujo.dev/">David Araújo</a>
+                  
+                  
+
+                </div>
+              </section>
+          
+
+          <h4>Table of Contents</h4>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#capturing-everything-is-the-hard-part">Capturing everything is the hard part</a></li>
+    <li><a href="#one-click-in-zap">One click in ZAP</a></li>
+    <li><a href="#a-vpn-not-a-proxy">A VPN, not a proxy</a></li>
+    <li><a href="#how-the-tunnel-works">How the tunnel works</a></li>
+    <li><a href="#giving-zap-real-hostnames">Giving ZAP real hostnames</a></li>
+    <li><a href="#plugging-the-leaks">Plugging the leaks</a></li>
+    <li><a href="#locking-the-door">Locking the door</a></li>
+    <li><a href="#making-the-device-trust-zap">Making the device trust ZAP</a></li>
+    <li><a href="#from-a-shell-or-on-the-phone">From a shell, or on the phone</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+          
+          <h4>Tags</h4>
+          <ul id="tags">
+           
+           <li> <a href="/tags/blog/">blog</a> </li>
+           
+           <li> <a href="/tags/android/">android</a> </li>
+           
+           <li> <a href="/tags/add-on/">add-on</a> </li>
+           
+          </ul>
+          
+          </div>
+                    
+        </section>
+      </aside>
+    </div>
+</div>
+
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/blog/2026-11-10-intercepting-android-traffic/index.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.ea2319.js"></script>
+  
+</div>
+</body>
+</html>
