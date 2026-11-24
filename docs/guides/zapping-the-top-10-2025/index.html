@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="This document gives an overview of the automatic and manual components provided by Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2025 risks.">
+  
+    
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://www.zaproxy.org/img/docs/guides/OWASP-Top-10.png">
+  <meta name="twitter:title" content="ZAPping the OWASP Top 10 (2025)">
+  <meta name="twitter:description" content="This document gives an overview of the automatic and manual components provided by Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2025 risks.">
+
+    <meta property="og:url" content="/docs/guides/zapping-the-top-10-2025/">
+  <meta property="og:site_name" content="ZAP">
+  <meta property="og:title" content="ZAPping the OWASP Top 10 (2025)">
+  <meta property="og:description" content="This document gives an overview of the automatic and manual components provided by Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2025 risks.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+    <meta property="article:published_time" content="2026-11-23T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-11-23T00:00:00+00:00">
+    <meta property="article:tag" content="Top10">
+    <meta property="article:tag" content="Guide">
+    <meta property="og:image" content="https://www.zaproxy.org/img/docs/guides/OWASP-Top-10.png">
+
+  
+  
+  <meta data-pagefind-meta="title[content]" content="ZAPping the OWASP Top 10 (2025)">
+  <title>ZAP &ndash; ZAPping the OWASP Top 10 (2025)</title>
+
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Istok+Web|Open+Sans:400,700|Rubik&display=swap" rel="stylesheet">
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDLGW1172L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JDLGW1172L');
+  </script>
+  
+  
+  
+    <link href="/main.5c3dd8.css" rel="stylesheet">
+  
+</head>
+<body>
+<div id="page-container">
+ <div id="content-wrap">
+  <header class="site-header">
+    <div class="wrapper flex jc-sb ai-c">
+    <div class="flex">
+        <nav class="site-nav" role="navigation">
+        <a href="/" aria-label="return to landing page" class="logo">
+            <img src = "/img/zap-by-checkmarx.svg" height="65px" alt="ZAP By Checkmarx"/>
+        </a>
+        </nav>
+    </div>
+    <div class="nav-content flex">
+      <nav class="site-nav" role="navigation">
+        <div class="hamburger-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </div>
+        <input class="hamburger-click" aria-label="toggle site menu" aria-controls="primary-menu" type="checkbox" />
+        <ul id="primary-menu" class="flex">
+          
+          
+            
+              <li class="">
+                  <a href="/blog/" title="Blog page">
+                  Blog
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/videos/" title="Videos page">
+                  Videos
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/docs/" title="Documentation page">
+                  Documentation
+                </a>
+              </li>
+            
+          
+            
+              <li class="">
+                  <a href="/community/" title="Community page">
+                  Community
+                </a>
+              </li>
+            
+          
+          <li id="search-menu">
+            <a class="toggler" href="#">
+              <img height="20" width="20" src="/img/search.svg" alt="Search icon"/>
+            </a>
+  
+            <form data-no-csrf action="/search">
+              <input type="text" name="q" placeholder="Search ..." style="width: 100%" />
+            </form>
+          </li>
+        </ul>
+      </nav>
+      <div class="download-button">
+        <a id="cta-download" href="/download/" class="button button--orange">Download</a>
+      </div>
+      <div class="social-links header-social">
+        <ul class="flex ai-c no-list-style m-10 px-20">
+          <li>
+            <a href="https://github.com/zaproxy" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+          </li>
+          <li>
+              <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+  <div data-pagefind-body>
+  
+
+<section class="bolt-header">
+    <div class="wrapper py-20">
+      <h1 class="text--white">ZAPping the OWASP Top 10 (2025)</h1>
+  </div>
+</section>
+<section class="wrapper flex py-70 on-sm-stack" data-kind="page">
+  <article class="on-sm-full">
+  
+    <main><p>This document gives an overview of the automatic and manual components provided by Zed Attack Proxy (ZAP) that are recommended for testing each of the OWASP Top Ten Project 2025 risks.</p>
+<p>For the previous Top Tens see <a href="/docs/guides/zapping-the-top-10-2021/">ZAPping the OWASP Top 10 (2021)</a> and <a href="/docs/guides/zapping-the-top-10-2017/">ZAPping the OWASP Top 10 (2017)</a></p>
+<p>Note that the <a href="https://owasp.org/www-project-top-ten/">OWASP Top Ten Project</a> risks cover a wide range of underlying vulnerabilities, some of which are not really possible to test for in a completely automated way.
+If a completely automated tool claims to protect you against the full OWASP Top Ten then you can be sure they are being ‘economical with the truth’!</p>
+<p>The component links take you to the relevant places in an online version of the ZAP User Guide from which you can learn more.</p>
+
+<h3 id="what-has-changed-since-2021">What Has Changed Since 2021 <a class="header-link" href="#what-has-changed-since-2021"><svg class="fill-current o-60 hover-accent-color-light" height="22px" viewBox="0 0 24 24" width="22px" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/></svg></a></h3>
+<ul>
+<li>Server-Side Request Forgery (SSRF) is no longer a separate category, it is now part of A01 Broken Access Control.</li>
+<li>Security Misconfiguration has moved up from A05 to A02.</li>
+<li>Vulnerable and Outdated Components has been broadened into A03 Software Supply Chain Failures.</li>
+<li>Identification and Authentication Failures has been renamed A07 Authentication Failures.</li>
+<li>Security Logging and Monitoring Failures has been renamed A09 Security Logging and Alerting Failures.</li>
+<li>A10 Mishandling of Exceptional Conditions is a new category.</li>
+</ul>
+<p>All of the ZAP scan rules are tagged with the 2025 categories they relate to, so you can use the tag links below to see exactly which rules cover each risk.</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><H5>Common Components</H5>
+</td>
+          <td></td>
+          <td>The &lsquo;common components&rsquo; can be used for pretty much everything, so can be used to help detect all of the Top 10</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/start/features/intercept/">Manipulator-in-the-middle proxy</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/requester/dialogs/">Manual request</a> / resend</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/fuzzer/">Fuzzer</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/script-console/">Scripts</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/community-scripts/">Community Scripts*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/ui/tabs/search/">Search</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/encode-decode-hash/">Encode / Decode / Hash</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/diff/">Diff</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated / Manual</td>
+          <td><a href="/docs/desktop/addons/owasp-ptk/">OWASP PTK*</a> - in-browser DAST, IAST, SAST and SCA</td>
+      </tr>
+      <tr>
+          <td><H5>Exploring Your App</H5>
+</td>
+          <td></td>
+          <td>ZAP can only test what it knows about, so exploring your app thoroughly is essential for all of the Top 10</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/client-side-integration/spider/">Client Spider</a> - the recommended option for modern web apps</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/spider/">Spider</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/ajax-spider/">Ajax Spider</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>API definitions: <a href="/docs/desktop/addons/openapi-support/">OpenAPI</a>, <a href="/docs/desktop/addons/graphql-support/">GraphQL</a>, <a href="/docs/desktop/addons/soap-support/">SOAP</a>, and <a href="/docs/desktop/addons/postman-support/">Postman</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/websockets/">WebSockets</a> and <a href="/docs/desktop/addons/server-sent-events/">Server-Sent Events*</a></td>
+      </tr>
+      <tr>
+          <td><H5>Automating and Verifying</H5>
+</td>
+          <td></td>
+          <td>These help you test for all of the Top 10 consistently, and confirm that issues have been fixed</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/automation-framework/">Automation Framework</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/scan-policies/">Scan Policies</a> - tuned for developers, QA, pentesters, and APIs</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/alert-filters/">Alert Filters</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/insights/">Insights</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/retest/">Retest</a> - to check that issues have been fixed</td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A01_2025-Broken_Access_Control/"><H5>A01 Broken Access Control</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a01/">OWASP_2025_A01</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/access-control-testing/">Access Control Testing*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/oast-support/">OAST Support</a> - for detecting SSRF</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/forced-browse/">Forced Browse</a>, combined with the <a href="/docs/desktop/addons/directory-list-v1.0/">Directory List v1.0</a> and <a href="/docs/desktop/addons/directory-list-v2.3/">Directory List v2.3*</a> files</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/parameter-digger/">Parameter Digger*</a> - for finding hidden parameters</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/authentication/">Authentication</a> - configure ZAP to authenticate as different users so that you can compare what each of them can access</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/port-scan/">Port Scanner*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/technology-detection/">Wappalyzer - Technology detection*</a></td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A02_2025-Security_Misconfiguration/"><H5>A02 Security Misconfiguration</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a02/">OWASP_2025_A02</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/forced-browse/">Forced Browse</a>, combined with the <a href="/docs/desktop/addons/directory-list-v1.0/">Directory List v1.0</a> and <a href="/docs/desktop/addons/directory-list-v2.3/">Directory List v2.3*</a> files</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/https-info/">HTTPS Info*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/technology-detection/">Wappalyzer - Technology detection*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/ui/tlmenu/report/#compare-with-another-session">Session comparison</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/access-control-testing/">Access Control Testing*</a></td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A03_2025-Software_Supply_Chain_Failures/"><H5>A03 Software Supply Chain Failures</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a03/">OWASP_2025_A03</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/retire.js/">Retire.js</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/owasp-ptk/">OWASP PTK*</a> - SCA</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a> - shows all of the scripts loaded by the browser, including those from third parties</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/technology-detection/">Wappalyzer - Technology detection*</a></td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A04_2025-Cryptographic_Failures/"><H5>A04 Cryptographic Failures</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a04/">OWASP_2025_A04</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/client-side-integration/pscan/">Client Side Integration Passive Scan Rules</a> - for sensitive information in browser storage</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/https-info/">HTTPS Info*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/token-generator/">Token Generator*</a> - for analysing the randomness of tokens</td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A05_2025-Injection/"><H5>A05 Injection</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a05/">OWASP_2025_A05</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/dom-xss-active-scan-rule/">DOM XSS Active Scan Rule</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/advanced-sqlinjection-scanner/">Advanced SQLInjection Scanner*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/custom-payloads/">Custom Payloads*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated / Manual</td>
+          <td><a href="/docs/desktop/addons/owasp-ptk/">OWASP PTK*</a> - IAST taint tracking</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/fuzzer/">Fuzzer</a>, combined with the <a href="/docs/desktop/addons/fuzzdb-files/">FuzzDb*</a> and <a href="/docs/desktop/addons/svn-digger-files/">SVN Digger*</a> files</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/fuzzer/">Fuzzer</a>, combined with the <a href="/docs/desktop/addons/fuzzai-files/">FuzzAI*</a> files - for prompt injection in LLM based apps</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/graphql-support/">GraphQL</a> and <a href="/docs/desktop/addons/grpc-support/">gRPC*</a> Support - for injecting into API requests</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/eval-villain/">Eval Villain*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/foxhound/">Foxhound*</a> - for DOM XSS taint tracking</td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A06_2025-Insecure_Design/"><H5>A06 Insecure Design</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a06/">OWASP_2025_A06</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/sequence-scanner/">Sequence Scanner</a> - for testing multi-step flows</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/requester/dialogs/">Manual request</a> / resend and <a href="/docs/desktop/addons/script-console/">Scripts</a> - for testing business logic</td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A07_2025-Authentication_Failures/"><H5>A07 Authentication Failures</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a07/">OWASP_2025_A07</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/access-control-testing/">Access Control Testing*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/authentication/">Authentication</a> - the best place to start if you need ZAP to authenticate to your app</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/authentication-helper/">Authentication Helper</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/start/features/httpsessions/">HTTP Sessions</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/forced-browse/">Forced Browse</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/token-generator/">Token Generator*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/saml-support/">SAML Support*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/owasp-ptk/">OWASP PTK*</a> - JWT Inspector</td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A08_2025-Software_or_Data_Integrity_Failures/"><H5>A08 Software or Data Integrity Failures</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a08/">OWASP_2025_A08</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/client-side-integration/">Client Side Integration</a> - shows all of the scripts loaded by the browser, including those from third parties</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/viewstate/">ViewState*</a> - for decoding and editing ASP.NET ViewState</td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A09_2025-Security_Logging_and_Alerting_Failures/"><H5>A09 Security Logging and Alerting Failures</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated / Manual</td>
+          <td>The Spiders, Active Scanner, Fuzzer, and Access Control add-on can all be used to generate traffic and &ldquo;attacks&rdquo; which are potential sources/causes for logging and alerting.</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/automation-framework/">Automation Framework</a> - for generating the same attacks repeatably</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/replacer/">Replacer</a> - for adding a header to all ZAP requests so that you can check they appear in your logs</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/report-generation/">Report Generation</a> - for correlating ZAP findings with your logs and alerts</td>
+      </tr>
+      <tr>
+          <td><a href="https://owasp.org/Top10/2025/A10_2025-Mishandling_of_Exceptional_Conditions/"><H5>A10 Mishandling of Exceptional Conditions</H5>
+</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td>Scan Rules tagged with: <a href="/alerttags/owasp_2025_a10/">OWASP_2025_A10</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/insights/">Insights</a> - reports high percentages of 4xx and 5xx responses</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Automated</td>
+          <td><a href="/docs/desktop/addons/custom-payloads/">Custom Payloads*</a></td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/fuzzer/">Fuzzer</a>, combined with the <a href="/docs/desktop/addons/fuzzdb-files/">FuzzDb*</a> files, to send unexpected and malformed input</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Manual</td>
+          <td><a href="/docs/desktop/addons/requester/dialogs/">Manual request</a> / resend - for sending malformed requests</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </tbody>
+</table>
+<p>* The starred add-ons (and Beta and Alpha scan rules) are not included by default in the full ZAP release but can be downloaded from the ZAP Marketplace via the ‘Manage add-ons’ button on the ZAP main toolbar.</p>
+<p><img src="/img/zap-screenshot-browse-addons.png" alt="ZAP Toolbar - Marketplace Button"></p>
+</main>
+  </article>
+</section>
+
+  </div>
+ </div>
+  <footer class="site-footer py-20 mt-20">
+  <div class="wrapper flex jc-sb">
+    <div class="flex ai-c">
+    <div class="footer-logo"><svg xmlns="http://www.w3.org/2000/svg" width="55px" viewBox="0 0 77.58 77.61"><path d="M49.48 21.64a3.46 3.46 0 0 1 .44 3 3.38 3.38 0 0 1-2.16 2.14l-1.17.38 10.74 13.56a3.39 3.39 0 0 1-1.83 5.41l-2 .5L68 65A37.78 37.78 0 0 0 39.85 2c-1.34 0-2.66.07-4 .2zM23.33 48.26a3.4 3.4 0 0 1 .45-6.09L25 41.7l-13.81-10a3.4 3.4 0 0 1 .62-5.86l.2-.09-5.47-3.84a37.79 37.79 0 0 0 55.32 48.6z" fill="#fff"/><path d="M67.84 69.48L49 45.59a.55.55 0 0 1 .28-.87l5.55-1.36a.58.58 0 0 0 .23-.13.48.48 0 0 0 .09-.11.62.62 0 0 0 .08-.24.58.58 0 0 0 0-.26.54.54 0 0 0-.07-.13L42.29 26.37a.75.75 0 0 1-.07-.12.55.55 0 0 1 .31-.74l4.35-1.4a.54.54 0 0 0 .26-.83L30.92.22a.5.5 0 0 0-.61-.22L.32 13a.55.55 0 0 0-.1.94l16.72 11.88a.52.52 0 0 1 .22.49.45.45 0 0 1-.09.26.48.48 0 0 1-.09.11l-.13.08-3.93 1.72a.55.55 0 0 0-.29.31v.13a.59.59 0 0 0 .22.5l8.62 6.22 8.61 6.21a.55.55 0 0 1 0 .87.57.57 0 0 1-.13.08l-5.11 2a.55.55 0 0 0-.28.75.56.56 0 0 0 .21.22l42.43 24.5a.53.53 0 0 0 .64-.79z" fill="#fff"/></svg></div>
+    <div class="footer-left">
+      <nav class="footer-nav">
+        <ul class="flex">
+        
+        
+          
+            <li class="ml-10"><a href="/blog/" title="Blog page">Blog</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/videos/" title="Videos page">Videos</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/community/" title="Community page">Community</a></li>
+          
+        
+          
+            <li class="ml-10"><a href="/docs/statistics/" title="Statistics page">Statistics</a></li>
+          
+        
+        </ul>
+      </nav>
+      
+
+
+
+  <div class="ml-10">
+    <a href="https://github.com/zaproxy/zaproxy-website/blob/main/site/content/docs/guides/zapping-the-top-10-2025.md">Edit on GitHub</a>
+  </div>
+
+    </div>
+  </div>
+
+    <div class="flex ai-c">
+      <span class="OutroFooter">
+      © Copyright 2026 the ZAP Dev Team</br>
+      ZAP by <a href="https://checkmarx.com" aria-label="Checkmarx">Checkmarx</a>
+      </span>
+      <ul class="flex footer-social">
+        <li>
+          <a href="https://github.com/zaproxy/" aria-label="Go to ZAP's GitHub repo"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 18.88"><path d="M9.68 0a9.68 9.68 0 0 0-3.06 18.86c.48.09.64-.21.64-.46v-1.8C4.57 17.18 4 15.45 4 15.45A2.57 2.57 0 0 0 2.93 14c-.88-.6.07-.59.07-.59a2 2 0 0 1 1.48 1 2.06 2.06 0 0 0 2.82.8A2 2 0 0 1 7.91 14c-2.15-.29-4.41-1.12-4.41-4.83a3.72 3.72 0 0 1 1-2.59A3.53 3.53 0 0 1 4.59 4s.82-.26 2.67 1a9 9 0 0 1 4.84 0c1.9-1.25 2.66-1 2.66-1a3.49 3.49 0 0 1 .1 2.57 3.71 3.71 0 0 1 1 2.59c0 3.72-2.26 4.54-4.42 4.78a2.3 2.3 0 0 1 .67 1.79v2.67c0 .25.15.56.64.46A9.68 9.68 0 0 0 9.68 0z" fill="#00549e"/></svg></a>
+        </li>
+        <li>
+            <a href="https://twitter.com/zaproxy" aria-label="Follow ZAP on Twitter"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.36 15.73"><path d="M19.36 1.86a8 8 0 0 1-2.28.63 3.94 3.94 0 0 0 1.74-2.2 7.53 7.53 0 0 1-2.52 1 4 4 0 0 0-6.77 3.59A11.29 11.29 0 0 1 1.35.73 4 4 0 0 0 2.58 6a3.91 3.91 0 0 1-1.8-.5A4 4 0 0 0 4 9.48a4 4 0 0 1-1.79.06 4 4 0 0 0 3.67 2.76A8 8 0 0 1 0 14a11.32 11.32 0 0 0 6.09 1.78A11.24 11.24 0 0 0 17.38 3.92a8.08 8.08 0 0 0 1.98-2.06z" fill="#00549e"/></svg></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  
+  
+    <script src="/main.229b9c.js"></script>
+  
+</div>
+</body>
+</html>
